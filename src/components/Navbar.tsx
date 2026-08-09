@@ -11,7 +11,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      setIsScrolled(window.scrollY > 30);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -28,15 +28,15 @@ export default function Navbar() {
   return (
     <nav
       id="navbar"
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 font-sans border-b ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 font-sans border-b ${
         isScrolled
-          ? "bg-background/95 backdrop-blur-md h-20 border-arena-calida/40 shadow-ethereal text-gris-texto"
-          : "bg-background/80 backdrop-blur-md h-24 border-arena-calida/20 text-gris-texto"
+          ? "bg-background/95 backdrop-blur-md h-18 sm:h-20 border-arena-calida/40 shadow-ethereal text-gris-texto"
+          : "bg-background/85 backdrop-blur-md h-18 sm:h-20 md:h-24 border-arena-calida/20 text-gris-texto"
       }`}
     >
-      <div className="flex justify-between items-center h-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+      <div className="flex justify-between items-center h-full px-4 sm:px-6 md:px-margin-desktop max-w-container-max mx-auto">
         {/* LEFT GROUP: LANGUAGE SELECTOR & LOGO */}
-        <div className="flex items-center gap-4 md:gap-6">
+        <div className="flex items-center gap-2.5 sm:gap-4 md:gap-6">
           <LanguageSelector isScrolled={isScrolled} theme="adaptive" />
           
           <div 
@@ -46,14 +46,14 @@ export default function Navbar() {
             <Logo 
               isScrolled={isScrolled} 
               theme="adaptive" 
-              iconSize={34} 
-              textSize="text-sm sm:text-base md:text-lg lg:text-xl" 
+              iconSize={28} 
+              textSize="text-xs sm:text-sm md:text-base lg:text-lg" 
             />
           </div>
         </div>
 
         {/* DESKTOP NAV */}
-        <div className="hidden md:flex items-center gap-8 lg:gap-10">
+        <div className="hidden md:flex items-center gap-7 lg:gap-10">
           <button
             onClick={() => scrollToSection("proyectos")}
             className="font-label-caps text-label-caps text-gris-texto hover:text-arena-calida transition-colors duration-300 uppercase cursor-pointer"
@@ -90,7 +90,7 @@ export default function Navbar() {
         {/* CTA Pill Button */}
         <button
           onClick={() => scrollToSection("contacto")}
-          className="hidden md:inline-flex items-center justify-center px-8 py-3 bg-arena-calida/10 text-teal-uno border border-arena-calida/50 font-label-caps text-label-caps uppercase hover:bg-arena-calida hover:text-white transition-all duration-500 rounded-full cursor-pointer shadow-xs"
+          className="hidden md:inline-flex items-center justify-center px-7 lg:px-8 py-2.5 lg:py-3 bg-arena-calida/10 text-teal-uno border border-arena-calida/50 font-label-caps text-xs lg:text-label-caps uppercase hover:bg-arena-calida hover:text-white transition-all duration-500 rounded-full cursor-pointer shadow-xs font-semibold"
         >
           Iniciar Diálogo
         </button>
@@ -98,53 +98,53 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden text-teal-uno p-1.5 focus:outline-none cursor-pointer"
+          className="md:hidden text-teal-uno p-2 focus:outline-none cursor-pointer rounded-lg hover:bg-arena-calida/10 transition-colors"
           aria-label="Toggle menu"
         >
-          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <span className="material-symbols-outlined text-[28px]">menu</span>}
+          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <span className="material-symbols-outlined text-[26px]">menu</span>}
         </button>
       </div>
 
-      {/* MOBILE MENU */}
+      {/* MOBILE MENU DRAWER */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed top-[80px] left-0 w-full bg-background border-b border-arena-calida/30 py-8 px-8 flex flex-col space-y-5 animate-fadeIn z-40 shadow-xl text-gris-texto font-sans">
+        <div className="md:hidden fixed top-[72px] sm:top-[80px] left-0 w-full bg-background/98 backdrop-blur-xl border-b border-arena-calida/30 py-6 px-6 flex flex-col space-y-4 shadow-2xl text-gris-texto font-sans animate-fadeIn z-40 max-h-[calc(100vh-80px)] overflow-y-auto">
           <button
             onClick={() => scrollToSection("proyectos")}
-            className="text-left font-label-caps text-label-caps uppercase text-gris-texto hover:text-arena-calida transition-colors"
+            className="text-left font-label-caps text-xs uppercase text-gris-texto hover:text-teal-uno transition-colors py-2 border-b border-arena-calida/15"
           >
-            Proyectos
+            Proyectos & Tipologías
           </button>
           <button
             onClick={() => scrollToSection("filosofia")}
-            className="text-left font-label-caps text-label-caps uppercase text-gris-texto hover:text-arena-calida transition-colors"
+            className="text-left font-label-caps text-xs uppercase text-gris-texto hover:text-teal-uno transition-colors py-2 border-b border-arena-calida/15"
           >
-            Esencia
+            Esencia Arquitectónica
           </button>
           <button
             onClick={() => scrollToSection("servicios")}
-            className="text-left font-label-caps text-label-caps uppercase text-gris-texto hover:text-arena-calida transition-colors"
+            className="text-left font-label-caps text-xs uppercase text-gris-texto hover:text-teal-uno transition-colors py-2 border-b border-arena-calida/15"
           >
-            Estudio
+            Estudio & Disciplinas
           </button>
           <button
             onClick={() => scrollToSection("faqs")}
-            className="text-left font-label-caps text-label-caps uppercase text-gris-texto hover:text-arena-calida transition-colors"
+            className="text-left font-label-caps text-xs uppercase text-gris-texto hover:text-teal-uno transition-colors py-2 border-b border-arena-calida/15"
           >
-            FAQs
+            Preguntas Frecuentes (FAQs)
           </button>
           <button
             onClick={() => {
               setIsMobileMenuOpen(false);
               window.dispatchEvent(new CustomEvent("open-ai-chat"));
             }}
-            className="text-left font-label-caps text-label-caps uppercase font-medium text-teal-uno flex items-center gap-2"
+            className="text-left font-label-caps text-xs uppercase font-semibold text-teal-uno flex items-center gap-2 py-2 border-b border-arena-calida/15"
           >
             <Compass className="w-4 h-4 animate-spin-slow" />
             {t("nav.planner")}
           </button>
           <button
             onClick={() => scrollToSection("contacto")}
-            className="text-center bg-arena-calida/20 border border-arena-calida text-teal-uno hover:bg-arena-calida hover:text-white py-3.5 px-6 font-label-caps text-label-caps uppercase rounded-full transition-all"
+            className="text-center bg-teal-uno text-white hover:bg-arena-calida py-3.5 px-6 font-label-caps text-xs uppercase rounded-full transition-all shadow-ethereal mt-2 font-semibold"
           >
             Iniciar Diálogo
           </button>

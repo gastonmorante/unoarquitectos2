@@ -278,21 +278,21 @@ export default function Portfolio() {
   };
 
   return (
-    <section id="proyectos" className="py-section-padding px-margin-mobile md:px-margin-desktop bg-background font-sans border-b border-arena-calida/20 text-gris-texto">
+    <section id="proyectos" className="py-section-padding px-4 sm:px-6 md:px-margin-desktop bg-background font-sans border-b border-arena-calida/20 text-gris-texto overflow-hidden">
       <div className="max-w-container-max mx-auto">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 reveal-on-scroll is-visible">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 md:mb-20 reveal-on-scroll is-visible">
           <div>
-            <h2 className="font-label-caps text-label-caps text-arena-calida mb-6 flex items-center gap-6 uppercase tracking-widest">
-              <span className="w-16 h-[1px] bg-arena-calida inline-block"></span>
+            <h2 className="font-label-caps text-xs sm:text-label-caps text-arena-calida mb-3 sm:mb-6 flex items-center gap-3 sm:gap-6 uppercase tracking-widest font-semibold">
+              <span className="w-8 sm:w-16 h-[1px] bg-arena-calida inline-block"></span>
               {isEs ? "Tipologías Arquitectónicas" : "Architectural Typologies"}
             </h2>
-            <h3 className="font-headline-xl text-headline-xl text-teal-uno uppercase">
+            <h3 className="font-headline-xl text-headline-xl text-teal-uno uppercase font-semibold">
               {isEs ? "COLECCIÓN POR CATEGORÍA" : "COLLECTION BY CATEGORY"}
             </h3>
           </div>
-          <p className="mt-8 md:mt-0 font-body-md text-body-md text-gris-texto max-w-xs md:text-right leading-relaxed">
+          <p className="mt-4 sm:mt-6 md:mt-0 font-body-md text-body-md text-gris-texto max-w-sm md:text-right leading-relaxed">
             {isEs 
               ? "Exploración técnica y material a través de diversas escalas y propósitos espaciales."
               : "Technical and material exploration across diverse scales and spatial purposes."}
@@ -300,7 +300,7 @@ export default function Portfolio() {
         </div>
 
         {/* 2x2 Grid of Typologies */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-x-12 gap-y-20">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-12 gap-y-12 sm:gap-y-16 md:gap-y-20">
           {categoryTypologies.map((item, index) => {
             const isCommercial = item.id === "comerciales";
             const isResidential = item.id === "residenciales";
@@ -320,7 +320,7 @@ export default function Portfolio() {
                 className="md:col-span-6 group cursor-pointer reveal-on-scroll is-visible"
                 style={index % 2 === 1 ? { transitionDelay: "150ms" } : undefined}
               >
-                <div className="relative overflow-hidden aspect-[16/9] mb-6 rounded-2xl bg-surface-container-low shadow-ethereal">
+                <div className="relative overflow-hidden aspect-[16/10] sm:aspect-[16/9] mb-4 sm:mb-6 rounded-2xl bg-surface-container-low shadow-ethereal">
                   {/* Dynamic Auto-Carousel for Cards with gallery */}
                   {hasGallery && item.gallery ? (
                     <div className="relative w-full h-full overflow-hidden">
@@ -339,12 +339,12 @@ export default function Portfolio() {
                       </AnimatePresence>
 
                       {/* Carousel Indicator Dots */}
-                      <div className="absolute top-4 right-4 z-10 flex gap-1.5 bg-black/35 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
+                      <div className="absolute top-3 sm:top-4 right-3 sm:right-4 z-10 flex gap-1.5 bg-black/35 backdrop-blur-md px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full border border-white/10">
                         {item.gallery.map((_, i) => (
                           <div 
                             key={i} 
                             className={`h-1.5 rounded-full transition-all duration-700 ease-out ${
-                              i === currentSlide ? "w-5 bg-teal-uno" : "w-1.5 bg-white/40"
+                              i === currentSlide ? "w-4 sm:w-5 bg-teal-uno" : "w-1.5 bg-white/40"
                             }`}
                           />
                         ))}
@@ -352,12 +352,12 @@ export default function Portfolio() {
 
                       {/* Project Badge on Card */}
                       {item.badge && (
-                        <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-md border border-white/60 px-3.5 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm transition-all duration-300 group-hover:bg-white">
-                          {isResidential && <Home className="w-3.5 h-3.5 text-teal-uno" />}
-                          {isCommercial && <Coffee className="w-3.5 h-3.5 text-teal-uno" />}
-                          {isHospitality && <HeartPulse className="w-3.5 h-3.5 text-teal-uno" />}
-                          {isOffgrid && <Zap className="w-3.5 h-3.5 text-teal-uno" />}
-                          <span className="font-label-caps text-[10px] uppercase font-semibold text-teal-uno tracking-wider">
+                        <div className="absolute top-3 sm:top-4 left-3 sm:left-4 z-10 bg-white/90 backdrop-blur-md border border-white/60 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full flex items-center gap-1.5 shadow-sm transition-all duration-300 group-hover:bg-white">
+                          {isResidential && <Home className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-teal-uno" />}
+                          {isCommercial && <Coffee className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-teal-uno" />}
+                          {isHospitality && <HeartPulse className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-teal-uno" />}
+                          {isOffgrid && <Zap className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-teal-uno" />}
+                          <span className="font-label-caps text-[9px] sm:text-[10px] uppercase font-semibold text-teal-uno tracking-wider">
                             {item.badge}
                           </span>
                         </div>
@@ -375,35 +375,35 @@ export default function Portfolio() {
 
                   <div className="absolute inset-0 bg-arena-calida/5 group-hover:bg-transparent transition-colors duration-700 pointer-events-none"></div>
                   
-                  {/* Hover Reveal Card */}
-                  <div className="absolute bottom-6 left-6 right-6 p-6 bg-white/80 backdrop-blur-md rounded-xl border border-arena-calida/20 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0 flex items-center justify-between shadow-lg">
-                    <div>
-                      <p className="font-label-caps text-label-caps text-teal-uno uppercase tracking-widest font-semibold">
+                  {/* Hover / Tap Reveal Card */}
+                  <div className="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6 p-4 sm:p-6 bg-white/85 backdrop-blur-md rounded-xl border border-arena-calida/20 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0 flex items-center justify-between shadow-lg">
+                    <div className="min-w-0 pr-2">
+                      <p className="font-label-caps text-xs sm:text-label-caps text-teal-uno uppercase tracking-widest font-semibold truncate">
                         {isEs ? "Ver Proyectos & Ficha Técnica" : "View Projects & Specs"}
                       </p>
                       {hasGallery && item.gallery && (
-                        <p className="font-body-md text-xs text-gris-texto mt-0.5 font-light truncate max-w-[280px]">
+                        <p className="font-body-md text-[11px] sm:text-xs text-gris-texto mt-0.5 font-light truncate">
                           {item.gallery[currentSlide].title}
                         </p>
                       )}
                     </div>
-                    <ArrowRight className="w-4 h-4 text-teal-uno flex-shrink-0 ml-2" />
+                    <ArrowRight className="w-4 h-4 text-teal-uno flex-shrink-0" />
                   </div>
                 </div>
 
                 <div className="flex justify-between items-start">
                   <div>
-                    <h4 className="font-headline-md text-headline-md text-teal-uno mb-2 group-hover:text-arena-calida transition-colors uppercase">
+                    <h4 className="font-headline-md text-headline-md text-teal-uno mb-1.5 sm:mb-2 group-hover:text-arena-calida transition-colors uppercase font-semibold">
                       {isEs ? item.title : item.titleEn}
                     </h4>
-                    <p className="font-label-caps text-label-caps text-gris-texto/70 flex items-center gap-2 uppercase text-xs">
-                      <span className="material-symbols-outlined text-[16px] text-arena-calida">{item.icon}</span>
+                    <p className="font-label-caps text-[11px] sm:text-label-caps text-gris-texto/70 flex items-center gap-1.5 sm:gap-2 uppercase">
+                      <span className="material-symbols-outlined text-[15px] sm:text-[16px] text-arena-calida">{item.icon}</span>
                       {isEs ? item.subtitle : item.subtitleEn}
                     </p>
                   </div>
                   {hasGallery && item.gallery && (
-                    <span className="font-label-caps text-[11px] uppercase tracking-wider text-arena-calida bg-arena-calida/15 px-3 py-1 rounded-full font-semibold">
-                      {item.gallery.length} Vistas Disponibles
+                    <span className="font-label-caps text-[9.5px] sm:text-[11px] uppercase tracking-wider text-arena-calida bg-arena-calida/15 px-2.5 sm:px-3 py-1 rounded-full font-semibold flex-shrink-0 ml-2">
+                      {item.gallery.length} Vistas
                     </span>
                   )}
                 </div>
@@ -422,30 +422,30 @@ export default function Portfolio() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="fixed inset-0 bg-black/85 z-50 overflow-y-auto flex justify-center items-start py-8 px-4 md:px-12 backdrop-blur-lg font-sans"
+            className="fixed inset-0 bg-black/85 z-50 overflow-y-auto flex justify-center items-start sm:items-center p-3 sm:p-6 md:p-12 backdrop-blur-lg font-sans"
           >
             <motion.div 
-              initial={{ opacity: 0, y: 30, scale: 0.98 }}
+              initial={{ opacity: 0, y: 25, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 20, scale: 0.98 }}
-              transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1.0] }}
-              className="relative w-full max-w-5xl bg-background text-gris-texto border border-arena-calida/30 rounded-3xl overflow-hidden shadow-2xl my-auto"
+              exit={{ opacity: 0, y: 15, scale: 0.98 }}
+              transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1.0] }}
+              className="relative w-full max-w-5xl max-h-[92vh] flex flex-col bg-background text-gris-texto border border-arena-calida/30 rounded-3xl overflow-hidden shadow-2xl my-auto"
             >
               {/* Close Button */}
               <button
                 onClick={() => setSelectedCategory(null)}
-                className="absolute top-4 right-4 z-20 bg-black/40 hover:bg-black/70 text-white p-2.5 rounded-full transition-colors cursor-pointer backdrop-blur-md"
+                className="absolute top-3 sm:top-4 right-3 sm:right-4 z-30 bg-black/50 hover:bg-black/80 text-white p-2 sm:p-2.5 rounded-full transition-colors cursor-pointer backdrop-blur-md"
                 aria-label="Close modal"
               >
                 <X className="w-5 h-5" />
               </button>
 
               {/* MEDIA GALLERY CAROUSEL HEADER */}
-              <div className="relative bg-zinc-900 overflow-hidden">
+              <div className="relative bg-zinc-900 overflow-hidden flex-shrink-0">
                 {selectedCategory.gallery ? (
                   <div className="relative">
                     {/* Main Active Image Display */}
-                    <div className="relative h-[320px] md:h-[480px] w-full overflow-hidden flex items-center justify-center bg-zinc-950">
+                    <div className="relative h-[240px] sm:h-[340px] md:h-[460px] w-full overflow-hidden flex items-center justify-center bg-zinc-950">
                       <AnimatePresence mode="wait">
                         <motion.img
                           key={modalActiveImgIndex}
@@ -454,7 +454,7 @@ export default function Portfolio() {
                           initial={{ opacity: 0.15, scale: 1.02 }}
                           animate={{ opacity: 1, scale: 1 }}
                           exit={{ opacity: 0.15 }}
-                          transition={{ duration: 0.55, ease: "easeInOut" }}
+                          transition={{ duration: 0.45, ease: "easeInOut" }}
                           className="w-full h-full object-cover"
                         />
                       </AnimatePresence>
@@ -469,10 +469,10 @@ export default function Portfolio() {
                             prev === 0 ? selectedCategory.gallery!.length - 1 : prev - 1
                           );
                         }}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/75 text-white p-3 rounded-full backdrop-blur-md transition-all cursor-pointer z-10"
+                        className="absolute left-2.5 sm:left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/75 text-white p-2 sm:p-3 rounded-full backdrop-blur-md transition-all cursor-pointer z-10"
                         aria-label="Previous image"
                       >
-                        <ChevronLeft className="w-5 h-5" />
+                        <ChevronLeft className="w-4 sm:w-5 h-4 sm:h-5" />
                       </button>
 
                       <button
@@ -482,36 +482,36 @@ export default function Portfolio() {
                             (prev + 1) % selectedCategory.gallery!.length
                           );
                         }}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/75 text-white p-3 rounded-full backdrop-blur-md transition-all cursor-pointer z-10"
+                        className="absolute right-2.5 sm:right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/75 text-white p-2 sm:p-3 rounded-full backdrop-blur-md transition-all cursor-pointer z-10"
                         aria-label="Next image"
                       >
-                        <ChevronRight className="w-5 h-5" />
+                        <ChevronRight className="w-4 sm:w-5 h-4 sm:h-5" />
                       </button>
 
                       {/* Active Image Title Caption */}
-                      <div className="absolute bottom-4 left-6 md:left-10 z-10 text-left">
-                        <span className="bg-teal-uno text-white font-label-caps text-[10px] uppercase px-2.5 py-1 rounded-md tracking-widest inline-block mb-1 font-semibold">
+                      <div className="absolute bottom-3 sm:bottom-4 left-4 sm:left-8 md:left-10 right-4 z-10 text-left">
+                        <span className="bg-teal-uno text-white font-label-caps text-[9px] sm:text-[10px] uppercase px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md tracking-widest inline-block mb-1 font-semibold">
                           Foto {modalActiveImgIndex + 1} de {selectedCategory.gallery.length}
                         </span>
-                        <h4 className="text-white font-headline-md text-lg md:text-xl uppercase drop-shadow-md">
+                        <h4 className="text-white font-headline-md text-base sm:text-lg md:text-xl uppercase drop-shadow-md font-semibold truncate">
                           {selectedCategory.gallery[modalActiveImgIndex].title}
                         </h4>
-                        <p className="text-zinc-200 text-xs md:text-sm font-body-md drop-shadow max-w-xl">
+                        <p className="text-zinc-200 text-xs md:text-sm font-body-md drop-shadow max-w-xl line-clamp-2 sm:line-clamp-none">
                           {selectedCategory.gallery[modalActiveImgIndex].desc}
                         </p>
                       </div>
                     </div>
 
                     {/* Thumbnail Selector Bar */}
-                    <div className="p-3 bg-zinc-900 border-t border-zinc-800 flex gap-3 overflow-x-auto justify-start items-center">
+                    <div className="p-2 sm:p-3 bg-zinc-900 border-t border-zinc-800 flex gap-2 sm:gap-3 overflow-x-auto justify-start items-center">
                       {selectedCategory.gallery.map((img, idx) => {
                         const isSelected = idx === modalActiveImgIndex;
                         return (
                           <button
                             key={idx}
                             onClick={() => setModalActiveImgIndex(idx)}
-                            className={`flex-shrink-0 w-20 md:w-24 h-14 rounded-lg overflow-hidden transition-all duration-300 relative group cursor-pointer ${
-                              isSelected ? "ring-2 ring-teal-uno scale-105 opacity-100" : "opacity-55 hover:opacity-100"
+                            className={`flex-shrink-0 w-16 sm:w-20 md:w-24 h-11 sm:h-14 rounded-lg overflow-hidden transition-all duration-300 relative group cursor-pointer ${
+                              isSelected ? "ring-2 ring-teal-uno scale-105 opacity-100" : "opacity-50 hover:opacity-100"
                             }`}
                           >
                             <img src={img.url} alt={img.title} className="w-full h-full object-cover" />
@@ -522,7 +522,7 @@ export default function Portfolio() {
                     </div>
                   </div>
                 ) : (
-                  <div className="relative h-64 md:h-80 w-full overflow-hidden">
+                  <div className="relative h-48 sm:h-64 md:h-80 w-full overflow-hidden">
                     <img
                       src={selectedCategory.image}
                       alt={isEs ? selectedCategory.title : selectedCategory.titleEn}
@@ -533,35 +533,35 @@ export default function Portfolio() {
                 )}
               </div>
 
-              {/* TECHNICAL SHEET CONTENT BODY */}
-              <div className="p-6 md:p-10 space-y-6 text-left">
+              {/* TECHNICAL SHEET CONTENT BODY (SCROLLABLE) */}
+              <div className="p-5 sm:p-8 md:p-10 space-y-5 sm:space-y-6 text-left overflow-y-auto">
                 {/* Header Subtitles */}
-                <div className="border-b border-arena-calida/20 pb-4">
-                  <span className="font-label-caps text-xs uppercase tracking-[0.25em] text-arena-calida font-semibold block mb-1 flex items-center gap-2">
+                <div className="border-b border-arena-calida/20 pb-3 sm:pb-4">
+                  <span className="font-label-caps text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-arena-calida font-semibold block mb-1 flex items-center gap-2">
                     <span className="material-symbols-outlined text-[16px] text-arena-calida">{selectedCategory.icon}</span>
                     {isEs ? selectedCategory.subtitle : selectedCategory.subtitleEn}
                   </span>
-                  <h3 className="font-headline-xl text-2xl md:text-3xl font-semibold text-teal-uno uppercase">
+                  <h3 className="font-headline-xl text-xl sm:text-2xl md:text-3xl font-semibold text-teal-uno uppercase">
                     {selectedCategory.projectHighlight 
                       ? selectedCategory.projectHighlight 
                       : (isEs ? selectedCategory.title : selectedCategory.titleEn)}
                   </h3>
                 </div>
 
-                <p className="font-body-md text-gris-texto text-sm md:text-base leading-relaxed">
+                <p className="font-body-md text-gris-texto text-xs sm:text-sm md:text-base leading-relaxed">
                   {isEs ? selectedCategory.descEs : selectedCategory.descEn}
                 </p>
 
                 {/* Technical Specs Key Values */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-surface-container-low/70 p-5 rounded-2xl border border-arena-calida/30 text-xs">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 bg-surface-container-low/70 p-4 sm:p-5 rounded-2xl border border-arena-calida/30 text-xs">
                   <div>
-                    <span className="text-zinc-500 font-label-caps uppercase block mb-1 font-semibold">
+                    <span className="text-zinc-500 font-label-caps uppercase block mb-1 font-semibold text-[11px]">
                       {isEs ? "Rango de Superficie:" : "Project Surface Area:"}
                     </span>
-                    <span className="text-teal-uno font-semibold text-sm">{selectedCategory.area}</span>
+                    <span className="text-teal-uno font-semibold text-xs sm:text-sm">{selectedCategory.area}</span>
                   </div>
                   <div>
-                    <span className="text-zinc-500 font-label-caps uppercase block mb-1 font-semibold">
+                    <span className="text-zinc-500 font-label-caps uppercase block mb-1 font-semibold text-[11px]">
                       {isEs ? "Materialidad Principal & Acabados:" : "Core Materials & Finishes:"}
                     </span>
                     <span className="text-teal-uno font-semibold">{selectedCategory.materials}</span>
@@ -570,13 +570,13 @@ export default function Portfolio() {
 
                 {/* Reference Projects */}
                 <div>
-                  <h4 className="font-label-caps text-xs uppercase tracking-wider font-semibold text-teal-uno mb-3 flex items-center gap-2">
+                  <h4 className="font-label-caps text-xs uppercase tracking-wider font-semibold text-teal-uno mb-2.5 sm:mb-3 flex items-center gap-2">
                     <Layers className="w-4 h-4 text-arena-calida" />
                     {isEs ? "Proyectos de Referencia en Portafolio:" : "Featured Reference Projects:"}
                   </h4>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {selectedCategory.projectsSample.map((proj, idx) => (
-                      <span key={idx} className="px-3.5 py-1.5 bg-surface-container-low rounded-full border border-arena-calida/30 text-xs font-label-caps text-teal-uno font-medium">
+                      <span key={idx} className="px-2.5 sm:px-3.5 py-1 sm:py-1.5 bg-surface-container-low rounded-full border border-arena-calida/30 text-[11px] sm:text-xs font-label-caps text-teal-uno font-medium">
                         {proj}
                       </span>
                     ))}
@@ -585,13 +585,13 @@ export default function Portfolio() {
 
                 {/* Technical & Construction Criteria List */}
                 <div>
-                  <h4 className="font-label-caps text-xs uppercase tracking-wider font-semibold text-teal-uno mb-3 flex items-center gap-2">
+                  <h4 className="font-label-caps text-xs uppercase tracking-wider font-semibold text-teal-uno mb-2.5 sm:mb-3 flex items-center gap-2">
                     <Sparkles className="w-4 h-4 text-arena-calida" />
                     {isEs ? "Criterios de Materiales, Ingeniería & Sostenibilidad:" : "Materials, Engineering & Sustainability Criteria:"}
                   </h4>
-                  <div className="space-y-2.5">
+                  <div className="space-y-2 sm:space-y-2.5">
                     {(isEs ? selectedCategory.specsEs : selectedCategory.specsEn).map((spec, i) => (
-                      <div key={i} className="flex gap-2.5 items-start text-xs text-gris-texto font-body-md">
+                      <div key={i} className="flex gap-2 sm:gap-2.5 items-start text-xs text-gris-texto font-body-md">
                         <CheckCircle2 className="w-4 h-4 text-teal-uno flex-shrink-0 mt-0.5" />
                         <span>{spec}</span>
                       </div>
@@ -600,13 +600,13 @@ export default function Portfolio() {
                 </div>
 
                 {/* Action CTA */}
-                <div className="pt-4 flex flex-col sm:flex-row gap-4">
+                <div className="pt-2 sm:pt-4 flex flex-col sm:flex-row gap-3 sm:gap-4">
                   <button
                     onClick={() => {
                       setSelectedCategory(null);
                       window.dispatchEvent(new CustomEvent("open-ai-chat"));
                     }}
-                    className="flex-1 bg-teal-uno hover:bg-arena-calida text-white py-4 font-label-caps text-label-caps uppercase tracking-widest rounded-full transition-colors cursor-pointer text-center shadow-ethereal"
+                    className="flex-1 bg-teal-uno hover:bg-arena-calida text-white py-3.5 sm:py-4 px-4 font-label-caps text-xs sm:text-label-caps uppercase tracking-wider rounded-full transition-colors cursor-pointer text-center shadow-ethereal font-semibold"
                   >
                     {isEs ? "Consultar Viabilidad de Proyecto" : "Consult Project Feasibility"}
                   </button>
@@ -617,7 +617,7 @@ export default function Portfolio() {
                       const el = document.getElementById("contacto");
                       if (el) el.scrollIntoView({ behavior: "smooth" });
                     }}
-                    className="sm:w-auto px-8 py-4 border border-teal-uno text-teal-uno hover:bg-teal-uno hover:text-white font-label-caps text-label-caps uppercase tracking-widest rounded-full transition-colors cursor-pointer text-center"
+                    className="sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 border border-teal-uno text-teal-uno hover:bg-teal-uno hover:text-white font-label-caps text-xs sm:text-label-caps uppercase tracking-wider rounded-full transition-colors cursor-pointer text-center font-semibold"
                   >
                     {isEs ? "Agendar Cita Técnica" : "Book Technical Meeting"}
                   </button>

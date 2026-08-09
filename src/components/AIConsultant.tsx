@@ -424,18 +424,18 @@ export default function AIConsultant() {
   return (
     <>
       {/* FLOATING WHATSAPP BUTTON (BOTTOM RIGHT) */}
-      <div id="float-whatsapp" className="fixed bottom-6 right-6 z-40 flex flex-col items-end font-sans">
+      <div id="float-whatsapp" className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-40 flex flex-col items-end font-sans">
         <motion.a
           href={whatsappLink}
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ scale: 1.06 }}
           whileTap={{ scale: 0.95 }}
-          className="relative bg-[#046A38] hover:bg-[#03512b] text-white p-4 rounded-full shadow-lg flex items-center justify-center cursor-pointer border border-[#046a38]/30 group min-w-[52px] min-h-[52px]"
+          className="relative bg-[#046A38] hover:bg-[#03512b] text-white p-3.5 sm:p-4 rounded-full shadow-lg flex items-center justify-center cursor-pointer border border-[#046a38]/30 group min-w-[48px] min-h-[48px] sm:min-w-[52px] sm:min-h-[52px]"
           aria-label="WhatsApp Contact"
         >
-          <MessageCircle className="w-6 h-6 text-white" />
-          <span className="absolute right-14 bg-white text-gris-texto border border-gris-piedra text-xs font-label-caps uppercase tracking-wider py-1.5 px-3 rounded-xs whitespace-nowrap shadow-lg opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none">
+          <MessageCircle className="w-5 sm:w-6 h-5 sm:h-6 text-white" />
+          <span className="absolute right-14 bg-white text-gris-texto border border-gris-piedra text-xs font-label-caps uppercase tracking-wider py-1.5 px-3 rounded-xs whitespace-nowrap shadow-lg opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none hidden sm:block">
             {language === "es" ? "WhatsApp Directo" : "WhatsApp Chat"}
           </span>
           <span className="absolute top-0 right-0 w-3 h-3 bg-teal-uno border-2 border-white rounded-full"></span>
@@ -443,7 +443,7 @@ export default function AIConsultant() {
       </div>
 
       {/* FLOATING AI CONSULTANT (BOTTOM LEFT) */}
-      <div id="float-ai-consultant" className="fixed bottom-6 left-6 z-40 flex flex-col items-start font-sans">
+      <div id="float-ai-consultant" className="fixed bottom-4 sm:bottom-6 left-4 sm:left-6 z-40 flex flex-col items-start font-sans">
         <AnimatePresence>
           {isOpen ? (
             /* EXPANDED CHAT PANEL */
@@ -452,7 +452,7 @@ export default function AIConsultant() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.96 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="bg-white border border-gris-piedra shadow-2xl rounded-xs overflow-hidden w-[92vw] sm:w-[380px] h-[520px] flex flex-col mb-4"
+              className="bg-white border border-arena-calida/30 shadow-2xl rounded-2xl overflow-hidden w-[calc(100vw-2rem)] sm:w-[380px] max-w-[380px] h-[min(520px,75vh)] flex flex-col mb-3 sm:mb-4"
             >
               {/* Header */}
               <div className="bg-white border-b border-gris-piedra py-3.5 px-4 flex items-center justify-between text-gris-texto">

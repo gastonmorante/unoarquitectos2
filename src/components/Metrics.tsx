@@ -36,23 +36,23 @@ const MetricCounter: React.FC<MetricCounterProps> = ({ valueStr, title, desc }) 
   return (
     <div
       ref={ref}
-      className="bg-white border border-arena-calida/25 rounded-2xl p-8 flex flex-col justify-between relative group overflow-hidden transition-all duration-500 hover:shadow-ethereal hover:border-arena-calida/60 h-full text-left font-sans"
+      className="bg-white border border-arena-calida/25 rounded-2xl p-5 sm:p-6 md:p-8 flex flex-col justify-between relative group overflow-hidden transition-all duration-500 hover:shadow-ethereal hover:border-arena-calida/60 h-full text-left font-sans"
     >
       {/* Brand color subtle hover glow */}
       <div className="absolute inset-0 bg-arena-calida/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
       <div className="relative z-10">
-        <div className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-teal-uno mb-4 font-sans">
+        <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-teal-uno mb-3 sm:mb-4 font-sans">
           {prefix}{displayNum}{suffix}
         </div>
-        <h3 className="font-label-caps text-label-caps uppercase text-teal-uno mb-2 tracking-wider font-semibold">
+        <h3 className="font-label-caps text-xs sm:text-label-caps uppercase text-teal-uno mb-1.5 sm:mb-2 tracking-wider font-semibold">
           {title}
         </h3>
         <p className="font-body-md text-xs text-gris-texto leading-relaxed">
           {desc}
         </p>
       </div>
-      <div className="w-8 group-hover:w-full h-[2px] bg-arena-calida transition-all duration-500 mt-6 relative z-10"></div>
+      <div className="w-8 group-hover:w-full h-[2px] bg-arena-calida transition-all duration-500 mt-4 sm:mt-6 relative z-10"></div>
     </div>
   );
 };
@@ -84,9 +84,9 @@ export default function Metrics() {
   ];
 
   return (
-    <section id="metricas" className="py-20 md:py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-low/50 border-b border-arena-calida/20 font-sans">
+    <section id="metricas" className="py-14 sm:py-20 md:py-24 px-4 sm:px-6 md:px-margin-desktop bg-surface-container-low/50 border-b border-arena-calida/20 font-sans">
       <div className="max-w-container-max mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {metricsData.map((item, index) => (
             <motion.div
               key={index}

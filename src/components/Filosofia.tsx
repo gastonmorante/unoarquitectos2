@@ -6,33 +6,33 @@ export default function Filosofia() {
   const { t } = useLanguage();
 
   return (
-    <section id="filosofia" className="py-section-padding px-margin-mobile md:px-margin-desktop bg-surface-container-low relative texture-overlay border-b border-arena-calida/20 font-sans">
+    <section id="filosofia" className="py-section-padding px-4 sm:px-6 md:px-margin-desktop bg-surface-container-low relative texture-overlay border-b border-arena-calida/20 font-sans overflow-hidden">
       <div className="max-w-container-max mx-auto">
         
         {/* Brand Purpose Level 0 Hero Block */}
-        <div className="mb-20 text-center max-w-4xl mx-auto border-b border-arena-calida/30 pb-16 reveal-on-scroll is-visible">
-          <span className="font-label-caps text-label-caps text-arena-calida uppercase tracking-widest block mb-4">
+        <div className="mb-12 sm:mb-16 md:mb-20 text-center max-w-4xl mx-auto border-b border-arena-calida/30 pb-10 sm:pb-14 md:pb-16 reveal-on-scroll is-visible">
+          <span className="font-label-caps text-xs sm:text-label-caps text-arena-calida uppercase tracking-widest block mb-3 sm:mb-4 font-semibold">
             Nuestra Esencia
           </span>
-          <h2 className="font-serif-quote text-serif-quote italic text-gris-texto leading-snug">
+          <h2 className="font-serif-quote text-serif-quote italic text-gris-texto leading-snug px-2">
             "{t("filosofia.purpose") || "Materializamos espacios que suman — a quien los habita, a quien los construye, al lugar que los recibe y a la comunidad que los rodea."}"
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-x-12 items-center">
           
           {/* Left Column: Philosophy Text */}
-          <div className="md:col-span-5 md:col-start-2 text-left reveal-on-scroll is-visible">
-            <h2 className="font-label-caps text-label-caps text-arena-calida mb-8 flex items-center gap-6 uppercase tracking-widest">
-              <span className="w-16 h-[1px] bg-arena-calida"></span>
+          <div className="md:col-span-6 lg:col-span-5 md:col-start-1 lg:col-start-2 text-left reveal-on-scroll is-visible">
+            <h2 className="font-label-caps text-xs sm:text-label-caps text-arena-calida mb-4 sm:mb-6 flex items-center gap-4 sm:gap-6 uppercase tracking-widest font-semibold">
+              <span className="w-10 sm:w-16 h-[1px] bg-arena-calida"></span>
               Nuestra Esencia
             </h2>
             
-            <h3 className="font-headline-xl text-headline-xl text-teal-uno mb-8 leading-tight uppercase">
+            <h3 className="font-headline-xl text-headline-xl text-teal-uno mb-6 sm:mb-8 leading-tight uppercase font-semibold">
               ARQUITECTURA CONTEMPORÁNEA TROPICAL
             </h3>
 
-            <div className="space-y-6 font-body-md text-body-md text-gris-texto leading-relaxed mb-10">
+            <div className="space-y-4 sm:space-y-6 font-body-md text-body-md text-gris-texto leading-relaxed mb-8 sm:mb-10">
               <p className="font-body-lg text-body-lg text-gris-texto leading-relaxed">
                 Concebimos cada proyecto con una sofisticación contenida y un rigor técnico innegociable. Empleamos materiales honestos —concreto aparente, madera de Tzalam y Chukum natural— combinados a través de una construcción con criterio para lograr una integración armoniosa y duradera con el sitio.
               </p>
@@ -42,13 +42,13 @@ export default function Filosofia() {
             </div>
 
             {/* Values Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 border-t border-arena-calida/30 pt-8">
-              <div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 border-t border-arena-calida/30 pt-6 sm:pt-8">
+              <div className="bg-white/30 sm:bg-transparent p-4 sm:p-0 rounded-xl border border-arena-calida/15 sm:border-none">
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-8 h-8 rounded-full bg-arena-calida/20 flex items-center justify-center text-teal-uno">
+                  <div className="w-8 h-8 rounded-full bg-arena-calida/20 flex items-center justify-center text-teal-uno flex-shrink-0">
                     <Trees className="w-4 h-4 stroke-[1.8]" />
                   </div>
-                  <h4 className="font-label-caps text-xs uppercase text-teal-uno tracking-wider">
+                  <h4 className="font-label-caps text-xs uppercase text-teal-uno tracking-wider font-semibold">
                     Sostenibilidad
                   </h4>
                 </div>
@@ -57,12 +57,12 @@ export default function Filosofia() {
                 </p>
               </div>
 
-              <div>
+              <div className="bg-white/30 sm:bg-transparent p-4 sm:p-0 rounded-xl border border-arena-calida/15 sm:border-none">
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-8 h-8 rounded-full bg-arena-calida/20 flex items-center justify-center text-teal-uno">
+                  <div className="w-8 h-8 rounded-full bg-arena-calida/20 flex items-center justify-center text-teal-uno flex-shrink-0">
                     <HeartHandshake className="w-4 h-4 stroke-[1.8]" />
                   </div>
-                  <h4 className="font-label-caps text-xs uppercase text-teal-uno tracking-wider">
+                  <h4 className="font-label-caps text-xs uppercase text-teal-uno tracking-wider font-semibold">
                     Transparencia
                   </h4>
                 </div>
@@ -71,12 +71,12 @@ export default function Filosofia() {
                 </p>
               </div>
 
-              <div>
+              <div className="bg-white/30 sm:bg-transparent p-4 sm:p-0 rounded-xl border border-arena-calida/15 sm:border-none">
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-8 h-8 rounded-full bg-arena-calida/20 flex items-center justify-center text-teal-uno">
+                  <div className="w-8 h-8 rounded-full bg-arena-calida/20 flex items-center justify-center text-teal-uno flex-shrink-0">
                     <ShieldCheck className="w-4 h-4 stroke-[1.8]" />
                   </div>
-                  <h4 className="font-label-caps text-xs uppercase text-teal-uno tracking-wider">
+                  <h4 className="font-label-caps text-xs uppercase text-teal-uno tracking-wider font-semibold">
                     Ingeniería
                   </h4>
                 </div>
@@ -87,12 +87,12 @@ export default function Filosofia() {
             </div>
           </div>
 
-          {/* Right Column: Soft Rotated Architectural Frame */}
-          <div className="md:col-span-5 md:col-start-8 mt-16 md:mt-0 relative reveal-on-scroll is-visible" style={{ transitionDelay: "200ms" }}>
-            <div className="absolute -inset-4 bg-arena-calida/15 rounded-2xl -z-10 transform rotate-2 transition-transform hover:rotate-0 duration-700 pointer-events-none"></div>
+          {/* Right Column: Architectural Frame */}
+          <div className="md:col-span-6 lg:col-span-5 md:col-start-7 lg:col-start-8 relative reveal-on-scroll is-visible max-w-md mx-auto md:max-w-none w-full" style={{ transitionDelay: "200ms" }}>
+            <div className="absolute -inset-2 sm:-inset-4 bg-arena-calida/15 rounded-2xl -z-10 transform rotate-1 sm:rotate-2 transition-transform hover:rotate-0 duration-700 pointer-events-none"></div>
             <img 
               alt="Interior of a spiritual architectural space, boho-minimalist style." 
-              className="w-full h-auto object-cover aspect-[3/4] rounded-xl shadow-ethereal" 
+              className="w-full h-auto object-cover aspect-[4/5] sm:aspect-[3/4] rounded-xl shadow-ethereal" 
               src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&h=1400&q=95"
               loading="lazy"
               referrerPolicy="no-referrer"

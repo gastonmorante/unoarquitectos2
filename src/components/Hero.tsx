@@ -137,7 +137,7 @@ export default function Hero() {
   return (
     <header
       id="inicio"
-      className="relative w-full h-[100vh] min-h-[700px] flex items-center justify-center overflow-hidden bg-background"
+      className="relative w-full min-h-[92vh] md:min-h-[720px] flex items-center justify-center overflow-hidden bg-background py-20 px-4 sm:px-6 md:px-margin-desktop"
     >
       {/* WebGL Animated Background */}
       <div ref={glContainerRef} className="absolute inset-0 z-0" id="gl-container"></div>
@@ -159,36 +159,36 @@ export default function Hero() {
       ></div>
 
       {/* Glassmorphism Central Card */}
-      <div className="relative z-10 text-center px-8 md:px-12 max-w-4xl mx-auto mt-24 md:mt-32 p-12 md:p-20 bg-white/40 backdrop-blur-lg rounded-3xl border border-white/30 shadow-ethereal reveal-on-scroll is-visible">
-        <span className="font-label-caps text-label-caps text-arena-calida uppercase tracking-[0.25em] block mb-4 font-medium">
+      <div className="relative z-10 text-center w-full max-w-4xl mx-auto mt-12 sm:mt-16 md:mt-24 p-6 sm:p-10 md:p-16 lg:p-20 bg-white/50 backdrop-blur-md rounded-3xl border border-white/40 shadow-ethereal reveal-on-scroll is-visible">
+        <span className="font-label-caps text-[11px] sm:text-xs md:text-label-caps text-arena-calida uppercase tracking-[0.2em] sm:tracking-[0.25em] block mb-3 sm:mb-4 font-semibold">
           {t("hero.tagline") || "Arquitectura que pertenece. Espacios que perduran."}
         </span>
 
         <h1 
-          className="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-teal-uno mb-6 tracking-tight"
+          className="font-headline-xl text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-teal-uno mb-4 sm:mb-6 tracking-tight font-semibold"
           style={{ textShadow: "rgba(0, 0, 0, 0.05) 0px 2px 4px" }}
         >
           UNO ARQUITECTOS
         </h1>
 
-        <p className="font-body-lg text-body-lg text-gris-texto mb-12 max-w-2xl mx-auto leading-relaxed">
+        <p className="font-body-md sm:font-body-lg text-sm sm:text-base md:text-body-lg text-gris-texto mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed">
           {t("hero.subheading") || "Arquitectura que pertenece. Espacios que perduran."}
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div className="flex flex-col sm:flex-row gap-3.5 sm:gap-4 justify-center items-center w-full max-w-md mx-auto sm:max-w-none">
           <button
             onClick={() => scrollToSection("contacto")}
-            className="w-full sm:w-auto inline-flex items-center justify-center px-10 py-4 bg-teal-uno text-white font-label-caps text-label-caps uppercase hover:bg-arena-calida transition-all duration-500 rounded-full shadow-ethereal cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 bg-teal-uno text-white font-label-caps text-xs sm:text-label-caps uppercase hover:bg-arena-calida transition-all duration-500 rounded-full shadow-ethereal cursor-pointer"
           >
             {btn1}
           </button>
 
           <button
             onClick={() => scrollToSection("proyectos")}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-4 border border-teal-uno text-teal-uno font-label-caps text-label-caps uppercase hover:bg-teal-uno hover:text-white transition-all duration-500 rounded-full cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 sm:px-10 py-3.5 sm:py-4 border border-teal-uno text-teal-uno font-label-caps text-xs sm:text-label-caps uppercase hover:bg-teal-uno hover:text-white transition-all duration-500 rounded-full cursor-pointer"
           >
             {btn2}
-            <span className="material-symbols-outlined text-[18px]">arrow_downward</span>
+            <span className="material-symbols-outlined text-[16px] sm:text-[18px]">arrow_downward</span>
           </button>
         </div>
       </div>

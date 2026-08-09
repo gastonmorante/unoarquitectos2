@@ -38,9 +38,9 @@ export default function App() {
         {loading && <Preloader key="preloader" />}
       </AnimatePresence>
 
-      <div id="app-root" className="min-h-screen bg-background text-gris-texto selection:bg-arena-calida selection:text-white font-sans transition-colors duration-300 texture-overlay">
+      <div id="app-root" className="min-h-screen w-full overflow-x-hidden bg-background text-gris-texto selection:bg-arena-calida selection:text-white font-sans transition-colors duration-300 texture-overlay">
         <Navbar />
-        <main id="main-content">
+        <main id="main-content" className="w-full overflow-x-hidden">
           <section id="inicio">
             <Hero />
           </section>
@@ -66,29 +66,29 @@ export default function App() {
         </main>
 
         {/* STICH ARCHITECTURAL FOOTER */}
-        <footer id="main-footer" className="w-full pt-section-padding pb-12 bg-background border-t border-arena-calida/20 texture-overlay font-sans text-left">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto mb-20">
-            <div className="md:col-span-4 mb-10 md:mb-0">
-              <a className="block mb-6 opacity-90 hover:opacity-100 transition-opacity" href="#">
-                <Logo showText={true} iconSize={36} textSize="text-lg" />
+        <footer id="main-footer" className="w-full pt-12 sm:pt-16 md:pt-section-padding pb-8 sm:pb-12 bg-background border-t border-arena-calida/20 texture-overlay font-sans text-left overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-gutter px-4 sm:px-6 md:px-margin-desktop max-w-container-max mx-auto mb-12 sm:mb-16 md:mb-20">
+            <div className="md:col-span-4 mb-6 sm:mb-8 md:mb-0">
+              <a className="block mb-4 sm:mb-6 opacity-90 hover:opacity-100 transition-opacity" href="#">
+                <Logo showText={true} iconSize={32} textSize="text-base sm:text-lg" />
               </a>
-              <p className="font-body-md text-body-md text-gris-texto max-w-xs leading-relaxed">
+              <p className="font-body-md text-xs sm:text-sm text-gris-texto max-w-xs leading-relaxed">
                 Arquitectura Contemporánea Tropical. Diseñando espacios con rigor técnico, sofisticación contenida y materiales honestos.
               </p>
             </div>
             
-            <div className="md:col-span-2 md:col-start-7 mb-10 md:mb-0">
-              <h5 className="font-label-caps text-label-caps text-arena-calida mb-8 uppercase tracking-widest font-semibold">Santuario</h5>
-              <ul className="space-y-5 font-label-caps text-label-caps">
+            <div className="md:col-span-2 md:col-start-7 mb-6 sm:mb-8 md:mb-0">
+              <h5 className="font-label-caps text-xs sm:text-label-caps text-arena-calida mb-4 sm:mb-6 uppercase tracking-widest font-semibold">Santuario</h5>
+              <ul className="space-y-3 sm:space-y-4 font-label-caps text-xs sm:text-label-caps">
                 <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block" href="#proyectos">Colección</a></li>
                 <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block" href="#filosofia">Esencia</a></li>
                 <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block" href="#contacto">Diálogo</a></li>
               </ul>
             </div>
             
-            <div className="md:col-span-2">
-              <h5 className="font-label-caps text-label-caps text-arena-calida mb-8 uppercase tracking-widest font-semibold">Resonancia</h5>
-              <ul className="space-y-5 font-label-caps text-label-caps">
+            <div className="md:col-span-2 mb-6 sm:mb-8 md:mb-0">
+              <h5 className="font-label-caps text-xs sm:text-label-caps text-arena-calida mb-4 sm:mb-6 uppercase tracking-widest font-semibold">Resonancia</h5>
+              <ul className="space-y-3 sm:space-y-4 font-label-caps text-xs sm:text-label-caps">
                 <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block" href="https://www.instagram.com/unoarquitectos" target="_blank" rel="noopener noreferrer">Instagram</a></li>
                 <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block" href="https://pinterest.com" target="_blank" rel="noopener noreferrer">Pinterest</a></li>
                 <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block" href="https://www.linkedin.com/company/unoarquitectos" target="_blank" rel="noopener noreferrer">Journal</a></li>
@@ -96,8 +96,8 @@ export default function App() {
             </div>
             
             <div className="md:col-span-2">
-              <h5 className="font-label-caps text-label-caps text-arena-calida mb-8 uppercase tracking-widest font-semibold">Acuerdos</h5>
-              <ul className="space-y-5 font-label-caps text-label-caps">
+              <h5 className="font-label-caps text-xs sm:text-label-caps text-arena-calida mb-4 sm:mb-6 uppercase tracking-widest font-semibold">Acuerdos</h5>
+              <ul className="space-y-3 sm:space-y-4 font-label-caps text-xs sm:text-label-caps">
                 <li>
                   <button onClick={() => openLegalModal("terms")} className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer text-left">
                     Esencia Legal
@@ -112,11 +112,11 @@ export default function App() {
             </div>
           </div>
 
-          <div className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center pt-10 border-t border-arena-calida/20">
-            <p className="font-label-caps text-label-caps text-gris-texto/70 uppercase tracking-widest text-xs">
+          <div className="px-4 sm:px-6 md:px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center pt-8 border-t border-arena-calida/20 text-center md:text-left gap-2">
+            <p className="font-label-caps text-[10px] sm:text-xs text-gris-texto/70 uppercase tracking-widest">
               © {new Date().getFullYear()} UNO ARQUITECTOS. TODOS LOS DERECHOS RESERVADOS.
             </p>
-            <p className="font-label-caps text-label-caps text-arena-calida mt-4 md:mt-0 uppercase tracking-widest text-xs font-semibold">
+            <p className="font-label-caps text-[10px] sm:text-xs text-arena-calida uppercase tracking-widest font-semibold">
               DISEÑO CONSCIENTE
             </p>
           </div>
