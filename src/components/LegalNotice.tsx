@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { X, ShieldCheck, FileText, Lock, Scale } from "lucide-react";
+import { X, ShieldCheck, Lock, Scale } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function LegalNotice() {
@@ -44,19 +44,19 @@ export default function LegalNotice() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="relative bg-white border border-zinc-200 shadow-2xl rounded-xs w-full max-w-3xl max-h-[85vh] flex flex-col overflow-hidden z-10 text-[#4A4A4A]"
+            className="relative bg-white border border-gris-piedra shadow-2xl rounded-xs w-full max-w-3xl max-h-[85vh] flex flex-col overflow-hidden z-10 text-gris-texto"
           >
             {/* Header */}
-            <div className="bg-[#1E1E1E] text-white px-6 py-4 flex items-center justify-between border-b border-zinc-800">
+            <div className="bg-white border-b border-gris-piedra text-teal-uno px-6 py-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <ShieldCheck className="w-5 h-5 text-[#00A3A3]" />
-                <h3 className="text-sm font-semibold tracking-wide uppercase text-white">
+                <ShieldCheck className="w-5 h-5 text-teal-uno" />
+                <h3 className="font-label-caps text-xs font-semibold tracking-wide uppercase text-teal-uno">
                   {isEs ? "Documentación Legal & Privacidad" : "Legal & Privacy Documentation"}
                 </h3>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-zinc-400 hover:text-white transition-colors cursor-pointer p-1"
+                className="text-gris-texto hover:text-teal-uno transition-colors cursor-pointer p-1"
                 aria-label="Close legal modal"
               >
                 <X className="w-5 h-5" />
@@ -64,13 +64,13 @@ export default function LegalNotice() {
             </div>
 
             {/* Tab Selectors */}
-            <div className="flex border-b border-zinc-200 bg-zinc-50 px-6 pt-3 gap-2">
+            <div className="flex border-b border-gris-piedra bg-gris-piedra/20 px-6 pt-3 gap-2">
               <button
                 onClick={() => setActiveTab("privacy")}
-                className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider rounded-t-xs transition-all flex items-center gap-2 border-b-2 cursor-pointer ${
+                className={`px-4 py-2.5 font-label-caps text-xs font-semibold uppercase tracking-wider rounded-t-xs transition-all flex items-center gap-2 border-b-2 cursor-pointer ${
                   activeTab === "privacy"
-                    ? "border-[#00A3A3] text-[#00A3A3] bg-white font-bold"
-                    : "border-transparent text-zinc-500 hover:text-[#1E1E1E]"
+                    ? "border-teal-uno text-teal-uno bg-white font-bold"
+                    : "border-transparent text-zinc-500 hover:text-teal-uno"
                 }`}
               >
                 <Lock className="w-3.5 h-3.5" />
@@ -79,10 +79,10 @@ export default function LegalNotice() {
 
               <button
                 onClick={() => setActiveTab("terms")}
-                className={`px-4 py-2.5 text-xs font-semibold uppercase tracking-wider rounded-t-xs transition-all flex items-center gap-2 border-b-2 cursor-pointer ${
+                className={`px-4 py-2.5 font-label-caps text-xs font-semibold uppercase tracking-wider rounded-t-xs transition-all flex items-center gap-2 border-b-2 cursor-pointer ${
                   activeTab === "terms"
-                    ? "border-[#00A3A3] text-[#00A3A3] bg-white font-bold"
-                    : "border-transparent text-zinc-500 hover:text-[#1E1E1E]"
+                    ? "border-teal-uno text-teal-uno bg-white font-bold"
+                    : "border-transparent text-zinc-500 hover:text-teal-uno"
                 }`}
               >
                 <Scale className="w-3.5 h-3.5" />
@@ -91,19 +91,19 @@ export default function LegalNotice() {
             </div>
 
             {/* Content Body */}
-            <div className="p-6 overflow-y-auto flex-1 space-y-4 text-xs leading-relaxed text-[#4A4A4A]">
+            <div className="p-6 overflow-y-auto flex-1 space-y-4 font-body-md text-xs leading-relaxed text-gris-texto">
               {activeTab === "privacy" ? (
                 /* PRIVACY NOTICE (LFPDPPP) */
                 <div className="space-y-4 text-left">
-                  <div className="p-3 bg-[#00A3A3]/10 border border-[#00A3A3]/20 rounded-xs mb-4">
-                    <p className="font-semibold text-[#00A3A3] text-[11px] uppercase tracking-wider">
+                  <div className="p-3 bg-teal-uno/10 border border-teal-uno/20 rounded-xs mb-4">
+                    <p className="font-label-caps font-semibold text-teal-uno text-[11px] uppercase tracking-wider">
                       {isEs
                         ? "Cumplimiento Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP)"
                         : "Compliance with Mexican Federal Law on Protection of Personal Data (LFPDPPP)"}
                     </p>
                   </div>
 
-                  <h4 className="font-bold text-[#1E1E1E] text-sm">
+                  <h4 className="font-headline-md font-bold text-teal-uno text-sm uppercase">
                     {isEs ? "1. Identidad y Domicilio del Responsable" : "1. Responsible Party Identity & Location"}
                   </h4>
                   <p>
@@ -112,7 +112,7 @@ export default function LegalNotice() {
                       : "UNO Arquitectos Mx (Grupo SVAD), located at Av. Boca Paila Km 4.5, Coastal Zone, Tulum, Quintana Roo, Mexico, is responsible for the processing of personal data collected through this website and AI conversational tools."}
                   </p>
 
-                  <h4 className="font-bold text-[#1E1E1E] text-sm">
+                  <h4 className="font-headline-md font-bold text-teal-uno text-sm uppercase">
                     {isEs ? "2. Datos Personales Recabados" : "2. Collected Personal Data"}
                   </h4>
                   <p>
@@ -121,7 +121,7 @@ export default function LegalNotice() {
                       : "For technical advisory, parametric lot assessments, and appointment scheduling, we collect: Full Name, Email Address, Phone/WhatsApp number, plot location, and desired project specifications."}
                   </p>
 
-                  <h4 className="font-bold text-[#1E1E1E] text-sm">
+                  <h4 className="font-headline-md font-bold text-teal-uno text-sm uppercase">
                     {isEs ? "3. Finalidad del Tratamiento" : "3. Purpose of Processing"}
                   </h4>
                   <ul className="list-disc pl-4 space-y-1">
@@ -130,7 +130,7 @@ export default function LegalNotice() {
                     <li>{isEs ? "Envío de reportes en PDF y seguimiento a distancia para clientes e inversionistas." : "Dispatching PDF concept reports and remote tracking for international clients."}</li>
                   </ul>
 
-                  <h4 className="font-bold text-[#1E1E1E] text-sm">
+                  <h4 className="font-headline-md font-bold text-teal-uno text-sm uppercase">
                     {isEs ? "4. Derechos ARCO y Contacto" : "4. ARCO Rights & Direct Contact"}
                   </h4>
                   <p>
@@ -142,15 +142,15 @@ export default function LegalNotice() {
               ) : (
                 /* TERMS OF SERVICE & AI DISCLAIMER */
                 <div className="space-y-4 text-left">
-                  <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xs mb-4">
-                    <p className="font-semibold text-amber-700 text-[11px] uppercase tracking-wider">
+                  <div className="p-3 bg-arena-calida/20 border border-arena-calida/40 rounded-xs mb-4">
+                    <p className="font-label-caps font-semibold text-gris-texto text-[11px] uppercase tracking-wider">
                       {isEs
                         ? "Deslinde de Responsabilidad sobre Herramientas de Inteligencia Artificial (AI Advisor)"
                         : "Disclaimer on Artificial Intelligence Advisory Tools (AI Advisor)"}
                     </p>
                   </div>
 
-                  <h4 className="font-bold text-[#1E1E1E] text-sm">
+                  <h4 className="font-headline-md font-bold text-teal-uno text-sm uppercase">
                     {isEs ? "1. Carácter Informativo y Paramétrico de las Herramientas AI" : "1. Parametric & Informational Nature of AI Tools"}
                   </h4>
                   <p>
@@ -159,7 +159,7 @@ export default function LegalNotice() {
                       : "All estimates, parametric budgets, material lists, and conceptual Dossiers generated by our AI Advisor are strictly preliminary and informational. They do not constitute a binding quote or contract until a formal geotechnical karst study, executive engineering, and contract signing take place."}
                   </p>
 
-                  <h4 className="font-bold text-[#1E1E1E] text-sm">
+                  <h4 className="font-headline-md font-bold text-teal-uno text-sm uppercase">
                     {isEs ? "2. Propiedad Intelectual y Arquitectura de Autor" : "2. Intellectual Property & Original Architecture"}
                   </h4>
                   <p>
@@ -168,7 +168,7 @@ export default function LegalNotice() {
                       : "All designs, trademarks, seismic engineering schematics, isometric logo assets, and website contents are the exclusive property of UNO Arquitectos Mx. Unauthorized reproduction is strictly prohibited."}
                   </p>
 
-                  <h4 className="font-bold text-[#1E1E1E] text-sm">
+                  <h4 className="font-headline-md font-bold text-teal-uno text-sm uppercase">
                     {isEs ? "3. Jurisdicción y Legislación Aplicable" : "3. Governing Jurisdiction"}
                   </h4>
                   <p>
@@ -181,11 +181,11 @@ export default function LegalNotice() {
             </div>
 
             {/* Footer */}
-            <div className="bg-zinc-50 border-t border-zinc-200 px-6 py-3 flex justify-between items-center text-[11px] text-zinc-500">
+            <div className="bg-gris-piedra/20 border-t border-gris-piedra px-6 py-3 flex justify-between items-center text-[11px] font-label-caps text-gris-texto">
               <span>UNO Arquitectos Mx © {new Date().getFullYear()}</span>
               <button
                 onClick={() => setIsOpen(false)}
-                className="px-4 py-1.5 bg-[#00A3A3] hover:bg-[#006666] text-white font-semibold uppercase tracking-wider rounded-xs transition-colors cursor-pointer"
+                className="px-4 py-1.5 bg-teal-uno hover:opacity-90 text-white font-semibold uppercase tracking-wider rounded-xs transition-colors cursor-pointer"
               >
                 {isEs ? "Entendido & Aceptar" : "Acknowledge & Close"}
               </button>

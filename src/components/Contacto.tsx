@@ -18,7 +18,6 @@ export default function Contacto() {
     setIsSending(true);
 
     try {
-      // 1. Send data to the local Express contact endpoint
       await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -32,7 +31,6 @@ export default function Contacto() {
         })
       });
 
-      // 2. Also save to the leads database proxy
       await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -45,31 +43,21 @@ export default function Contacto() {
         })
       });
 
-      // Trigger Google Analytics 4 & Meta Pixel Tracking Events
       if (typeof window !== "undefined") {
         const win = window as any;
         if (win.gtag) {
-          win.gtag('event', 'generate_lead', {
-            event_category: 'contact',
-            event_label: 'Formulario de Contacto',
-            value: 1
-          });
+          win.gtag('event', 'generate_lead', { event_category: 'contact', event_label: 'Formulario de Contacto', value: 1 });
         }
         if (win.fbq) {
-          win.fbq('track', 'Lead', {
-            content_name: 'Formulario de Contacto',
-            status: 'success'
-          });
+          win.fbq('track', 'Lead', { content_name: 'Formulario de Contacto', status: 'success' });
         }
       }
 
-      // 3. Prepare personalized welcome message for WhatsApp
       const welcomeText = language === "es"
         ? `Hola UNO Arquitectos, me he registrado en su formulario de contacto. Mi nombre es ${name}, mi correo es ${email} y mi teléfono es ${phone}. Me interesa atención técnica para mi proyecto.`
         : `Hello UNO Arquitectos, I filled out your contact form. My name is ${name}, my email is ${email} and my phone is ${phone}. I am interested in technical consultation for my project.`;
       
       const whatsappUrl = `https://wa.me/5219841234567?text=${encodeURIComponent(welcomeText)}`;
-      
       window.open(whatsappUrl, "_blank");
 
       setSubmitted(true);
@@ -86,12 +74,12 @@ export default function Contacto() {
   };
 
   return (
-    <section id="contacto" className="py-28 md:py-36 px-6 md:px-12 bg-white text-[#4A4A4A] font-sans relative border-t border-zinc-100">
-      <div className="max-w-7xl mx-auto">
+    <section id="contacto" className="py-section-padding px-margin-mobile md:px-margin-desktop bg-background text-gris-texto font-sans relative border-t border-arena-calida/20 texture-overlay">
+      <div className="max-w-container-max mx-auto">
         
-        {/* LEVEL 2 CONVERSION TAGLINE BANNER */}
+        {/* Top Tagline */}
         <div className="mb-16 text-center">
-          <span className="text-[#00A3A3] text-sm md:text-base font-semibold uppercase tracking-[0.3em] block">
+          <span className="font-label-caps text-label-caps text-arena-calida uppercase tracking-[0.35em] block">
             {t("contacto.conversionTagline") || "Diseño con sentido. Construcción con criterio."}
           </span>
         </div>
@@ -100,14 +88,14 @@ export default function Contacto() {
           
           {/* INFO COLUMN */}
           <div className="lg:col-span-5 text-left">
-            <Logo showText={false} iconSize={40} className="mb-6 opacity-90 text-[#00A3A3]" />
-            <span className="text-[#00A3A3] text-xs uppercase tracking-[0.3em] font-semibold block mb-3">
-              {t("contacto.tagline")}
+            <Logo showText={false} iconSize={40} className="mb-6 opacity-90 text-teal-uno" />
+            <span className="font-label-caps text-label-caps text-teal-uno uppercase tracking-[0.3em] font-semibold block mb-3">
+              {t("contacto.tagline") || "Contacto Directo"}
             </span>
-            <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#1E1E1E] mb-6">
-              {t("contacto.heading")}
+            <h2 className="font-headline-xl text-headline-xl text-teal-uno uppercase mb-6 leading-tight">
+              {t("contacto.heading") || "INICIEMOS LA CONVERSACIÓN"}
             </h2>
-            <p className="text-[#4A4A4A] text-sm leading-relaxed mb-10 max-w-md font-normal">
+            <p className="font-body-md text-gris-texto text-sm leading-relaxed mb-10 max-w-md">
               {t("contacto.desc")}
             </p>
 
@@ -115,10 +103,10 @@ export default function Contacto() {
               
               {/* Off 1 - Tulum */}
               <div className="flex gap-4 items-start">
-                <MapPin className="w-5 h-5 text-[#00A3A3] flex-shrink-0 mt-0.5" />
+                <MapPin className="w-5 h-5 text-teal-uno flex-shrink-0 mt-0.5" />
                 <div>
-                  <h3 className="font-semibold text-xs uppercase tracking-wider text-[#1E1E1E]">{t("contacto.showroomTulum")}</h3>
-                  <p className="text-xs text-[#4A4A4A] font-normal mt-1 leading-relaxed">{t("contacto.showroomTulumAddr")}</p>
+                  <h3 className="font-label-caps text-xs uppercase tracking-wider text-teal-uno font-semibold">{t("contacto.showroomTulum")}</h3>
+                  <p className="font-body-md text-xs text-gris-texto mt-1 leading-relaxed">{t("contacto.showroomTulumAddr")}</p>
                 </div>
               </div>
 
@@ -126,20 +114,20 @@ export default function Contacto() {
               <div className="flex gap-4 items-start">
                 <MapPin className="w-5 h-5 text-zinc-400 flex-shrink-0 mt-0.5" />
                 <div>
-                  <h3 className="font-semibold text-xs uppercase tracking-wider text-[#1E1E1E]">{t("contacto.cdmxOffice")}</h3>
-                  <p className="text-xs text-[#4A4A4A] font-normal mt-1 leading-relaxed">{t("contacto.cdmxOfficeAddr")}</p>
+                  <h3 className="font-label-caps text-xs uppercase tracking-wider text-teal-uno font-semibold">{t("contacto.cdmxOffice")}</h3>
+                  <p className="font-body-md text-xs text-gris-texto mt-1 leading-relaxed">{t("contacto.cdmxOfficeAddr")}</p>
                 </div>
               </div>
 
               {/* Tel & Mail */}
-              <div className="pt-8 border-t border-[#C8B89A]/30 space-y-4 text-xs text-[#4A4A4A]">
+              <div className="pt-8 border-t border-arena-calida/30 space-y-4 font-body-md text-xs text-gris-texto">
                 <div className="flex items-center gap-3">
-                  <Phone className="w-4 h-4 text-[#00A3A3]" />
+                  <Phone className="w-4 h-4 text-teal-uno" />
                   <span>+52 (984) 123 4567 • +52 (55) 9876 5432</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Mail className="w-4 h-4 text-[#00A3A3]" />
-                  <a href="mailto:hola@unoarquitectos.com" className="hover:text-[#00A3A3] transition-colors">
+                  <Mail className="w-4 h-4 text-teal-uno" />
+                  <a href="mailto:hola@unoarquitectos.com" className="hover:text-teal-uno transition-colors">
                     hola@unoarquitectos.com
                   </a>
                 </div>
@@ -153,35 +141,36 @@ export default function Contacto() {
           </div>
 
           {/* CONTACT FORM */}
-          <div className="lg:col-span-7 bg-[#DDDDD9]/30 border border-zinc-200/60 p-8 md:p-12 rounded-xs relative text-left shadow-xs overflow-hidden">
-            {/* Aesthetic watermarked Logo in background */}
+          <div className="lg:col-span-7 bg-surface-container-low/70 border border-arena-calida/30 p-8 md:p-14 rounded-3xl relative text-left shadow-ethereal overflow-hidden">
+            {/* Watermark Logo */}
             <div className="absolute -right-6 -top-6 opacity-[0.04] pointer-events-none select-none">
-              <Logo showText={false} iconSize={180} />
+              <Logo showText={false} iconSize={200} />
             </div>
+
             {submitted ? (
               <div className="py-12 text-center flex flex-col items-center animate-fadeIn">
-                <div className="w-16 h-16 rounded-full bg-[#00A3A3]/10 text-[#00A3A3] flex items-center justify-center mb-6 border border-[#00A3A3]/30">
+                <div className="w-16 h-16 rounded-full bg-teal-uno/10 text-teal-uno flex items-center justify-center mb-6 border border-teal-uno/30">
                   <CheckCircle className="w-8 h-8" />
                 </div>
-                <h3 className="text-2xl font-semibold text-[#1E1E1E] mb-2">{t("contacto.successTitle")}</h3>
-                <p className="text-[#4A4A4A] text-sm max-w-sm mx-auto leading-relaxed">
+                <h3 className="font-headline-md text-2xl font-semibold text-teal-uno mb-2 uppercase">{t("contacto.successTitle")}</h3>
+                <p className="font-body-md text-gris-texto text-sm max-w-sm mx-auto leading-relaxed">
                   {t("contacto.successDesc")}
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
-                  className="mt-8 text-xs font-semibold uppercase tracking-widest text-[#00A3A3] hover:text-[#006666] transition-colors cursor-pointer"
+                  className="mt-8 font-label-caps text-xs uppercase tracking-widest text-teal-uno hover:opacity-80 transition-colors cursor-pointer"
                 >
                   {t("contacto.successAnother")}
                 </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
-                <h3 className="text-xl font-semibold text-[#1E1E1E] mb-2">{t("contacto.formHeading")}</h3>
-                <p className="text-xs text-[#4A4A4A] mb-6">{t("contacto.formSubheading")}</p>
+                <h3 className="font-headline-md text-xl font-semibold text-teal-uno mb-2 uppercase">{t("contacto.formHeading")}</h3>
+                <p className="font-body-md text-xs text-gris-texto mb-6">{t("contacto.formSubheading")}</p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-[#1E1E1E] mb-2 font-semibold" htmlFor="con-name">
+                    <label className="block font-label-caps text-xs uppercase tracking-wider text-teal-uno mb-2 font-semibold" htmlFor="con-name">
                       {t("contacto.fullName")}
                     </label>
                     <input
@@ -191,12 +180,12 @@ export default function Contacto() {
                       placeholder={t("contacto.fullNamePlaceholder")}
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full bg-white border border-zinc-300 rounded-xs py-3 px-4 text-sm text-[#1E1E1E] focus:outline-none focus:border-[#00A3A3] transition-colors"
+                      className="w-full bg-white border border-arena-calida/30 rounded-xl py-3.5 px-4 font-body-md text-sm text-gris-texto focus:outline-none focus:border-teal-uno transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs uppercase tracking-wider text-[#1E1E1E] mb-2 font-semibold" htmlFor="con-tel">
+                    <label className="block font-label-caps text-xs uppercase tracking-wider text-teal-uno mb-2 font-semibold" htmlFor="con-tel">
                       {t("contacto.phone")}
                     </label>
                     <input
@@ -206,13 +195,13 @@ export default function Contacto() {
                       placeholder={t("contacto.phonePlaceholder")}
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="w-full bg-white border border-zinc-300 rounded-xs py-3 px-4 text-sm text-[#1E1E1E] focus:outline-none focus:border-[#00A3A3] transition-colors"
+                      className="w-full bg-white border border-arena-calida/30 rounded-xl py-3.5 px-4 font-body-md text-sm text-gris-texto focus:outline-none focus:border-teal-uno transition-colors"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-[#1E1E1E] mb-2 font-semibold" htmlFor="con-email">
+                  <label className="block font-label-caps text-xs uppercase tracking-wider text-teal-uno mb-2 font-semibold" htmlFor="con-email">
                     {t("contacto.email")}
                   </label>
                   <input
@@ -222,12 +211,12 @@ export default function Contacto() {
                     placeholder={t("contacto.emailPlaceholder")}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-white border border-zinc-300 rounded-xs py-3 px-4 text-sm text-[#1E1E1E] focus:outline-none focus:border-[#00A3A3] transition-colors"
+                    className="w-full bg-white border border-arena-calida/30 rounded-xl py-3.5 px-4 font-body-md text-sm text-gris-texto focus:outline-none focus:border-teal-uno transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs uppercase tracking-wider text-[#1E1E1E] mb-2 font-semibold" htmlFor="con-msg">
+                  <label className="block font-label-caps text-xs uppercase tracking-wider text-teal-uno mb-2 font-semibold" htmlFor="con-msg">
                     {t("contacto.additionalMsg")}
                   </label>
                   <textarea
@@ -237,14 +226,14 @@ export default function Contacto() {
                     placeholder={t("contacto.additionalMsgPlaceholder")}
                     value={msg}
                     onChange={(e) => setMsg(e.target.value)}
-                    className="w-full bg-white border border-zinc-300 rounded-xs p-4 text-sm text-[#1E1E1E] focus:outline-none focus:border-[#00A3A3] transition-colors"
+                    className="w-full bg-white border border-arena-calida/30 rounded-xl p-4 font-body-md text-sm text-gris-texto focus:outline-none focus:border-teal-uno transition-colors"
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
                   disabled={isSending}
-                  className={`w-full bg-[#00A3A3] hover:bg-[#006666] text-white py-4 text-xs font-semibold uppercase tracking-[0.25em] transition-all flex items-center justify-center gap-2 rounded-xs cursor-pointer shadow-md ${isSending ? "opacity-70 cursor-not-allowed" : ""}`}
+                  className={`w-full bg-teal-uno hover:bg-arena-calida text-white py-4 font-label-caps text-label-caps uppercase tracking-[0.25em] transition-all flex items-center justify-center gap-2 rounded-full cursor-pointer shadow-ethereal ${isSending ? "opacity-70 cursor-not-allowed" : ""}`}
                 >
                   <Send className="w-4 h-4 text-white" />
                   {isSending ? (language === "es" ? "Enviando..." : "Sending...") : t("contacto.btnSubmit")}

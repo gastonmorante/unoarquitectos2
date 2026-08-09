@@ -130,7 +130,7 @@ export default function AIConsultant() {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Conversational onboarding state variables
+  // Conversational onboarding state
   const [onboardingStep, setOnboardingStep] = useState<"name" | "email" | "completed">("name");
   const [leadName, setLeadName] = useState("");
   const [leadEmail, setLeadEmail] = useState("");
@@ -243,7 +243,7 @@ export default function AIConsultant() {
     setInputValue("");
     setIsLoading(true);
 
-    // PILLAR 1: ONBOARDING FASE 1 - NOMBRE COMPLETO
+    // ONBOARDING STEP 1: NAME
     if (onboardingStep === "name") {
       setLeadName(trimmedText);
       setOnboardingStep("email");
@@ -262,12 +262,11 @@ export default function AIConsultant() {
       return;
     }
 
-    // PILLAR 1: ONBOARDING FASE 2 - EMAIL & VALIDACIÓN REGEX
+    // ONBOARDING STEP 2: EMAIL & VALIDATION
     if (onboardingStep === "email") {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(trimmedText)) {
         setIsLoading(false);
-        // Responde mensaje de error elegante sin alterar el estado onboardingStep ('email')
         setMessages((prev) => [
           ...prev,
           {
@@ -293,7 +292,6 @@ export default function AIConsultant() {
         }
       }
 
-      // PILLAR 2: ENVÍO REAL A /api/leads Y REDIRECCIÓN WHATSAPP
       const currentName = leadName;
       const currentEmail = trimmedText;
 
@@ -302,8 +300,6 @@ export default function AIConsultant() {
         : `Hello UNO Arquitectos, I consulted your AI Advisor. My name is ${currentName}, my email is ${currentEmail}. I would like direct technical support.`;
       
       const waUrl = `https://wa.me/5219841234567?text=${encodeURIComponent(waText)}`;
-
-      // Safe window.open before async fetch to prevent popup blocker
       window.open(waUrl, "_blank", "noopener,noreferrer");
 
       try {
@@ -336,7 +332,7 @@ export default function AIConsultant() {
       return;
     }
 
-    // PILLAR 3: CHAT ABIERTO CON PROMPT DEL SISTEMA Y REGLAS DE NEGOCIO
+    // OPEN CHAT WITH GEMINI BACKEND
     try {
       const chatHistory = messages.map((m) => ({
         role: m.role,
@@ -386,7 +382,7 @@ export default function AIConsultant() {
     }
   };
 
-  // PILLAR 4: FORMATEO LIMPIO DE TEXTOS (Bolds & Bullet Points)
+  // Text Formatter for bullets and bolds
   const formatText = (text: string) => {
     return text.split("\n").map((line, lineIdx) => {
       const trimmedLine = line.trim();
@@ -399,21 +395,21 @@ export default function AIConsultant() {
       const parts = cleanLine.split(/\*\*([\s\S]*?)\*\*/g);
       const formattedParts = parts.map((part, partIdx) => {
         if (partIdx % 2 === 1) {
-          return <strong key={partIdx} className="font-semibold text-[#1E1E1E]">{part}</strong>;
+          return <strong key={partIdx} className="font-semibold text-teal-uno">{part}</strong>;
         }
         return part;
       });
 
       if (isBullet) {
         return (
-          <li key={lineIdx} className="ml-4 list-disc pl-1 mb-1 text-[#4A4A4A] font-normal leading-relaxed text-xs">
+          <li key={lineIdx} className="ml-4 list-disc pl-1 mb-1 text-gris-texto font-body-md text-xs leading-relaxed">
             {formattedParts}
           </li>
         );
       }
 
       return (
-        <p key={lineIdx} className={`mb-2 text-[#4A4A4A] font-normal leading-relaxed text-xs ${cleanLine === "" ? "h-2" : ""}`}>
+        <p key={lineIdx} className={`mb-2 text-gris-texto font-body-md text-xs leading-relaxed ${cleanLine === "" ? "h-2" : ""}`}>
           {formattedParts}
         </p>
       );
@@ -427,7 +423,7 @@ export default function AIConsultant() {
 
   return (
     <>
-      {/* PERSISTENT FLOATING WHATSAPP BUTTON (BOTTOM RIGHT) */}
+      {/* FLOATING WHATSAPP BUTTON (BOTTOM RIGHT) */}
       <div id="float-whatsapp" className="fixed bottom-6 right-6 z-40 flex flex-col items-end font-sans">
         <motion.a
           href={whatsappLink}
@@ -439,10 +435,10 @@ export default function AIConsultant() {
           aria-label="WhatsApp Contact"
         >
           <MessageCircle className="w-6 h-6 text-white" />
-          <span className="absolute right-14 bg-[#1E1E1E] text-white text-xs font-semibold uppercase tracking-wider py-1.5 px-3 rounded-xs whitespace-nowrap shadow-lg opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none">
+          <span className="absolute right-14 bg-white text-gris-texto border border-gris-piedra text-xs font-label-caps uppercase tracking-wider py-1.5 px-3 rounded-xs whitespace-nowrap shadow-lg opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none">
             {language === "es" ? "WhatsApp Directo" : "WhatsApp Chat"}
           </span>
-          <span className="absolute top-0 right-0 w-3 h-3 bg-red-500 border-2 border-white rounded-full"></span>
+          <span className="absolute top-0 right-0 w-3 h-3 bg-teal-uno border-2 border-white rounded-full"></span>
         </motion.a>
       </div>
 
@@ -456,25 +452,25 @@ export default function AIConsultant() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.96 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="bg-white border border-zinc-200/80 shadow-2xl rounded-xs overflow-hidden w-[92vw] sm:w-[380px] h-[520px] flex flex-col mb-4"
+              className="bg-white border border-gris-piedra shadow-2xl rounded-xs overflow-hidden w-[92vw] sm:w-[380px] h-[520px] flex flex-col mb-4"
             >
               {/* Header */}
-              <div className="bg-[#1E1E1E] text-white py-3.5 px-4 flex items-center justify-between border-b border-zinc-800">
+              <div className="bg-white border-b border-gris-piedra py-3.5 px-4 flex items-center justify-between text-gris-texto">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-[#00A3A3]/20 border border-[#00A3A3]/40 flex items-center justify-center text-[#00A3A3]">
+                  <div className="w-8 h-8 rounded-full bg-teal-uno/10 border border-teal-uno/30 flex items-center justify-center text-teal-uno">
                     {renderUnoIcon(16)}
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold tracking-wide text-white">Asesor AI</h4>
-                    <span className="text-[10px] tracking-wider text-[#00A3A3] uppercase block flex items-center gap-1 font-medium">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#00A3A3] inline-block animate-pulse"></span>
+                    <h4 className="font-label-caps text-xs font-semibold tracking-wide text-teal-uno uppercase">Asesor AI</h4>
+                    <span className="font-label-caps text-[9px] tracking-wider text-gris-texto uppercase flex items-center gap-1 font-medium">
+                      <span className="w-1.5 h-1.5 rounded-full bg-teal-uno inline-block animate-pulse"></span>
                       {language === "es" ? "Ingeniería & Arquitectura" : "Engineering & Architecture"}
                     </span>
                   </div>
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="text-zinc-400 hover:text-white transition-colors cursor-pointer p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
+                  className="text-gris-texto hover:text-teal-uno transition-colors cursor-pointer p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
                   aria-label="Close chat"
                 >
                   <X className="w-4 h-4" />
@@ -482,14 +478,14 @@ export default function AIConsultant() {
               </div>
 
               {/* Messages viewport */}
-              <div className="flex-1 overflow-y-auto p-4 bg-[#FFFFFF] space-y-4">
+              <div className="flex-1 overflow-y-auto p-4 bg-surface-container-lowest space-y-4">
                 {messages.map((m, idx) => (
                   <div key={idx} className={`flex gap-2.5 items-start ${m.role === "user" ? "flex-row-reverse" : ""}`}>
                     <div
                       className={`w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center text-xs border ${
                         m.role === "user"
-                          ? "bg-[#00A3A3] border-[#00A3A3] text-white"
-                          : "bg-[#00A3A3]/10 border-[#00A3A3]/20 text-[#00A3A3]"
+                          ? "bg-teal-uno border-teal-uno text-white"
+                          : "bg-teal-uno/10 border-teal-uno/20 text-teal-uno"
                       }`}
                     >
                       {m.role === "user" ? <User className="w-3.5 h-3.5" /> : <Bot className="w-3.5 h-3.5" />}
@@ -497,10 +493,10 @@ export default function AIConsultant() {
 
                     <div className="max-w-[82%]">
                       <div
-                        className={`p-3 rounded-xs text-xs text-left leading-relaxed shadow-xs ${
+                        className={`p-3 rounded-xs text-xs text-left leading-relaxed shadow-xs font-body-md ${
                           m.role === "user"
-                            ? "bg-[#00A3A3] text-white font-medium"
-                            : "bg-[#DDDDD9]/30 border border-zinc-200/60 text-[#4A4A4A]"
+                            ? "bg-teal-uno text-white font-medium"
+                            : "bg-gris-piedra/25 border border-gris-piedra text-gris-texto"
                         }`}
                       >
                         {m.role === "user" ? (
@@ -509,7 +505,7 @@ export default function AIConsultant() {
                           <div className="space-y-0.5">{formatText(m.content)}</div>
                         )}
                       </div>
-                      <span className="text-[9px] text-zinc-400 block mt-1 px-1">
+                      <span className="text-[9px] text-zinc-400 block mt-1 px-1 font-label-caps">
                         {m.timestamp.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                       </span>
                     </div>
@@ -518,14 +514,14 @@ export default function AIConsultant() {
 
                 {isLoading && (
                   <div className="flex gap-2.5 items-start animate-pulse">
-                    <div className="w-7 h-7 rounded-full bg-[#00A3A3]/10 border border-[#00A3A3]/20 flex items-center justify-center text-[#00A3A3]">
+                    <div className="w-7 h-7 rounded-full bg-teal-uno/10 border border-teal-uno/20 flex items-center justify-center text-teal-uno">
                       {renderUnoIcon(14)}
                     </div>
-                    <div className="bg-[#DDDDD9]/30 border border-zinc-200/60 p-3 rounded-xs max-w-[80%] text-left">
+                    <div className="bg-gris-piedra/25 border border-gris-piedra p-3 rounded-xs max-w-[80%] text-left">
                       <div className="flex space-x-1.5 items-center py-1">
-                        <div className="w-2 h-2 bg-[#00A3A3] rounded-full animate-bounce"></div>
-                        <div className="w-2 h-2 bg-[#00A3A3] rounded-full animate-bounce delay-75"></div>
-                        <div className="w-2 h-2 bg-[#00A3A3] rounded-full animate-bounce delay-150"></div>
+                        <div className="w-2 h-2 bg-teal-uno rounded-full animate-bounce"></div>
+                        <div className="w-2 h-2 bg-teal-uno rounded-full animate-bounce delay-75"></div>
+                        <div className="w-2 h-2 bg-teal-uno rounded-full animate-bounce delay-150"></div>
                       </div>
                     </div>
                   </div>
@@ -535,8 +531,8 @@ export default function AIConsultant() {
 
               {/* Quick Prompt suggestions */}
               {onboardingStep === "completed" && messages.length <= 4 && !isLoading && (
-                <div className="px-4 py-2 bg-[#DDDDD9]/20 border-t border-zinc-200/60">
-                  <p className="text-[9px] font-semibold tracking-wider text-zinc-500 uppercase mb-2 text-left">
+                <div className="px-4 py-2 bg-gris-piedra/20 border-t border-gris-piedra">
+                  <p className="font-label-caps text-[9px] font-semibold tracking-wider text-teal-uno uppercase mb-2 text-left">
                     {language === "es" ? "Sugerencias de Consulta" : "Suggested Queries"}
                   </p>
                   <div className="flex flex-wrap gap-1.5">
@@ -544,7 +540,7 @@ export default function AIConsultant() {
                       <button
                         key={idx}
                         onClick={() => handleSendMessage(qp.prompt)}
-                        className="text-xs bg-white border border-zinc-300 hover:border-[#00A3A3] hover:text-[#00A3A3] text-[#4A4A4A] px-2.5 py-1.5 rounded-xs transition-all cursor-pointer text-left min-h-[36px]"
+                        className="font-body-md text-xs bg-white border border-gris-piedra hover:border-teal-uno hover:text-teal-uno text-gris-texto px-2.5 py-1.5 rounded-xs transition-all cursor-pointer text-left min-h-[36px]"
                       >
                         {qp.label}
                       </button>
@@ -559,7 +555,7 @@ export default function AIConsultant() {
                   e.preventDefault();
                   handleSendMessage(inputValue);
                 }}
-                className="p-3 border-t border-zinc-200 bg-white flex gap-2"
+                className="p-3 border-t border-gris-piedra bg-white flex gap-2"
               >
                 <input
                   type="text"
@@ -572,12 +568,12 @@ export default function AIConsultant() {
                       ? (language === "es" ? "Escriba su Correo Electrónico..." : "Enter your Email Address...")
                       : (language === "es" ? "Pregunte sobre permisos, materiales, estructura..." : "Ask about permits, materials, engineering...")
                   }
-                  className="flex-1 bg-zinc-50 border border-zinc-300 rounded-xs px-3.5 py-2.5 text-xs text-[#1E1E1E] focus:outline-none focus:border-[#00A3A3] focus:bg-white transition-all min-h-[44px]"
+                  className="flex-1 bg-gris-piedra/15 border border-gris-piedra rounded-xs px-3.5 py-2.5 font-body-md text-xs text-gris-texto focus:outline-none focus:border-teal-uno focus:bg-white transition-all min-h-[44px]"
                 />
                 <button
                   type="submit"
                   disabled={isLoading || !inputValue.trim()}
-                  className={`px-4 bg-[#00A3A3] hover:bg-[#006666] text-white rounded-xs flex items-center justify-center transition-colors cursor-pointer min-h-[44px] min-w-[44px] ${
+                  className={`px-4 bg-teal-uno hover:opacity-90 text-white rounded-xs flex items-center justify-center transition-colors cursor-pointer min-h-[44px] min-w-[44px] ${
                     isLoading || !inputValue.trim() ? "opacity-50 cursor-not-allowed" : ""
                   }`}
                   aria-label="Send message"
@@ -594,17 +590,17 @@ export default function AIConsultant() {
           onClick={() => setIsOpen(!isOpen)}
           whileHover={{ scale: 1.06 }}
           whileTap={{ scale: 0.95 }}
-          className="bg-[#1E1E1E] hover:bg-zinc-800 border border-zinc-800 text-white p-4 rounded-full shadow-2xl flex items-center justify-center cursor-pointer group min-w-[52px] min-h-[52px]"
+          className="bg-white hover:bg-gris-piedra/20 border border-gris-piedra text-teal-uno p-4 rounded-full shadow-2xl flex items-center justify-center cursor-pointer group min-w-[52px] min-h-[52px]"
           aria-label="Toggle AI consultant chatbot"
         >
-          <Sparkles className="w-6 h-6 text-[#00A3A3] group-hover:rotate-12 transition-transform duration-300" />
+          <Sparkles className="w-6 h-6 text-teal-uno group-hover:rotate-12 transition-transform duration-300" />
           
-          <span className="absolute left-14 bg-[#1E1E1E] text-white text-xs font-semibold tracking-wider py-1.5 px-3 rounded-xs whitespace-nowrap shadow-lg opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none">
+          <span className="absolute left-14 bg-white text-gris-texto border border-gris-piedra font-label-caps text-xs uppercase tracking-wider py-1.5 px-3 rounded-xs whitespace-nowrap shadow-lg opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none">
             {language === "es" ? "Asesor AI" : "AI Advisor"}
           </span>
           <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00A3A3] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-[#00A3A3]"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-uno opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-teal-uno"></span>
           </span>
         </motion.button>
       </div>
@@ -613,7 +609,7 @@ export default function AIConsultant() {
       <motion.div
         style={{ x: smoothBgX, y: smoothBgY }}
         animate={{
-          color: isMoving ? "rgba(200, 200, 200, 0.12)" : "rgba(0, 163, 163, 0.20)"
+          color: isMoving ? "rgba(200, 184, 154, 0.18)" : "rgba(0, 163, 163, 0.22)"
         }}
         transition={{
           duration: 0.8,

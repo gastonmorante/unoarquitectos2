@@ -8,7 +8,6 @@ export default function Faqs() {
   const { language } = useLanguage();
   const isEs = language === "es";
 
-  // State: selectedCategory is null initially until user selects a category option
   const [selectedCategory, setSelectedCategory] = useState<"general" | "services" | "finance" | "all" | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [openId, setOpenId] = useState<string | null>(null);
@@ -67,20 +66,21 @@ export default function Faqs() {
   };
 
   return (
-    <section id="faqs" className="py-24 px-6 md:px-12 bg-white text-[#4A4A4A] font-sans border-t border-zinc-100 relative overflow-hidden">
+    <section id="faqs" className="py-section-padding px-margin-mobile md:px-margin-desktop bg-background text-gris-texto font-sans border-b border-arena-calida/20 relative overflow-hidden">
       <div className="max-w-5xl mx-auto">
+        
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00A3A3]/10 border border-[#00A3A3]/20 mb-4">
-            <HelpCircle className="w-3.5 h-3.5 text-[#00A3A3]" />
-            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#00A3A3]">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-arena-calida/20 border border-arena-calida/30 mb-4">
+            <HelpCircle className="w-4 h-4 text-teal-uno" />
+            <span className="font-label-caps text-[11px] uppercase tracking-[0.2em] text-teal-uno font-semibold">
               {isEs ? "Resolviendo Dudas Con Criterio" : "Clear Answers & Technical Criteria"}
             </span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#1E1E1E] mb-6">
+          <h2 className="font-headline-xl text-headline-xl text-teal-uno mb-4 uppercase">
             {isEs ? "Preguntas Frecuentes" : "Frequently Asked Questions"}
           </h2>
-          <p className="text-sm md:text-base text-[#4A4A4A] font-normal leading-relaxed">
+          <p className="font-body-md text-gris-texto leading-relaxed">
             {isEs
               ? "Seleccione una categoría de consulta para desplegar las preguntas correspondientes y conocer nuestro proceso técnico."
               : "Select a category option below to display the corresponding FAQs and review our technical process."}
@@ -88,7 +88,7 @@ export default function Faqs() {
         </div>
 
         {/* Category Option Selection Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {categories.map((cat) => {
             const Icon = cat.icon;
             const isSelected = selectedCategory === cat.id;
@@ -100,33 +100,33 @@ export default function Faqs() {
                   setSelectedCategory(cat.id as any);
                   setOpenId(null);
                 }}
-                className={`p-6 text-left border rounded-xs transition-all duration-300 cursor-pointer relative group overflow-hidden ${
+                className={`p-8 text-left border rounded-2xl transition-all duration-500 cursor-pointer relative group overflow-hidden ${
                   isSelected
-                    ? "border-[#00A3A3] bg-zinc-50 shadow-md ring-1 ring-[#00A3A3]"
-                    : "border-zinc-200 bg-white hover:border-[#00A3A3]/50 hover:bg-zinc-50/50"
+                    ? "border-teal-uno bg-surface-container-low shadow-ethereal ring-1 ring-teal-uno"
+                    : "border-arena-calida/30 bg-white hover:border-arena-calida hover:shadow-ethereal"
                 }`}
               >
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center justify-between mb-5">
                   <div
-                    className={`w-10 h-10 rounded-xs flex items-center justify-center transition-colors ${
+                    className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors ${
                       isSelected
-                        ? "bg-[#00A3A3] text-white"
-                        : "bg-[#00A3A3]/10 text-[#00A3A3] group-hover:bg-[#00A3A3] group-hover:text-white"
+                        ? "bg-teal-uno text-white"
+                        : "bg-surface-container-low text-teal-uno group-hover:bg-teal-uno group-hover:text-white"
                     }`}
                   >
                     <Icon className="w-5 h-5" />
                   </div>
-                  {isSelected && <CheckCircle2 className="w-5 h-5 text-[#00A3A3]" />}
+                  {isSelected && <CheckCircle2 className="w-5 h-5 text-teal-uno" />}
                 </div>
-                <h3 className="text-base font-semibold text-[#1E1E1E] mb-1.5 group-hover:text-[#00A3A3] transition-colors">
+                <h3 className="font-headline-md text-lg text-teal-uno mb-2 uppercase transition-colors">
                   {cat.title}
                 </h3>
-                <p className="text-xs text-zinc-500 font-normal leading-relaxed mb-4">
+                <p className="font-body-md text-xs text-gris-texto leading-relaxed mb-5">
                   {cat.subtitle}
                 </p>
                 <span
-                  className={`text-[11px] font-semibold uppercase tracking-wider transition-colors inline-flex items-center gap-1 ${
-                    isSelected ? "text-[#00A3A3]" : "text-zinc-400 group-hover:text-[#00A3A3]"
+                  className={`font-label-caps text-[11px] uppercase tracking-wider transition-colors inline-flex items-center gap-1.5 ${
+                    isSelected ? "text-teal-uno font-semibold" : "text-zinc-400 group-hover:text-teal-uno"
                   }`}
                 >
                   {isSelected
@@ -138,7 +138,7 @@ export default function Faqs() {
           })}
         </div>
 
-        {/* Search Bar & View All Toggle (Visible once a category or search is active) */}
+        {/* Search Bar */}
         <div className="mb-10 space-y-4">
           <div className="relative max-w-xl mx-auto">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400 pointer-events-none" />
@@ -156,12 +156,12 @@ export default function Faqs() {
                   ? "Buscar pregunta por palabra clave (ej. llave en mano, Tulum, costos)..."
                   : "Search questions by keyword (e.g. turnkey, permits, costs)..."
               }
-              className="w-full bg-[#DDDDD9]/20 border border-zinc-200 focus:border-[#00A3A3] focus:bg-white rounded-xs pl-11 pr-4 py-3 text-xs text-[#1E1E1E] placeholder:text-zinc-400 focus:outline-none transition-all"
+              className="w-full bg-surface-container-low border border-arena-calida/30 focus:border-teal-uno focus:bg-white rounded-full pl-12 pr-6 py-3.5 text-xs text-gris-texto placeholder:text-zinc-400 focus:outline-none transition-all font-body-md"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-zinc-400 hover:text-[#00A3A3]"
+                className="absolute right-5 top-1/2 -translate-y-1/2 font-label-caps text-xs text-zinc-400 hover:text-teal-uno"
               >
                 {isEs ? "Limpiar" : "Clear"}
               </button>
@@ -169,10 +169,10 @@ export default function Faqs() {
           </div>
 
           {selectedCategory && (
-            <div className="flex justify-center items-center gap-3 text-xs text-zinc-500">
+            <div className="flex justify-center items-center gap-3 text-xs text-zinc-500 font-label-caps">
               <span>
                 {isEs ? "Mostrando preguntas de:" : "Showing questions for:"}{" "}
-                <strong className="text-[#1E1E1E] font-semibold uppercase tracking-wider">
+                <strong className="text-teal-uno uppercase tracking-wider">
                   {selectedCategory === "all"
                     ? isEs ? "Todas las Categorías" : "All Categories"
                     : categories.find((c) => c.id === selectedCategory)?.title}
@@ -180,7 +180,7 @@ export default function Faqs() {
               </span>
               <button
                 onClick={() => setSelectedCategory("all")}
-                className="text-[#00A3A3] font-semibold hover:underline"
+                className="text-teal-uno font-semibold hover:underline cursor-pointer"
               >
                 {isEs ? "(Ver Todas)" : "(View All)"}
               </button>
@@ -188,7 +188,7 @@ export default function Faqs() {
           )}
         </div>
 
-        {/* FAQ Accordion List (Deployed only when selectedCategory is set or search is active) */}
+        {/* FAQ Accordion List */}
         <AnimatePresence mode="wait">
           {selectedCategory ? (
             <motion.div
@@ -208,10 +208,10 @@ export default function Faqs() {
                   return (
                     <div
                       key={faq.id}
-                      className={`border transition-all duration-300 rounded-xs overflow-hidden ${
+                      className={`border transition-all duration-300 rounded-xl overflow-hidden ${
                         isOpen
-                          ? "border-[#00A3A3] bg-zinc-50/50 shadow-xs"
-                          : "border-zinc-200/80 bg-white hover:border-zinc-300"
+                          ? "border-teal-uno bg-surface-container-low/60 shadow-ethereal"
+                          : "border-arena-calida/20 bg-white hover:border-arena-calida/50"
                       }`}
                     >
                       <button
@@ -219,8 +219,8 @@ export default function Faqs() {
                         className="w-full px-6 py-5 flex items-center justify-between text-left cursor-pointer group"
                         aria-expanded={isOpen}
                       >
-                        <span className="text-sm md:text-base font-semibold text-[#1E1E1E] group-hover:text-[#00A3A3] transition-colors pr-4">
-                          <span className="text-[#00A3A3] mr-3 font-mono text-xs opacity-75">
+                        <span className="font-headline-md text-base text-teal-uno group-hover:text-arena-calida transition-colors pr-4 uppercase">
+                          <span className="text-arena-calida mr-3 font-mono text-xs">
                             {String(index + 1).padStart(2, "0")}.
                           </span>
                           {questionText}
@@ -228,7 +228,7 @@ export default function Faqs() {
                         <motion.div
                           animate={{ rotate: isOpen ? 180 : 0 }}
                           transition={{ duration: 0.25 }}
-                          className="text-zinc-400 group-hover:text-[#00A3A3] flex-shrink-0"
+                          className="text-zinc-400 group-hover:text-teal-uno flex-shrink-0"
                         >
                           <ChevronDown className="w-5 h-5" />
                         </motion.div>
@@ -243,7 +243,7 @@ export default function Faqs() {
                             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                             className="overflow-hidden"
                           >
-                            <div className="px-6 pb-6 pt-2 text-xs md:text-sm text-[#4A4A4A] leading-relaxed border-t border-zinc-100 whitespace-pre-line font-normal">
+                            <div className="px-6 pb-6 pt-2 font-body-md text-xs md:text-sm text-gris-texto leading-relaxed border-t border-arena-calida/20 whitespace-pre-line">
                               {answerText}
                             </div>
                           </motion.div>
@@ -253,8 +253,8 @@ export default function Faqs() {
                   );
                 })
               ) : (
-                <div className="text-center py-12 bg-zinc-50 border border-dashed border-zinc-200 rounded-xs">
-                  <p className="text-xs text-zinc-500 mb-2">
+                <div className="text-center py-12 bg-white border border-dashed border-arena-calida/30 rounded-2xl">
+                  <p className="font-body-md text-xs text-gris-texto mb-2">
                     {isEs
                       ? "No se encontraron preguntas que coincidan con tu búsqueda."
                       : "No questions found matching your search term."}
@@ -264,7 +264,7 @@ export default function Faqs() {
                       setSearchQuery("");
                       setSelectedCategory("all");
                     }}
-                    className="text-xs font-semibold text-[#00A3A3] hover:underline"
+                    className="font-label-caps text-xs text-teal-uno hover:underline cursor-pointer"
                   >
                     {isEs ? "Ver todas las preguntas" : "View all questions"}
                   </button>
@@ -272,17 +272,16 @@ export default function Faqs() {
               )}
             </motion.div>
           ) : (
-            /* Prompt state before category selection */
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-center py-12 px-6 bg-zinc-50/50 border border-dashed border-zinc-200 rounded-xs"
+              className="text-center py-12 px-6 bg-surface-container-low border border-dashed border-arena-calida/30 rounded-2xl"
             >
-              <HelpCircle className="w-8 h-8 text-[#00A3A3] mx-auto mb-3 opacity-60" />
-              <h4 className="text-sm font-semibold text-[#1E1E1E] mb-1">
+              <HelpCircle className="w-8 h-8 text-teal-uno mx-auto mb-3 opacity-60" />
+              <h4 className="font-headline-md text-sm text-teal-uno mb-1 uppercase">
                 {isEs ? "Seleccione una categoría arriba para ver las preguntas" : "Select a category above to view questions"}
               </h4>
-              <p className="text-xs text-zinc-500 font-normal">
+              <p className="font-body-md text-xs text-gris-texto">
                 {isEs
                   ? "Haga clic en cualquiera de las 3 opciones principales para desplegar las respuestas oficiales del estudio."
                   : "Click any of the 3 primary options above to reveal our official responses."}
@@ -291,39 +290,42 @@ export default function Faqs() {
           )}
         </AnimatePresence>
 
-        {/* Bottom Conversion Banner */}
-        <div className="mt-16 bg-[#1E1E1E] text-white p-8 md:p-12 rounded-xs relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 border border-zinc-800">
-          <div className="relative z-10 text-left max-w-xl">
-            <span className="text-[10px] uppercase tracking-[0.25em] font-semibold text-[#00A3A3] block mb-2">
-              {isEs ? "Atención Personalizada" : "Personalized Assistance"}
-            </span>
-            <h3 className="text-xl md:text-2xl font-semibold tracking-tight text-white mb-3">
-              {isEs ? "¿Tienes una duda específica sobre tu terreno o proyecto?" : "Have a specific question about your plot or project?"}
-            </h3>
-            <p className="text-xs md:text-sm text-zinc-400 leading-relaxed font-normal">
-              {isEs
-                ? "Consulta directamente con nuestro Asesor AI o programa una revisión presencial con nuestros directores de obra."
-                : "Consult directly with our AI Advisor or schedule an in-person review with our site directors."}
-            </p>
+        {/* Stich Organic Conversion Banner */}
+        <div className="mt-20 bg-surface-container-low text-teal-uno text-center relative overflow-hidden texture-overlay rounded-3xl p-10 md:p-16 border border-arena-calida/30 shadow-ethereal">
+          {/* Abstract organic background hints */}
+          <div className="absolute inset-0 opacity-15 pointer-events-none flex items-center justify-center">
+            <div className="w-[800px] h-[800px] border border-arena-calida rounded-full transform -translate-x-1/4 scale-y-75 blur-sm"></div>
+            <div className="w-[1000px] h-[1000px] border border-teal-uno rounded-full absolute transform translate-x-1/4 scale-x-75 blur-sm"></div>
           </div>
 
-          <div className="relative z-10 flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-            <button
-              onClick={handleOpenAiChat}
-              className="px-6 py-3.5 bg-[#00A3A3] hover:bg-[#006666] text-white text-xs font-semibold tracking-wider uppercase rounded-xs transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm"
-            >
-              <MessageSquare className="w-4 h-4" />
-              {isEs ? "Consultar al Asesor AI" : "Ask AI Advisor"}
-            </button>
-            <a
-              href="#contacto"
-              className="px-6 py-3.5 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-white text-xs font-semibold tracking-wider uppercase rounded-xs transition-all flex items-center justify-center gap-2 cursor-pointer text-center"
-            >
-              {isEs ? "Cita Técnica" : "Technical Appointment"}
-              <ArrowUpRight className="w-4 h-4 text-[#00A3A3]" />
-            </a>
+          <div className="relative z-10 max-w-3xl mx-auto bg-background/85 backdrop-blur-lg p-10 md:p-14 rounded-3xl shadow-ethereal border border-arena-calida/20">
+            <h2 className="font-serif-quote text-serif-quote italic text-gris-texto mb-8 leading-relaxed text-xl md:text-2xl">
+              "Espacios que abrazan el entorno, materiales que narran historias concretas bajo la luz."
+            </h2>
+            <h3 className="font-headline-xl text-headline-xl text-teal-uno mb-10 uppercase text-2xl md:text-3xl">
+              {isEs ? "INICIEMOS UN VIAJE ESPACIAL" : "LET'S CRAFT YOUR SPACE"}
+            </h3>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <button
+                onClick={handleOpenAiChat}
+                className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-teal-uno text-white font-label-caps text-label-caps uppercase tracking-widest hover:bg-arena-calida transition-colors duration-500 rounded-full shadow-ethereal cursor-pointer"
+              >
+                <MessageSquare className="w-4 h-4" />
+                {isEs ? "Manifestar Idea" : "Consult AI"}
+              </button>
+              
+              <a
+                href="#contacto"
+                className="inline-flex items-center justify-center gap-2 px-10 py-4 border border-teal-uno text-teal-uno font-label-caps text-label-caps uppercase tracking-widest hover:bg-teal-uno hover:text-white transition-all duration-500 rounded-full cursor-pointer"
+              >
+                {isEs ? "Cita Técnica" : "Technical Meeting"}
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+            </div>
           </div>
         </div>
+
       </div>
     </section>
   );

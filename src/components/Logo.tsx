@@ -22,9 +22,9 @@ export const Logo: React.FC<LogoProps> = ({
 }) => {
   const isDarkBg = theme === "dark" || (theme === "adaptive" && !isScrolled);
   
-  const iconColor = "#00A3A3"; // Strictly Teal UNO (#00A3A3)
-  const titleColor = isDarkBg ? "text-white" : "text-[#1E1E1E]";
-  const subtitleColor = isDarkBg ? "text-zinc-300" : "text-[#4A4A4A]";
+  const iconColor = "#00A3A3";
+  const titleColor = isDarkBg ? "text-teal-uno md:text-white" : "text-teal-uno";
+  const subtitleColor = isDarkBg ? "text-gris-texto md:text-zinc-300" : "text-gris-texto";
   const cubeBgColor = "#FFFFFF";
 
   const renderApertureSegments = () => {
@@ -32,7 +32,7 @@ export const Logo: React.FC<LogoProps> = ({
       return (
         <svg
           viewBox="0 0 200 200"
-          className="fill-current text-[#00A3A3]"
+          className="fill-current text-teal-uno"
           style={{ width: iconSize, height: iconSize }}
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -76,7 +76,7 @@ export const Logo: React.FC<LogoProps> = ({
     return (
       <svg
         viewBox="0 0 200 200"
-        className="fill-current text-[#00A3A3]"
+        className="fill-current text-teal-uno"
         style={{ width: iconSize, height: iconSize }}
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -140,26 +140,26 @@ export const Logo: React.FC<LogoProps> = ({
   };
 
   return (
-    <div className={`flex items-center gap-3 ${className}`}>
-      <div className="relative flex items-center justify-center">
+    <div className={`flex items-center gap-3.5 ${className}`}>
+      <div className="relative flex items-center justify-center flex-shrink-0">
         {renderApertureSegments()}
       </div>
 
       {showText && (
-        <div className="flex flex-col leading-none text-left font-sans select-none">
+        <div className="flex flex-col items-center justify-center text-center leading-none font-sans select-none">
           <motion.span
-            className={`font-semibold tracking-[0.35em] ${textSize} ${titleColor}`}
-            initial={animated ? { opacity: 0, x: -6 } : false}
-            animate={animated ? { opacity: 1, x: 0 } : false}
-            transition={{ duration: 0.8, delay: 0.7 }}
+            className={`font-semibold tracking-[0.3em] pl-[0.3em] uppercase font-label-caps ${textSize} ${titleColor}`}
+            initial={animated ? { opacity: 0, y: -4 } : false}
+            animate={animated ? { opacity: 1, y: 0 } : false}
+            transition={{ duration: 0.8, delay: 0.5 }}
           >
             UNO
           </motion.span>
           <motion.span
-            className={`font-normal tracking-[0.45em] text-[9px] mt-1 lowercase ${subtitleColor}`}
+            className={`font-normal tracking-[0.38em] pl-[0.38em] text-[9.5px] sm:text-[10px] mt-1 lowercase font-body-md ${subtitleColor}`}
             initial={animated ? { opacity: 0 } : false}
             animate={animated ? { opacity: 1 } : false}
-            transition={{ duration: 1, delay: 1 }}
+            transition={{ duration: 0.9, delay: 0.7 }}
           >
             arquitectos
           </motion.span>

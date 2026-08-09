@@ -1,213 +1,629 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Maximize2, X, CheckCircle2 } from "lucide-react";
+import { X, CheckCircle2, ArrowRight, ChevronLeft, ChevronRight, Sparkles, Layers, Coffee, Home, HeartPulse, Zap } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
-import { portfolioItems } from "../data/portfolio";
+
+interface GalleryImage {
+  url: string;
+  title: string;
+  desc: string;
+}
+
+interface CategoryTypology {
+  id: string;
+  title: string;
+  titleEn: string;
+  subtitle: string;
+  subtitleEn: string;
+  icon: string;
+  image: string;
+  badge?: string;
+  gallery?: GalleryImage[];
+  descEs: string;
+  descEn: string;
+  area: string;
+  materials: string;
+  projectHighlight?: string;
+  projectsSample: string[];
+  specsEs: string[];
+  specsEn: string[];
+}
+
+const residentialGallery: GalleryImage[] = [
+  {
+    url: "/projects/residencial/alux-7cielos-ocean-pool.jpg",
+    title: "Alberca & Jacuzzi Frente al Mar Caribe (7 Cielos)",
+    desc: "Muros y alberca con acabado continuo de Chukum natural pulido, pérgola en madera de Tzalam, cancelería marina y vista directa al mar turquesa."
+  },
+  {
+    url: "/projects/residencial/alux-7cielos-master-jungle-view.jpg",
+    title: "Master Suite con Cabecera Monumental (7 Cielos)",
+    desc: "Cabecera de piso a techo con capitoné acolchado en tono arena, cama plataforma de Tzalam y cancel corredizo con balcón hacia la copa de los árboles."
+  },
+  {
+    url: "/projects/residencial/alux-7cielos-chukum-suite.jpg",
+    title: "Recámara Doble en Microcemento & Rattán (Alux)",
+    desc: "Muros en estuco mineral texturizado gris piedra para inercia térmica, cabeceros de rattán, luminarias colgantes cálidas y ventanales a la selva."
+  },
+  {
+    url: "/projects/residencial/alux-7cielos-studio-parota.jpg",
+    title: "Studio & Comedor en Madera de Parota (Alux)",
+    desc: "Pisos y muros en microcemento pulido continuo, carpintería integral de piso a techo en Parota sólida, mesa de tronco vivo y lámpara de cobre."
+  },
+  {
+    url: "/projects/residencial/alux-7cielos-living-open.jpg",
+    title: "Gran Salón & Comedor Open-Concept (Alux)",
+    desc: "Espacio diáfano sin columnas intermedias, piso de porcelanato gran formato brillante, lámpara escultórica de cristal soplado y comedor en Parota."
+  }
+];
+
+const lavazzaGallery: GalleryImage[] = [
+  {
+    url: "/projects/lavazza/lavazza-facade.jpg",
+    title: "Fachada Principal & Acceso",
+    desc: "Friso superior en azul corporativo con volumetría 3D 'Lavazza Torino 1895', iluminación lineal empotrada y mobiliario bistró."
+  },
+  {
+    url: "/projects/lavazza/lavazza-counter-detail.jpg",
+    title: "Barra Barista & Detalle Material",
+    desc: "Barra entablada en duelas de roble, cubierta blanca continua, máquina de espresso Rancilio y hornacina con cerámica artesanal."
+  },
+  {
+    url: "/projects/lavazza/lavazza-interior.jpg",
+    title: "Salón Gourmet & Iluminación",
+    desc: "Muros en estuco mineral cálido, luminarias colgantes en latón satinado, rieles lineales y cuadros de autor con historia italiana."
+  },
+  {
+    url: "/projects/lavazza/lavazza-kiosk-terrace.jpg",
+    title: "Kiosko & Terraza Exterior",
+    desc: "Pabellón abierto con cerramiento plegable de seguridad, sombrillas arquitectónicas, vitrina refrigerada y muro vegetal."
+  }
+];
+
+const hospitalityGallery: GalleryImage[] = [
+  {
+    url: "/projects/hospitalidad/hospitalidad-santuario-arcos.jpg",
+    title: "Santuario Holístico & Arcos Escultóricos (Papaya Playa Project)",
+    desc: "Bóvedas catenarias monumentales esculpidas en ferrocemento y Chukum, columnas envueltas en bejuco regional y celosía suspendida de cuerdas de henequén."
+  },
+  {
+    url: "/projects/hospitalidad/hospitalidad-domo-organico.jpg",
+    title: "Domo Bioclimático & Cápsula Escultórica (Papaya Playa Project)",
+    desc: "Estructura biomórfica de doble curvatura con acabado en estuco de cal hidráulica, ventanales elípticos en madera de Parota y techumbre de zacate."
+  },
+  {
+    url: "/projects/hospitalidad/hospitalidad-suite-mirador.jpg",
+    title: "Suite Mirador & Treetop Sanctuary (Papaya Playa Project)",
+    desc: "Bóveda interior trenzada en costillaje de bejuco, duela ancha de madera tropical tratada, miradores elípticos y luz dorada al atardecer."
+  },
+  {
+    url: "/projects/hospitalidad/hospitalidad-sendero-selva.jpg",
+    title: "Pasarela Elevada entre el Dosel Selvático (Papaya Playa Project)",
+    desc: "Sendero sinuoso sobre pilotes de bajo impacto en madera dura de Zapote/Tzalam que preserva el manto freático y flora endémica."
+  }
+];
+
+const offGridGallery: GalleryImage[] = [
+  {
+    url: "/projects/offgrid/offgrid-villa-cenote.jpg",
+    title: "Villa Cenote & Volumetría en Tapial y Piedra (Santuario Ka'an)",
+    desc: "Residencia 100% autosuficiente en la selva de Tulum. Muros monolíticos de tierra compactada (tapial), plataforma volada en Tzalam y cenote plunge pool."
+  },
+  {
+    url: "/projects/offgrid/offgrid-pabellon-living.jpg",
+    title: "Pabellón Social Open-Concept & Ventanales Pocket (Santuario Ka'an)",
+    desc: "Conexión interior-exterior total sin cristales divisorios fijos, mobiliario en maderas endémicas recuperadas y ventilación cruzada pasiva permanente."
+  },
+  {
+    url: "/projects/offgrid/offgrid-rooftop-solar.jpg",
+    title: "Pérgola Solar & Mirador sobre el Dosel Selvático (Santuario Ka'an)",
+    desc: "Terraza panorámica 360° con pérgola fotovoltaica de paneles bifaciales semi-translúcidos, lounge exterior y tina de inmersión en Chukum."
+  },
+  {
+    url: "/projects/offgrid/offgrid-suite-tulum.jpg",
+    title: "Master Suite Bioclimática & Muros de Tierra (Santuario Ka'an)",
+    desc: "Suite principal inmersa en la fronda selvática, muros de alta inercia térmica en tapial y microcemento, cancelería esquinera sin postes y textiles de lino."
+  }
+];
+
+const categoryTypologies: CategoryTypology[] = [
+  {
+    id: "residenciales",
+    title: "RESIDENCIALES",
+    titleEn: "RESIDENTIAL",
+    subtitle: "HABITAT Y SOFISTICACIÓN",
+    subtitleEn: "HABITAT & SOPHISTICATION",
+    icon: "home",
+    image: "/projects/residencial/alux-7cielos-ocean-pool.jpg",
+    badge: "Alux & 7 Cielos",
+    gallery: residentialGallery,
+    projectHighlight: "Residencias Boutique: Alux & 7 Cielos",
+    descEs: "Arquitectura residencial de alto nivel concebida para una integración armónica con el paisaje tropical y costero. Los proyectos Alux y 7 Cielos destacan por su honestidad constructiva: muros y albercas continuas en Chukum natural pulido que mantienen frescura térmica, carpinterías monumentales a medida en maderas nobles de Parota y Tzalam certificadas, cancelerías de piso a techo con vistas panorámicas al mar y a la selva, y salones de concepto abierto con iluminación escenográfica.",
+    descEn: "High-end residential architecture conceived for seamless integration with tropical and coastal landscapes. The Alux and 7 Cielos projects feature monolithic polished Chukum plaster for passive thermal comfort, bespoke certified Parota and Tzalam hardwood millwork, floor-to-ceiling panoramic glazing framing ocean and jungle vistas, and expansive open-concept living spaces.",
+    area: "420 - 1,450 m²",
+    materials: "Chukum natural pulido, madera maciza de Parota y Tzalam, microcemento mineral, porcelanato gran formato, cristal templado anti-huracán y cancelería negra anodizada",
+    projectsSample: ["Residencia 7 Cielos (Frente al Mar)", "Villas Alux (Selva Maya)", "Villa Chukum (Tulum)", "Casa Coral (Cancún)"],
+    specsEs: [
+      "Alberca infinity y jacuzzi integrado con recubrimiento de Chukum natural impermeable",
+      "Carpintería a medida en Parota y Tzalam: puertas pivotantes, clósets y cabeceras de autor",
+      "Muros en estuco mineral texturizado y microcemento continuo para confort térmico pasivo",
+      "Cancelería estructural de piso a techo con cristales templados resistentes a vientos marinos",
+      "Grandes luces estructurales en concreto armado para salones y terrazas sin columnas intermedias"
+    ],
+    specsEn: [
+      "Infinity pool and integrated plunge spa finished in waterproof polished natural Chukum",
+      "Bespoke solid Parota and Tzalam millwork: pivot doors, closets, and custom headboards",
+      "Textured mineral plaster and seamless microcement walls providing natural thermal mass",
+      "Floor-to-ceiling hurricane-rated structural glazing with marine-grade black anodized frames",
+      "Long-span reinforced concrete engineering enabling column-free open-plan living and terraces"
+    ]
+  },
+  {
+    id: "comerciales",
+    title: "COMERCIALES",
+    titleEn: "COMMERCIAL",
+    subtitle: "ESPACIOS DE INTERACCIÓN",
+    subtitleEn: "SPACES OF INTERACTION",
+    icon: "storefront",
+    image: "/projects/lavazza/lavazza-facade.jpg",
+    badge: "Lavazza Coffee Bar",
+    gallery: lavazzaGallery,
+    projectHighlight: "Cafetería & Espresso Bar Lavazza",
+    descEs: "Diseño y ejecución integral para proyectos gastronómicos y retail de alta gama. El proyecto insignia de Cafetería Lavazza combina la elegancia italiana de Turín (1895) con la calidez orgánica del diseño contemporáneo: muros en estuco mineral cálido, barra curva entablada en roble claro, estación barista ergonómica de alto rendimiento y terraza exterior modular.",
+    descEn: "Comprehensive design and construction for high-end hospitality and retail. The flagship Lavazza Coffee Bar balances Italian Turin heritage (1895) with warm contemporary finishes: textured mineral walls, curved fluted light oak counter, high-performance barista station, and modular outdoor terrace.",
+    area: "185 m² (120 m² salón/barra + 65 m² terraza)",
+    materials: "Duela de roble claro, cubierta sólida blanca antibacterial, estuco mineral arena, porcelanato gran formato y cancelería de cristal templado",
+    projectsSample: ["Cafetería Lavazza (Plaza Comercial)", "Showroom Polanco (CDMX)", "Pabellón Gastronómico (Tulum)"],
+    specsEs: [
+      "Estación barista optimizada con máquina Rancilio y molinos de precisión",
+      "Iluminación LED lineal en rieles empotrados con temperatura cálida de 2700K",
+      "Kiosko exterior con persianas plegables de seguridad y muros vegetales",
+      "Muros con hornacinas iluminadas y celosía cerámica 3D texturizada",
+      "Integración de tótem digital interactivo y vitrina refrigerada curva"
+    ],
+    specsEn: [
+      "Optimized barista workflow with Rancilio espresso machine and on-demand grinders",
+      "Recessed architectural linear LED lighting with warm 2700K ambient tone",
+      "Outdoor terrace kiosk with folding security shutters and green plant wall",
+      "Recessed illuminated display niches and 3D textured ceramic tile backsplash",
+      "Integrated self-ordering digital totem and curved refrigerated display case"
+    ]
+  },
+  {
+    id: "hospitalarios",
+    title: "HOSPITALARIOS",
+    titleEn: "HOSPITALITY",
+    subtitle: "BIENESTAR Y PRECISIÓN",
+    subtitleEn: "WELLNESS & PRECISION",
+    icon: "medical_services",
+    image: "/projects/hospitalidad/hospitalidad-santuario-arcos.jpg",
+    badge: "Papaya Playa Project",
+    gallery: hospitalityGallery,
+    projectHighlight: "Papaya Playa Project (Tulum) • Eco-Sanctuary",
+    descEs: "Arquitectura inmersiva para el bienestar sensorial y la reconexión con la naturaleza en Tulum. En Papaya Playa Project fusionamos hospitalidad de lujo con respeto absoluto por el ecosistema costero: bóvedas catenarias esculpidas en ferrocemento y Chukum natural, pasarelas elevadas en madera de Zapote que protegen el suelo kárstico, cápsulas habitacionales biomórficas con miradores elípticos de 360° y celosías en fibras vegetales de henequén que tamizan la brisa marina.",
+    descEn: "Immersive barefoot luxury architecture in Tulum. At Papaya Playa Project, we blend high-end hospitality with regenerative coastal preservation: catenary ferrocement vaults finished in natural Chukum, elevated Zapote boardwalks protecting the fragile karst soil, biomorphic guest domes with 360° elliptical vistas, and handcrafted henequen rope screens filtering coastal breeze.",
+    area: "1,800 - 9,500 m²",
+    materials: "Ferrocemento estructural, estuco continuo de Chukum color arena, madera dura de Zapote y Tzalam, bejuco y mimbre trenzado artesanal, cuerda de henequén natural y cubiertas de zacate regional",
+    projectsSample: ["Papaya Playa Project (Tulum)", "Santuario Zen (Mérida)", "Refugio Etéreo (Bacalar)", "Eco-Lodge Canopy (Sian Ka'an)"],
+    specsEs: [
+      "Bóvedas catenarias de ferrocemento y Chukum con inercia térmica pasiva para climatización natural",
+      "Senderos y plataformas elevadas sobre pilotes de madera de Zapote para huella ecológica cero",
+      "Cápsulas habitacionales bioclimáticas con ventilación cruzada continua mediante efecto Venturi",
+      "Celosías y muros acústicos en bejuco y fibras naturales de henequén 100% biodegradables",
+      "Captación pluvial integral y tratamiento biológico de aguas en circuito cerrado"
+    ],
+    specsEn: [
+      "Ferrocement catenary vaults finished in Chukum providing passive thermal mass for natural cooling",
+      "Elevated boardwalks and platforms on Zapote timber stilts ensuring zero soil compaction",
+      "Bioclimatic suite pods engineered with Venturi effect continuous cross-ventilation",
+      "100% biodegradable acoustic screens and woven walls handcrafted in regional henequen and bejuco",
+      "Closed-loop rainwater harvesting and biological wastewater wetland treatment"
+    ]
+  },
+  {
+    id: "off-the-grid",
+    title: "PROYECTOS OFF THE GRID",
+    titleEn: "OFF THE GRID PROJECTS",
+    subtitle: "AUTOSUFICIENCIA TROPICAL",
+    subtitleEn: "TROPICAL SELF-SUFFICIENCY",
+    icon: "eco",
+    image: "/projects/offgrid/offgrid-villa-cenote.jpg",
+    badge: "Santuario Ka'an (Tulum)",
+    gallery: offGridGallery,
+    projectHighlight: "Santuario Ka'an • Off-Grid Jungle Compound (Tulum)",
+    descEs: "Desarrollo residencial autónomo de ultra-lujo en lo profundo de la selva virgen de Tulum. Santuario Ka'an opera al 100% fuera de la red eléctrica y de agua: micro-red solar con almacenamiento en baterías de litio LFP, muros monolíticos de tierra compactada (tapial) y piedra caliza regional, captación pluvial de circuito cerrado con esterilización UV-C, biodigestores anaeróbicos y arquitectura bioclimática pasiva de huella de carbono neutra.",
+    descEn: "Ultra-luxury autonomous estate deep in the virgin Tulum jungle. Santuario Ka'an operates 100% off-the-grid: smart solar micro-grid with LFP lithium storage, monolithic rammed earth (tapial) and local limestone walls, closed-loop rainwater harvesting with UV-C purification, anaerobic biodigesters, and zero-carbon bioclimatic engineering.",
+    area: "580 - 2,800 m²",
+    materials: "Tierra compactada (tapial local), piedra caliza maya, madera certificada de Tzalam y Chicozapote, estuco natural de Chukum, pérgolas solares bifaciales de cristal templado",
+    projectsSample: ["Santuario Ka'an (Tulum)", "Casa Selva Negra (Cobá)", "Pabellón Solar Autónomo (Bacalar)"],
+    specsEs: [
+      "Micro-red fotovoltaica aislada de 18 kWp con banco de baterías de litio LFP de 45 kWh",
+      "Sistema de captación pluvial de 60,000L con microfiltración y purificación UV-C de grado potable",
+      "Muros monolíticos de tapial de 40 cm con altísima inercia térmica diurna y nocturna",
+      "Tratamiento anaeróbico de aguas negras y humedal artificial de fitorremediación para aguas grises",
+      "Cero emisión de ruido y conservación del 92% de la masa arbórea original del lote selvático"
+    ],
+    specsEn: [
+      "Isolated 18 kWp photovoltaic micro-grid with 45 kWh smart LFP lithium battery storage bank",
+      "60,000L rainwater harvesting system with multi-stage microfiltration and drinking-grade UV-C purification",
+      "40 cm monolithic rammed earth walls delivering superior diurnal/nocturnal passive thermal insulation",
+      "Anaerobic blackwater treatment and constructed phytoremediation wetland for greywater garden reuse",
+      "Zero noise pollution and preservation of 92% of the original virgin jungle tree canopy"
+    ]
+  }
+];
 
 export default function Portfolio() {
-  const { t, language } = useLanguage();
-  const [selectedProject, setSelectedProject] = useState<typeof portfolioItems[0] | null>(null);
-  const [activeImage, setActiveImage] = useState<string | null>(null);
+  const { language } = useLanguage();
+  const isEs = language === "es";
+  const [selectedCategory, setSelectedCategory] = useState<CategoryTypology | null>(null);
+  
+  // Unified Synchronized Auto-Carousel Tick across ALL categories
+  const [syncedSlideTick, setSyncedSlideTick] = useState(0);
 
-  const handleSelectProject = (project: typeof portfolioItems[0]) => {
-    setSelectedProject(project);
-    setActiveImage(project.image);
+  useEffect(() => {
+    const syncTimer = setInterval(() => {
+      setSyncedSlideTick((prev) => prev + 1);
+    }, 5000);
+
+    return () => clearInterval(syncTimer);
+  }, []);
+
+  // Modal active image state
+  const [modalActiveImgIndex, setModalActiveImgIndex] = useState(0);
+
+  const handleOpenCategory = (item: CategoryTypology) => {
+    setSelectedCategory(item);
+    setModalActiveImgIndex(0);
   };
 
   return (
-    <section id="portfolio" className="py-28 md:py-36 px-6 md:px-12 bg-[#FFFFFF] text-[#4A4A4A] font-sans border-t border-zinc-100">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-16 text-left">
-          <span className="text-[#00A3A3] text-xs uppercase tracking-[0.4em] font-semibold block mb-3 animate-fadeIn">
-            {t("portfolio.tagline")}
-          </span>
-          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-[#1E1E1E] animate-slideUp">
-            {t("portfolio.heading")}
-          </h2>
-          <p className="text-[#4A4A4A] text-sm mt-3 font-normal max-w-xl">
-            {t("portfolio.desc")}
+    <section id="proyectos" className="py-section-padding px-margin-mobile md:px-margin-desktop bg-background font-sans border-b border-arena-calida/20 text-gris-texto">
+      <div className="max-w-container-max mx-auto">
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 reveal-on-scroll is-visible">
+          <div>
+            <h2 className="font-label-caps text-label-caps text-arena-calida mb-6 flex items-center gap-6 uppercase tracking-widest">
+              <span className="w-16 h-[1px] bg-arena-calida inline-block"></span>
+              {isEs ? "Tipologías Arquitectónicas" : "Architectural Typologies"}
+            </h2>
+            <h3 className="font-headline-xl text-headline-xl text-teal-uno uppercase">
+              {isEs ? "COLECCIÓN POR CATEGORÍA" : "COLLECTION BY CATEGORY"}
+            </h3>
+          </div>
+          <p className="mt-8 md:mt-0 font-body-md text-body-md text-gris-texto max-w-xs md:text-right leading-relaxed">
+            {isEs 
+              ? "Exploración técnica y material a través de diversas escalas y propósitos espaciales."
+              : "Technical and material exploration across diverse scales and spatial purposes."}
           </p>
         </div>
 
-        {/* PORTFOLIO GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <AnimatePresence mode="popLayout">
-            {portfolioItems.map((item) => (
-              <motion.div
+        {/* 2x2 Grid of Typologies */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-x-12 gap-y-20">
+          {categoryTypologies.map((item, index) => {
+            const isCommercial = item.id === "comerciales";
+            const isResidential = item.id === "residenciales";
+            const isHospitality = item.id === "hospitalarios";
+            const isOffgrid = item.id === "off-the-grid";
+            const hasGallery = !!item.gallery && item.gallery.length > 0;
+            
+            // All categories change simultaneously in complete harmony
+            const currentSlide = hasGallery && item.gallery 
+              ? (syncedSlideTick % item.gallery.length) 
+              : 0;
+
+            return (
+              <div 
                 key={item.id}
-                layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.4 }}
-                className="group bg-[#FFFFFF] border border-zinc-200/60 rounded-xs overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+                onClick={() => handleOpenCategory(item)}
+                className="md:col-span-6 group cursor-pointer reveal-on-scroll is-visible"
+                style={index % 2 === 1 ? { transitionDelay: "150ms" } : undefined}
               >
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-zinc-100">
-                  <img
-                    src={item.image}
-                    alt={language === "es" ? item.titleEs : item.titleEn}
-                    referrerPolicy="no-referrer"
-                    loading="lazy"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <button
-                      onClick={() => handleSelectProject(item)}
-                      className="bg-white hover:bg-[#00A3A3] text-black hover:text-white p-3.5 rounded-full shadow-lg cursor-pointer transform translate-y-4 group-hover:translate-y-0 transition-all duration-300"
-                      aria-label="Ver detalles"
-                    >
-                      <Maximize2 className="w-5 h-5" />
-                    </button>
+                <div className="relative overflow-hidden aspect-[16/9] mb-6 rounded-2xl bg-surface-container-low shadow-ethereal">
+                  {/* Dynamic Auto-Carousel for Cards with gallery */}
+                  {hasGallery && item.gallery ? (
+                    <div className="relative w-full h-full overflow-hidden">
+                      <AnimatePresence mode="sync">
+                        <motion.img 
+                          key={currentSlide}
+                          alt={item.gallery[currentSlide].title} 
+                          className="w-full h-full object-cover absolute inset-0 transition-transform duration-1000 group-hover:scale-105" 
+                          src={item.gallery[currentSlide].url}
+                          initial={{ opacity: 0, scale: 1.05 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.98 }}
+                          transition={{ duration: 1.3, ease: [0.25, 0.1, 0.25, 1.0] }}
+                          loading="lazy"
+                        />
+                      </AnimatePresence>
+
+                      {/* Carousel Indicator Dots */}
+                      <div className="absolute top-4 right-4 z-10 flex gap-1.5 bg-black/35 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
+                        {item.gallery.map((_, i) => (
+                          <div 
+                            key={i} 
+                            className={`h-1.5 rounded-full transition-all duration-700 ease-out ${
+                              i === currentSlide ? "w-5 bg-teal-uno" : "w-1.5 bg-white/40"
+                            }`}
+                          />
+                        ))}
+                      </div>
+
+                      {/* Project Badge on Card */}
+                      {item.badge && (
+                        <div className="absolute top-4 left-4 z-10 bg-white/90 backdrop-blur-md border border-white/60 px-3.5 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm transition-all duration-300 group-hover:bg-white">
+                          {isResidential && <Home className="w-3.5 h-3.5 text-teal-uno" />}
+                          {isCommercial && <Coffee className="w-3.5 h-3.5 text-teal-uno" />}
+                          {isHospitality && <HeartPulse className="w-3.5 h-3.5 text-teal-uno" />}
+                          {isOffgrid && <Zap className="w-3.5 h-3.5 text-teal-uno" />}
+                          <span className="font-label-caps text-[10px] uppercase font-semibold text-teal-uno tracking-wider">
+                            {item.badge}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <img 
+                      alt={isEs ? item.title : item.titleEn} 
+                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-90 group-hover:opacity-100" 
+                      src={item.image}
+                      loading="lazy"
+                      referrerPolicy="no-referrer"
+                    />
+                  )}
+
+                  <div className="absolute inset-0 bg-arena-calida/5 group-hover:bg-transparent transition-colors duration-700 pointer-events-none"></div>
+                  
+                  {/* Hover Reveal Card */}
+                  <div className="absolute bottom-6 left-6 right-6 p-6 bg-white/80 backdrop-blur-md rounded-xl border border-arena-calida/20 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0 flex items-center justify-between shadow-lg">
+                    <div>
+                      <p className="font-label-caps text-label-caps text-teal-uno uppercase tracking-widest font-semibold">
+                        {isEs ? "Ver Proyectos & Ficha Técnica" : "View Projects & Specs"}
+                      </p>
+                      {hasGallery && item.gallery && (
+                        <p className="font-body-md text-xs text-gris-texto mt-0.5 font-light truncate max-w-[280px]">
+                          {item.gallery[currentSlide].title}
+                        </p>
+                      )}
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-teal-uno flex-shrink-0 ml-2" />
                   </div>
-                  <span className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 text-[10px] font-medium tracking-wider text-[#1E1E1E] uppercase shadow-xs">
-                    {language === "es" ? "Proyecto Residencial" : "Residential Project"}
-                  </span>
                 </div>
 
-                <div className="p-6 text-left flex-1 flex flex-col justify-between">
+                <div className="flex justify-between items-start">
                   <div>
-                    <h3 className="text-xl font-semibold text-[#1E1E1E] mb-2 group-hover:text-[#00A3A3] transition-colors">
-                      {language === "es" ? item.titleEs : item.titleEn}
-                    </h3>
-                    <p className="text-[#00A3A3] font-medium text-xs mb-3">
-                      {language === "es" ? item.locationEs : item.locationEn}
-                    </p>
-                    <p className="text-[#4A4A4A] text-sm leading-relaxed mb-6 font-normal">
-                      {language === "es" ? item.descEs : item.descEn}
+                    <h4 className="font-headline-md text-headline-md text-teal-uno mb-2 group-hover:text-arena-calida transition-colors uppercase">
+                      {isEs ? item.title : item.titleEn}
+                    </h4>
+                    <p className="font-label-caps text-label-caps text-gris-texto/70 flex items-center gap-2 uppercase text-xs">
+                      <span className="material-symbols-outlined text-[16px] text-arena-calida">{item.icon}</span>
+                      {isEs ? item.subtitle : item.subtitleEn}
                     </p>
                   </div>
-
-                  <div className="pt-4 border-t border-[#C8B89A]/30 flex items-center justify-between">
-                    <span className="text-xs font-semibold tracking-wider text-[#4A4A4A]">
-                      {item.area}
+                  {hasGallery && item.gallery && (
+                    <span className="font-label-caps text-[11px] uppercase tracking-wider text-arena-calida bg-arena-calida/15 px-3 py-1 rounded-full font-semibold">
+                      {item.gallery.length} Vistas Disponibles
                     </span>
-                    <button
-                      onClick={() => handleSelectProject(item)}
-                      className="text-xs font-semibold uppercase tracking-widest text-[#00A3A3] hover:text-[#006666] flex items-center gap-1.5 cursor-pointer transition-colors"
-                    >
-                      {language === "es" ? "Explorar Ficha" : "Explore Case"}
-                    </button>
-                  </div>
+                  )}
                 </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
+              </div>
+            );
+          })}
         </div>
+
       </div>
 
-      {/* LIGHTBOX MODAL */}
+      {/* DETAILED TECHNICAL FICHA MODAL WITH CAROUSEL */}
       <AnimatePresence>
-        {selectedProject && (
+        {selectedCategory && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-[#1E1E1E]/90 z-50 overflow-y-auto flex justify-center items-start py-10 px-4 md:px-12 backdrop-blur-md font-sans"
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="fixed inset-0 bg-black/85 z-50 overflow-y-auto flex justify-center items-start py-8 px-4 md:px-12 backdrop-blur-lg font-sans"
           >
-            <div className="relative w-full max-w-6xl bg-white text-[#4A4A4A] rounded-xs overflow-hidden my-auto shadow-2xl">
+            <motion.div 
+              initial={{ opacity: 0, y: 30, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 20, scale: 0.98 }}
+              transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1.0] }}
+              className="relative w-full max-w-5xl bg-background text-gris-texto border border-arena-calida/30 rounded-3xl overflow-hidden shadow-2xl my-auto"
+            >
+              {/* Close Button */}
               <button
-                onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 z-10 bg-black/10 hover:bg-black/20 text-[#1E1E1E] p-2.5 rounded-full transition-colors cursor-pointer"
+                onClick={() => setSelectedCategory(null)}
+                className="absolute top-4 right-4 z-20 bg-black/40 hover:bg-black/70 text-white p-2.5 rounded-full transition-colors cursor-pointer backdrop-blur-md"
                 aria-label="Close modal"
               >
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="grid grid-cols-1 lg:grid-cols-12">
-                {/* Visual Viewport with Thumbnail Gallery */}
-                <div className="lg:col-span-7 bg-[#1E1E1E] relative flex flex-col justify-between min-h-[450px]">
-                  <div className="flex-1 w-full h-[380px] md:h-[450px] relative overflow-hidden">
-                    <img
-                      src={activeImage || selectedProject.image}
-                      alt={language === "es" ? selectedProject.titleEs : selectedProject.titleEn}
-                      referrerPolicy="no-referrer"
-                      loading="lazy"
-                      className="w-full h-full object-cover transition-all duration-500"
-                    />
-                    <div className="absolute bottom-4 left-4 bg-[#1E1E1E]/85 backdrop-blur-md px-4 py-2 text-white text-xs font-medium tracking-wider">
-                      {language === "es" ? selectedProject.locationEs : selectedProject.locationEn}
+              {/* MEDIA GALLERY CAROUSEL HEADER */}
+              <div className="relative bg-zinc-900 overflow-hidden">
+                {selectedCategory.gallery ? (
+                  <div className="relative">
+                    {/* Main Active Image Display */}
+                    <div className="relative h-[320px] md:h-[480px] w-full overflow-hidden flex items-center justify-center bg-zinc-950">
+                      <AnimatePresence mode="wait">
+                        <motion.img
+                          key={modalActiveImgIndex}
+                          src={selectedCategory.gallery[modalActiveImgIndex].url}
+                          alt={selectedCategory.gallery[modalActiveImgIndex].title}
+                          initial={{ opacity: 0.15, scale: 1.02 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0.15 }}
+                          transition={{ duration: 0.55, ease: "easeInOut" }}
+                          className="w-full h-full object-cover"
+                        />
+                      </AnimatePresence>
+
+                      <div className="absolute inset-0 bg-gradient-to-t from-background via-black/20 to-transparent pointer-events-none"></div>
+
+                      {/* Navigation Arrows */}
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setModalActiveImgIndex((prev) => 
+                            prev === 0 ? selectedCategory.gallery!.length - 1 : prev - 1
+                          );
+                        }}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/75 text-white p-3 rounded-full backdrop-blur-md transition-all cursor-pointer z-10"
+                        aria-label="Previous image"
+                      >
+                        <ChevronLeft className="w-5 h-5" />
+                      </button>
+
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setModalActiveImgIndex((prev) => 
+                            (prev + 1) % selectedCategory.gallery!.length
+                          );
+                        }}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/75 text-white p-3 rounded-full backdrop-blur-md transition-all cursor-pointer z-10"
+                        aria-label="Next image"
+                      >
+                        <ChevronRight className="w-5 h-5" />
+                      </button>
+
+                      {/* Active Image Title Caption */}
+                      <div className="absolute bottom-4 left-6 md:left-10 z-10 text-left">
+                        <span className="bg-teal-uno text-white font-label-caps text-[10px] uppercase px-2.5 py-1 rounded-md tracking-widest inline-block mb-1 font-semibold">
+                          Foto {modalActiveImgIndex + 1} de {selectedCategory.gallery.length}
+                        </span>
+                        <h4 className="text-white font-headline-md text-lg md:text-xl uppercase drop-shadow-md">
+                          {selectedCategory.gallery[modalActiveImgIndex].title}
+                        </h4>
+                        <p className="text-zinc-200 text-xs md:text-sm font-body-md drop-shadow max-w-xl">
+                          {selectedCategory.gallery[modalActiveImgIndex].desc}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Thumbnail Selector Bar */}
+                    <div className="p-3 bg-zinc-900 border-t border-zinc-800 flex gap-3 overflow-x-auto justify-start items-center">
+                      {selectedCategory.gallery.map((img, idx) => {
+                        const isSelected = idx === modalActiveImgIndex;
+                        return (
+                          <button
+                            key={idx}
+                            onClick={() => setModalActiveImgIndex(idx)}
+                            className={`flex-shrink-0 w-20 md:w-24 h-14 rounded-lg overflow-hidden transition-all duration-300 relative group cursor-pointer ${
+                              isSelected ? "ring-2 ring-teal-uno scale-105 opacity-100" : "opacity-55 hover:opacity-100"
+                            }`}
+                          >
+                            <img src={img.url} alt={img.title} className="w-full h-full object-cover" />
+                            <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent"></div>
+                          </button>
+                        );
+                      })}
                     </div>
                   </div>
+                ) : (
+                  <div className="relative h-64 md:h-80 w-full overflow-hidden">
+                    <img
+                      src={selectedCategory.image}
+                      alt={isEs ? selectedCategory.title : selectedCategory.titleEn}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-black/20"></div>
+                  </div>
+                )}
+              </div>
 
-                  {/* Interiores / Exterior Selector */}
-                  <div className="bg-[#1E1E1E] p-4 flex gap-3 overflow-x-auto border-t border-zinc-800 justify-start items-center">
-                    {selectedProject.gallery.map((img, i) => {
-                      const isSelected = (activeImage || selectedProject.image) === img.url;
-                      return (
-                        <button
-                          key={i}
-                          onClick={() => setActiveImage(img.url)}
-                          className={`flex-shrink-0 w-16 h-12 border rounded-xs overflow-hidden transition-all duration-300 relative group cursor-pointer ${
-                            isSelected ? "border-[#00A3A3] scale-105 ring-1 ring-[#00A3A3]" : "border-zinc-800 hover:border-zinc-600"
-                          }`}
-                        >
-                          <img src={img.url} alt={img.name} loading="lazy" className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity" />
-                          <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
-                          <span className="absolute bottom-0 left-0 right-0 bg-black/85 text-[8px] text-white font-medium text-center truncate py-0.5 tracking-wider uppercase">
-                            {img.name}
-                          </span>
-                        </button>
-                      );
-                    })}
+              {/* TECHNICAL SHEET CONTENT BODY */}
+              <div className="p-6 md:p-10 space-y-6 text-left">
+                {/* Header Subtitles */}
+                <div className="border-b border-arena-calida/20 pb-4">
+                  <span className="font-label-caps text-xs uppercase tracking-[0.25em] text-arena-calida font-semibold block mb-1 flex items-center gap-2">
+                    <span className="material-symbols-outlined text-[16px] text-arena-calida">{selectedCategory.icon}</span>
+                    {isEs ? selectedCategory.subtitle : selectedCategory.subtitleEn}
+                  </span>
+                  <h3 className="font-headline-xl text-2xl md:text-3xl font-semibold text-teal-uno uppercase">
+                    {selectedCategory.projectHighlight 
+                      ? selectedCategory.projectHighlight 
+                      : (isEs ? selectedCategory.title : selectedCategory.titleEn)}
+                  </h3>
+                </div>
+
+                <p className="font-body-md text-gris-texto text-sm md:text-base leading-relaxed">
+                  {isEs ? selectedCategory.descEs : selectedCategory.descEn}
+                </p>
+
+                {/* Technical Specs Key Values */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-surface-container-low/70 p-5 rounded-2xl border border-arena-calida/30 text-xs">
+                  <div>
+                    <span className="text-zinc-500 font-label-caps uppercase block mb-1 font-semibold">
+                      {isEs ? "Rango de Superficie:" : "Project Surface Area:"}
+                    </span>
+                    <span className="text-teal-uno font-semibold text-sm">{selectedCategory.area}</span>
+                  </div>
+                  <div>
+                    <span className="text-zinc-500 font-label-caps uppercase block mb-1 font-semibold">
+                      {isEs ? "Materialidad Principal & Acabados:" : "Core Materials & Finishes:"}
+                    </span>
+                    <span className="text-teal-uno font-semibold">{selectedCategory.materials}</span>
                   </div>
                 </div>
 
-                {/* Technical / Info Panel */}
-                <div className="lg:col-span-5 p-8 md:p-12 text-left flex flex-col justify-between">
-                  <div>
-                    <span className="text-[#00A3A3] text-xs uppercase tracking-[0.3em] font-semibold block mb-3">
-                      {language === "es" ? "Ficha Técnica de Proyecto" : "Technical Project File"}
-                    </span>
-                    <h3 className="text-3xl font-semibold text-[#1E1E1E] mb-3">
-                      {language === "es" ? selectedProject.titleEs : selectedProject.titleEn}
-                    </h3>
-                    <p className="text-[#4A4A4A] text-sm leading-relaxed mb-8">
-                      {language === "es" ? selectedProject.descEs : selectedProject.descEn}
-                    </p>
-
-                    <div className="space-y-4 border-t border-b border-[#C8B89A]/30 py-6 mb-8 text-xs text-[#4A4A4A]">
-                      <div className="flex justify-between">
-                        <span className="text-zinc-500 uppercase tracking-wider text-[10px] font-semibold">Área:</span>
-                        <span className="text-[#1E1E1E] font-semibold">{selectedProject.area}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-zinc-500 uppercase tracking-wider text-[10px] font-semibold">{language === "es" ? "Material Principal:" : "Main Material:"}</span>
-                        <span className="text-[#1E1E1E] font-semibold">{selectedProject.materials}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-zinc-500 uppercase tracking-wider text-[10px] font-semibold">{language === "es" ? "Tipo de Proyecto:" : "Project Type:"}</span>
-                        <span className="text-[#1E1E1E] font-semibold">{selectedProject.type}</span>
-                      </div>
-                    </div>
-
-                    <div className="space-y-3">
-                      <h4 className="text-xs uppercase tracking-wider font-semibold text-[#1E1E1E] mb-2">
-                        {language === "es" ? "Especificaciones Estructurales:" : "Structural Highlights:"}
-                      </h4>
-                      {(language === "es" ? selectedProject.specsEs : selectedProject.specsEn).map((spec, i) => (
-                        <div key={i} className="flex gap-2.5 items-start text-xs text-[#4A4A4A]">
-                          <CheckCircle2 className="w-4 h-4 text-[#00A3A3] flex-shrink-0 mt-0.5" />
-                          <span>{spec}</span>
-                        </div>
-                      ))}
-                    </div>
+                {/* Reference Projects */}
+                <div>
+                  <h4 className="font-label-caps text-xs uppercase tracking-wider font-semibold text-teal-uno mb-3 flex items-center gap-2">
+                    <Layers className="w-4 h-4 text-arena-calida" />
+                    {isEs ? "Proyectos de Referencia en Portafolio:" : "Featured Reference Projects:"}
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedCategory.projectsSample.map((proj, idx) => (
+                      <span key={idx} className="px-3.5 py-1.5 bg-surface-container-low rounded-full border border-arena-calida/30 text-xs font-label-caps text-teal-uno font-medium">
+                        {proj}
+                      </span>
+                    ))}
                   </div>
+                </div>
 
-                  <div className="mt-10 pt-6 border-t border-[#C8B89A]/30 flex items-center justify-between">
-                    <button
-                      onClick={() => {
-                        setSelectedProject(null);
-                        const event = new CustomEvent("open-ai-chat");
-                        window.dispatchEvent(event);
-                      }}
-                      className="bg-[#00A3A3] hover:bg-[#006666] text-white px-6 py-3.5 text-xs uppercase font-semibold tracking-widest rounded-xs transition-colors cursor-pointer w-full text-center"
-                    >
-                      {language === "es" ? "Consultar Proyecto Similar" : "Consult Similar Project"}
-                    </button>
+                {/* Technical & Construction Criteria List */}
+                <div>
+                  <h4 className="font-label-caps text-xs uppercase tracking-wider font-semibold text-teal-uno mb-3 flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-arena-calida" />
+                    {isEs ? "Criterios de Materiales, Ingeniería & Sostenibilidad:" : "Materials, Engineering & Sustainability Criteria:"}
+                  </h4>
+                  <div className="space-y-2.5">
+                    {(isEs ? selectedCategory.specsEs : selectedCategory.specsEn).map((spec, i) => (
+                      <div key={i} className="flex gap-2.5 items-start text-xs text-gris-texto font-body-md">
+                        <CheckCircle2 className="w-4 h-4 text-teal-uno flex-shrink-0 mt-0.5" />
+                        <span>{spec}</span>
+                      </div>
+                    ))}
                   </div>
+                </div>
+
+                {/* Action CTA */}
+                <div className="pt-4 flex flex-col sm:flex-row gap-4">
+                  <button
+                    onClick={() => {
+                      setSelectedCategory(null);
+                      window.dispatchEvent(new CustomEvent("open-ai-chat"));
+                    }}
+                    className="flex-1 bg-teal-uno hover:bg-arena-calida text-white py-4 font-label-caps text-label-caps uppercase tracking-widest rounded-full transition-colors cursor-pointer text-center shadow-ethereal"
+                  >
+                    {isEs ? "Consultar Viabilidad de Proyecto" : "Consult Project Feasibility"}
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      setSelectedCategory(null);
+                      const el = document.getElementById("contacto");
+                      if (el) el.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    className="sm:w-auto px-8 py-4 border border-teal-uno text-teal-uno hover:bg-teal-uno hover:text-white font-label-caps text-label-caps uppercase tracking-widest rounded-full transition-colors cursor-pointer text-center"
+                  >
+                    {isEs ? "Agendar Cita Técnica" : "Book Technical Meeting"}
+                  </button>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

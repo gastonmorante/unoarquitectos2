@@ -24,7 +24,7 @@ const MetricCounter: React.FC<MetricCounterProps> = ({ valueStr, title, desc }) 
     if (isInView) {
       const controls = animate(0, targetNumber, {
         duration: 2,
-        ease: [0.16, 1, 0.3, 1], // Smooth easeOut curve
+        ease: [0.16, 1, 0.3, 1],
         onUpdate(latest) {
           setDisplayNum(Math.floor(latest));
         }
@@ -36,23 +36,23 @@ const MetricCounter: React.FC<MetricCounterProps> = ({ valueStr, title, desc }) 
   return (
     <div
       ref={ref}
-      className="bg-zinc-50/50 border border-zinc-200/60 rounded-xs p-8 flex flex-col justify-between relative group overflow-hidden transition-all duration-300 hover:shadow-md h-full text-left font-sans"
+      className="bg-white border border-arena-calida/25 rounded-2xl p-8 flex flex-col justify-between relative group overflow-hidden transition-all duration-500 hover:shadow-ethereal hover:border-arena-calida/60 h-full text-left font-sans"
     >
       {/* Brand color subtle hover glow */}
-      <div className="absolute inset-0 bg-[#00A3A3]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-arena-calida/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
       <div className="relative z-10">
-        <div className="text-5xl md:text-6xl font-semibold tracking-tight text-[#00A3A3] mb-4">
+        <div className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-teal-uno mb-4 font-sans">
           {prefix}{displayNum}{suffix}
         </div>
-        <h3 className="text-xs uppercase tracking-[0.25em] font-semibold text-[#1E1E1E] mb-2">
+        <h3 className="font-label-caps text-label-caps uppercase text-teal-uno mb-2 tracking-wider font-semibold">
           {title}
         </h3>
-        <p className="text-xs text-zinc-500 font-normal leading-relaxed">
+        <p className="font-body-md text-xs text-gris-texto leading-relaxed">
           {desc}
         </p>
       </div>
-      <div className="w-8 group-hover:w-full h-[2px] bg-[#00A3A3] transition-all duration-500 mt-6 relative z-10"></div>
+      <div className="w-8 group-hover:w-full h-[2px] bg-arena-calida transition-all duration-500 mt-6 relative z-10"></div>
     </div>
   );
 };
@@ -84,8 +84,8 @@ export default function Metrics() {
   ];
 
   return (
-    <section id="metricas" className="py-20 md:py-24 px-6 md:px-12 bg-white border-t border-b border-zinc-100 font-sans">
-      <div className="max-w-7xl mx-auto">
+    <section id="metricas" className="py-20 md:py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-low/50 border-b border-arena-calida/20 font-sans">
+      <div className="max-w-container-max mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {metricsData.map((item, index) => (
             <motion.div
