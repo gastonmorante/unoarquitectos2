@@ -161,9 +161,9 @@ export default function Hero() {
       {/* Glassmorphism Central Card */}
       <div className="relative z-10 text-center w-full max-w-4xl mx-auto mt-12 sm:mt-16 md:mt-24 p-6 sm:p-10 md:p-16 lg:p-20 bg-white/55 backdrop-blur-md rounded-3xl border border-white/50 shadow-ethereal reveal-on-scroll is-visible overflow-hidden">
         
-        {/* Architectural Watermark Logo */}
-        <div className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 w-36 sm:w-44 md:w-56 h-36 sm:h-44 md:h-56 pointer-events-none select-none opacity-25 z-0">
-          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+        {/* Architectural Watermark Logo - Centered at 80% of card */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden">
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[80%] max-w-[540px] aspect-square opacity-[0.09] text-teal-uno">
             <g transform="translate(-3, -2)">
               <path d="M 100 20 L 30.72 60 L 30.72 140 L 69.69 117.5 L 69.69 82.5 L 100 65 Z" fill="#00A3A3" />
             </g>

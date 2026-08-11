@@ -33,7 +33,7 @@ export default function Filosofia() {
             </h3>
 
             <div className="space-y-4 sm:space-y-6 font-body-md text-body-md text-gris-texto leading-relaxed mb-8 sm:mb-10">
-              <p className="font-body-lg text-body-lg text-gris-texto leading-relaxed">
+              <p>
                 Concebimos cada proyecto con una sofisticación contenida y un rigor técnico innegociable. Empleamos materiales honestos —concreto aparente, madera de Tzalam y Chukum natural— combinados a través de una construcción con criterio para lograr una integración armoniosa y duradera con el sitio.
               </p>
               <p>
