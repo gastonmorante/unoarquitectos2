@@ -63,7 +63,7 @@ export default function Servicios() {
 
           {/* Phase 03 */}
           <div className="flex flex-col items-center text-center p-6 sm:p-8 md:p-10 bg-white/50 backdrop-blur-md rounded-3xl border border-arena-calida/20 shadow-ethereal hover:-translate-y-2 transition-all duration-500 reveal-on-scroll is-visible group" style={{ transitionDelay: "200ms" }}>
-            <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mb-5 sm:mb-8 flex items-center justify-center bg-teal-uno rounded-full text-white shadow-sm">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mb-5 sm:mb-8 flex items-center justify-center bg-arena-calida/10 rounded-full text-arena-calida group-hover:bg-teal-uno group-hover:text-white transition-all duration-500">
               <span className="material-symbols-outlined text-[28px] sm:text-[32px] md:text-[36px] font-thin">spa</span>
             </div>
             <span className="font-label-caps text-[11px] sm:text-[12px] text-arena-calida mb-3 sm:mb-4 uppercase tracking-widest font-semibold">
