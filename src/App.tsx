@@ -112,13 +112,19 @@ export default function App() {
             </div>
           </div>
 
-          <div className="px-4 sm:px-6 md:px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center pt-8 border-t border-arena-calida/20 text-center md:text-left gap-2">
+          <div className="px-4 sm:px-6 md:px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center pt-8 border-t border-arena-calida/20 text-center md:text-left gap-3">
             <p className="font-label-caps text-[10px] sm:text-xs text-gris-texto/70 uppercase tracking-widest">
               © {new Date().getFullYear()} UNO ARQUITECTOS. TODOS LOS DERECHOS RESERVADOS.
             </p>
-            <p className="font-label-caps text-[10px] sm:text-xs text-arena-calida uppercase tracking-widest font-semibold">
-              DISEÑO CONSCIENTE
-            </p>
+            <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 sm:gap-4">
+              <span className="font-label-caps text-[10px] sm:text-xs text-arena-calida uppercase tracking-widest font-semibold">
+                DISEÑO CONSCIENTE
+              </span>
+              <span className="text-arena-calida/40 hidden sm:inline">•</span>
+              <span className="font-label-caps text-[10px] sm:text-xs text-gris-texto/80 uppercase tracking-wider">
+                Development por <span className="text-teal-uno font-semibold">Negocioup</span>
+              </span>
+            </div>
           </div>
         </footer>
 

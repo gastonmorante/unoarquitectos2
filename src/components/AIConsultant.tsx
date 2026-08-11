@@ -299,7 +299,7 @@ export default function AIConsultant() {
         ? `Hola UNO Arquitectos, acabo de consultar en su Asesor AI. Mi nombre es ${currentName}, mi correo es ${currentEmail}. Me interesa recibir atención técnica personalizada.`
         : `Hello UNO Arquitectos, I consulted your AI Advisor. My name is ${currentName}, my email is ${currentEmail}. I would like direct technical support.`;
       
-      const waUrl = `https://wa.me/5219841234567?text=${encodeURIComponent(waText)}`;
+      const waUrl = `https://wa.me/5219842108420?text=${encodeURIComponent(waText)}`;
       window.open(waUrl, "_blank", "noopener,noreferrer");
 
       try {
@@ -418,8 +418,8 @@ export default function AIConsultant() {
 
   const whatsappLink =
     language === "es"
-      ? "https://wa.me/5219841234567?text=Hola%20UNO%20Arquitectos,%20me%20interesa%20recibir%20asesor%C3%ADa%20técnica%20para%20un%20proyecto."
-      : "https://wa.me/5219841234567?text=Hello%20UNO%20Arquitectos,%20I%20would%20like%20technical%20advice%20for%20a%20project.";
+      ? "https://wa.me/5219842108420?text=Hola%20UNO%20Arquitectos,%20me%20interesa%20recibir%20asesor%C3%ADa%20técnica%20para%20un%20proyecto."
+      : "https://wa.me/5219842108420?text=Hello%20UNO%20Arquitectos,%20I%20would%20like%20technical%20advice%20for%20a%20project.";
 
   return (
     <>

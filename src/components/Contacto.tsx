@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Mail, Phone, MapPin, Send, CheckCircle, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, Send, CheckCircle, Clock, ExternalLink } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import Logo from "./Logo";
 
@@ -57,7 +57,7 @@ export default function Contacto() {
         ? `Hola UNO Arquitectos, me he registrado en su formulario de contacto. Mi nombre es ${name}, mi correo es ${email} y mi teléfono es ${phone}. Me interesa atención técnica para mi proyecto.`
         : `Hello UNO Arquitectos, I filled out your contact form. My name is ${name}, my email is ${email} and my phone is ${phone}. I am interested in technical consultation for my project.`;
       
-      const whatsappUrl = `https://wa.me/5219841234567?text=${encodeURIComponent(welcomeText)}`;
+      const whatsappUrl = `https://wa.me/5219842108420?text=${encodeURIComponent(welcomeText)}`;
       window.open(whatsappUrl, "_blank");
 
       setSubmitted(true);
@@ -88,52 +88,80 @@ export default function Contacto() {
           
           {/* INFO COLUMN */}
           <div className="lg:col-span-5 text-left">
-            <Logo showText={false} iconSize={36} className="mb-4 sm:mb-6 opacity-90 text-teal-uno" />
+            <Logo showText={false} iconSize={42} className="mb-4 sm:mb-6 opacity-90 text-teal-uno" />
             <span className="font-label-caps text-xs sm:text-label-caps text-teal-uno uppercase tracking-[0.25em] sm:tracking-[0.3em] font-semibold block mb-2 sm:mb-3">
-              {t("contacto.tagline") || "Contacto Directo"}
+              {t("contacto.tagline") || "Contacto Directo & Ubicaciones"}
             </span>
             <h2 className="font-headline-xl text-headline-xl text-teal-uno uppercase mb-4 sm:mb-6 leading-tight font-semibold">
               {t("contacto.heading") || "INICIEMOS LA CONVERSACIÓN"}
             </h2>
             <p className="font-body-md text-gris-texto text-xs sm:text-sm leading-relaxed mb-8 sm:mb-10 max-w-md">
-              {t("contacto.desc")}
+              {t("contacto.desc") || "Atendemos consultas y citas técnicas en nuestras oficinas centrales de Playa del Carmen y en nuestro taller de producción en la carretera Tulum – Macario Gómez."}
             </p>
 
             <div className="space-y-6 sm:space-y-8">
               
-              {/* Off 1 - Tulum */}
+              {/* Ubicación 1 - Oficinas Playa del Carmen */}
               <div className="flex gap-3.5 sm:gap-4 items-start">
-                <MapPin className="w-4 sm:w-5 h-4 sm:h-5 text-teal-uno flex-shrink-0 mt-0.5" />
+                <MapPin className="w-5 h-5 text-teal-uno flex-shrink-0 mt-0.5" />
                 <div>
-                  <h3 className="font-label-caps text-xs uppercase tracking-wider text-teal-uno font-semibold">{t("contacto.showroomTulum")}</h3>
-                  <p className="font-body-md text-xs text-gris-texto mt-0.5 sm:mt-1 leading-relaxed">{t("contacto.showroomTulumAddr")}</p>
+                  <h3 className="font-label-caps text-xs uppercase tracking-wider text-teal-uno font-semibold">
+                    {t("contacto.officePlaya") || "Oficinas Centrales"}
+                  </h3>
+                  <p className="font-body-md text-xs text-gris-texto mt-0.5 sm:mt-1 leading-relaxed">
+                    {t("contacto.officePlayaAddr") || "Plaza Palmeras, Playa del Carmen, Q. Roo"}
+                  </p>
+                  <a
+                    href="https://maps.app.goo.gl/vy12S6chkTnkjuG96"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-[11px] text-teal-uno hover:text-arena-calida transition-colors mt-1.5 font-label-caps uppercase font-semibold tracking-wider"
+                  >
+                    Ver en Google Maps <ExternalLink className="w-3 h-3" />
+                  </a>
                 </div>
               </div>
 
-              {/* Off 2 - CDMX */}
+              {/* Ubicación 2 - Taller & Bodega */}
               <div className="flex gap-3.5 sm:gap-4 items-start">
-                <MapPin className="w-4 sm:w-5 h-4 sm:h-5 text-zinc-400 flex-shrink-0 mt-0.5" />
+                <MapPin className="w-5 h-5 text-arena-calida flex-shrink-0 mt-0.5" />
                 <div>
-                  <h3 className="font-label-caps text-xs uppercase tracking-wider text-teal-uno font-semibold">{t("contacto.cdmxOffice")}</h3>
-                  <p className="font-body-md text-xs text-gris-texto mt-0.5 sm:mt-1 leading-relaxed">{t("contacto.cdmxOfficeAddr")}</p>
+                  <h3 className="font-label-caps text-xs uppercase tracking-wider text-teal-uno font-semibold">
+                    {t("contacto.tallerTulum") || "Taller & Bodega"}
+                  </h3>
+                  <p className="font-body-md text-xs text-gris-texto mt-0.5 sm:mt-1 leading-relaxed">
+                    {t("contacto.tallerTulumAddr") || "Carretera Tulum – Macario Gómez, Q. Roo"}
+                  </p>
                 </div>
               </div>
 
-              {/* Tel & Mail */}
-              <div className="pt-6 sm:pt-8 border-t border-arena-calida/30 space-y-3 sm:space-y-4 font-body-md text-xs text-gris-texto">
+              {/* Tel, WhatsApp & Mail */}
+              <div className="pt-6 sm:pt-8 border-t border-arena-calida/30 space-y-3.5 font-body-md text-xs text-gris-texto">
                 <div className="flex items-center gap-3">
                   <Phone className="w-4 h-4 text-teal-uno flex-shrink-0" />
-                  <span className="truncate">+52 (984) 123 4567 • +52 (55) 9876 5432</span>
+                  <a href="tel:+529842108420" className="hover:text-teal-uno transition-colors font-medium">
+                    +52 1 984 210 8420
+                  </a>
+                  <a 
+                    href="https://wa.me/5219842108420" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-teal-uno hover:underline font-semibold ml-1 text-[11px] uppercase tracking-wider font-label-caps"
+                  >
+                    • WhatsApp
+                  </a>
                 </div>
+
                 <div className="flex items-center gap-3">
                   <Mail className="w-4 h-4 text-teal-uno flex-shrink-0" />
-                  <a href="mailto:hola@unoarquitectos.com" className="hover:text-teal-uno transition-colors truncate">
+                  <a href="mailto:hola@unoarquitectos.com" className="hover:text-teal-uno transition-colors">
                     hola@unoarquitectos.com
                   </a>
                 </div>
+
                 <div className="flex items-center gap-3">
-                  <Clock className="w-4 h-4 text-zinc-400 flex-shrink-0" />
-                  <span>{t("contacto.workHours")}</span>
+                  <Clock className="w-4 h-4 text-arena-calida flex-shrink-0" />
+                  <span>{t("contacto.workHours") || "Lunes a Viernes: 9:00 - 18:00 hrs"}</span>
                 </div>
               </div>
 
@@ -192,7 +220,7 @@ export default function Contacto() {
                       id="con-tel"
                       type="tel"
                       required
-                      placeholder={t("contacto.phonePlaceholder")}
+                      placeholder={t("contacto.phonePlaceholder") || "+52 1 984 210 8420"}
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       className="w-full bg-white border border-arena-calida/30 rounded-xl py-3 px-3.5 font-body-md text-sm text-gris-texto focus:outline-none focus:border-teal-uno transition-colors"
