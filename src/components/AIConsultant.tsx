@@ -148,12 +148,12 @@ export default function AIConsultant() {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    bgLogoX.set(window.innerWidth / 2 - 100);
-    bgLogoY.set(window.innerHeight / 2 - 100);
+    bgLogoX.set(window.innerWidth / 2 - 50);
+    bgLogoY.set(window.innerHeight / 2 - 50);
 
     const handleMove = (clientX: number, clientY: number) => {
-      bgLogoX.set(clientX - 100);
-      bgLogoY.set(clientY - 100);
+      bgLogoX.set(clientX - 50);
+      bgLogoY.set(clientY - 50);
       
       setIsMoving(true);
 
@@ -609,7 +609,7 @@ export default function AIConsultant() {
       <motion.div
         style={{ x: smoothBgX, y: smoothBgY }}
         animate={{
-          color: isMoving ? "rgba(200, 184, 154, 0.18)" : "rgba(0, 163, 163, 0.22)"
+          color: isMoving ? "rgba(200, 184, 154, 0.22)" : "rgba(0, 163, 163, 0.26)"
         }}
         transition={{
           duration: 0.8,
@@ -617,7 +617,7 @@ export default function AIConsultant() {
         }}
         className="fixed top-0 left-0 pointer-events-none z-30 select-none hidden sm:block"
       >
-        {renderUnoIcon(200, "animate-rotate-spinning")}
+        {renderUnoIcon(100, "animate-rotate-spinning")}
       </motion.div>
     </>
   );

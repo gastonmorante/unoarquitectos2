@@ -159,37 +159,72 @@ export default function Hero() {
       ></div>
 
       {/* Glassmorphism Central Card */}
-      <div className="relative z-10 text-center w-full max-w-4xl mx-auto mt-12 sm:mt-16 md:mt-24 p-6 sm:p-10 md:p-16 lg:p-20 bg-white/50 backdrop-blur-md rounded-3xl border border-white/40 shadow-ethereal reveal-on-scroll is-visible">
-        <span className="font-label-caps text-[11px] sm:text-xs md:text-label-caps text-arena-calida uppercase tracking-[0.2em] sm:tracking-[0.25em] block mb-3 sm:mb-4 font-semibold">
-          {t("hero.tagline") || "Arquitectura que pertenece. Espacios que perduran."}
-        </span>
+      <div className="relative z-10 text-center w-full max-w-4xl mx-auto mt-12 sm:mt-16 md:mt-24 p-6 sm:p-10 md:p-16 lg:p-20 bg-white/55 backdrop-blur-md rounded-3xl border border-white/50 shadow-ethereal reveal-on-scroll is-visible overflow-hidden">
+        
+        {/* Architectural Watermark Logo */}
+        <div className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 w-36 sm:w-44 md:w-56 h-36 sm:h-44 md:h-56 pointer-events-none select-none opacity-25 z-0">
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+            <g transform="translate(-3, -2)">
+              <path d="M 100 20 L 30.72 60 L 30.72 140 L 69.69 117.5 L 69.69 82.5 L 100 65 Z" fill="#00A3A3" />
+            </g>
+            <g transform="translate(3, -2)">
+              <path d="M 100 20 L 169.28 60 L 169.28 140 L 130.31 117.5 L 130.31 82.5 L 100 65 Z" fill="#00A3A3" />
+            </g>
+            <g transform="translate(0, 4)">
+              <path d="M 30.72 140 L 100 180 L 169.28 140 L 130.31 117.5 L 100 135 L 69.69 117.5 Z" fill="#00A3A3" />
+            </g>
+            <g>
+              <path
+                d="M 100 77 L 119.92 88.5 L 119.92 111.5 L 100 123 L 80.08 111.5 L 80.08 88.5 Z"
+                fill="#FFFFFF"
+                stroke="#00A3A3"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M 100 100 L 100 123 M 100 100 L 80.08 88.5 M 100 100 L 119.92 88.5"
+                stroke="#00A3A3"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </g>
+          </svg>
+        </div>
 
-        <h1 
-          className="font-headline-xl text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-teal-uno mb-4 sm:mb-6 tracking-tight font-semibold"
-          style={{ textShadow: "rgba(0, 0, 0, 0.05) 0px 2px 4px" }}
-        >
-          UNO ARQUITECTOS
-        </h1>
+        <div className="relative z-10">
+          <span className="font-label-caps text-[11px] sm:text-xs md:text-label-caps text-arena-calida uppercase tracking-[0.2em] sm:tracking-[0.25em] block mb-3 sm:mb-4 font-semibold">
+            {t("hero.tagline") || "Arquitectura que pertenece. Espacios que perduran."}
+          </span>
 
-        <p className="font-body-md sm:font-body-lg text-sm sm:text-base md:text-body-lg text-gris-texto mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed">
-          {t("hero.subheading") || "Arquitectura que pertenece. Espacios que perduran."}
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-3.5 sm:gap-4 justify-center items-center w-full max-w-md mx-auto sm:max-w-none">
-          <button
-            onClick={() => scrollToSection("contacto")}
-            className="w-full sm:w-auto inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 bg-teal-uno text-white font-label-caps text-xs sm:text-label-caps uppercase hover:bg-arena-calida transition-all duration-500 rounded-full shadow-ethereal cursor-pointer"
+          <h1 
+            className="font-headline-xl text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-teal-uno mb-4 sm:mb-6 tracking-tight font-semibold"
+            style={{ textShadow: "rgba(0, 0, 0, 0.05) 0px 2px 4px" }}
           >
-            {btn1}
-          </button>
+            UNO ARQUITECTOS
+          </h1>
 
-          <button
-            onClick={() => scrollToSection("proyectos")}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 sm:px-10 py-3.5 sm:py-4 border border-teal-uno text-teal-uno font-label-caps text-xs sm:text-label-caps uppercase hover:bg-teal-uno hover:text-white transition-all duration-500 rounded-full cursor-pointer"
-          >
-            {btn2}
-            <span className="material-symbols-outlined text-[16px] sm:text-[18px]">arrow_downward</span>
-          </button>
+          <p className="font-body-md sm:font-body-lg text-sm sm:text-base md:text-body-lg text-gris-texto mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed">
+            {t("hero.subheading") || "Servicios integrales de diseño y construcción llave en mano en Riviera Maya desde 2017. Nos especializamos en obra nueva y remodelaciones comerciales, residenciales, hospitalarios y proyectos off the grid."}
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-3.5 sm:gap-4 justify-center items-center w-full max-w-md mx-auto sm:max-w-none">
+            <button
+              onClick={() => scrollToSection("contacto")}
+              className="w-full sm:w-auto inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 bg-teal-uno text-white font-label-caps text-xs sm:text-label-caps uppercase hover:bg-arena-calida transition-all duration-500 rounded-full shadow-ethereal cursor-pointer"
+            >
+              {btn1}
+            </button>
+
+            <button
+              onClick={() => scrollToSection("proyectos")}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 sm:px-10 py-3.5 sm:py-4 border border-teal-uno text-teal-uno font-label-caps text-xs sm:text-label-caps uppercase hover:bg-teal-uno hover:text-white transition-all duration-500 rounded-full cursor-pointer"
+            >
+              {btn2}
+              <span className="material-symbols-outlined text-[16px] sm:text-[18px]">arrow_downward</span>
+            </button>
+          </div>
         </div>
       </div>
     </header>

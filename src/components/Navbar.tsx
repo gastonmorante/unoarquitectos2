@@ -41,13 +41,14 @@ export default function Navbar() {
           
           <div 
             onClick={() => scrollToSection("inicio")}
-            className="cursor-pointer group block transition-opacity hover:opacity-80"
+            className="cursor-pointer group flex items-center transition-opacity hover:opacity-85"
+            title="UNO Arquitectos"
           >
             <Logo 
               isScrolled={isScrolled} 
               theme="adaptive" 
-              iconSize={28} 
-              textSize="text-xs sm:text-sm md:text-base lg:text-lg" 
+              iconSize={56}
+              showText={false}
             />
           </div>
         </div>

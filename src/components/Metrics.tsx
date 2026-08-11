@@ -67,7 +67,7 @@ export default function Metrics() {
       desc: t("metrics.m1Desc") || "Más de 20 años liderando diseño, alta ingeniería y construcción.",
     },
     {
-      val: t("metrics.m2Val") || "80K+",
+      val: t("metrics.m2Val") || "15K+",
       title: t("metrics.m2Title") || "m² Proyectados",
       desc: t("metrics.m2Desc") || "Diseñados, calculados y construidos sin sobrecostos.",
     },
@@ -77,7 +77,7 @@ export default function Metrics() {
       desc: t("metrics.m3Desc") || "Gestoría ágil de licencias de construcción y permisos ambientales.",
     },
     {
-      val: t("metrics.m4Val") || "+150",
+      val: t("metrics.m4Val") || "+70",
       title: t("metrics.m4Title") || "Proyectos Entregados",
       desc: t("metrics.m4Desc") || "Residencias boutique y desarrollos boutique hospitality.",
     },

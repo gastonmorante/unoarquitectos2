@@ -22,10 +22,11 @@ export default function Servicios() {
       </div>
 
       <div className="max-w-container-max mx-auto">
-        {/* Top Row: 3 Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 lg:gap-12 mb-6 md:mb-10 lg:mb-12">
+        {/* Symmetrical 3x2 Grid (6 Disciplines) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
+          
           {/* Phase 01 */}
-          <div className="flex flex-col items-center text-center p-6 sm:p-8 md:p-10 lg:p-12 bg-white/50 backdrop-blur-md rounded-3xl border border-arena-calida/20 shadow-ethereal hover:-translate-y-2 transition-all duration-500 reveal-on-scroll is-visible group">
+          <div className="flex flex-col items-center text-center p-6 sm:p-8 md:p-10 bg-white/50 backdrop-blur-md rounded-3xl border border-arena-calida/20 shadow-ethereal hover:-translate-y-2 transition-all duration-500 reveal-on-scroll is-visible group">
             <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mb-5 sm:mb-8 flex items-center justify-center bg-arena-calida/10 rounded-full text-arena-calida group-hover:bg-teal-uno group-hover:text-white transition-all duration-500">
               <span className="material-symbols-outlined text-[28px] sm:text-[32px] md:text-[36px] font-thin">all_inclusive</span>
             </div>
@@ -43,7 +44,7 @@ export default function Servicios() {
           </div>
 
           {/* Phase 02 */}
-          <div className="flex flex-col items-center text-center p-6 sm:p-8 md:p-10 lg:p-12 bg-white/50 backdrop-blur-md rounded-3xl border border-arena-calida/20 shadow-ethereal hover:-translate-y-2 transition-all duration-500 reveal-on-scroll is-visible group" style={{ transitionDelay: "100ms" }}>
+          <div className="flex flex-col items-center text-center p-6 sm:p-8 md:p-10 bg-white/50 backdrop-blur-md rounded-3xl border border-arena-calida/20 shadow-ethereal hover:-translate-y-2 transition-all duration-500 reveal-on-scroll is-visible group" style={{ transitionDelay: "100ms" }}>
             <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mb-5 sm:mb-8 flex items-center justify-center bg-arena-calida/10 rounded-full text-arena-calida group-hover:bg-teal-uno group-hover:text-white transition-all duration-500">
               <span className="material-symbols-outlined text-[28px] sm:text-[32px] md:text-[36px] font-thin">architecture</span>
             </div>
@@ -61,7 +62,7 @@ export default function Servicios() {
           </div>
 
           {/* Phase 03 */}
-          <div className="flex flex-col items-center text-center p-6 sm:p-8 md:p-10 lg:p-12 bg-white/50 backdrop-blur-md rounded-3xl border border-arena-calida/20 shadow-ethereal hover:-translate-y-2 transition-all duration-500 reveal-on-scroll is-visible group" style={{ transitionDelay: "200ms" }}>
+          <div className="flex flex-col items-center text-center p-6 sm:p-8 md:p-10 bg-white/50 backdrop-blur-md rounded-3xl border border-arena-calida/20 shadow-ethereal hover:-translate-y-2 transition-all duration-500 reveal-on-scroll is-visible group" style={{ transitionDelay: "200ms" }}>
             <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mb-5 sm:mb-8 flex items-center justify-center bg-teal-uno rounded-full text-white shadow-sm">
               <span className="material-symbols-outlined text-[28px] sm:text-[32px] md:text-[36px] font-thin">spa</span>
             </div>
@@ -77,12 +78,9 @@ export default function Servicios() {
                 : "Meticulous selection of honest materials and continuous Chukum finishes. We craft atmospheres that convey restrained sophistication in every detail."}
             </p>
           </div>
-        </div>
 
-        {/* Bottom Row: 2 Columns Centered */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 lg:gap-12 max-w-4xl mx-auto">
           {/* Phase 04 */}
-          <div className="flex flex-col items-center text-center p-6 sm:p-8 md:p-10 lg:p-12 bg-white/50 backdrop-blur-md rounded-3xl border border-arena-calida/20 shadow-ethereal hover:-translate-y-2 transition-all duration-500 reveal-on-scroll is-visible group" style={{ transitionDelay: "300ms" }}>
+          <div className="flex flex-col items-center text-center p-6 sm:p-8 md:p-10 bg-white/50 backdrop-blur-md rounded-3xl border border-arena-calida/20 shadow-ethereal hover:-translate-y-2 transition-all duration-500 reveal-on-scroll is-visible group" style={{ transitionDelay: "300ms" }}>
             <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mb-5 sm:mb-8 flex items-center justify-center bg-arena-calida/10 rounded-full text-arena-calida group-hover:bg-teal-uno group-hover:text-white transition-all duration-500">
               <span className="material-symbols-outlined text-[28px] sm:text-[32px] md:text-[36px] font-thin">construction</span>
             </div>
@@ -100,7 +98,7 @@ export default function Servicios() {
           </div>
 
           {/* Phase 05 */}
-          <div className="flex flex-col items-center text-center p-6 sm:p-8 md:p-10 lg:p-12 bg-white/50 backdrop-blur-md rounded-3xl border border-arena-calida/20 shadow-ethereal hover:-translate-y-2 transition-all duration-500 reveal-on-scroll is-visible group" style={{ transitionDelay: "400ms" }}>
+          <div className="flex flex-col items-center text-center p-6 sm:p-8 md:p-10 bg-white/50 backdrop-blur-md rounded-3xl border border-arena-calida/20 shadow-ethereal hover:-translate-y-2 transition-all duration-500 reveal-on-scroll is-visible group" style={{ transitionDelay: "400ms" }}>
             <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mb-5 sm:mb-8 flex items-center justify-center bg-arena-calida/10 rounded-full text-arena-calida group-hover:bg-teal-uno group-hover:text-white transition-all duration-500">
               <span className="material-symbols-outlined text-[28px] sm:text-[32px] md:text-[36px] font-thin">visibility</span>
             </div>
@@ -116,6 +114,25 @@ export default function Servicios() {
                 : "Immersive architectural representation. We translate our volumetric proposals into high-fidelity renders and spatial technical visualizations."}
             </p>
           </div>
+
+          {/* Phase 06 - Ingeniería de Costos & Permisos */}
+          <div className="flex flex-col items-center text-center p-6 sm:p-8 md:p-10 bg-white/50 backdrop-blur-md rounded-3xl border border-arena-calida/20 shadow-ethereal hover:-translate-y-2 transition-all duration-500 reveal-on-scroll is-visible group" style={{ transitionDelay: "500ms" }}>
+            <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mb-5 sm:mb-8 flex items-center justify-center bg-arena-calida/10 rounded-full text-arena-calida group-hover:bg-teal-uno group-hover:text-white transition-all duration-500">
+              <span className="material-symbols-outlined text-[28px] sm:text-[32px] md:text-[36px] font-thin">request_quote</span>
+            </div>
+            <span className="font-label-caps text-[11px] sm:text-[12px] text-arena-calida mb-3 sm:mb-4 uppercase tracking-widest font-semibold">
+              {isEs ? "Fase 06" : "Phase 06"}
+            </span>
+            <h4 className="font-headline-md text-headline-md text-teal-uno mb-3 sm:mb-4 uppercase leading-snug font-semibold">
+              {isEs ? "Ingeniería de Costos & Permisos" : "Cost Engineering & Permitting"}
+            </h4>
+            <p className="font-body-md text-body-md text-gris-texto leading-relaxed">
+              {isEs 
+                ? "Presupuestos paramétricos desglosados para certidumbre financiera total. Tramitación integral de licencias de construcción, manifiestos ambientales (MIA) y viabilidad jurídica en Quintana Roo."
+                : "Detailed parametric budgeting for complete financial certainty. Comprehensive processing of municipal building permits, environmental filings (MIA), and legal zoning compliance across Quintana Roo."}
+            </p>
+          </div>
+
         </div>
       </div>
     </section>
