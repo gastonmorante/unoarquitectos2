@@ -58,8 +58,8 @@ export default function CookieBanner() {
 
           <p className="font-body-md text-xs text-gris-texto leading-relaxed mb-4 text-left">
             {isEs
-              ? "Utilizamos cookies y tecnologías esenciales para mejorar su experiencia de navegación, optimizar el rendimiento del Asesor AI y garantizar la seguridad según nuestro Aviso de Privacidad."
-              : "We use essential cookies and technologies to enhance your experience, optimize AI Advisor performance, and ensure privacy according to Mexican regulations."}
+              ? "Utilizamos cookies y tecnologías esenciales para mejorar su experiencia de navegación, optimizar el rendimiento del Asesor IA y garantizar la seguridad según nuestro Aviso de Privacidad."
+              : "We use cookies and essential technologies to enhance your browsing experience, optimize AI Advisor performance, and maintain security under our Privacy Notice."}
           </p>
 
           <div className="flex items-center justify-between gap-3 border-t border-gris-piedra pt-3 font-label-caps">

@@ -243,7 +243,7 @@ export default function AIConsultant() {
       const currentEmail = trimmedText;
 
       const waText = language === "es"
-        ? `Hola UNO Arquitectos, acabo de consultar en su Asesor AI. Mi nombre es ${currentName}, mi correo es ${currentEmail}. Me interesa recibir atención técnica personalizada.`
+        ? `Hola UNO Arquitectos, acabo de consultar en su Asesor IA. Mi nombre es ${currentName}, mi correo es ${currentEmail}. Me interesa recibir atención técnica personalizada.`
         : `Hello UNO Arquitectos, I consulted your AI Advisor. My name is ${currentName}, my email is ${currentEmail}. I would like direct technical support.`;
       
       const waUrl = `https://wa.me/5219842108420?text=${encodeURIComponent(waText)}`;
@@ -257,8 +257,8 @@ export default function AIConsultant() {
             name: currentName,
             email: currentEmail,
             phone: "",
-            message: "Lead registrado mediante el embudo del Asesor AI",
-            source: "Asesor AI Chatbot"
+            message: "Lead registrado mediante el embudo del Asesor IA",
+            source: "Asesor IA Chatbot"
           })
         });
       } catch (err) {
@@ -408,7 +408,9 @@ export default function AIConsultant() {
                     <UnoIsotype size={18} color="#00A3A3" cubeColor="#FFFFFF" strokeColor="#00A3A3" />
                   </div>
                   <div>
-                    <h4 className="font-label-caps text-xs font-semibold tracking-wide text-teal-uno uppercase">Asesor AI</h4>
+                    <h4 className="font-label-caps text-xs font-semibold tracking-wide text-teal-uno uppercase">
+                      {language === "es" ? "Asesor IA" : "AI Advisor"}
+                    </h4>
                     <span className="font-label-caps text-[9px] tracking-wider text-gris-texto uppercase flex items-center gap-1 font-medium">
                       <span className="w-1.5 h-1.5 rounded-full bg-teal-uno inline-block animate-pulse"></span>
                       {language === "es" ? "Ingeniería & Arquitectura" : "Engineering & Architecture"}
@@ -543,7 +545,7 @@ export default function AIConsultant() {
           <Sparkles className="w-6 h-6 text-teal-uno group-hover:rotate-12 transition-transform duration-300" />
           
           <span className="absolute left-14 bg-white text-gris-texto border border-gris-piedra font-label-caps text-xs uppercase tracking-wider py-1.5 px-3 rounded-xs whitespace-nowrap shadow-lg opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none">
-            {language === "es" ? "Asesor AI" : "AI Advisor"}
+            {language === "es" ? "Asesor IA" : "AI Advisor"}
           </span>
           <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-uno opacity-75"></span>

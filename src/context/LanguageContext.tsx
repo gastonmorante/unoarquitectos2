@@ -15,10 +15,10 @@ export const TRANSLATIONS: Record<Language, Record<string, any>> = {
     nav: {
       inicio: "Inicio",
       filosofia: "Filosofía",
-      servicios: "Servicios Técnicos",
+      servicios: "Servicios",
       portfolio: "Portafolio",
       faqs: "Preguntas Frecuentes",
-      planner: "Asesor AI",
+      planner: "Asesor IA",
       contacto: "Contacto",
     },
     hero: {

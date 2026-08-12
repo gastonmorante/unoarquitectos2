@@ -59,19 +59,19 @@ export default function Navbar() {
             onClick={() => scrollToSection("proyectos")}
             className="font-label-caps text-label-caps text-gris-texto hover:text-arena-calida transition-colors duration-300 uppercase cursor-pointer"
           >
-            Proyectos
+            {t("nav.portfolio") || "Portafolio"}
           </button>
           <button
             onClick={() => scrollToSection("filosofia")}
             className="font-label-caps text-label-caps text-gris-texto hover:text-arena-calida transition-colors duration-300 uppercase cursor-pointer"
           >
-            Esencia
+            {t("nav.filosofia") || "Filosofía"}
           </button>
           <button
             onClick={() => scrollToSection("servicios")}
             className="font-label-caps text-label-caps text-gris-texto hover:text-arena-calida transition-colors duration-300 uppercase cursor-pointer"
           >
-            Estudio
+            {t("nav.servicios") || "Servicios"}
           </button>
           <button
             onClick={() => scrollToSection("faqs")}
@@ -84,7 +84,7 @@ export default function Navbar() {
             className="font-label-caps text-label-caps text-teal-uno hover:text-arena-calida transition-colors duration-300 uppercase cursor-pointer flex items-center gap-1.5"
           >
             <Compass className="w-3.5 h-3.5 animate-spin-slow text-teal-uno" />
-            {t("nav.planner")}
+            {t("nav.planner") || "Asesor IA"}
           </button>
         </div>
 
@@ -113,19 +113,19 @@ export default function Navbar() {
             onClick={() => scrollToSection("proyectos")}
             className="text-left font-label-caps text-xs uppercase text-gris-texto hover:text-teal-uno transition-colors py-2 border-b border-arena-calida/15"
           >
-            Proyectos & Tipologías
+            {t("nav.portfolio") || "Portafolio"} & Tipologías
           </button>
           <button
             onClick={() => scrollToSection("filosofia")}
             className="text-left font-label-caps text-xs uppercase text-gris-texto hover:text-teal-uno transition-colors py-2 border-b border-arena-calida/15"
           >
-            Esencia Arquitectónica
+            {t("nav.filosofia") || "Filosofía"} Arquitectónica
           </button>
           <button
             onClick={() => scrollToSection("servicios")}
             className="text-left font-label-caps text-xs uppercase text-gris-texto hover:text-teal-uno transition-colors py-2 border-b border-arena-calida/15"
           >
-            Estudio & Disciplinas
+            {t("nav.servicios") || "Servicios"} & Disciplinas
           </button>
           <button
             onClick={() => scrollToSection("faqs")}
@@ -141,7 +141,7 @@ export default function Navbar() {
             className="text-left font-label-caps text-xs uppercase font-semibold text-teal-uno flex items-center gap-2 py-2 border-b border-arena-calida/15"
           >
             <Compass className="w-4 h-4 animate-spin-slow" />
-            {t("nav.planner")}
+            {t("nav.planner") || "Asesor IA"}
           </button>
           <button
             onClick={() => scrollToSection("contacto")}
