@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
+import { UnoIsotype } from "./Logo";
 
 export default function Preloader() {
   const [percent, setPercent] = useState(0);
@@ -30,64 +31,14 @@ export default function Preloader() {
         {/* Pulsing Backlight */}
         <div className="absolute w-32 h-32 rounded-full bg-[#00A3A3]/10 blur-xl animate-pulse"></div>
 
-        <svg
-          width="100"
-          height="100"
-          viewBox="0 0 200 200"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+        <UnoIsotype
+          size={100}
+          animated={true}
+          color="#00A3A3"
+          cubeColor="#FFFFFF"
+          strokeColor="#00A3A3"
           className="relative z-10"
-        >
-          {/* SEGMENT 1 - TOP LEFT */}
-          <motion.path
-            d="M 100 20 L 30.72 60 L 30.72 140 L 69.69 117.5 L 69.69 82.5 L 100 65 Z"
-            fill="#00A3A3"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 0.95, scale: 1 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-          />
-
-          {/* SEGMENT 2 - TOP RIGHT */}
-          <motion.path
-            d="M 100 20 L 169.28 60 L 169.28 140 L 130.31 117.5 L 130.31 82.5 L 100 65 Z"
-            fill="#00A3A3"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 0.95, scale: 1 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-          />
-
-          {/* SEGMENT 3 - BOTTOM */}
-          <motion.path
-            d="M 30.72 140 L 100 180 L 169.28 140 L 130.31 117.5 L 100 135 L 69.69 117.5 Z"
-            fill="#00A3A3"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 0.95, scale: 1 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-          />
-
-          {/* CENTRAL 3D ISOMETRIC CUBE */}
-          <motion.g
-            initial={{ opacity: 0, scale: 0.7 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-          >
-            <path
-              d="M 100 77 L 119.92 88.5 L 119.92 111.5 L 100 123 L 80.08 111.5 L 80.08 88.5 Z"
-              fill="#FFFFFF"
-              stroke="#00A3A3"
-              strokeWidth="4"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M 100 100 L 100 123 M 100 100 L 80.08 88.5 M 100 100 L 119.92 88.5"
-              stroke="#00A3A3"
-              strokeWidth="4"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </motion.g>
-        </svg>
+        />
       </div>
 
       {/* LOAD STATUS INDICATOR */}

@@ -9,66 +9,13 @@ import {
   MessageCircle
 } from "lucide-react";
 import { useLanguage, Language } from "../context/LanguageContext";
+import { UnoIsotype } from "./Logo";
 
 interface ChatMessage {
   role: "user" | "assistant";
   content: string;
   timestamp: Date;
 }
-
-const renderUnoIcon = (size: number, className = "") => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 200 200"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className={`${className}`}
-  >
-    {/* TOP-LEFT SEGMENT */}
-    <g transform="translate(-3, -2)">
-      <path
-        d="M 100 20 L 30.72 60 L 30.72 140 L 69.69 117.5 L 69.69 82.5 L 100 65 Z"
-        fill="currentColor"
-      />
-    </g>
-
-    {/* TOP-RIGHT SEGMENT */}
-    <g transform="translate(3, -2)">
-      <path
-        d="M 100 20 L 169.28 60 L 169.28 140 L 130.31 117.5 L 130.31 82.5 L 100 65 Z"
-        fill="currentColor"
-      />
-    </g>
-
-    {/* BOTTOM SEGMENT */}
-    <g transform="translate(0, 4)">
-      <path
-        d="M 30.72 140 L 100 180 L 169.28 140 L 130.31 117.5 L 100 135 L 69.69 117.5 Z"
-        fill="currentColor"
-      />
-    </g>
-
-    {/* CENTRAL 3D ISOMETRIC CUBE */}
-    <g>
-      <path
-        d="M 100 77 L 119.92 88.5 L 119.92 111.5 L 100 123 L 80.08 111.5 L 80.08 88.5 Z"
-        fill="#FFFFFF"
-        stroke="currentColor"
-        strokeWidth="4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M 100 100 L 100 123 M 100 100 L 80.08 88.5 M 100 100 L 119.92 88.5"
-        stroke="currentColor"
-        strokeWidth="4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </g>
-  </svg>
-);
 
 const GET_GREETING_MSG = (lang: Language) => {
   switch (lang) {
@@ -458,7 +405,7 @@ export default function AIConsultant() {
               <div className="bg-white border-b border-gris-piedra py-3.5 px-4 flex items-center justify-between text-gris-texto">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full bg-teal-uno/10 border border-teal-uno/30 flex items-center justify-center text-teal-uno">
-                    {renderUnoIcon(16)}
+                    <UnoIsotype size={18} color="#00A3A3" cubeColor="#FFFFFF" strokeColor="#00A3A3" />
                   </div>
                   <div>
                     <h4 className="font-label-caps text-xs font-semibold tracking-wide text-teal-uno uppercase">Asesor AI</h4>
@@ -515,7 +462,7 @@ export default function AIConsultant() {
                 {isLoading && (
                   <div className="flex gap-2.5 items-start animate-pulse">
                     <div className="w-7 h-7 rounded-full bg-teal-uno/10 border border-teal-uno/20 flex items-center justify-center text-teal-uno">
-                      {renderUnoIcon(14)}
+                      <UnoIsotype size={14} color="#00A3A3" cubeColor="#FFFFFF" strokeColor="#00A3A3" />
                     </div>
                     <div className="bg-gris-piedra/25 border border-gris-piedra p-3 rounded-xs max-w-[80%] text-left">
                       <div className="flex space-x-1.5 items-center py-1">
@@ -609,15 +556,21 @@ export default function AIConsultant() {
       <motion.div
         style={{ x: smoothBgX, y: smoothBgY }}
         animate={{
-          color: isMoving ? "rgba(200, 184, 154, 0.22)" : "rgba(0, 163, 163, 0.26)"
+          opacity: isMoving ? 0.35 : 0.45
         }}
         transition={{
           duration: 0.8,
           ease: "easeOut"
         }}
-        className="fixed top-0 left-0 pointer-events-none z-30 select-none hidden sm:block"
+        className="fixed top-0 left-0 pointer-events-none z-30 select-none hidden sm:block text-teal-uno"
       >
-        {renderUnoIcon(100, "animate-rotate-spinning")}
+        <UnoIsotype
+          size={100}
+          color="#00A3A3"
+          cubeColor="#FFFFFF"
+          strokeColor="#00A3A3"
+          className="animate-rotate-spinning"
+        />
       </motion.div>
     </>
   );

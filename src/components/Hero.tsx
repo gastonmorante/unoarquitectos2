@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useLanguage } from "../context/LanguageContext";
+import { UnoIsotype } from "./Logo";
 
 export default function Hero() {
   const { language, t } = useLanguage();
@@ -163,34 +164,13 @@ export default function Hero() {
         
         {/* Architectural Watermark Logo - Centered at 80% of card */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden">
-          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[80%] max-w-[540px] aspect-square opacity-[0.09] text-teal-uno">
-            <g transform="translate(-3, -2)">
-              <path d="M 100 20 L 30.72 60 L 30.72 140 L 69.69 117.5 L 69.69 82.5 L 100 65 Z" fill="#00A3A3" />
-            </g>
-            <g transform="translate(3, -2)">
-              <path d="M 100 20 L 169.28 60 L 169.28 140 L 130.31 117.5 L 130.31 82.5 L 100 65 Z" fill="#00A3A3" />
-            </g>
-            <g transform="translate(0, 4)">
-              <path d="M 30.72 140 L 100 180 L 169.28 140 L 130.31 117.5 L 100 135 L 69.69 117.5 Z" fill="#00A3A3" />
-            </g>
-            <g>
-              <path
-                d="M 100 77 L 119.92 88.5 L 119.92 111.5 L 100 123 L 80.08 111.5 L 80.08 88.5 Z"
-                fill="#FFFFFF"
-                stroke="#00A3A3"
-                strokeWidth="4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M 100 100 L 100 123 M 100 100 L 80.08 88.5 M 100 100 L 119.92 88.5"
-                stroke="#00A3A3"
-                strokeWidth="4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </g>
-          </svg>
+          <UnoIsotype
+            size="100%"
+            color="#00A3A3"
+            cubeColor="#FFFFFF"
+            strokeColor="#00A3A3"
+            className="w-[80%] max-w-[540px] aspect-square opacity-[0.09]"
+          />
         </div>
 
         <div className="relative z-10">
