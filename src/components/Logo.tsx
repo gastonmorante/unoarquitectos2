@@ -15,13 +15,18 @@ export interface UnoIsotypeProps {
 export const UnoIsotype: React.FC<UnoIsotypeProps> = ({
   size = 32,
   className = "",
-  color = "#00A3A3",
+  color = "#009E9B",
   cubeColor = "#FFFFFF",
-  strokeColor = "#00A3A3",
-  strokeWidth = 4,
+  strokeColor = "#009E9B",
+  strokeWidth = 3.5,
   animated = false,
   style = {},
 }) => {
+  // Exact 1:1 Geometry matched to official UNO Arquitectos isotype:
+  // Outer Hexagon: (100,15), (173.61,57.5), (173.61,142.5), (100,185), (26.39,142.5), (26.39,57.5)
+  // Inner Cube: (100,62), (132.91,81), (132.91,119), (100,138), (67.09,119), (67.09,81)
+  // Slit width: 4px
+
   if (!animated) {
     return (
       <svg
@@ -31,48 +36,42 @@ export const UnoIsotype: React.FC<UnoIsotypeProps> = ({
         className={className}
         style={{ width: size, height: size, ...style }}
       >
-        {/* TOP-LEFT SEGMENT */}
-        <g transform="translate(-3, -2)">
-          <path
-            d="M 100 20 L 30.72 60 L 30.72 140 L 69.69 117.5 L 69.69 82.5 L 100 65 Z"
-            fill={color}
-          />
-        </g>
+        {/* SEGMENT 1: TOP-LEFT TEAL APERTURE */}
+        <path
+          d="M 98 15 L 26.39 57.5 L 26.39 140.5 L 65.5 117.5 L 65.5 82 L 98 63.5 Z"
+          fill={color}
+        />
 
-        {/* TOP-RIGHT SEGMENT */}
-        <g transform="translate(3, -2)">
-          <path
-            d="M 100 20 L 169.28 60 L 169.28 140 L 130.31 117.5 L 130.31 82.5 L 100 65 Z"
-            fill={color}
-          />
-        </g>
+        {/* SEGMENT 2: TOP-RIGHT TEAL APERTURE */}
+        <path
+          d="M 102 15 L 173.61 57.5 L 173.61 140.5 L 134.5 117.5 L 134.5 82 L 102 63.5 Z"
+          fill={color}
+        />
 
-        {/* BOTTOM SEGMENT */}
-        <g transform="translate(0, 4)">
-          <path
-            d="M 30.72 140 L 100 180 L 169.28 140 L 130.31 117.5 L 100 135 L 69.69 117.5 Z"
-            fill={color}
-          />
-        </g>
+        {/* SEGMENT 3: BOTTOM TEAL APERTURE */}
+        <path
+          d="M 28 144 L 100 185 L 172 144 L 133 121.5 L 100 140.5 L 67 121.5 Z"
+          fill={color}
+        />
 
-        {/* CENTRAL 3D ISOMETRIC CUBE */}
-        <g>
-          <path
-            d="M 100 77 L 119.92 88.5 L 119.92 111.5 L 100 123 L 80.08 111.5 L 80.08 88.5 Z"
-            fill={cubeColor}
-            stroke={strokeColor}
-            strokeWidth={strokeWidth}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M 100 100 L 100 123 M 100 100 L 80.08 88.5 M 100 100 L 119.92 88.5"
-            stroke={strokeColor}
-            strokeWidth={strokeWidth}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </g>
+        {/* CENTRAL ISOMETRIC 3D CUBE - 3 WHITE FACES */}
+        <path
+          d="M 100 62 L 132.91 81 L 132.91 119 L 100 138 L 67.09 119 L 67.09 81 Z"
+          fill={cubeColor}
+          stroke={strokeColor}
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+
+        {/* CUBE INTERNAL EDGES (CENTER TO BOTTOM, TOP-LEFT, TOP-RIGHT) */}
+        <path
+          d="M 100 100 L 100 138 M 100 100 L 67.09 81 M 100 100 L 132.91 81"
+          stroke={strokeColor}
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     );
   }
@@ -85,47 +84,41 @@ export const UnoIsotype: React.FC<UnoIsotypeProps> = ({
       className={className}
       style={{ width: size, height: size, ...style }}
     >
-      {/* TOP-LEFT SEGMENT */}
-      <g transform="translate(-3, -2)">
-        <motion.path
-          d="M 100 20 L 30.72 60 L 30.72 140 L 69.69 117.5 L 69.69 82.5 L 100 65 Z"
-          fill={color}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 0.95, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        />
-      </g>
-
-      {/* TOP-RIGHT SEGMENT */}
-      <g transform="translate(3, -2)">
-        <motion.path
-          d="M 100 20 L 169.28 60 L 169.28 140 L 130.31 117.5 L 130.31 82.5 L 100 65 Z"
-          fill={color}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 0.95, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-        />
-      </g>
-
-      {/* BOTTOM SEGMENT */}
-      <g transform="translate(0, 4)">
-        <motion.path
-          d="M 30.72 140 L 100 180 L 169.28 140 L 130.31 117.5 L 100 135 L 69.69 117.5 Z"
-          fill={color}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 0.95, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-        />
-      </g>
-
-      {/* CENTRAL 3D ISOMETRIC CUBE */}
-      <motion.g
-        initial={{ opacity: 0, scale: 0.7 }}
+      {/* SEGMENT 1: TOP-LEFT TEAL APERTURE */}
+      <motion.path
+        d="M 98 15 L 26.39 57.5 L 26.39 140.5 L 65.5 117.5 L 65.5 82 L 98 63.5 Z"
+        fill={color}
+        initial={{ opacity: 0, scale: 0.85 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+      />
+
+      {/* SEGMENT 2: TOP-RIGHT TEAL APERTURE */}
+      <motion.path
+        d="M 102 15 L 173.61 57.5 L 173.61 140.5 L 134.5 117.5 L 134.5 82 L 102 63.5 Z"
+        fill={color}
+        initial={{ opacity: 0, scale: 0.85 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
+      />
+
+      {/* SEGMENT 3: BOTTOM TEAL APERTURE */}
+      <motion.path
+        d="M 28 144 L 100 185 L 172 144 L 133 121.5 L 100 140.5 L 67 121.5 Z"
+        fill={color}
+        initial={{ opacity: 0, scale: 0.85 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
+      />
+
+      {/* CENTRAL ISOMETRIC 3D CUBE */}
+      <motion.g
+        initial={{ opacity: 0, scale: 0.75 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.7, delay: 0.45, ease: "easeOut" }}
       >
         <path
-          d="M 100 77 L 119.92 88.5 L 119.92 111.5 L 100 123 L 80.08 111.5 L 80.08 88.5 Z"
+          d="M 100 62 L 132.91 81 L 132.91 119 L 100 138 L 67.09 119 L 67.09 81 Z"
           fill={cubeColor}
           stroke={strokeColor}
           strokeWidth={strokeWidth}
@@ -133,7 +126,7 @@ export const UnoIsotype: React.FC<UnoIsotypeProps> = ({
           strokeLinejoin="round"
         />
         <path
-          d="M 100 100 L 100 123 M 100 100 L 80.08 88.5 M 100 100 L 119.92 88.5"
+          d="M 100 100 L 100 138 M 100 100 L 67.09 81 M 100 100 L 132.91 81"
           stroke={strokeColor}
           strokeWidth={strokeWidth}
           strokeLinecap="round"
@@ -165,7 +158,7 @@ export const Logo: React.FC<LogoProps> = ({
 }) => {
   const isDarkBg = theme === "dark" || (theme === "adaptive" && !isScrolled);
   
-  const iconColor = "#00A3A3";
+  const iconColor = "#009E9B";
   const titleColor = isDarkBg ? "text-teal-uno md:text-white" : "text-teal-uno";
   const subtitleColor = isDarkBg ? "text-gris-texto md:text-zinc-300" : "text-gris-texto";
   const cubeBgColor = "#FFFFFF";
