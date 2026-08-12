@@ -25,12 +25,11 @@ export const UnoIsotype: React.FC<UnoIsotypeProps> = ({
   const reactId = useId().replace(/:/g, "");
   const maskId = `uno-iso-mask-${reactId}`;
 
-  // Mathematical Geometry (100% matched to official reference image):
-  // Outer Regular Hexagon: Radius R = 83.14, Centers (100, 100)
-  // Vertices: (100, 16.86), (172, 58.43), (172, 141.57), (100, 183.14), (28, 141.57), (28, 58.43)
-  // Inner Isometric Cube: Radius r = 34.64, Centers (100, 100)
-  // Cube Vertices: (100, 65.36), (130, 82.68), (130, 117.32), (100, 134.64), (70, 117.32), (70, 82.68)
-  // Slit lines etched at exactly 30° and 90° angles with 3.2px width.
+  // 100% Exact Geometry:
+  // - Outer Hexagon: (100, 16.86), (172, 58.43), (172, 141.57), (100, 183.14), (28, 141.57), (28, 58.43)
+  // - White Slits: cut through the teal at 90°, 210°, and 330°
+  // - Central Cube: 3 white faces touching the teal background directly with ZERO outer stroke/border
+  // - Internal Dividing Lines: only inside the cube from center (100, 100) to (100, 134.64), (70, 82.68), (130, 82.68)
 
   if (!animated) {
     return (
@@ -45,28 +44,25 @@ export const UnoIsotype: React.FC<UnoIsotypeProps> = ({
           <mask id={maskId}>
             {/* White reveals everything */}
             <rect width="200" height="200" fill="#FFFFFF" />
-            {/* Black cuts the 3 slits with razor precision */}
-            <line x1="100" y1="12" x2="100" y2="68" stroke="#000000" strokeWidth={strokeWidth} strokeLinecap="square" />
-            <line x1="25" y1="143.5" x2="72" y2="116.5" stroke="#000000" strokeWidth={strokeWidth} strokeLinecap="square" />
-            <line x1="175" y1="143.5" x2="128" y2="116.5" stroke="#000000" strokeWidth={strokeWidth} strokeLinecap="square" />
+            {/* Black cuts the 3 slits from outer corners to cube corners */}
+            <line x1="100" y1="12" x2="100" y2="67" stroke="#000000" strokeWidth={strokeWidth} strokeLinecap="square" />
+            <line x1="25" y1="143.5" x2="71.5" y2="116.5" stroke="#000000" strokeWidth={strokeWidth} strokeLinecap="square" />
+            <line x1="175" y1="143.5" x2="128.5" y2="116.5" stroke="#000000" strokeWidth={strokeWidth} strokeLinecap="square" />
           </mask>
         </defs>
 
-        {/* OUTER TEAL ISOMETRIC HEXAGON */}
+        {/* OUTER TEAL ISOMETRIC HEXAGON WITH PRECISION SLITS */}
         <path
           d="M 100 16.86 L 172 58.43 L 172 141.57 L 100 183.14 L 28 141.57 L 28 58.43 Z"
           fill={color}
           mask={`url(#${maskId})`}
         />
 
-        {/* CENTRAL 3D ISOMETRIC CUBE (WHITE FACES) */}
+        {/* CENTRAL 3D ISOMETRIC CUBE (SOLID WHITE, ZERO OUTER BORDER/STROKE) */}
         <path
           d="M 100 65.36 L 130 82.68 L 130 117.32 L 100 134.64 L 70 117.32 L 70 82.68 Z"
           fill={cubeColor}
-          stroke={strokeColor}
-          strokeWidth={strokeWidth}
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke="none"
         />
 
         {/* INTERNAL 3-FACE ARISTAS (CENTER TO BOTTOM, TOP-LEFT, TOP-RIGHT) */}
@@ -92,9 +88,9 @@ export const UnoIsotype: React.FC<UnoIsotypeProps> = ({
       <defs>
         <mask id={maskId}>
           <rect width="200" height="200" fill="#FFFFFF" />
-          <line x1="100" y1="12" x2="100" y2="68" stroke="#000000" strokeWidth={strokeWidth} strokeLinecap="square" />
-          <line x1="25" y1="143.5" x2="72" y2="116.5" stroke="#000000" strokeWidth={strokeWidth} strokeLinecap="square" />
-          <line x1="175" y1="143.5" x2="128" y2="116.5" stroke="#000000" strokeWidth={strokeWidth} strokeLinecap="square" />
+          <line x1="100" y1="12" x2="100" y2="67" stroke="#000000" strokeWidth={strokeWidth} strokeLinecap="square" />
+          <line x1="25" y1="143.5" x2="71.5" y2="116.5" stroke="#000000" strokeWidth={strokeWidth} strokeLinecap="square" />
+          <line x1="175" y1="143.5" x2="128.5" y2="116.5" stroke="#000000" strokeWidth={strokeWidth} strokeLinecap="square" />
         </mask>
       </defs>
 
@@ -108,7 +104,7 @@ export const UnoIsotype: React.FC<UnoIsotypeProps> = ({
         transition={{ duration: 0.8, ease: "easeOut" }}
       />
 
-      {/* CENTRAL 3D ISOMETRIC CUBE */}
+      {/* CENTRAL 3D ISOMETRIC CUBE (ZERO OUTER BORDER/STROKE) */}
       <motion.g
         initial={{ opacity: 0, scale: 0.75 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -117,10 +113,7 @@ export const UnoIsotype: React.FC<UnoIsotypeProps> = ({
         <path
           d="M 100 65.36 L 130 82.68 L 130 117.32 L 100 134.64 L 70 117.32 L 70 82.68 Z"
           fill={cubeColor}
-          stroke={strokeColor}
-          strokeWidth={strokeWidth}
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke="none"
         />
         <path
           d="M 100 100 L 100 134.64 M 100 100 L 70 82.68 M 100 100 L 130 82.68"
