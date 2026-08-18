@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Home Page (Spanish - Default) -->
+  <url>
+    <loc>https://unoarquitectos.com/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://unoarquitectos.com/?lang=es" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://unoarquitectos.com/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://unoarquitectos.com/?lang=it" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://unoarquitectos.com/?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://unoarquitectos.com/" />
+  </url>
+
+  <!-- Portafolio / Proyectos -->
+  <url>
+    <loc>https://unoarquitectos.com/#proyectos</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Filosofía / Esencia -->
+  <url>
+    <loc>https://unoarquitectos.com/#filosofia</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Servicios / Disciplinas -->
+  <url>
+    <loc>https://unoarquitectos.com/#servicios</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Contacto & Ubicaciones -->
+  <url>
+    <loc>https://unoarquitectos.com/#contacto</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Preguntas Frecuentes -->
+  <url>
+    <loc>https://unoarquitectos.com/#faqs</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>
