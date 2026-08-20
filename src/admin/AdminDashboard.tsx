@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { motion } from "motion/react";
-import { LogOut, Save, Eye, Layers, FileText, Cloud, RotateCcw, Check, Sparkles } from "lucide-react";
+import { LogOut, Save, Eye, Layers, FileText, Cloud, RotateCcw, Check, Sparkles, Users } from "lucide-react";
 import { useSiteContent } from "../context/ContentContext";
 import Logo from "../components/Logo";
 import GalleryManager from "./GalleryManager";
 import ContentManager from "./ContentManager";
+import LeadsManager from "./LeadsManager";
 import CloudStorageGuide from "./CloudStorageGuide";
 
 interface AdminDashboardProps {
@@ -13,7 +14,7 @@ interface AdminDashboardProps {
 
 export default function AdminDashboard({ onClose }: AdminDashboardProps) {
   const { isSaving, saveChanges, logout, resetToDefaults } = useSiteContent();
-  const [activeTab, setActiveTab] = useState<"gallery" | "content" | "cloud">("gallery");
+  const [activeTab, setActiveTab] = useState<"gallery" | "content" | "leads" | "cloud">("gallery");
   const [saveMessage, setSaveMessage] = useState<{ text: string; type: "success" | "error" } | null>(null);
 
   const handleSave = async () => {
@@ -114,6 +115,17 @@ export default function AdminDashboard({ onClose }: AdminDashboardProps) {
             </button>
 
             <button
+              onClick={() => setActiveTab("leads")}
+              className={`px-5 py-2.5 font-label-caps text-xs uppercase tracking-wider font-semibold rounded-t-xs transition-all flex items-center gap-2 border-b-2 cursor-pointer ${
+                activeTab === "leads"
+                  ? "border-teal-uno text-teal-uno bg-white font-bold shadow-xs"
+                  : "border-transparent text-zinc-500 hover:text-teal-uno"
+              }`}
+            >
+              <Users className="w-4 h-4" /> Prospectos & CRM
+            </button>
+
+            <button
               onClick={() => setActiveTab("cloud")}
               className={`px-5 py-2.5 font-label-caps text-xs uppercase tracking-wider font-semibold rounded-t-xs transition-all flex items-center gap-2 border-b-2 cursor-pointer ${
                 activeTab === "cloud"
@@ -143,6 +155,7 @@ export default function AdminDashboard({ onClose }: AdminDashboardProps) {
         >
           {activeTab === "gallery" && <GalleryManager />}
           {activeTab === "content" && <ContentManager />}
+          {activeTab === "leads" && <LeadsManager />}
           {activeTab === "cloud" && <CloudStorageGuide />}
         </motion.div>
       </main>

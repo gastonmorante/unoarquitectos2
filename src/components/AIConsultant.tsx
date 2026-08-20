@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useMotionValue, useSpring } from "motion/react";
 import {
   Send,
@@ -6,7 +6,13 @@ import {
   Sparkles,
   User,
   Bot,
-  MessageCircle
+  MessageCircle,
+  Phone,
+  Mail,
+  CheckCircle2,
+  ArrowRight,
+  ShieldCheck,
+  RotateCcw
 } from "lucide-react";
 import { useLanguage, Language } from "../context/LanguageContext";
 import { UnoIsotype } from "./Logo";
@@ -20,13 +26,13 @@ interface ChatMessage {
 const GET_GREETING_MSG = (lang: Language) => {
   switch (lang) {
     case "en":
-      return "Welcome to **UNO Arquitectos**. I am your AI Technical Advisor in Architecture & High-Performance Engineering.\n\nI can assist you with bioclimatic design, native tropical materials (Chukum, Tzalam), karstic soil foundations, permits in Riviera Maya, or help shape your bespoke project.\n\n*What topic would you like to explore today?*";
+      return "Welcome to **UNO Arquitectos**. I am your AI Technical Advisor in Architecture & High-Performance Engineering.\n\nTo provide personalized guidance and register your technical consultation in our CRM, please share your details:";
     case "it":
-      return "Benvenuto su **UNO Arquitectos**. Sono il suo Consulente Tecnico AI di Architettura e Alta Ingegneria.\n\nPosso assisterla su progettazione bioclimatica, materiali autoctoni (Chukum, Tzalam), fondazioni su terreno carsico, permessi in Riviera Maya o strutturare il suo progetto su misura.\n\n*Quale argomento desidera approfondire oggi?*";
+      return "Benvenuto su **UNO Arquitectos**. Sono il suo Consulente Tecnico AI di Architettura e Alta Ingegneria.\n\nPer fornirle un'assistenza personalizzata e registrare la sua richiesta nel nostro CRM, la preghiamo di inserire i suoi dati:";
     case "fr":
-      return "Bienvenue chez **UNO Arquitectos**. Je suis votre Conseiller Technique IA en Architecture et Ingénierie Tropicale.\n\nJe peux vous orienter sur la conception bioclimatique, les matériaux régionaux (Chukum, Tzalam), les fondations en sol karstique, les permis en Riviera Maya ou le développement de votre projet sur mesure.\n\n*Quel sujet souhaitez-vous explorer aujourd'hui ?*";
+      return "Bienvenue chez **UNO Arquitectos**. Je suis votre Conseiller Technique IA en Architecture et Ingénierie Tropicale.\n\nPour vous offrir un conseil personnalisé et enregistrer votre demande dans notre CRM, veuillez renseigner vos coordonnées :";
     default:
-      return "Bienvenido a **UNO Arquitectos**. Soy su Asesor Técnico de Inteligencia Artificial en Arquitectura e Ingeniería.\n\nPuedo orientarle con rigor técnico sobre diseño bioclimático contemporáneo, materiales autóctonos (Chukum, Tzalam), cimentaciones en suelo kárstico, normativas en Riviera Maya o la estructuración integral de su proyecto.\n\n*¿Qué tema le gustaría explorar hoy?*";
+      return "Bienvenido a **UNO Arquitectos**. Soy su Asesor Técnico de Inteligencia Artificial en Arquitectura e Ingeniería.\n\nPara brindarle asesoría técnica personalizada y registrar su proyecto en nuestro CRM, por favor ingrese sus datos de contacto:";
   }
 };
 
@@ -37,8 +43,8 @@ const getLocalArchitecturalResponse = (query: string, lang: Language): string =>
   // 1. TZALAM
   if (q.includes("tzalam")) {
     return lang === "en"
-      ? "The **Tzalam** (*Lysiloma latisiliquum*), also known as the Caribbean Walnut or Mayan Walnut, is a native tropical hardwood from the Yucatan Peninsula:\n\n• **Physical Properties**: High hardness, exceptional resistance to decay, Caribbean humidity, and marine salinity.\n• **Aesthetic Character**: Rich reddish-brown walnut tones with distinct golden undertones and tight grain.\n• **Architectural Use**: Used in bespoke exterior decks, pergolas, custom sensory millwork, and facade louvers.\n\nAt UNO Arquitectos, we cure and seal all Tzalam wood in our regional workshop to ensure dimensional stability over decades."
-      : "El **Tzalam** (*Lysiloma latisiliquum*), conocido también como el nogal del Caribe o nogal maya, es una madera tropical dura autóctona de la Península de Yucatán:\n\n• **Propiedades Físicas**: Extraordinaria densidad y resistencia natural a la humedad caribeña, salinidad marina y plagas de termitas.\n• **Carácter Estético**: Tonalidades rojizas con vetas doradas profundas y veteado cerrado de gran nobleza visual.\n• **Uso Arquitectónico**: Ideal para pérgolas bioclimáticas, celosías de fachada, decks exteriores y carpintería fina sensorial.\n\nEn nuestro taller de producción tratamos y curamos el Tzalam con aceites naturales para garantizar su estabilidad dimensional frente a la intemperie.";
+      ? "The **Tzalam** (*Lysiloma latisiliquum*), also known as the Mayan Walnut, is a native tropical hardwood from the Yucatan Peninsula:\n\n• **Physical Properties**: High hardness, exceptional resistance to decay, Caribbean humidity, and marine salinity.\n• **Aesthetic Character**: Rich reddish-brown walnut tones with distinct golden undertones and tight grain.\n• **Architectural Use**: Used in bespoke exterior decks, pergolas, custom sensory millwork, and facade louvers.\n\nAt UNO Arquitectos, we cure and seal all Tzalam wood in our regional workshop to ensure dimensional stability over decades."
+      : "El **Tzalam** (*Lysiloma latisiliquum*), conocido como el nogal maya, es una madera tropical dura autóctona de la Península de Yucatán:\n\n• **Propiedades Físicas**: Extraordinaria densidad y resistencia natural a la humedad caribeña, salinidad marina y termitas.\n• **Carácter Estético**: Tonalidades rojizas con vetas doradas profundas y veteado cerrado de gran nobleza visual.\n• **Uso Arquitectónico**: Ideal para pérgolas bioclimáticas, celosías de fachada, decks exteriores y carpintería fina sensorial.\n\nEn nuestro taller de producción tratamos y curamos el Tzalam con aceites naturales para garantizar su estabilidad dimensional frente a la intemperie.";
   }
 
   // 2. CHUKUM
@@ -90,17 +96,10 @@ const getLocalArchitecturalResponse = (query: string, lang: Language): string =>
       : "UNO Arquitectos está fundado y dirigido por el **Arq. Angel Cereceda**:\n\n• **Trayectoria**: Más de 20 años de liderazgo en desarrollo inmobiliario y gestión integral de obras de alta gama.\n• **Formación**: Máster en Project Management (Universidad Europea de Madrid) y Máster en Desarrollo Sostenible.\n• **Obras Previas Emblemáticas**: Dirección técnica en proyectos de renombre internacional como *Papaya Playa Project*, *Inmobilia Mayaliah* (25,000 m²) y *Selina*.\n\nNuestra firma diseña y construye espacios que pertenecen al sitio y perduran en el tiempo.";
   }
 
-  // 9. CLIENTES EXTRANJEROS / REMOTOS
-  if (q.includes("extranjer") || q.includes("remot") || q.includes("fuera") || q.includes("no vivo") || q.includes("inversion")) {
-    return lang === "en"
-      ? "More than 60% of our clients reside outside Mexico (USA, Canada, Europe, and domestic investors):\n\n• **Remote Traceability**: Weekly high-definition photo and video reports, drone aerial surveys, and BIM milestone reviews.\n• **Bilingual Legal & Contracts**: Bi-lingual contracts under Mexican law with strict guarantees.\n• **Financial Certitude**: Parametric accounts with zero hidden extras.\n\nYou do not need to be on site; we act as your trusted technical director in Mexico."
-      : "Más del 60% de nuestros clientes residen fuera de Quintana Roo o en el extranjero (EE.UU., Canadá, Europa e inversionistas nacionales):\n\n• **Trazabilidad a Distancia**: Reportes semanales fotográficos en alta resolución, vuelos de dron y bitácora técnica digital.\n• **Certeza Legal y Contratos Bilingües**: Contratos con fianzas de cumplimiento bajo legislación mexicana y comunicación bilingüe continua.\n• **Transparencia Financiera**: Cuentas claras con control de costos en tiempo real.\n\nNo necesita estar presente en obra; nosotros somos sus ojos técnicos y garantes de calidad.";
-  }
-
   // DEFAULT CONTEXTUAL
   return lang === "en"
-    ? "UNO Arquitectos specializes in **Boutique Tropical Contemporary Architecture** in the Riviera Maya and CDMX, directed by **Arch. Angel Cereceda** (20+ years of experience, Master in Project Management, prior leadership in Papaya Playa Project and Inmobilia Mayaliah).\n\nWe would be glad to evaluate your lot or architectural brief. Would you like to explore our materials (Chukum/Tzalam), karstic foundations, or connect directly via WhatsApp with our team?"
-    : "UNO Arquitectos es un estudio boutique de **Arquitectura Contemporánea Tropical y Alta Ingeniería** en Riviera Maya y CDMX, dirigido por el **Arq. Angel Cereceda** (más de 20 años de trayectoria, Máster en Project Management por la Universidad Europea de Madrid y ex director técnico en obras como Papaya Playa Project e Inmobilia Mayaliah).\n\nNos encantará orientarle sobre materiales autóctonos (Chukum y Tzalam), normativas de selva o cimentaciones kársticas. ¿Sobre qué tema le gustaría profundizar o desea conectar directamente por WhatsApp?";
+    ? "UNO Arquitectos specializes in **Boutique Tropical Contemporary Architecture** in the Riviera Maya, directed by **Arch. Angel Cereceda** (20+ years of experience, Master in Project Management, prior leadership in Papaya Playa Project and Inmobilia Mayaliah).\n\nWe would be glad to evaluate your lot or architectural brief. Would you like to explore our materials (Chukum/Tzalam), karstic foundations, or connect directly via WhatsApp with our team?"
+    : "UNO Arquitectos es un estudio boutique de **Arquitectura Contemporánea Tropical y Alta Ingeniería** en Riviera Maya, dirigido por el **Arq. Angel Cereceda** (más de 20 años de trayectoria, Máster en Project Management por la Universidad Europea de Madrid y ex director técnico en obras como Papaya Playa Project e Inmobilia Mayaliah).\n\nNos encantará orientarle sobre materiales autóctonos (Chukum y Tzalam), normativas de selva o cimentaciones kársticas. ¿Sobre qué tema le gustaría profundizar o desea conectar directamente por WhatsApp?";
 };
 
 export default function AIConsultant() {
@@ -111,9 +110,33 @@ export default function AIConsultant() {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Lead capture state
-  const [leadName, setLeadName] = useState("");
-  const [leadEmail, setLeadEmail] = useState("");
+  // Lead capture state (persistent in localStorage)
+  const [leadName, setLeadName] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("uno_lead_name") || "";
+    }
+    return "";
+  });
+  const [leadPhone, setLeadPhone] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("uno_lead_phone") || "";
+    }
+    return "";
+  });
+  const [leadEmail, setLeadEmail] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("uno_lead_email") || "";
+    }
+    return "";
+  });
+  const [leadCaptured, setLeadCaptured] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("uno_lead_captured") === "true";
+    }
+    return false;
+  });
+  const [isSubmittingLead, setIsSubmittingLead] = useState(false);
+  const [leadError, setLeadError] = useState("");
 
   // Cursor tracking motion variables with smooth physics
   const bgLogoX = useMotionValue(typeof window !== "undefined" ? window.innerWidth / 2 - 100 : 200);
@@ -126,57 +149,70 @@ export default function AIConsultant() {
   const timeoutRef = useRef<any>(null);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (typeof window !== "undefined") {
+      bgLogoX.set(window.innerWidth / 2 - 50);
+      bgLogoY.set(window.innerHeight / 2 - 50);
 
-    bgLogoX.set(window.innerWidth / 2 - 50);
-    bgLogoY.set(window.innerHeight / 2 - 50);
+      const handleMove = (clientX: number, clientY: number) => {
+        bgLogoX.set(clientX - 50);
+        bgLogoY.set(clientY - 50);
+        
+        setIsMoving(true);
 
-    const handleMove = (clientX: number, clientY: number) => {
-      bgLogoX.set(clientX - 50);
-      bgLogoY.set(clientY - 50);
-      
-      setIsMoving(true);
+        if (timeoutRef.current) {
+          clearTimeout(timeoutRef.current);
+        }
 
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
+        timeoutRef.current = setTimeout(() => {
+          setIsMoving(false);
+        }, 500);
+      };
 
-      timeoutRef.current = setTimeout(() => {
-        setIsMoving(false);
-      }, 500);
-    };
+      const handleMouseMove = (e: MouseEvent) => {
+        handleMove(e.clientX, e.clientY);
+      };
 
-    const handleMouseMove = (e: MouseEvent) => {
-      handleMove(e.clientX, e.clientY);
-    };
+      const handleTouchMove = (e: TouchEvent) => {
+        if (e.touches && e.touches[0]) {
+          handleMove(e.touches[0].clientX, e.touches[0].clientY);
+        }
+      };
 
-    const handleTouchMove = (e: TouchEvent) => {
-      if (e.touches && e.touches[0]) {
-        handleMove(e.touches[0].clientX, e.touches[0].clientY);
-      }
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("touchmove", handleTouchMove, { passive: true });
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("touchmove", handleTouchMove);
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-    };
+      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("touchmove", handleTouchMove, { passive: true });
+      return () => {
+        window.removeEventListener("mousemove", handleMouseMove);
+        window.removeEventListener("touchmove", handleTouchMove);
+        if (timeoutRef.current) {
+          clearTimeout(timeoutRef.current);
+        }
+      };
+    }
+    return undefined;
   }, [bgLogoX, bgLogoY]);
 
-  // Reset/Initialize greeting when language changes
+  // Reset/Initialize greeting
   useEffect(() => {
-    setMessages([
-      {
-        role: "assistant",
-        content: GET_GREETING_MSG(language),
-        timestamp: new Date()
-      }
-    ]);
-  }, [language]);
+    if (leadCaptured && leadName) {
+      setMessages([
+        {
+          role: "assistant",
+          content: language === "es"
+            ? `Bienvenido de nuevo, **${leadName}**. Soy su Asesor Técnico de IA en UNO Arquitectos.\n\n¿En qué podemos asesorarle hoy con respecto a su proyecto?`
+            : `Welcome back, **${leadName}**. I am your AI Technical Advisor at UNO Arquitectos.\n\nHow can we assist you with your project today?`,
+          timestamp: new Date()
+        }
+      ]);
+    } else {
+      setMessages([
+        {
+          role: "assistant",
+          content: GET_GREETING_MSG(language),
+          timestamp: new Date()
+        }
+      ]);
+    }
+  }, [language, leadCaptured, leadName]);
 
   // Listen to custom open-ai-chat event
   useEffect(() => {
@@ -190,22 +226,68 @@ export default function AIConsultant() {
   // Scroll to bottom on message updates
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, isLoading]);
+  }, [messages, isLoading, leadCaptured]);
 
-  const quickPrompts =
-    language === "es"
-      ? [
-          { label: "Normativas en Tulum", prompt: "¿Cuáles son las regulaciones ecológicas, COS/CUS y conservación de selva en Tulum?" },
-          { label: "Chukum y Maderas", prompt: "Explícame las ventajas del Chukum natural y la madera de Tzalam en clima tropical." },
-          { label: "Cimentación Kárstica", prompt: "¿Cómo calculan las cimentaciones sobre suelo kárstico o cenotes?" },
-          { label: "Obra Llave en Mano", prompt: "¿Cómo funciona el modelo de construcción Llave en Mano de UNO Arquitectos?" }
-        ]
-      : [
-          { label: "Tulum regulations", prompt: "What are the environmental permits and land ratios required in Tulum?" },
-          { label: "Chukum & tropical wood", prompt: "Tell me about Chukum and Tzalam wood advantages in tropical climates." },
-          { label: "Karstic foundations", prompt: "How do you handle structural foundations on karst soil near cenotes?" },
-          { label: "Turnkey building", prompt: "How does the Turnkey construction model work at UNO Arquitectos?" }
-        ];
+  const handleStartConsultation = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLeadError("");
+
+    if (!leadName.trim()) {
+      setLeadError(language === "es" ? "Por favor ingrese su nombre." : "Please enter your name.");
+      return;
+    }
+    if (!leadPhone.trim() || leadPhone.trim().length < 7) {
+      setLeadError(language === "es" ? "Por favor ingrese su número de WhatsApp." : "Please enter your WhatsApp number.");
+      return;
+    }
+    if (!leadEmail.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(leadEmail.trim())) {
+      setLeadError(language === "es" ? "Por favor ingrese un correo electrónico válido." : "Please enter a valid email address.");
+      return;
+    }
+
+    setIsSubmittingLead(true);
+
+    try {
+      // 1. Enviar Lead al Backend y CRM Webhook
+      await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: leadName.trim(),
+          phone: leadPhone.trim(),
+          email: leadEmail.trim(),
+          source: "Asesor Técnico IA Chatbot",
+          message: "Lead registrado al abrir el Asesor Técnico de IA."
+        })
+      });
+
+      // 2. Guardar en almacenamiento local
+      if (typeof window !== "undefined") {
+        localStorage.setItem("uno_lead_name", leadName.trim());
+        localStorage.setItem("uno_lead_phone", leadPhone.trim());
+        localStorage.setItem("uno_lead_email", leadEmail.trim());
+        localStorage.setItem("uno_lead_captured", "true");
+      }
+
+      setLeadCaptured(true);
+
+      // 3. Agregar mensaje de bienvenida y habilitar conversación fluida
+      const welcomeUserMsg: ChatMessage = {
+        role: "assistant",
+        content: language === "es"
+          ? `¡Mucho gusto, **${leadName.trim()}**! Hemos registrado sus datos de contacto con éxito en nuestro CRM.\n\nAhora cuénteme, ¿en qué podemos asesorarle hoy? *(Por ejemplo: diseño bioclimático, materiales de la selva maya, cimentación en suelo kárstico o viabilidad de su proyecto)*.`
+          : `Pleased to meet you, **${leadName.trim()}**! We have successfully registered your details in our CRM.\n\nNow, how can I assist you today? *(For example: bioclimatic design, Mayan jungle materials, karstic foundations, or project feasibility)*.`,
+        timestamp: new Date()
+      };
+
+      setMessages((prev) => [...prev, welcomeUserMsg]);
+    } catch (err) {
+      console.error("Error submitting lead:", err);
+      setLeadCaptured(true);
+    } finally {
+      setIsSubmittingLead(false);
+    }
+  };
 
   const handleSendMessage = async (text: string) => {
     const trimmedText = text.trim();
@@ -221,32 +303,6 @@ export default function AIConsultant() {
     setInputValue("");
     setIsLoading(true);
 
-    // Check if user shared name
-    const nameMatch = trimmedText.match(/(?:mi nombre es|me llamo|soy|my name is|i am)\s+([A-Za-zÀ-ÿ]+(?:\s+[A-Za-zÀ-ÿ]+)?)/i);
-    if (nameMatch && nameMatch[1]) {
-      setLeadName(nameMatch[1]);
-    }
-
-    // Check if user shared an email to record as lead
-    const emailMatch = trimmedText.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
-    if (emailMatch) {
-      const extractedEmail = emailMatch[0];
-      setLeadEmail(extractedEmail);
-      try {
-        await fetch("/api/leads", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: (nameMatch && nameMatch[1]) || leadName || "Consultante Web",
-            email: extractedEmail,
-            message: `Lead interactuando en chat: "${trimmedText}"`,
-            source: "Asesor IA Chatbot"
-          })
-        });
-      } catch {}
-    }
-
-    // OPEN CHAT WITH GEMINI BACKEND OR NEURAL LOCAL FALLBACK
     try {
       const chatHistory = messages.map((m) => ({
         role: m.role,
@@ -260,7 +316,7 @@ export default function AIConsultant() {
         body: JSON.stringify({
           messages: chatHistory,
           language,
-          userProfile: { name: leadName, email: leadEmail }
+          userProfile: { name: leadName, email: leadEmail, phone: leadPhone }
         })
       });
 
@@ -293,6 +349,21 @@ export default function AIConsultant() {
       setIsLoading(false);
     }
   };
+
+  const quickPrompts =
+    language === "es"
+      ? [
+          { label: "Normativas en Tulum", prompt: "¿Cuáles son las regulaciones ecológicas, COS/CUS y conservación de selva en Tulum?" },
+          { label: "Chukum y Maderas", prompt: "Explícame las ventajas del Chukum natural y la madera de Tzalam en clima tropical." },
+          { label: "Cimentación Kárstica", prompt: "¿Cómo calculan las cimentaciones sobre suelo kárstico o cenotes?" },
+          { label: "Obra Llave en Mano", prompt: "¿Cómo funciona el modelo de construcción Llave en Mano de UNO Arquitectos?" }
+        ]
+      : [
+          { label: "Tulum regulations", prompt: "What are the environmental permits and land ratios required in Tulum?" },
+          { label: "Chukum & tropical wood", prompt: "Tell me about Chukum and Tzalam wood advantages in tropical climates." },
+          { label: "Karstic foundations", prompt: "How do you handle structural foundations on karst soil near cenotes?" },
+          { label: "Turnkey building", prompt: "How does the Turnkey construction model work at UNO Arquitectos?" }
+        ];
 
   // Text Formatter for bullets and bolds
   const formatText = (text: string) => {
@@ -364,7 +435,7 @@ export default function AIConsultant() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.96 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="bg-white border border-arena-calida/30 shadow-2xl rounded-2xl overflow-hidden w-[calc(100vw-2rem)] sm:w-[380px] max-w-[380px] h-[min(520px,75vh)] flex flex-col mb-3 sm:mb-4"
+              className="bg-white border border-arena-calida/30 shadow-2xl rounded-2xl overflow-hidden w-[calc(100vw-2rem)] sm:w-[390px] max-w-[390px] h-[min(560px,80vh)] flex flex-col mb-3 sm:mb-4"
             >
               {/* Header */}
               <div className="bg-white border-b border-gris-piedra py-3.5 px-4 flex items-center justify-between text-gris-texto">
@@ -374,25 +445,44 @@ export default function AIConsultant() {
                   </div>
                   <div>
                     <h4 className="font-label-caps text-xs font-semibold tracking-wide text-teal-uno uppercase">
-                      {language === "es" ? "Asesor IA" : "AI Advisor"}
+                      {language === "es" ? "Asesor Técnico IA" : "AI Technical Advisor"}
                     </h4>
                     <span className="font-label-caps text-[9px] tracking-wider text-gris-texto uppercase flex items-center gap-1 font-medium">
                       <span className="w-1.5 h-1.5 rounded-full bg-teal-uno inline-block animate-pulse"></span>
-                      {language === "es" ? "Ingeniería & Arquitectura" : "Engineering & Architecture"}
+                      {leadCaptured && leadName ? `Hola, ${leadName.split(" ")[0]}` : (language === "es" ? "Ingeniería & Arquitectura" : "Engineering & Architecture")}
                     </span>
                   </div>
                 </div>
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="text-gris-texto hover:text-teal-uno transition-colors cursor-pointer p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
-                  aria-label="Close chat"
-                >
-                  <X className="w-4 h-4" />
-                </button>
+
+                <div className="flex items-center gap-1">
+                  {leadCaptured && (
+                    <button
+                      onClick={() => {
+                        if (confirm(language === "es" ? "¿Deseas reiniciar tus datos de sesión?" : "Reset your session data?")) {
+                          localStorage.removeItem("uno_lead_captured");
+                          setLeadCaptured(false);
+                        }
+                      }}
+                      className="text-zinc-400 hover:text-teal-uno p-1.5 transition-colors cursor-pointer"
+                      title={language === "es" ? "Cambiar datos de contacto" : "Change contact details"}
+                    >
+                      <RotateCcw className="w-3.5 h-3.5" />
+                    </button>
+                  )}
+
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    className="text-gris-texto hover:text-teal-uno transition-colors cursor-pointer p-2 min-w-[36px] min-h-[36px] flex items-center justify-center"
+                    aria-label="Close chat"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
 
-              {/* Messages viewport */}
+              {/* VIEWPORT: LEAD INTAKE GATE OR ACTIVE CONVERSATION */}
               <div className="flex-1 overflow-y-auto p-4 bg-surface-container-lowest space-y-4">
+                {/* Messages */}
                 {messages.map((m, idx) => (
                   <div key={idx} className={`flex gap-2.5 items-start ${m.role === "user" ? "flex-row-reverse" : ""}`}>
                     <div
@@ -405,7 +495,7 @@ export default function AIConsultant() {
                       {m.role === "user" ? <User className="w-3.5 h-3.5" /> : <Bot className="w-3.5 h-3.5" />}
                     </div>
 
-                    <div className="max-w-[82%]">
+                    <div className="max-w-[84%]">
                       <div
                         className={`p-3 rounded-xs text-xs text-left leading-relaxed shadow-xs font-body-md ${
                           m.role === "user"
@@ -426,6 +516,109 @@ export default function AIConsultant() {
                   </div>
                 ))}
 
+                {/* LEAD INTAKE FORM (When not yet captured) */}
+                {!leadCaptured && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-4 bg-white border border-teal-uno/25 rounded-xs shadow-sm text-left space-y-3"
+                  >
+                    <div className="flex items-center gap-2 border-b border-gris-piedra pb-2">
+                      <CheckCircle2 className="w-4 h-4 text-teal-uno" />
+                      <h5 className="font-label-caps text-xs uppercase font-semibold text-teal-uno">
+                        {language === "es" ? "Registro de Consulta Técnica" : "Technical Consultation Registration"}
+                      </h5>
+                    </div>
+
+                    <form onSubmit={handleStartConsultation} className="space-y-2.5 text-xs font-body-md">
+                      {leadError && (
+                        <div className="p-2 bg-red-50 border border-red-200 text-red-700 rounded-xs text-[11px]">
+                          {leadError}
+                        </div>
+                      )}
+
+                      {/* Nombre */}
+                      <div>
+                        <label className="font-label-caps text-[10px] uppercase tracking-wider text-gris-texto font-semibold block mb-1">
+                          {language === "es" ? "Nombre Completo *" : "Full Name *"}
+                        </label>
+                        <div className="relative">
+                          <User className="w-3.5 h-3.5 absolute left-3 top-3 text-zinc-400" />
+                          <input
+                            type="text"
+                            required
+                            value={leadName}
+                            onChange={(e) => setLeadName(e.target.value)}
+                            placeholder={language === "es" ? "Ej. Arq. Carlos Mendoza" : "e.g. John Doe"}
+                            className="w-full bg-gris-piedra/10 border border-gris-piedra rounded-xs pl-8 pr-3 py-2 text-xs text-gris-texto focus:outline-none focus:border-teal-uno focus:bg-white"
+                          />
+                        </div>
+                      </div>
+
+                      {/* WhatsApp / Tel */}
+                      <div>
+                        <label className="font-label-caps text-[10px] uppercase tracking-wider text-gris-texto font-semibold block mb-1">
+                          {language === "es" ? "WhatsApp / Teléfono *" : "WhatsApp / Phone *"}
+                        </label>
+                        <div className="relative">
+                          <Phone className="w-3.5 h-3.5 absolute left-3 top-3 text-zinc-400" />
+                          <input
+                            type="tel"
+                            required
+                            value={leadPhone}
+                            onChange={(e) => setLeadPhone(e.target.value)}
+                            placeholder={language === "es" ? "+52 984 123 4567" : "+1 555 123 4567"}
+                            className="w-full bg-gris-piedra/10 border border-gris-piedra rounded-xs pl-8 pr-3 py-2 text-xs text-gris-texto focus:outline-none focus:border-teal-uno focus:bg-white"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Email */}
+                      <div>
+                        <label className="font-label-caps text-[10px] uppercase tracking-wider text-gris-texto font-semibold block mb-1">
+                          {language === "es" ? "Correo Electrónico *" : "Email Address *"}
+                        </label>
+                        <div className="relative">
+                          <Mail className="w-3.5 h-3.5 absolute left-3 top-3 text-zinc-400" />
+                          <input
+                            type="email"
+                            required
+                            value={leadEmail}
+                            onChange={(e) => setLeadEmail(e.target.value)}
+                            placeholder="contacto@ejemplo.com"
+                            className="w-full bg-gris-piedra/10 border border-gris-piedra rounded-xs pl-8 pr-3 py-2 text-xs text-gris-texto focus:outline-none focus:border-teal-uno focus:bg-white"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Submit Button */}
+                      <button
+                        type="submit"
+                        disabled={isSubmittingLead}
+                        className={`w-full py-2.5 bg-teal-uno hover:opacity-90 text-white rounded-xs font-label-caps text-xs uppercase tracking-wider font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-xs mt-3 ${
+                          isSubmittingLead ? "opacity-60 cursor-not-allowed" : ""
+                        }`}
+                      >
+                        {isSubmittingLead ? (
+                          language === "es" ? "Conectando con CRM..." : "Connecting to CRM..."
+                        ) : (
+                          <>
+                            {language === "es" ? "Iniciar Consulta Técnica" : "Start Technical Consultation"}
+                            <ArrowRight className="w-3.5 h-3.5" />
+                          </>
+                        )}
+                      </button>
+
+                      <p className="text-[10px] text-zinc-400 leading-tight flex items-center gap-1 pt-1 font-body-md">
+                        <ShieldCheck className="w-3 h-3 text-teal-uno flex-shrink-0" />
+                        {language === "es"
+                          ? "Datos enviados de forma segura al CRM de UNO Arquitectos."
+                          : "Data securely forwarded to UNO Arquitectos CRM."}
+                      </p>
+                    </form>
+                  </motion.div>
+                )}
+
                 {isLoading && (
                   <div className="flex gap-2.5 items-start animate-pulse">
                     <div className="w-7 h-7 rounded-full bg-teal-uno/10 border border-teal-uno/20 flex items-center justify-center text-teal-uno">
@@ -443,8 +636,8 @@ export default function AIConsultant() {
                 <div ref={messagesEndRef} />
               </div>
 
-              {/* Quick Prompt suggestions */}
-              {messages.length <= 3 && !isLoading && (
+              {/* QUICK PROMPT SUGGESTIONS (Only when lead is captured) */}
+              {leadCaptured && messages.length <= 4 && !isLoading && (
                 <div className="px-4 py-2 bg-gris-piedra/20 border-t border-gris-piedra">
                   <p className="font-label-caps text-[9px] font-semibold tracking-wider text-teal-uno uppercase mb-2 text-left">
                     {language === "es" ? "Sugerencias de Consulta" : "Suggested Queries"}
@@ -463,36 +656,42 @@ export default function AIConsultant() {
                 </div>
               )}
 
-              {/* Chat Form */}
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  handleSendMessage(inputValue);
-                }}
-                className="p-3 border-t border-gris-piedra bg-white flex gap-2"
-              >
-                <input
-                  type="text"
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  placeholder={
-                    language === "es"
-                      ? "Pregunte sobre permisos, Chukum, estructura kárstica..."
-                      : "Ask about permits, Chukum, karstic foundations..."
-                  }
-                  className="flex-1 bg-gris-piedra/15 border border-gris-piedra rounded-xs px-3.5 py-2.5 font-body-md text-xs text-gris-texto focus:outline-none focus:border-teal-uno focus:bg-white transition-all min-h-[44px]"
-                />
-                <button
-                  type="submit"
-                  disabled={isLoading || !inputValue.trim()}
-                  className={`px-4 bg-teal-uno hover:opacity-90 text-white rounded-xs flex items-center justify-center transition-colors cursor-pointer min-h-[44px] min-w-[44px] ${
-                    isLoading || !inputValue.trim() ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
-                  aria-label="Send message"
+              {/* CHAT INPUT FORM (Enabled after lead is captured) */}
+              {leadCaptured ? (
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    handleSendMessage(inputValue);
+                  }}
+                  className="p-3 border-t border-gris-piedra bg-white flex gap-2"
                 >
-                  <Send className="w-4 h-4" />
-                </button>
-              </form>
+                  <input
+                    type="text"
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    placeholder={
+                      language === "es"
+                        ? "Pregunte sobre permisos, Chukum, estructura kárstica..."
+                        : "Ask about permits, Chukum, karstic foundations..."
+                    }
+                    className="flex-1 bg-gris-piedra/15 border border-gris-piedra rounded-xs px-3.5 py-2.5 font-body-md text-xs text-gris-texto focus:outline-none focus:border-teal-uno focus:bg-white transition-all min-h-[44px]"
+                  />
+                  <button
+                    type="submit"
+                    disabled={isLoading || !inputValue.trim()}
+                    className={`px-4 bg-teal-uno hover:opacity-90 text-white rounded-xs flex items-center justify-center transition-colors cursor-pointer min-h-[44px] min-w-[44px] ${
+                      isLoading || !inputValue.trim() ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
+                    aria-label="Send message"
+                  >
+                    <Send className="w-4 h-4" />
+                  </button>
+                </form>
+              ) : (
+                <div className="px-4 py-2.5 bg-zinc-50 border-t border-gris-piedra text-center font-label-caps text-[10px] text-zinc-400 uppercase tracking-wider">
+                  {language === "es" ? "Complete sus datos arriba para activar el chat" : "Fill out your details above to activate chat"}
+                </div>
+              )}
             </motion.div>
           ) : null}
         </AnimatePresence>

@@ -179,29 +179,58 @@ app.post("/api/advisor", rateLimiter(15, 60000), async (req, res) => {
   }
 });
 
-// 3. Endpoint de Leads (Integración CRM GHL Webhooks)
-app.post("/api/leads", rateLimiter(15, 60000), async (req, res) => {
+// Helper para persistencia de leads
+const leadsFilePath = path.join(process.cwd(), "public", "data", "leads.json");
+const loadStoredLeads = (): any[] => {
+  try {
+    if (fs.existsSync(leadsFilePath)) {
+      return JSON.parse(fs.readFileSync(leadsFilePath, "utf-8"));
+    }
+  } catch (err) {
+    console.error("Error loading leads:", err);
+  }
+  return [];
+};
+
+const saveStoredLead = (lead: any) => {
+  try {
+    const current = loadStoredLeads();
+    current.unshift(lead);
+    const dataDir = path.join(process.cwd(), "public", "data");
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir, { recursive: true });
+    }
+    fs.writeFileSync(leadsFilePath, JSON.stringify(current, null, 2), "utf-8");
+  } catch (err) {
+    console.error("Error saving lead:", err);
+  }
+};
+
+// 3. Endpoint de Leads (Integración CRM GHL / Webhook / DB)
+app.post("/api/leads", rateLimiter(30, 60000), async (req, res) => {
   try {
     const { name, email, phone, message, source } = req.body;
     
-    if (!name || !email) {
-      return res.status(400).json({ error: "Nombre y correo son obligatorios." });
+    if (!name || (!email && !phone)) {
+      return res.status(400).json({ error: "Nombre y al menos un método de contacto (WhatsApp o Email) son obligatorios." });
     }
 
     const newLead = {
       id: Date.now().toString(),
-      name,
-      email,
-      phone: phone || "",
-      message: message || "",
-      source: source || "Asesor AI Chatbot",
-      createdAt: new Date()
+      name: name.trim(),
+      email: email ? email.trim() : "",
+      phone: phone ? phone.trim() : "",
+      message: message || "Inicio de consulta en Asesor IA",
+      source: source || "Asesor IA Chatbot",
+      createdAt: new Date().toISOString()
     };
 
     leads.push(newLead);
+    saveStoredLead(newLead);
     console.log("[Leads DB] Nuevo lead registrado exitosamente:", newLead);
 
-    const crmWebhook = process.env.GHL_WEBHOOK_URL;
+    // Reenvío a Webhook CRM (GoHighLevel, HubSpot, Zapier, Make)
+    const crmWebhook = process.env.CRM_WEBHOOK_URL || process.env.GHL_WEBHOOK_URL;
     if (crmWebhook) {
       try {
         await fetch(crmWebhook, {
@@ -209,18 +238,26 @@ app.post("/api/leads", rateLimiter(15, 60000), async (req, res) => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newLead)
         });
-        console.log("[Leads CRM] Lead reenviado a GHL Webhook exitosamente.");
+        console.log("[Leads CRM] Lead reenviado al webhook CRM exitosamente.");
       } catch (err: any) {
-        console.error("[Leads CRM] Error al reenviar al webhook GHL:", err.message);
+        console.error("[Leads CRM] Error al reenviar al webhook CRM:", err.message);
       }
-    } else {
-      console.log("[Leads CRM] Variable GHL_WEBHOOK_URL no configurada. Lead almacenado en memoria local de Node de forma segura.");
     }
 
     return res.json({ success: true, lead: newLead });
   } catch (error: any) {
     console.error("Error en Leads:", error);
     return res.status(500).json({ error: "Error al registrar el lead." });
+  }
+});
+
+// Endpoint para consultar leads desde el Admin
+app.get("/api/admin/leads", (_req, res) => {
+  try {
+    const allLeads = loadStoredLeads();
+    return res.json({ success: true, leads: allLeads });
+  } catch (err: any) {
+    return res.status(500).json({ error: err.message });
   }
 });
 
