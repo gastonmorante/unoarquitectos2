@@ -1,0 +1,174 @@
+# ==============================================================================
+# UNO ARQUITECTOS - HTACCESS PRODUCTION CONFIGURATION (APACHE / HOSTGATOR)
+# Optimized for React SPA, SEO 301 Redirects, HTTPS, Security & High Performance
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. HOSTGATOR PHP HANDLER (PHP 8.2)
+# ------------------------------------------------------------------------------
+AddHandler application/x-httpd-ea-php82___lsphp .php .php8 .phtml
+
+# ------------------------------------------------------------------------------
+# 2. APACHE REWRITE ENGINE & HTTPS ENFORCEMENT
+# ------------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Force HTTPS (SSL)
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # ----------------------------------------------------------------------------
+  # 3. SEO 301 PERMANENT REDIRECTS (MIGRATION FROM OLD WORDPRESS / ELEMENTOR URLS)
+  # Preserves 100% Google indexation, PageRank equity and prevents 404 penalties
+  # ----------------------------------------------------------------------------
+
+  # A. Sección Filosofía / Quiénes Somos / Identidad Local
+  RewriteRule ^quienes-somos.*$ /#filosofia [R=301,L,NE]
+  RewriteRule ^a-que-nos-dedicamos.*$ /#filosofia [R=301,L,NE]
+  RewriteRule ^nosotros/?$ /#filosofia [R=301,L,NE]
+  RewriteRule ^filosofia/?$ /#filosofia [R=301,L,NE]
+  RewriteRule ^esencia/?$ /#filosofia [R=301,L,NE]
+  RewriteRule ^arquitectos-en-playa-del-carmen.*$ /#filosofia [R=301,L,NE]
+  RewriteRule ^arquitectos-e-ingenieros-en-playa-del-carmen.*$ /#filosofia [R=301,L,NE]
+  RewriteRule ^arquitectos-e-ingenieros-en-tulum.*$ /#filosofia [R=301,L,NE]
+  RewriteRule ^arquitectos-en-tulum.*$ /#filosofia [R=301,L,NE]
+
+  # B. Sección Servicios / Disciplinas / Construcción Llave en Mano
+  RewriteRule ^servicios/?$ /#servicios [R=301,L,NE]
+  RewriteRule ^estudio/?$ /#servicios [R=301,L,NE]
+  RewriteRule ^disciplinas/?$ /#servicios [R=301,L,NE]
+  RewriteRule ^obra-llave-en-mano.*$ /#servicios [R=301,L,NE]
+  RewriteRule ^obra-negra.*$ /#servicios [R=301,L,NE]
+  RewriteRule ^obra-gris.*$ /#servicios [R=301,L,NE]
+  RewriteRule ^obra-blanca.*$ /#servicios [R=301,L,NE]
+  RewriteRule ^empresa-de-construccion.*$ /#servicios [R=301,L,NE]
+
+  # C. Sección Portafolio / Proyectos Individuales
+  RewriteRule ^proyectos/?$ /#proyectos [R=301,L,NE]
+  RewriteRule ^portafolio/?$ /#proyectos [R=301,L,NE]
+  RewriteRule ^portfolio/?$ /#proyectos [R=301,L,NE]
+  RewriteRule ^coleccion/?$ /#proyectos [R=301,L,NE]
+  RewriteRule ^7-cielos.*$ /#proyectos [R=301,L,NE]
+  RewriteRule ^residencia-7-cielos.*$ /#proyectos [R=301,L,NE]
+  RewriteRule ^alux.*$ /#proyectos [R=301,L,NE]
+  RewriteRule ^villas-alux.*$ /#proyectos [R=301,L,NE]
+  RewriteRule ^nikkori.*$ /#proyectos [R=301,L,NE]
+  RewriteRule ^oceana.*$ /#proyectos [R=301,L,NE]
+  RewriteRule ^villa-vidorra.*$ /#proyectos [R=301,L,NE]
+  RewriteRule ^villa-chukum.*$ /#proyectos [R=301,L,NE]
+  RewriteRule ^casa-coral.*$ /#proyectos [R=301,L,NE]
+  RewriteRule ^casa-tzalam.*$ /#proyectos [R=301,L,NE]
+
+  # D. Sección Contacto & FAQs
+  RewriteRule ^contacto/?$ /#contacto [R=301,L,NE]
+  RewriteRule ^dialogo/?$ /#contacto [R=301,L,NE]
+  RewriteRule ^ubicaciones/?$ /#contacto [R=301,L,NE]
+  RewriteRule ^faqs/?$ /#faqs [R=301,L,NE]
+  RewriteRule ^preguntas-frecuentes/?$ /#faqs [R=301,L,NE]
+
+  # E. Términos & Privacidad Legal
+  RewriteRule ^aviso-de-privacidad/?$ /?legal=privacy [R=301,L]
+  RewriteRule ^politica-de-privacidad/?$ /?legal=privacy [R=301,L]
+  RewriteRule ^terminos-y-condiciones/?$ /?legal=terms [R=301,L]
+
+  # F. Limpieza de Endpoints y Taxonomías de WordPress
+  RewriteRule ^wp-login\.php$ / [R=301,L]
+  RewriteRule ^wp-admin.*$ / [R=301,L]
+  RewriteRule ^category/.*$ / [R=301,L]
+  RewriteRule ^tag/.*$ / [R=301,L]
+  RewriteRule ^author/.*$ / [R=301,L]
+  RewriteRule ^feed/?$ / [R=301,L]
+  RewriteRule ^xmlrpc\.php$ - [F,L]
+
+  # ----------------------------------------------------------------------------
+  # 4. SINGLE PAGE APPLICATION (SPA) FALLBACK ROUTING
+  # If request is not an existing file or directory, route to index.html
+  # ----------------------------------------------------------------------------
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 5. GZIP / DEFLATE COMPRESSION FOR CORE WEB VITALS SPEED
+# ------------------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml image/x-icon
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 6. BROWSER CACHING HEADERS (LEVERAGE CACHING)
+# ------------------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+
+  # HTML & Manifest (no cache or short cache for quick updates)
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType application/json "access plus 0 seconds"
+
+  # CSS, JavaScript (Vite uses content-hashed filenames for immutable caching)
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+
+  # Media & Images
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+
+  # Web Fonts
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType font/ttf "access plus 1 year"
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 7. ADVANCED SECURITY HEADERS & DEFENSIVE HARDENING
+# ------------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  # HTTP Strict Transport Security (HSTS) - Forzar HTTPS estricto por 1 año
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+  # Prevent Clickjacking (Evita que el sitio sea incrustado en iframes de terceros)
+  Header always set X-Frame-Options "SAMEORIGIN"
+
+  # Prevent MIME type sniffing
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Referrer Policy (Protege datos de navegación hacia otros sitios)
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # XSS Protection
+  Header always set X-XSS-Protection "1; mode=block"
+
+  # Permissions Policy (Restringe acceso a sensores/hardware innecesarios)
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(self), payment=()"
+
+  # Content Security Policy (CSP) equilibrada para React, Google Fonts, Analytics y Three.js
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://www.googletagmanager.com https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://www.facebook.com https://generativelanguage.googleapis.com; frame-src 'self' https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self';"
+</IfModule>
+
+# Block access to hidden files and sensitive developer files (.git, .env, .sql, .log, etc.)
+<FilesMatch "^\.|\.(bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist|env|ts|json)$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# Allow public sitemap and robots
+<Files "sitemap.xml">
+  Allow from all
+</Files>
+<Files "robots.txt">
+  Allow from all
+</Files>
+
+# Prevent directory browsing
+Options -Indexes -MultiViews

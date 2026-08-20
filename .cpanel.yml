@@ -1,0 +1,6 @@
+﻿---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home1/unoarqu2/public_html/
+    - /bin/cp -R dist/* 
+    - /bin/cp dist/.htaccess 

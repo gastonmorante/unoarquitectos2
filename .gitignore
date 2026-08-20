@@ -64,8 +64,7 @@ jspm_packages/
 # Stores VSCode versions used for testing
 .vscode-test
 
-# build output
-dist/
+# build output (permitimos dist para cPanel Git deployment)
 dist-ssr/
 *.local
 
