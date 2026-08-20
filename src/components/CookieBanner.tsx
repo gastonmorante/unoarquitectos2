@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Cookie, ShieldCheck, X } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
@@ -17,6 +17,7 @@ export default function CookieBanner() {
       }, 3200);
       return () => clearTimeout(timer);
     }
+    return undefined;
   }, []);
 
   const handleAccept = () => {

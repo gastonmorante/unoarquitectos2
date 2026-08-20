@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Compass, Menu, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Compass, X } from "lucide-react";
 import Logo from "./Logo";
 import LanguageSelector from "./LanguageSelector";
 import { useLanguage } from "../context/LanguageContext";

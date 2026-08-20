@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, FormEvent } from "react";
 import { Mail, Phone, MapPin, Send, CheckCircle, Clock, ExternalLink } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import Logo from "./Logo";
@@ -12,7 +12,7 @@ export default function Contacto() {
   const [submitted, setSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (isSending) return;
     setIsSending(true);
@@ -205,6 +205,7 @@ export default function Contacto() {
                       id="con-name"
                       type="text"
                       required
+                      autoComplete="name"
                       placeholder={t("contacto.fullNamePlaceholder")}
                       value={name}
                       onChange={(e) => setName(e.target.value)}
@@ -220,6 +221,7 @@ export default function Contacto() {
                       id="con-tel"
                       type="tel"
                       required
+                      autoComplete="tel"
                       placeholder={t("contacto.phonePlaceholder") || "+52 1 984 210 8420"}
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
@@ -236,6 +238,7 @@ export default function Contacto() {
                     id="con-email"
                     type="email"
                     required
+                    autoComplete="email"
                     placeholder={t("contacto.emailPlaceholder")}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}

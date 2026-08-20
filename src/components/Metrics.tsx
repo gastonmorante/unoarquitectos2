@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, useInView, animate } from "motion/react";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -8,7 +8,7 @@ interface MetricCounterProps {
   desc: string;
 }
 
-const MetricCounter: React.FC<MetricCounterProps> = ({ valueStr, title, desc }) => {
+const MetricCounter = ({ valueStr, title, desc }: MetricCounterProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   const [displayNum, setDisplayNum] = useState(0);
@@ -31,6 +31,7 @@ const MetricCounter: React.FC<MetricCounterProps> = ({ valueStr, title, desc }) 
       });
       return () => controls.stop();
     }
+    return undefined;
   }, [isInView, targetNumber]);
 
   return (

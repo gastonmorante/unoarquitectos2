@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useLanguage } from "../context/LanguageContext";
 import { UnoIsotype } from "./Logo";
 
@@ -146,9 +146,13 @@ export default function Hero() {
       {/* Boho-Chic Luxury Architecture Photo Overlay */}
       <div className="absolute inset-0 z-[1] opacity-60 mix-blend-overlay">
         <img
-          alt="High-end architectural photography of a boho-chic luxury villa at sunset"
+          alt="Arquitectura Contemporánea Tropical - Villa de Lujo en Riviera Maya por UNO Arquitectos"
           className="w-full h-full object-cover object-center scale-105 transform origin-center animate-[pulse_30s_ease-in-out_infinite_alternate]"
           src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2400&q=95"
+          width={2400}
+          height={1600}
+          fetchPriority="high"
+          decoding="async"
           referrerPolicy="no-referrer"
         />
       </div>

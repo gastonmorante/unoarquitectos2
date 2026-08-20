@@ -1,8 +1,7 @@
-import React from "react";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function Servicios() {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
   const isEs = language === "es";
 
   return (

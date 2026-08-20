@@ -20,33 +20,67 @@ AddHandler application/x-httpd-ea-php82___lsphp .php .php8 .phtml
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
   # ----------------------------------------------------------------------------
-  # 3. SEO 301 PERMANENT REDIRECTS (MIGRATION FROM OLD WORDPRESS URLS)
-  # Preserves Google indexation, PageRank and link equity
+  # 3. SEO 301 PERMANENT REDIRECTS (MIGRATION FROM OLD WORDPRESS / ELEMENTOR URLS)
+  # Preserves 100% Google indexation, PageRank equity and prevents 404 penalties
   # ----------------------------------------------------------------------------
 
-  # Old WordPress Section Pages -> New React Section Anchors
-  RewriteRule ^contacto/?$ /#contacto [R=301,L,NE]
+  # A. Sección Filosofía / Quiénes Somos / Identidad Local
+  RewriteRule ^quienes-somos.*$ /#filosofia [R=301,L,NE]
+  RewriteRule ^a-que-nos-dedicamos.*$ /#filosofia [R=301,L,NE]
   RewriteRule ^nosotros/?$ /#filosofia [R=301,L,NE]
   RewriteRule ^filosofia/?$ /#filosofia [R=301,L,NE]
   RewriteRule ^esencia/?$ /#filosofia [R=301,L,NE]
+  RewriteRule ^arquitectos-en-playa-del-carmen.*$ /#filosofia [R=301,L,NE]
+  RewriteRule ^arquitectos-e-ingenieros-en-playa-del-carmen.*$ /#filosofia [R=301,L,NE]
+  RewriteRule ^arquitectos-e-ingenieros-en-tulum.*$ /#filosofia [R=301,L,NE]
+  RewriteRule ^arquitectos-en-tulum.*$ /#filosofia [R=301,L,NE]
+
+  # B. Sección Servicios / Disciplinas / Construcción Llave en Mano
+  RewriteRule ^servicios/?$ /#servicios [R=301,L,NE]
+  RewriteRule ^estudio/?$ /#servicios [R=301,L,NE]
+  RewriteRule ^disciplinas/?$ /#servicios [R=301,L,NE]
+  RewriteRule ^obra-llave-en-mano.*$ /#servicios [R=301,L,NE]
+  RewriteRule ^obra-negra.*$ /#servicios [R=301,L,NE]
+  RewriteRule ^obra-gris.*$ /#servicios [R=301,L,NE]
+  RewriteRule ^obra-blanca.*$ /#servicios [R=301,L,NE]
+  RewriteRule ^empresa-de-construccion.*$ /#servicios [R=301,L,NE]
+
+  # C. Sección Portafolio / Proyectos Individuales
   RewriteRule ^proyectos/?$ /#proyectos [R=301,L,NE]
   RewriteRule ^portafolio/?$ /#proyectos [R=301,L,NE]
   RewriteRule ^portfolio/?$ /#proyectos [R=301,L,NE]
-  RewriteRule ^servicios/?$ /#servicios [R=301,L,NE]
-  RewriteRule ^estudio/?$ /#servicios [R=301,L,NE]
+  RewriteRule ^coleccion/?$ /#proyectos [R=301,L,NE]
+  RewriteRule ^7-cielos.*$ /#proyectos [R=301,L,NE]
+  RewriteRule ^residencia-7-cielos.*$ /#proyectos [R=301,L,NE]
+  RewriteRule ^alux.*$ /#proyectos [R=301,L,NE]
+  RewriteRule ^villas-alux.*$ /#proyectos [R=301,L,NE]
+  RewriteRule ^nikkori.*$ /#proyectos [R=301,L,NE]
+  RewriteRule ^oceana.*$ /#proyectos [R=301,L,NE]
+  RewriteRule ^villa-vidorra.*$ /#proyectos [R=301,L,NE]
+  RewriteRule ^villa-chukum.*$ /#proyectos [R=301,L,NE]
+  RewriteRule ^casa-coral.*$ /#proyectos [R=301,L,NE]
+  RewriteRule ^casa-tzalam.*$ /#proyectos [R=301,L,NE]
+
+  # D. Sección Contacto & FAQs
+  RewriteRule ^contacto/?$ /#contacto [R=301,L,NE]
+  RewriteRule ^dialogo/?$ /#contacto [R=301,L,NE]
+  RewriteRule ^ubicaciones/?$ /#contacto [R=301,L,NE]
   RewriteRule ^faqs/?$ /#faqs [R=301,L,NE]
   RewriteRule ^preguntas-frecuentes/?$ /#faqs [R=301,L,NE]
 
-  # Legal & Privacy Policy URLs
+  # E. Términos & Privacidad Legal
   RewriteRule ^aviso-de-privacidad/?$ /?legal=privacy [R=301,L]
   RewriteRule ^politica-de-privacidad/?$ /?legal=privacy [R=301,L]
   RewriteRule ^terminos-y-condiciones/?$ /?legal=terms [R=301,L]
 
-  # Block / Redirect old WordPress endpoints to clean home
+  # F. Limpieza de Endpoints y Taxonomías de WordPress
   RewriteRule ^wp-login\.php$ / [R=301,L]
   RewriteRule ^wp-admin.*$ / [R=301,L]
-  RewriteRule ^xmlrpc\.php$ - [F,L]
+  RewriteRule ^category/.*$ / [R=301,L]
+  RewriteRule ^tag/.*$ / [R=301,L]
+  RewriteRule ^author/.*$ / [R=301,L]
   RewriteRule ^feed/?$ / [R=301,L]
+  RewriteRule ^xmlrpc\.php$ - [F,L]
 
   # ----------------------------------------------------------------------------
   # 4. SINGLE PAGE APPLICATION (SPA) FALLBACK ROUTING

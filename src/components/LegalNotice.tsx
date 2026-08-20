@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X, ShieldCheck, Lock, Scale } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";

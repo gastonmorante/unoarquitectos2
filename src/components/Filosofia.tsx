@@ -1,4 +1,3 @@
-import React from "react";
 import { Trees, ShieldCheck, HeartHandshake } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -91,10 +90,11 @@ export default function Filosofia() {
           <div className="md:col-span-6 lg:col-span-5 md:col-start-7 lg:col-start-8 relative reveal-on-scroll is-visible max-w-md mx-auto md:max-w-none w-full" style={{ transitionDelay: "200ms" }}>
             <div className="absolute -inset-2 sm:-inset-4 bg-arena-calida/15 rounded-2xl -z-10 transform rotate-1 sm:rotate-2 transition-transform hover:rotate-0 duration-700 pointer-events-none"></div>
             <img 
-              alt="Interior of a spiritual architectural space, boho-minimalist style." 
+              alt="Filosofía y diseño arquitectónico contemporáneo tropical en Riviera Maya - UNO Arquitectos" 
               className="w-full h-auto object-cover aspect-[4/5] sm:aspect-[3/4] rounded-xl shadow-ethereal" 
               src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&h=1400&q=95"
               loading="lazy"
+              decoding="async"
               referrerPolicy="no-referrer"
             />
           </div>

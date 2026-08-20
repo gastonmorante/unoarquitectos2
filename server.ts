@@ -148,10 +148,10 @@ app.post("/api/advisor", async (req, res) => {
     });
 
     const replyJson = JSON.parse(response.text || "{}");
-    res.json(replyJson);
+    return res.json(replyJson);
   } catch (error: any) {
     console.error("Error en Advisor:", error);
-    res.status(500).json({ error: error.message || "Error al generar la propuesta." });
+    return res.status(500).json({ error: error.message || "Error al generar la propuesta." });
   }
 });
 
@@ -193,10 +193,10 @@ app.post("/api/leads", async (req, res) => {
       console.log("[Leads CRM] Variable GHL_WEBHOOK_URL no configurada. Lead almacenado en memoria local de Node de forma segura.");
     }
 
-    res.json({ success: true, lead: newLead });
+    return res.json({ success: true, lead: newLead });
   } catch (error: any) {
     console.error("Error en Leads:", error);
-    res.status(500).json({ error: "Error al registrar el lead." });
+    return res.status(500).json({ error: "Error al registrar el lead." });
   }
 });
 
@@ -235,10 +235,10 @@ app.post("/api/contact", async (req, res) => {
 
   try {
     await transporter.sendMail(mailOptions);
-    res.json({ success: true, message: "Mensaje de contacto enviado con éxito." });
+    return res.json({ success: true, message: "Mensaje de contacto enviado con éxito." });
   } catch (error: any) {
     console.error("Error al enviar email:", error);
-    res.status(500).json({ error: "Error interno al enviar el mensaje por email." });
+    return res.status(500).json({ error: "Error interno al enviar el mensaje por email." });
   }
 });
 
@@ -252,7 +252,7 @@ async function startServer() {
   } else {
     const distPath = path.join(process.cwd(), "dist");
     app.use(express.static(distPath));
-    app.get("*", (req, res) => {
+    app.get("*", (_req, res) => {
       res.sendFile(path.join(distPath, "index.html"));
     });
   }
