@@ -11,8 +11,32 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.disable("x-powered-by");
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: "256kb" }));
+app.use(express.urlencoded({ extended: true, limit: "256kb" }));
+
+// In-memory Defensive Rate Limiter
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+const rateLimiter = (maxRequests = 30, windowMs = 60 * 1000) => {
+  return (req: express.Request, res: express.Response, next: express.NextFunction) => {
+    const ip = (req.headers["x-forwarded-for"] as string)?.split(",")[0] || req.socket.remoteAddress || "global";
+    const now = Date.now();
+    const entry = rateLimitMap.get(ip);
+
+    if (!entry || now > entry.resetTime) {
+      rateLimitMap.set(ip, { count: 1, resetTime: now + windowMs });
+      return next();
+    }
+
+    if (entry.count >= maxRequests) {
+      return res.status(429).json({ error: "Demasiadas solicitudes. Por favor intente de nuevo en un momento." });
+    }
+
+    entry.count += 1;
+    return next();
+  };
+};
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
 
@@ -31,7 +55,7 @@ const transporter = nodemailer.createTransport({
 // ==========================================
 
 // 1. Endpoint para el Consultor de IA de UNO Arquitectos
-app.post("/api/chat", async (req, res) => {
+app.post("/api/chat", rateLimiter(20, 60000), async (req, res) => {
   try {
     const { messages, userProfile, language } = req.body;
     
@@ -111,7 +135,7 @@ ${userProfile ? JSON.stringify(userProfile, null, 2) : "Usuario en consulta acti
 });
 
 // 2. Endpoint del Asesor Conceptual Estructurado
-app.post("/api/advisor", async (req, res) => {
+app.post("/api/advisor", rateLimiter(15, 60000), async (req, res) => {
   try {
     const { message, language } = req.body;
     if (!process.env.GEMINI_API_KEY) {
@@ -156,7 +180,7 @@ app.post("/api/advisor", async (req, res) => {
 });
 
 // 3. Endpoint de Leads (Integración CRM GHL Webhooks)
-app.post("/api/leads", async (req, res) => {
+app.post("/api/leads", rateLimiter(15, 60000), async (req, res) => {
   try {
     const { name, email, phone, message, source } = req.body;
     
@@ -201,7 +225,7 @@ app.post("/api/leads", async (req, res) => {
 });
 
 // 4. Endpoint de Formulario de Contacto
-app.post("/api/contact", async (req, res) => {
+app.post("/api/contact", rateLimiter(10, 60000), async (req, res) => {
   const { name, email, phone, projectType, message, budget } = req.body;
 
   if (!name || !email || !message) {
