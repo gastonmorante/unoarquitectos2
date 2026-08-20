@@ -37,69 +37,153 @@ const GET_GREETING_MSG = (lang: Language) => {
 };
 
 // Motor de Conocimiento Local de Respaldo para Garantizar Respuestas Exquisitas en Todo Momento
-const getLocalArchitecturalResponse = (query: string, lang: Language): string => {
-  const q = query.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+const getLocalArchitecturalResponse = (query: string, lang: Language, userName?: string): string => {
+  const q = query.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+  const nameGreeting = userName ? ` **${userName.split(" ")[0]}**` : "";
 
-  // 1. TZALAM
-  if (q.includes("tzalam")) {
+  // 1. COSTOS / PRESUPUESTOS / PRECIOS / M2 / INVERSIÓN (PRIORIDAD ALTA)
+  if (
+    q.includes("costo") ||
+    q.includes("precio") ||
+    q.includes("presupuesto") ||
+    q.includes("cotiz") ||
+    q.includes("cuanto cuesta") ||
+    q.includes("cuanto cobra") ||
+    q.includes("cuanto sale") ||
+    q.includes("tarifa") ||
+    q.includes("m2") ||
+    q.includes("metro cuadrado") ||
+    q.includes("inversion") ||
+    q.includes("pagar") ||
+    q.includes("dinero")
+  ) {
     return lang === "en"
-      ? "The **Tzalam** (*Lysiloma latisiliquum*), also known as the Mayan Walnut, is a native tropical hardwood from the Yucatan Peninsula:\n\n• **Physical Properties**: High hardness, exceptional resistance to decay, Caribbean humidity, and marine salinity.\n• **Aesthetic Character**: Rich reddish-brown walnut tones with distinct golden undertones and tight grain.\n• **Architectural Use**: Used in bespoke exterior decks, pergolas, custom sensory millwork, and facade louvers.\n\nAt UNO Arquitectos, we cure and seal all Tzalam wood in our regional workshop to ensure dimensional stability over decades."
-      : "El **Tzalam** (*Lysiloma latisiliquum*), conocido como el nogal maya, es una madera tropical dura autóctona de la Península de Yucatán:\n\n• **Propiedades Físicas**: Extraordinaria densidad y resistencia natural a la humedad caribeña, salinidad marina y termitas.\n• **Carácter Estético**: Tonalidades rojizas con vetas doradas profundas y veteado cerrado de gran nobleza visual.\n• **Uso Arquitectónico**: Ideal para pérgolas bioclimáticas, celosías de fachada, decks exteriores y carpintería fina sensorial.\n\nEn nuestro taller de producción tratamos y curamos el Tzalam con aceites naturales para garantizar su estabilidad dimensional frente a la intemperie.";
+      ? `Regarding **costs and budgeting**${nameGreeting}, at UNO Arquitectos we work with **transparent parametric budgets** tailored to each unique lot and architectural program:\n\n• **Parametric Breakdown**: Rather than arbitrary square-meter estimates, cost is determined by karstic soil mechanics, topography, level of handcrafted finishes (Chukum stucco, noble Tzalam millwork), and off-grid bioclimatic systems.\n• **Strict Budget Control**: We establish an itemized catalog of concepts before breaking ground, guaranteeing zero unexpected overcosts during construction.\n• **Feasibility Session**: We cordially invite you to a technical session with Arch. Angel Cereceda to analyze your land coordinates and estimate an exact investment framework.\n\nWould you like to connect directly with our directors via WhatsApp to review your numbers?`
+      : `En cuanto a **costos y presupuestos**${nameGreeting}, en UNO Arquitectos nos regimos por **presupuestos paramétricos transparentes** y rigurosos:\n\n• **Determinación Real de Costos**: En la arquitectura boutique tropical de alto nivel, el costo no se calcula con números genéricos al azar, sino que se define con precisión según la mecánica del suelo kárstico, la topografía del lote, el nivel de carpinterías en madera noble de Tzalam, los acabados en Chukum natural pulido y los sistemas de ingeniería autosuficiente.\n• **Certeza Presupuestal sin Sobrecostos**: Establecemos un catálogo de conceptos desglosado partida por partida antes de colocar la primera piedra, blindando su inversión con control de cambios estricto.\n• **Sesión Técnica de Viabilidad**: Le invitamos a agendar una primera sesión de viabilidad con el Arq. Angel Cereceda para evaluar los alcances específicos de su terreno y entregarle un marco de inversión certero.\n\n¿Desea que le enlacemos directamente por WhatsApp con nuestra dirección técnica para revisar su caso?`;
   }
 
-  // 2. CHUKUM
-  if (q.includes("chukum")) {
+  // 2. TZALAM Y MADERAS TROPICALES
+  if (q.includes("tzalam") || q.includes("zapote") || q.includes("machiche") || q.includes("parota") || q.includes("madera")) {
     return lang === "en"
-      ? "The **Natural Chukum** is a millenary Mayan architectural stucco made by boiling the organic resin from the bark of the wild *Havardia albicans* tree and mixing it with local limestone powder:\n\n• **Impermeability**: Creates a seamless, waterproof mineral membrane.\n• **Aesthetics & Aging**: Soft, tactile velvet finish in warm limestone hues that ages gracefully without requiring chemical paints.\n• **Applications**: Pools, interior walls, wet areas, bathrooms, and continuous flooring.\n\nIt is one of UNO Arquitectos' signature materials for sensory, honest spaces."
-      : "El **Chukum Natural** es un acabado mineral milenario de origen maya que se elabora hirviendo la corteza del árbol silvestre *Havardia albicans* combinada con polvo de piedra caliza y cemento blanco:\n\n• **Impermeabilidad Natural**: Forma una superficie hidrófuga continua, ideal para piscinas, espejos de agua y muros de baño.\n• **Textura Sensorial**: Acabado sedoso al tacto con tonalidades arena marfil que madura con distinción con el paso del tiempo sin requerir pintura.\n• **Aislamiento Térmico**: Refleja la radiación solar y mantiene frescos los interiores en climas cálidos y húmedos.\n\nEs uno de los sellos distintivos en las obras de UNO Arquitectos por su calidez y pertenencia al entorno.";
+      ? `The **Tzalam** (*Lysiloma latisiliquum*), also known as the Mayan Walnut, is our signature native tropical hardwood:\n\n• **Exceptional Durability**: Naturally immune to Caribbean humidity, fungal decay, marine salinity, and termites.\n• **Warm Aesthetics**: Rich reddish-brown walnut tones with distinctive golden veins and fine closed grain.\n• **Applications**: Bioclimatic pergolas, facade louvers, exterior decks, and custom sensory millwork.\n\nAll timber is curated and sealed in our regional workshop on the Tulum – Macario Gómez corridor.`
+      : `El **Tzalam** (*Lysiloma latisiliquum*), conocido como el nogal maya, es una madera tropical dura autóctona de la Península de Yucatán:\n\n• **Propiedades Físicas**: Extraordinaria densidad y resistencia natural a la humedad caribeña, salinidad marina y plagas de termitas.\n• **Carácter Estético**: Tonalidades rojizas con vetas doradas profundas y veteado cerrado de gran nobleza visual.\n• **Uso Arquitectónico**: Ideal para pérgolas bioclimáticas, celosías de fachada, decks exteriores y carpintería fina sensorial.\n\nEn nuestro taller de producción en el corredor Tulum – Macario Gómez tratamos y curamos el Tzalam con aceites naturales para garantizar su estabilidad dimensional por décadas.`;
   }
 
-  // 3. TULUM / PERMISOS / NORMATIVAS
-  if (q.includes("tulum") || q.includes("normativa") || q.includes("permiso") || q.includes("regula") || q.includes("cos") || q.includes("cus") || q.includes("licencia")) {
+  // 3. CHUKUM NATURAL Y ESTUCOS
+  if (q.includes("chukum") || q.includes("estuco") || q.includes("acabado") || q.includes("piscinas") || q.includes("alberca")) {
     return lang === "en"
-      ? "In **Tulum and Quintana Roo**, construction is strictly regulated by environmental programs (POEL) and municipal master plans (PDU):\n\n• **COS and CUS Restrictions**: Typical land coverage ratios require preserving 40% to 60% of original native jungle on your lot.\n• **Environmental Permits (MIA / SEMARNAT)**: Required to protect the subterranean aquifer, cenotes, and mangrove systems.\n• **Eco-Infrastructure**: Strict prohibition of traditional septic tanks; requires certified wastewater treatment plants (PTAR) with bio-filter wetlands.\n\nAt UNO Arquitectos, we manage 100% of the technical and legal licensing before breaking ground."
-      : "En **Tulum y la Riviera Maya**, la edificación se rige por programas de ordenamiento ecológico (POEL) y planes de desarrollo urbano (PDU):\n\n• **Coeficientes COS y CUS**: Exigen respetar y conservar entre el 40% y 60% de la selva virgen dentro de cada lote.\n• **Permisos Ambientales (MIA / SEMARNAT)**: Protegen el manto freático y la flora endémica.\n• **Tratamiento Ecológico**: Se prohíben fosas sépticas tradicionales; es obligatorio instalar plantas de tratamiento (PTAR) o biodigestores con humedales de fitorremediación.\n\nEn UNO Arquitectos gestionamos la viabilidad legal y las licencias de construcción desde el primer día para asegurar certeza jurídica total.";
+      ? `The **Natural Chukum** is a millenary Mayan architectural stucco made by boiling the organic resin of the wild *Havardia albicans* tree with local limestone powder:\n\n• **Natural Waterproofing**: Forms a continuous seamless barrier, ideal for swimming pools, reflective water mirrors, and wet areas.\n• **Sensory Velvet Texture**: Soft tactile feel in warm limestone-ivory hues that ages with elegance and requires no chemical paints.\n• **Thermal Comfort**: Reflects solar radiation and keeps interiors pleasantly cool in humid tropical climates.\n\nIt is an essential hallmark across all UNO Arquitectos developments.`
+      : `El **Chukum Natural** es un acabado mineral milenario de origen maya que se elabora hirviendo la corteza del árbol silvestre *Havardia albicans* combinada con polvo de piedra caliza y cemento blanco:\n\n• **Impermeabilidad Natural**: Forma una superficie hidrófuga continua, ideal para piscinas, espejos de agua, baños y pisos pulidos.\n• **Textura Sensorial**: Acabado sedoso al tacto con tonalidades arena marfil que madura con distinción con el paso del tiempo sin requerir pintura.\n• **Aislamiento Térmico**: Refleja la radiación solar y mantiene frescos los interiores en climas cálidos y húmedos.\n\nEs uno de los sellos distintivos en las obras de UNO Arquitectos por su calidez y pertenencia al entorno.`;
   }
 
-  // 4. CIMENTACION / SUELO KARSTICO / CENOTES
-  if (q.includes("karst") || q.includes("suelo") || q.includes("cimentaci") || q.includes("cenote") || q.includes("cimentar") || q.includes("huracan") || q.includes("sismo") || q.includes("estructur")) {
+  // 4. TULUM / NORMATIVAS / COS / CUS / PERMISOS (USANDO REGEX EXACTO \bcos\b Y \bcus\b)
+  if (
+    /\bcos\b/i.test(q) ||
+    /\bcus\b/i.test(q) ||
+    q.includes("tulum") ||
+    q.includes("normativa") ||
+    q.includes("permiso") ||
+    q.includes("licencia") ||
+    q.includes("semarnat") ||
+    q.includes("poel") ||
+    q.includes("pdu") ||
+    q.includes("regulacion") ||
+    q.includes("desmonte")
+  ) {
     return lang === "en"
-      ? "Building on the **karstic limestone of the Yucatan Peninsula** requires specialized structural engineering:\n\n• **Geophysical GPR Surveying**: Ground Penetrating Radar scanning to detect subterranean voids or cavern formations.\n• **Rigid Foundation Slabs**: Reinforced concrete raft foundations tied with continuous grade beams to prevent differential settlement.\n• **Hurricane Resistance**: Structural calculations strictly adhere to Mexican building codes to withstand Category 5 hurricanes (wind speeds up to 280 km/h)."
-      : "Construir sobre la **roca kárstica de la Península de Yucatán** demanda alta ingeniería civil:\n\n• **Prospección Geofísica (GPR)**: Escaneo por georradar para mapear el subsuelo y descartar oquedades o fallas kársticas ocultas.\n• **Losas de Cimentación Rigidizadas**: Zapatas corridas y trabes de liga de concreto armado que absorben cualquier asentamiento diferencial.\n• **Cálculo Antihuracanes**: Estructuras calculadas bajo norma CFE/RCDF para soportar vientos de huracán Categoría 5 (hasta 280 km/h).";
+      ? `In **Tulum and the Riviera Maya**, construction is strictly governed by municipal urban plans (PDU) and ecological ordinances (POEL):\n\n• **COS and CUS Restrictions**: Typical land coefficients require preserving 40% to 60% of virgin native jungle within your lot.\n• **Environmental Licensing (MIA / SEMARNAT)**: Required to protect the subterranean aquifer, cenotes, and local ecosystems.\n• **Eco-Infrastructure**: Traditional septic tanks are prohibited; certified wastewater treatment plants (PTAR) with bio-filter wetlands are mandatory.\n\nAt UNO Arquitectos, we manage 100% of the technical licensing and environmental permits before breaking ground.`
+      : `En **Tulum y la Riviera Maya**, la edificación se rige por programas de ordenamiento ecológico (POEL) y planes de desarrollo urbano (PDU):\n\n• **Coeficientes COS y CUS**: Exigen respetar y conservar entre el 40% y 60% de la selva virgen dentro de cada lote.\n• **Permisos Ambientales (MIA / SEMARNAT)**: Protegen el manto freático y la flora endémica.\n• **Tratamiento Ecológico**: Se prohíben fosas sépticas tradicionales; es obligatorio instalar plantas de tratamiento (PTAR) o biodigestores con humedales de fitorremediación.\n\nEn UNO Arquitectos gestionamos la viabilidad legal y las licencias de construcción desde el primer día para asegurar certeza jurídica total.`;
   }
 
-  // 5. LLAVE EN MANO / TIEMPOS / FASES
-  if (q.includes("llave en mano") || q.includes("proceso") || q.includes("fases") || q.includes("etapa") || q.includes("tiempo") || q.includes("cuanto tardan") || q.includes("tardan")) {
+  // 5. CIMENTACIÓN / SUELO KÁRSTICO / CENOTES / HURACANES
+  if (
+    q.includes("karst") ||
+    q.includes("suelo") ||
+    q.includes("cimentaci") ||
+    q.includes("cenote") ||
+    q.includes("cimentar") ||
+    q.includes("huracan") ||
+    q.includes("sismo") ||
+    q.includes("estructur") ||
+    q.includes("georadar") ||
+    q.includes("gpr")
+  ) {
     return lang === "en"
-      ? "Our **Turnkey (Llave en Mano)** model provides end-to-end peace of mind across 4 structured phases:\n\n1. **Conceptual & Bioclimatic Design** (4–6 weeks): Architecture, 3D renderings, and volume studies.\n2. **Executive Engineering** (6–8 weeks): Structural, hydraulic, sanitary, and solar calculations with parametric budget.\n3. **Licensing & Permits**: Municipal and environmental approvals.\n4. **Construction & Handover** (8–14 months depending on m²): On-site direction with weekly tracking and zero surprise costs."
-      : "Nuestro servicio **Llave en Mano (Turnkey)** brinda tranquilidad total a través de 4 fases metodológicas:\n\n1. **Diseño Conceptual y Bioclimático** (4 a 6 semanas): Definición formal, espacial, renders 3D y análisis de asoleamiento.\n2. **Proyecto Ejecutivo e Ingenierías** (6 a 8 semanas): Planos constructivos, memorias de cálculo kárstico y presupuesto paramétrico desglosado.\n3. **Gestoría y Licencias**: Tramitación de licencias municipales y ambientales.\n4. **Construcción y Entrega** (8 a 14 meses según m²): Dirección integral de obra con reportes fotográficos continuos y entrega con trazabilidad.";
+      ? `Building on the **karstic limestone of the Yucatan Peninsula** requires specialized structural engineering:\n\n• **Geophysical GPR Surveying**: Ground Penetrating Radar scanning to detect subterranean voids or cavern formations.\n• **Rigid Foundation Slabs**: Reinforced concrete raft foundations tied with continuous grade beams to prevent differential settlement.\n• **Hurricane Resistance**: Structural calculations strictly adhere to Mexican building codes to withstand Category 5 hurricanes (wind speeds up to 280 km/h).`
+      : `Construir sobre la **roca kárstica de la Península de Yucatán** demanda alta ingeniería civil:\n\n• **Prospección Geofísica (GPR)**: Escaneo por georradar para mapear el subsuelo y descartar oquedades o fallas kársticas ocultas.\n• **Losas de Cimentación Rigidizadas**: Zapatas corridas y trabes de liga de concreto armado que absorben cualquier asentamiento diferencial.\n• **Cálculo Antihuracanes**: Estructuras calculadas bajo norma CFE/RCDF para soportar vientos de huracán Categoría 5 (hasta 280 km/h).`;
   }
 
-  // 6. COSTOS / PRESUPUESTOS
-  if (q.includes("costo") || q.includes("precio") || q.includes("presupuesto") || q.includes("cuanto cuesta") || q.includes("tarifa") || q.includes("cuanto sale")) {
+  // 6. SERVICIO LLAVE EN MANO / FASES / TIEMPOS
+  if (
+    q.includes("llave en mano") ||
+    q.includes("turnkey") ||
+    q.includes("proceso") ||
+    q.includes("fases") ||
+    q.includes("etapa") ||
+    q.includes("tiempo") ||
+    q.includes("cuanto tardan") ||
+    q.includes("tardan") ||
+    q.includes("construccion") ||
+    q.includes("diseno")
+  ) {
     return lang === "en"
-      ? "At UNO Arquitectos, we work with **transparent parametric budgets** tailored to each unique lot and architectural program:\n\n• Costs depend on the topographic slope, soil mechanics, level of custom woodwork (Tzalam), and off-grid technology.\n• We establish a closed, line-by-line concept catalog before starting construction to avoid overcosts.\n• We do not quote generic square-meter estimates in chat as it compromises technical integrity.\n\nWe cordially invite you to schedule a feasibility session with Arch. Angel Cereceda to analyze your specific project."
-      : "En UNO Arquitectos trabajamos con **presupuestos paramétricos transparentes** estructurados a la medida de cada terreno y programa arquitectónico:\n\n• El costo se determina por la mecánica kárstica, topografía, nivel de acabados en Chukum/Tzalam e ingenierías (solar, captación pluvial).\n• Establecemos un catálogo de conceptos desglosado con control de cambios formal antes de colocar la primera piedra.\n• Por ética y rigor técnico, no emitimos cotizaciones genéricas por m² en chat sin conocer el lote.\n\nLe invitamos a agendar una sesión técnica con el Arq. Angel Cereceda para evaluar su caso específico.";
+      ? `Our **Turnkey (Llave en Mano)** model provides end-to-end peace of mind across 4 structured phases:\n\n1. **Conceptual & Bioclimatic Design** (4–6 weeks): Architecture, 3D renderings, and volume studies.\n2. **Executive Engineering** (6–8 weeks): Structural, hydraulic, sanitary, and solar calculations with parametric budget.\n3. **Licensing & Permits**: Municipal and environmental approvals.\n4. **Construction & Handover** (8–14 months depending on m²): On-site direction with weekly tracking and zero surprise costs.`
+      : `Nuestro servicio **Llave en Mano (Turnkey)** brinda tranquilidad total a través de 4 fases metodológicas:\n\n1. **Diseño Conceptual y Bioclimático** (4 a 6 semanas): Definición formal, espacial, renders 3D y análisis de asoleamiento.\n2. **Proyecto Ejecutivo e Ingenierías** (6 a 8 semanas): Planos constructivos, memorias de cálculo kárstico y presupuesto paramétrico desglosado.\n3. **Gestoría y Licencias**: Tramitación de licencias municipales y ambientales.\n4. **Construcción y Entrega** (8 a 14 meses según m²): Dirección integral de obra con reportes fotográficos continuos y entrega con trazabilidad.`;
   }
 
-  // 7. UBICACION / OFICINAS / DONDE ESTAN
-  if (q.includes("donde estan") || q.includes("donde estan ubicados") || q.includes("ubicaci") || q.includes("oficina") || q.includes("direccion") || q.includes("playa") || q.includes("cancun")) {
+  // 7. UBICACIÓN / OFICINAS / CITAS / CONTACTO
+  if (
+    q.includes("donde estan") ||
+    q.includes("ubicaci") ||
+    q.includes("oficina") ||
+    q.includes("direccion") ||
+    q.includes("playa") ||
+    q.includes("cancun") ||
+    q.includes("telefono") ||
+    q.includes("whatsapp") ||
+    q.includes("cita") ||
+    q.includes("agendar") ||
+    q.includes("contacto")
+  ) {
     return lang === "en"
-      ? "UNO Arquitectos operates across the Riviera Maya with two key physical locations:\n\n• **Main Headquarters**: Plaza Palmeras, Playa del Carmen, Quintana Roo.\n• **Woodwork & Production Workshop**: Tulum – Macario Gómez Highway, Quintana Roo.\n\nWe serve high-end residential, hospitality, and boutique projects across Tulum, Playa del Carmen, Cancun, Puerto Morelos, Akumal, and Bacalar."
-      : "UNO Arquitectos opera en toda la Riviera Maya con dos sedes físicas:\n\n• **Oficinas Centrales**: Plaza Palmeras, Playa del Carmen, Quintana Roo.\n• **Taller de Carpintería y Producción**: Carretera Tulum – Macario Gómez, Quintana Roo.\n\nAtendemos proyectos residenciales, hoteleros y boutique de alta gama en Tulum, Playa del Carmen, Cancún, Puerto Morelos, Akumal y Bacalar.";
+      ? `UNO Arquitectos operates across the Riviera Maya with two key physical locations:\n\n• **Main Headquarters**: Plaza Palmeras, Playa del Carmen, Quintana Roo.\n• **Woodwork & Production Workshop**: Tulum – Macario Gómez Highway, Quintana Roo.\n• **Direct Telephone & WhatsApp**: +52 1 984 210 8420\n• **Email**: hola@unoarquitectos.com\n\nWould you like to schedule an in-person or video conference technical meeting?`
+      : `UNO Arquitectos opera en toda la Riviera Maya con dos sedes físicas:\n\n• **Oficinas Centrales**: Plaza Palmeras, Playa del Carmen, Quintana Roo.\n• **Taller de Carpintería y Producción**: Carretera Tulum – Macario Gómez, Quintana Roo.\n• **Teléfono & WhatsApp**: +52 1 984 210 8420\n• **Email Oficial**: hola@unoarquitectos.com\n\n¿Desea que agendemos una cita técnica presencial o por videollamada para revisar su proyecto?`;
   }
 
-  // 8. ANGEL CERECEDA / TRAYECTORIA / QUIENES SON
-  if (q.includes("angel") || q.includes("cereceda") || q.includes("quienes son") || q.includes("experiencia") || q.includes("fundador") || q.includes("director") || q.includes("estudio")) {
+  // 8. TRAYECTORIA / ANGEL CERECEDA / QUIÉNES SON
+  if (
+    q.includes("angel") ||
+    q.includes("cereceda") ||
+    q.includes("quienes son") ||
+    q.includes("experiencia") ||
+    q.includes("fundador") ||
+    q.includes("director") ||
+    q.includes("equipo") ||
+    q.includes("historia")
+  ) {
     return lang === "en"
-      ? "UNO Arquitectos was founded and is led by **Arch. Angel Cereceda**:\n\n• **Experience**: Over 20 years leading high-profile real estate development and architectural management.\n• **Academic Background**: Master's in Project Management (Universidad Europea de Madrid) and Master's in Sustainable Development.\n• **Notable Track Record**: Prior technical leadership in world-class projects including *Papaya Playa Project*, *Inmobilia Mayaliah* (25,000 m²), and *Selina*.\n\nOur studio designs spaces that add value to those who inhabit them, those who build them, and the land that receives them."
-      : "UNO Arquitectos está fundado y dirigido por el **Arq. Angel Cereceda**:\n\n• **Trayectoria**: Más de 20 años de liderazgo en desarrollo inmobiliario y gestión integral de obras de alta gama.\n• **Formación**: Máster en Project Management (Universidad Europea de Madrid) y Máster en Desarrollo Sostenible.\n• **Obras Previas Emblemáticas**: Dirección técnica en proyectos de renombre internacional como *Papaya Playa Project*, *Inmobilia Mayaliah* (25,000 m²) y *Selina*.\n\nNuestra firma diseña y construye espacios que pertenecen al sitio y perduran en el tiempo.";
+      ? `UNO Arquitectos was founded and is led by **Arch. Angel Cereceda**:\n\n• **Experience**: Over 20 years leading high-profile real estate development and architectural management.\n• **Academic Background**: Master's in Project Management (Universidad Europea de Madrid) and Master's in Sustainable Development.\n• **Notable Track Record**: Prior technical leadership in world-class projects including *Papaya Playa Project*, *Inmobilia Mayaliah* (25,000 m²), and *Selina*.\n\nOur studio designs spaces that add value to those who inhabit them, those who build them, and the land that receives them.`
+      : `UNO Arquitectos está fundado y dirigido por el **Arq. Angel Cereceda**:\n\n• **Trayectoria**: Más de 20 años de liderazgo en desarrollo inmobiliario y gestión integral de obras de alta gama.\n• **Formación**: Máster en Project Management (Universidad Europea de Madrid) y Máster en Desarrollo Sostenible.\n• **Obras Previas Emblemáticas**: Dirección técnica en proyectos de renombre internacional como *Papaya Playa Project*, *Inmobilia Mayaliah* (25,000 m²) y *Selina*.\n\nNuestra firma diseña y construye espacios que pertenecen al sitio y perduran en el tiempo.`;
+  }
+
+  // 9. CLIENTES REMOTOS / INVERSIONISTAS
+  if (q.includes("extranjer") || q.includes("remot") || q.includes("fuera") || q.includes("no vivo") || q.includes("distancia")) {
+    return lang === "en"
+      ? `More than 60% of our clients reside outside Mexico (USA, Canada, Europe, and domestic investors):\n\n• **Remote Traceability**: Weekly high-definition photo and video reports, drone aerial surveys, and BIM milestone reviews.\n• **Bilingual Legal & Contracts**: Bi-lingual contracts under Mexican law with strict guarantees.\n• **Financial Certitude**: Parametric accounts with zero hidden extras.\n\nYou do not need to be on site; we act as your trusted technical director in Mexico.`
+      : `Más del 60% de nuestros clientes residen fuera de Quintana Roo o en el extranjero (EE.UU., Canadá, Europa e inversionistas nacionales):\n\n• **Trazabilidad a Distancia**: Reportes semanales fotográficos en alta resolución, vuelos de dron y bitácora técnica digital.\n• **Certeza Legal y Contratos Bilingües**: Contratos con fianzas de cumplimiento bajo legislación mexicana y comunicación bilingüe continua.\n• **Transparencia Financiera**: Cuentas claras con control de costos en tiempo real.\n\nNo necesita estar presente en obra; nosotros somos sus ojos técnicos y garantes de calidad.`;
+  }
+
+  // 10. SALUDOS Y DIÁLOGO SOCIAL
+  if (q.includes("hola") || q.includes("buenos") || q.includes("buenas") || q.includes("que tal") || q.includes("gracias") || q.includes("saludos")) {
+    return lang === "en"
+      ? `Hello${nameGreeting}! It is a pleasure to assist you. At UNO Arquitectos, we are ready to guide you on bioclimatic design, native materials (Chukum, Tzalam), karstic engineering, permits in Riviera Maya, or turnkey project execution.\n\nWhat aspect of your project would you like to discuss today?`
+      : `¡Hola${nameGreeting}! Un placer saludarle. En UNO Arquitectos estamos a su entera disposición para orientarle en diseño bioclimático contemporáneo, materiales autóctonos (Chukum y Tzalam), cimentaciones kársticas, normativas en la Riviera Maya o la ejecución de su proyecto llave en mano.\n\n¿Qué aspecto de su proyecto le gustaría evaluar hoy?`;
   }
 
   // DEFAULT CONTEXTUAL
   return lang === "en"
-    ? "UNO Arquitectos specializes in **Boutique Tropical Contemporary Architecture** in the Riviera Maya, directed by **Arch. Angel Cereceda** (20+ years of experience, Master in Project Management, prior leadership in Papaya Playa Project and Inmobilia Mayaliah).\n\nWe would be glad to evaluate your lot or architectural brief. Would you like to explore our materials (Chukum/Tzalam), karstic foundations, or connect directly via WhatsApp with our team?"
-    : "UNO Arquitectos es un estudio boutique de **Arquitectura Contemporánea Tropical y Alta Ingeniería** en Riviera Maya, dirigido por el **Arq. Angel Cereceda** (más de 20 años de trayectoria, Máster en Project Management por la Universidad Europea de Madrid y ex director técnico en obras como Papaya Playa Project e Inmobilia Mayaliah).\n\nNos encantará orientarle sobre materiales autóctonos (Chukum y Tzalam), normativas de selva o cimentaciones kársticas. ¿Sobre qué tema le gustaría profundizar o desea conectar directamente por WhatsApp?";
+    ? `At UNO Arquitectos${nameGreeting}, we specialize in **Boutique Tropical Contemporary Architecture and Engineering** across Riviera Maya, led by **Arch. Angel Cereceda** (20+ years of experience, Master in Project Management).\n\nWe would be glad to evaluate your lot or project brief. Would you like to explore our materials (Chukum/Tzalam), parametric costs, karstic foundation engineering, or connect directly via WhatsApp with our team?`
+    : `En UNO Arquitectos${nameGreeting}, nos especializamos en **Arquitectura Contemporánea Tropical y Alta Ingeniería** en Riviera Maya, bajo la dirección del **Arq. Angel Cereceda** (más de 20 años de experiencia, Máster en Project Management).\n\nNos dará mucho gusto evaluar su terreno o proyecto. ¿Desea consultar sobre materiales autóctonos (Chukum/Tzalam), presupuestos paramétricos, ingeniería de cimentación kárstica o conectar directamente por WhatsApp con nuestros directores?`;
 };
 
 export default function AIConsultant() {
@@ -330,13 +414,13 @@ export default function AIConsultant() {
         ...prev,
         {
           role: "assistant",
-          content: data.text || data.response || getLocalArchitecturalResponse(trimmedText, language),
+          content: data.text || data.response || getLocalArchitecturalResponse(trimmedText, language, leadName),
           timestamp: new Date()
         }
       ]);
     } catch {
       // Offline / Static Resilient Knowledge Engine
-      const fallbackAnswer = getLocalArchitecturalResponse(trimmedText, language);
+      const fallbackAnswer = getLocalArchitecturalResponse(trimmedText, language, leadName);
       setMessages((prev) => [
         ...prev,
         {
