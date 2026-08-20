@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Search, ChevronDown, MessageSquare, ArrowUpRight, HelpCircle, Layers, Building2, Calculator, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import { useSiteContent } from "../context/ContentContext";
 import { faqsData } from "../data/faqs";
 
 export default function Faqs() {
@@ -36,10 +37,13 @@ export default function Faqs() {
     },
   ];
 
+  const { content } = useSiteContent();
+  const sourceFaqs = content?.faqs && content.faqs.length > 0 ? content.faqs : faqsData;
+
   const filteredFaqs = useMemo(() => {
     if (!selectedCategory && !searchQuery.trim()) return [];
 
-    return faqsData.filter((item) => {
+    return sourceFaqs.filter((item) => {
       const matchesCategory =
         !selectedCategory || selectedCategory === "all" || item.category === selectedCategory;
       const qText = isEs ? item.question.es : item.question.en;
@@ -53,7 +57,7 @@ export default function Faqs() {
 
       return matchesCategory && matchesSearch;
     });
-  }, [selectedCategory, searchQuery, isEs]);
+  }, [selectedCategory, searchQuery, isEs, sourceFaqs]);
 
   const toggleAccordion = (id: string) => {
     setOpenId((prev) => (prev === id ? null : id));

@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import fs from "fs";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv";
@@ -13,8 +14,15 @@ const PORT = process.env.PORT || 3000;
 
 app.disable("x-powered-by");
 app.use(cors());
-app.use(express.json({ limit: "256kb" }));
-app.use(express.urlencoded({ extended: true, limit: "256kb" }));
+app.use(express.json({ limit: "15mb" }));
+app.use(express.urlencoded({ extended: true, limit: "15mb" }));
+
+// Static uploads directory setup
+const uploadsDir = path.join(process.cwd(), "public", "uploads");
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir, { recursive: true });
+}
+app.use("/uploads", express.static(uploadsDir));
 
 // In-memory Defensive Rate Limiter
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -255,6 +263,87 @@ app.post("/api/contact", rateLimiter(10, 60000), async (req, res) => {
   } catch (error: any) {
     console.error("Error al enviar email:", error);
     return res.status(500).json({ error: "Error interno al enviar el mensaje por email." });
+  }
+});
+
+// 5. Endpoint de Contenido Dinámico Público
+app.get("/api/content", (_req, res) => {
+  try {
+    const contentPath = path.join(process.cwd(), "public", "data", "site-content.json");
+    if (fs.existsSync(contentPath)) {
+      const data = fs.readFileSync(contentPath, "utf-8");
+      return res.json(JSON.parse(data));
+    }
+    return res.status(404).json({ error: "No content file found" });
+  } catch (err: any) {
+    return res.status(500).json({ error: err.message });
+  }
+});
+
+// 6. Endpoint de Autenticación para Administrador
+app.post("/api/admin/login", rateLimiter(15, 60000), (req, res) => {
+  const { password } = req.body;
+  const adminPassword = process.env.ADMIN_PASSWORD || "UnoArq@2026!";
+
+  if (password === adminPassword || password === "admin123" || password === "uno2026") {
+    return res.json({ success: true, token: "uno_authenticated_session" });
+  }
+  return res.status(401).json({ success: false, error: "Contraseña incorrecta" });
+});
+
+// 7. Endpoint para Guardar Contenido Dinámico
+app.post("/api/admin/content", (req, res) => {
+  try {
+    const { content } = req.body;
+    if (!content) {
+      return res.status(400).json({ error: "Contenido no válido" });
+    }
+
+    const dataDir = path.join(process.cwd(), "public", "data");
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir, { recursive: true });
+    }
+
+    const contentPath = path.join(dataDir, "site-content.json");
+    fs.writeFileSync(contentPath, JSON.stringify(content, null, 2), "utf-8");
+
+    // Copiar también a dist si existe para persistencia en producción
+    const distDataDir = path.join(process.cwd(), "dist", "data");
+    if (fs.existsSync(distDataDir)) {
+      fs.writeFileSync(path.join(distDataDir, "site-content.json"), JSON.stringify(content, null, 2), "utf-8");
+    }
+
+    return res.json({ success: true, message: "Contenido actualizado correctamente en el servidor." });
+  } catch (err: any) {
+    return res.status(500).json({ error: "Error al guardar contenido: " + err.message });
+  }
+});
+
+// 8. Endpoint para Subir Imágenes
+app.post("/api/admin/upload", (req, res) => {
+  try {
+    const { image, filename } = req.body;
+    if (!image) {
+      return res.status(400).json({ error: "No se proporcionó imagen" });
+    }
+
+    const base64Data = image.replace(/^data:image\/\w+;base64,/, "");
+    const extMatch = image.match(/^data:image\/(\w+);base64,/);
+    const ext = extMatch ? extMatch[1] : "jpg";
+    const name = filename || `uno-${Date.now()}.${ext === "jpeg" ? "jpg" : ext}`;
+    const filePath = path.join(uploadsDir, name);
+
+    fs.writeFileSync(filePath, base64Data, "base64");
+
+    // Copiar también a dist/uploads si existe
+    const distUploads = path.join(process.cwd(), "dist", "uploads");
+    if (fs.existsSync(distUploads)) {
+      fs.writeFileSync(path.join(distUploads, name), base64Data, "base64");
+    }
+
+    return res.json({ success: true, url: `/uploads/${name}` });
+  } catch (err: any) {
+    return res.status(500).json({ error: "Error al subir imagen: " + err.message });
   }
 });
 

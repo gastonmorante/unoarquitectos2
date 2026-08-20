@@ -1,8 +1,10 @@
 import { Trees, ShieldCheck, HeartHandshake } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import { useSiteContent } from "../context/ContentContext";
 
 export default function Filosofia() {
   const { t, language } = useLanguage();
+  const { content } = useSiteContent();
 
   return (
     <section id="filosofia" className="py-section-padding px-4 sm:px-6 md:px-margin-desktop bg-surface-container-low relative texture-overlay border-b border-arena-calida/20 font-sans overflow-hidden">
@@ -94,14 +96,15 @@ export default function Filosofia() {
                     {language === "es" ? "Dirección Técnica & Trayectoria" : "Technical Leadership & Track Record"}
                   </h4>
                   <p className="font-body-md text-[11px] sm:text-xs text-arena-calida font-medium">
-                    Arq. Angel Cereceda • Fundador & Director General
+                    {content?.filosofia?.author || "Arq. Angel Cereceda"} • {content?.filosofia?.authorRole || "Fundador & Director General"}
                   </p>
                 </div>
               </div>
               <p className="font-body-md text-xs text-gris-texto leading-relaxed">
-                {language === "es" 
-                  ? "Más de 20 años liderando desarrollo y gestión técnica en Riviera Maya y CDMX. Máster en Project Management (Universidad Europea de Madrid) y Máster en Desarrollo Sostenible. Experiencia técnica directiva en obras de escala internacional como Papaya Playa Project, Inmobilia Mayaliah (25,000 m²) y Selina."
-                  : "Over 20 years leading real estate development and technical management in the Riviera Maya and Mexico City. Master's in Project Management (Universidad Europea de Madrid) and Master's in Sustainable Development. Prior technical leadership in international projects including Papaya Playa Project, Inmobilia Mayaliah (25,000 m²), and Selina."}
+                {(language === "es" ? content?.filosofia?.directorBioEs : content?.filosofia?.directorBioEn) || 
+                  (language === "es" 
+                    ? "Más de 20 años liderando desarrollo y gestión técnica en Riviera Maya. Máster en Project Management (Universidad Europea de Madrid) y Máster en Desarrollo Sostenible. Experiencia técnica directiva en obras de escala internacional como Papaya Playa Project, Inmobilia Mayaliah (25,000 m²) y Selina."
+                    : "Over 20 years leading real estate development and technical management in the Riviera Maya. Master's in Project Management (Universidad Europea de Madrid) and Master's in Sustainable Development. Prior technical leadership in international projects including Papaya Playa Project, Inmobilia Mayaliah (25,000 m²), and Selina.")}
               </p>
             </div>
           </div>

@@ -1,10 +1,12 @@
 import { useState, FormEvent } from "react";
 import { Mail, Phone, MapPin, Send, CheckCircle, Clock, ExternalLink } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import { useSiteContent } from "../context/ContentContext";
 import Logo from "./Logo";
 
 export default function Contacto() {
   const { t, language } = useLanguage();
+  const { content } = useSiteContent();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -106,13 +108,13 @@ export default function Contacto() {
                 <MapPin className="w-5 h-5 text-teal-uno flex-shrink-0 mt-0.5" />
                 <div>
                   <h3 className="font-label-caps text-xs uppercase tracking-wider text-teal-uno font-semibold">
-                    {t("contacto.officePlaya") || "Oficinas Centrales"}
+                    {content?.contact?.officePlayaTitle || t("contacto.officePlaya") || "Oficinas Centrales"}
                   </h3>
                   <p className="font-body-md text-xs text-gris-texto mt-0.5 sm:mt-1 leading-relaxed">
-                    {t("contacto.officePlayaAddr") || "Plaza Palmeras, Playa del Carmen, Q. Roo"}
+                    {content?.contact?.officePlayaAddr || t("contacto.officePlayaAddr") || "Plaza Palmeras, Playa del Carmen, Q. Roo"}
                   </p>
                   <a
-                    href="https://maps.app.goo.gl/vy12S6chkTnkjuG96"
+                    href={content?.contact?.officePlayaMapUrl || "https://maps.app.goo.gl/vy12S6chkTnkjuG96"}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-[11px] text-teal-uno hover:text-arena-calida transition-colors mt-1.5 font-label-caps uppercase font-semibold tracking-wider"
@@ -127,10 +129,10 @@ export default function Contacto() {
                 <MapPin className="w-5 h-5 text-arena-calida flex-shrink-0 mt-0.5" />
                 <div>
                   <h3 className="font-label-caps text-xs uppercase tracking-wider text-teal-uno font-semibold">
-                    {t("contacto.tallerTulum") || "Taller & Bodega"}
+                    {content?.contact?.tallerTulumTitle || t("contacto.tallerTulum") || "Taller & Bodega"}
                   </h3>
                   <p className="font-body-md text-xs text-gris-texto mt-0.5 sm:mt-1 leading-relaxed">
-                    {t("contacto.tallerTulumAddr") || "Carretera Tulum – Macario Gómez, Q. Roo"}
+                    {content?.contact?.tallerTulumAddr || t("contacto.tallerTulumAddr") || "Carretera Tulum – Macario Gómez, Q. Roo"}
                   </p>
                 </div>
               </div>
@@ -139,11 +141,11 @@ export default function Contacto() {
               <div className="pt-6 sm:pt-8 border-t border-arena-calida/30 space-y-3.5 font-body-md text-xs text-gris-texto">
                 <div className="flex items-center gap-3">
                   <Phone className="w-4 h-4 text-teal-uno flex-shrink-0" />
-                  <a href="tel:+529842108420" className="hover:text-teal-uno transition-colors font-medium">
-                    +52 1 984 210 8420
+                  <a href={`tel:${(content?.contact?.phone || "+529842108420").replace(/\s+/g, "")}`} className="hover:text-teal-uno transition-colors font-medium">
+                    {content?.contact?.phone || "+52 1 984 210 8420"}
                   </a>
                   <a 
-                    href="https://wa.me/5219842108420" 
+                    href={`https://wa.me/${(content?.contact?.whatsapp || "5219842108420").replace(/[^\d]/g, "")}`} 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="text-teal-uno hover:underline font-semibold ml-1 text-[11px] uppercase tracking-wider font-label-caps"
@@ -154,14 +156,18 @@ export default function Contacto() {
 
                 <div className="flex items-center gap-3">
                   <Mail className="w-4 h-4 text-teal-uno flex-shrink-0" />
-                  <a href="mailto:hola@unoarquitectos.com" className="hover:text-teal-uno transition-colors">
-                    hola@unoarquitectos.com
+                  <a href={`mailto:${content?.contact?.email || "hola@unoarquitectos.com"}`} className="hover:text-teal-uno transition-colors">
+                    {content?.contact?.email || "hola@unoarquitectos.com"}
                   </a>
                 </div>
 
                 <div className="flex items-center gap-3">
                   <Clock className="w-4 h-4 text-arena-calida flex-shrink-0" />
-                  <span>{t("contacto.workHours") || "Lunes a Viernes: 9:00 - 18:00 hrs"}</span>
+                  <span>
+                    {language === "es" 
+                      ? (content?.contact?.workHoursEs || "Lunes a Viernes: 9:00 - 18:00 hrs") 
+                      : (content?.contact?.workHoursEn || "Monday to Friday: 9:00 AM - 6:00 PM")}
+                  </span>
                 </div>
               </div>
 

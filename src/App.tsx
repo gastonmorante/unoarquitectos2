@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { AnimatePresence } from 'motion/react';
+import { Lock } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Filosofia from './components/Filosofia';
@@ -14,9 +15,14 @@ import LegalNotice from './components/LegalNotice';
 import CookieBanner from './components/CookieBanner';
 import Logo from './components/Logo';
 import { LanguageProvider } from './context/LanguageContext';
+import { ContentProvider, useSiteContent } from './context/ContentContext';
+import AdminDashboard from './admin/AdminDashboard';
+import AdminLogin from './admin/AdminLogin';
 
-export default function App() {
+function MainApp() {
   const [loading, setLoading] = useState(true);
+  const [showAdmin, setShowAdmin] = useState(false);
+  const { isAuthenticated } = useSiteContent();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -26,16 +32,49 @@ export default function App() {
     return () => clearTimeout(timer);
   }, []);
 
+  // Listen to hash changes (e.g. #admin)
+  useEffect(() => {
+    const checkHash = () => {
+      if (typeof window !== "undefined") {
+        if (window.location.hash === "#admin" || window.location.search.includes("admin=true")) {
+          setShowAdmin(true);
+        }
+      }
+    };
+
+    checkHash();
+    window.addEventListener("hashchange", checkHash);
+    return () => window.removeEventListener("hashchange", checkHash);
+  }, []);
+
   const openLegalModal = (tab: "privacy" | "terms") => {
     if (typeof window !== "undefined") {
       window.dispatchEvent(new CustomEvent("open-legal", { detail: { tab } }));
     }
   };
 
+  const handleCloseAdmin = () => {
+    setShowAdmin(false);
+    if (window.location.hash === "#admin") {
+      history.pushState("", document.title, window.location.pathname + window.location.search);
+    }
+  };
+
   return (
-    <LanguageProvider>
+    <>
       <AnimatePresence>
         {loading && <Preloader key="preloader" />}
+      </AnimatePresence>
+
+      {/* ADMIN DASHBOARD OR LOGIN OVERLAY */}
+      <AnimatePresence>
+        {showAdmin && (
+          isAuthenticated ? (
+            <AdminDashboard onClose={handleCloseAdmin} />
+          ) : (
+            <AdminLogin onClose={handleCloseAdmin} />
+          )
+        )}
       </AnimatePresence>
 
       <div id="app-root" className="min-h-screen w-full overflow-x-hidden bg-background text-gris-texto selection:bg-arena-calida selection:text-white font-sans transition-colors duration-300 texture-overlay">
@@ -108,6 +147,15 @@ export default function App() {
                     Resguardo
                   </button>
                 </li>
+                <li>
+                  <button 
+                    onClick={() => setShowAdmin(true)} 
+                    className="text-zinc-400 hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer text-left inline-flex items-center gap-1.5 pt-1"
+                    title="Panel de Administración"
+                  >
+                    <Lock className="w-3 h-3 text-teal-uno" /> Admin CMS
+                  </button>
+                </li>
               </ul>
             </div>
           </div>
@@ -132,6 +180,16 @@ export default function App() {
         <LegalNotice />
         <CookieBanner />
       </div>
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <LanguageProvider>
+      <ContentProvider>
+        <MainApp />
+      </ContentProvider>
     </LanguageProvider>
   );
 }

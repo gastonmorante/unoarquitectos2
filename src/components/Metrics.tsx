@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView, animate } from "motion/react";
 import { useLanguage } from "../context/LanguageContext";
+import { useSiteContent } from "../context/ContentContext";
 
 interface MetricCounterProps {
   valueStr: string;
@@ -59,36 +60,47 @@ const MetricCounter = ({ valueStr, title, desc }: MetricCounterProps) => {
 };
 
 export default function Metrics() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
+  const { content } = useSiteContent();
 
-  const metricsData = [
-    {
-      val: t("metrics.m1Val") || "20+",
-      title: t("metrics.m1Title") || "Años de Trayectoria",
-      desc: t("metrics.m1Desc") || "Más de 20 años liderando diseño, alta ingeniería y construcción.",
-    },
-    {
-      val: t("metrics.m2Val") || "15K+",
-      title: t("metrics.m2Title") || "m² Proyectados",
-      desc: t("metrics.m2Desc") || "Diseñados, calculados y construidos sin sobrecostos.",
-    },
-    {
-      val: t("metrics.m3Val") || "100%",
-      title: t("metrics.m3Title") || "Viabilidad Legal & Técnica",
-      desc: t("metrics.m3Desc") || "Gestoría ágil de licencias de construcción y permisos ambientales.",
-    },
-    {
-      val: t("metrics.m4Val") || "+70",
-      title: t("metrics.m4Title") || "Proyectos Entregados",
-      desc: t("metrics.m4Desc") || "Residencias boutique y desarrollos boutique hospitality.",
-    },
-  ];
+  const dynamicItems = content?.metrics?.items && content.metrics.items.length > 0
+    ? content.metrics.items.map((m) => ({
+        val: m.value,
+        title: language === "es" ? m.labelEs : m.labelEn,
+        desc: language === "es" ? "Certeza técnica y constructiva con estándares internacionales." : "Technical and constructive certitude with international standards."
+      }))
+    : [
+        {
+          val: t("metrics.m1Val") || "20+",
+          title: t("metrics.m1Title") || "Años de Trayectoria",
+          desc: t("metrics.m1Desc") || "Más de 20 años liderando diseño, alta ingeniería y construcción.",
+        },
+        {
+          val: t("metrics.m2Val") || "15K+",
+          title: t("metrics.m2Title") || "m² Proyectados",
+          desc: t("metrics.m2Desc") || "Diseñados, calculados y construidos sin sobrecostos.",
+        },
+        {
+          val: t("metrics.m3Val") || "100%",
+          title: t("metrics.m3Title") || "Viabilidad Legal & Técnica",
+          desc: t("metrics.m3Desc") || "Gestoría ágil de licencias de construcción y permisos ambientales.",
+        },
+        {
+          val: t("metrics.m4Val") || "+70",
+          title: t("metrics.m4Title") || "Proyectos Entregados",
+          desc: t("metrics.m4Desc") || "Residencias boutique y desarrollos boutique hospitality.",
+        },
+      ];
+
+  const rating = content?.metrics?.ratingValue || "5.0";
+  const reviewCount = content?.metrics?.reviewCount || "28";
+  const mapUrl = content?.metrics?.googleMapsUrl || "https://maps.app.goo.gl/vy12S6chkTnkjuG96";
 
   return (
     <section id="metricas" className="py-14 sm:py-20 md:py-24 px-4 sm:px-6 md:px-margin-desktop bg-surface-container-low/50 border-b border-arena-calida/20 font-sans">
       <div className="max-w-container-max mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {metricsData.map((item, index) => (
+          {dynamicItems.map((item, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -112,16 +124,16 @@ export default function Metrics() {
               ★★★★★
             </div>
             <span className="font-label-caps text-xs text-teal-uno uppercase tracking-wider font-semibold">
-              5.0 Calificación en Google Reviews (28+ Opiniones)
+              {rating} {language === "es" ? "Calificación en Google Reviews" : "Google Reviews Rating"} ({reviewCount}+ {language === "es" ? "Opiniones" : "Reviews"})
             </span>
           </div>
           <a
-            href="https://maps.app.goo.gl/vy12S6chkTnkjuG96"
+            href={mapUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="font-label-caps text-[11px] sm:text-xs text-teal-uno hover:text-arena-calida transition-colors uppercase tracking-wider font-semibold inline-flex items-center gap-1"
           >
-            Ver opiniones verificadas en Google Maps ↗
+            {language === "es" ? "Ver opiniones verificadas en Google Maps ↗" : "View verified reviews on Google Maps ↗"}
           </a>
         </div>
       </div>

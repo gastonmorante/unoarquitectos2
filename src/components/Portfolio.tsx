@@ -2,32 +2,8 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X, CheckCircle2, ArrowRight, ChevronLeft, ChevronRight, Sparkles, Layers, Coffee, Home, HeartPulse, Zap } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
-
-interface GalleryImage {
-  url: string;
-  title: string;
-  desc: string;
-}
-
-interface CategoryTypology {
-  id: string;
-  title: string;
-  titleEn: string;
-  subtitle: string;
-  subtitleEn: string;
-  icon: string;
-  image: string;
-  badge?: string;
-  gallery?: GalleryImage[];
-  descEs: string;
-  descEn: string;
-  area: string;
-  materials: string;
-  projectHighlight?: string;
-  projectsSample: string[];
-  specsEs: string[];
-  specsEn: string[];
-}
+import { useSiteContent } from "../context/ContentContext";
+import { CategoryTypology, GalleryImage } from "../types/content";
 
 const residentialGallery: GalleryImage[] = [
   {
@@ -256,6 +232,8 @@ const categoryTypologies: CategoryTypology[] = [
 export default function Portfolio() {
   const { language } = useLanguage();
   const isEs = language === "es";
+  const { content } = useSiteContent();
+  const categories = content?.categories && content.categories.length > 0 ? content.categories : categoryTypologies;
   const [selectedCategory, setSelectedCategory] = useState<CategoryTypology | null>(null);
   
   // Unified Synchronized Auto-Carousel Tick across ALL categories
@@ -301,7 +279,7 @@ export default function Portfolio() {
 
         {/* 2x2 Grid of Typologies */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-x-8 md:gap-x-12 gap-y-12 sm:gap-y-16 md:gap-y-20">
-          {categoryTypologies.map((item, index) => {
+          {categories.map((item, index) => {
             const isCommercial = item.id === "comerciales";
             const isResidential = item.id === "residenciales";
             const isHospitality = item.id === "hospitalarios";
