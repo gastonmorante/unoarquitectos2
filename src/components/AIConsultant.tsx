@@ -20,53 +20,47 @@ interface ChatMessage {
 const GET_GREETING_MSG = (lang: Language) => {
   switch (lang) {
     case "en":
-      return "Welcome to UNO Arquitectos. I am your AI Architecture & Engineering Advisor.\n\nTo provide you with personalized service, please share your **Full Name**:";
+      return "Welcome to **UNO Arquitectos**. I am your AI Technical Advisor in Architecture & High-Performance Engineering.\n\nI can assist you with bioclimatic design, native tropical materials (Chukum, Tzalam), karstic soil foundations, permits in Riviera Maya, or help shape your bespoke project.\n\n*What topic would you like to explore today?*";
     case "it":
-      return "Benvenuto su UNO Arquitectos. Sono il suo Consulente AI di Architettura e Ingegneria.\n\nPer offrirle un'attenzione personalizzata, la prego di condividere il suo **Nome Completo**:";
+      return "Benvenuto su **UNO Arquitectos**. Sono il suo Consulente Tecnico AI di Architettura e Alta Ingegneria.\n\nPosso assisterla su progettazione bioclimatica, materiali autoctoni (Chukum, Tzalam), fondazioni su terreno carsico, permessi in Riviera Maya o strutturare il suo progetto su misura.\n\n*Quale argomento desidera approfondire oggi?*";
     case "fr":
-      return "Bienvenue chez UNO Arquitectos. Je suis votre Conseiller IA en Architecture et Ingénierie.\n\nPour un service personnalisé, veuillez me transmettre votre **Nom Complet** :";
+      return "Bienvenue chez **UNO Arquitectos**. Je suis votre Conseiller Technique IA en Architecture et Ingénierie Tropicale.\n\nJe peux vous orienter sur la conception bioclimatique, les matériaux régionaux (Chukum, Tzalam), les fondations en sol karstique, les permis en Riviera Maya ou le développement de votre projet sur mesure.\n\n*Quel sujet souhaitez-vous explorer aujourd'hui ?*";
     default:
-      return "Bienvenido a la consulta de UNO Arquitectos. Soy su Asesor de Arquitectura e Ingeniería AI.\n\nPara brindarle atención personalizada, por favor compártame su **Nombre Completo**:";
+      return "Bienvenido a **UNO Arquitectos**. Soy su Asesor Técnico de Inteligencia Artificial en Arquitectura e Ingeniería.\n\nPuedo orientarle con rigor técnico sobre diseño bioclimático contemporáneo, materiales autóctonos (Chukum, Tzalam), cimentaciones en suelo kárstico, normativas en Riviera Maya o la estructuración integral de su proyecto.\n\n*¿Qué tema le gustaría explorar hoy?*";
   }
 };
 
-const GET_EMAIL_REQUEST_MSG = (lang: Language, name: string) => {
-  switch (lang) {
-    case "en":
-      return `Thank you, **${name}**. Could you please provide your **Email Address** to connect your inquiry session?`;
-    case "it":
-      return `Grazie, **${name}**. Potrebbe fornirmi il suo **Indirizzo Email** per collegare la sua sessione?`;
-    case "fr":
-      return `Merci, **${name}**. Pourriez-vous me fournir votre **Adresse E-mail** pour connecter votre session ?`;
-    default:
-      return `Gracias, **${name}**. ¿Me proporcionaría su **Correo Electrónico** para vincular su consulta?`;
-  }
-};
+// Motor de Conocimiento Local de Respaldo para Garantizar Respuestas Exquisitas en Todo Momento
+const getLocalArchitecturalResponse = (query: string, lang: Language): string => {
+  const q = query.toLowerCase();
 
-const GET_INVALID_EMAIL_MSG = (lang: Language) => {
-  switch (lang) {
-    case "en":
-      return "Please enter a valid email address (e.g., name@domain.com):";
-    case "it":
-      return "Per favore, inserisca un indirizzo email valido (es. nome@dominio.com):";
-    case "fr":
-      return "Veuillez saisir une adresse e-mail valide (ex. nom@domaine.com) :";
-    default:
-      return "Por favor, ingrese un correo electrónico válido (ejemplo@correo.com):";
+  if (q.includes("tulum") || q.includes("normativa") || q.includes("permiso") || q.includes("regula") || q.includes("cos") || q.includes("cus")) {
+    return lang === "en"
+      ? "In **Tulum and Quintana Roo**, construction is strictly regulated by environmental programs (POEL) and municipal master plans (PDU):\n\n• **COS and CUS Restrictions**: Typical land coverage ratios require preserving 40% to 60% of original native jungle.\n• **Environmental Impact Permits (MIA / SEMARNAT)**: Required to protect the subterranean aquifer and flora.\n• **Karstic Drainage**: Prohibits traditional septic tanks; requires certified wastewater treatment plants (PTAR) with bio-filter wetlands.\n\nAt UNO Arquitectos, we manage 100% of the technical and legal feasibility before the first excavation."
+      : "En **Tulum y la Riviera Maya**, la edificación está normada por programas de ordenamiento ecológico (POEL) y planes de desarrollo urbano (PDU):\n\n• **Coeficientes COS y CUS**: Exigen conservar entre el 40% y 60% del dosel de selva virgen en el lote.\n• **Permisos Ambientales (MIA / SEMARNAT)**: Indispensables para la protección del manto freático.\n• **Tratamiento de Aguas**: Se prohíben fosas sépticas convencionales; se exige biodigestor anaeróbico y humedal artificial de fitorremediación.\n\nEn UNO Arquitectos gestionamos la viabilidad técnica y legal integral para garantizar cero clausuras y total certeza jurídica.";
   }
-};
 
-const GET_ONBOARDING_COMPLETE_MSG = (lang: Language, name: string) => {
-  switch (lang) {
-    case "en":
-      return `Great, **${name}**! Your inquiry session is active.\n\nWhat topic can I assist you with today regarding local regulations, materials (Chukum, Tzalam), or karstic soil engineering?`;
-    case "it":
-      return `Perfetto, **${name}**! La sua sessione è attiva.\n\nSu quale argomento posso assisterla oggi riguardante normative, materiali (Chukum, Tzalam) o ingegneria del terreno carsico?`;
-    case "fr":
-      return `Parfait, **${name}** ! Votre session de consultation est active.\n\nSur quel sujet puis-je vous assister aujourd'hui concernant les normes, matériaux (Chukum, Tzalam) ou ingénierie du sol karstique ?`;
-    default:
-      return `¡Excelente, **${name}**! Su consulta está abierta.\n\n¿En qué tema puedo asesorarle hoy sobre normativas, materiales autóctonos (Chukum, Tzalam) o ingeniería en suelo kárstico?`;
+  if (q.includes("chukum") || q.includes("tzalam") || q.includes("madera") || q.includes("material")) {
+    return lang === "en"
+      ? "Our architectural philosophy uses **honest, noble regional materials** suited for the tropical climate:\n\n• **Natural Chukum**: An organic resin extracted from the bark of the wild *Havardia albicans* tree. It provides a waterproof, silky mineral surface with warm limestone tones that ages gracefully without repainting.\n• **Tzalam & Zapote Hardwoods**: High-density tropical woods naturally resistant to Caribbean humidity, termites, and salinity.\n• **Architectural Exposed Concrete**: Formwork texturing with regional timber, treated with open-pore hydrophobic sealants."
+      : "Nuestra paleta material prioriza **materiales nobles y de alta honestidad constructiva** para el trópico:\n\n• **Chukum Natural**: Resina orgánica extraída de la corteza del árbol silvestre *Havardia albicans*. Aporta impermeabilidad absoluta, textura táctil sedosa y un tono marfil cálido que madura con distinción sin necesidad de pintura.\n• **Maderas Duras de Tzalam y Zapote**: Especies tropicales de altísima densidad, naturalmente resistentes a la humedad, termitas y salinidad marina.\n• **Concreto Aparente**: Colado con cimbra de duela regional y protegido con selladores hidrófugos de poro abierto.";
   }
+
+  if (q.includes("karst") || q.includes("kárst") || q.includes("suelo") || q.includes("cimentaci") || q.includes("cenote") || q.includes("cimentar")) {
+    return lang === "en"
+      ? "Building on the **karstic limestone of the Yucatan Peninsula** demands specialized engineering:\n\n• **Geophysical GPR Surveying**: Ground Penetrating Radar scanning to rule out hidden caverns or voids.\n• **Rigid Foundation Slabs**: Reinforced concrete raft foundations tied with seismic tie-beams to absorb differential settlements.\n• **Hurricane Wind Calculations**: Structural frames calculated to withstand Category 5 hurricane wind loads (up to 280 km/h)."
+      : "Construir sobre la **roca kárstica de la Península de Yucatán** requiere una ingeniería rigurosa:\n\n• **Prospección Geofísica (GPR)**: Escaneo por georradar para mapear el subsuelo y descartar oquedades o fallas kársticas.\n• **Losas de Cimentación Rigidizadas**: Zapatas corridas y trabes de liga de concreto reforzado que absorben asentamientos diferenciales.\n• **Cálculo Estructural Antihuracanes**: Estructuras calculadas bajo norma para resistir vientos categoría 5 de hasta 280 km/h.";
+  }
+
+  if (q.includes("llave en mano") || q.includes("costo") || q.includes("precio") || q.includes("presupuesto") || q.includes("cuanto cuesta") || q.includes("cuánto cuesta")) {
+    return lang === "en"
+      ? "Under our **Turnkey (Llave en Mano)** model, UNO Arquitectos integrates design, licensing, engineering, and construction under a single direction:\n\n• **Parametric Budgeting**: Clear, transparent budget breakdown from day one with line-by-line cost traceability.\n• **Formal Change Control**: Any design change is evaluated technically and budgeted before execution.\n• **No Fixed Formula**: Because every bespoke villa depends on soil mechanics and program, we do not issue generic estimates in chat.\n\nWe cordially invite you to schedule a direct technical consultation with Arch. Angel Cereceda."
+      : "Bajo la modalidad **Llave en Mano**, en UNO Arquitectos integramos diseño, gestoría de licencias, ingenierías y dirección de obra bajo un único techo responsable:\n\n• **Presupuestos Paramétricos**: Desglose claro y transparente desde la fase conceptual con trazabilidad de costos.\n• **Control Estricto de Cambios**: Todo ajuste se evalúa técnicamente y se autoriza formalmente antes de ejecutarse en obra.\n• **Cotizaciones a la Medida**: Debido a que cada residencia depende de la mecánica kárstica y el programa de diseño, no emitimos precios genéricos por m² en chat.\n\nLe invitamos a agendar una sesión técnica de viabilidad con nuestro equipo directivo.";
+  }
+
+  return lang === "en"
+    ? "UNO Arquitectos specializes in **Boutique Tropical Contemporary Architecture** in the Riviera Maya and CDMX, directed by **Arch. Angel Cereceda** (20+ years of experience, Master in Project Management, prior leadership in Papaya Playa Project and Inmobilia Mayaliah).\n\nWe would be glad to evaluate your lot or architectural brief. Would you like to connect directly via WhatsApp with our team?"
+    : "UNO Arquitectos es un estudio boutique de **Arquitectura Contemporánea Tropical y Alta Ingeniería** en Riviera Maya y CDMX, dirigido por el **Arq. Angel Cereceda** (más de 20 años de trayectoria, Máster en Project Management por la Universidad Europea de Madrid y ex director técnico en obras como Papaya Playa Project e Inmobilia Mayaliah).\n\nNos encantará analizar su lote o programa arquitectónico. ¿Desea que agendemos una llamada técnica o conectar directamente por WhatsApp?";
 };
 
 export default function AIConsultant() {
@@ -77,8 +71,7 @@ export default function AIConsultant() {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Conversational onboarding state
-  const [onboardingStep, setOnboardingStep] = useState<"name" | "email" | "completed">("name");
+  // Lead capture state
   const [leadName, setLeadName] = useState("");
   const [leadEmail, setLeadEmail] = useState("");
 
@@ -143,10 +136,6 @@ export default function AIConsultant() {
         timestamp: new Date()
       }
     ]);
-    
-    setOnboardingStep("name");
-    setLeadName("");
-    setLeadEmail("");
   }, [language]);
 
   // Listen to custom open-ai-chat event
@@ -166,14 +155,16 @@ export default function AIConsultant() {
   const quickPrompts =
     language === "es"
       ? [
-          { label: "¿Qué normativas rigen en Tulum?", prompt: "¿Cuáles son las regulaciones ecológicas, COS/CUS y conservación de selva en Tulum?" },
-          { label: "Ventajas del Chukum y Tzalam", prompt: "Explícame el uso del Chukum natural y madera de Tzalam en clima tropical." },
-          { label: "Cimentación en suelo kárstico", prompt: "¿Cómo calculan las cimentaciones sobre suelo kárstico o cenotes?" }
+          { label: "Normativas en Tulum", prompt: "¿Cuáles son las regulaciones ecológicas, COS/CUS y conservación de selva en Tulum?" },
+          { label: "Chukum y Maderas", prompt: "Explícame las ventajas del Chukum natural y la madera de Tzalam en clima tropical." },
+          { label: "Cimentación Kárstica", prompt: "¿Cómo calculan las cimentaciones sobre suelo kárstico o cenotes?" },
+          { label: "Obra Llave en Mano", prompt: "¿Cómo funciona el modelo de construcción Llave en Mano de UNO Arquitectos?" }
         ]
       : [
           { label: "Tulum regulations", prompt: "What are the environmental permits and land ratios required in Tulum?" },
-          { label: "Chukum & local woods", prompt: "Tell me about Chukum and Tzalam wood advantages in tropical climates." },
-          { label: "Karst foundations", prompt: "How do you handle structural foundations on karst soil near cenotes?" }
+          { label: "Chukum & tropical wood", prompt: "Tell me about Chukum and Tzalam wood advantages in tropical climates." },
+          { label: "Karstic foundations", prompt: "How do you handle structural foundations on karst soil near cenotes?" },
+          { label: "Turnkey building", prompt: "How does the Turnkey construction model work at UNO Arquitectos?" }
         ];
 
   const handleSendMessage = async (text: string) => {
@@ -190,96 +181,32 @@ export default function AIConsultant() {
     setInputValue("");
     setIsLoading(true);
 
-    // ONBOARDING STEP 1: NAME
-    if (onboardingStep === "name") {
-      setLeadName(trimmedText);
-      setOnboardingStep("email");
-      setIsLoading(false);
-
-      setTimeout(() => {
-        setMessages((prev) => [
-          ...prev,
-          {
-            role: "assistant",
-            content: GET_EMAIL_REQUEST_MSG(language, trimmedText),
-            timestamp: new Date()
-          }
-        ]);
-      }, 500);
-      return;
+    // Check if user shared name
+    const nameMatch = trimmedText.match(/(?:mi nombre es|me llamo|soy|my name is|i am)\s+([A-Za-zÀ-ÿ]+(?:\s+[A-Za-zÀ-ÿ]+)?)/i);
+    if (nameMatch && nameMatch[1]) {
+      setLeadName(nameMatch[1]);
     }
 
-    // ONBOARDING STEP 2: EMAIL & VALIDATION
-    if (onboardingStep === "email") {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(trimmedText)) {
-        setIsLoading(false);
-        setMessages((prev) => [
-          ...prev,
-          {
-            role: "assistant",
-            content: GET_INVALID_EMAIL_MSG(language),
-            timestamp: new Date()
-          }
-        ]);
-        return;
-      }
-
-      setLeadEmail(trimmedText);
-      setOnboardingStep("completed");
-
-      // Analytics events
-      if (typeof window !== "undefined") {
-        const win = window as any;
-        if (win.gtag) {
-          win.gtag('event', 'generate_lead', { event_category: 'ai_chat', event_label: 'Consultor AI Onboarding', value: 1 });
-        }
-        if (win.fbq) {
-          win.fbq('track', 'Lead', { content_name: 'Consultor AI Onboarding', status: 'success' });
-        }
-      }
-
-      const currentName = leadName;
-      const currentEmail = trimmedText;
-
-      const waText = language === "es"
-        ? `Hola UNO Arquitectos, acabo de consultar en su Asesor IA. Mi nombre es ${currentName}, mi correo es ${currentEmail}. Me interesa recibir atención técnica personalizada.`
-        : `Hello UNO Arquitectos, I consulted your AI Advisor. My name is ${currentName}, my email is ${currentEmail}. I would like direct technical support.`;
-      
-      const waUrl = `https://wa.me/5219842108420?text=${encodeURIComponent(waText)}`;
-      window.open(waUrl, "_blank", "noopener,noreferrer");
-
+    // Check if user shared an email to record as lead
+    const emailMatch = trimmedText.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
+    if (emailMatch) {
+      const extractedEmail = emailMatch[0];
+      setLeadEmail(extractedEmail);
       try {
         await fetch("/api/leads", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            name: currentName,
-            email: currentEmail,
-            phone: "",
-            message: "Lead registrado mediante el embudo del Asesor IA",
+            name: (nameMatch && nameMatch[1]) || leadName || "Consultante Web",
+            email: extractedEmail,
+            message: `Lead interactuando en chat: "${trimmedText}"`,
             source: "Asesor IA Chatbot"
           })
         });
-      } catch (err) {
-        console.error("Error submitting lead to API:", err);
-      }
-
-      setIsLoading(false);
-      setTimeout(() => {
-        setMessages((prev) => [
-          ...prev,
-          {
-            role: "assistant",
-            content: GET_ONBOARDING_COMPLETE_MSG(language, currentName),
-            timestamp: new Date()
-          }
-        ]);
-      }, 500);
-      return;
+      } catch {}
     }
 
-    // OPEN CHAT WITH GEMINI BACKEND
+    // OPEN CHAT WITH GEMINI BACKEND OR NEURAL LOCAL FALLBACK
     try {
       const chatHistory = messages.map((m) => ({
         role: m.role,
@@ -298,7 +225,7 @@ export default function AIConsultant() {
       });
 
       if (!res.ok) {
-        throw new Error("Respuesta no válida del servidor.");
+        throw new Error("Servidor no disponible");
       }
 
       const data = await res.json();
@@ -307,20 +234,18 @@ export default function AIConsultant() {
         ...prev,
         {
           role: "assistant",
-          content: data.text || data.response || "No se obtuvo respuesta.",
+          content: data.text || data.response || getLocalArchitecturalResponse(trimmedText, language),
           timestamp: new Date()
         }
       ]);
-    } catch (error: any) {
-      console.error("Chat Error:", error);
+    } catch {
+      // Offline / Static Resilient Knowledge Engine
+      const fallbackAnswer = getLocalArchitecturalResponse(trimmedText, language);
       setMessages((prev) => [
         ...prev,
         {
           role: "assistant",
-          content:
-            language === "es"
-              ? "Para consultas de cotización personalizada, le invitamos a agendar una cita directa con nuestros directores de obra presencialmente o por WhatsApp."
-              : "For custom quotation inquiries, we cordially invite you to schedule a technical appointment directly with our site directors or via WhatsApp.",
+          content: fallbackAnswer,
           timestamp: new Date()
         }
       ]);
@@ -479,7 +404,7 @@ export default function AIConsultant() {
               </div>
 
               {/* Quick Prompt suggestions */}
-              {onboardingStep === "completed" && messages.length <= 4 && !isLoading && (
+              {messages.length <= 3 && !isLoading && (
                 <div className="px-4 py-2 bg-gris-piedra/20 border-t border-gris-piedra">
                   <p className="font-label-caps text-[9px] font-semibold tracking-wider text-teal-uno uppercase mb-2 text-left">
                     {language === "es" ? "Sugerencias de Consulta" : "Suggested Queries"}
@@ -511,11 +436,9 @@ export default function AIConsultant() {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   placeholder={
-                    onboardingStep === "name"
-                      ? (language === "es" ? "Escriba su Nombre Completo..." : "Enter your Full Name...")
-                      : onboardingStep === "email"
-                      ? (language === "es" ? "Escriba su Correo Electrónico..." : "Enter your Email Address...")
-                      : (language === "es" ? "Pregunte sobre permisos, materiales, estructura..." : "Ask about permits, materials, engineering...")
+                    language === "es"
+                      ? "Pregunte sobre permisos, Chukum, estructura kárstica..."
+                      : "Ask about permits, Chukum, karstic foundations..."
                   }
                   className="flex-1 bg-gris-piedra/15 border border-gris-piedra rounded-xs px-3.5 py-2.5 font-body-md text-xs text-gris-texto focus:outline-none focus:border-teal-uno focus:bg-white transition-all min-h-[44px]"
                 />
