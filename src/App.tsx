@@ -183,27 +183,9 @@ function MainApp() {
               <span className="font-label-caps text-[10px] sm:text-xs text-gris-texto/80 uppercase tracking-wider">
                 Development por <span className="text-teal-uno font-semibold">Negocioup</span>
               </span>
-              <span className="text-arena-calida/40 hidden sm:inline">•</span>
-              <button
-                onClick={() => setShowAdmin(true)}
-                className="font-label-caps text-[10px] sm:text-xs text-teal-uno hover:text-arena-calida transition-colors uppercase tracking-wider font-semibold inline-flex items-center gap-1 cursor-pointer bg-teal-uno/5 hover:bg-teal-uno/15 px-2 py-0.5 rounded-xs border border-teal-uno/20"
-                title="Acceso al Panel de Administración"
-              >
-                <Lock className="w-3 h-3" /> Panel Admin
-              </button>
             </div>
           </div>
         </footer>
-
-        {/* FLOATING CORNER ADMIN TRIGGER (DISCREET) */}
-        <button
-          onClick={() => setShowAdmin(true)}
-          className="fixed bottom-4 left-4 z-30 p-2.5 bg-white/80 hover:bg-white text-zinc-400 hover:text-teal-uno rounded-full shadow-md border border-gris-piedra/60 backdrop-blur-sm transition-all duration-300 cursor-pointer group"
-          title="Abrir Panel de Administración (o presiona Ctrl+Shift+A)"
-          aria-label="Panel Admin"
-        >
-          <Lock className="w-4 h-4 group-hover:scale-110 transition-transform text-teal-uno" />
-        </button>
 
         {/* GLOBAL LEGAL COMPLIANCE & COOKIE CONSENT MODULES */}
         <LegalNotice />
