@@ -2,7 +2,7 @@ import { Trees, ShieldCheck, HeartHandshake } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function Filosofia() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <section id="filosofia" className="py-section-padding px-4 sm:px-6 md:px-margin-desktop bg-surface-container-low relative texture-overlay border-b border-arena-calida/20 font-sans overflow-hidden">
@@ -83,6 +83,26 @@ export default function Filosofia() {
                   Cimentación calculada para suelo kárstico y sismos.
                 </p>
               </div>
+            </div>
+
+            {/* Leadership & E-E-A-T Authority Block */}
+            <div className="mt-8 p-5 sm:p-6 bg-white/70 backdrop-blur-md rounded-2xl border border-arena-calida/30 shadow-sm text-left">
+              <div className="flex items-center gap-3 mb-2.5">
+                <span className="material-symbols-outlined text-teal-uno text-[22px]">verified</span>
+                <div>
+                  <h4 className="font-label-caps text-xs sm:text-label-caps uppercase text-teal-uno font-semibold tracking-wider">
+                    {language === "es" ? "Dirección Técnica & Trayectoria" : "Technical Leadership & Track Record"}
+                  </h4>
+                  <p className="font-body-md text-[11px] sm:text-xs text-arena-calida font-medium">
+                    Arq. Angel Cereceda • Fundador & Director General
+                  </p>
+                </div>
+              </div>
+              <p className="font-body-md text-xs text-gris-texto leading-relaxed">
+                {language === "es" 
+                  ? "Más de 20 años liderando desarrollo y gestión técnica en Riviera Maya y CDMX. Máster en Project Management (Universidad Europea de Madrid) y Máster en Desarrollo Sostenible. Experiencia técnica directiva en obras de escala internacional como Papaya Playa Project, Inmobilia Mayaliah (25,000 m²) y Selina."
+                  : "Over 20 years leading real estate development and technical management in the Riviera Maya and Mexico City. Master's in Project Management (Universidad Europea de Madrid) and Master's in Sustainable Development. Prior technical leadership in international projects including Papaya Playa Project, Inmobilia Mayaliah (25,000 m²), and Selina."}
+              </p>
             </div>
           </div>
 

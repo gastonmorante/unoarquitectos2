@@ -104,6 +104,26 @@ export default function Metrics() {
             </motion.div>
           ))}
         </div>
+
+        {/* Google Reviews Trust Bar */}
+        <div className="mt-8 sm:mt-10 pt-6 border-t border-arena-calida/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+          <div className="flex items-center gap-3">
+            <div className="flex text-amber-500 text-sm tracking-widest">
+              ★★★★★
+            </div>
+            <span className="font-label-caps text-xs text-teal-uno uppercase tracking-wider font-semibold">
+              5.0 Calificación en Google Reviews (28+ Opiniones)
+            </span>
+          </div>
+          <a
+            href="https://maps.app.goo.gl/vy12S6chkTnkjuG96"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-label-caps text-[11px] sm:text-xs text-teal-uno hover:text-arena-calida transition-colors uppercase tracking-wider font-semibold inline-flex items-center gap-1"
+          >
+            Ver opiniones verificadas en Google Maps ↗
+          </a>
+        </div>
       </div>
     </section>
   );
