@@ -173,7 +173,7 @@ const categoryTypologies: CategoryTypology[] = [
     descEn: "Comprehensive design and construction for high-end hospitality and retail. The flagship Lavazza Coffee Bar balances Italian Turin heritage (1895) with warm contemporary finishes: textured mineral walls, curved fluted light oak counter, high-performance barista station, and modular outdoor terrace.",
     area: "185 m² (120 m² salón/barra + 65 m² terraza)",
     materials: "Duela de roble claro, cubierta sólida blanca antibacterial, estuco mineral arena, porcelanato gran formato y cancelería de cristal templado",
-    projectsSample: ["Cafetería Lavazza (Plaza Comercial)", "Showroom Polanco (CDMX)", "Pabellón Gastronómico (Tulum)"],
+    projectsSample: ["Cafetería Lavazza (Plaza Comercial)", "Boutique Retail (Playa del Carmen)", "Pabellón Gastronómico (Tulum)"],
     specsEs: [
       "Estación barista optimizada con máquina Rancilio y molinos de precisión",
       "Iluminación LED lineal en rieles empotrados con temperatura cálida de 2700K",

@@ -108,8 +108,8 @@ export default function LegalNotice() {
                   </h4>
                   <p>
                     {isEs
-                      ? "UNO Arquitectos Mx (Grupo SVAD), con domicilio operativo en Av. Boca Paila Km 4.5, Zona Costera, Tulum, Quintana Roo, México, es responsable del tratamiento de sus datos personales recolectados a través de esta plataforma digital y herramientas de consulta conversacional."
-                      : "UNO Arquitectos Mx (Grupo SVAD), located at Av. Boca Paila Km 4.5, Coastal Zone, Tulum, Quintana Roo, Mexico, is responsible for the processing of personal data collected through this website and AI conversational tools."}
+                      ? "UNO Arquitectos Mx (Grupo SVAD), con domicilio en Plaza Palmeras, Playa del Carmen, Quintana Roo, México (C.P. 77710) y taller de producción en Carretera Tulum – Macario Gómez, es responsable del tratamiento de sus datos personales recolectados a través de esta plataforma digital y herramientas de consulta conversacional."
+                      : "UNO Arquitectos Mx (Grupo SVAD), located at Plaza Palmeras, Playa del Carmen, Quintana Roo, Mexico (Postal Code 77710) and production workshop on Tulum – Macario Gomez Highway, is responsible for the processing of personal data collected through this website and AI conversational tools."}
                   </p>
 
                   <h4 className="font-headline-md font-bold text-teal-uno text-sm uppercase">
@@ -135,8 +135,8 @@ export default function LegalNotice() {
                   </h4>
                   <p>
                     {isEs
-                      ? "Usted puede ejercer sus derechos de Acceso, Rectificación, Cancelación u Oposición (ARCO) enviando una solicitud formal al correo electrónico: info@unoarquitectos.com o al WhatsApp corporativo."
-                      : "You may exercise your Access, Rectification, Cancellation, or Opposition (ARCO) rights by sending a request to: info@unoarquitectos.com or via corporate WhatsApp."}
+                      ? "Usted puede ejercer sus derechos de Acceso, Rectificación, Cancelación u Oposición (ARCO) enviando una solicitud formal al correo electrónico: hola@unoarquitectos.com o al WhatsApp corporativo."
+                      : "You may exercise your Access, Rectification, Cancellation, or Opposition (ARCO) rights by sending a request to: hola@unoarquitectos.com or via corporate WhatsApp."}
                   </p>
                 </div>
               ) : (
