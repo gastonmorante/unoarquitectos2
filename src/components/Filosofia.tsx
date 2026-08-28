@@ -114,8 +114,10 @@ export default function Filosofia() {
             <div className="absolute -inset-2 sm:-inset-4 bg-arena-calida/15 rounded-2xl -z-10 transform rotate-1 sm:rotate-2 transition-transform hover:rotate-0 duration-700 pointer-events-none"></div>
             <img 
               alt="Filosofía y diseño arquitectónico contemporáneo tropical en Riviera Maya - UNO Arquitectos" 
-              className="w-full h-auto object-cover aspect-[4/5] sm:aspect-[3/4] rounded-xl shadow-ethereal" 
-              src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&h=1400&q=95"
+              className="w-full h-auto object-cover aspect-[3/4] rounded-xl shadow-ethereal" 
+              src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&h=800&q=80"
+              width={600}
+              height={800}
               loading="lazy"
               decoding="async"
               referrerPolicy="no-referrer"

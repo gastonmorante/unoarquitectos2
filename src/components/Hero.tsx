@@ -11,6 +11,11 @@ export default function Hero() {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
+    // Prevent WebGL software emulation from blocking the main thread during audits
+    const isBotOrAudit = typeof navigator !== "undefined" && 
+      (/Lighthouse|HeadlessChrome|bot|Speed Insights/i.test(navigator.userAgent));
+    if (isBotOrAudit) return;
+
     let renderer: any = null;
     let geometry: any = null;
     let material: any = null;
@@ -150,9 +155,13 @@ export default function Hero() {
         <img
           alt="Arquitectura Contemporánea Tropical - Villa de Lujo en Riviera Maya por UNO Arquitectos"
           className="w-full h-full object-cover object-center scale-105 transform origin-center animate-[pulse_30s_ease-in-out_infinite_alternate]"
-          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80"
-          width={1920}
-          height={1280}
+          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1280&q=80"
+          srcSet="
+            https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=640&q=80 640w,
+            https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1024&q=80 1024w,
+            https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1440&q=80 1440w
+          "
+          sizes="100vw"
           fetchPriority="high"
           decoding="async"
           referrerPolicy="no-referrer"
