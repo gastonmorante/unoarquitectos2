@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import { useLanguage } from "../context/LanguageContext";
 import { useSiteContent } from "../context/ContentContext";
 import { UnoIsotype } from "./Logo";
@@ -6,131 +5,6 @@ import { UnoIsotype } from "./Logo";
 export default function Hero() {
   const { language, t } = useLanguage();
   const { content } = useSiteContent();
-  const glContainerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    // Prevent WebGL software emulation from blocking the main thread during audits
-    const isBotOrAudit = typeof navigator !== "undefined" && 
-      (/Lighthouse|HeadlessChrome|bot|Speed Insights/i.test(navigator.userAgent));
-    if (isBotOrAudit) return;
-
-    let renderer: any = null;
-    let geometry: any = null;
-    let material: any = null;
-    let animationFrameId: number | null = null;
-
-    const initShader = () => {
-      try {
-        const THREE = (window as any).THREE;
-        const container = glContainerRef.current;
-        if (!THREE || !container) return;
-
-        container.innerHTML = "";
-
-        const width = container.clientWidth || window.innerWidth || 1200;
-        const height = container.clientHeight || window.innerHeight || 800;
-
-        const scene = new THREE.Scene();
-        const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-        renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-
-        renderer.setSize(width, height);
-        container.appendChild(renderer.domElement);
-
-        geometry = new THREE.PlaneGeometry(2, 2);
-
-        const fragmentShader = `
-          precision highp float;
-          uniform float u_time;
-          uniform vec2 u_resolution;
-
-          void main() {
-              vec2 uv = gl_FragCoord.xy / u_resolution.xy;
-              
-              float wave = sin(uv.x * 3.0 + u_time * 0.4) * 0.08;
-              float wave2 = cos(uv.y * 2.0 - u_time * 0.25) * 0.08;
-              
-              vec3 color1 = vec3(0.78, 0.72, 0.60); // Arena Calida #C8B89A
-              vec3 color2 = vec3(0.99, 0.988, 0.976); // Warm Off-White #FDFCF9
-              
-              float noise = sin(uv.x * 5.0 + u_time * 0.15) * cos(uv.y * 4.0 - u_time * 0.12);
-              float mask = smoothstep(-0.5, 0.5, noise + uv.y - 0.5 + wave + wave2);
-              
-              vec3 finalColor = mix(color2, color1, mask * 0.2);
-              
-              float grain = fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453);
-              finalColor -= grain * 0.02;
-              
-              gl_FragColor = vec4(finalColor, 1.0);
-          }
-        `;
-
-        const vertexShader = `
-          void main() {
-              gl_Position = vec4(position, 1.0);
-          }
-        `;
-
-        const uniforms = {
-          u_time: { value: 1.0 },
-          u_resolution: { value: new THREE.Vector2(width, height) }
-        };
-
-        material = new THREE.ShaderMaterial({
-          uniforms,
-          vertexShader,
-          fragmentShader,
-          transparent: true
-        });
-
-        const mesh = new THREE.Mesh(geometry, material);
-        scene.add(mesh);
-
-        const onWindowResize = () => {
-          if (!container || !renderer) return;
-          const newW = container.clientWidth || window.innerWidth;
-          const newH = container.clientHeight || window.innerHeight;
-          renderer.setSize(newW, newH);
-          uniforms.u_resolution.value.x = newW;
-          uniforms.u_resolution.value.y = newH;
-        };
-
-        window.addEventListener("resize", onWindowResize);
-
-        const animate = (timestamp: number) => {
-          animationFrameId = requestAnimationFrame(animate);
-          uniforms.u_time.value = timestamp * 0.001;
-          renderer.render(scene, camera);
-        };
-
-        animate(0);
-      } catch (e) {
-        console.warn("WebGL shader fallback:", e);
-      }
-    };
-
-    if ((window as any).THREE) {
-      initShader();
-    } else {
-      const timer = setTimeout(initShader, 300);
-      return () => clearTimeout(timer);
-    }
-
-    return () => {
-      if (animationFrameId) cancelAnimationFrame(animationFrameId);
-      if (renderer) {
-        try { renderer.dispose(); } catch {}
-      }
-      if (geometry) {
-        try { geometry.dispose(); } catch {}
-      }
-      if (material) {
-        try { material.dispose(); } catch {}
-      }
-    };
-  }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -147,8 +21,10 @@ export default function Hero() {
       id="inicio"
       className="relative w-full min-h-[92vh] md:min-h-[720px] flex items-center justify-center overflow-hidden bg-background py-20 px-4 sm:px-6 md:px-margin-desktop"
     >
-      {/* WebGL Animated Background */}
-      <div ref={glContainerRef} className="absolute inset-0 z-0" id="gl-container"></div>
+      {/* Ambient Animated Luxury Aura (Pure GPU CSS - Zero Main Thread Blocking) */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <div className="absolute -top-1/4 -left-1/4 w-[150%] h-[150%] bg-[radial-gradient(circle_at_50%_50%,rgba(200,184,154,0.22)_0%,rgba(0,158,155,0.08)_40%,transparent_70%)] animate-[pulse_12s_ease-in-out_infinite_alternate]"></div>
+      </div>
 
       {/* Boho-Chic Luxury Architecture Photo Overlay */}
       <div className="absolute inset-0 z-[1] opacity-60 mix-blend-overlay">
