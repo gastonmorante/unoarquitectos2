@@ -14,7 +14,7 @@ export default function CookieBanner() {
     if (!consent) {
       const timer = setTimeout(() => {
         setIsVisible(true);
-      }, 3200);
+      }, 15000);
       return () => clearTimeout(timer);
     }
     return undefined;
@@ -39,7 +39,7 @@ export default function CookieBanner() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 50, scale: 0.95 }}
           transition={{ duration: 0.35, ease: "easeOut" }}
-          className="fixed bottom-6 right-6 left-6 md:left-auto md:max-w-md z-40 bg-white text-gris-texto border border-gris-piedra p-5 rounded-xs shadow-2xl font-sans"
+          className="fixed bottom-20 right-4 left-4 sm:right-6 sm:left-auto sm:max-w-md z-40 bg-white text-gris-texto border border-gris-piedra p-5 rounded-xs shadow-2xl font-sans"
         >
           <div className="flex items-start justify-between gap-3 mb-3">
             <div className="flex items-center gap-2 text-teal-uno">
@@ -50,8 +50,8 @@ export default function CookieBanner() {
             </div>
             <button
               onClick={() => setIsVisible(false)}
-              className="text-gris-texto hover:text-teal-uno transition-colors cursor-pointer p-1"
-              aria-label="Close cookie banner"
+              className="text-gris-texto hover:text-teal-uno transition-colors cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center -mr-2 -mt-2"
+              aria-label="Cerrar aviso de cookies / Close cookie banner"
             >
               <X className="w-4 h-4" />
             </button>
@@ -66,15 +66,15 @@ export default function CookieBanner() {
           <div className="flex items-center justify-between gap-3 border-t border-gris-piedra pt-3 font-label-caps">
             <button
               onClick={handleOpenPrivacy}
-              className="text-[11px] text-gris-texto hover:text-teal-uno underline transition-colors cursor-pointer flex items-center gap-1"
+              className="text-[11px] text-gris-texto hover:text-teal-uno underline transition-colors cursor-pointer flex items-center gap-1.5 min-h-[44px] py-2 px-1"
             >
-              <ShieldCheck className="w-3.5 h-3.5 text-teal-uno" />
+              <ShieldCheck className="w-4 h-4 text-teal-uno" />
               {isEs ? "Aviso de Privacidad" : "Privacy Notice"}
             </button>
 
             <button
               onClick={handleAccept}
-              className="px-4 py-2 bg-teal-uno hover:opacity-90 text-white text-xs font-semibold uppercase tracking-wider rounded-xs transition-colors cursor-pointer shadow-xs"
+              className="px-5 py-2.5 min-h-[44px] bg-teal-uno hover:opacity-90 text-white text-xs font-semibold uppercase tracking-wider rounded-xs transition-colors cursor-pointer shadow-xs flex items-center justify-center"
             >
               {isEs ? "Aceptar" : "Accept All"}
             </button>

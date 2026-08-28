@@ -2,11 +2,9 @@ import { useState, useEffect, lazy, Suspense } from 'react';
 import { AnimatePresence } from 'motion/react';
 import { Lock } from 'lucide-react';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
 import Filosofia from './components/Filosofia';
 import Metrics from './components/Metrics';
 import Servicios from './components/Servicios';
-import Portfolio from './components/Portfolio';
 import Faqs from './components/Faqs';
 import Contacto from './components/Contacto';
 import CookieBanner from './components/CookieBanner';
@@ -14,6 +12,7 @@ import Logo from './components/Logo';
 import { LanguageProvider } from './context/LanguageContext';
 import { ContentProvider, useSiteContent } from './context/ContentContext';
 
+const Portfolio = lazy(() => import('./components/Portfolio'));
 const AdminDashboard = lazy(() => import('./admin/AdminDashboard'));
 const AdminLogin = lazy(() => import('./admin/AdminLogin'));
 const LegalNotice = lazy(() => import('./components/LegalNotice'));
@@ -81,9 +80,6 @@ function MainApp() {
       <div id="app-root" className="min-h-screen w-full overflow-x-hidden bg-background text-gris-texto selection:bg-arena-calida selection:text-white font-sans transition-colors duration-300 texture-overlay">
         <Navbar />
         <main id="main-content" className="w-full overflow-x-hidden">
-          <section id="inicio">
-            <Hero />
-          </section>
           <section id="filosofia">
             <Filosofia />
           </section>
@@ -92,7 +88,9 @@ function MainApp() {
             <Servicios />
           </section>
           <section id="portfolio">
-            <Portfolio />
+            <Suspense fallback={null}>
+              <Portfolio />
+            </Suspense>
           </section>
           <section id="faqs">
             <Faqs />

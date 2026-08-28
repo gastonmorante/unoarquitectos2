@@ -41,7 +41,7 @@ if (fs.existsSync(assetsDir)) {
   const mainCss = files.find(f => f.startsWith('index-') && f.endsWith('.css'));
   
   if (mainJs) {
-    ['index-B8Nap_2K.js', 'index-B38eT26X.js', 'index-7uDuNS0G.js'].forEach(alias => {
+    ['index-B8Nap_2K.js', 'index-B38eT26X.js', 'index-7uDuNS0G.js', 'index-Cjub3CoV.js'].forEach(alias => {
       if (alias !== mainJs) {
         fs.copyFileSync(path.join(assetsDir, mainJs), path.join(assetsDir, alias));
       }
@@ -50,7 +50,7 @@ if (fs.existsSync(assetsDir)) {
   }
   
   if (mainCss) {
-    ['index-C-5dqcFl.css', 'index-CDX4qRgy.css', 'index-BAyhyOGH.css'].forEach(alias => {
+    ['index-C-5dqcFl.css', 'index-CDX4qRgy.css', 'index-BAyhyOGH.css', 'index-D5xNzEcK.css'].forEach(alias => {
       if (alias !== mainCss) {
         fs.copyFileSync(path.join(assetsDir, mainCss), path.join(assetsDir, alias));
       }

@@ -582,7 +582,7 @@ export default function AIConsultant() {
           whileHover={{ scale: 1.06 }}
           whileTap={{ scale: 0.95 }}
           className="relative bg-[#046A38] hover:bg-[#03512b] text-white p-3.5 sm:p-4 rounded-full shadow-lg flex items-center justify-center cursor-pointer border border-[#046a38]/30 group min-w-[48px] min-h-[48px] sm:min-w-[52px] sm:min-h-[52px]"
-          aria-label="WhatsApp Contact"
+          aria-label="Contactar por WhatsApp a UNO Arquitectos"
         >
           <MessageCircle className="w-5 sm:w-6 h-5 sm:h-6 text-white" />
           <span className="absolute right-14 bg-white text-gris-texto border border-gris-piedra text-xs font-label-caps uppercase tracking-wider py-1.5 px-3 rounded-xs whitespace-nowrap shadow-lg opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none hidden sm:block">
@@ -870,7 +870,7 @@ export default function AIConsultant() {
           whileHover={{ scale: 1.06 }}
           whileTap={{ scale: 0.95 }}
           className="bg-white hover:bg-gris-piedra/20 border border-gris-piedra text-teal-uno p-4 rounded-full shadow-2xl flex items-center justify-center cursor-pointer group min-w-[52px] min-h-[52px]"
-          aria-label="Toggle AI consultant chatbot"
+          aria-label="Abrir Asesor Técnico con Inteligencia Artificial"
         >
           <Sparkles className="w-6 h-6 text-teal-uno group-hover:rotate-12 transition-transform duration-300" />
           

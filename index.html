@@ -23,8 +23,8 @@
     <meta name="geo.position" content="20.6296;-87.0739" />
     <meta name="ICBM" content="20.6296, -87.0739" />
     
-    <!-- Hreflang Tags for Multilingual Indexation -->
-    <link rel="alternate" hreflang="es" href="https://unoarquitectos.com/?lang=es" />
+    <!-- Hreflang Tags for Multilingual Indexation (Aligned with Canonical URL) -->
+    <link rel="alternate" hreflang="es" href="https://unoarquitectos.com/" />
     <link rel="alternate" hreflang="en" href="https://unoarquitectos.com/?lang=en" />
     <link rel="alternate" hreflang="it" href="https://unoarquitectos.com/?lang=it" />
     <link rel="alternate" hreflang="fr" href="https://unoarquitectos.com/?lang=fr" />
@@ -383,8 +383,16 @@
         text-transform: uppercase;
         border: none;
         cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
         width: 100%;
         max-width: 280px;
+        transition: background-color 0.3s ease;
+      }
+      .prerender-btn-primary:hover {
+        background-color: #C8B89A;
       }
       @media (min-width: 640px) {
         .prerender-btn-primary {
@@ -403,8 +411,17 @@
         text-transform: uppercase;
         border: 1px solid rgba(200, 184, 154, 0.5);
         cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
         width: 100%;
         max-width: 280px;
+        transition: all 0.3s ease;
+      }
+      .prerender-btn-secondary:hover {
+        background-color: #009E9B;
+        color: #FFFFFF;
       }
       @media (min-width: 640px) {
         .prerender-btn-secondary {
@@ -415,30 +432,32 @@
     </style>
   </head>
   <body class="bg-[#FDFCF9] text-[#4A4A4A] texture-overlay">
-    <div id="root">
-      <header class="prerender-hero">
-        <picture style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;">
-          <source media="(max-width: 768px)" srcset="/hero-luxury-villa-mobile.webp" type="image/webp" />
-          <source media="(min-width: 769px)" srcset="/hero-luxury-villa.webp" type="image/webp" />
-          <img
-            alt="Arquitectura Contemporánea Tropical - Villa de Lujo en Riviera Maya por UNO Arquitectos"
-            src="/hero-luxury-villa-mobile.webp"
-            fetchpriority="high"
-            decoding="async"
-            style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6; mix-blend-mode: overlay;"
-          />
-        </picture>
-        <div class="prerender-card" style="position: relative; z-index: 10;">
-          <span class="prerender-tagline">ESTUDIO BOUTIQUE DE ARQUITECTURA &amp; CONSTRUCCIÓN</span>
-          <h1 class="prerender-title">ARQUITECTURA QUE PERTENECE. ESPACIOS QUE PERDURAN.</h1>
-          <p class="prerender-desc">Materializamos espacios que suman — a quien los habita, a quien los construye, al lugar que los recibe y a la comunidad que los rodea.</p>
-          <div class="prerender-btns">
-            <button class="prerender-btn-primary">EXPLORAR OBRAS</button>
-            <button class="prerender-btn-secondary">SENTIR LOS ESPACIOS</button>
-          </div>
+    <!-- PERMANENT HIGH-SPEED STATIC HERO (LCP < 0.8s) -->
+    <header id="inicio" class="prerender-hero">
+      <picture style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;">
+        <source media="(max-width: 768px)" srcset="/hero-luxury-villa-mobile.webp" type="image/webp" />
+        <source media="(min-width: 769px)" srcset="/hero-luxury-villa.webp" type="image/webp" />
+        <img
+          alt="Arquitectura Contemporánea Tropical - Villa de Lujo en Riviera Maya por UNO Arquitectos"
+          src="/hero-luxury-villa-mobile.webp"
+          fetchpriority="high"
+          decoding="async"
+          style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6; mix-blend-mode: overlay;"
+        />
+      </picture>
+      <div class="prerender-card" style="position: relative; z-index: 10;">
+        <span id="hero-tagline" class="prerender-tagline">ESTUDIO BOUTIQUE DE ARQUITECTURA &amp; CONSTRUCCIÓN</span>
+        <h1 id="hero-title" class="prerender-title">ARQUITECTURA QUE PERTENECE. ESPACIOS QUE PERDURAN.</h1>
+        <p id="hero-desc" class="prerender-desc">Materializamos espacios que suman — a quien los habita, a quien los construye, al lugar que los recibe y a la comunidad que los rodea.</p>
+        <div class="prerender-btns">
+          <a id="hero-btn-primary" href="#contacto" class="prerender-btn-primary">EXPLORAR OBRAS</a>
+          <a id="hero-btn-secondary" href="#portfolio" class="prerender-btn-secondary">SENTIR LOS ESPACIOS</a>
         </div>
-      </header>
-    </div>
+      </div>
+    </header>
+
+    <!-- REACT ROOT MOUNTING POINT FOR REMAINING SECTIONS -->
+    <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

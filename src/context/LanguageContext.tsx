@@ -715,6 +715,27 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     localStorage.setItem("uno_arquitectos_lang", lang);
   };
 
+  React.useEffect(() => {
+    const tagline = document.getElementById("hero-tagline");
+    const title = document.getElementById("hero-title");
+    const desc = document.getElementById("hero-desc");
+    const btn1 = document.getElementById("hero-btn-primary");
+    const btn2 = document.getElementById("hero-btn-secondary");
+    if (language === "en") {
+      if (tagline) tagline.textContent = "BOUTIQUE ARCHITECTURE & CONSTRUCTION STUDIO";
+      if (title) title.textContent = "ARCHITECTURE THAT BELONGS. SPACES THAT ENDURE.";
+      if (desc) desc.textContent = "We craft spaces that elevate — those who inhabit them, those who build them, the land that welcomes them, and the community that surrounds them.";
+      if (btn1) btn1.textContent = "EXPLORE WORKS";
+      if (btn2) btn2.textContent = "EXPERIENCE SPACES";
+    } else {
+      if (tagline) tagline.textContent = "ESTUDIO BOUTIQUE DE ARQUITECTURA & CONSTRUCCIÓN";
+      if (title) title.textContent = "ARQUITECTURA QUE PERTENECE. ESPACIOS QUE PERDURAN.";
+      if (desc) desc.textContent = "Materializamos espacios que suman — a quien los habita, a quien los construye, al lugar que los recibe y a la comunidad que los rodea.";
+      if (btn1) btn1.textContent = "EXPLORAR OBRAS";
+      if (btn2) btn2.textContent = "SENTIR LOS ESPACIOS";
+    }
+  }, [language]);
+
   const t = (keyPath: string) => {
     const keys = keyPath.split(".");
     let current: any = TRANSLATIONS[language];
