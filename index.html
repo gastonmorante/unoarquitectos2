@@ -290,9 +290,114 @@
         send_page_view: true
       });
     </script>
+    <!-- Critical Inline Styles for Ultra-Fast First Contentful Paint (FCP < 0.5s) -->
+    <style>
+      :root {
+        --color-bg: #FDFCF9;
+        --color-teal: #009E9B;
+        --color-arena: #C8B89A;
+        --color-text: #4A4A4A;
+      }
+      body {
+        margin: 0;
+        background-color: var(--color-bg);
+        color: var(--color-text);
+        font-family: 'Raleway', system-ui, -apple-system, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      .prerender-hero {
+        min-height: 92vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        padding: 80px 16px;
+        text-align: center;
+        background-color: #FDFCF9;
+      }
+      .prerender-card {
+        max-width: 896px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 48px 24px;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-radius: 24px;
+        border: 1px solid rgba(200, 184, 154, 0.3);
+        box-shadow: 0 20px 40px -15px rgba(0, 163, 163, 0.07);
+      }
+      .prerender-tagline {
+        font-size: 12px;
+        color: #C8B89A;
+        text-transform: uppercase;
+        letter-spacing: 0.25em;
+        font-weight: 600;
+        margin-bottom: 16px;
+        display: block;
+      }
+      .prerender-title {
+        font-size: clamp(2rem, 5vw, 3.75rem);
+        color: #009E9B;
+        font-weight: 600;
+        margin: 0 0 16px 0;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+      }
+      .prerender-desc {
+        font-size: clamp(0.9rem, 2vw, 1.125rem);
+        color: #4A4A4A;
+        max-width: 600px;
+        margin: 0 auto 32px auto;
+        line-height: 1.6;
+      }
+      .prerender-btns {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
+      }
+      .prerender-btn-primary {
+        background-color: #009E9B;
+        color: #FFFFFF;
+        padding: 14px 32px;
+        border-radius: 9999px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        border: none;
+        cursor: pointer;
+      }
+      .prerender-btn-secondary {
+        background-color: rgba(200, 184, 154, 0.15);
+        color: #009E9B;
+        padding: 14px 32px;
+        border-radius: 9999px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        border: 1px solid rgba(200, 184, 154, 0.5);
+        cursor: pointer;
+      }
+    </style>
   </head>
   <body class="bg-[#FDFCF9] text-[#4A4A4A] texture-overlay">
-    <div id="root"></div>
+    <div id="root">
+      <header class="prerender-hero">
+        <div class="prerender-card">
+          <span class="prerender-tagline">Arquitectura que pertenece. Espacios que perduran.</span>
+          <h1 class="prerender-title">UNO ARQUITECTOS</h1>
+          <p class="prerender-desc">Servicios integrales de diseño y construcción llave en mano en Riviera Maya desde 2017.</p>
+          <div class="prerender-btns">
+            <button class="prerender-btn-primary">Iniciar Diálogo</button>
+            <button class="prerender-btn-secondary">Sentir los Espacios</button>
+          </div>
+        </div>
+      </header>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
