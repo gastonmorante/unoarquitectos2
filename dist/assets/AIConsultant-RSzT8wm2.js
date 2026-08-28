@@ -1,4 +1,4 @@
-import{r,b as U,c as F,j as a,m as v,A as J}from"./motion-FRpP01ox.js";import{a as Z,U as M}from"./index-BIUTZGJ7.js";import{a1 as ee,_ as ae,X as te,z as D,a2 as ie,g as se,P as oe,n as ne,A as re,S as le,q as ce,f as de}from"./icons-IQ035CUh.js";import"./vendor-CJ1KjZTO.js";const ue=t=>{switch(t){case"en":return`Welcome to **UNO Arquitectos**. I am your AI Technical Advisor in Architecture & High-Performance Engineering.
+import{r,b as U,c as F,j as a,m as v,A as J}from"./motion-FRpP01ox.js";import{a as Z,U as M}from"./index-B38eT26X.js";import{a1 as ee,_ as ae,X as te,z as D,a2 as ie,g as se,P as oe,n as ne,A as re,S as le,q as ce,f as de}from"./icons-IQ035CUh.js";import"./vendor-CJ1KjZTO.js";const ue=t=>{switch(t){case"en":return`Welcome to **UNO Arquitectos**. I am your AI Technical Advisor in Architecture & High-Performance Engineering.
 
 To provide personalized guidance and register your technical consultation in our CRM, please share your details:`;case"it":return`Benvenuto su **UNO Arquitectos**. Sono il suo Consulente Tecnico AI di Architettura e Alta Ingegneria.
 

@@ -39,9 +39,14 @@ export default function Navbar() {
         <div className="flex items-center gap-2.5 sm:gap-4 md:gap-6">
           <LanguageSelector isScrolled={isScrolled} theme="adaptive" />
           
-          <div 
-            onClick={() => scrollToSection("inicio")}
+          <a 
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection("inicio");
+            }}
             className="cursor-pointer group flex items-center transition-opacity hover:opacity-85"
+            aria-label="UNO Arquitectos - Inicio"
             title="UNO Arquitectos"
           >
             <Logo 
@@ -50,7 +55,7 @@ export default function Navbar() {
               iconSize={56}
               showText={false}
             />
-          </div>
+          </a>
         </div>
 
         {/* DESKTOP NAV */}

@@ -111,7 +111,7 @@ function MainApp() {
         <footer id="main-footer" className="w-full pt-12 sm:pt-16 md:pt-section-padding pb-8 sm:pb-12 bg-background border-t border-arena-calida/20 texture-overlay font-sans text-left overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-gutter px-4 sm:px-6 md:px-margin-desktop max-w-container-max mx-auto mb-12 sm:mb-16 md:mb-20">
             <div className="md:col-span-4 mb-6 sm:mb-8 md:mb-0">
-              <a className="block mb-4 sm:mb-6 opacity-90 hover:opacity-100 transition-opacity" href="#" aria-label="UNO Arquitectos - Inicio">
+              <a className="block mb-4 sm:mb-6 opacity-90 hover:opacity-100 transition-opacity" href="/" aria-label="UNO Arquitectos - Inicio">
                 <Logo showText={true} iconSize={32} textSize="text-base sm:text-lg" />
               </a>
               <p className="font-body-md text-xs sm:text-sm text-gris-texto max-w-xs leading-relaxed">
