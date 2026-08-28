@@ -27,6 +27,7 @@ export default function LanguageSelector({ isScrolled, theme = "adaptive" }: Lan
     <div className="relative font-sans text-xs tracking-wider uppercase font-label-caps">
       <button
         onClick={() => setIsOpen(!isOpen)}
+        aria-label="Seleccionar idioma / Select language"
         className={`flex items-center gap-1.5 px-2.5 py-1.5 border rounded-xs transition-all duration-300 cursor-pointer ${borderColor} ${textColor}`}
       >
         <Globe className="w-3.5 h-3.5 text-teal-uno" />

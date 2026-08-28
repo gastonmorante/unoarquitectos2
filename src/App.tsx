@@ -20,17 +20,8 @@ import AdminDashboard from './admin/AdminDashboard';
 import AdminLogin from './admin/AdminLogin';
 
 function MainApp() {
-  const [loading, setLoading] = useState(true);
   const [showAdmin, setShowAdmin] = useState(false);
   const { isAuthenticated } = useSiteContent();
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1800);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   // Listen to hash changes (e.g. #admin) and keyboard shortcut (Ctrl+Shift+A or Ctrl+Alt+A)
   useEffect(() => {
@@ -73,9 +64,6 @@ function MainApp() {
 
   return (
     <>
-      <AnimatePresence>
-        {loading && <Preloader key="preloader" />}
-      </AnimatePresence>
 
       {/* ADMIN DASHBOARD OR LOGIN OVERLAY */}
       <AnimatePresence>
