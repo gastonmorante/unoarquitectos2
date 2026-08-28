@@ -1,9 +1,19 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { X, CheckCircle2, ArrowRight, ChevronLeft, ChevronRight, Sparkles, Layers, Coffee, Home, HeartPulse, Zap } from "lucide-react";
+import { X, CheckCircle2, ArrowRight, ChevronLeft, ChevronRight, Sparkles, Layers, Coffee, Home, HeartPulse, Zap, Store, Leaf } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { useSiteContent } from "../context/ContentContext";
 import { CategoryTypology, GalleryImage } from "../types/content";
+
+const renderPortfolioIcon = (iconName: string) => {
+  switch (iconName) {
+    case "home": return <Home className="w-4 h-4 text-arena-calida inline-block" />;
+    case "storefront": return <Store className="w-4 h-4 text-arena-calida inline-block" />;
+    case "medical_services": return <HeartPulse className="w-4 h-4 text-arena-calida inline-block" />;
+    case "eco": return <Leaf className="w-4 h-4 text-arena-calida inline-block" />;
+    default: return <Sparkles className="w-4 h-4 text-arena-calida inline-block" />;
+  }
+};
 
 const residentialGallery: GalleryImage[] = [
   {
@@ -375,7 +385,7 @@ export default function Portfolio() {
                       {isEs ? item.title : item.titleEn}
                     </h4>
                     <p className="font-label-caps text-[11px] sm:text-label-caps text-gris-texto/70 flex items-center gap-1.5 sm:gap-2 uppercase">
-                      <span className="material-symbols-outlined text-[15px] sm:text-[16px] text-arena-calida">{item.icon}</span>
+                      {renderPortfolioIcon(item.icon)}
                       {isEs ? item.subtitle : item.subtitleEn}
                     </p>
                   </div>
@@ -516,7 +526,7 @@ export default function Portfolio() {
                 {/* Header Subtitles */}
                 <div className="border-b border-arena-calida/20 pb-3 sm:pb-4">
                   <span className="font-label-caps text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-arena-calida font-semibold block mb-1 flex items-center gap-2">
-                    <span className="material-symbols-outlined text-[16px] text-arena-calida">{selectedCategory.icon}</span>
+                    {renderPortfolioIcon(selectedCategory.icon)}
                     {isEs ? selectedCategory.subtitle : selectedCategory.subtitleEn}
                   </span>
                   <h3 className="font-headline-xl text-xl sm:text-2xl md:text-3xl font-semibold text-teal-uno uppercase">

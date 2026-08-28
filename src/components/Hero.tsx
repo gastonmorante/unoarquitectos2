@@ -1,6 +1,7 @@
 import { useLanguage } from "../context/LanguageContext";
 import { useSiteContent } from "../context/ContentContext";
 import { UnoIsotype } from "./Logo";
+import { ArrowDown } from "lucide-react";
 
 export default function Hero() {
   const { language, t } = useLanguage();
@@ -89,10 +90,10 @@ export default function Hero() {
 
             <button
               onClick={() => scrollToSection("proyectos")}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 sm:px-10 py-3.5 sm:py-4 border border-teal-uno text-teal-uno font-label-caps text-xs sm:text-label-caps uppercase hover:bg-teal-uno hover:text-white transition-all duration-500 rounded-full cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 sm:px-10 py-3.5 sm:py-4 border border-teal-uno text-teal-uno font-label-caps text-xs sm:text-label-caps uppercase hover:bg-teal-uno hover:text-white transition-all duration-500 rounded-full cursor-pointer"
             >
               {btn2}
-              <span className="material-symbols-outlined text-[16px] sm:text-[18px]">arrow_downward</span>
+              <ArrowDown className="w-4 h-4 text-current" />
             </button>
           </div>
         </div>

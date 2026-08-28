@@ -1,4 +1,5 @@
 import { useLanguage } from "../context/LanguageContext";
+import { Compass, DraftingCompass, Sparkles, HardHat, Eye, FileSpreadsheet } from "lucide-react";
 
 export default function Servicios() {
   const { language } = useLanguage();
@@ -27,7 +28,7 @@ export default function Servicios() {
           {/* Phase 01 */}
           <div className="flex flex-col items-center text-center p-6 sm:p-8 md:p-10 bg-white/50 backdrop-blur-md rounded-3xl border border-arena-calida/20 shadow-ethereal hover:-translate-y-2 transition-all duration-500 reveal-on-scroll is-visible group">
             <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mb-5 sm:mb-8 flex items-center justify-center bg-arena-calida/10 rounded-full text-arena-calida group-hover:bg-teal-uno group-hover:text-white transition-all duration-500">
-              <span className="material-symbols-outlined text-[28px] sm:text-[32px] md:text-[36px] font-thin">all_inclusive</span>
+              <Compass className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 stroke-[1.5]" />
             </div>
             <span className="font-label-caps text-[11px] sm:text-[12px] text-arena-calida mb-3 sm:mb-4 uppercase tracking-widest font-semibold">
               {isEs ? "Fase 01" : "Phase 01"}
@@ -45,7 +46,7 @@ export default function Servicios() {
           {/* Phase 02 */}
           <div className="flex flex-col items-center text-center p-6 sm:p-8 md:p-10 bg-white/50 backdrop-blur-md rounded-3xl border border-arena-calida/20 shadow-ethereal hover:-translate-y-2 transition-all duration-500 reveal-on-scroll is-visible group" style={{ transitionDelay: "100ms" }}>
             <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mb-5 sm:mb-8 flex items-center justify-center bg-arena-calida/10 rounded-full text-arena-calida group-hover:bg-teal-uno group-hover:text-white transition-all duration-500">
-              <span className="material-symbols-outlined text-[28px] sm:text-[32px] md:text-[36px] font-thin">architecture</span>
+              <DraftingCompass className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 stroke-[1.5]" />
             </div>
             <span className="font-label-caps text-[11px] sm:text-[12px] text-arena-calida mb-3 sm:mb-4 uppercase tracking-widest font-semibold">
               {isEs ? "Fase 02" : "Phase 02"}
@@ -63,7 +64,7 @@ export default function Servicios() {
           {/* Phase 03 */}
           <div className="flex flex-col items-center text-center p-6 sm:p-8 md:p-10 bg-white/50 backdrop-blur-md rounded-3xl border border-arena-calida/20 shadow-ethereal hover:-translate-y-2 transition-all duration-500 reveal-on-scroll is-visible group" style={{ transitionDelay: "200ms" }}>
             <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mb-5 sm:mb-8 flex items-center justify-center bg-arena-calida/10 rounded-full text-arena-calida group-hover:bg-teal-uno group-hover:text-white transition-all duration-500">
-              <span className="material-symbols-outlined text-[28px] sm:text-[32px] md:text-[36px] font-thin">spa</span>
+              <Sparkles className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 stroke-[1.5]" />
             </div>
             <span className="font-label-caps text-[11px] sm:text-[12px] text-arena-calida mb-3 sm:mb-4 uppercase tracking-widest font-semibold">
               {isEs ? "Fase 03" : "Phase 03"}
@@ -81,7 +82,7 @@ export default function Servicios() {
           {/* Phase 04 */}
           <div className="flex flex-col items-center text-center p-6 sm:p-8 md:p-10 bg-white/50 backdrop-blur-md rounded-3xl border border-arena-calida/20 shadow-ethereal hover:-translate-y-2 transition-all duration-500 reveal-on-scroll is-visible group" style={{ transitionDelay: "300ms" }}>
             <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mb-5 sm:mb-8 flex items-center justify-center bg-arena-calida/10 rounded-full text-arena-calida group-hover:bg-teal-uno group-hover:text-white transition-all duration-500">
-              <span className="material-symbols-outlined text-[28px] sm:text-[32px] md:text-[36px] font-thin">construction</span>
+              <HardHat className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 stroke-[1.5]" />
             </div>
             <span className="font-label-caps text-[11px] sm:text-[12px] text-arena-calida mb-3 sm:mb-4 uppercase tracking-widest font-semibold">
               {isEs ? "Fase 04" : "Phase 04"}
@@ -99,7 +100,7 @@ export default function Servicios() {
           {/* Phase 05 */}
           <div className="flex flex-col items-center text-center p-6 sm:p-8 md:p-10 bg-white/50 backdrop-blur-md rounded-3xl border border-arena-calida/20 shadow-ethereal hover:-translate-y-2 transition-all duration-500 reveal-on-scroll is-visible group" style={{ transitionDelay: "400ms" }}>
             <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mb-5 sm:mb-8 flex items-center justify-center bg-arena-calida/10 rounded-full text-arena-calida group-hover:bg-teal-uno group-hover:text-white transition-all duration-500">
-              <span className="material-symbols-outlined text-[28px] sm:text-[32px] md:text-[36px] font-thin">visibility</span>
+              <Eye className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 stroke-[1.5]" />
             </div>
             <span className="font-label-caps text-[11px] sm:text-[12px] text-arena-calida mb-3 sm:mb-4 uppercase tracking-widest font-semibold">
               {isEs ? "Fase 05" : "Phase 05"}
@@ -117,7 +118,7 @@ export default function Servicios() {
           {/* Phase 06 - Ingeniería de Costos & Permisos */}
           <div className="flex flex-col items-center text-center p-6 sm:p-8 md:p-10 bg-white/50 backdrop-blur-md rounded-3xl border border-arena-calida/20 shadow-ethereal hover:-translate-y-2 transition-all duration-500 reveal-on-scroll is-visible group" style={{ transitionDelay: "500ms" }}>
             <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 mb-5 sm:mb-8 flex items-center justify-center bg-arena-calida/10 rounded-full text-arena-calida group-hover:bg-teal-uno group-hover:text-white transition-all duration-500">
-              <span className="material-symbols-outlined text-[28px] sm:text-[32px] md:text-[36px] font-thin">request_quote</span>
+              <FileSpreadsheet className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 stroke-[1.5]" />
             </div>
             <span className="font-label-caps text-[11px] sm:text-[12px] text-arena-calida mb-3 sm:mb-4 uppercase tracking-widest font-semibold">
               {isEs ? "Fase 06" : "Phase 06"}

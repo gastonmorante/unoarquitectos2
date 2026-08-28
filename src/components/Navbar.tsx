@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Compass, X } from "lucide-react";
+import { Compass, X, Menu } from "lucide-react";
 import Logo from "./Logo";
 import LanguageSelector from "./LanguageSelector";
 import { useLanguage } from "../context/LanguageContext";
@@ -107,7 +107,7 @@ export default function Navbar() {
           className="md:hidden text-teal-uno p-2 min-w-[48px] min-h-[48px] flex items-center justify-center focus:outline-none cursor-pointer rounded-lg hover:bg-arena-calida/10 transition-colors"
           aria-label="Abrir menú de navegación / Open menu"
         >
-          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <span className="material-symbols-outlined text-[26px]">menu</span>}
+          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 

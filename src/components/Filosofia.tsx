@@ -1,4 +1,4 @@
-import { Trees, ShieldCheck, HeartHandshake } from "lucide-react";
+import { Trees, ShieldCheck, HeartHandshake, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { useSiteContent } from "../context/ContentContext";
 
@@ -90,7 +90,7 @@ export default function Filosofia() {
             {/* Leadership & E-E-A-T Authority Block */}
             <div className="mt-8 p-5 sm:p-6 bg-white/70 backdrop-blur-md rounded-2xl border border-arena-calida/30 shadow-sm text-left">
               <div className="flex items-center gap-3 mb-2.5">
-                <span className="material-symbols-outlined text-teal-uno text-[22px]">verified</span>
+                <CheckCircle2 className="w-5 h-5 text-teal-uno flex-shrink-0" />
                 <div>
                   <h4 className="font-label-caps text-xs sm:text-label-caps uppercase text-teal-uno font-semibold tracking-wider">
                     {language === "es" ? "Dirección Técnica & Trayectoria" : "Technical Leadership & Track Record"}
