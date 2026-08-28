@@ -632,6 +632,7 @@ export default function AIConsultant() {
                       }}
                       className="text-zinc-400 hover:text-teal-uno p-1.5 transition-colors cursor-pointer"
                       title={language === "es" ? "Cambiar datos de contacto" : "Change contact details"}
+                      aria-label={language === "es" ? "Cambiar datos de contacto" : "Change contact details"}
                     >
                       <RotateCcw className="w-3.5 h-3.5" />
                     </button>
