@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { AnimatePresence } from 'motion/react';
 import { Lock } from 'lucide-react';
 import Navbar from './components/Navbar';
@@ -8,16 +8,16 @@ import Metrics from './components/Metrics';
 import Servicios from './components/Servicios';
 import Portfolio from './components/Portfolio';
 import Faqs from './components/Faqs';
-import AIConsultant from './components/AIConsultant';
 import Contacto from './components/Contacto';
-import Preloader from './components/Preloader';
-import LegalNotice from './components/LegalNotice';
 import CookieBanner from './components/CookieBanner';
 import Logo from './components/Logo';
 import { LanguageProvider } from './context/LanguageContext';
 import { ContentProvider, useSiteContent } from './context/ContentContext';
-import AdminDashboard from './admin/AdminDashboard';
-import AdminLogin from './admin/AdminLogin';
+
+const AdminDashboard = lazy(() => import('./admin/AdminDashboard'));
+const AdminLogin = lazy(() => import('./admin/AdminLogin'));
+const LegalNotice = lazy(() => import('./components/LegalNotice'));
+const AIConsultant = lazy(() => import('./components/AIConsultant'));
 
 function MainApp() {
   const [showAdmin, setShowAdmin] = useState(false);
@@ -68,11 +68,13 @@ function MainApp() {
       {/* ADMIN DASHBOARD OR LOGIN OVERLAY */}
       <AnimatePresence>
         {showAdmin && (
-          isAuthenticated ? (
-            <AdminDashboard onClose={handleCloseAdmin} />
-          ) : (
-            <AdminLogin onClose={handleCloseAdmin} />
-          )
+          <Suspense fallback={null}>
+            {isAuthenticated ? (
+              <AdminDashboard onClose={handleCloseAdmin} />
+            ) : (
+              <AdminLogin onClose={handleCloseAdmin} />
+            )}
+          </Suspense>
         )}
       </AnimatePresence>
 
@@ -96,7 +98,9 @@ function MainApp() {
             <Faqs />
           </section>
           <section id="consulta-ia" className="relative z-10">
-            <AIConsultant />
+            <Suspense fallback={null}>
+              <AIConsultant />
+            </Suspense>
           </section>
           <section id="contacto">
             <Contacto />
@@ -176,7 +180,9 @@ function MainApp() {
         </footer>
 
         {/* GLOBAL LEGAL COMPLIANCE & COOKIE CONSENT MODULES */}
-        <LegalNotice />
+        <Suspense fallback={null}>
+          <LegalNotice />
+        </Suspense>
         <CookieBanner />
       </div>
     </>

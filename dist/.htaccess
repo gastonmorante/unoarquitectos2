@@ -97,8 +97,14 @@ AddHandler application/x-httpd-ea-php82___lsphp .php .php8 .phtml
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
   AddOutputFilterByType DEFLATE application/javascript application/x-javascript application/json
-  AddOutputFilterByType DEFLATE image/svg+xml image/x-icon
+  AddOutputFilterByType DEFLATE image/svg+xml image/x-icon text/markdown
 </IfModule>
+
+# LLMs.txt MIME Type (llmstxt.org specification)
+<Files "llms.txt">
+  ForceType text/markdown
+  Header set Content-Type "text/markdown; charset=utf-8"
+</Files>
 
 # ------------------------------------------------------------------------------
 # 6. BROWSER CACHING HEADERS (LEVERAGE CACHING)

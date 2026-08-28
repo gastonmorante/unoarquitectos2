@@ -1,20 +1,20 @@
-﻿# UNO Arquitectos - Arquitectura & Construcción Llave en Mano
+# UNO Arquitectos
 
-> Estudio boutique de arquitectura contemporánea tropical, interiorismo y construcción llave en mano fundado en 2017 por el Arq. Angel Cereceda, con base en Playa del Carmen y operaciones en Riviera Maya (Tulum, Cancún, Puerto Morelos).
+> Estudio boutique de arquitectura y construcción llave en mano en Riviera Maya, México.
 
-## Servicios Principales
-- Diseño Arquitectónico y Conceptual Bioclimático
-- Proyecto Ejecutivo, Ingenierías y Mecánica de Suelos Kársticos
-- Construcción Llave en Mano con Supervisión Técnica 360°
-- Proyectos Autosuficientes Off-The-Grid (Energía Solar y Tratamiento de Agua)
+Fundado en 2017 por el Arq. Angel Cereceda en Playa del Carmen, UNO Arquitectos diseña y edifica residencias de lujo, condohoteles y desarrollos comerciales con arquitectura contemporánea tropical y criterios bioclimáticos.
 
-## Identidad y Filosofía
-- Materiales honestos y autóctonos: Chukum natural impermeable, madera maciza de Parota y Tzalam.
-- Cimentación calculada con georadar para suelo kárstico de Quintana Roo.
-- Normatividad local: Coeficiente de Ocupación de Suelo (COS), Coeficiente de Utilización de Suelo (CUS), Manifestación de Impacto Ambiental (MIA SEMARNAT).
-
-## Contacto Oficial
-- Sitio Web: https://unoarquitectos.com
+## Información Oficial
+- Nombre: UNO Arquitectos
+- Sitio Web: https://unoarquitectos.com/
 - Teléfono: +52 984 210 8420
-- Email: hola@unoarquitectos.com
-- Ubicación: Playa del Carmen, Quintana Roo, México.
+- Correo: hola@unoarquitectos.com
+- Ubicación: Playa del Carmen, Quintana Roo, México
+
+## Secciones del Sitio
+- [Inicio](https://unoarquitectos.com/#inicio): Presentación y servicios llave en mano
+- [Portafolio](https://unoarquitectos.com/#portafolio): Colección de proyectos residenciales y de hospitalidad
+- [Filosofía](https://unoarquitectos.com/#filosofia): Materiales autóctonos (Chukum, maderas tropicales) y diseño bioclimático
+- [Servicios](https://unoarquitectos.com/#servicios): Diseño arquitectónico, ingenierías y construcción
+- [Preguntas Frecuentes](https://unoarquitectos.com/#faqs): Tiempos, normatividad y presupuestos
+- [Contacto](https://unoarquitectos.com/#contacto): Asesoría y cotización directa

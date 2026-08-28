@@ -28,15 +28,19 @@ export default function Hero() {
 
       {/* Boho-Chic Luxury Architecture Photo Overlay */}
       <div className="absolute inset-0 z-[1] opacity-60 mix-blend-overlay">
-        <img
-          alt="Arquitectura Contemporánea Tropical - Villa de Lujo en Riviera Maya por UNO Arquitectos"
-          className="w-full h-full object-cover object-center scale-105 transform origin-center animate-[pulse_30s_ease-in-out_infinite_alternate]"
-          src="/hero-luxury-villa.webp"
-          width={1280}
-          height={853}
-          fetchPriority="high"
-          decoding="async"
-        />
+        <picture>
+          <source media="(max-width: 768px)" srcSet="/hero-luxury-villa-mobile.webp" type="image/webp" width={640} height={427} />
+          <source media="(min-width: 769px)" srcSet="/hero-luxury-villa.webp" type="image/webp" width={1280} height={853} />
+          <img
+            alt="Arquitectura Contemporánea Tropical - Villa de Lujo en Riviera Maya por UNO Arquitectos"
+            className="w-full h-full object-cover object-center scale-105 transform origin-center animate-[pulse_30s_ease-in-out_infinite_alternate]"
+            src="/hero-luxury-villa.webp"
+            width={1280}
+            height={853}
+            fetchPriority="high"
+            decoding="async"
+          />
+        </picture>
       </div>
 
       {/* Warm Gradient Overlay */}

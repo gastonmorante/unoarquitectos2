@@ -21,6 +21,19 @@ export default defineConfig({
       }
     }
   ],
+  build: {
+    target: 'es2022',
+    minify: 'esbuild',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          motion: ['motion/react'],
+          icons: ['lucide-react'],
+        }
+      }
+    }
+  },
   server: {
     port: 3000,
     host: '0.0.0.0',
