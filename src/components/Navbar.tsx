@@ -104,8 +104,8 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden text-teal-uno p-2 focus:outline-none cursor-pointer rounded-lg hover:bg-arena-calida/10 transition-colors"
-          aria-label="Toggle menu"
+          className="md:hidden text-teal-uno p-2 min-w-[48px] min-h-[48px] flex items-center justify-center focus:outline-none cursor-pointer rounded-lg hover:bg-arena-calida/10 transition-colors"
+          aria-label="Abrir menú de navegación / Open menu"
         >
           {isMobileMenuOpen ? <X className="w-6 h-6" /> : <span className="material-symbols-outlined text-[26px]">menu</span>}
         </button>

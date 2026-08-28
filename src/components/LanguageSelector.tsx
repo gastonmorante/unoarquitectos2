@@ -28,7 +28,7 @@ export default function LanguageSelector({ isScrolled, theme = "adaptive" }: Lan
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Seleccionar idioma / Select language"
-        className={`flex items-center gap-1.5 px-2.5 py-1.5 border rounded-xs transition-all duration-300 cursor-pointer ${borderColor} ${textColor}`}
+        className={`flex items-center gap-1.5 px-3 py-2 min-h-[40px] border rounded-xs transition-all duration-300 cursor-pointer ${borderColor} ${textColor}`}
       >
         <Globe className="w-3.5 h-3.5 text-teal-uno" />
         <span className="font-semibold">{language}</span>
@@ -43,7 +43,7 @@ export default function LanguageSelector({ isScrolled, theme = "adaptive" }: Lan
                 setLanguage(l.id);
                 setIsOpen(false);
               }}
-              className={`block w-full px-4 py-1.5 text-xs text-left hover:bg-gris-piedra/20 transition-colors font-label-caps cursor-pointer ${
+              className={`block w-full px-4 py-2.5 min-h-[38px] text-xs text-left hover:bg-gris-piedra/20 transition-colors font-label-caps cursor-pointer ${
                 language === l.id ? "text-teal-uno font-semibold" : "text-gris-texto"
               }`}
             >

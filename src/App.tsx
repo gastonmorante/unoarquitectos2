@@ -120,41 +120,42 @@ function MainApp() {
             </div>
             
             <div className="md:col-span-2 md:col-start-7 mb-6 sm:mb-8 md:mb-0">
-              <h5 className="font-label-caps text-xs sm:text-label-caps text-arena-calida mb-4 sm:mb-6 uppercase tracking-widest font-semibold">Santuario</h5>
-              <ul className="space-y-3 sm:space-y-4 font-label-caps text-xs sm:text-label-caps">
-                <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block" href="#proyectos">Colección</a></li>
-                <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block" href="#filosofia">Esencia</a></li>
-                <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block" href="#contacto">Diálogo</a></li>
+              <h5 className="font-label-caps text-xs sm:text-label-caps text-arena-calida mb-3 sm:mb-4 uppercase tracking-widest font-semibold">Santuario</h5>
+              <ul className="space-y-1 font-label-caps text-xs sm:text-label-caps">
+                <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-2 min-h-[36px] flex items-center" href="#proyectos">Colección</a></li>
+                <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-2 min-h-[36px] flex items-center" href="#filosofia">Esencia</a></li>
+                <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-2 min-h-[36px] flex items-center" href="#contacto">Diálogo</a></li>
               </ul>
             </div>
             
             <div className="md:col-span-2 mb-6 sm:mb-8 md:mb-0">
-              <h5 className="font-label-caps text-xs sm:text-label-caps text-arena-calida mb-4 sm:mb-6 uppercase tracking-widest font-semibold">Resonancia</h5>
-              <ul className="space-y-3 sm:space-y-4 font-label-caps text-xs sm:text-label-caps">
-                <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block" href="https://www.instagram.com/unoarquitectos" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-                <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block" href="https://pinterest.com" target="_blank" rel="noopener noreferrer">Pinterest</a></li>
-                <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block" href="https://www.linkedin.com/company/unoarquitectos" target="_blank" rel="noopener noreferrer">Journal</a></li>
+              <h5 className="font-label-caps text-xs sm:text-label-caps text-arena-calida mb-3 sm:mb-4 uppercase tracking-widest font-semibold">Resonancia</h5>
+              <ul className="space-y-1 font-label-caps text-xs sm:text-label-caps">
+                <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-2 min-h-[36px] flex items-center" href="https://www.instagram.com/unoarquitectos" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-2 min-h-[36px] flex items-center" href="https://pinterest.com" target="_blank" rel="noopener noreferrer">Pinterest</a></li>
+                <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-2 min-h-[36px] flex items-center" href="https://www.linkedin.com/company/unoarquitectos" target="_blank" rel="noopener noreferrer">Journal</a></li>
               </ul>
             </div>
             
             <div className="md:col-span-2">
-              <h5 className="font-label-caps text-xs sm:text-label-caps text-arena-calida mb-4 sm:mb-6 uppercase tracking-widest font-semibold">Acuerdos</h5>
-              <ul className="space-y-3 sm:space-y-4 font-label-caps text-xs sm:text-label-caps">
+              <h5 className="font-label-caps text-xs sm:text-label-caps text-arena-calida mb-3 sm:mb-4 uppercase tracking-widest font-semibold">Acuerdos</h5>
+              <ul className="space-y-1 font-label-caps text-xs sm:text-label-caps">
                 <li>
-                  <button onClick={() => openLegalModal("terms")} className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer text-left">
+                  <button onClick={() => openLegalModal("terms")} className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer text-left py-2 min-h-[36px] flex items-center">
                     Esencia Legal
                   </button>
                 </li>
                 <li>
-                  <button onClick={() => openLegalModal("privacy")} className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer text-left">
+                  <button onClick={() => openLegalModal("privacy")} className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer text-left py-2 min-h-[36px] flex items-center">
                     Resguardo
                   </button>
                 </li>
                 <li>
                   <button 
                     onClick={() => setShowAdmin(true)} 
-                    className="text-zinc-400 hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer text-left inline-flex items-center gap-1.5 pt-1"
+                    className="text-zinc-400 hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer text-left inline-flex items-center gap-1.5 py-2 min-h-[36px]"
                     title="Panel de Administración"
+                    aria-label="Panel de Administración CMS"
                   >
                     <Lock className="w-3 h-3 text-teal-uno" /> Admin CMS
                   </button>
