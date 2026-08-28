@@ -150,9 +150,9 @@ export default function Hero() {
         <img
           alt="Arquitectura Contemporánea Tropical - Villa de Lujo en Riviera Maya por UNO Arquitectos"
           className="w-full h-full object-cover object-center scale-105 transform origin-center animate-[pulse_30s_ease-in-out_infinite_alternate]"
-          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2400&q=95"
-          width={2400}
-          height={1600}
+          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80"
+          width={1920}
+          height={1280}
           fetchPriority="high"
           decoding="async"
           referrerPolicy="no-referrer"
