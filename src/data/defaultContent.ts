@@ -50,7 +50,7 @@ export const defaultContent: SiteContent = {
   metrics: {
     ratingValue: "5.0",
     reviewCount: "28",
-    googleMapsUrl: "https://maps.app.goo.gl/vy12S6chkTnkjuG96",
+    googleMapsUrl: "https://www.google.com/maps/place/UNO+Arquitectos+Mx/@20.6718486,-87.0504611,17z/data=!3m1!4b1!4m6!3m5!1s0x8f4e43859b311239:0x1a9cb6da851ff691!8m2!3d20.6718486!4d-87.0504611!16s%2Fg%2F11r_t7kdfg",
     items: [
       {
         id: "metric-1",
@@ -375,7 +375,7 @@ export const defaultContent: SiteContent = {
   contact: {
     officePlayaTitle: "Oficinas Centrales",
     officePlayaAddr: "Plaza Palmeras, Playa del Carmen, Q. Roo",
-    officePlayaMapUrl: "https://maps.app.goo.gl/vy12S6chkTnkjuG96",
+    officePlayaMapUrl: "https://www.google.com/maps/place/UNO+Arquitectos+Mx/@20.6718486,-87.0504611,17z/data=!3m1!4b1!4m6!3m5!1s0x8f4e43859b311239:0x1a9cb6da851ff691!8m2!3d20.6718486!4d-87.0504611!16s%2Fg%2F11r_t7kdfg",
     tallerTulumTitle: "Taller & Bodega",
     tallerTulumAddr: "Carretera Tulum – Macario Gómez, Q. Roo",
     phone: "+52 1 984 210 8420",

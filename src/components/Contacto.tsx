@@ -114,7 +114,7 @@ export default function Contacto() {
                     {content?.contact?.officePlayaAddr || t("contacto.officePlayaAddr") || "Plaza Palmeras, Playa del Carmen, Q. Roo"}
                   </p>
                   <a
-                    href={content?.contact?.officePlayaMapUrl || "https://maps.app.goo.gl/vy12S6chkTnkjuG96"}
+                    href={content?.contact?.officePlayaMapUrl || "https://www.google.com/maps/place/UNO+Arquitectos+Mx/@20.6718486,-87.0504611,17z/data=!3m1!4b1!4m6!3m5!1s0x8f4e43859b311239:0x1a9cb6da851ff691!8m2!3d20.6718486!4d-87.0504611!16s%2Fg%2F11r_t7kdfg"}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-[11px] text-teal-uno hover:text-arena-calida transition-colors mt-1.5 font-label-caps uppercase font-semibold tracking-wider"
