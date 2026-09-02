@@ -158,23 +158,20 @@ AddHandler application/x-httpd-ea-php82___lsphp .php .php8 .phtml
   # Permissions Policy (Restringe acceso a sensores/hardware innecesarios)
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(self), payment=()"
 
-  # Content Security Policy (CSP) equilibrada para React, Google Fonts, Analytics y Three.js
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://www.googletagmanager.com https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://www.facebook.com https://generativelanguage.googleapis.com; frame-src 'self' https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self';"
+  # Content Security Policy (CSP) equilibrada para React, Google Fonts, Analytics, Meta y Three.js
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://www.googletagmanager.com https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.facebook.com https://connect.facebook.net https://generativelanguage.googleapis.com; frame-src 'self' https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self';"
 </IfModule>
 
 # Block access to hidden files and sensitive developer files (.git, .env, .sql, .log, etc.)
-<FilesMatch "^\.|\.(bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist|env|ts|json)$">
+<FilesMatch "^\.|\.(bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist|env|ts)$">
   Order allow,deny
   Deny from all
 </FilesMatch>
 
-# Allow public sitemap and robots
-<Files "sitemap.xml">
+# Allow public data, sitemap and robots
+<FilesMatch "^(site-content\.json|sitemap\.xml|robots\.txt|llms\.txt)$">
   Allow from all
-</Files>
-<Files "robots.txt">
-  Allow from all
-</Files>
+</FilesMatch>
 
 # Prevent directory browsing
 Options -Indexes -MultiViews

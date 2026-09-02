@@ -5,10 +5,10 @@
   <!-- Principal / Inicio (Español - Predeterminado) -->
   <url>
     <loc>https://unoarquitectos.com/</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://unoarquitectos.com/?lang=es" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://unoarquitectos.com/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://unoarquitectos.com/?lang=en" />
     <xhtml:link rel="alternate" hreflang="it" href="https://unoarquitectos.com/?lang=it" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://unoarquitectos.com/?lang=fr" />
@@ -18,10 +18,10 @@
   <!-- Versión en Inglés -->
   <url>
     <loc>https://unoarquitectos.com/?lang=en</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://unoarquitectos.com/?lang=es" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://unoarquitectos.com/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://unoarquitectos.com/?lang=en" />
     <xhtml:link rel="alternate" hreflang="it" href="https://unoarquitectos.com/?lang=it" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://unoarquitectos.com/?lang=fr" />
@@ -31,10 +31,10 @@
   <!-- Versión en Italiano -->
   <url>
     <loc>https://unoarquitectos.com/?lang=it</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://unoarquitectos.com/?lang=es" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://unoarquitectos.com/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://unoarquitectos.com/?lang=en" />
     <xhtml:link rel="alternate" hreflang="it" href="https://unoarquitectos.com/?lang=it" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://unoarquitectos.com/?lang=fr" />
@@ -44,10 +44,10 @@
   <!-- Versión en Francés -->
   <url>
     <loc>https://unoarquitectos.com/?lang=fr</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://unoarquitectos.com/?lang=es" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://unoarquitectos.com/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://unoarquitectos.com/?lang=en" />
     <xhtml:link rel="alternate" hreflang="it" href="https://unoarquitectos.com/?lang=it" />
     <xhtml:link rel="alternate" hreflang="fr" href="https://unoarquitectos.com/?lang=fr" />

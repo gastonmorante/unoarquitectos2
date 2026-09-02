@@ -428,12 +428,27 @@ export default function AIConsultant() {
         })
       });
 
-      // 2. Guardar en almacenamiento local
+      // 2. Guardar en almacenamiento local y registrar conversión en Google y Meta
       if (typeof window !== "undefined") {
         localStorage.setItem("uno_lead_name", leadName.trim());
         localStorage.setItem("uno_lead_phone", leadPhone.trim());
         localStorage.setItem("uno_lead_email", leadEmail.trim());
         localStorage.setItem("uno_lead_captured", "true");
+
+        const win = window as any;
+        if (win.gtag) {
+          win.gtag('event', 'generate_lead', {
+            event_category: 'ai_advisor',
+            event_label: 'Asesor Tecnico IA Chatbot',
+            value: 1
+          });
+        }
+        if (win.fbq) {
+          win.fbq('track', 'Lead', {
+            content_name: 'Asesor Tecnico IA Chatbot',
+            status: 'success'
+          });
+        }
       }
 
       setLeadCaptured(true);
