@@ -1,4 +1,4 @@
-﻿name: Deploy UNO Arquitectos to HostGator
+name: Deploy UNO Arquitectos to HostGator
 
 on:
   push:
@@ -36,3 +36,4 @@ jobs:
           server-dir: public_html/
           local-dir: dist/
           dangerous-clean-slate: false
+          timeout: 60000
