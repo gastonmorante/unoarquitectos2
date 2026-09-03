@@ -114,8 +114,12 @@ export default function Metrics() {
         },
       ];
 
-  const rating = content?.metrics?.ratingValue || "5.0";
-  const reviewCount = content?.metrics?.reviewCount || "28";
+  const rating = content?.metrics?.ratingValue !== undefined ? content.metrics.ratingValue : "5.0";
+  const reviewCount = content?.metrics?.reviewCount !== undefined ? content.metrics.reviewCount : "28";
+  const numericRating = parseFloat(rating) || 0;
+  const numericReviews = parseInt(reviewCount, 10) || 0;
+  const hasReviews = numericReviews > 0 && numericRating > 0;
+
   const mapReviewsUrl = content?.metrics?.googleMapsUrl?.includes("!9m1!1b1")
     ? content.metrics.googleMapsUrl
     : "https://www.google.com/maps/place/UNO+Arquitectos+Mx/@20.6718486,-87.0504611,17z/data=!4m8!3m7!1s0x8f4e43859b311239:0x1a9cb6da851ff691!8m2!3d20.6718486!4d-87.0504611!9m1!1b1!16s%2Fg%2F11r_t7kdfg";
@@ -143,22 +147,42 @@ export default function Metrics() {
 
         {/* Google Reviews Trust Bar */}
         <div className="mt-8 sm:mt-10 pt-6 border-t border-arena-calida/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left bg-white/70 backdrop-blur-xs p-4 sm:p-5 rounded-xl border border-arena-calida/20 shadow-xs">
-          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3">
-            <GoogleGIcon />
-            <div className="flex items-center gap-1 text-amber-400" aria-label="5 de 5 estrellas en Google Reviews">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-              ))}
+          {hasReviews ? (
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3">
+              <GoogleGIcon />
+              <div className="flex items-center gap-0.5" aria-label={`${rating} de 5 estrellas en Google Reviews`}>
+                {[1, 2, 3, 4, 5].map((starNum) => (
+                  <Star
+                    key={starNum}
+                    className={`w-4 h-4 ${
+                      starNum <= Math.round(numericRating)
+                        ? "fill-amber-400 text-amber-400"
+                        : "text-slate-300 fill-slate-100"
+                    }`}
+                  />
+                ))}
+              </div>
+              <span className="font-label-caps text-xs sm:text-sm text-teal-uno uppercase tracking-wider font-bold">
+                {rating}
+              </span>
+              <span className="text-xs sm:text-sm text-gris-texto font-medium">
+                {language === "es"
+                  ? `en Google Reviews (${reviewCount} ${numericReviews === 1 ? "opinión" : "opiniones"})`
+                  : `on Google Reviews (${reviewCount} ${numericReviews === 1 ? "review" : "reviews"})`}
+              </span>
             </div>
-            <span className="font-label-caps text-xs sm:text-sm text-teal-uno uppercase tracking-wider font-bold">
-              {rating}
-            </span>
-            <span className="text-xs sm:text-sm text-gris-texto font-medium">
-              {language === "es"
-                ? `en Google Reviews (${reviewCount} opiniones)`
-                : `on Google Reviews (${reviewCount} reviews)`}
-            </span>
-          </div>
+          ) : (
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3">
+              <GoogleGIcon />
+              <span className="font-label-caps text-xs sm:text-sm text-teal-uno uppercase tracking-wider font-bold">
+                {language === "es" ? "Perfil Oficial en Google Maps" : "Official Google Maps Profile"}
+              </span>
+              <span className="text-xs sm:text-sm text-gris-texto font-medium">
+                {language === "es" ? "(Sé el primero en dejar una opinión)" : "(Be the first to leave a review)"}
+              </span>
+            </div>
+          )}
+          
           <a
             href={mapReviewsUrl}
             target="_blank"
@@ -166,7 +190,9 @@ export default function Metrics() {
             aria-label="Ver todas las reseñas verificadas en Google Maps de UNO Arquitectos"
             className="font-label-caps text-[11px] sm:text-xs text-teal-uno hover:text-arena-calida transition-all uppercase tracking-wider font-semibold inline-flex items-center gap-1.5 py-1.5 px-3.5 rounded-full border border-teal-uno/20 hover:border-arena-calida hover:bg-teal-uno/5 active:scale-95 flex-shrink-0"
           >
-            {language === "es" ? "Ver reseñas en Google Maps" : "Read reviews on Google Maps"}
+            {hasReviews
+              ? (language === "es" ? "Ver reseñas en Google Maps" : "Read reviews on Google Maps")
+              : (language === "es" ? "Escribir opinión en Google Maps" : "Write a review on Google Maps")}
             <ExternalLink className="w-3.5 h-3.5 flex-shrink-0" />
           </a>
         </div>
