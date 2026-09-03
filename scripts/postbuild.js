@@ -15,6 +15,19 @@ configFiles.forEach(f => {
   }
 });
 
+// Copy public/api directory if exists
+const apiSrcDir = path.join('public', 'api');
+const apiDestDir = path.join('dist', 'api');
+if (fs.existsSync(apiSrcDir)) {
+  if (!fs.existsSync(apiDestDir)) {
+    fs.mkdirSync(apiDestDir, { recursive: true });
+  }
+  fs.readdirSync(apiSrcDir).forEach(file => {
+    fs.copyFileSync(path.join(apiSrcDir, file), path.join(apiDestDir, file));
+    console.log(`Copied api/${file} -> dist/api/${file}`);
+  });
+}
+
 // 2. Make stylesheet non-blocking in dist/index.html
 const indexPath = path.join('dist', 'index.html');
 if (fs.existsSync(indexPath)) {

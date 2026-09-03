@@ -82,6 +82,9 @@ AddHandler application/x-httpd-ea-php82___lsphp .php .php8 .phtml
   RewriteRule ^feed/?$ / [R=301,L]
   RewriteRule ^xmlrpc\.php$ - [F,L]
 
+  # G. Endpoints API en HostGator
+  RewriteRule ^api/reviews/?$ api/reviews.php [L,QSA]
+
   # ----------------------------------------------------------------------------
   # 4. SINGLE PAGE APPLICATION (SPA) FALLBACK ROUTING
   # If request is not an existing file or directory, route to index.html

@@ -358,6 +358,58 @@ app.post("/api/admin/upload", (req, res) => {
     return res.status(500).json({ error: "Error al subir imagen: " + err.message });
   }
 });
+app.get("/api/reviews", async (_req, res) => {
+  try {
+    const cacheFile = import_path.default.join(process.cwd(), "public", "data", "google-reviews-cache.json");
+    const placeId = process.env.GOOGLE_PLACE_ID || "ChIJORKbm4VDTo8Rkfcfhdpqyho";
+    const apiKey = process.env.GOOGLE_MAPS_API_KEY || process.env.VITE_GOOGLE_MAPS_API_KEY || "";
+    if (import_fs.default.existsSync(cacheFile)) {
+      const stats = import_fs.default.statSync(cacheFile);
+      const ageHours = (Date.now() - stats.mtimeMs) / (1e3 * 60 * 60);
+      if (ageHours < 6) {
+        const cached = JSON.parse(import_fs.default.readFileSync(cacheFile, "utf-8"));
+        return res.json(cached);
+      }
+    }
+    if (apiKey) {
+      const apiUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=name,rating,user_ratings_total,reviews,url&language=es&key=${apiKey}`;
+      const apiRes = await fetch(apiUrl);
+      if (apiRes.ok) {
+        const data = await apiRes.json();
+        if (data?.result) {
+          const liveData = {
+            success: true,
+            name: data.result.name || "UNO Arquitectos Mx",
+            rating: typeof data.result.rating === "number" ? data.result.rating : 0,
+            reviewCount: typeof data.result.user_ratings_total === "number" ? data.result.user_ratings_total : 0,
+            reviews: data.result.reviews || [],
+            hasLiveGoogleSync: true,
+            placeUrl: data.result.url || "https://www.google.com/maps/place/UNO+Arquitectos+Mx/@20.6718486,-87.0504611,17z/data=!4m8!3m7!1s0x8f4e43859b311239:0x1a9cb6da851ff691!8m2!3d20.6718486!4d-87.0504611!9m1!1b1!16s%2Fg%2F11r_t7kdfg",
+            updatedAt: (/* @__PURE__ */ new Date()).toISOString()
+          };
+          import_fs.default.writeFileSync(cacheFile, JSON.stringify(liveData, null, 2), "utf-8");
+          return res.json(liveData);
+        }
+      }
+    }
+    const fallbackData = {
+      success: true,
+      name: "UNO Arquitectos Mx",
+      rating: 5,
+      reviewCount: 28,
+      reviews: [],
+      hasLiveGoogleSync: false,
+      placeUrl: "https://www.google.com/maps/place/UNO+Arquitectos+Mx/@20.6718486,-87.0504611,17z/data=!4m8!3m7!1s0x8f4e43859b311239:0x1a9cb6da851ff691!8m2!3d20.6718486!4d-87.0504611!9m1!1b1!16s%2Fg%2F11r_t7kdfg",
+      updatedAt: (/* @__PURE__ */ new Date()).toISOString()
+    };
+    if (import_fs.default.existsSync(cacheFile)) {
+      return res.json(JSON.parse(import_fs.default.readFileSync(cacheFile, "utf-8")));
+    }
+    return res.json(fallbackData);
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+});
 async function startServer() {
   if (process.env.NODE_ENV !== "production") {
     const vite = await (0, import_vite.createServer)({

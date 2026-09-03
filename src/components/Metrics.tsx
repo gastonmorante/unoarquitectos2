@@ -114,15 +114,64 @@ export default function Metrics() {
         },
       ];
 
-  const rating = content?.metrics?.ratingValue !== undefined ? content.metrics.ratingValue : "5.0";
-  const reviewCount = content?.metrics?.reviewCount !== undefined ? content.metrics.reviewCount : "28";
+  const [liveGoogleData, setLiveGoogleData] = useState<{
+    rating: number;
+    reviewCount: number;
+    placeUrl?: string;
+    hasLiveGoogleSync?: boolean;
+  } | null>(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const saved = localStorage.getItem("uno_google_reviews_live");
+        if (saved) return JSON.parse(saved);
+      } catch {}
+    }
+    return null;
+  });
+
+  useEffect(() => {
+    let isMounted = true;
+    fetch("/api/reviews")
+      .then((res) => {
+        if (res.ok) return res.json();
+        throw new Error("No live reviews endpoint");
+      })
+      .then((data) => {
+        if (isMounted && data && typeof data.rating === "number") {
+          const live = {
+            rating: data.rating,
+            reviewCount: data.reviewCount || 0,
+            placeUrl: data.placeUrl,
+            hasLiveGoogleSync: data.hasLiveGoogleSync
+          };
+          setLiveGoogleData(live);
+          localStorage.setItem("uno_google_reviews_live", JSON.stringify(live));
+        }
+      })
+      .catch(() => {
+        // Keeps graceful CMS / offline fallback
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const rating = liveGoogleData && liveGoogleData.hasLiveGoogleSync
+    ? liveGoogleData.rating.toFixed(1)
+    : (content?.metrics?.ratingValue !== undefined ? content.metrics.ratingValue : "5.0");
+
+  const reviewCount = liveGoogleData && liveGoogleData.hasLiveGoogleSync
+    ? liveGoogleData.reviewCount.toString()
+    : (content?.metrics?.reviewCount !== undefined ? content.metrics.reviewCount : "28");
+
   const numericRating = parseFloat(rating) || 0;
   const numericReviews = parseInt(reviewCount, 10) || 0;
   const hasReviews = numericReviews > 0 && numericRating > 0;
 
-  const mapReviewsUrl = content?.metrics?.googleMapsUrl?.includes("!9m1!1b1")
+  const mapReviewsUrl = liveGoogleData?.placeUrl || (content?.metrics?.googleMapsUrl?.includes("!9m1!1b1")
     ? content.metrics.googleMapsUrl
-    : "https://www.google.com/maps/place/UNO+Arquitectos+Mx/@20.6718486,-87.0504611,17z/data=!4m8!3m7!1s0x8f4e43859b311239:0x1a9cb6da851ff691!8m2!3d20.6718486!4d-87.0504611!9m1!1b1!16s%2Fg%2F11r_t7kdfg";
+    : "https://www.google.com/maps/place/UNO+Arquitectos+Mx/@20.6718486,-87.0504611,17z/data=!4m8!3m7!1s0x8f4e43859b311239:0x1a9cb6da851ff691!8m2!3d20.6718486!4d-87.0504611!9m1!1b1!16s%2Fg%2F11r_t7kdfg");
 
   return (
     <section id="metricas" className="py-14 sm:py-20 md:py-24 px-4 sm:px-6 md:px-margin-desktop bg-surface-container-low/50 border-b border-arena-calida/20 font-sans">
