@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView, animate } from "motion/react";
+import { Star, ExternalLink } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { useSiteContent } from "../context/ContentContext";
 
@@ -8,6 +9,27 @@ interface MetricCounterProps {
   title: string;
   desc: string;
 }
+
+const GoogleGIcon = () => (
+  <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+    <path
+      fill="#4285F4"
+      d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"
+    />
+    <path
+      fill="#34A853"
+      d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"
+    />
+    <path
+      fill="#FBBC05"
+      d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.16 0 9.94 0 12s.45 3.84 1.25 5.42l4.03-3.15z"
+    />
+    <path
+      fill="#EA4335"
+      d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"
+    />
+  </svg>
+);
 
 const MetricCounter = ({ valueStr, title, desc }: MetricCounterProps) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -94,7 +116,9 @@ export default function Metrics() {
 
   const rating = content?.metrics?.ratingValue || "5.0";
   const reviewCount = content?.metrics?.reviewCount || "28";
-  const mapUrl = content?.metrics?.googleMapsUrl || "https://www.google.com/maps/place/UNO+Arquitectos+Mx/@20.6718486,-87.0504611,17z/data=!3m1!4b1!4m6!3m5!1s0x8f4e43859b311239:0x1a9cb6da851ff691!8m2!3d20.6718486!4d-87.0504611!16s%2Fg%2F11r_t7kdfg";
+  const mapReviewsUrl = content?.metrics?.googleMapsUrl?.includes("!9m1!1b1")
+    ? content.metrics.googleMapsUrl
+    : "https://www.google.com/maps/place/UNO+Arquitectos+Mx/@20.6718486,-87.0504611,17z/data=!4m8!3m7!1s0x8f4e43859b311239:0x1a9cb6da851ff691!8m2!3d20.6718486!4d-87.0504611!9m1!1b1!16s%2Fg%2F11r_t7kdfg";
 
   return (
     <section id="metricas" className="py-14 sm:py-20 md:py-24 px-4 sm:px-6 md:px-margin-desktop bg-surface-container-low/50 border-b border-arena-calida/20 font-sans">
@@ -118,22 +142,32 @@ export default function Metrics() {
         </div>
 
         {/* Google Reviews Trust Bar */}
-        <div className="mt-8 sm:mt-10 pt-6 border-t border-arena-calida/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <div className="flex items-center gap-3">
-            <div className="flex text-amber-500 text-sm tracking-widest">
-              ★★★★★
+        <div className="mt-8 sm:mt-10 pt-6 border-t border-arena-calida/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left bg-white/70 backdrop-blur-xs p-4 sm:p-5 rounded-xl border border-arena-calida/20 shadow-xs">
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3">
+            <GoogleGIcon />
+            <div className="flex items-center gap-1 text-amber-400" aria-label="5 de 5 estrellas en Google Reviews">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+              ))}
             </div>
-            <span className="font-label-caps text-xs text-teal-uno uppercase tracking-wider font-semibold">
-              {rating} {language === "es" ? "Calificación en Google Reviews" : "Google Reviews Rating"} ({reviewCount}+ {language === "es" ? "Opiniones" : "Reviews"})
+            <span className="font-label-caps text-xs sm:text-sm text-teal-uno uppercase tracking-wider font-bold">
+              {rating}
+            </span>
+            <span className="text-xs sm:text-sm text-gris-texto font-medium">
+              {language === "es"
+                ? `en Google Reviews (${reviewCount} opiniones)`
+                : `on Google Reviews (${reviewCount} reviews)`}
             </span>
           </div>
           <a
-            href={mapUrl}
+            href={mapReviewsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-label-caps text-[11px] sm:text-xs text-teal-uno hover:text-arena-calida transition-colors uppercase tracking-wider font-semibold inline-flex items-center gap-1"
+            aria-label="Ver todas las reseñas verificadas en Google Maps de UNO Arquitectos"
+            className="font-label-caps text-[11px] sm:text-xs text-teal-uno hover:text-arena-calida transition-all uppercase tracking-wider font-semibold inline-flex items-center gap-1.5 py-1.5 px-3.5 rounded-full border border-teal-uno/20 hover:border-arena-calida hover:bg-teal-uno/5 active:scale-95 flex-shrink-0"
           >
-            {language === "es" ? "Ver opiniones verificadas en Google Maps ↗" : "View verified reviews on Google Maps ↗"}
+            {language === "es" ? "Ver reseñas en Google Maps" : "Read reviews on Google Maps"}
+            <ExternalLink className="w-3.5 h-3.5 flex-shrink-0" />
           </a>
         </div>
       </div>

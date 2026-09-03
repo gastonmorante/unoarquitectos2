@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useMotionValue, useSpring } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import {
   Send,
   X,
@@ -304,59 +304,6 @@ export default function AIConsultant() {
   });
   const [isSubmittingLead, setIsSubmittingLead] = useState(false);
   const [leadError, setLeadError] = useState("");
-
-  // Cursor tracking motion variables with smooth physics
-  const bgLogoX = useMotionValue(typeof window !== "undefined" ? window.innerWidth / 2 - 100 : 200);
-  const bgLogoY = useMotionValue(typeof window !== "undefined" ? window.innerHeight / 2 - 100 : 200);
-  
-  const smoothBgX = useSpring(bgLogoX, { damping: 40, stiffness: 80 });
-  const smoothBgY = useSpring(bgLogoY, { damping: 40, stiffness: 80 });
-
-  const [isMoving, setIsMoving] = useState(false);
-  const timeoutRef = useRef<any>(null);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      bgLogoX.set(window.innerWidth / 2 - 50);
-      bgLogoY.set(window.innerHeight / 2 - 50);
-
-      const handleMove = (clientX: number, clientY: number) => {
-        bgLogoX.set(clientX - 50);
-        bgLogoY.set(clientY - 50);
-        
-        setIsMoving(true);
-
-        if (timeoutRef.current) {
-          clearTimeout(timeoutRef.current);
-        }
-
-        timeoutRef.current = setTimeout(() => {
-          setIsMoving(false);
-        }, 500);
-      };
-
-      const handleMouseMove = (e: MouseEvent) => {
-        handleMove(e.clientX, e.clientY);
-      };
-
-      const handleTouchMove = (e: TouchEvent) => {
-        if (e.touches && e.touches[0]) {
-          handleMove(e.touches[0].clientX, e.touches[0].clientY);
-        }
-      };
-
-      window.addEventListener("mousemove", handleMouseMove);
-      window.addEventListener("touchmove", handleTouchMove, { passive: true });
-      return () => {
-        window.removeEventListener("mousemove", handleMouseMove);
-        window.removeEventListener("touchmove", handleTouchMove);
-        if (timeoutRef.current) {
-          clearTimeout(timeoutRef.current);
-        }
-      };
-    }
-    return undefined;
-  }, [bgLogoX, bgLogoY]);
 
   // Reset/Initialize greeting
   useEffect(() => {
@@ -898,27 +845,6 @@ export default function AIConsultant() {
           </span>
         </motion.button>
       </div>
-
-      {/* CURSOR-TRACKING FLOATING SEMI-TRANSPARENT LOGO */}
-      <motion.div
-        style={{ x: smoothBgX, y: smoothBgY }}
-        animate={{
-          opacity: isMoving ? 0.35 : 0.45
-        }}
-        transition={{
-          duration: 0.8,
-          ease: "easeOut"
-        }}
-        className="fixed top-0 left-0 pointer-events-none z-30 select-none hidden sm:block text-teal-uno"
-      >
-        <UnoIsotype
-          size={100}
-          color="#00A3A3"
-          cubeColor="#FFFFFF"
-          strokeColor="#00A3A3"
-          className="animate-rotate-spinning"
-        />
-      </motion.div>
     </>
   );
 }
