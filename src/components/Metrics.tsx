@@ -199,17 +199,21 @@ export default function Metrics() {
           {hasReviews ? (
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3">
               <GoogleGIcon />
-              <div className="flex items-center gap-0.5" aria-label={`${rating} de 5 estrellas en Google Reviews`}>
-                {[1, 2, 3, 4, 5].map((starNum) => (
-                  <Star
-                    key={starNum}
-                    className={`w-4 h-4 ${
-                      starNum <= Math.round(numericRating)
-                        ? "fill-amber-400 text-amber-400"
-                        : "text-slate-300 fill-slate-100"
-                    }`}
-                  />
-                ))}
+              <div className="flex items-center gap-1" aria-label={`${rating} de 5 estrellas en Google Reviews`}>
+                {[0, 1, 2, 3, 4].map((i) => {
+                  const fillPct = Math.max(0, Math.min(100, (numericRating - i) * 100));
+                  return (
+                    <div key={i} className="relative w-4 h-4 flex-shrink-0">
+                      <Star className="w-4 h-4 text-slate-200 fill-slate-200 absolute inset-0" />
+                      <div
+                        className="overflow-hidden absolute inset-0"
+                        style={{ width: `${fillPct}%` }}
+                      >
+                        <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
               <span className="font-label-caps text-xs sm:text-sm text-teal-uno uppercase tracking-wider font-bold">
                 {rating}

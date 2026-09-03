@@ -48,8 +48,8 @@ export const defaultContent: SiteContent = {
     ]
   },
   metrics: {
-    ratingValue: "5.0",
-    reviewCount: "28",
+    ratingValue: "4.8",
+    reviewCount: "50",
     googleMapsUrl: "https://www.google.com/maps/place/UNO+Arquitectos+Mx/@20.6718486,-87.0504611,17z/data=!4m8!3m7!1s0x8f4e43859b311239:0x1a9cb6da851ff691!8m2!3d20.6718486!4d-87.0504611!9m1!1b1!16s%2Fg%2F11r_t7kdfg",
     items: [
       {
