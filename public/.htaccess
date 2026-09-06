@@ -170,15 +170,25 @@ AddHandler application/x-httpd-ea-php82___lsphp .php .php8 .phtml
 </IfModule>
 
 # Block access to hidden files and sensitive developer files (.git, .env, .sql, .log, etc.)
-<FilesMatch "^\.|\.(bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist|env|ts)$">
-  Order allow,deny
-  Deny from all
+<FilesMatch "(^\.|\.(bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist|env|ts))$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
 </FilesMatch>
 
-# Allow public data, sitemap and robots
-<FilesMatch "^(site-content\.json|sitemap\.xml|robots\.txt|llms\.txt)$">
-  Allow from all
+# Explicitly ensure images, 360 photos, static assets and media are always accessible
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico|css|js|json|xml|txt|woff|woff2|ttf|eot|mp4|webm)$">
+  <IfModule mod_authz_core.c>
+    Require all granted
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Allow from all
+  </IfModule>
 </FilesMatch>
 
 # Prevent directory browsing
-Options -Indexes -MultiViews
+Options -Indexes
