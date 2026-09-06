@@ -33,7 +33,142 @@ export const defaultClientProjects: ClientProject[] = [
         embedCode: '<div id="yU6zyUhkj"><script type="text/javascript" async data-short="yU6zyUhkj" data-path="tours" data-is-self-hosted="false" width="100%" height="500px" src="https://app.cloudpano.com/public/shareScript.js"></script></div>',
         folderUrl: "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link",
         notes: "Levantamiento 360° más reciente tras culminación de pasta de Chukum natural en doble altura (6.40m libres), colocación de placas de mármol Santo Tomás (1.20x2.40m) en vestíbulos y preparación para carpintería maciza de Tzalam.",
-        thumbnail: "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_01.jpg"
+        thumbnail: "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_01.jpg",
+        scenes: [
+        {
+                "id": "scene-0509-01",
+                "title": "Punto 360° #01 • 05 Sep",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_01.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_01.jpg",
+                "roomName": "Zona #01"
+        },
+        {
+                "id": "scene-0509-02",
+                "title": "Punto 360° #02 • 05 Sep",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_02.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_02.jpg",
+                "roomName": "Zona #02"
+        },
+        {
+                "id": "scene-0509-03",
+                "title": "Punto 360° #03 • 05 Sep",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_03.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_03.jpg",
+                "roomName": "Zona #03"
+        },
+        {
+                "id": "scene-0509-04",
+                "title": "Punto 360° #04 • 05 Sep",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_04.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_04.jpg",
+                "roomName": "Zona #04"
+        },
+        {
+                "id": "scene-0509-05",
+                "title": "Punto 360° #05 • 05 Sep",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_05.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_05.jpg",
+                "roomName": "Zona #05"
+        },
+        {
+                "id": "scene-0509-06",
+                "title": "Punto 360° #06 • 05 Sep",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_06.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_06.jpg",
+                "roomName": "Zona #06"
+        },
+        {
+                "id": "scene-0509-07",
+                "title": "Punto 360° #07 • 05 Sep",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_07.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_07.jpg",
+                "roomName": "Zona #07"
+        },
+        {
+                "id": "scene-0509-08",
+                "title": "Punto 360° #08 • 05 Sep",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_08.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_08.jpg",
+                "roomName": "Zona #08"
+        },
+        {
+                "id": "scene-0509-09",
+                "title": "Punto 360° #09 • 05 Sep",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_09.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_09.jpg",
+                "roomName": "Zona #09"
+        },
+        {
+                "id": "scene-0509-10",
+                "title": "Punto 360° #10 • 05 Sep",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_10.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_10.jpg",
+                "roomName": "Zona #10"
+        },
+        {
+                "id": "scene-0509-11",
+                "title": "Punto 360° #11 • 05 Sep",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_11.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_11.jpg",
+                "roomName": "Zona #11"
+        },
+        {
+                "id": "scene-0509-12",
+                "title": "Punto 360° #12 • 05 Sep",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_12.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_12.jpg",
+                "roomName": "Zona #12"
+        },
+        {
+                "id": "scene-0509-13",
+                "title": "Punto 360° #13 • 05 Sep",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_13.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_13.jpg",
+                "roomName": "Zona #13"
+        },
+        {
+                "id": "scene-0509-14",
+                "title": "Punto 360° #14 • 05 Sep",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_14.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_14.jpg",
+                "roomName": "Zona #14"
+        },
+        {
+                "id": "scene-0509-15",
+                "title": "Punto 360° #15 • 05 Sep",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_15.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_15.jpg",
+                "roomName": "Zona #15"
+        },
+        {
+                "id": "scene-0509-16",
+                "title": "Punto 360° #16 • 05 Sep",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_16.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_16.jpg",
+                "roomName": "Zona #16"
+        },
+        {
+                "id": "scene-0509-17",
+                "title": "Punto 360° #17 • 05 Sep",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_17.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_17.jpg",
+                "roomName": "Zona #17"
+        },
+        {
+                "id": "scene-0509-18",
+                "title": "Punto 360° #18 • 05 Sep",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_18.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_18.jpg",
+                "roomName": "Zona #18"
+        },
+        {
+                "id": "scene-0509-19",
+                "title": "Punto 360° #19 • 05 Sep",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_19.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_19.jpg",
+                "roomName": "Zona #19"
+        }
+]
       },
       {
         id: "tour-arrecifes-27ago2026",
@@ -44,7 +179,79 @@ export const defaultClientProjects: ClientProject[] = [
         embedCode: '<div id="yU6zyUhkj"><script type="text/javascript" async data-short="yU6zyUhkj" data-path="tours" data-is-self-hosted="false" width="100%" height="500px" src="https://app.cloudpano.com/public/shareScript.js"></script></div>',
         folderUrl: "https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link",
         notes: "Supervisión 360° de canalizaciones hidrosanitarias presurizadas a 7 kg/cm², cableado domótico Lutron Homeworks QSX y ductería oculta de aire acondicionado VRF inverter Daikin.",
-        thumbnail: "/assets/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_01.jpg"
+        thumbnail: "/assets/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_01.jpg",
+        scenes: [
+        {
+                "id": "scene-2708-01",
+                "title": "Punto 360° #01 • 27 Ago",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_01.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_01.jpg",
+                "roomName": "Zona #01"
+        },
+        {
+                "id": "scene-2708-02",
+                "title": "Punto 360° #02 • 27 Ago",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_02.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_02.jpg",
+                "roomName": "Zona #02"
+        },
+        {
+                "id": "scene-2708-03",
+                "title": "Punto 360° #03 • 27 Ago",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_03.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_03.jpg",
+                "roomName": "Zona #03"
+        },
+        {
+                "id": "scene-2708-04",
+                "title": "Punto 360° #04 • 27 Ago",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_04.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_04.jpg",
+                "roomName": "Zona #04"
+        },
+        {
+                "id": "scene-2708-05",
+                "title": "Punto 360° #05 • 27 Ago",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_05.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_05.jpg",
+                "roomName": "Zona #05"
+        },
+        {
+                "id": "scene-2708-06",
+                "title": "Punto 360° #06 • 27 Ago",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_06.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_06.jpg",
+                "roomName": "Zona #06"
+        },
+        {
+                "id": "scene-2708-07",
+                "title": "Punto 360° #07 • 27 Ago",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_07.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_07.jpg",
+                "roomName": "Zona #07"
+        },
+        {
+                "id": "scene-2708-08",
+                "title": "Punto 360° #08 • 27 Ago",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_08.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_08.jpg",
+                "roomName": "Zona #08"
+        },
+        {
+                "id": "scene-2708-09",
+                "title": "Punto 360° #09 • 27 Ago",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_09.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_09.jpg",
+                "roomName": "Zona #09"
+        },
+        {
+                "id": "scene-2708-10",
+                "title": "Punto 360° #10 • 27 Ago",
+                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_10.jpg",
+                "thumbnailUrl": "/assets/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_10.jpg",
+                "roomName": "Zona #10"
+        }
+]
       }
     ],
     phases: [

@@ -1,3 +1,11 @@
+export interface Scene360Item {
+  id: string;
+  title: string;
+  equirectangularUrl: string;
+  thumbnailUrl?: string;
+  roomName?: string;
+}
+
 export interface Tour360Folder {
   id: string;
   date: string;
@@ -8,6 +16,7 @@ export interface Tour360Folder {
   folderUrl?: string;
   notes?: string;
   thumbnail?: string;
+  scenes?: Scene360Item[];
 }
 
 export type PhaseStatus = 'completed' | 'in_progress' | 'scheduled';

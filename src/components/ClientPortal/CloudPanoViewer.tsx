@@ -13,9 +13,12 @@ import {
   Info,
   Calendar,
   Sparkles,
-  Layers
+  Layers,
+  Globe,
+  Settings2
 } from "lucide-react";
 import { Tour360Folder } from "../../types/clientPortal";
+import Interactive360Canvas from "./Interactive360Canvas";
 
 interface CloudPanoViewerProps {
   tours: Tour360Folder[];
@@ -44,17 +47,15 @@ export default function CloudPanoViewer({
       setSelectedTourId(externalSelectedTourId);
     }
   }, [externalSelectedTourId]);
+
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [viewerSource, setViewerSource] = useState<"interactive" | "cloudpano">("interactive");
   const [showEmbedEditor, setShowEmbedEditor] = useState(false);
   const [editEmbedCode, setEditEmbedCode] = useState("");
   const [editFolderUrl, setEditFolderUrl] = useState("");
   const [editNotes, setEditNotes] = useState("");
   const [saveSuccess, setSaveSuccess] = useState(false);
 
-  // Panorama drag simulation state for interactive fallback
-  const [panX, setPanX] = useState(50);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
   const viewerContainerRef = useRef<HTMLDivElement>(null);
 
   const activeTour = tours.find((t) => t.id === selectedTourId) || tours[0];
@@ -100,13 +101,13 @@ export default function CloudPanoViewer({
     if (!code) return "";
     const cleanCode = code.trim();
 
-    // 1. Check for CloudPano data-short attribute in script/div (e.g. data-short="yU6zyUhkj")
+    // 1. Check for CloudPano data-short attribute in script/div
     const shortMatch = cleanCode.match(/data-short=["']([^"']+)["']/i);
     if (shortMatch && shortMatch[1]) {
       return `https://app.cloudpano.com/tours/${shortMatch[1]}`;
     }
 
-    // 2. Check for CloudPano div id if div format (e.g. <div id="yU6zyUhkj"><script...)
+    // 2. Check for CloudPano div id
     const divIdMatch = cleanCode.match(/<div\s+id=["']([a-zA-Z0-9_-]+)["']/i);
     if (divIdMatch && divIdMatch[1] && cleanCode.includes("cloudpano")) {
       return `https://app.cloudpano.com/tours/${divIdMatch[1]}`;
@@ -115,7 +116,6 @@ export default function CloudPanoViewer({
     // 3. Check for standard iframe src="..."
     const srcMatch = cleanCode.match(/src=["']([^"']+)["']/i);
     if (srcMatch && srcMatch[1]) {
-      // If src is shareScript.js, don't return the script url as iframe src!
       if (!srcMatch[1].includes("shareScript.js")) {
         return srcMatch[1];
       }
@@ -141,23 +141,7 @@ export default function CloudPanoViewer({
   };
 
   const iframeSrc = getIframeSrc(activeTour?.embedCode || "");
-
-  // Drag interaction for 360 panoramic simulation fallback
-  const handleMouseDown = (e: React.MouseEvent) => {
-    setIsDragging(true);
-    setStartX(e.clientX);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging) return;
-    const delta = (e.clientX - startX) * 0.2;
-    setPanX((prev) => (prev - delta + 100) % 100);
-    setStartX(e.clientX);
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
+  const hasScenes = Boolean(activeTour?.scenes && activeTour.scenes.length > 0);
 
   return (
     <div className="space-y-6 font-sans text-left">
@@ -188,7 +172,6 @@ export default function CloudPanoViewer({
                       : "bg-[#141418] border-[#c2a275]/15 hover:border-[#c2a275]/40 hover:bg-[#1a1a22]"
                   }`}
                 >
-                  {/* Active Indicator Bar */}
                   {isSelected && (
                     <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-teal-uno via-[#c2a275] to-teal-uno" />
                   )}
@@ -217,12 +200,12 @@ export default function CloudPanoViewer({
         </div>
       )}
 
-      {/* ACTIVE TOUR METADATA BANNER */}
+      {/* ACTIVE TOUR CONTROL & ENGINE SWITCHER BAR */}
       {activeTour && (
         <div className="bg-[#141418] border border-[#c2a275]/20 p-4 rounded-xs flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 rounded-xs bg-[#c2a275]/15 text-[#c2a275] font-label-caps uppercase text-[10px] tracking-wider border border-[#c2a275]/30">
+              <span className="px-2 py-0.5 rounded-xs bg-[#c2a275]/15 text-[#c2a275] font-label-caps uppercase text-[10px] tracking-wider border border-[#c2a275]/30 font-bold">
                 {activeTour.date}
               </span>
               <span className="text-white font-medium">{activeTour.title}</span>
@@ -234,80 +217,94 @@ export default function CloudPanoViewer({
             )}
           </div>
 
-          <div className="flex items-center gap-2 flex-shrink-0">
+          <div className="flex items-center gap-2 flex-shrink-0 self-start md:self-auto">
+            {/* Engine Switcher */}
+            {hasScenes && (
+              <div className="flex items-center bg-[#101014] p-0.5 rounded-xs border border-[#c2a275]/30">
+                <button
+                  onClick={() => setViewerSource("interactive")}
+                  className={`px-3 py-1 rounded-xs text-[10px] font-label-caps uppercase tracking-wider font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+                    viewerSource === "interactive"
+                      ? "bg-teal-uno text-white shadow-xs"
+                      : "text-zinc-400 hover:text-white"
+                  }`}
+                  title="Visor 360° esférico con las escenas reales de esta fecha"
+                >
+                  <Globe className="w-3 h-3" />
+                  <span>360° Real ({activeTour.scenes?.length} Puntos)</span>
+                </button>
+                <button
+                  onClick={() => setViewerSource("cloudpano")}
+                  className={`px-3 py-1 rounded-xs text-[10px] font-label-caps uppercase tracking-wider font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+                    viewerSource === "cloudpano"
+                      ? "bg-teal-uno text-white shadow-xs"
+                      : "text-zinc-400 hover:text-white"
+                  }`}
+                  title="Recorrido CloudPano"
+                >
+                  <Compass className="w-3 h-3" />
+                  <span>CloudPano</span>
+                </button>
+              </div>
+            )}
+
             <button
-              onClick={toggleFullscreen}
-              className="p-2 rounded-xs bg-white/5 hover:bg-white/10 text-white/80 hover:text-white border border-white/10 cursor-pointer transition-colors"
-              title={isFullscreen ? "Salir de pantalla completa" : "Pantalla completa"}
+              onClick={handleOpenEditor}
+              className="p-2 rounded-xs bg-white/5 hover:bg-white/10 text-zinc-300 hover:text-white border border-white/10 cursor-pointer transition-colors"
+              title="Configurar código CloudPano o enlaces"
             >
-              {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
+              <Settings2 className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>
       )}
 
-      {/* 360 VIEWER CANVAS CONTAINER */}
-      <div
-        ref={viewerContainerRef}
-        className={`relative w-full rounded-xs overflow-hidden border border-[#c2a275]/30 bg-[#0a0a0c] shadow-2xl ${
-          isFullscreen ? "h-screen" : "h-[450px] sm:h-[550px] md:h-[620px]"
-        }`}
-      >
-        {iframeSrc ? (
-          <iframe
-            key={activeTour?.id || activeTour?.date}
-            src={iframeSrc}
-            title={`Recorrido Virtual 360 - ${propertyName} (${activeTour?.date})`}
-            className="w-full h-full border-0"
-            allowFullScreen
-            allow="accelerometer; gyroscope; magnetometer; vr; xr-spatial-tracking"
-            loading="lazy"
-          />
-        ) : (
-          /* INTERACTIVE PANORAMA SIMULATOR FALLBACK */
-          <div
-            className="w-full h-full relative cursor-grab active:cursor-grabbing select-none overflow-hidden"
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
-          >
-            {/* Background Panorama Image with dynamic Pan */}
-            <div
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-75"
-              style={{
-                backgroundImage: `url(${activeTour?.thumbnail || "/projects/residencial/alux-7cielos-master-jungle-view.jpg"})`,
-                backgroundPosition: `${panX}% center`,
-                backgroundSize: "cover",
-                transform: "scale(1.05)",
-                filter: "brightness(0.95) contrast(1.05)",
-              }}
+      {/* 360 VIEWER CONTAINER */}
+      {viewerSource === "interactive" && hasScenes ? (
+        <Interactive360Canvas
+          scenes={activeTour.scenes!}
+          dateTitle={activeTour.date}
+          phaseName={activeTour.phaseName}
+          notes={activeTour.notes}
+          isFullscreen={isFullscreen}
+          onToggleFullscreen={toggleFullscreen}
+        />
+      ) : (
+        <div
+          ref={viewerContainerRef}
+          className={`relative w-full rounded-xs overflow-hidden border border-[#c2a275]/30 bg-[#0a0a0c] shadow-2xl ${
+            isFullscreen ? "fixed inset-0 z-50 h-screen w-screen rounded-none" : "h-[450px] sm:h-[550px] md:h-[620px]"
+          }`}
+        >
+          {iframeSrc ? (
+            <iframe
+              key={`cp-${activeTour?.id || activeTour?.date}`}
+              src={iframeSrc}
+              title={`Recorrido Virtual CloudPano - ${propertyName} (${activeTour?.date})`}
+              className="w-full h-full border-0"
+              allowFullScreen
+              allow="accelerometer; gyroscope; magnetometer; vr; xr-spatial-tracking"
+              loading="lazy"
             />
-
-            {/* Subtle Gradient Overlays */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40 pointer-events-none" />
-
-            {/* Interactive Compass & Pan Guides */}
-            <div className="absolute top-6 left-6 z-10 bg-black/70 backdrop-blur-md px-3 py-2 rounded-xs border border-[#c2a275]/30 text-white text-xs font-label-caps uppercase tracking-wider flex items-center gap-2 pointer-events-none">
-              <RotateCw className="w-3.5 h-3.5 text-teal-uno animate-spin-slow" />
-              <span>Arrastra para rotar 360°</span>
-            </div>
-
-            <div className="absolute bottom-6 left-6 z-10 bg-black/80 backdrop-blur-md p-4 rounded-xs border border-[#c2a275]/30 max-w-md pointer-events-none">
-              <div className="flex items-center gap-2 text-xs font-label-caps uppercase text-[#c2a275] mb-1">
-                <Sparkles className="w-3.5 h-3.5 text-teal-uno" />
-                <span>Vista Panorámica de Alta Fidelidad</span>
-              </div>
-              <h4 className="text-white font-serif text-sm sm:text-base font-semibold">
-                {activeTour?.title || propertyName}
+          ) : (
+            <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center space-y-3 bg-[#101014]">
+              <Compass className="w-12 h-12 text-teal-uno animate-spin-slow" />
+              <h4 className="text-white font-serif text-base font-semibold">
+                Recorrido CloudPano no configurado para esta fecha
               </h4>
-              <p className="text-[11px] text-[#e4ded5]/70 mt-1 line-clamp-2">
-                {activeTour?.notes || "Inspección de avance físico y calidad de acabados arquitectónicos en Riviera Maya."}
+              <p className="text-xs text-zinc-400 max-w-md">
+                Haz clic en el botón de configuración o visualiza el Visor 360° Real para explorar las escenas de {activeTour?.date}.
               </p>
+              <button
+                onClick={() => setViewerSource("interactive")}
+                className="px-4 py-2 bg-teal-uno text-white text-xs font-label-caps uppercase tracking-wider rounded-xs cursor-pointer"
+              >
+                Ver Visor 360° Real de Obra
+              </button>
             </div>
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      )}
 
       {/* CLOUDPANO EMBED CODE MODAL EDITOR */}
       <AnimatePresence>
@@ -323,7 +320,7 @@ export default function CloudPanoViewer({
                 <div className="flex items-center gap-2 text-[#c2a275]">
                   <Code2 className="w-5 h-5 text-teal-uno" />
                   <h4 className="font-serif text-xl text-white">
-                    Código de Inserción CloudPano 360°
+                    Código de Inserción CloudPano 360° • {activeTour?.date}
                   </h4>
                 </div>
                 <button
@@ -348,7 +345,7 @@ export default function CloudPanoViewer({
                   />
                   <p className="text-[10px] text-zinc-400 mt-1 flex items-center gap-1">
                     <Info className="w-3 h-3 text-[#c2a275]" />
-                    Pega el código HTML completo proporcionado por CloudPano o la URL directa de la escena.
+                    Pega el código HTML completo proporcionado por CloudPano o la URL directa de la escena para {activeTour?.date}.
                   </p>
                 </div>
 
@@ -425,4 +422,3 @@ export default function CloudPanoViewer({
     </div>
   );
 }
-
