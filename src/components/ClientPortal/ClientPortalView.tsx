@@ -4,10 +4,7 @@ import {
   Building2, 
   MapPin, 
   Calendar, 
-  Phone, 
   MessageSquare, 
-  FileText, 
-  LogOut, 
   Compass, 
   Camera, 
   ChevronDown,
@@ -20,7 +17,6 @@ import {
 import { ClientProject, Tour360Folder } from "../../types/clientPortal";
 import CloudPanoViewer from "./CloudPanoViewer";
 import PhotoReportsGrid from "./PhotoReportsGrid";
-import ExecutiveReportModal from "./ExecutiveReportModal";
 import ClientAIAssistantModal from "./ClientAIAssistantModal";
 import Logo from "../Logo";
 
@@ -36,12 +32,10 @@ export default function ClientPortalView({
   currentProject,
   allProjects,
   onSelectProject,
-  onLogout,
   onClose,
 }: ClientPortalViewProps) {
   const portalContainerRef = useRef<HTMLDivElement>(null);
   const [viewMode, setViewMode] = useState<"all" | "360" | "photos">("all");
-  const [showReportModal, setShowReportModal] = useState(false);
   const [showAIAssistant, setShowAIAssistant] = useState(false);
   const [showProjectSwitcher, setShowProjectSwitcher] = useState(false);
 
@@ -119,7 +113,7 @@ export default function ClientPortalView({
       id="client-portal-root"
       className="min-h-screen w-full bg-background text-gris-texto overflow-y-auto font-sans flex flex-col selection:bg-teal-uno selection:text-white texture-overlay scroll-smooth"
     >
-      {/* 1. LUXURY EXECUTIVE TOP NAVBAR */}
+      {/* 1. LUXURY EXECUTIVE TOP NAVBAR (CLEAN HEADER WITH RETURN HOME BUTTON) */}
       <header className="sticky top-0 z-40 bg-background/95 backdrop-blur-md border-b border-arena-calida/30 px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-ethereal">
         <div className="flex items-center gap-3 sm:gap-6">
           <button
@@ -173,38 +167,8 @@ export default function ClientPortalView({
           </div>
         </div>
 
-        {/* TOP ACTIONS */}
+        {/* TOP ACTIONS - CLEANED: ONLY RETURN TO MAIN SITE BUTTON */}
         <div className="flex items-center gap-2 sm:gap-3">
-          <button
-            onClick={() => setShowAIAssistant(true)}
-            className="px-3.5 sm:px-4 py-2 bg-teal-uno hover:bg-arena-calida text-white rounded-full text-[11px] sm:text-xs font-label-caps uppercase tracking-wider font-semibold transition-all flex items-center gap-1.5 shadow-ethereal cursor-pointer active:scale-95"
-            title="Abrir Asesor Técnico con Inteligencia Artificial Gemini"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-arena-calida" />
-            <span className="hidden lg:inline">IA Gemini • Asesor</span>
-            <span className="lg:hidden">IA Gemini</span>
-          </button>
-
-          <button
-            onClick={() => setShowReportModal(true)}
-            className="px-3.5 sm:px-4 py-2 bg-white/80 hover:bg-white text-teal-uno border border-arena-calida/40 rounded-full text-[11px] sm:text-xs font-label-caps uppercase tracking-wider font-semibold transition-all flex items-center gap-1.5 shadow-xs cursor-pointer active:scale-95"
-            title="Generar e imprimir informe de supervisión en PDF"
-          >
-            <FileText className="w-3.5 h-3.5 text-teal-uno" />
-            <span className="hidden sm:inline">Dictamen PDF</span>
-            <span className="sm:hidden">PDF</span>
-          </button>
-
-          <button
-            onClick={onLogout}
-            className="px-3 sm:px-3.5 py-2 bg-surface-container-low hover:bg-red-50 text-gris-texto hover:text-red-600 border border-arena-calida/30 rounded-full text-xs font-label-caps uppercase tracking-wider transition-colors flex items-center gap-1.5 cursor-pointer"
-            title="Cerrar sesión de cliente"
-          >
-            <LogOut className="w-3.5 h-3.5" />
-            <span className="hidden md:inline">Cerrar Sesión</span>
-          </button>
-
-          {/* EXPLICIT CLOSE AND RETURN TO MAIN SITE BUTTON */}
           <button
             onClick={onClose}
             className="px-4 sm:px-5 py-2 bg-teal-uno hover:bg-arena-calida text-white rounded-full text-xs font-label-caps uppercase tracking-wider font-bold transition-all flex items-center gap-2 cursor-pointer shadow-md hover:shadow-lg active:scale-95"
@@ -216,51 +180,6 @@ export default function ClientPortalView({
           </button>
         </div>
       </header>
-
-      {/* QUICK JUMP SECTION SUB-NAV */}
-      <div className="bg-surface-container-lowest/90 backdrop-blur-md border-b border-arena-calida/20 px-4 sm:px-8 py-2.5 flex items-center justify-between gap-3 overflow-x-auto shadow-xs sticky top-[57px] z-30">
-        <div className="flex items-center gap-2 max-w-7xl mx-auto w-full">
-          <span className="text-[10px] font-label-caps uppercase tracking-widest text-arena-calida font-bold whitespace-nowrap mr-1 hidden md:inline-block">
-            Navegación:
-          </span>
-          <button
-            onClick={() => scrollToSection("resumen-ejecutivo")}
-            className="px-3 py-1 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold text-gris-texto hover:text-teal-uno hover:bg-white border border-arena-calida/20 transition whitespace-nowrap cursor-pointer"
-          >
-            🏛️ Resumen General
-          </button>
-          <button
-            onClick={() => scrollToSection("fichas-avance")}
-            className="px-3 py-1 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold text-gris-texto hover:text-teal-uno hover:bg-white border border-arena-calida/20 transition whitespace-nowrap cursor-pointer"
-          >
-            📅 Fichas de Obra
-          </button>
-          <button
-            onClick={() => {
-              setViewMode("360");
-              scrollToSection("seccion-galeria-activa");
-            }}
-            className="px-3 py-1 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold text-teal-uno bg-white/80 hover:bg-white border border-teal-uno/30 transition whitespace-nowrap cursor-pointer font-bold"
-          >
-            🔄 Visor 360°
-          </button>
-          <button
-            onClick={() => {
-              setViewMode("photos");
-              scrollToSection("seccion-galeria-activa");
-            }}
-            className="px-3 py-1 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold text-gris-texto hover:text-teal-uno hover:bg-white border border-arena-calida/20 transition whitespace-nowrap cursor-pointer"
-          >
-            📷 Galería HD
-          </button>
-          <button
-            onClick={() => scrollToSection("contacto-director")}
-            className="px-3 py-1 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold text-gris-texto hover:text-teal-uno hover:bg-white border border-arena-calida/20 transition whitespace-nowrap cursor-pointer ml-auto"
-          >
-            👤 Director de Obra
-          </button>
-        </div>
-      </div>
 
       {/* 2. EXECUTIVE HERO & RESIDENT ARCHITECT BANNER */}
       <section id="resumen-ejecutivo" className="bg-surface-container-low/60 border-b border-arena-calida/20 px-4 sm:px-8 py-10 sm:py-14 relative texture-overlay overflow-hidden">
@@ -372,7 +291,7 @@ export default function ClientPortalView({
                 </div>
               </div>
 
-              {/* RESIDENT ARCHITECT CONTACT CARD */}
+              {/* RESIDENT ARCHITECT CONTACT CARD (CLEANED: WHATSAPP ONLY) */}
               <div id="contacto-director" className="bg-white/80 backdrop-blur-md border border-arena-calida/30 p-6 rounded-3xl space-y-4 shadow-ethereal text-left">
                 <div className="flex items-center justify-between gap-2 border-b border-arena-calida/20 pb-3">
                   <span className="text-[10px] font-label-caps uppercase tracking-wider text-arena-calida font-semibold">
@@ -406,24 +325,16 @@ export default function ClientPortalView({
                   </div>
                 </div>
 
-                {/* DIRECT WHATSAPP & PHONE ACTION BUTTONS */}
-                <div className="grid grid-cols-2 gap-2.5 pt-1">
+                {/* DIRECT WHATSAPP ACTION BUTTON */}
+                <div className="pt-1">
                   <a
                     href={`https://wa.me/${currentProject.director.whatsapp}?text=${whatsappMessage}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="py-2.5 px-4 bg-teal-uno hover:bg-arena-calida text-white rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold flex items-center justify-center gap-1.5 transition-all shadow-xs cursor-pointer"
+                    className="w-full py-2.5 px-4 bg-teal-uno hover:bg-arena-calida text-white rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold flex items-center justify-center gap-1.5 transition-all shadow-xs cursor-pointer"
                   >
                     <MessageSquare className="w-3.5 h-3.5" />
-                    <span>WhatsApp</span>
-                  </a>
-
-                  <a
-                    href={`tel:${currentProject.director.phone.replace(/[^0-9+]/g, "")}`}
-                    className="py-2.5 px-4 bg-white/80 hover:bg-white text-gris-texto border border-arena-calida/40 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold flex items-center justify-center gap-1.5 transition-all shadow-xs cursor-pointer"
-                  >
-                    <Phone className="w-3.5 h-3.5 text-arena-calida" />
-                    <span>Llamar</span>
+                    <span>Contactar por WhatsApp</span>
                   </a>
                 </div>
               </div>
@@ -590,7 +501,6 @@ export default function ClientPortalView({
                 photoReports={currentProject.photoReports}
                 selectedPeriod={activeDate}
                 onSelectPeriod={handleSelectPeriod}
-                onOpenAiAssistant={() => setShowAIAssistant(true)}
               />
             </section>
           </div>
@@ -645,7 +555,6 @@ export default function ClientPortalView({
               photoReports={currentProject.photoReports}
               selectedPeriod={activeDate}
               onSelectPeriod={handleSelectPeriod}
-              onOpenAiAssistant={() => setShowAIAssistant(true)}
             />
           </motion.div>
         )}
@@ -686,17 +595,7 @@ export default function ClientPortalView({
         </button>
       </div>
 
-      {/* 7. EXECUTIVE REPORT MODAL (PDF / PRINT) */}
-      <AnimatePresence>
-        {showReportModal && (
-          <ExecutiveReportModal
-            project={currentProject}
-            onClose={() => setShowReportModal(false)}
-          />
-        )}
-      </AnimatePresence>
-
-      {/* 8. GEMINI AI TECHNICAL CONSULTANT MODAL */}
+      {/* 7. GEMINI AI TECHNICAL CONSULTANT MODAL */}
       <AnimatePresence>
         {showAIAssistant && (
           <ClientAIAssistantModal
