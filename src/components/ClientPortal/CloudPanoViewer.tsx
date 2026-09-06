@@ -157,22 +157,6 @@ export default function CloudPanoViewer({
 
   return (
     <div className="space-y-6 font-sans text-left">
-      {/* SECTION HEADER */}
-      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 border-b border-[#c2a275]/20 pb-5">
-        <div>
-          <div className="flex items-center gap-2 text-xs font-label-caps uppercase tracking-widest text-[#c2a275]">
-            <Compass className="w-4 h-4 animate-spin-slow text-teal-uno" />
-            <span>Supervisión Inmersiva 360°</span>
-          </div>
-          <h3 className="font-serif text-2xl sm:text-3xl text-white mt-1 tracking-tight">
-            Recorridos Virtuales CloudPano
-          </h3>
-          <p className="text-xs sm:text-sm text-[#e4ded5]/70 max-w-2xl mt-1 leading-relaxed">
-            Inspecciona cada detalle estructural, alturas y acabados de <strong className="text-white font-medium">{propertyName}</strong> en 360 grados por fecha de entrega.
-          </p>
-        </div>
-      </div>
-
       {/* FOLDER SELECTION BY DATE */}
       <div className="space-y-2">
         <div className="flex items-center justify-between text-xs font-label-caps uppercase tracking-wider text-[#e4ded5]/60">
