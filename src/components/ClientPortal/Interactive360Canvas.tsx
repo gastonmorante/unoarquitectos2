@@ -64,9 +64,15 @@ export default function Interactive360Canvas({
   // Reset to first scene when date/scenes list changes
   useEffect(() => {
     setActiveSceneIndex(0);
-    lonRef.current = 0;
+    lonRef.current = 180;
     latRef.current = 0;
   }, [scenes]);
+
+  // Reset angle when changing active scene
+  useEffect(() => {
+    lonRef.current = 180;
+    latRef.current = 0;
+  }, [activeSceneIndex]);
 
   // Initialize Three.js WebGL Scene
   useEffect(() => {
@@ -87,14 +93,15 @@ export default function Interactive360Canvas({
     geometry.scale(-1, 1, 1);
 
     const material = new THREE.MeshBasicMaterial({
-      color: 0x111115,
+      color: 0xffffff,
     });
 
     const mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
     sphereMeshRef.current = mesh;
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: "high-performance" });
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(width, height);
     rendererRef.current = renderer;
@@ -164,11 +171,13 @@ export default function Interactive360Canvas({
       (texture) => {
         texture.colorSpace = THREE.SRGBColorSpace;
         texture.minFilter = THREE.LinearFilter;
+        texture.magFilter = THREE.LinearFilter;
         texture.generateMipmaps = false;
 
         if (sphereMeshRef.current) {
           const mat = sphereMeshRef.current.material as THREE.MeshBasicMaterial;
           if (mat.map) mat.map.dispose();
+          mat.color.setHex(0xffffff);
           mat.map = texture;
           mat.needsUpdate = true;
         }
@@ -219,7 +228,7 @@ export default function Interactive360Canvas({
   };
 
   const handleResetView = () => {
-    lonRef.current = 0;
+    lonRef.current = 180;
     latRef.current = 0;
     if (cameraRef.current) {
       cameraRef.current.fov = 75;
