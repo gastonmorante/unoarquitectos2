@@ -23,11 +23,13 @@ import { PhotoReport, PhotoCategory } from "../../types/clientPortal";
 interface PhotoReportsGridProps {
   photoReports: PhotoReport[];
   propertyName: string;
+  onOpenAiAssistant?: () => void;
 }
 
 export default function PhotoReportsGrid({
   photoReports,
   propertyName,
+  onOpenAiAssistant,
 }: PhotoReportsGridProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("Todas");
   const [selectedPeriod, setSelectedPeriod] = useState<string>("Todos");
@@ -47,7 +49,8 @@ export default function PhotoReportsGrid({
   const currentDriveUrl = getDriveUrlForPeriod(selectedPeriod);
 
   // Extract unique categories and periods
-  const categories: string[] = ["Todas", "Acabados", "Estructura", "Interiores", "Alberca", "Instalaciones", "Fachada"];
+  const rawCategories = Array.from(new Set(photoReports.map((p) => p.category)));
+  const categories: string[] = ["Todas", ...rawCategories];
   const dynamicPeriods = Array.from(new Set(photoReports.map((p) => p.period)));
   const periods: string[] = ["Todos", ...dynamicPeriods];
 
@@ -98,6 +101,19 @@ export default function PhotoReportsGrid({
         </div>
 
         <div className="flex flex-wrap items-center gap-2.5">
+          {onOpenAiAssistant && (
+            <button
+              onClick={onOpenAiAssistant}
+              className="flex items-center gap-1.5 text-xs text-black bg-gradient-to-r from-[#c2a275] to-[#e4ded5] hover:brightness-110 font-bold px-3.5 py-2 rounded-xs border border-[#c2a275]/50 transition-all shadow-md cursor-pointer active:scale-95"
+              title="Preguntar a la IA Gemini sobre los avances y detalles de obra"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-black" />
+              <span className="font-label-caps uppercase text-[11px] tracking-wider">
+                Consultar IA de Obra
+              </span>
+            </button>
+          )}
+
           <a
             href={currentDriveUrl}
             target="_blank"

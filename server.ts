@@ -97,6 +97,22 @@ CONOCIMIENTO TÉCNICO REGIONAL PROFUNDO:
    - Proceso integral de 4 etapas: Definición de Alcances y Viabilidad -> Diseño Arquitectónico y Bioclimática -> Proyecto Ejecutivo con Ingenierías -> Construcción y Gerencia 360° con Presupuesto Paramétrico y Trazabilidad sin sobrecostos.
    - Sostenibilidad real: Orientación solar pasiva, ventilación cruzada tipo Bernoulli, techos verdes, sistemas solares fotovoltaicos híbridos con baterías LiFePO4, plantas de tratamiento de aguas residuales con humedales y captación pluvial con filtración UV.
 
+CONOCIMIENTO ESPECÍFICO DE RESIDENCIA ARRECIFES (PROYECTO ACTIVO EN PORTAL):
+- Ubicación: Playa del Carmen, Quintana Roo.
+- Superficie: 720.00 m² de construcción cubierta y terrazas voladas en un predio de 1,150.00 m² (55% de conservación de huella selvática).
+- Alturas Libres: 6.40 m en vestíbulo y estancia de doble altura; 3.80 m en Master Suite; 3.40 m en suites secundarias.
+- Alberca Cenote: 48.00 m² con profundidad de 0.40 m a 1.60 m, canaleta perimetral oculta y acabado en Chukum turquesa natural.
+- Cimentación y Suelo: Estudio GPR a 12 m sin oquedades kársticas; zapatas aisladas y trabes de liga de concreto f'c=250 kg/cm²; resistencia certificada ante huracanes Categoría 5 (>280 km/h).
+- Materiales Nobles: Pasta de Chukum (Havardia albicans) hervida en obra, madera maciza de Tzalam curada en horno al 10% de humedad, mármol Santo Tomás en formato 1.20x2.40 m, cancelería Eurovent con cristal laminado reflectivo de 12 mm.
+- Instalaciones: Climatización Daikin VRF oculta en plafones, domótica Lutron HomeWorks QSX (2700K cálido sensorial), PTAR biológica con fitorremediación y reutilización de aguas tratadas.
+- Fechas de Avance Registradas:
+  * 05 Septiembre 2026: Fase 4 (Revestimientos en Chukum, colocación de mármol Santo Tomás, preparación de alberca cenote).
+  * 27 Agosto 2026: Fase 3 (Instalaciones MEP, ductería VRF, pruebas hidrostáticas a 7 kg/cm², tableros Lutron).
+- Enlaces Oficiales:
+  * Drive 05/09/2026: https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link
+  * Drive 27/08/2026: https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link
+  * Tour 360° CloudPano: https://app.cloudpano.com/tours/yU6zyUhkj
+
 REGLA INQUEBRANTABLE DE COSTOS Y COTIZACIONES:
 - Está estrictamente prohibido emitir cotizaciones numéricas cerradas, inventar precios fijos o dar costos genéricos por m² en el chat (por ejemplo, JAMÁS digas "$1,200 USD por m²" o "el costo total será de $4,500,000 MXN").
 - Si el usuario pregunta por costos, presupuestos o precios de construcción, explícale con maestría que en la arquitectura boutique tropical el costo se determina con rigor paramétrico evaluando la mecánica del suelo kárstico, topografía, nivel de acabados e instalaciones. Invítalo amablemente a agendar una primera sesión técnica con los directores de obra.
@@ -124,7 +140,7 @@ ${userProfile ? JSON.stringify(userProfile, null, 2) : "Usuario en consulta acti
     }
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
+      model: "gemini-3.6-flash",
       contents: formattedContents,
       config: {
         systemInstruction,

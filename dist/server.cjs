@@ -101,6 +101,22 @@ CONOCIMIENTO T\xC9CNICO REGIONAL PROFUNDO:
    - Proceso integral de 4 etapas: Definici\xF3n de Alcances y Viabilidad -> Dise\xF1o Arquitect\xF3nico y Bioclim\xE1tica -> Proyecto Ejecutivo con Ingenier\xEDas -> Construcci\xF3n y Gerencia 360\xB0 con Presupuesto Param\xE9trico y Trazabilidad sin sobrecostos.
    - Sostenibilidad real: Orientaci\xF3n solar pasiva, ventilaci\xF3n cruzada tipo Bernoulli, techos verdes, sistemas solares fotovoltaicos h\xEDbridos con bater\xEDas LiFePO4, plantas de tratamiento de aguas residuales con humedales y captaci\xF3n pluvial con filtraci\xF3n UV.
 
+CONOCIMIENTO ESPEC\xCDFICO DE RESIDENCIA ARRECIFES (PROYECTO ACTIVO EN PORTAL):
+- Ubicaci\xF3n: Playa del Carmen, Quintana Roo.
+- Superficie: 720.00 m\xB2 de construcci\xF3n cubierta y terrazas voladas en un predio de 1,150.00 m\xB2 (55% de conservaci\xF3n de huella selv\xE1tica).
+- Alturas Libres: 6.40 m en vest\xEDbulo y estancia de doble altura; 3.80 m en Master Suite; 3.40 m en suites secundarias.
+- Alberca Cenote: 48.00 m\xB2 con profundidad de 0.40 m a 1.60 m, canaleta perimetral oculta y acabado en Chukum turquesa natural.
+- Cimentaci\xF3n y Suelo: Estudio GPR a 12 m sin oquedades k\xE1rsticas; zapatas aisladas y trabes de liga de concreto f'c=250 kg/cm\xB2; resistencia certificada ante huracanes Categor\xEDa 5 (>280 km/h).
+- Materiales Nobles: Pasta de Chukum (Havardia albicans) hervida en obra, madera maciza de Tzalam curada en horno al 10% de humedad, m\xE1rmol Santo Tom\xE1s en formato 1.20x2.40 m, canceler\xEDa Eurovent con cristal laminado reflectivo de 12 mm.
+- Instalaciones: Climatizaci\xF3n Daikin VRF oculta en plafones, dom\xF3tica Lutron HomeWorks QSX (2700K c\xE1lido sensorial), PTAR biol\xF3gica con fitorremediaci\xF3n y reutilizaci\xF3n de aguas tratadas.
+- Fechas de Avance Registradas:
+  * 05 Septiembre 2026: Fase 4 (Revestimientos en Chukum, colocaci\xF3n de m\xE1rmol Santo Tom\xE1s, preparaci\xF3n de alberca cenote).
+  * 27 Agosto 2026: Fase 3 (Instalaciones MEP, ducter\xEDa VRF, pruebas hidrost\xE1ticas a 7 kg/cm\xB2, tableros Lutron).
+- Enlaces Oficiales:
+  * Drive 05/09/2026: https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link
+  * Drive 27/08/2026: https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link
+  * Tour 360\xB0 CloudPano: https://app.cloudpano.com/tours/yU6zyUhkj
+
 REGLA INQUEBRANTABLE DE COSTOS Y COTIZACIONES:
 - Est\xE1 estrictamente prohibido emitir cotizaciones num\xE9ricas cerradas, inventar precios fijos o dar costos gen\xE9ricos por m\xB2 en el chat (por ejemplo, JAM\xC1S digas "$1,200 USD por m\xB2" o "el costo total ser\xE1 de $4,500,000 MXN").
 - Si el usuario pregunta por costos, presupuestos o precios de construcci\xF3n, expl\xEDcale con maestr\xEDa que en la arquitectura boutique tropical el costo se determina con rigor param\xE9trico evaluando la mec\xE1nica del suelo k\xE1rstico, topograf\xEDa, nivel de acabados e instalaciones. Inv\xEDtalo amablemente a agendar una primera sesi\xF3n t\xE9cnica con los directores de obra.
@@ -129,7 +145,7 @@ Respecto a su consulta sobre "${lastMsg}", evaluamos cada proyecto de manera int
       });
     }
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
+      model: "gemini-3.6-flash",
       contents: formattedContents,
       config: {
         systemInstruction,

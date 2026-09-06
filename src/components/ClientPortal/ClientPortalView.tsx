@@ -436,6 +436,7 @@ export default function ClientPortalView({
               <PhotoReportsGrid
                 photoReports={currentProject.photoReports}
                 propertyName={currentProject.propertyName}
+                onOpenAiAssistant={() => setShowAIAssistant(true)}
               />
             </motion.div>
           )}
@@ -457,7 +458,26 @@ export default function ClientPortalView({
         </div>
       </footer>
 
-      {/* 6. EXECUTIVE REPORT MODAL (PDF / PRINT) */}
+      {/* 6. FLOATING ACTION BUTTON FOR GEMINI AI CONSULTANT */}
+      <div className="fixed bottom-6 right-6 z-40">
+        <button
+          onClick={() => setShowAIAssistant(true)}
+          className="group relative flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-[#c2a275] via-[#d4b98c] to-[#c2a275] text-black font-serif font-bold text-xs uppercase tracking-wider rounded-full shadow-2xl shadow-[#c2a275]/40 hover:scale-105 active:scale-95 transition-all duration-300 border border-white/50 cursor-pointer"
+          title="Consultar al Asesor de Obra con Inteligencia Artificial Gemini"
+        >
+          <div className="w-8 h-8 rounded-full bg-black/90 text-[#c2a275] flex items-center justify-center flex-shrink-0">
+            <Sparkles className="w-4 h-4" />
+          </div>
+          <div className="text-left pr-1">
+            <span className="block text-[9px] font-sans font-bold tracking-widest uppercase opacity-80">Asesor de Obra</span>
+            <span className="block text-xs font-serif font-bold tracking-wide">IA Gemini</span>
+          </div>
+          <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-teal-uno rounded-full border-2 border-black animate-ping" />
+          <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-teal-uno rounded-full border-2 border-black" />
+        </button>
+      </div>
+
+      {/* 7. EXECUTIVE REPORT MODAL (PDF / PRINT) */}
       <AnimatePresence>
         {showReportModal && (
           <ExecutiveReportModal
@@ -467,7 +487,7 @@ export default function ClientPortalView({
         )}
       </AnimatePresence>
 
-      {/* 7. GEMINI AI TECHNICAL CONSULTANT MODAL */}
+      {/* 8. GEMINI AI TECHNICAL CONSULTANT MODAL */}
       <AnimatePresence>
         {showAIAssistant && (
           <ClientAIAssistantModal
