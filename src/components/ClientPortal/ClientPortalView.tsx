@@ -477,50 +477,6 @@ export default function ClientPortalView({
 
       {/* 4. MAIN SYNCHRONIZED PROGRESS CONTENT */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-8 py-8 sm:py-10 space-y-10">
-        {/* ACTIVE FICHA HEADER & ACTION BAR */}
-        <div className="bg-[#141418] border border-[#c2a275]/30 p-5 rounded-xs flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-left shadow-xl">
-          <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <span className="px-2.5 py-0.5 rounded-xs bg-[#c2a275]/15 text-[#c2a275] font-label-caps uppercase text-[11px] tracking-wider border border-[#c2a275]/30 font-bold">
-                {activeDate}
-              </span>
-              <span className="text-white font-serif text-base sm:text-lg font-semibold">
-                {activeTour?.title}
-              </span>
-            </div>
-            <p className="text-xs text-[#e4ded5]/80 leading-relaxed max-w-3xl">
-              <strong className="text-[#c2a275] font-normal">Supervisión Técnica:</strong> {activeTour?.notes}
-            </p>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-2.5 flex-shrink-0">
-            <button
-              onClick={() => setShowAIAssistant(true)}
-              className="flex items-center gap-1.5 text-xs text-black bg-gradient-to-r from-[#c2a275] to-[#e4ded5] hover:brightness-110 font-bold px-4 py-2.5 rounded-xs border border-[#c2a275]/50 transition-all shadow-md cursor-pointer active:scale-95"
-              title="Preguntar a la IA Gemini sobre este avance específico"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-black" />
-              <span className="font-label-caps uppercase text-[11px] tracking-wider">
-                Consultar IA de Obra
-              </span>
-            </button>
-
-            <a
-              href={currentDriveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs text-[#c2a275] bg-[#1f1f28] hover:bg-[#282834] hover:text-white px-4 py-2.5 rounded-xs border border-[#c2a275]/40 transition-colors shadow-xs cursor-pointer font-semibold"
-              title="Descargar fotos y archivos de este avance en Google Drive"
-            >
-              <FolderOpen className="w-3.5 h-3.5 text-teal-uno" />
-              <span className="font-label-caps uppercase text-[11px] tracking-wider">
-                Drive ({activeDate.slice(0, 6)})
-              </span>
-              <ExternalLink className="w-3 h-3 opacity-70" />
-            </a>
-          </div>
-        </div>
-
         {/* VIEW MODE 1: FICHA COMPLETA (FOTOS 360 + FOTOS ENCUADRADAS) */}
         {viewMode === "all" && (
           <div className="space-y-12">
