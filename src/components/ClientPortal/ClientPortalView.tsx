@@ -352,7 +352,7 @@ export default function ClientPortalView({
                 <span>Seleccionar Ficha de Avance de Obra</span>
               </div>
               <p className="text-xs text-[#e4ded5]/70 mt-0.5">
-                Al seleccionar una fecha se sincroniza la Galería de Fotos 360°, la Galería de Fotos Encuadradas y las métricas de obra.
+                Al seleccionar una fecha se sincroniza la Galería de Fotos 360° y la Galería de Fotos Encuadradas.
               </p>
             </div>
 
