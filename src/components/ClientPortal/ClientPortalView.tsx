@@ -1,30 +1,19 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
   Building2, 
   MapPin, 
   Calendar, 
-  Ruler, 
-  UserCheck, 
   Phone, 
-  Mail, 
   MessageSquare, 
   FileText, 
   LogOut, 
   Compass, 
-  Hammer, 
   Camera, 
-  ShieldCheck, 
-  ExternalLink,
   ChevronDown,
   Sparkles,
   Award,
-  RotateCcw,
-  Layers,
-  FolderOpen,
-  ArrowUpRight,
   CheckCircle2,
-  Globe,
   X
 } from "lucide-react";
 import { ClientProject, Tour360Folder } from "../../types/clientPortal";
@@ -504,7 +493,6 @@ export default function ClientPortalView({
 
               <CloudPanoViewer
                 tours={tours}
-                propertyName={currentProject.propertyName}
                 selectedTourId={selectedTourId}
                 hideTourSelector={true}
                 onSelectTourId={handleSelectTour}
@@ -516,7 +504,6 @@ export default function ClientPortalView({
             <section className="space-y-5 text-left">
               <PhotoReportsGrid
                 photoReports={currentProject.photoReports}
-                propertyName={currentProject.propertyName}
                 selectedPeriod={activeDate}
                 onSelectPeriod={handleSelectPeriod}
                 onOpenAiAssistant={() => setShowAIAssistant(true)}
@@ -552,7 +539,6 @@ export default function ClientPortalView({
 
             <CloudPanoViewer
               tours={tours}
-              propertyName={currentProject.propertyName}
               selectedTourId={selectedTourId}
               hideTourSelector={true}
               onSelectTourId={handleSelectTour}
@@ -572,7 +558,6 @@ export default function ClientPortalView({
           >
             <PhotoReportsGrid
               photoReports={currentProject.photoReports}
-              propertyName={currentProject.propertyName}
               selectedPeriod={activeDate}
               onSelectPeriod={handleSelectPeriod}
               onOpenAiAssistant={() => setShowAIAssistant(true)}

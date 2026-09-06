@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { 
-  Compass, 
   Calendar, 
   Layers
 } from "lucide-react";
@@ -9,7 +8,6 @@ import Interactive360Canvas from "./Interactive360Canvas";
 
 interface CloudPanoViewerProps {
   tours: Tour360Folder[];
-  propertyName: string;
   selectedTourId?: string;
   hideTourSelector?: boolean;
   onSelectTourId?: (tourId: string) => void;
@@ -19,7 +17,6 @@ interface CloudPanoViewerProps {
 
 export default function CloudPanoViewer({
   tours,
-  propertyName,
   selectedTourId: externalSelectedTourId,
   hideTourSelector = false,
   onSelectTourId,
@@ -130,8 +127,6 @@ export default function CloudPanoViewer({
         <Interactive360Canvas
           scenes={activeTour.scenes}
           dateTitle={activeTour.date}
-          phaseName={activeTour.phaseName}
-          notes={activeTour.notes}
           isFullscreen={isFullscreen}
           onToggleFullscreen={toggleFullscreen}
         />

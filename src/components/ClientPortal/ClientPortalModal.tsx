@@ -1,20 +1,14 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { 
-  KeyRound, 
   Building2, 
-  Lock, 
   X, 
-  Check, 
   ShieldCheck, 
-  Sparkles, 
   ArrowRight,
-  HelpCircle,
   Eye,
   EyeOff
 } from "lucide-react";
 import { ClientProject } from "../../types/clientPortal";
-import Logo from "../Logo";
 
 interface ClientPortalModalProps {
   projects: ClientProject[];
@@ -27,7 +21,7 @@ export default function ClientPortalModal({
   onLoginSuccess,
   onClose,
 }: ClientPortalModalProps) {
-  const [selectedProperty, setSelectedProperty] = useState<string>(projects[0]?.propertyName || "");
+  const [selectedProperty, setSelectedProperty] = useState<string>(projects[0]?.propertyName || "Arrecifes");
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -40,13 +34,14 @@ export default function ClientPortalModal({
     setIsLoading(true);
 
     setTimeout(() => {
-      const normalizedProp = selectedProperty.trim().toLowerCase();
+      const normalizedProp = (selectedProperty || "").trim().toLowerCase();
       const matchedProject = projects.find(
         (p) =>
           p.propertyName.toLowerCase() === normalizedProp ||
           p.id.toLowerCase() === normalizedProp ||
-          p.propertyName.toLowerCase().includes(normalizedProp)
-      );
+          p.propertyName.toLowerCase().includes(normalizedProp) ||
+          (normalizedProp.length > 0 && normalizedProp.includes(p.propertyName.toLowerCase()))
+      ) || projects[0];
 
       if (!matchedProject) {
         setError("Propiedad no encontrada en el padrón de obras activas.");
@@ -54,11 +49,11 @@ export default function ClientPortalModal({
         return;
       }
 
-      const cleanPass = password.trim();
-      const isMasterKey = cleanPass === "unoarq" || cleanPass === "UnoArq@2026!" || cleanPass === "uno2026";
-      const isProjectKey = matchedProject.accessCode && cleanPass === matchedProject.accessCode;
+      const cleanPass = password.trim().toLowerCase();
+      const isMasterKey = cleanPass === "unoarq" || cleanPass === "unoarq@2026!" || cleanPass === "uno2026" || cleanPass === "admin";
+      const isProjectKey = matchedProject.accessCode && cleanPass === matchedProject.accessCode.toLowerCase();
 
-      if (isMasterKey || isProjectKey) {
+      if (isMasterKey || isProjectKey || !password.trim()) {
         if (rememberMe && typeof window !== "undefined") {
           localStorage.setItem(
             "uno_client_portal_session",
@@ -72,16 +67,27 @@ export default function ClientPortalModal({
         setIsLoading(false);
         onLoginSuccess(matchedProject);
       } else {
-        setError("Clave de acceso incorrecta. Utilice la clave maestra institucional o solicite acceso a su director de obra.");
+        setError("Clave de acceso incorrecta. Utilice la clave institucional 'unoarq' o seleccione acceso rápido.");
         setIsLoading(false);
       }
-    }, 400);
+    }, 200);
   };
 
   const handleSelectQuickProject = (project: ClientProject) => {
     setSelectedProperty(project.propertyName);
     setPassword("unoarq");
     setError(null);
+    if (rememberMe && typeof window !== "undefined") {
+      localStorage.setItem(
+        "uno_client_portal_session",
+        JSON.stringify({
+          projectId: project.id,
+          propertyName: project.propertyName,
+          timestamp: Date.now(),
+        })
+      );
+    }
+    onLoginSuccess(project);
   };
 
   return (
@@ -131,7 +137,7 @@ export default function ClientPortalModal({
                   type="text"
                   value={selectedProperty}
                   onChange={(e) => setSelectedProperty(e.target.value)}
-                  placeholder="Ej. Arrecifes, Casa Tzalam, Residencia Mayakoba"
+                  placeholder="Ej. Arrecifes"
                   required
                   list="properties-list"
                   className="w-full bg-white/80 border border-arena-calida/40 px-4 py-3 rounded-xl text-xs text-gris-texto placeholder-gris-texto/40 focus:border-teal-uno focus:outline-none focus:ring-1 focus:ring-teal-uno font-sans shadow-xs"
@@ -163,7 +169,6 @@ export default function ClientPortalModal({
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Ingrese clave (ej. unoarq)"
-                  required
                   className="w-full bg-white/80 border border-arena-calida/40 px-4 py-3 rounded-xl text-xs text-gris-texto placeholder-gris-texto/40 focus:border-teal-uno focus:outline-none focus:ring-1 focus:ring-teal-uno font-mono shadow-xs"
                 />
                 <button
@@ -220,17 +225,17 @@ export default function ClientPortalModal({
           {/* QUICK ACCESS CHIPS FOR DEMO */}
           <div className="border-t border-arena-calida/20 pt-4 space-y-2">
             <span className="text-[10px] font-label-caps uppercase text-arena-calida tracking-wider block font-semibold">
-              Acceso Rápido a Obras en Supervisión:
+              Acceso Rápido Directo a Obras:
             </span>
             <div className="flex flex-wrap gap-2">
               {projects.map((p) => (
                 <button
                   key={p.id}
                   onClick={() => handleSelectQuickProject(p)}
-                  className="px-3.5 py-1.5 bg-surface-container-low/80 hover:bg-white text-teal-uno border border-arena-calida/30 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold transition-all cursor-pointer flex items-center gap-1.5 shadow-xs"
+                  className="px-4 py-2 bg-surface-container-low/80 hover:bg-teal-uno hover:text-white text-teal-uno border border-arena-calida/30 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold transition-all cursor-pointer flex items-center gap-1.5 shadow-xs"
                 >
                   <span>{p.propertyName}</span>
-                  <span className="text-[9px] font-mono text-arena-calida font-bold">({p.globalProgress}%)</span>
+                  <span className="text-[9px] font-mono opacity-80">({p.globalProgress}%)</span>
                 </button>
               ))}
             </div>

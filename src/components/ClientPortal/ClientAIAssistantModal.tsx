@@ -1,21 +1,15 @@
-import React, { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { useState, useRef, useEffect } from "react";
+import { motion } from "motion/react";
 import { 
   Sparkles, 
   Send, 
   X, 
   Bot, 
   User, 
-  MessageSquare, 
   FolderOpen, 
-  Compass, 
-  ExternalLink,
-  Phone,
-  RotateCcw,
-  CheckCircle2,
-  Building2,
-  HelpCircle,
-  FileText
+  ExternalLink, 
+  Phone, 
+  HelpCircle 
 } from "lucide-react";
 import { ClientProject } from "../../types/clientPortal";
 

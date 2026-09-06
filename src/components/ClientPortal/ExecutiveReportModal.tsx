@@ -1,19 +1,12 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { motion } from "motion/react";
 import { 
   Printer, 
-  Download, 
   X, 
   ShieldCheck, 
-  Building2, 
-  Calendar, 
-  MapPin, 
-  UserCheck, 
-  FileText,
-  Award
+  FileText
 } from "lucide-react";
 import { ClientProject } from "../../types/clientPortal";
-import Logo from "../Logo";
 
 interface ExecutiveReportModalProps {
   project: ClientProject;

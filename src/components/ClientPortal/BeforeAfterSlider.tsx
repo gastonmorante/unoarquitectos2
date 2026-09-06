@@ -1,24 +1,17 @@
 import React, { useState, useRef, useEffect } from "react";
-import { motion } from "motion/react";
 import { 
   SplitSquareVertical, 
-  MapPin, 
-  Calendar, 
-  Sparkles, 
-  Layers, 
-  ArrowLeftRight,
-  Info
+  ArrowLeftRight
 } from "lucide-react";
 import { BeforeAfterItem } from "../../types/clientPortal";
 
 interface BeforeAfterSliderProps {
   items: BeforeAfterItem[];
-  propertyName: string;
+  propertyName?: string;
 }
 
 export default function BeforeAfterSlider({
   items,
-  propertyName,
 }: BeforeAfterSliderProps) {
   const [activeItemId, setActiveItemId] = useState<string>(items[0]?.id || "");
   const [sliderPosition, setSliderPosition] = useState<number>(50); // percentage
@@ -92,7 +85,7 @@ export default function BeforeAfterSlider({
                     : "bg-surface-container-low text-gris-texto hover:bg-white border border-arena-calida/30"
                 }`}
               >
-                {it.location}
+                {it.zone}
               </button>
             ))}
           </div>
@@ -109,46 +102,50 @@ export default function BeforeAfterSlider({
         {/* AFTER IMAGE (UNDERNEATH) */}
         <img
           src={activeItem.afterImage}
-          alt={activeItem.afterDate}
-          className="absolute inset-0 w-full h-full object-cover"
+          alt={`Estado Actual - ${activeItem.title}`}
+          className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
         />
+        <div className="absolute top-4 right-4 bg-teal-uno/90 backdrop-blur-md text-white text-xs font-label-caps font-bold px-3 py-1.5 rounded-full shadow-md z-10 border border-white/20">
+          Avance Reciente: {activeItem.afterDate}
+        </div>
 
         {/* BEFORE IMAGE (CLIPPED ON TOP) */}
         <div
-          className="absolute inset-0 overflow-hidden"
+          className="absolute inset-0 overflow-hidden select-none pointer-events-none"
           style={{ width: `${sliderPosition}%` }}
         >
           <img
             src={activeItem.beforeImage}
-            alt={activeItem.beforeDate}
-            className="absolute inset-0 w-full h-full object-cover max-w-none"
-            style={{ width: containerRef.current?.clientWidth || "100%" }}
+            alt={`Estado Previo - ${activeItem.title}`}
+            className="absolute inset-0 w-full h-full object-cover max-w-none select-none pointer-events-none"
+            style={{ width: containerRef.current ? `${containerRef.current.clientWidth}px` : "100%" }}
           />
-        </div>
-
-        {/* DRAG HANDLE DIVIDER */}
-        <div
-          className="absolute top-0 bottom-0 w-1 bg-white shadow-2xl z-20 flex items-center justify-center -translate-x-1/2"
-          style={{ left: `${sliderPosition}%` }}
-        >
-          <div className="w-8 h-8 rounded-full bg-teal-uno text-white flex items-center justify-center shadow-xl border-2 border-white">
-            <ArrowLeftRight className="w-4 h-4" />
+          <div className="absolute top-4 left-4 bg-terracota-uno/90 backdrop-blur-md text-white text-xs font-label-caps font-bold px-3 py-1.5 rounded-full shadow-md z-10 border border-white/20">
+            Fase Previa: {activeItem.beforeDate}
           </div>
         </div>
 
-        {/* FLOATING DATE BADGES */}
-        <div className="absolute top-4 left-4 z-10 px-3 py-1 bg-black/70 backdrop-blur-md rounded-full text-white text-[10px] font-label-caps uppercase tracking-wider font-semibold border border-white/20">
-          Antes: {activeItem.beforeDate}
-        </div>
-        <div className="absolute top-4 right-4 z-10 px-3 py-1 bg-black/70 backdrop-blur-md rounded-full text-white text-[10px] font-label-caps uppercase tracking-wider font-semibold border border-white/20">
-          Avance: {activeItem.afterDate}
+        {/* DIVIDER HANDLE */}
+        <div
+          className="absolute top-0 bottom-0 w-1 bg-white shadow-[0_0_10px_rgba(0,0,0,0.5)] cursor-ew-resize flex items-center justify-center -ml-0.5 z-20"
+          style={{ left: `${sliderPosition}%` }}
+        >
+          <div className="w-10 h-10 rounded-full bg-teal-uno text-white shadow-xl flex items-center justify-center border-2 border-white">
+            <ArrowLeftRight className="w-5 h-5 animate-pulse" />
+          </div>
         </div>
       </div>
 
-      {/* TECHNICAL DESCRIPTION */}
-      <p className="text-xs sm:text-sm text-gris-texto font-body-md leading-relaxed border-t border-arena-calida/20 pt-4">
-        {activeItem.description}
-      </p>
+      {/* DESCRIPTION FOOTER */}
+      <div className="bg-surface-container-lowest border border-arena-calida/20 p-4 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-sm">
+        <p className="text-gris-texto leading-relaxed">
+          <span className="font-semibold text-teal-uno">Zona: {activeItem.zone} — </span>
+          {activeItem.description}
+        </p>
+        <span className="text-xs text-arena-calida font-label-caps uppercase tracking-wider whitespace-nowrap bg-white px-3 py-1.5 rounded-full border border-arena-calida/30 shadow-xs self-start sm:self-auto">
+          Arrastra para comparar
+        </span>
+      </div>
     </div>
   );
 }

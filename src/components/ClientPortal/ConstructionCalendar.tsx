@@ -1,13 +1,8 @@
-import React, { useState } from 'react';
-import { motion } from 'motion/react';
+import { useState } from 'react';
 import { 
   Calendar as CalendarIcon, 
   ChevronLeft, 
-  ChevronRight, 
-  Camera, 
-  Compass, 
-  RotateCcw,
-  CalendarCheck
+  ChevronRight 
 } from 'lucide-react';
 import { ProgressMilestone } from '../../types/clientPortal';
 
@@ -15,8 +10,6 @@ interface ConstructionCalendarProps {
   milestones: ProgressMilestone[];
   selectedMilestone: ProgressMilestone;
   onSelectMilestone: (milestone: ProgressMilestone) => void;
-  onViewTour?: () => void;
-  onViewPhotos?: () => void;
 }
 
 // 2026 Monthly calendar configurations (August to December)
@@ -34,8 +27,6 @@ export default function ConstructionCalendar({
   milestones,
   selectedMilestone,
   onSelectMilestone,
-  onViewTour,
-  onViewPhotos,
 }: ConstructionCalendarProps) {
   const [activeMonthIndex, setActiveMonthIndex] = useState<number>(() => {
     return selectedMilestone ? selectedMilestone.monthIndex : 1;
@@ -105,7 +96,7 @@ export default function ConstructionCalendar({
       {isViewingHistorical && (
         <div className="bg-arena-calida/15 border border-arena-calida/40 p-3.5 rounded-2xl flex items-center justify-between gap-3 text-xs">
           <span className="text-arena-calida font-semibold">
-            Consultando registro histórico del {selectedMilestone.date} ({selectedMilestone.progress}% avance).
+            Consultando registro histórico del {selectedMilestone.displayDate} ({selectedMilestone.progress}% avance).
           </span>
           <button
             onClick={handleResetToLatest}

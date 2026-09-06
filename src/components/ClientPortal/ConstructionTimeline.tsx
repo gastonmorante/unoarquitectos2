@@ -1,16 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "motion/react";
 import { 
   CheckCircle2, 
   Clock, 
   Calendar, 
-  ShieldCheck, 
   ChevronDown, 
   ChevronUp, 
-  FileCheck2, 
-  Hammer, 
-  Award,
-  Layers
+  Hammer 
 } from "lucide-react";
 import { ConstructionPhase, PhaseStatus } from "../../types/clientPortal";
 
@@ -157,7 +153,7 @@ export default function ConstructionTimeline({
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 flex-wrap mb-1">
                       {getStatusBadge(phase.status)}
-                      <span className="text-[11px] font-mono text-gris-texto/60">{phase.period}</span>
+                      <span className="text-[11px] font-mono text-gris-texto/60">{phase.targetDates}</span>
                     </div>
                     <h4 className="font-headline-md text-sm sm:text-base font-semibold text-teal-uno uppercase truncate">
                       {phase.title}
@@ -177,22 +173,12 @@ export default function ConstructionTimeline({
               {isExpanded && (
                 <div className="px-5 sm:px-6 pb-6 pt-2 border-t border-arena-calida/20 space-y-4 text-xs">
                   <p className="text-gris-texto leading-relaxed font-body-md text-sm">
-                    {phase.description}
+                    {phase.supervisionNotes}
                   </p>
 
-                  {/* Tasks Checklist */}
-                  <div className="space-y-2 bg-surface-container-low/60 p-4 rounded-2xl border border-arena-calida/20">
-                    <span className="text-[10px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mb-2">
-                      Conceptos de Obra Verificados:
-                    </span>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      {phase.tasks.map((task, i) => (
-                        <div key={i} className="flex items-center gap-2 text-gris-texto">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-teal-uno flex-shrink-0" />
-                          <span className="font-sans text-xs">{task}</span>
-                        </div>
-                      ))}
-                    </div>
+                  <div className="flex items-center gap-2 text-arena-calida font-label-caps uppercase text-[11px] font-semibold">
+                    <span>Inspeccionado por:</span>
+                    <strong className="text-teal-uno">{phase.inspectedBy}</strong>
                   </div>
                 </div>
               )}

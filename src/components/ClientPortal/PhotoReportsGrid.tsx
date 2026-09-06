@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
   Camera, 
@@ -11,18 +11,14 @@ import {
   X, 
   Calendar, 
   MapPin, 
-  Tag, 
-  FileText,
-  SlidersHorizontal,
-  Maximize2,
-  FolderOpen,
-  ExternalLink
+  Maximize2, 
+  FolderOpen, 
+  ExternalLink 
 } from "lucide-react";
-import { PhotoReport, PhotoCategory } from "../../types/clientPortal";
+import { PhotoReport } from "../../types/clientPortal";
 
 interface PhotoReportsGridProps {
   photoReports: PhotoReport[];
-  propertyName: string;
   selectedPeriod?: string;
   onSelectPeriod?: (period: string) => void;
   onOpenAiAssistant?: () => void;
@@ -30,7 +26,6 @@ interface PhotoReportsGridProps {
 
 export default function PhotoReportsGrid({
   photoReports,
-  propertyName,
   selectedPeriod: externalSelectedPeriod,
   onSelectPeriod,
   onOpenAiAssistant,

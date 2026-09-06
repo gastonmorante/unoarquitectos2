@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { 
-  RotateCw, 
   ZoomIn, 
   ZoomOut, 
   Maximize2, 
@@ -10,18 +9,14 @@ import {
   Layers, 
   Play, 
   Pause, 
-  Sparkles,
-  ChevronLeft,
-  ChevronRight,
-  Info
+  ChevronLeft, 
+  ChevronRight 
 } from "lucide-react";
 import { Scene360Item } from "../../types/clientPortal";
 
 interface Interactive360CanvasProps {
   scenes: Scene360Item[];
   dateTitle: string;
-  phaseName: string;
-  notes?: string;
   isFullscreen: boolean;
   onToggleFullscreen: () => void;
 }
@@ -29,8 +24,6 @@ interface Interactive360CanvasProps {
 export default function Interactive360Canvas({
   scenes,
   dateTitle,
-  phaseName,
-  notes,
   isFullscreen,
   onToggleFullscreen,
 }: Interactive360CanvasProps) {
@@ -67,7 +60,6 @@ export default function Interactive360Canvas({
   const latRef = useRef(0);
   const phiRef = useRef(0);
   const thetaRef = useRef(0);
-  const targetFovRef = useRef(75);
 
   const activeScene = scenes[activeSceneIndex] || scenes[0];
 
@@ -226,7 +218,6 @@ export default function Interactive360Canvas({
     const fov = cameraRef.current.fov + e.deltaY * 0.05;
     cameraRef.current.fov = THREE.MathUtils.clamp(fov, 35, 95);
     cameraRef.current.updateProjectionMatrix();
-    targetFovRef.current = cameraRef.current.fov;
   };
 
   const handleZoom = (direction: "in" | "out") => {
