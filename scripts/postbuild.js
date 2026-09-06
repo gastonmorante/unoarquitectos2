@@ -72,12 +72,13 @@ if (fs.existsSync(assetsDir)) {
   }
 }
 
-// 4. Create dist-hostinger.zip
-console.log('Generating dist-hostinger.zip...');
+// 4. Create deployment zip packages
+console.log('Generating deployment zip packages (dist-hostgator.zip, dist.zip)...');
 try {
-  execSync('powershell -Command "Compress-Archive -Path dist\\* -DestinationPath dist-hostinger.zip -Force"');
-  const stat = fs.statSync('dist-hostinger.zip');
-  console.log(`dist-hostinger.zip created successfully (${(stat.size / 1024 / 1024).toFixed(2)} MB).`);
+  execSync('powershell -Command "Compress-Archive -Path dist\\* -DestinationPath dist-hostgator.zip -Force"');
+  execSync('powershell -Command "Compress-Archive -Path dist\\* -DestinationPath dist.zip -Force"');
+  const stat = fs.statSync('dist-hostgator.zip');
+  console.log(`dist-hostgator.zip & dist.zip created successfully (${(stat.size / 1024 / 1024).toFixed(2)} MB).`);
 } catch (err) {
   console.error('Error generating zip:', err);
 }
