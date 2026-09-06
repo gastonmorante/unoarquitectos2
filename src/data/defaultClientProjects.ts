@@ -33,139 +33,139 @@ export const defaultClientProjects: ClientProject[] = [
         embedCode: '',
         folderUrl: "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link",
         notes: "Levantamiento 360° más reciente tras culminación de pasta de Chukum natural en doble altura (6.40m libres), colocación de placas de mármol Santo Tomás (1.20x2.40m) en vestíbulos y preparación para carpintería maciza de Tzalam.",
-        thumbnail: "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_01.jpg",
+        thumbnail: "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_01.jpg",
         scenes: [
         {
                 "id": "scene-0509-01",
                 "title": "Punto 360° #01 • 05 Sep",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_01.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_01.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_01.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_01.jpg",
                 "roomName": "Zona #01"
         },
         {
                 "id": "scene-0509-02",
                 "title": "Punto 360° #02 • 05 Sep",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_02.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_02.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_02.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_02.jpg",
                 "roomName": "Zona #02"
         },
         {
                 "id": "scene-0509-03",
                 "title": "Punto 360° #03 • 05 Sep",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_03.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_03.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_03.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_03.jpg",
                 "roomName": "Zona #03"
         },
         {
                 "id": "scene-0509-04",
                 "title": "Punto 360° #04 • 05 Sep",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_04.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_04.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_04.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_04.jpg",
                 "roomName": "Zona #04"
         },
         {
                 "id": "scene-0509-05",
                 "title": "Punto 360° #05 • 05 Sep",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_05.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_05.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_05.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_05.jpg",
                 "roomName": "Zona #05"
         },
         {
                 "id": "scene-0509-06",
                 "title": "Punto 360° #06 • 05 Sep",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_06.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_06.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_06.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_06.jpg",
                 "roomName": "Zona #06"
         },
         {
                 "id": "scene-0509-07",
                 "title": "Punto 360° #07 • 05 Sep",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_07.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_07.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_07.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_07.jpg",
                 "roomName": "Zona #07"
         },
         {
                 "id": "scene-0509-08",
                 "title": "Punto 360° #08 • 05 Sep",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_08.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_08.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_08.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_08.jpg",
                 "roomName": "Zona #08"
         },
         {
                 "id": "scene-0509-09",
                 "title": "Punto 360° #09 • 05 Sep",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_09.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_09.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_09.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_09.jpg",
                 "roomName": "Zona #09"
         },
         {
                 "id": "scene-0509-10",
                 "title": "Punto 360° #10 • 05 Sep",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_10.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_10.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_10.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_10.jpg",
                 "roomName": "Zona #10"
         },
         {
                 "id": "scene-0509-11",
                 "title": "Punto 360° #11 • 05 Sep",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_11.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_11.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_11.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_11.jpg",
                 "roomName": "Zona #11"
         },
         {
                 "id": "scene-0509-12",
                 "title": "Punto 360° #12 • 05 Sep",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_12.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_12.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_12.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_12.jpg",
                 "roomName": "Zona #12"
         },
         {
                 "id": "scene-0509-13",
                 "title": "Punto 360° #13 • 05 Sep",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_13.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_13.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_13.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_13.jpg",
                 "roomName": "Zona #13"
         },
         {
                 "id": "scene-0509-14",
                 "title": "Punto 360° #14 • 05 Sep",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_14.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_14.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_14.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_14.jpg",
                 "roomName": "Zona #14"
         },
         {
                 "id": "scene-0509-15",
                 "title": "Punto 360° #15 • 05 Sep",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_15.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_15.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_15.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_15.jpg",
                 "roomName": "Zona #15"
         },
         {
                 "id": "scene-0509-16",
                 "title": "Punto 360° #16 • 05 Sep",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_16.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_16.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_16.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_16.jpg",
                 "roomName": "Zona #16"
         },
         {
                 "id": "scene-0509-17",
                 "title": "Punto 360° #17 • 05 Sep",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_17.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_17.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_17.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_17.jpg",
                 "roomName": "Zona #17"
         },
         {
                 "id": "scene-0509-18",
                 "title": "Punto 360° #18 • 05 Sep",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_18.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_18.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_18.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_18.jpg",
                 "roomName": "Zona #18"
         },
         {
                 "id": "scene-0509-19",
                 "title": "Punto 360° #19 • 05 Sep",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_19.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_19.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_19.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_19.jpg",
                 "roomName": "Zona #19"
         }
 ]
@@ -179,76 +179,76 @@ export const defaultClientProjects: ClientProject[] = [
         embedCode: '',
         folderUrl: "https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link",
         notes: "Supervisión 360° de canalizaciones hidrosanitarias presurizadas a 7 kg/cm², cableado domótico Lutron Homeworks QSX y ductería oculta de aire acondicionado VRF inverter Daikin.",
-        thumbnail: "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_01.jpg",
+        thumbnail: "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_01.jpg",
         scenes: [
         {
                 "id": "scene-2708-01",
                 "title": "Punto 360° #01 • 27 Ago",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_01.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_01.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_01.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_01.jpg",
                 "roomName": "Zona #01"
         },
         {
                 "id": "scene-2708-02",
                 "title": "Punto 360° #02 • 27 Ago",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_02.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_02.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_02.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_02.jpg",
                 "roomName": "Zona #02"
         },
         {
                 "id": "scene-2708-03",
                 "title": "Punto 360° #03 • 27 Ago",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_03.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_03.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_03.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_03.jpg",
                 "roomName": "Zona #03"
         },
         {
                 "id": "scene-2708-04",
                 "title": "Punto 360° #04 • 27 Ago",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_04.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_04.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_04.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_04.jpg",
                 "roomName": "Zona #04"
         },
         {
                 "id": "scene-2708-05",
                 "title": "Punto 360° #05 • 27 Ago",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_05.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_05.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_05.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_05.jpg",
                 "roomName": "Zona #05"
         },
         {
                 "id": "scene-2708-06",
                 "title": "Punto 360° #06 • 27 Ago",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_06.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_06.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_06.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_06.jpg",
                 "roomName": "Zona #06"
         },
         {
                 "id": "scene-2708-07",
                 "title": "Punto 360° #07 • 27 Ago",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_07.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_07.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_07.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_07.jpg",
                 "roomName": "Zona #07"
         },
         {
                 "id": "scene-2708-08",
                 "title": "Punto 360° #08 • 27 Ago",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_08.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_08.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_08.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_08.jpg",
                 "roomName": "Zona #08"
         },
         {
                 "id": "scene-2708-09",
                 "title": "Punto 360° #09 • 27 Ago",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_09.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_09.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_09.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_09.jpg",
                 "roomName": "Zona #09"
         },
         {
                 "id": "scene-2708-10",
                 "title": "Punto 360° #10 • 27 Ago",
-                "equirectangularUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_10.jpg",
-                "thumbnailUrl": "/assets/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_10.jpg",
+                "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_10.jpg",
+                "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_10.jpg",
                 "roomName": "Zona #10"
         }
 ]
@@ -348,7 +348,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Levantamiento de Estructura Portante & Vestíbulo Central",
         date: "05 Septiembre 2026",
         location: "Planta Baja - Eje Central A-D",
-        imageUrl: "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_01.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_01.jpg",
         technicalNote: "Reframe arquitectónico a 2 puntos de fuga. Inspección de alineación vertical en columnas de concreto aparente y claros de doble altura.",
         isReframed360: true
       },
@@ -359,7 +359,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Encofrado y Cimbrado de Muros Perimetrales",
         date: "05 Septiembre 2026",
         location: "Planta Baja - Muros Perimetrales",
-        imageUrl: "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_02.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_02.jpg",
         technicalNote: "Verificación de plomada y estanqueidad en encofrados para vaciado de concreto f'c=250 kg/cm² con agregados locales.",
         isReframed360: true
       },
@@ -370,7 +370,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Desplante de Losa de Entrepiso & Apuntalamiento",
         date: "05 Septiembre 2026",
         location: "Nivel 1 - Losa de Entrepiso",
-        imageUrl: "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_03.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_03.jpg",
         technicalNote: "Supervisión de puntales metálicos y vigas madrina para soporte de carga de losa aligerada con casetón.",
         isReframed360: true
       },
@@ -381,7 +381,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Canalizaciones Hidráulicas & Eléctricas Ahogadas",
         date: "05 Septiembre 2026",
         location: "Área Técnica - Núcleo Húmedo",
-        imageUrl: "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_04.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_04.jpg",
         technicalNote: "Prueba de hermeticidad en tuberías termofusionadas PPR y tubería conduit tipo pesado para domótica.",
         isReframed360: true
       },
@@ -392,7 +392,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Cimbrado de Voladizos & Terrazas Exteriores",
         date: "05 Septiembre 2026",
         location: "Terraza Volada - Nivel 2",
-        imageUrl: "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_05.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_05.jpg",
         technicalNote: "Revisión estructural del volado de 3.20m sin apoyos intermedios según memoria de cálculo sísmico-viento.",
         isReframed360: true
       },
@@ -403,7 +403,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Armado de Acero en Trabes de Carga Principales",
         date: "05 Septiembre 2026",
         location: "Planta Alta - Estructura Portante",
-        imageUrl: "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_06.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_06.jpg",
         technicalNote: "Revisión de traslapes de varilla corrugada grado 42 y estribado cerrado en zonas de confinamiento.",
         isReframed360: true
       },
@@ -414,7 +414,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Paso de Ductos y Bajantes Pluviales Embutidas",
         date: "05 Septiembre 2026",
         location: "Plafones Técnicos & Muros",
-        imageUrl: "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_07.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_07.jpg",
         technicalNote: "Integración de bajantes pluviales sifónicas conectadas a sistema de captación y filtración.",
         isReframed360: true
       },
@@ -425,7 +425,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Vaciado y Curado de Elementos Estructurales",
         date: "05 Septiembre 2026",
         location: "Planta Baja - Fachada Principal",
-        imageUrl: "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_08.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_08.jpg",
         technicalNote: "Aplicación de membrana de curado base agua para control de retracción plástica en clima cálido subhúmedo.",
         isReframed360: true
       },
@@ -436,7 +436,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Desplante de Muros Interiores & Vanos de Ventanería",
         date: "05 Septiembre 2026",
         location: "Recámara 1 - Planta Alta",
-        imageUrl: "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_09.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_09.jpg",
         technicalNote: "Preparación de boquillas y vanos para cancelería Eurovent con tolerancias milimétricas.",
         isReframed360: true
       },
@@ -447,7 +447,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Muros de Bloque Macizo & Cadenas de Cerramiento",
         date: "05 Septiembre 2026",
         location: "Pasillo de Distribución",
-        imageUrl: "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_10.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_10.jpg",
         technicalNote: "Asentado de bloque con mortero cemento-arena 1:3 y refuerzo horizontal con escalerilla galvanizada.",
         isReframed360: true
       },
@@ -458,7 +458,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Excavación y Conformación de Alberca Cenote",
         date: "05 Septiembre 2026",
         location: "Área Exterior - Alberca Cenote 48m²",
-        imageUrl: "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_11.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_11.jpg",
         technicalNote: "Armado de parrilla doble de acero #3 y preparación para concreto lanzado (gunite) con acabado Chukum.",
         isReframed360: true
       },
@@ -469,7 +469,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Revisión de Plomadas y Escuadras en Muros Maestros",
         date: "05 Septiembre 2026",
         location: "Master Suite - Nivel 2",
-        imageUrl: "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_12.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_12.jpg",
         technicalNote: "Control topográfico con nivel láser rotativo para garantizar planeidad previa al aplanado fino.",
         isReframed360: true
       },
@@ -480,7 +480,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Tablero Eléctrico Principal & Nodos Lutron",
         date: "05 Septiembre 2026",
         location: "Centro de Cargas & Domótica",
-        imageUrl: "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_13.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_13.jpg",
         technicalNote: "Distribución de circuitos balanceados y canalización de buses QSX para control de iluminación y cortinas.",
         isReframed360: true
       },
@@ -491,7 +491,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Estructuración de Voladizos & Pérgolas Exteriores",
         date: "05 Septiembre 2026",
         location: "Terraza Posterior & Deck",
-        imageUrl: "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_14.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_14.jpg",
         technicalNote: "Anclaje de placas de acero inoxidable para fijación de vigas de madera dura regional Tzalam.",
         isReframed360: true
       },
@@ -502,7 +502,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Muestras de Pasta de Chukum & Selladores Mate",
         date: "05 Septiembre 2026",
         location: "Área de Pruebas de Acabados",
-        imageUrl: "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_15.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_15.jpg",
         technicalNote: "Preparación artesanal de caldo de corteza de Chukum con polvo de piedra caliza y cemento blanco.",
         isReframed360: true
       },
@@ -513,7 +513,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Habilitado de Acero en Elementos de Confinamiento",
         date: "05 Septiembre 2026",
         location: "Planta Baja - Patio Interior",
-        imageUrl: "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_16.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_16.jpg",
         technicalNote: "Armado de castillos de sección especial para recibir ventanería de piso a techo sin marco visible.",
         isReframed360: true
       },
@@ -524,7 +524,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Verificación de Niveles de Piso y Pendientes Pluviales",
         date: "05 Septiembre 2026",
         location: "Cubierta / Azotea Técnica",
-        imageUrl: "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_17.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_17.jpg",
         technicalNote: "Pendientes del 2% hacia coladeras perimetrales con impermeabilización elastomérica reforzada.",
         isReframed360: true
       },
@@ -535,7 +535,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Levantamiento de Medidas para Cancelería Antihuracán",
         date: "05 Septiembre 2026",
         location: "Vanos Fachada Sur",
-        imageUrl: "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_18.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_18.jpg",
         technicalNote: "Comprobación dimensional con distanciómetro láser para cristales laminados de 12mm templado.",
         isReframed360: true
       },
@@ -546,7 +546,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Montaje de Desagües y Sistema de Filtración",
         date: "05 Septiembre 2026",
         location: "Perímetro de Cimentación",
-        imageUrl: "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_19.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_19.jpg",
         technicalNote: "Instalación de trampas de grasa y líneas de drenaje conectadas a la planta de tratamiento biológica.",
         isReframed360: true
       },
@@ -557,7 +557,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Supervisión General Quincenal - 05 Septiembre 2026",
         date: "05 Septiembre 2026",
         location: "Perspectiva General de Obra",
-        imageUrl: "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_20.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_20.jpg",
         technicalNote: "Avance global certificado al 72%. Calidad de ejecución validada conforme a normativa constructiva vigente.",
         isReframed360: true
       },
@@ -570,7 +570,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Trazo, Nivelación y Excavación de Cimentación",
         date: "27 Agosto 2026",
         location: "Cimentación - Desplante General",
-        imageUrl: "/assets/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_01.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_01.jpg",
         technicalNote: "Apertura de cepas sobre estrato de roca caliza sana validada con estudio de resistividad eléctrica.",
         isReframed360: true
       },
@@ -581,7 +581,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Armado de Acero en Zapatas Corridas y Aisladas",
         date: "27 Agosto 2026",
         location: "Cimentación - Ejes A-F",
-        imageUrl: "/assets/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_02.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_02.jpg",
         technicalNote: "Colocación de silletas de mortero para garantizar recubrimiento mínimo de 5cm de concreto en acero.",
         isReframed360: true
       },
@@ -592,7 +592,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Colado de Concreto Estructural f'c=250 kg/cm²",
         date: "27 Agosto 2026",
         location: "Zapatas y Trabes de Liga",
-        imageUrl: "/assets/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_03.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_03.jpg",
         technicalNote: "Toma de cilindros de prueba en campo para ensaye a compresión a 7, 14 y 28 días con revenimiento 14cm.",
         isReframed360: true
       },
@@ -603,7 +603,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Muros de Contención y Relleno Compactado",
         date: "27 Agosto 2026",
         location: "Perímetro de Obra",
-        imageUrl: "/assets/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_04.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_04.jpg",
         technicalNote: "Compactación de material de banco por capas de 20cm al 95% Proctor estándar con prueba de laboratorio.",
         isReframed360: true
       },
@@ -614,7 +614,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Trazado de Tuberías Hidrosanitarias en Firme",
         date: "27 Agosto 2026",
         location: "Planta Baja - Firme de Concreto",
-        imageUrl: "/assets/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_05.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_05.jpg",
         technicalNote: "Tendido de tubería sanitaria de PVC sanitario de 4\" y 6\" con pendiente uniforme del 2%.",
         isReframed360: true
       },
@@ -625,7 +625,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Colado de Firme & Protección de Puntos Hidráulicos",
         date: "27 Agosto 2026",
         location: "Planta Baja - Área Social",
-        imageUrl: "/assets/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_06.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_06.jpg",
         technicalNote: "Firme de 10cm armado con malla electrosoldada 6-6/10-10 con barrera de vapor de polietileno calibre 600.",
         isReframed360: true
       },
@@ -636,7 +636,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Levantamiento de Columnas & Castillos de Confinamiento",
         date: "27 Agosto 2026",
         location: "Planta Baja - Estructura Portante",
-        imageUrl: "/assets/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_07.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_07.jpg",
         technicalNote: "Desplante vertical de castillos K1 y K2 amarrados a trabe de liga con doble gancho a 135 grados.",
         isReframed360: true
       },
@@ -647,7 +647,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Excavación y Conformación de Alberca",
         date: "27 Agosto 2026",
         location: "Área Exterior - Alberca",
-        imageUrl: "/assets/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_08.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_08.jpg",
         technicalNote: "Corte en roca caliza mediante martillo hidráulico y perfilado manual de taludes para alberca cenote.",
         isReframed360: true
       },
@@ -658,7 +658,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Habilitado de Acero & Encofrado para Muros",
         date: "27 Agosto 2026",
         location: "Planta Baja - Núcleo de Escaleras",
-        imageUrl: "/assets/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_09.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_09.jpg",
         technicalNote: "Doble emparrillado de varilla #4 para muros de contención de cubo de escalera y núcleo de servicios.",
         isReframed360: true
       },
@@ -669,7 +669,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Inspección Geotécnica & Control de Calidad Quincenal",
         date: "27 Agosto 2026",
         location: "Cimentación & Terreno Natural",
-        imageUrl: "/assets/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_10.jpg",
+        imageUrl: "/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_10.jpg",
         technicalNote: "Dictamen de supervisión #42 emitido favorablemente sin desviaciones respecto al proyecto ejecutivo.",
         isReframed360: true
       }

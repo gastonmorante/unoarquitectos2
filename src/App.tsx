@@ -54,7 +54,7 @@ function MainApp() {
 
   const [clientProjects, setClientProjects] = useState<ClientProject[]>(() => {
     if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("uno_client_projects_v3");
+      const saved = localStorage.getItem("uno_client_projects_v4");
       if (saved) {
         try {
           return JSON.parse(saved);
@@ -122,7 +122,7 @@ function MainApp() {
     const handleOpenClientPortal = () => {
       // Reload projects if updated in admin
       let currentList = defaultClientProjects;
-      const saved = localStorage.getItem("uno_client_projects_v3");
+      const saved = localStorage.getItem("uno_client_projects_v4");
       if (saved) {
         try {
           currentList = JSON.parse(saved);

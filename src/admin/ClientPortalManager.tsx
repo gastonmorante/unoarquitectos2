@@ -16,7 +16,7 @@ import { defaultClientProjects } from "../data/defaultClientProjects";
 export default function ClientPortalManager() {
   const [projects, setProjects] = useState<ClientProject[]>(() => {
     if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("uno_client_projects_v3");
+      const saved = localStorage.getItem("uno_client_projects_v4");
       if (saved) {
         try {
           return JSON.parse(saved);
@@ -33,7 +33,7 @@ export default function ClientPortalManager() {
   const activeProject = projects.find((p) => p.id === selectedProjectId) || projects[0];
 
   const handleSaveToLocalStorage = () => {
-    localStorage.setItem("uno_client_projects_v3", JSON.stringify(projects));
+    localStorage.setItem("uno_client_projects_v4", JSON.stringify(projects));
     setSaveToast(true);
     setTimeout(() => setSaveToast(false), 3000);
   };
@@ -41,7 +41,7 @@ export default function ClientPortalManager() {
   const handleResetToDefault = () => {
     if (window.confirm("¿Seguro que deseas restablecer todos los datos a la versión de fábrica?")) {
       setProjects(defaultClientProjects);
-      localStorage.removeItem("uno_client_projects_v3");
+      localStorage.removeItem("uno_client_projects_v4");
       setSaveToast(true);
       setTimeout(() => setSaveToast(false), 3000);
     }
