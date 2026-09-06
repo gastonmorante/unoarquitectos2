@@ -191,20 +191,10 @@ export default function ClientPortalView({
             {/* LEFT: Project Executive Information */}
             <div className="lg:col-span-7 space-y-3 text-left">
               <div className="flex flex-wrap items-center gap-2.5">
-                <span className="px-2.5 py-0.5 rounded-full bg-[#c2a275]/15 text-[#c2a275] border border-[#c2a275]/30 text-[10px] font-label-caps uppercase tracking-widest font-bold">
-                  {currentProject.typology}
-                </span>
                 <span className="text-[11px] text-zinc-400 flex items-center gap-1">
                   <MapPin className="w-3 h-3 text-teal-uno" />
                   {currentProject.location}
                 </span>
-                <button
-                  onClick={() => setShowAIAssistant(true)}
-                  className="px-2.5 py-0.5 rounded-full bg-teal-uno/15 hover:bg-teal-uno/30 text-teal-uno border border-teal-uno/40 text-[10px] font-mono flex items-center gap-1 cursor-pointer transition-colors"
-                >
-                  <Sparkles className="w-3 h-3 text-[#c2a275]" />
-                  <span>IA Gemini Activa</span>
-                </button>
               </div>
 
               <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white tracking-tight leading-tight">
@@ -446,16 +436,7 @@ export default function ClientPortalView({
       {/* 5. FOOTER PROTOCOL */}
       <footer className="bg-[#0a0a0c] border-t border-[#c2a275]/20 py-6 px-4 sm:px-8 text-center text-xs text-zinc-500 font-label-caps uppercase tracking-wider flex flex-col sm:flex-row items-center justify-between gap-3">
         <span>UNO Arquitectos • Portal de Clientes Privado v2.2</span>
-        <div className="flex items-center gap-4">
-          <button
-            onClick={() => setShowReportModal(true)}
-            className="text-[#c2a275] hover:text-white transition-colors cursor-pointer"
-          >
-            Dictamen PDF
-          </button>
-          <span>•</span>
-          <span>Playa del Carmen & Tulum, México</span>
-        </div>
+        <span>Playa del Carmen & Tulum, México</span>
       </footer>
 
       {/* 6. FLOATING ACTION BUTTON FOR GEMINI AI CONSULTANT */}
