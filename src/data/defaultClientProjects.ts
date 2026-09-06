@@ -155,70 +155,110 @@ export const defaultClientProjects: ClientProject[] = [
       }
     ],
     photoReports: [
+      // 05 SEPTIEMBRE 2026 (ÚLTIMO AVANCE - ACABADOS & CHUKUM)
       {
         id: "rep-arrecifes-01",
-        period: "Septiembre 2026",
+        period: "05 Septiembre 2026",
         category: "Acabados",
         title: "Aplicación de Pasta en Chukum Orgánico - Master Suite",
-        date: "04 Septiembre 2026",
+        date: "05 Septiembre 2026",
         location: "Planta Alta - Recámara Principal",
         imageUrl: "/projects/residencial/alux-7cielos-chukum-suite.jpg",
-        technicalNote: "Foto con reframe arquitectónico a dos puntos de fuga. Se observa la aplicación continua de pasta orgánica de Chukum con sellador natural mate sin juntas visibles.",
+        technicalNote: "Reframe arquitectónico a 2 puntos de fuga. Se verifica aplicación continua de pasta orgánica de Chukum con sellador natural mate sin juntas visibles.",
         isReframed360: true
       },
       {
         id: "rep-arrecifes-02",
-        period: "Septiembre 2026",
+        period: "05 Septiembre 2026",
         category: "Interiores",
-        title: "Vestíbulo de Acceso & Placas de Mármol Santo Tomás",
-        date: "02 Septiembre 2026",
+        title: "Vestíbulo de Doble Altura & Placas de Mármol Santo Tomás",
+        date: "05 Septiembre 2026",
         location: "Planta Baja - Vestíbulo Principal",
         imageUrl: "/projects/residencial/alux-7cielos-living-open.jpg",
-        technicalNote: "Detalle de iluminación rasante y encastre de placas de mármol con juntas a hueso de 1mm, perfectamente alineadas con los ejes estructurales.",
+        technicalNote: "Detalle de iluminación rasante y encastre de placas de mármol con juntas milimétricas a hueso, alineadas a los ejes estructurales.",
         isReframed360: true
       },
       {
         id: "rep-arrecifes-03",
-        period: "Septiembre 2026",
+        period: "05 Septiembre 2026",
         category: "Alberca",
-        title: "Pabellón de Alberca & Muro Llorón en Roca Caliza",
-        date: "28 Agosto 2026",
+        title: "Pabellón de Alberca & Muro Llorón con Sellado Hidrófugo",
+        date: "05 Septiembre 2026",
         location: "Área Exterior - Terraza Jardín",
         imageUrl: "/projects/residencial/alux-7cielos-ocean-pool.jpg",
-        technicalNote: "Inspección de canaleta perimetral oculta y vaso de alberca impermeabilizado con doble membrana epóxica previa al estuco de Chukum.",
+        technicalNote: "Inspección de canaleta perimetral oculta y vaso de alberca con doble membrana epóxica previa al acabado final en Chukum turquesa.",
         isReframed360: true
       },
+
+      // 28 AGOSTO 2026 (INSTALACIONES ESPECIALES & DOMÓTICA)
       {
         id: "rep-arrecifes-04",
-        period: "Agosto 2026",
-        category: "Estructura",
-        title: "Colado de Cubierta y Voladizos en Concreto Aparente",
-        date: "15 Agosto 2026",
-        location: "Rooftop & Terraza Mirador",
+        period: "28 Agosto 2026",
+        category: "Instalaciones",
+        title: "Ductería VRF Inverter & Canalizaciones MEP Presurizadas",
+        date: "28 Agosto 2026",
+        location: "Entreplanta Técnica & Plafones",
         imageUrl: "/projects/offgrid/offgrid-rooftop-solar.jpg",
-        technicalNote: "Verificación de peralte en trabes postensadas y preparación de soportes antivibración para paneles solares monocristalinos.",
+        technicalNote: "Pruebas hidrostáticas presurizadas a 7 kg/cm² superadas sin fugas. Tendido de ductos de climatización oculta y fibra óptica.",
         isReframed360: true
       },
       {
         id: "rep-arrecifes-05",
-        period: "Agosto 2026",
+        period: "28 Agosto 2026",
         category: "Instalaciones",
-        title: "Canalización de Cuarto de Máquinas & PTAR",
-        date: "08 Agosto 2026",
+        title: "Cuarto de Máquinas, PTAR & Tablero Domótico Lutron",
+        date: "28 Agosto 2026",
         location: "Sótano Técnico - Planta de Tratamiento",
         imageUrl: "/projects/offgrid/offgrid-villa-cenote.jpg",
-        technicalNote: "Conexión de biodigestores anaeróbicos y filtros de lecho biológico para descarga con recirculación ecológica para riego.",
+        technicalNote: "Conexión de biodigestores anaeróbicos y filtros biológicos para recirculación de agua en sistema de riego por goteo.",
         isReframed360: true
       },
       {
         id: "rep-arrecifes-06",
-        period: "Julio 2026",
+        period: "28 Agosto 2026",
         category: "Fachada",
-        title: "Celosía de Tzalam & Muros de Concreto Texturizado",
-        date: "22 Julio 2026",
+        title: "Celosía Bioclimática de Tzalam & Anclajes Inoxidables",
+        date: "28 Agosto 2026",
         location: "Fachada Norte - Acceso Vehicular",
         imageUrl: "/projects/residencial/alux-7cielos-studio-parota.jpg",
-        technicalNote: "Anclaje de bastidores ocultos de acero inoxidable para las celosías bioclimáticas de madera maciza tratada contra intemperie.",
+        technicalNote: "Anclaje de bastidores ocultos de acero inoxidable para celosías de madera maciza de Tzalam curada en horno.",
+        isReframed360: true
+      },
+
+      // 18 AGOSTO 2026 (MUROS, LOSAS & ALBERCA)
+      {
+        id: "rep-arrecifes-07",
+        period: "18 Agosto 2026",
+        category: "Estructura",
+        title: "Colado de Losas con Cimbra Aparente de Duela Regional",
+        date: "18 Agosto 2026",
+        location: "Nivel 2 - Losas de Entrepiso",
+        imageUrl: "/projects/offgrid/offgrid-suite-tulum.jpg",
+        technicalNote: "Desencofrado limpio con textura de veta de madera aparente. Nivelación milimétrica con plomada láser de alta precisión.",
+        isReframed360: true
+      },
+      {
+        id: "rep-arrecifes-08",
+        period: "18 Agosto 2026",
+        category: "Estructura",
+        title: "Muros de Mampostería & Concreto Armado",
+        date: "18 Agosto 2026",
+        location: "Planta Baja - Muros de Carga",
+        imageUrl: "/projects/offgrid/offgrid-pabellon-living.jpg",
+        technicalNote: "Muros reforzados con castillos ahogados y trabes de amarre calculadas para resistencia ante vientos huracanados Cat. 5.",
+        isReframed360: true
+      },
+
+      // 05 AGOSTO 2026 (CIMENTACIÓN & SUELO KÁRSTICO)
+      {
+        id: "rep-arrecifes-09",
+        period: "05 Agosto 2026",
+        category: "Estructura",
+        title: "Colado de Zapatas Aisladas y Trabes de Liga f'c=250 kg/cm²",
+        date: "05 Agosto 2026",
+        location: "Cimentación - Desplante Estructural",
+        imageUrl: "/projects/residencial/alux-7cielos-master-jungle-view.jpg",
+        technicalNote: "Prospección geofísica GPR concluida sin oquedades kársticas. Colado de zapatas con concreto certificado por laboratorio.",
         isReframed360: true
       }
     ],

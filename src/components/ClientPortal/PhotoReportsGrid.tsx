@@ -14,7 +14,9 @@ import {
   Tag, 
   FileText,
   SlidersHorizontal,
-  Maximize2
+  Maximize2,
+  FolderOpen,
+  ExternalLink
 } from "lucide-react";
 import { PhotoReport, PhotoCategory } from "../../types/clientPortal";
 
@@ -32,9 +34,11 @@ export default function PhotoReportsGrid({
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [zoomLevel, setZoomLevel] = useState<number>(1);
 
+  const driveFolderUrl = "https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing";
+
   // Extract unique categories and periods
   const categories: string[] = ["Todas", "Acabados", "Estructura", "Interiores", "Alberca", "Instalaciones", "Fachada"];
-  const periods: string[] = ["Todos", ...Array.from(new Set(photoReports.map((p) => p.period)))];
+  const periods: string[] = ["Todos", "05 Septiembre 2026", "28 Agosto 2026", "18 Agosto 2026", "05 Agosto 2026"];
 
   // Filter photos
   const filteredPhotos = photoReports.filter((p) => {
@@ -78,22 +82,88 @@ export default function PhotoReportsGrid({
             Reportes Fotográficos Periódicos
           </h3>
           <p className="text-xs sm:text-sm text-[#e4ded5]/70 max-w-2xl mt-1 leading-relaxed">
-            Fotografía técnica arquitectónica con corrección de perspectiva rectilinear y calibración de luz natural para verificar acabados y materiales reales.
+            Fotografía técnica con reframe arquitectónico a 2 puntos de fuga y corrección de perspectiva rectilinear, clasificada por fechas de supervisión.
           </p>
         </div>
 
-        <div className="flex items-center gap-2 text-xs text-[#c2a275] bg-[#141418] px-3.5 py-2 rounded-xs border border-[#c2a275]/30">
-          <Sparkles className="w-3.5 h-3.5 text-teal-uno" />
-          <span className="font-label-caps uppercase text-[11px] tracking-wider">
-            {filteredPhotos.length} Tomas Verificadas
-          </span>
+        <div className="flex flex-wrap items-center gap-2.5">
+          <a
+            href={driveFolderUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-xs text-[#c2a275] bg-[#141418] hover:bg-[#1f1f28] hover:text-white px-3.5 py-2 rounded-xs border border-[#c2a275]/30 transition-colors shadow-xs cursor-pointer"
+            title="Abrir carpeta compartida en Google Drive"
+          >
+            <FolderOpen className="w-3.5 h-3.5 text-teal-uno" />
+            <span className="font-label-caps uppercase text-[11px] tracking-wider">
+              Descargar en Drive
+            </span>
+            <ExternalLink className="w-3 h-3 opacity-60" />
+          </a>
+
+          <div className="flex items-center gap-2 text-xs text-white bg-teal-uno/20 px-3.5 py-2 rounded-xs border border-teal-uno/40">
+            <Sparkles className="w-3.5 h-3.5 text-teal-uno" />
+            <span className="font-label-caps uppercase text-[11px] tracking-wider">
+              {filteredPhotos.length} Fotos Verificadas
+            </span>
+          </div>
         </div>
       </div>
 
-      {/* FILTERS TOOLBAR */}
-      <div className="bg-[#141418] border border-[#c2a275]/20 p-4 rounded-xs space-y-3">
-        <div className="flex flex-wrap items-center justify-between gap-3 text-xs">
-          {/* Category Filter Pills */}
+      {/* DATES & SPECIALTY FILTER TOOLBAR */}
+      <div className="bg-[#141418] border border-[#c2a275]/20 p-4 rounded-xs space-y-3.5">
+        {/* Row 1: Date Filter Pills */}
+        <div className="space-y-1.5">
+          <div className="flex items-center justify-between text-[10px] font-label-caps uppercase tracking-wider text-[#c2a275]">
+            <span className="flex items-center gap-1">
+              <Calendar className="w-3 h-3 text-teal-uno" />
+              Filtrar por Fecha de Avance:
+            </span>
+            {selectedPeriod !== "Todos" && (
+              <button
+                onClick={() => setSelectedPeriod("Todos")}
+                className="text-teal-uno hover:underline cursor-pointer"
+              >
+                Ver todas las fechas
+              </button>
+            )}
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2">
+            {periods.map((per) => {
+              const count = per === "Todos" 
+                ? photoReports.length 
+                : photoReports.filter((p) => p.period === per).length;
+              const isSelected = selectedPeriod === per;
+              const isLatest = per === "05 Septiembre 2026";
+
+              return (
+                <button
+                  key={per}
+                  onClick={() => setSelectedPeriod(per)}
+                  className={`px-3.5 py-2 rounded-xs text-xs font-label-caps uppercase tracking-wider transition-all flex items-center gap-2 cursor-pointer ${
+                    isSelected
+                      ? "bg-teal-uno text-white font-bold shadow-md shadow-teal-uno/15 border border-teal-uno"
+                      : "bg-[#1b1b22] text-[#e4ded5]/80 hover:bg-[#242430] hover:text-white border border-white/5"
+                  }`}
+                >
+                  <span>{per}</span>
+                  <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
+                    isSelected ? "bg-black/30 text-white" : "bg-black/40 text-teal-uno"
+                  }`}>
+                    {count}
+                  </span>
+                  {isLatest && !isSelected && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-teal-uno animate-pulse" title="Último avance" />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Row 2: Specialty / Category Filter Pills */}
+        <div className="pt-2 border-t border-white/5 flex flex-wrap items-center justify-between gap-3 text-xs">
           <div className="flex flex-wrap items-center gap-1.5">
             <span className="text-[10px] font-label-caps uppercase text-[#c2a275] tracking-wider mr-1 hidden sm:inline">
               Especialidad:
@@ -102,9 +172,9 @@ export default function PhotoReportsGrid({
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-3 py-1.5 rounded-xs text-[11px] font-label-caps uppercase tracking-wider transition-all cursor-pointer ${
+                className={`px-2.5 py-1 rounded-xs text-[10px] font-label-caps uppercase tracking-wider transition-all cursor-pointer ${
                   selectedCategory === cat
-                    ? "bg-teal-uno text-white font-semibold shadow-xs"
+                    ? "bg-[#c2a275] text-black font-bold shadow-xs"
                     : "bg-white/5 text-[#e4ded5]/70 hover:bg-white/10 hover:text-white"
                 }`}
               >
@@ -113,23 +183,9 @@ export default function PhotoReportsGrid({
             ))}
           </div>
 
-          {/* Period Filter Dropdown / Pills */}
-          <div className="flex items-center gap-1.5 self-end sm:self-auto">
-            <span className="text-[10px] font-label-caps uppercase text-[#c2a275] tracking-wider mr-1">
-              Periodo:
-            </span>
-            <select
-              value={selectedPeriod}
-              onChange={(e) => setSelectedPeriod(e.target.value)}
-              className="bg-[#1a1a22] border border-[#c2a275]/30 px-3 py-1.5 rounded-xs text-xs text-white focus:border-teal-uno focus:outline-none cursor-pointer"
-            >
-              {periods.map((per) => (
-                <option key={per} value={per}>
-                  {per}
-                </option>
-              ))}
-            </select>
-          </div>
+          <span className="text-[10px] font-mono text-zinc-400">
+            Mostrando {filteredPhotos.length} de {photoReports.length} registros
+          </span>
         </div>
       </div>
 
