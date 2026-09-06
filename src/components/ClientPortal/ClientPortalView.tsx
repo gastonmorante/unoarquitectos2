@@ -14,7 +14,6 @@ import {
   Compass, 
   Hammer, 
   Camera, 
-  SplitSquareVertical, 
   ShieldCheck, 
   ExternalLink,
   ChevronDown,
@@ -26,7 +25,6 @@ import { ClientProject, Tour360Folder, ProgressMilestone } from "../../types/cli
 import CloudPanoViewer from "./CloudPanoViewer";
 import ConstructionTimeline from "./ConstructionTimeline";
 import PhotoReportsGrid from "./PhotoReportsGrid";
-import BeforeAfterSlider from "./BeforeAfterSlider";
 import ExecutiveReportModal from "./ExecutiveReportModal";
 import Logo from "../Logo";
 
@@ -45,7 +43,7 @@ export default function ClientPortalView({
   onLogout,
   onClose,
 }: ClientPortalViewProps) {
-  const [activeTab, setActiveTab] = useState<"360" | "timeline" | "photos" | "beforeAfter">("360");
+  const [activeTab, setActiveTab] = useState<"360" | "timeline" | "photos">("360");
   const [showReportModal, setShowReportModal] = useState(false);
   const [showProjectSwitcher, setShowProjectSwitcher] = useState(false);
 
@@ -372,21 +370,6 @@ export default function ClientPortalView({
               {currentProject.photoReports.length}
             </span>
           </button>
-
-          <button
-            onClick={() => setActiveTab("beforeAfter")}
-            className={`px-4 sm:px-6 py-2.5 font-label-caps text-xs uppercase tracking-wider font-semibold rounded-xs transition-all flex items-center gap-2 cursor-pointer flex-shrink-0 ${
-              activeTab === "beforeAfter"
-                ? "bg-teal-uno text-white shadow-lg shadow-teal-uno/10"
-                : "text-zinc-400 hover:text-white hover:bg-white/5"
-            }`}
-          >
-            <SplitSquareVertical className="w-4 h-4" />
-            <span>Antes vs. Estado Actual</span>
-            <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-black/40 font-mono">
-              {currentProject.beforeAfterComparisons.length}
-            </span>
-          </button>
         </div>
       </section>
 
@@ -436,21 +419,6 @@ export default function ClientPortalView({
             >
               <PhotoReportsGrid
                 photoReports={currentProject.photoReports}
-                propertyName={currentProject.propertyName}
-              />
-            </motion.div>
-          )}
-
-          {activeTab === "beforeAfter" && (
-            <motion.div
-              key="beforeAfter"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.25 }}
-            >
-              <BeforeAfterSlider
-                items={currentProject.beforeAfterComparisons}
                 propertyName={currentProject.propertyName}
               />
             </motion.div>
