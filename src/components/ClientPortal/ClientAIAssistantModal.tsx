@@ -73,7 +73,37 @@ const getLocalArrecifesResponse = (query: string, project: ClientProject): { tex
     };
   }
 
-  // 2. AVANCE 05 SEPTIEMBRE 2026 (ÚLTIMO AVANCE - CHUKUM & MÁRMOL)
+  // 2. CIMENTACIÓN, MECÁNICA DE SUELOS KÁRSTICOS & INGENIERÍA ESTRUCTURAL
+  if (
+    q.includes("suelo") ||
+    q.includes("cimentacion") ||
+    q.includes("gpr") ||
+    q.includes("georradar") ||
+    q.includes("karst") ||
+    q.includes("huracan") ||
+    q.includes("sism") ||
+    q.includes("estructura") ||
+    q.includes("zapata") ||
+    q.includes("resistencia")
+  ) {
+    return {
+      text: `### 🛡️ Cimentación, Mecánica de Suelos & Resistencia Estructural — **${project.propertyName}**:
+
+• **Prospección Geofísica (GPR)**:
+  - Estudio realizado con Georradar a **12.0 m de profundidad**, certificando la ausencia de cavernas, dolinas u oquedades kársticas bajo la huella de cimentación.
+• **Sistema de Cimentación**:
+  - Zapatas aisladas y losa de rigidez de concreto armado de alta resistencia (**f'c = 250 kg/cm²**) interconectadas mediante trabes de liga continuas sismorresistentes.
+• **Certificación Antihuracán**:
+  - Estructura calculada para resistir vientos hidrodinámicos de **Huracanes Categoría 5 (>280 km/h)**.
+• **Cancelería & Envolvente**:
+  - Línea europea Eurovent con cristales laminados reflectivos de **12 mm** de seguridad con anclajes estructurales ocultos.`,
+      links: [
+        { label: "Consultar Memoria de Cálculo con el Arq. Angel", url: `https://wa.me/${project.director.whatsapp}` }
+      ]
+    };
+  }
+
+  // 3. AVANCE 05 SEPTIEMBRE 2026 (ÚLTIMO AVANCE - CHUKUM & MÁRMOL)
   if (
     q.includes("0509") ||
     q.includes("05 de sep") ||
@@ -83,11 +113,11 @@ const getLocalArrecifesResponse = (query: string, project: ClientProject): { tex
     q.includes("reciente")
   ) {
     return {
-      text: `### 🏛️ Dictamen Técnico: Avance al **05 de Septiembre de 2026** (68% Global)
+      text: `### 🏛️ Dictamen Técnico: Avance al **05 de Septiembre de 2026** (72% Global)
 
-El levantamiento técnico del **05 de Septiembre de 2026** corresponde a la **Fase 4: Revestimientos en Chukum Tradicional Maya & Mármol Travertino**:
+El levantamiento técnico del **05 de Septiembre de 2026** corresponde a la **Fase 4: Revestimientos en Chukum Tradicional Maya & Mármol Santo Tomás**:
 
-1. **Master Suite & Doble Altura**: Culminación de la aplicación de pasta orgánica de Chukum artesanal hervida en obra con agua de pozo y sellado hidrófugo de poro abierto en muros de 6.40 m.
+1. **Master Suite & Doble Altura**: Culminación de la aplicación de pasta orgánica de Chukum artesanal hervida en obra con agua de pozo y corteza de *Havardia albicans*, con sellado hidrófugo de poro abierto en muros de 6.40 m.
 2. **Vestíbulo Principal**: Colocación y nivelación láser de placas de mármol Santo Tomás (**1.20 x 2.40 m**) apomazadas mate con juntas a hueso de 1.5 mm.
 3. **Alberca Cenote**: Aplicación de doble membrana epóxica y perfilado de bordes orgánicos previo al vertido de Chukum turquesa.
 4. **Carpintería Fina**: Habilitado en taller de marcos y bastidores de madera maciza de Tzalam curada en horno al 10% de humedad.`,
@@ -98,7 +128,7 @@ El levantamiento técnico del **05 de Septiembre de 2026** corresponde a la **Fa
     };
   }
 
-  // 3. AVANCE 27 AGOSTO 2026 (INSTALACIONES ESPECIALES, VRF & DOMÓTICA)
+  // 4. AVANCE 27 AGOSTO 2026 (INSTALACIONES ESPECIALES, VRF & DOMÓTICA)
   if (
     q.includes("2708") ||
     q.includes("2808") ||
@@ -107,6 +137,8 @@ El levantamiento técnico del **05 de Septiembre de 2026** corresponde a la **Fa
     q.includes("28 ago") ||
     q.includes("instalacion") ||
     q.includes("vrf") ||
+    q.includes("daikin") ||
+    q.includes("hidrostat") ||
     q.includes("domotica") ||
     q.includes("lutron") ||
     q.includes("ptar")
@@ -128,20 +160,21 @@ El levantamiento técnico del **27 de Agosto de 2026** documenta la **Fase 3: In
     };
   }
 
-  // 4. CHUKUM, TZALAM Y MATERIALES
+  // 5. CHUKUM, TZALAM Y MATERIALES
   if (
     q.includes("chukum") ||
     q.includes("tzalam") ||
     q.includes("material") ||
     q.includes("acabado") ||
     q.includes("marmol") ||
-    q.includes("madera")
+    q.includes("madera") ||
+    q.includes("santo tomas")
   ) {
     return {
       text: `### 🌿 Materiales Autóctonos y Especificaciones Sensoriales de **Arrecifes**:
 
 • **Chukum Tradicional Maya**:
-  - **Origen**: Resina vegetal extraída del árbol *Havardia albicans*, hervida en obra siguiendo la receta tradicional prehispánica.
+  - **Origen**: Resina vegetal extraída del árbol *Havardia albicans*, hervida en obra siguiendo la receta tradicional prehispánica con agua de pozo.
   - **Propiedades**: Acabado sedoso al tacto, impermeable natural, atérmico y con tonalidad cálida marfil-chukum que envejece con nobleza.
   - **Mantenimiento**: Limpieza con jabón neutro sin agentes químicos abrasivos y reaplicación de cera natural cada 2 años.
 
@@ -157,7 +190,7 @@ El levantamiento técnico del **27 de Agosto de 2026** documenta la **Fase 3: In
     };
   }
 
-  // 5. FECHAS DE ENTREGA Y CRONOGRAMA
+  // 6. FECHAS DE ENTREGA Y CRONOGRAMA
   if (
     q.includes("fecha") ||
     q.includes("entrega") ||
@@ -170,7 +203,7 @@ El levantamiento técnico del **27 de Agosto de 2026** documenta la **Fase 3: In
       text: `### 📅 Cronograma Oficial de Obra — **${project.propertyName}**:
 
 • **Inicio de Obra**: 01 Agosto 2026
-• **Avance Actual al 05 Sep 2026**: **68% de Ejecución** (Fase 4: Acabados en Chukum & Mármol)
+• **Avance Actual al 05 Sep 2026**: **72% de Ejecución** (Fase 4: Acabados en Chukum & Mármol)
 • **Fecha Estimada de Entrega Llave en Mano**: **20 Diciembre 2026**
 • **Próximos Hitos Clave**:
   - **Octubre 2026 (82%)**: Montaje de puertas pivotantes en Tzalam y cancelería europea antihuracán DVH.
@@ -182,7 +215,31 @@ El levantamiento técnico del **27 de Agosto de 2026** documenta la **Fase 3: In
     };
   }
 
-  // 6. ENLACES A DRIVE Y FOTOS 360
+  // 7. COSTOS, COTIZACIONES Y PRESUPUESTO
+  if (
+    q.includes("costo") ||
+    q.includes("precio") ||
+    q.includes("cotiz") ||
+    q.includes("cuanto cuesta") ||
+    q.includes("presupuesto") ||
+    q.includes("tarifa")
+  ) {
+    return {
+      text: `### 💼 Política Constructiva y Presupuestaria de **UNO Arquitectos**:
+
+En **UNO Arquitectos**, nos regimos por el lema rector: *"Somos el estudio que diseña lo que puedes construir"*.
+
+• **Presupuesto Paramétrico Cerrado**: En arquitectura boutique tropical en Riviera Maya, los costos no se basan en tarifas genéricas inventadas por metro cuadrado. Se calculan con estricto rigor técnico a partir del proyecto ejecutivo, la mecánica de suelos kársticos, la topografía y las ingenierías seleccionadas.
+• **Garantía Sin Sobrecostos**: Todo proyecto se entrega bajo contrato llave en mano con trazabilidad de compras y calendario de ministraciones.
+
+Para solicitar una valoración técnica preliminar o resolver dudas presupuestarias de obra, puedes coordinar directamente con la Dirección General.`,
+      links: [
+        { label: "Contactar al Arq. Angel Cereceda", url: `https://wa.me/${project.director.whatsapp}` }
+      ]
+    };
+  }
+
+  // 8. ENLACES A DRIVE Y FOTOS 360
   if (
     q.includes("drive") ||
     q.includes("foto") ||
@@ -214,15 +271,21 @@ Puedes consultar y descargar los archivos originales en alta resolución y explo
     };
   }
 
-  // DEFAULT ARCHITECTURAL ADVISORY
+  // DEFAULT ARCHITECTURAL ADVISORY (STRICT VERACITY)
   return {
-    text: `Como **Asistente Técnico de Obra de UNO Arquitectos** para **${project.propertyName}**, supervisado por el **${project.director.name}**:
+    text: `Como **Asistente Técnico de Obra de UNO Arquitectos** para **${project.propertyName}**, bajo la dirección del **${project.director.name}**:
 
-En relación a tu consulta sobre **"${query}"**, la obra se encuentra al **${project.globalProgress}% de avance** en **${project.currentPhaseName}** con entrega contractual para el **${project.estimatedDelivery}**.
+En relación a tu consulta sobre **"${query}"**:
+La residencia cuenta con **720.00 m² construidos** sobre un predio de **1,150.00 m²** (55% de conservación selvática) y se encuentra al **${project.globalProgress}% de ejecución** con fecha de entrega estimada para el **${project.estimatedDelivery}**.
 
-Contamos con toda la información técnica, memorias de cálculo en suelo kárstico, especificaciones de Chukum natural y bitácora fotográfica de las fechas del **05 de Septiembre** y **27 de Agosto de 2026**.
+Nuestra base de conocimiento oficial abarca:
+1. **Medidas y Alturas Exactas** (6.40 m doble altura, 3.80 m master suite, 3.40 m secundarias, claros de 8.50 m, alberca de 48 m²).
+2. **Cimentación & GPR** (prospección a 12 m sin cavernas, zapatas aisladas f'c=250 kg/cm², resistencia a huracanes Cat 5).
+3. **Avance 05 Sep 2026** (Chukum tradicional en muros de 6.40m, mármol Santo Tomás 1.20x2.40m, carpintería Tzalam).
+4. **Avance 27 Ago 2026** (Climatización Daikin VRF, pruebas a 7.0 kg/cm², domótica Lutron QSX 2700K, PTAR biológica).
+5. **Carpetas de Fotos en Google Drive** y **Galería 360° Inmersiva**.
 
-¿Deseas conocer las medidas exactas de alguna zona en particular o consultar directamente al Arq. Angel Cereceda vía WhatsApp?`,
+Si necesitas información adicional no contemplada en este registro, te sugerimos contactar directamente a la Dirección Técnica.`,
     links: [
       { label: "Consultar en WhatsApp (+52 1 984 210 8420)", url: `https://wa.me/${project.director.whatsapp}` }
     ]

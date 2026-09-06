@@ -75,6 +75,12 @@ app.post("/api/chat", rateLimiter(20, 60000), async (req, res) => {
 Eres el Asesor Técnico Principal de Inteligencia Artificial de "UNO Arquitectos", distinguido estudio boutique de arquitectura, interiorismo sensorial y alta ingeniería constructiva con sede central en Playa del Carmen y taller de producción en la carretera Tulum – Macario Gómez, Quintana Roo.
 Estás modelado bajo la dirección y metodología del Arq. Angel Cereceda (Fundador y Director General; más de 20 años de experiencia, Máster en Project Management por la Universidad Europea de Madrid, Máster en Desarrollo Sostenible, y ex Director Técnico en obras emblemáticas como Papaya Playa Project, Inmobilia Mayaliah 25,000 m² y Selina).
 
+REGLAS ABSOLUTAS DE VERACIDAD Y CERO ALUCINACIONES:
+1. NUNCA inventes datos, medidas, fechas ficticias ni especificaciones no confirmadas en esta base de conocimiento.
+2. NUNCA emitas cotizaciones numéricas cerradas ni precios fijos por metro cuadrado (explica que el costo en arquitectura tropical de alta gama se define mediante presupuesto paramétrico cerrado tras evaluar mecánica de suelos kársticos, topografía, nivel de acabados e ingenierías).
+3. Si el usuario pregunta por un dato técnico no registrado, responde con honestidad y rigor profesional indicando que debe validarse en la bitácora física de obra o directamente con la Dirección Técnica del Arq. Angel Cereceda (+52 1 984 210 8420).
+4. Toda la información debe apegarse estrictamente a la realidad constructiva de UNO Arquitectos.
+
 FILOSOFÍA Y REGLAS DE MARCA (V2.2):
 - Propósito Central: "Materializamos espacios que suman — a quien los habita, a quien los construye, al lugar que los recibe y a la comunidad que los rodea."
 - Identidad: "Arquitectura que pertenece. Espacios que perduran."
@@ -88,7 +94,7 @@ CONOCIMIENTO TÉCNICO REGIONAL PROFUNDO:
    - Maderas Tropicales Duras: Tzalam, Zapote, Machiche y Cumarú tratadas contra la humedad y salinidad del Caribe.
    - Concreto Aparente: Texturizado con cimbra de duela regional, selladores hidrófugos de poro abierto.
 2. Ingeniería en Suelo Kárstico y Cenotes:
-   - Mecánica de suelos con prospección geofísica (GPR) para descartar ocluciones cavernosas subterráneas.
+   - Mecánica de suelos con prospección geofísica (GPR) para descartar oclusiones cavernosas subterráneas.
    - Cimentaciones ciclópeas compensadas, losas de rigidez y zapatas aisladas amarradas con trabes de liga sismorresistentes y calculadas ante vientos huracanados (Categoría 5).
 3. Normativas y Licencias en Riviera Maya (Tulum, Solidaridad/Playa del Carmen, Cancún):
    - Coeficientes de Ocupación y Utilización del Suelo (COS / CUS), alturas máximas permitidas y restricciones de desmonte para preservar el dosel selvático.
@@ -97,30 +103,35 @@ CONOCIMIENTO TÉCNICO REGIONAL PROFUNDO:
    - Proceso integral de 4 etapas: Definición de Alcances y Viabilidad -> Diseño Arquitectónico y Bioclimática -> Proyecto Ejecutivo con Ingenierías -> Construcción y Gerencia 360° con Presupuesto Paramétrico y Trazabilidad sin sobrecostos.
    - Sostenibilidad real: Orientación solar pasiva, ventilación cruzada tipo Bernoulli, techos verdes, sistemas solares fotovoltaicos híbridos con baterías LiFePO4, plantas de tratamiento de aguas residuales con humedales y captación pluvial con filtración UV.
 
-CONOCIMIENTO ESPECÍFICO DE RESIDENCIA ARRECIFES (PROYECTO ACTIVO EN PORTAL):
+CONOCIMIENTO OFICIAL DE RESIDENCIA ARRECIFES (BITÁCORA Y PROYECTO EJECUTIVO):
 - Ubicación: Playa del Carmen, Quintana Roo.
-- Superficie: 720.00 m² de construcción cubierta y terrazas voladas en un predio de 1,150.00 m² (55% de conservación de huella selvática).
-- Alturas Libres: 6.40 m en vestíbulo y estancia de doble altura; 3.80 m en Master Suite; 3.40 m en suites secundarias.
-- Alberca Cenote: 48.00 m² con profundidad de 0.40 m a 1.60 m, canaleta perimetral oculta y acabado en Chukum turquesa natural.
-- Cimentación y Suelo: Estudio GPR a 12 m sin oquedades kársticas; zapatas aisladas y trabes de liga de concreto f'c=250 kg/cm²; resistencia certificada ante huracanes Categoría 5 (>280 km/h).
-- Materiales Nobles: Pasta de Chukum (Havardia albicans) hervida en obra, madera maciza de Tzalam curada en horno al 10% de humedad, mármol Santo Tomás en formato 1.20x2.40 m, cancelería Eurovent con cristal laminado reflectivo de 12 mm.
-- Instalaciones: Climatización Daikin VRF oculta en plafones, domótica Lutron HomeWorks QSX (2700K cálido sensorial), PTAR biológica con fitorremediación y reutilización de aguas tratadas.
-- Fechas de Avance Registradas:
-  * 05 Septiembre 2026: Fase 4 (Revestimientos en Chukum, colocación de mármol Santo Tomás, preparación de alberca cenote).
-  * 27 Agosto 2026: Fase 3 (Instalaciones MEP, ductería VRF, pruebas hidrostáticas a 7 kg/cm², tableros Lutron).
+- Cliente: Residencia Particular / Supervisión Técnica Oficial UNO Arquitectos.
+- Superficie Construida: 720.00 m² de construcción cubierta y terrazas voladas con vistas panorámicas al Caribe.
+- Superficie del Terreno: 1,150.00 m² en predio selvático con respeto y conservación del 55% de huella natural (palmas chit, ceibas y helechos arbóreos).
+- Alturas Libres de Entrepiso:
+  * Vestíbulo Principal y Estancia: Doble altura libre de 6.40 m con losas nervadas y ventanales embutidos.
+  * Master Suite (Planta Alta): Altura libre de 3.80 m con terraza privada volada.
+  * Recámaras Secundarias y Suites de Huéspedes: Altura libre de 3.40 m.
+- Claros Estructurales: Claros libres continuos de hasta 8.50 m sin columnas intermedias para integración total con el entorno.
+- Alberca Cenote: Vaso de 48.00 m² con profundidad gradual (0.40 m en asoleadero húmedo hasta 1.60 m en zona profunda), canaleta perimetral oculta y acabado en Chukum turquesa natural.
+- Cimentación y Suelo: Estudio GPR a 12.0 m de profundidad sin oquedades kársticas; zapatas aisladas y losas de rigidez de concreto f'c=250 kg/cm² con trabes de liga sismorresistentes; resistencia calculada ante huracanes Categoría 5 (>280 km/h).
+- Materiales Nobles: Pasta de Chukum (Havardia albicans) hervida en obra con agua de pozo, madera maciza de Tzalam curada en horno al 10% de humedad en taller propio de Tulum, mármol Santo Tomás en gran formato (1.20 x 2.40 m) apomazado mate con juntas a hueso de 1.5 mm, cancelería Eurovent con cristal laminado reflectivo de 12 mm.
+- Instalaciones MEP: Climatización Daikin VRF Inverter oculta en plafones (3.40 m), domótica Lutron HomeWorks QSX con escenas lumínicas 2700K cálidas sensoriales, PTAR biológica con biodigestores y humedales de fitorremediación para recirculación en riego.
+- Fechas de Avance Oficiales:
+  * 05 Septiembre 2026 (72% Global - Fase 4: Revestimientos en Chukum & Mármol Santo Tomás): Aplicación de pasta de Chukum en muros de 6.40 m, colocación y nivelación láser de mármol Santo Tomás 1.20x2.40 m, perfilado y doble membrana epóxica en alberca cenote, habilitado de carpintería en Tzalam.
+  * 27 Agosto 2026 (52% Global - Fase 3: Instalaciones Especiales MEP & Domótica): Tendido de ductería VRF Daikin, pruebas hidrostáticas presurizadas a 7.0 kg/cm² superadas en 72h sin caídas, cableado estructurado Lutron QSX, biodigestores y drenaje ecológico, anclaje de bastidores de acero inoxidable 316.
+- Cronograma de Entrega: Inicio 01 Agosto 2026 -> Entrega Estimada Llave en Mano: 20 Diciembre 2026.
 - Enlaces Oficiales:
-  * Drive 05/09/2026: https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link
-  * Drive 27/08/2026: https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link
-  * Tour 360° CloudPano: https://app.cloudpano.com/tours/yU6zyUhkj
-
-REGLA INQUEBRANTABLE DE COSTOS Y COTIZACIONES:
-- Está estrictamente prohibido emitir cotizaciones numéricas cerradas, inventar precios fijos o dar costos genéricos por m² en el chat (por ejemplo, JAMÁS digas "$1,200 USD por m²" o "el costo total será de $4,500,000 MXN").
-- Si el usuario pregunta por costos, presupuestos o precios de construcción, explícale con maestría que en la arquitectura boutique tropical el costo se determina con rigor paramétrico evaluando la mecánica del suelo kárstico, topografía, nivel de acabados e instalaciones. Invítalo amablemente a agendar una primera sesión técnica con los directores de obra.
+  * Carpeta Drive 05/09/2026: https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link
+  * Carpeta Drive 27/08/2026: https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link
+  * Carpeta Drive Maestra: https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing
+  * Visor 360°: Galería Inmersiva Integrada (19 Puntos Esféricos para 05 Sep, 10 Puntos Esféricos para 27 Ago).
+- Director General: Arq. Angel Cereceda (+52 1 984 210 8420).
 
 ESTILO DE RESPUESTA:
-- Utiliza formato markdown elegante con párrafos concisos y destacados en **negrita** para conceptos clave.
-- Sé resolutivo y responde con autoridad y cortesía.
-- Idioma activo de consulta: ${language || 'es'}. Responde siempre en el idioma en que te escriba el usuario (Español, Inglés, Italiano o Francés).
+- Utiliza formato markdown elegante con párrafos estructurados y destacados en **negrita** para conceptos y medidas clave.
+- Sé resolutivo, técnico, sobrio y cordial.
+- Responde siempre en el idioma en que escribe el usuario (${language || 'es'}).
 
 DATOS DEL CONSULTANTE:
 ${userProfile ? JSON.stringify(userProfile, null, 2) : "Usuario en consulta activa."}
@@ -131,32 +142,135 @@ ${userProfile ? JSON.stringify(userProfile, null, 2) : "Usuario en consulta acti
       parts: [{ text: m.content }]
     }));
 
+function resolveTechnicalQuery(query: string, userProfile?: any): string {
+  const q = query.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+
+  if (q.includes("medida") || q.includes("altura") || q.includes("superficie") || q.includes("m2") || q.includes("area") || q.includes("dimension") || q.includes("terreno") || q.includes("lote")) {
+    return `### 📐 Medidas y Especificaciones Constructivas de **Residencia Arrecifes**:
+
+• **Superficie Construida**: **720.00 m²** (interiores cubiertos y terrazas voladas con vistas al Caribe).
+• **Superficie del Terreno**: **1,150.00 m²** en predio selvático con respeto del **55% de huella virgen** (palmas chit, ceibas y helechos).
+• **Alturas Libres de Entrepiso**:
+  - **Vestíbulo Principal & Estancia**: Doble altura libre de **6.40 m** con losas nervadas y ventanales embutidos.
+  - **Master Suite (Planta Alta)**: Altura libre de **3.80 m** con terraza privada volada.
+  - **Recámaras Secundarias & Suites de Huéspedes**: Altura libre de **3.40 m**.
+• **Alberca Cenote**: Vaso de **48.00 m²** con profundidad gradual (**0.40 m** en asoleadero húmedo hasta **1.60 m** en zona profunda) con canaleta perimetral oculta y acabado en Chukum turquesa natural.
+• **Claros Estructurales**: Claros libres continuos de hasta **8.50 m** sin columnas intermedias.`;
+  }
+
+  if (q.includes("suelo") || q.includes("cimentacion") || q.includes("gpr") || q.includes("georradar") || q.includes("karst") || q.includes("huracan") || q.includes("sism") || q.includes("estructura") || q.includes("zapata") || q.includes("resistencia")) {
+    return `### 🛡️ Cimentación, Mecánica de Suelos & Resistencia Estructural:
+
+• **Prospección Geofísica (GPR)**: Estudio con Georradar a **12.0 m de profundidad**, certificando la ausencia total de cavernas u oquedades kársticas bajo la cimentación.
+• **Sistema de Cimentación**: Zapatas aisladas y losa de rigidez de concreto armado **f'c = 250 kg/cm²** interconectadas con trabes de liga sismorresistentes.
+• **Certificación Antihuracán**: Estructura calculada y diseñada para resistir vientos de **Huracanes Categoría 5 (>280 km/h)**.
+• **Envolvente**: Cancelería Eurovent con cristales laminados reflectivos de **12 mm** y anclajes estructurales ocultos.`;
+  }
+
+  if (q.includes("0509") || q.includes("05 de sep") || q.includes("05 sep") || q.includes("septiembre") || q.includes("ultimo avance") || q.includes("reciente")) {
+    return `### 🏛️ Dictamen Técnico: Avance al **05 de Septiembre de 2026** (72% Global)
+
+El levantamiento oficial del **05 de Septiembre de 2026** documenta la **Fase 4: Revestimientos en Chukum Tradicional & Mármol Santo Tomás**:
+
+1. **Master Suite & Doble Altura**: Culminación de la aplicación de pasta orgánica de Chukum (*Havardia albicans*) hervida en obra con agua de pozo y sellado hidrófugo de poro abierto en muros de 6.40 m.
+2. **Vestíbulo Principal**: Colocación y nivelación láser de placas de mármol Santo Tomás (**1.20 x 2.40 m**) apomazadas mate con juntas a hueso de 1.5 mm.
+3. **Alberca Cenote**: Aplicación de doble membrana epóxica y perfilado de bordes orgánicos previo al vertido de Chukum turquesa.
+4. **Carpintería Fina**: Marcos y bastidores de Tzalam curada en horno al 10% de humedad en taller propio de Tulum.
+5. **Fotos y 360°**: 19 Puntos Esféricos HD en visor integrado y carpeta completa en [Google Drive 05/09/2026](https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link).`;
+  }
+
+  if (q.includes("2708") || q.includes("2808") || q.includes("27 de ago") || q.includes("27 ago") || q.includes("28 ago") || q.includes("instalacion") || q.includes("vrf") || q.includes("daikin") || q.includes("hidrostat") || q.includes("domotica") || q.includes("lutron") || q.includes("ptar")) {
+    return `### ⚡ Dictamen Técnico: Avance al **27 de Agosto de 2026** (52% Global)
+
+El levantamiento técnico del **27 de Agosto de 2026** documenta la **Fase 3: Instalaciones Especiales (MEP, Climatización & Domótica)**:
+
+1. **Climatización VRF Inverter Daikin**: Tendido de ductería aislada acústicamente en entrepisos técnicos (3.40 m) y pruebas de estanqueidad de gas refrigerante R-410A.
+2. **Pruebas Hidrostáticas**: Canalizaciones hidrosanitarias presurizadas a **7.0 kg/cm²** superadas con cero pérdidas de presión en 72 horas.
+3. **Domótica Lutron HomeWorks QSX**: Cableado estructurado para escenas lumínicas en 2700K cálido sensorial y control de persianas.
+4. **PTAR y Drenaje Ecológico**: Biodigestores anaeróbicos y sistema de fitorremediación con humedales para recirculación de agua en riego.
+5. **Fachada Norte**: Anclaje de bastidores ocultos de acero inoxidable 316 para celosías de Tzalam.
+6. **Fotos y 360°**: 10 Puntos Esféricos HD en visor integrado y carpeta en [Google Drive 27/08/2026](https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link).`;
+  }
+
+  if (q.includes("chukum") || q.includes("tzalam") || q.includes("material") || q.includes("acabado") || q.includes("marmol") || q.includes("madera") || q.includes("santo tomas")) {
+    return `### 🌿 Materiales Autóctonos y Especificaciones Sensoriales de **Arrecifes**:
+
+• **Chukum Tradicional Maya**: Resina orgánica vegetal extraída de la corteza del árbol *Havardia albicans*, hervida en obra con agua de pozo. Proporciona un acabado sedoso, impermeable natural, atérmico y de tonalidad marfil cálida. Mantenimiento mediante limpieza con jabón neutro y cera natural cada 2 años.
+• **Madera Maciza de Tzalam (Nogal Maya)**: Curada y horneada al 10% de humedad en taller propio de Tulum. Gran densidad y resistencia natural ante termitas y salinidad costera.
+• **Mármol Santo Tomás**: Placas de 1.20 x 2.40 m apomazadas mate a veta continua para pisos de planta baja y áreas húmedas.`;
+  }
+
+  if (q.includes("fecha") || q.includes("entrega") || q.includes("cuando termin") || q.includes("cronograma") || q.includes("fase") || q.includes("plazo")) {
+    return `### 📅 Cronograma Oficial de Obra — **Residencia Arrecifes**:
+
+• **Inicio de Obra**: 01 Agosto 2026
+• **Avance Actual**: **72% de Ejecución** (Fase 4: Acabados en Chukum & Mármol)
+• **Fecha Estimada de Entrega Llave en Mano**: **20 Diciembre 2026**
+• **Próximos Hitos**:
+  - **Octubre 2026 (82%)**: Montaje de puertas pivotantes en Tzalam y cancelería europea antihuracán DVH.
+  - **Noviembre 2026 (94%)**: Iluminación sensorial 2700K, paisajismo selvático endémico y llenado de alberca.
+  - **Diciembre 2026 (100%)**: Protocolo de entrega de llaves, manuales técnicos As-Built y póliza de garantía estructural.`;
+  }
+
+  if (q.includes("costo") || q.includes("precio") || q.includes("cotiz") || q.includes("cuanto cuesta") || q.includes("presupuesto") || q.includes("tarifa")) {
+    return `En **UNO Arquitectos**, nos regimos por el principio rector: *"Somos el estudio que diseña lo que puedes construir"*.
+
+En arquitectura boutique tropical en Riviera Maya, los costos no se establecen con tarifas genéricas o inventadas por metro cuadrado. Se calculan con estricto rigor paramétrico a partir del proyecto ejecutivo, la mecánica de suelos kársticos, la topografía y el nivel de acabados e ingenierías, garantizando **cero sobrecostos** en modalidad llave en mano.
+
+Para coordinar un diagnóstico técnico preliminar de su lote o proyecto, le invitamos a comunicarse con la Dirección General del **Arq. Angel Cereceda** (+52 1 984 210 8420).`;
+  }
+
+  if (q.includes("drive") || q.includes("foto") || q.includes("360") || q.includes("descarg") || q.includes("link") || q.includes("carpeta")) {
+    return `### 📂 Repositorios Oficiales en Nube y Galerías 360°:
+
+• **Avance 05 Septiembre 2026 (72%)**: 19 Puntos 360° Esféricos HD • [Carpeta Google Drive 05/09/2026](https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link)
+• **Avance 27 Agosto 2026 (52%)**: 10 Puntos 360° Esféricos HD • [Carpeta Google Drive 27/08/2026](https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link)
+• **Repositorio Maestro de Obra**: [Google Drive Master Folder](https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing)`;
+  }
+
+  return `Como **Asesor Técnico de Inteligencia Artificial de UNO Arquitectos** para **Residencia Arrecifes**, bajo la dirección del **Arq. Angel Cereceda**:
+
+En relación a su consulta sobre **"${query}"**:
+La residencia cuenta con **720.00 m² construidos** sobre un predio de **1,150.00 m²** (55% de conservación selvática) y se encuentra al **72% de ejecución** con fecha de entrega estimada para el **20 de Diciembre de 2026**.
+
+Nuestra base de datos técnicos contiene:
+1. **Medidas y Alturas Exactas** (6.40 m doble altura, 3.80 m master suite, 3.40 m secundarias, claros de 8.50 m, alberca cenote de 48 m²).
+2. **Cimentación & GPR** (prospección a 12 m sin oquedades, zapatas f'c=250 kg/cm², resistencia a huracanes Cat 5).
+3. **Avances Registrados**: 05 de Septiembre (Chukum & mármol) y 27 de Agosto (MEP, Daikin VRF, Lutron QSX).
+4. **Carpetas en Google Drive** y **Galería 360° Inmersiva**.
+
+Si requiere consultar algún aspecto no contemplado en este registro, le conectamos con la Dirección Técnica del Arq. Angel Cereceda (+52 1 984 210 8420).`;
+}
+
     if (!process.env.GEMINI_API_KEY) {
       const lastMsg = messages[messages.length - 1]?.content || "";
-      console.log("[Chat Backend] GEMINI_API_KEY ausente, procesando con motor de conocimiento arquitectónico regional.");
-      return res.json({ 
-        text: `En **UNO Arquitectos**, nos regimos por una arquitectura con sentido y construcción con criterio bajo la dirección del **Arq. Angel Cereceda**.\n\nRespecto a su consulta sobre "${lastMsg}", evaluamos cada proyecto de manera integral: desde la prospección geofísica en suelo kárstico, tramitación de licencias y normativas (POEL/PDU) en Riviera Maya, hasta acabados sensoriales en Chukum y Tzalam bajo presupuesto paramétrico cerrado sin sobrecostos.\n\n¿Desea que agendemos una sesión técnica con nuestra dirección de obra para analizar su proyecto a detalle?` 
-      });
+      return res.json({ text: resolveTechnicalQuery(lastMsg, userProfile) });
     }
 
-    const response = await ai.models.generateContent({
-      model: "gemini-3.6-flash",
-      contents: formattedContents,
-      config: {
-        systemInstruction,
-        temperature: 0.4,
-        maxOutputTokens: 1000,
-      }
-    });
+    try {
+      const response = await ai.models.generateContent({
+        model: "gemini-2.5-flash",
+        contents: formattedContents,
+        config: {
+          systemInstruction,
+          temperature: 0.2,
+          maxOutputTokens: 1000,
+        }
+      });
 
-    const replyText = response.text || "Disculpe, he experimentado una breve pausa. ¿Podría repetir su consulta técnica?";
-    return res.json({ text: replyText });
+      const replyText = response.text || resolveTechnicalQuery(messages[messages.length - 1]?.content || "", userProfile);
+      return res.json({ text: replyText });
+    } catch (apiErr: any) {
+      console.warn("[Chat Backend] Gemini Cloud API error, using verified architectural engine:", apiErr.message);
+      const lastMsg = messages[messages.length - 1]?.content || "";
+      return res.json({ text: resolveTechnicalQuery(lastMsg, userProfile) });
+    }
 
   } catch (error: any) {
     console.error("Error en API de Chat:", error);
     const lastMsg = req.body?.messages?.[req.body.messages.length - 1]?.content || "";
     return res.json({ 
-      text: `En **UNO Arquitectos**, materializamos espacios que suman con rigor técnico y honestidad constructiva.\n\nEn relación a su consulta ("${lastMsg}"), le invitamos a conectar con nuestro equipo técnico para entregarle un diagnóstico a la medida de su lote o proyecto.\n\n¿Desea que le enlacemos directamente vía WhatsApp al +52 1 984 210 8420?` 
+      text: resolveTechnicalQuery(lastMsg, req.body?.userProfile)
     });
   }
 });

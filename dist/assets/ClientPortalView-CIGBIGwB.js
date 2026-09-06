@@ -1,4 +1,4 @@
-import{r as Ne,j as p,m as kn,A as ss}from"./motion-Bys2NPqK.js";import{ad as wl,ae as Rl,af as wo,ag as Ro,C as as,ah as Cl,ai as Co,L as Po,v as No,w as Do,aj as Ri,a3 as os,c as Gn,ak as Lo,E as Io,k as ls,a8 as Pl,X as Js,a7 as Uo,al as Nl,S as Dl,ac as Ea,R as Ll,f as Il,o as Ul,P as Fo,B as Fl,i as Ol,a6 as Bl,am as zl,j as kl,a as Gl}from"./icons-DKyYlZcM.js";import{L as Vl}from"./index-C2NkjKEW.js";import"./vendor-DQ7921oI.js";/**
+import{r as Ne,j as p,m as kn,A as ss}from"./motion-Bys2NPqK.js";import{ad as wl,ae as Rl,af as wo,ag as Ro,C as as,ah as Cl,ai as Co,L as Po,v as No,w as Do,aj as Ri,a3 as os,c as Gn,ak as Lo,E as Io,k as ls,a8 as Pl,X as Js,a7 as Uo,al as Nl,S as Dl,ac as Ea,R as Ll,f as Il,o as Ul,P as Fo,B as Fl,i as Ol,a6 as Bl,am as zl,j as kl,a as Gl}from"./icons-DKyYlZcM.js";import{L as Vl}from"./index-D9kIBZlP.js";import"./vendor-DQ7921oI.js";/**
  * @license
  * Copyright 2010-2026 Three.js Authors
  * SPDX-License-Identifier: MIT
@@ -4122,14 +4122,23 @@ void main() {
   - **Master Suite (Planta Alta)**: Altura libre de **3.80 m** con terraza privada volada.
   - **Recámaras Secundarias & Suites de Huéspedes**: Altura libre de **3.40 m**.
 • **Alberca Cenote**: Vaso de **48.00 m²** con profundidad gradual (0.40 m en asoleadero húmedo hasta 1.60 m en zona profunda) con canaleta perimetral oculta y acabado en Chukum turquesa natural.
-• **Claros Estructurales**: Claros continuos de hasta **8.50 m** sin columnas intermedias para integración total con el entorno selvático.`,links:[{label:"Ver Galería de Fotos por Fecha",url:"#photos"}]}:t.includes("0509")||t.includes("05 de sep")||t.includes("05 sep")||t.includes("septiembre")||t.includes("ultimo avance")||t.includes("reciente")?{text:`### 🏛️ Dictamen Técnico: Avance al **05 de Septiembre de 2026** (68% Global)
+• **Claros Estructurales**: Claros continuos de hasta **8.50 m** sin columnas intermedias para integración total con el entorno selvático.`,links:[{label:"Ver Galería de Fotos por Fecha",url:"#photos"}]}:t.includes("suelo")||t.includes("cimentacion")||t.includes("gpr")||t.includes("georradar")||t.includes("karst")||t.includes("huracan")||t.includes("sism")||t.includes("estructura")||t.includes("zapata")||t.includes("resistencia")?{text:`### 🛡️ Cimentación, Mecánica de Suelos & Resistencia Estructural — **${e.propertyName}**:
 
-El levantamiento técnico del **05 de Septiembre de 2026** corresponde a la **Fase 4: Revestimientos en Chukum Tradicional Maya & Mármol Travertino**:
+• **Prospección Geofísica (GPR)**:
+  - Estudio realizado con Georradar a **12.0 m de profundidad**, certificando la ausencia de cavernas, dolinas u oquedades kársticas bajo la huella de cimentación.
+• **Sistema de Cimentación**:
+  - Zapatas aisladas y losa de rigidez de concreto armado de alta resistencia (**f'c = 250 kg/cm²**) interconectadas mediante trabes de liga continuas sismorresistentes.
+• **Certificación Antihuracán**:
+  - Estructura calculada para resistir vientos hidrodinámicos de **Huracanes Categoría 5 (>280 km/h)**.
+• **Cancelería & Envolvente**:
+  - Línea europea Eurovent con cristales laminados reflectivos de **12 mm** de seguridad con anclajes estructurales ocultos.`,links:[{label:"Consultar Memoria de Cálculo con el Arq. Angel",url:`https://wa.me/${e.director.whatsapp}`}]}:t.includes("0509")||t.includes("05 de sep")||t.includes("05 sep")||t.includes("septiembre")||t.includes("ultimo avance")||t.includes("reciente")?{text:`### 🏛️ Dictamen Técnico: Avance al **05 de Septiembre de 2026** (72% Global)
 
-1. **Master Suite & Doble Altura**: Culminación de la aplicación de pasta orgánica de Chukum artesanal hervida en obra con agua de pozo y sellado hidrófugo de poro abierto en muros de 6.40 m.
+El levantamiento técnico del **05 de Septiembre de 2026** corresponde a la **Fase 4: Revestimientos en Chukum Tradicional Maya & Mármol Santo Tomás**:
+
+1. **Master Suite & Doble Altura**: Culminación de la aplicación de pasta orgánica de Chukum artesanal hervida en obra con agua de pozo y corteza de *Havardia albicans*, con sellado hidrófugo de poro abierto en muros de 6.40 m.
 2. **Vestíbulo Principal**: Colocación y nivelación láser de placas de mármol Santo Tomás (**1.20 x 2.40 m**) apomazadas mate con juntas a hueso de 1.5 mm.
 3. **Alberca Cenote**: Aplicación de doble membrana epóxica y perfilado de bordes orgánicos previo al vertido de Chukum turquesa.
-4. **Carpintería Fina**: Habilitado en taller de marcos y bastidores de madera maciza de Tzalam curada en horno al 10% de humedad.`,links:[{label:"Carpeta en Google Drive (05/09/2026)",url:"https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link"},{label:"Ver Galería de Fotos 360°",url:"#360"}]}:t.includes("2708")||t.includes("2808")||t.includes("27 de ago")||t.includes("27 ago")||t.includes("28 ago")||t.includes("instalacion")||t.includes("vrf")||t.includes("domotica")||t.includes("lutron")||t.includes("ptar")?{text:`### ⚡ Dictamen Técnico: Avance al **27 de Agosto de 2026** (52% Global)
+4. **Carpintería Fina**: Habilitado en taller de marcos y bastidores de madera maciza de Tzalam curada en horno al 10% de humedad.`,links:[{label:"Carpeta en Google Drive (05/09/2026)",url:"https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link"},{label:"Ver Galería de Fotos 360°",url:"#360"}]}:t.includes("2708")||t.includes("2808")||t.includes("27 de ago")||t.includes("27 ago")||t.includes("28 ago")||t.includes("instalacion")||t.includes("vrf")||t.includes("daikin")||t.includes("hidrostat")||t.includes("domotica")||t.includes("lutron")||t.includes("ptar")?{text:`### ⚡ Dictamen Técnico: Avance al **27 de Agosto de 2026** (52% Global)
 
 El levantamiento técnico del **27 de Agosto de 2026** documenta la **Fase 3: Instalaciones Especiales (MEP, Climatización & Domótica)**:
 
@@ -4137,10 +4146,10 @@ El levantamiento técnico del **27 de Agosto de 2026** documenta la **Fase 3: In
 2. **Pruebas Hidrostáticas**: Canalizaciones hidrosanitarias presurizadas a **7.0 kg/cm²** superadas con cero pérdidas de presión en 72 horas.
 3. **Domótica Lutron Homeworks QSX**: Tendido de cableado estructurado para control inteligente de escenas lumínicas en 2700K y persianas motorizadas.
 4. **PTAR y Drenaje Ecológico**: Instalación de biodigestores anaeróbicos y sistema de fitorremediación con humedales para recirculación de agua en riego.
-5. **Fachada Norte**: Anclaje de bastidores ocultos de acero inoxidable 316 para celosías de Tzalam.`,links:[{label:"Carpeta en Google Drive (27/08/2026)",url:"https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link"},{label:"Ver Galería de Fotos 360°",url:"#360"}]}:t.includes("chukum")||t.includes("tzalam")||t.includes("material")||t.includes("acabado")||t.includes("marmol")||t.includes("madera")?{text:`### 🌿 Materiales Autóctonos y Especificaciones Sensoriales de **Arrecifes**:
+5. **Fachada Norte**: Anclaje de bastidores ocultos de acero inoxidable 316 para celosías de Tzalam.`,links:[{label:"Carpeta en Google Drive (27/08/2026)",url:"https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link"},{label:"Ver Galería de Fotos 360°",url:"#360"}]}:t.includes("chukum")||t.includes("tzalam")||t.includes("material")||t.includes("acabado")||t.includes("marmol")||t.includes("madera")||t.includes("santo tomas")?{text:`### 🌿 Materiales Autóctonos y Especificaciones Sensoriales de **Arrecifes**:
 
 • **Chukum Tradicional Maya**:
-  - **Origen**: Resina vegetal extraída del árbol *Havardia albicans*, hervida en obra siguiendo la receta tradicional prehispánica.
+  - **Origen**: Resina vegetal extraída del árbol *Havardia albicans*, hervida en obra siguiendo la receta tradicional prehispánica con agua de pozo.
   - **Propiedades**: Acabado sedoso al tacto, impermeable natural, atérmico y con tonalidad cálida marfil-chukum que envejece con nobleza.
   - **Mantenimiento**: Limpieza con jabón neutro sin agentes químicos abrasivos y reaplicación de cera natural cada 2 años.
 
@@ -4152,12 +4161,19 @@ El levantamiento técnico del **27 de Agosto de 2026** documenta la **Fase 3: In
   - Placas de 1.20 x 2.40 m apomazadas mate, seleccionadas a veta continua para pisos de planta baja y baños principales.`,links:[{label:"Carpeta General en Google Drive",url:"https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing"}]}:t.includes("fecha")||t.includes("entrega")||t.includes("cuando termin")||t.includes("cronograma")||t.includes("fase")||t.includes("plazo")?{text:`### 📅 Cronograma Oficial de Obra — **${e.propertyName}**:
 
 • **Inicio de Obra**: 01 Agosto 2026
-• **Avance Actual al 05 Sep 2026**: **68% de Ejecución** (Fase 4: Acabados en Chukum & Mármol)
+• **Avance Actual al 05 Sep 2026**: **72% de Ejecución** (Fase 4: Acabados en Chukum & Mármol)
 • **Fecha Estimada de Entrega Llave en Mano**: **20 Diciembre 2026**
 • **Próximos Hitos Clave**:
   - **Octubre 2026 (82%)**: Montaje de puertas pivotantes en Tzalam y cancelería europea antihuracán DVH.
   - **Noviembre 2026 (94%)**: Iluminación sensorial 2700K, paisajismo selvático endémico y llenado de alberca.
-  - **Diciembre 2026 (100%)**: Protocolo de entrega de llaves, manuales técnicos As-Built y garantía estructural certificada.`,links:[{label:"Consultar al Arq. Angel Cereceda",url:`https://wa.me/${e.director.whatsapp}`}]}:t.includes("drive")||t.includes("foto")||t.includes("360")||t.includes("descarg")||t.includes("link")||t.includes("carpeta")?{text:`### 📂 Repositorios Oficiales en Nube y Galerías 360°:
+  - **Diciembre 2026 (100%)**: Protocolo de entrega de llaves, manuales técnicos As-Built y garantía estructural certificada.`,links:[{label:"Consultar al Arq. Angel Cereceda",url:`https://wa.me/${e.director.whatsapp}`}]}:t.includes("costo")||t.includes("precio")||t.includes("cotiz")||t.includes("cuanto cuesta")||t.includes("presupuesto")||t.includes("tarifa")?{text:`### 💼 Política Constructiva y Presupuestaria de **UNO Arquitectos**:
+
+En **UNO Arquitectos**, nos regimos por el lema rector: *"Somos el estudio que diseña lo que puedes construir"*.
+
+• **Presupuesto Paramétrico Cerrado**: En arquitectura boutique tropical en Riviera Maya, los costos no se basan en tarifas genéricas inventadas por metro cuadrado. Se calculan con estricto rigor técnico a partir del proyecto ejecutivo, la mecánica de suelos kársticos, la topografía y las ingenierías seleccionadas.
+• **Garantía Sin Sobrecostos**: Todo proyecto se entrega bajo contrato llave en mano con trazabilidad de compras y calendario de ministraciones.
+
+Para solicitar una valoración técnica preliminar o resolver dudas presupuestarias de obra, puedes coordinar directamente con la Dirección General.`,links:[{label:"Contactar al Arq. Angel Cereceda",url:`https://wa.me/${e.director.whatsapp}`}]}:t.includes("drive")||t.includes("foto")||t.includes("360")||t.includes("descarg")||t.includes("link")||t.includes("carpeta")?{text:`### 📂 Repositorios Oficiales en Nube y Galerías 360°:
 
 Puedes consultar y descargar los archivos originales en alta resolución y explorar las fotos 360° en los siguientes accesos oficiales:
 
@@ -4170,13 +4186,19 @@ Puedes consultar y descargar los archivos originales en alta resolución y explo
   - Carpeta de Fotos Drive: [Abrir Carpeta 27/08/2026](https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link)
 
 • **Repositorio Maestro de Obra Arrecifes**:
-  - [Google Drive Master Folder](https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing)`,links:[{label:"Drive 05/09/2026",url:"https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link"},{label:"Drive 27/08/2026",url:"https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link"},{label:"Ver Galería de Fotos 360°",url:"#360"}]}:{text:`Como **Asistente Técnico de Obra de UNO Arquitectos** para **${e.propertyName}**, supervisado por el **${e.director.name}**:
+  - [Google Drive Master Folder](https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing)`,links:[{label:"Drive 05/09/2026",url:"https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link"},{label:"Drive 27/08/2026",url:"https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link"},{label:"Ver Galería de Fotos 360°",url:"#360"}]}:{text:`Como **Asistente Técnico de Obra de UNO Arquitectos** para **${e.propertyName}**, bajo la dirección del **${e.director.name}**:
 
-En relación a tu consulta sobre **"${i}"**, la obra se encuentra al **${e.globalProgress}% de avance** en **${e.currentPhaseName}** con entrega contractual para el **${e.estimatedDelivery}**.
+En relación a tu consulta sobre **"${i}"**:
+La residencia cuenta con **720.00 m² construidos** sobre un predio de **1,150.00 m²** (55% de conservación selvática) y se encuentra al **${e.globalProgress}% de ejecución** con fecha de entrega estimada para el **${e.estimatedDelivery}**.
 
-Contamos con toda la información técnica, memorias de cálculo en suelo kárstico, especificaciones de Chukum natural y bitácora fotográfica de las fechas del **05 de Septiembre** y **27 de Agosto de 2026**.
+Nuestra base de conocimiento oficial abarca:
+1. **Medidas y Alturas Exactas** (6.40 m doble altura, 3.80 m master suite, 3.40 m secundarias, claros de 8.50 m, alberca de 48 m²).
+2. **Cimentación & GPR** (prospección a 12 m sin cavernas, zapatas aisladas f'c=250 kg/cm², resistencia a huracanes Cat 5).
+3. **Avance 05 Sep 2026** (Chukum tradicional en muros de 6.40m, mármol Santo Tomás 1.20x2.40m, carpintería Tzalam).
+4. **Avance 27 Ago 2026** (Climatización Daikin VRF, pruebas a 7.0 kg/cm², domótica Lutron QSX 2700K, PTAR biológica).
+5. **Carpetas de Fotos en Google Drive** y **Galería 360° Inmersiva**.
 
-¿Deseas conocer las medidas exactas de alguna zona en particular o consultar directamente al Arq. Angel Cereceda vía WhatsApp?`,links:[{label:"Consultar en WhatsApp (+52 1 984 210 8420)",url:`https://wa.me/${e.director.whatsapp}`}]}};function Tm({project:i,onClose:e}){const[t,n]=Ne.useState([{id:"welcome-msg",role:"assistant",content:`Hola. Soy el **Asesor Técnico de Inteligencia Artificial (Gemini)** de **UNO Arquitectos**, asignado a la supervisión técnica de **${i.propertyName}** bajo la dirección del **${i.director.name}**.
+Si necesitas información adicional no contemplada en este registro, te sugerimos contactar directamente a la Dirección Técnica.`,links:[{label:"Consultar en WhatsApp (+52 1 984 210 8420)",url:`https://wa.me/${e.director.whatsapp}`}]}};function Tm({project:i,onClose:e}){const[t,n]=Ne.useState([{id:"welcome-msg",role:"assistant",content:`Hola. Soy el **Asesor Técnico de Inteligencia Artificial (Gemini)** de **UNO Arquitectos**, asignado a la supervisión técnica de **${i.propertyName}** bajo la dirección del **${i.director.name}**.
 
 Estoy entrenado con las especificaciones exactas, medidas milimétricas, dictámenes de supervisión y bitácora de obra de **Agosto a Diciembre de 2026**.
 
