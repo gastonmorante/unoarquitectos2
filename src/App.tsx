@@ -66,6 +66,21 @@ function MainApp() {
 
   const { isAuthenticated } = useSiteContent();
 
+  // Ensure window is strictly positioned at the very top on route change
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    const timer = setTimeout(() => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }, 30);
+    return () => clearTimeout(timer);
+  }, [pageRoute, activeClientProject]);
+
+
   // Dynamic SEO meta tags and Page title management (Protects Google & Meta from penalty)
   useEffect(() => {
     const metaRobots = document.querySelector('meta[name="robots"]');

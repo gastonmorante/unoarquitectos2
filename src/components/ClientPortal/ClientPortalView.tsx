@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
   Building2, 
@@ -11,8 +11,7 @@ import {
   Sparkles,
   Award,
   CheckCircle2,
-  ArrowLeft,
-  Home
+  ArrowLeft
 } from "lucide-react";
 import { ClientProject, Tour360Folder } from "../../types/clientPortal";
 import CloudPanoViewer from "./CloudPanoViewer";
@@ -34,7 +33,6 @@ export default function ClientPortalView({
   onSelectProject,
   onClose,
 }: ClientPortalViewProps) {
-  const portalContainerRef = useRef<HTMLDivElement>(null);
   const [viewMode, setViewMode] = useState<"all" | "360" | "photos">("all");
   const [showAIAssistant, setShowAIAssistant] = useState(false);
   const [showProjectSwitcher, setShowProjectSwitcher] = useState(false);
@@ -45,14 +43,18 @@ export default function ClientPortalView({
     currentProject.cloudpanoTours[0]?.id || "tour-arrecifes-05sep2026"
   );
 
-  // On mount and project change, ensure screen is positioned at the top
+  // Strictly position the window at the top (y = 0) on initial mount
   useEffect(() => {
-    if (portalContainerRef.current) {
-      portalContainerRef.current.scrollTo({ top: 0, behavior: "instant" });
-    }
-    if (typeof window !== "undefined") {
-      window.scrollTo({ top: 0, behavior: "instant" });
-    }
+    if (typeof window === "undefined") return;
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    const t = setTimeout(() => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }, 40);
+    return () => clearTimeout(t);
   }, []);
 
   useEffect(() => {
@@ -60,8 +62,8 @@ export default function ClientPortalView({
     if (currentProject.cloudpanoTours[0]?.id) {
       setSelectedTourId(currentProject.cloudpanoTours[0].id);
     }
-    if (portalContainerRef.current) {
-      portalContainerRef.current.scrollTo({ top: 0, behavior: "smooth" });
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     }
   }, [currentProject]);
 
@@ -70,21 +72,8 @@ export default function ClientPortalView({
   const activeProgress = activeTour?.progress || currentProject.globalProgress;
   const activePhase = activeTour?.phaseName || currentProject.currentPhaseName;
 
-  const scrollToSection = (sectionId: string) => {
-    const el = document.getElementById(sectionId);
-    if (el && portalContainerRef.current) {
-      const topOffset = el.offsetTop - 80;
-      portalContainerRef.current.scrollTo({ top: Math.max(0, topOffset), behavior: "smooth" });
-    } else if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-
   const handleSelectTour = (tourId: string) => {
     setSelectedTourId(tourId);
-    setTimeout(() => {
-      scrollToSection("seccion-galeria-activa");
-    }, 150);
   };
 
   const handleSelectPeriod = (period: string) => {
@@ -109,11 +98,10 @@ export default function ClientPortalView({
 
   return (
     <div 
-      ref={portalContainerRef}
       id="client-portal-root"
-      className="min-h-screen w-full bg-background text-gris-texto overflow-y-auto font-sans flex flex-col selection:bg-teal-uno selection:text-white texture-overlay scroll-smooth"
+      className="min-h-screen w-full bg-background text-gris-texto font-sans flex flex-col selection:bg-teal-uno selection:text-white texture-overlay"
     >
-      {/* 1. LUXURY EXECUTIVE TOP NAVBAR (CLEAN HEADER WITH RETURN HOME BUTTON) */}
+      {/* 1. LUXURY EXECUTIVE TOP NAVBAR (MATCHING media_1788670102280.png) */}
       <header className="sticky top-0 z-40 bg-background/95 backdrop-blur-md border-b border-arena-calida/30 px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-ethereal">
         <div className="flex items-center gap-3 sm:gap-6">
           <button
@@ -167,7 +155,7 @@ export default function ClientPortalView({
           </div>
         </div>
 
-        {/* TOP ACTIONS - CLEANED: ONLY RETURN TO MAIN SITE BUTTON */}
+        {/* TOP ACTIONS: CERRAR Y VOLVER AL INICIO */}
         <div className="flex items-center gap-2 sm:gap-3">
           <button
             onClick={onClose}
@@ -291,7 +279,7 @@ export default function ClientPortalView({
                 </div>
               </div>
 
-              {/* RESIDENT ARCHITECT CONTACT CARD (CLEANED: WHATSAPP ONLY) */}
+              {/* RESIDENT ARCHITECT CONTACT CARD (WHATSAPP ONLY) */}
               <div id="contacto-director" className="bg-white/80 backdrop-blur-md border border-arena-calida/30 p-6 rounded-3xl space-y-4 shadow-ethereal text-left">
                 <div className="flex items-center justify-between gap-2 border-b border-arena-calida/20 pb-3">
                   <span className="text-[10px] font-label-caps uppercase tracking-wider text-arena-calida font-semibold">
@@ -562,18 +550,14 @@ export default function ClientPortalView({
 
       {/* 5. FOOTER PROTOCOL */}
       <footer className="bg-surface-container-low border-t border-arena-calida/20 py-8 px-4 sm:px-8 text-center text-xs text-gris-texto font-label-caps uppercase tracking-wider flex flex-col sm:flex-row items-center justify-between gap-3">
-        <div className="flex items-center gap-3">
-          <button
-            onClick={onClose}
-            className="flex items-center gap-1.5 text-teal-uno hover:text-arena-calida font-bold transition-colors cursor-pointer"
-          >
-            <Home className="w-4 h-4" />
-            <span>Volver a la Página Principal</span>
-          </button>
-          <span className="text-arena-calida/40">•</span>
-          <span>UNO Arquitectos • Portal Privado v2.2</span>
-        </div>
-        <span className="text-arena-calida font-semibold">Playa del Carmen & Tulum, Quintana Roo, México</span>
+        <button
+          onClick={onClose}
+          className="flex items-center gap-1.5 text-teal-uno hover:text-arena-calida font-bold transition-colors cursor-pointer"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          <span>Volver a la Página Principal</span>
+        </button>
+        <span className="text-arena-calida font-semibold">UNO Arquitectos • Playa del Carmen & Tulum, Quintana Roo, México</span>
       </footer>
 
       {/* 6. FLOATING ACTION BUTTON FOR GEMINI AI CONSULTANT */}
