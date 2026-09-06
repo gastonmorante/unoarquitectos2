@@ -59,6 +59,23 @@ export interface ProjectDirector {
   photo?: string;
 }
 
+export interface ProgressMilestone {
+  id: string;
+  dateStr: string; // e.g. "2026-09-05"
+  displayDate: string; // e.g. "05 Septiembre 2026"
+  month: 'Agosto' | 'Septiembre' | 'Octubre' | 'Noviembre' | 'Diciembre';
+  monthIndex: number; // 0 for Agosto, 1 for Septiembre, 2 for Octubre, 3 for Noviembre, 4 for Diciembre
+  day: number; // e.g. 5
+  progress: number; // e.g. 68
+  phaseName: string;
+  title: string;
+  summary: string;
+  supervisionNotes: string;
+  tourId?: string;
+  isLatest?: boolean;
+  isProjected?: boolean;
+}
+
 export interface ClientProject {
   id: string;
   propertyName: string;
@@ -77,5 +94,6 @@ export interface ClientProject {
   phases: ConstructionPhase[];
   photoReports: PhotoReport[];
   beforeAfterComparisons: BeforeAfterItem[];
+  milestones?: ProgressMilestone[];
 }
 

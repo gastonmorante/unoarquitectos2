@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
   Building2, 
@@ -19,14 +19,16 @@ import {
   ExternalLink,
   ChevronDown,
   Sparkles,
-  Award
+  Award,
+  RotateCcw
 } from "lucide-react";
-import { ClientProject, Tour360Folder } from "../../types/clientPortal";
+import { ClientProject, Tour360Folder, ProgressMilestone } from "../../types/clientPortal";
 import CloudPanoViewer from "./CloudPanoViewer";
 import ConstructionTimeline from "./ConstructionTimeline";
 import PhotoReportsGrid from "./PhotoReportsGrid";
 import BeforeAfterSlider from "./BeforeAfterSlider";
 import ExecutiveReportModal from "./ExecutiveReportModal";
+import ConstructionCalendar from "./ConstructionCalendar";
 import Logo from "../Logo";
 
 interface ClientPortalViewProps {
@@ -44,12 +46,38 @@ export default function ClientPortalView({
   onLogout,
   onClose,
 }: ClientPortalViewProps) {
-  const [activeTab, setActiveTab] = useState<"360" | "timeline" | "photos" | "beforeAfter">("360");
+  const [activeTab, setActiveTab] = useState<"calendar" | "360" | "timeline" | "photos" | "beforeAfter">("360");
   const [showReportModal, setShowReportModal] = useState(false);
   const [showProjectSwitcher, setShowProjectSwitcher] = useState(false);
 
+  // Default to the latest progress milestone (most recent date)
+  const [selectedMilestone, setSelectedMilestone] = useState<ProgressMilestone>(() => {
+    const list = currentProject.milestones || [];
+    return list.find((m) => m.isLatest) || list[list.length - 1] || {
+      id: "ms-default",
+      dateStr: "2026-09-05",
+      displayDate: "05 Septiembre 2026",
+      month: "Septiembre",
+      monthIndex: 1,
+      day: 5,
+      progress: currentProject.globalProgress,
+      phaseName: currentProject.currentPhaseName,
+      title: "Avance Más Reciente Registrado",
+      summary: "Levantamiento de supervisión técnica de acabados.",
+      supervisionNotes: "Dictamen de supervisión técnica al día.",
+      isLatest: true,
+    };
+  });
+
   // Local state for tours to enable in-memory updates
   const [tours, setTours] = useState<Tour360Folder[]>(currentProject.cloudpanoTours);
+
+  useEffect(() => {
+    setTours(currentProject.cloudpanoTours);
+    const list = currentProject.milestones || [];
+    const latest = list.find((m) => m.isLatest) || list[list.length - 1];
+    if (latest) setSelectedMilestone(latest);
+  }, [currentProject]);
 
   const handleUpdateTour = (tourId: string, updated: Partial<Tour360Folder>) => {
     setTours((prev) =>
@@ -57,9 +85,19 @@ export default function ClientPortalView({
     );
   };
 
+  const activeProgress = selectedMilestone ? selectedMilestone.progress : currentProject.globalProgress;
+  const activePhase = selectedMilestone ? selectedMilestone.phaseName : currentProject.currentPhaseName;
+  const isViewingHistorical = selectedMilestone && !selectedMilestone.isLatest;
+
   const whatsappMessage = encodeURIComponent(
-    `Hola Arq. Angel Cereceda, consulto sobre el avance de obra de ${currentProject.propertyName} (${currentProject.location}). Quisiera coordinar una sesión de revisión técnica.`
+    `Hola Arq. Angel Cereceda, consulto sobre el avance de obra de ${currentProject.propertyName} (${currentProject.location}) con respecto a la fecha ${selectedMilestone?.displayDate || "actual"}. Quisiera coordinar una sesión de revisión técnica.`
   );
+
+  const handleResetToLatest = () => {
+    const list = currentProject.milestones || [];
+    const latest = list.find((m) => m.isLatest) || list[list.length - 1];
+    if (latest) setSelectedMilestone(latest);
+  };
 
   return (
     <div className="fixed inset-0 z-50 bg-[#0e0e10] text-[#e4ded5] overflow-y-auto font-sans flex flex-col selection:bg-teal-uno selection:text-white">
@@ -144,6 +182,25 @@ export default function ClientPortalView({
         </div>
       </header>
 
+      {/* HISTORICAL VIEW ALERT BANNER IF NOT LATEST */}
+      {isViewingHistorical && (
+        <div className="bg-amber-500/15 border-b border-amber-500/30 px-4 sm:px-8 py-2.5 flex flex-wrap items-center justify-between gap-3 text-xs text-amber-200 font-sans">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
+            <span>
+              Consultando hito histórico del <strong>{selectedMilestone.displayDate}</strong> ({selectedMilestone.progress}% de avance).
+            </span>
+          </div>
+          <button
+            onClick={handleResetToLatest}
+            className="px-3 py-1 bg-amber-500/20 hover:bg-amber-500/40 text-amber-100 border border-amber-500/40 rounded-xs text-[10px] font-label-caps uppercase tracking-wider font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+          >
+            <RotateCcw className="w-3 h-3 text-teal-uno" />
+            <span>Volver al Avance Más Reciente (05 Sep 2026 - 68%)</span>
+          </button>
+        </div>
+      )}
+
       {/* 2. EXECUTIVE HERO & RESIDENT ARCHITECT BANNER */}
       <section className="bg-gradient-to-b from-[#141418] via-[#101014] to-[#0e0e10] border-b border-[#c2a275]/20 px-4 sm:px-8 py-8 sm:py-10">
         <div className="max-w-7xl mx-auto space-y-6">
@@ -158,6 +215,9 @@ export default function ClientPortalView({
                   <MapPin className="w-3 h-3 text-teal-uno" />
                   {currentProject.location}
                 </span>
+                <span className="px-2.5 py-0.5 rounded-full bg-teal-uno/15 text-teal-uno border border-teal-uno/30 text-[10px] font-mono">
+                  Ciclo de Obra: Ago — Dic 2026
+                </span>
               </div>
 
               <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white tracking-tight leading-tight">
@@ -165,7 +225,7 @@ export default function ClientPortalView({
               </h1>
 
               <p className="text-xs sm:text-sm text-[#e4ded5]/70 max-w-xl leading-relaxed">
-                Supervisión técnica de obra para <strong className="text-white font-medium">{currentProject.clientName}</strong>. Registro oficial de avances, dictámenes de calidad y bitácora interactiva.
+                Supervisión técnica de obra para <strong className="text-white font-medium">{currentProject.clientName}</strong>. Registro oficial de avances, dictámenes de calidad y bitácora interactiva de Agosto a Diciembre 2026.
               </p>
 
               {/* METADATA PILLS GRID */}
@@ -190,15 +250,25 @@ export default function ClientPortalView({
               {/* RADIAL PROGRESS GAUGE */}
               <div className="bg-[#181822] border border-[#c2a275]/30 p-5 rounded-xs flex items-center justify-between gap-4 shadow-xl">
                 <div className="space-y-1 text-left">
-                  <span className="text-[10px] font-label-caps uppercase tracking-widest text-[#c2a275]">
-                    Avance Físico Global
-                  </span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-[10px] font-label-caps uppercase tracking-widest text-[#c2a275]">
+                      {selectedMilestone?.isLatest ? "Último Avance Registrado" : "Avance Fecha Seleccionada"}
+                    </span>
+                    {selectedMilestone?.isLatest && (
+                      <span className="px-1.5 py-0.2 rounded-full bg-teal-uno text-[9px] text-white font-mono font-bold">
+                        MÁS RECIENTE
+                      </span>
+                    )}
+                  </div>
                   <div className="font-serif text-3xl sm:text-4xl font-bold text-white flex items-baseline gap-1">
-                    <span>{currentProject.globalProgress}</span>
+                    <span>{activeProgress}</span>
                     <span className="text-lg text-teal-uno font-sans font-normal">%</span>
                   </div>
                   <span className="text-[11px] text-[#e4ded5]/70 block line-clamp-1">
-                    {currentProject.currentPhaseName}
+                    {activePhase}
+                  </span>
+                  <span className="text-[10px] font-mono text-zinc-400 block">
+                    Fecha del Registro: {selectedMilestone?.displayDate}
                   </span>
                 </div>
 
@@ -214,7 +284,7 @@ export default function ClientPortalView({
                     />
                     <path
                       className="text-teal-uno"
-                      strokeDasharray={`${currentProject.globalProgress}, 100`}
+                      strokeDasharray={`${activeProgress}, 100`}
                       strokeWidth="3.5"
                       strokeLinecap="round"
                       stroke="currentColor"
@@ -283,6 +353,19 @@ export default function ClientPortalView({
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* 2.5 INTERACTIVE WORK CALENDAR (AUGUST TO DECEMBER) */}
+      <section className="bg-[#0e0e10] border-b border-[#c2a275]/20 px-4 sm:px-8 py-6">
+        <div className="max-w-7xl mx-auto">
+          <ConstructionCalendar
+            milestones={currentProject.milestones || []}
+            selectedMilestone={selectedMilestone}
+            onSelectMilestone={(m) => setSelectedMilestone(m)}
+            onViewTour={() => setActiveTab("360")}
+            onViewPhotos={() => setActiveTab("photos")}
+          />
         </div>
       </section>
 
@@ -363,6 +446,7 @@ export default function ClientPortalView({
               <CloudPanoViewer
                 tours={tours}
                 propertyName={currentProject.propertyName}
+                selectedTourId={selectedMilestone?.tourId}
                 onUpdateTour={handleUpdateTour}
               />
             </motion.div>
@@ -378,8 +462,8 @@ export default function ClientPortalView({
             >
               <ConstructionTimeline
                 phases={currentProject.phases}
-                globalProgress={currentProject.globalProgress}
-                currentPhaseName={currentProject.currentPhaseName}
+                globalProgress={activeProgress}
+                currentPhaseName={activePhase}
               />
             </motion.div>
           )}

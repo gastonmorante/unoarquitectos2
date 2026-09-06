@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
   Compass, 
@@ -20,6 +20,7 @@ import { Tour360Folder } from "../../types/clientPortal";
 interface CloudPanoViewerProps {
   tours: Tour360Folder[];
   propertyName: string;
+  selectedTourId?: string;
   onUpdateTour?: (tourId: string, updated: Partial<Tour360Folder>) => void;
   onAddTour?: (newTour: Tour360Folder) => void;
 }
@@ -27,9 +28,18 @@ interface CloudPanoViewerProps {
 export default function CloudPanoViewer({
   tours,
   propertyName,
+  selectedTourId: externalSelectedTourId,
   onUpdateTour,
 }: CloudPanoViewerProps) {
-  const [selectedTourId, setSelectedTourId] = useState<string>(tours[0]?.id || "");
+  const [selectedTourId, setSelectedTourId] = useState<string>(
+    externalSelectedTourId || tours[0]?.id || ""
+  );
+
+  useEffect(() => {
+    if (externalSelectedTourId) {
+      setSelectedTourId(externalSelectedTourId);
+    }
+  }, [externalSelectedTourId]);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showEmbedEditor, setShowEmbedEditor] = useState(false);
   const [editEmbedCode, setEditEmbedCode] = useState("");
