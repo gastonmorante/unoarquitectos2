@@ -390,10 +390,11 @@ export default function Interactive360Canvas({
                     }`}
                   >
                     <div className="w-20 h-13 sm:w-24 sm:h-16 relative bg-surface-container-low">
-                      {scene.thumbnailUrl ? (
+                      {scene.thumbnailUrl || scene.equirectangularUrl ? (
                         <img
-                          src={scene.thumbnailUrl}
+                          src={scene.thumbnailUrl || scene.equirectangularUrl}
                           alt={scene.title}
+                          loading="lazy"
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       ) : (
