@@ -36,9 +36,18 @@ export default function Interactive360Canvas({
 }: Interactive360CanvasProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeSceneIndex, setActiveSceneIndex] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
   const [autoRotate, setAutoRotate] = useState(false);
+  const autoRotateRef = useRef(false);
   const [showSceneList, setShowSceneList] = useState(true);
+
+  // Toggle auto-rotation and sync ref immediately
+  const handleToggleAutoRotate = () => {
+    setAutoRotate((prev) => {
+      const next = !prev;
+      autoRotateRef.current = next;
+      return next;
+    });
+  };
 
   // Three.js internal references
   const sceneRef = useRef<THREE.Scene | null>(null);
@@ -120,8 +129,8 @@ export default function Interactive360Canvas({
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
 
-      if (autoRotate && !isUserInteractingRef.current) {
-        lonRef.current += 0.08;
+      if (autoRotateRef.current && !isUserInteractingRef.current) {
+        lonRef.current += 0.16;
       }
 
       latRef.current = Math.max(-85, Math.min(85, latRef.current));
@@ -297,7 +306,7 @@ export default function Interactive360Canvas({
         {/* Right: Quick Controls Toolbar */}
         <div className="flex items-center gap-1.5 bg-black/80 backdrop-blur-md p-1.5 rounded-xs border border-[#c2a275]/30 shadow-lg pointer-events-auto">
           <button
-            onClick={() => setAutoRotate(!autoRotate)}
+            onClick={handleToggleAutoRotate}
             className={`p-2 rounded-xs text-xs transition-colors cursor-pointer ${
               autoRotate
                 ? "bg-teal-uno text-white font-bold"
