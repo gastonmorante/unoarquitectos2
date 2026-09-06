@@ -14,7 +14,8 @@ import {
   Sparkles,
   Award,
   CheckCircle2,
-  X
+  ArrowLeft,
+  Home
 } from "lucide-react";
 import { ClientProject, Tour360Folder } from "../../types/clientPortal";
 import CloudPanoViewer from "./CloudPanoViewer";
@@ -116,17 +117,21 @@ export default function ClientPortalView({
     <div 
       ref={portalContainerRef}
       id="client-portal-root"
-      className="fixed inset-0 z-50 bg-background text-gris-texto overflow-y-auto font-sans flex flex-col selection:bg-teal-uno selection:text-white texture-overlay scroll-smooth"
+      className="min-h-screen w-full bg-background text-gris-texto overflow-y-auto font-sans flex flex-col selection:bg-teal-uno selection:text-white texture-overlay scroll-smooth"
     >
       {/* 1. LUXURY EXECUTIVE TOP NAVBAR */}
       <header className="sticky top-0 z-40 bg-background/95 backdrop-blur-md border-b border-arena-calida/30 px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-ethereal">
         <div className="flex items-center gap-3 sm:gap-6">
-          <div className="flex items-center gap-2.5">
+          <button
+            onClick={onClose}
+            className="flex items-center gap-2.5 cursor-pointer group"
+            title="Volver a la página principal de UNO Arquitectos"
+          >
             <Logo showText={true} iconSize={32} theme="adaptive" textSize="text-xs sm:text-sm font-semibold tracking-wider" />
-            <span className="hidden sm:inline-block px-3 py-1 rounded-full bg-arena-calida/15 text-arena-calida text-[10px] font-label-caps uppercase tracking-widest border border-arena-calida/30 font-semibold">
+            <span className="hidden sm:inline-block px-3 py-1 rounded-full bg-arena-calida/15 text-arena-calida text-[10px] font-label-caps uppercase tracking-widest border border-arena-calida/30 font-semibold group-hover:bg-teal-uno group-hover:text-white transition-colors">
               Área Clientes
             </span>
-          </div>
+          </button>
 
           {/* PROJECT SWITCHER DROPDOWN */}
           <div className="relative">
@@ -176,8 +181,8 @@ export default function ClientPortalView({
             title="Abrir Asesor Técnico con Inteligencia Artificial Gemini"
           >
             <Sparkles className="w-3.5 h-3.5 text-arena-calida" />
-            <span className="hidden sm:inline">IA Gemini • Asesor</span>
-            <span className="sm:hidden">IA Gemini</span>
+            <span className="hidden lg:inline">IA Gemini • Asesor</span>
+            <span className="lg:hidden">IA Gemini</span>
           </button>
 
           <button
@@ -192,19 +197,22 @@ export default function ClientPortalView({
 
           <button
             onClick={onLogout}
-            className="px-3.5 py-2 bg-surface-container-low hover:bg-red-50 text-gris-texto hover:text-red-600 border border-arena-calida/30 rounded-full text-xs font-label-caps uppercase tracking-wider transition-colors flex items-center gap-1.5 cursor-pointer"
-            title="Cerrar sesión"
+            className="px-3 sm:px-3.5 py-2 bg-surface-container-low hover:bg-red-50 text-gris-texto hover:text-red-600 border border-arena-calida/30 rounded-full text-xs font-label-caps uppercase tracking-wider transition-colors flex items-center gap-1.5 cursor-pointer"
+            title="Cerrar sesión de cliente"
           >
             <LogOut className="w-3.5 h-3.5" />
             <span className="hidden md:inline">Cerrar Sesión</span>
           </button>
 
+          {/* EXPLICIT CLOSE AND RETURN TO MAIN SITE BUTTON */}
           <button
             onClick={onClose}
-            className="text-gris-texto hover:text-teal-uno p-2 rounded-full hover:bg-arena-calida/10 transition-colors cursor-pointer"
-            title="Salir al sitio web principal"
+            className="px-4 sm:px-5 py-2 bg-teal-uno hover:bg-arena-calida text-white rounded-full text-xs font-label-caps uppercase tracking-wider font-bold transition-all flex items-center gap-2 cursor-pointer shadow-md hover:shadow-lg active:scale-95"
+            title="Cerrar y volver al inicio de la página principal"
           >
-            <X className="w-5 h-5" />
+            <ArrowLeft className="w-4 h-4" />
+            <span className="hidden sm:inline">Cerrar y volver al inicio</span>
+            <span className="sm:hidden">Inicio</span>
           </button>
         </div>
       </header>
@@ -645,7 +653,17 @@ export default function ClientPortalView({
 
       {/* 5. FOOTER PROTOCOL */}
       <footer className="bg-surface-container-low border-t border-arena-calida/20 py-8 px-4 sm:px-8 text-center text-xs text-gris-texto font-label-caps uppercase tracking-wider flex flex-col sm:flex-row items-center justify-between gap-3">
-        <span>UNO Arquitectos • Portal de Clientes Privado v2.2</span>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={onClose}
+            className="flex items-center gap-1.5 text-teal-uno hover:text-arena-calida font-bold transition-colors cursor-pointer"
+          >
+            <Home className="w-4 h-4" />
+            <span>Volver a la Página Principal</span>
+          </button>
+          <span className="text-arena-calida/40">•</span>
+          <span>UNO Arquitectos • Portal Privado v2.2</span>
+        </div>
         <span className="text-arena-calida font-semibold">Playa del Carmen & Tulum, Quintana Roo, México</span>
       </footer>
 

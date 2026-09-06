@@ -1,6 +1,8 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /clientes
+Disallow: /portal
 Disallow: /wp-admin/
 Disallow: /wp-includes/
 

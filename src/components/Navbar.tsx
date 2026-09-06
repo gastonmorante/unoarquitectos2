@@ -28,6 +28,7 @@ export default function Navbar() {
   const handleOpenClientPortal = () => {
     setIsMobileMenuOpen(false);
     if (typeof window !== "undefined") {
+      window.history.pushState({}, "", "/clientes");
       window.scrollTo({ top: 0, behavior: "smooth" });
       window.dispatchEvent(new CustomEvent("open-client-portal"));
     }
