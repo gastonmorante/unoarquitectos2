@@ -36,6 +36,7 @@ export default function Interactive360Canvas({
 }: Interactive360CanvasProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeSceneIndex, setActiveSceneIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
   const [autoRotate, setAutoRotate] = useState(false);
   const autoRotateRef = useRef(false);
   const [showSceneList, setShowSceneList] = useState(true);
@@ -94,7 +95,6 @@ export default function Interactive360Canvas({
     sceneRef.current = scene;
 
     const camera = new THREE.PerspectiveCamera(75, width / height, 1, 1100);
-    camera.target = new THREE.Vector3(0, 0, 0);
     cameraRef.current = camera;
 
     const geometry = new THREE.SphereGeometry(500, 60, 40);

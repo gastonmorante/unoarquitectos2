@@ -91,18 +91,6 @@ export default function ClientPortalView({
     );
   };
 
-  const getDriveUrlForDate = (date: string) => {
-    if (date.includes("05") || date.includes("Septiembre")) {
-      return "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link";
-    }
-    if (date.includes("27") || date.includes("28") || date.includes("Agosto")) {
-      return "https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link";
-    }
-    return "https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing";
-  };
-
-  const currentDriveUrl = activeTour?.folderUrl || getDriveUrlForDate(activeDate);
-
   const whatsappMessage = encodeURIComponent(
     `Hola Arq. Angel Cereceda, consulto sobre el avance de obra de ${currentProject.propertyName} (${currentProject.location}) - Levantamiento del ${activeDate} (${activeProgress}% Avance). Quisiera coordinar una sesión de revisión técnica.`
   );
