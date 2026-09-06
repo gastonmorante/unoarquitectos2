@@ -171,31 +171,6 @@ export default function CloudPanoViewer({
             Inspecciona cada detalle estructural, alturas y acabados de <strong className="text-white font-medium">{propertyName}</strong> en 360 grados por fecha de entrega.
           </p>
         </div>
-
-        {/* TOP CONTROLS & EDITOR BUTTON */}
-        <div className="flex flex-wrap items-center gap-2.5">
-          <button
-            onClick={handleOpenEditor}
-            className="px-4 py-2.5 bg-[#1a1a20] hover:bg-[#252530] text-[#c2a275] border border-[#c2a275]/30 rounded-xs text-xs font-label-caps uppercase tracking-wider font-semibold transition-all duration-300 flex items-center gap-2 shadow-xs cursor-pointer active:scale-95"
-            title="Editar código de inserción CloudPano"
-          >
-            <Code2 className="w-3.5 h-3.5" />
-            <span>Código de Inserción</span>
-          </button>
-
-          {activeTour?.folderUrl && (
-            <a
-              href={activeTour.folderUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2.5 bg-teal-uno/15 hover:bg-teal-uno/25 text-teal-uno border border-teal-uno/30 rounded-xs text-xs font-label-caps uppercase tracking-wider font-semibold transition-all duration-300 flex items-center gap-2 shadow-xs cursor-pointer"
-            >
-              <FolderOpen className="w-3.5 h-3.5" />
-              <span>Carpeta de Entrega</span>
-              <ExternalLink className="w-3 h-3 ml-0.5 opacity-70" />
-            </a>
-          )}
-        </div>
       </div>
 
       {/* FOLDER SELECTION BY DATE */}
@@ -335,16 +310,6 @@ export default function CloudPanoViewer({
               <p className="text-[11px] text-[#e4ded5]/70 mt-1 line-clamp-2">
                 {activeTour?.notes || "Inspección de avance físico y calidad de acabados arquitectónicos en Riviera Maya."}
               </p>
-            </div>
-
-            <div className="absolute bottom-6 right-6 z-10">
-              <button
-                onClick={handleOpenEditor}
-                className="px-3.5 py-2 bg-black/80 backdrop-blur-md hover:bg-black text-[#c2a275] hover:text-white border border-[#c2a275]/40 rounded-xs text-[11px] font-label-caps uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer shadow-lg"
-              >
-                <Code2 className="w-3.5 h-3.5" />
-                <span>Insertar Tour CloudPano Oficial</span>
-              </button>
             </div>
           </div>
         )}
