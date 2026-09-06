@@ -23,7 +23,8 @@ import {
   Layers,
   FolderOpen,
   ArrowUpRight,
-  CheckCircle2
+  CheckCircle2,
+  Globe
 } from "lucide-react";
 import { ClientProject, Tour360Folder } from "../../types/clientPortal";
 import CloudPanoViewer from "./CloudPanoViewer";
@@ -217,7 +218,7 @@ export default function ClientPortalView({
               </h1>
 
               <p className="text-xs sm:text-sm text-[#e4ded5]/70 max-w-xl leading-relaxed">
-                Supervisión técnica de obra para <strong className="text-white font-medium">{currentProject.clientName}</strong>. Registro oficial de avances, dictámenes de calidad y bitácora de obra con tours 360° y reportes fotográficos de Agosto a Diciembre 2026.
+                Supervisión técnica de obra para <strong className="text-white font-medium">{currentProject.clientName}</strong>. Registro oficial de avances, dictámenes de calidad y bitácora de obra con galería de fotos 360° y reportes fotográficos de Agosto a Diciembre 2026.
               </p>
 
               {/* METADATA PILLS GRID */}
@@ -363,7 +364,7 @@ export default function ClientPortalView({
                 <span>Seleccionar Ficha de Avance de Obra</span>
               </div>
               <p className="text-xs text-[#e4ded5]/70 mt-0.5">
-                Al seleccionar una fecha se sincroniza el Recorrido 360° CloudPano, la Bitácora Fotográfica y las métricas de obra.
+                Al seleccionar una fecha se sincroniza la Galería de Fotos 360°, la Galería de Fotos Encuadradas y las métricas de obra.
               </p>
             </div>
 
@@ -377,7 +378,7 @@ export default function ClientPortalView({
                     : "text-zinc-400 hover:text-white"
                 }`}
               >
-                Ficha Completa (360° + Fotos)
+                Ficha Completa (Fotos 360° + Fotos Encuadradas)
               </button>
               <button
                 onClick={() => setViewMode("360")}
@@ -387,7 +388,7 @@ export default function ClientPortalView({
                     : "text-zinc-400 hover:text-white"
                 }`}
               >
-                Solo 360°
+                Solo Fotos 360°
               </button>
               <button
                 onClick={() => setViewMode("photos")}
@@ -397,7 +398,7 @@ export default function ClientPortalView({
                     : "text-zinc-400 hover:text-white"
                 }`}
               >
-                Solo Fotos
+                Solo Fotos Encuadradas
               </button>
             </div>
           </div>
@@ -407,6 +408,7 @@ export default function ClientPortalView({
             {tours.map((tour) => {
               const isSelected = tour.id === selectedTourId;
               const photoCount = currentProject.photoReports.filter((p) => p.period === tour.date).length;
+              const scene360Count = tour.scenes?.length || 0;
               const isFirst = tour.id === tours[0].id;
 
               return (
@@ -453,11 +455,11 @@ export default function ClientPortalView({
                   <div className="flex items-center gap-4 text-[10px] text-zinc-400 mt-3 pt-2.5 border-t border-white/5 font-label-caps uppercase">
                     <span className="flex items-center gap-1.5 text-teal-uno font-medium">
                       <Compass className="w-3.5 h-3.5" />
-                      Tour 360° CloudPano
+                      {scene360Count} Fotos 360°
                     </span>
                     <span className="flex items-center gap-1.5 text-[#c2a275] font-medium">
                       <Camera className="w-3.5 h-3.5" />
-                      {photoCount} Fotos Reencuadradas
+                      {photoCount} Fotos Encuadradas
                     </span>
                     {isSelected && (
                       <span className="ml-auto text-emerald-400 flex items-center gap-1 font-bold">
@@ -519,20 +521,20 @@ export default function ClientPortalView({
           </div>
         </div>
 
-        {/* VIEW MODE 1: FICHA COMPLETA (360 + FOTOS) */}
+        {/* VIEW MODE 1: FICHA COMPLETA (FOTOS 360 + FOTOS ENCUADRADAS) */}
         {viewMode === "all" && (
           <div className="space-y-12">
-            {/* PART 1: 360 CLOUDPANO VIEWER */}
+            {/* PART 1: GALERÍA DE FOTOS 360° */}
             <section className="space-y-4 text-left">
               <div className="flex items-center justify-between border-b border-[#c2a275]/20 pb-3">
                 <div className="flex items-center gap-2 text-xs font-label-caps uppercase tracking-widest text-[#c2a275]">
                   <Compass className="w-4 h-4 text-teal-uno" />
                   <h3 className="font-serif text-xl sm:text-2xl text-white normal-case">
-                    Recorrido Virtual 360° CloudPano • {activeDate}
+                    Galería de Fotos 360° Inmersiva • {activeDate} ({activeTour?.scenes?.length || 0} Puntos)
                   </h3>
                 </div>
                 <span className="text-[11px] font-mono text-teal-uno hidden sm:inline">
-                  Inspección Inmersiva en Vivo
+                  Visor Esférico 360° Interactivo
                 </span>
               </div>
 
@@ -546,7 +548,7 @@ export default function ClientPortalView({
               />
             </section>
 
-            {/* PART 2: BITÁCORA FOTOGRÁFICA */}
+            {/* PART 2: GALERÍA DE FOTOS ENCUADRADAS */}
             <section className="space-y-4 text-left">
               <PhotoReportsGrid
                 photoReports={currentProject.photoReports}
@@ -559,7 +561,7 @@ export default function ClientPortalView({
           </div>
         )}
 
-        {/* VIEW MODE 2: SOLO RECORRIDO 360 */}
+        {/* VIEW MODE 2: SOLO FOTOS 360° */}
         {viewMode === "360" && (
           <motion.div
             key={`360-${selectedTourId}`}
@@ -580,7 +582,7 @@ export default function ClientPortalView({
           </motion.div>
         )}
 
-        {/* VIEW MODE 3: SOLO BITÁCORA FOTOGRÁFICA */}
+        {/* VIEW MODE 3: SOLO FOTOS ENCUADRADAS */}
         {viewMode === "photos" && (
           <motion.div
             key={`photos-${selectedTourId}`}
@@ -647,5 +649,3 @@ export default function ClientPortalView({
     </div>
   );
 }
-
-

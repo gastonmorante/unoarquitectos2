@@ -37,7 +37,7 @@ const QUICK_QUESTIONS = [
   "¿Qué avances se completaron el 05 de Septiembre?",
   "¿Qué especificaciones tienen las instalaciones del 27 de Agosto?",
   "¿Cómo se aplicó el Chukum y qué cuidados requiere?",
-  "¿Dónde descargo las fotos y veo el tour 360?"
+  "¿Dónde descargo las fotos y veo las fotos 360°?"
 ];
 
 // Motor de Conocimiento Especializado para Residencia Arrecifes & UNO Arquitectos
@@ -93,7 +93,7 @@ El levantamiento técnico del **05 de Septiembre de 2026** corresponde a la **Fa
 4. **Carpintería Fina**: Habilitado en taller de marcos y bastidores de madera maciza de Tzalam curada en horno al 10% de humedad.`,
       links: [
         { label: "Carpeta en Google Drive (05/09/2026)", url: "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link" },
-        { label: "Tour 360° CloudPano (yU6zyUhkj)", url: "https://app.cloudpano.com/tours/yU6zyUhkj" }
+        { label: "Ver Galería de Fotos 360°", url: "#360" }
       ]
     };
   }
@@ -123,7 +123,7 @@ El levantamiento técnico del **27 de Agosto de 2026** documenta la **Fase 3: In
 5. **Fachada Norte**: Anclaje de bastidores ocultos de acero inoxidable 316 para celosías de Tzalam.`,
       links: [
         { label: "Carpeta en Google Drive (27/08/2026)", url: "https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link" },
-        { label: "Tour 360° CloudPano (yU6zyUhkj)", url: "https://app.cloudpano.com/tours/yU6zyUhkj" }
+        { label: "Ver Galería de Fotos 360°", url: "#360" }
       ]
     };
   }
@@ -182,27 +182,26 @@ El levantamiento técnico del **27 de Agosto de 2026** documenta la **Fase 3: In
     };
   }
 
-  // 6. ENLACES A DRIVE Y TOUR 360
+  // 6. ENLACES A DRIVE Y FOTOS 360
   if (
     q.includes("drive") ||
     q.includes("foto") ||
     q.includes("360") ||
     q.includes("descarg") ||
-    q.includes("cloudpano") ||
     q.includes("link") ||
     q.includes("carpeta")
   ) {
     return {
-      text: `### 📂 Repositorios Oficiales en Nube y Recorridos 360°:
+      text: `### 📂 Repositorios Oficiales en Nube y Galerías 360°:
 
-Puedes consultar y descargar los archivos originales en alta resolución y recorrer la obra en 360° en los siguientes accesos oficiales:
+Puedes consultar y descargar los archivos originales en alta resolución y explorar las fotos 360° en los siguientes accesos oficiales:
 
-• **Avance 05 Septiembre 2026 (Último Registro - 68%)**:
-  - Tour 360° CloudPano: ID \`yU6zyUhkj\`
+• **Avance 05 Septiembre 2026 (Último Registro - 72%)**:
+  - Galería de Fotos 360°: 19 Puntos Esféricos HD
   - Carpeta de Fotos Drive: [Abrir Carpeta 05/09/2026](https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link)
 
 • **Avance 27 Agosto 2026 (Instalaciones & Domótica - 52%)**:
-  - Tour 360° CloudPano: ID \`yU6zyUhkj\`
+  - Galería de Fotos 360°: 10 Puntos Esféricos HD
   - Carpeta de Fotos Drive: [Abrir Carpeta 27/08/2026](https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link)
 
 • **Repositorio Maestro de Obra Arrecifes**:
@@ -210,7 +209,7 @@ Puedes consultar y descargar los archivos originales en alta resolución y recor
       links: [
         { label: "Drive 05/09/2026", url: "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link" },
         { label: "Drive 27/08/2026", url: "https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link" },
-        { label: "Tour 360° CloudPano", url: "https://app.cloudpano.com/tours/yU6zyUhkj" }
+        { label: "Ver Galería de Fotos 360°", url: "#360" }
       ]
     };
   }
@@ -243,7 +242,7 @@ Estoy entrenado con las especificaciones exactas, medidas milimétricas, dictám
       timestamp: "Ahora",
       driveLinks: [
         { label: "Ver Último Avance (05 Sep)", url: "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link" },
-        { label: "Tour 360° CloudPano", url: "https://app.cloudpano.com/tours/yU6zyUhkj" }
+        { label: "Ver Galería de Fotos 360°", url: "#360" }
       ]
     }
   ]);
@@ -291,7 +290,7 @@ Estoy entrenado con las especificaciones exactas, medidas milimétricas, dictám
             director: project.director.name,
             driveFolder05Sep: "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link",
             driveFolder27Ago: "https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link",
-            cloudpanoTour: "https://app.cloudpano.com/tours/yU6zyUhkj"
+            tour360: "Visor 360° Nativo"
           },
           language: "es"
         })
