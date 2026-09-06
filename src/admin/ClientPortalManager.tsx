@@ -32,7 +32,7 @@ export default function ClientPortalManager() {
     return defaultClientProjects;
   });
 
-  const [selectedProjectId, setSelectedProjectId] = useState<string>(projects[0]?.id || "villa-vidorra");
+  const [selectedProjectId, setSelectedProjectId] = useState<string>(projects[0]?.id || "arrecifes");
   const [activeSubTab, setActiveSubTab] = useState<"general" | "tours" | "phases" | "photos" | "beforeAfter">("general");
   const [saveToast, setSaveToast] = useState(false);
 

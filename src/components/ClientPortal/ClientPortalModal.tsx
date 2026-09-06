@@ -131,7 +131,7 @@ export default function ClientPortalModal({
                   type="text"
                   value={selectedProperty}
                   onChange={(e) => setSelectedProperty(e.target.value)}
-                  placeholder="Ej. Villa Vidorra, Casa Tzalam, Residencia Mayakoba"
+                  placeholder="Ej. Arrecifes, Casa Tzalam, Residencia Mayakoba"
                   required
                   list="properties-list"
                   className="w-full bg-black/60 border border-[#c2a275]/30 px-3.5 py-2.5 rounded-xs text-xs text-white placeholder-zinc-500 focus:border-teal-uno focus:outline-none focus:ring-1 focus:ring-teal-uno"

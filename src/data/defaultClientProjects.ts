@@ -2,15 +2,15 @@ import { ClientProject } from "../types/clientPortal";
 
 export const defaultClientProjects: ClientProject[] = [
   {
-    id: "villa-vidorra",
-    propertyName: "Villa Vidorra",
+    id: "arrecifes",
+    propertyName: "Arrecifes",
     accessCode: "unoarq",
-    clientName: "Familia Belmont / Propietario Exclusivo",
-    location: "Playacar Fase II, Playa del Carmen, Q. Roo",
-    typology: "Residencia de Lujo Unifamiliar & Pabellón Spa",
-    totalArea: "640 m² de Construcción",
+    clientName: "Familia Propietaria / Residencia Arrecifes",
+    location: "Playa del Carmen, Riviera Maya, Q. Roo",
+    typology: "Residencia de Lujo Tropical Contemporánea Frente al Mar",
+    totalArea: "720 m² de Construcción & Terrazas Voladas",
     startDate: "15 Enero 2026",
-    estimatedDelivery: "28 Febrero 2027",
+    estimatedDelivery: "30 Marzo 2027",
     globalProgress: 68,
     currentPhaseName: "Fase 4: Revestimientos en Chukum & Mármol Travertino",
     heroImage: "/hero-luxury-villa.webp",
@@ -25,46 +25,46 @@ export const defaultClientProjects: ClientProject[] = [
     },
     cloudpanoTours: [
       {
-        id: "tour-vidorra-sep-2026",
+        id: "tour-arrecifes-sep-2026",
         date: "Septiembre 2026",
         title: "Avance 68% - Revestimientos Sensoriales en Chukum & Mármol",
         phaseName: "Fase 4: Revestimientos y Acabados de Lujo",
         progress: 68,
         embedCode: '<iframe src="https://app.cloudpano.com/tours/demo-tour-uno?sceneId=1" width="100%" height="100%" frameborder="0" allowfullscreen allow="accelerometer; gyroscope; magnetometer; vr"></iframe>',
-        folderUrl: "https://drive.google.com/drive/folders/uno-arquitectos-villa-vidorra-sep2026",
+        folderUrl: "https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing",
         notes: "Levantamiento 360° tras culminación de pasta de Chukum natural en doble altura, colocación de placas de mármol Santo Tomás en vestíbulos y preparación para carpintería maciza.",
         thumbnail: "/projects/residencial/alux-7cielos-chukum-suite.jpg"
       },
       {
-        id: "tour-vidorra-ago-2026",
+        id: "tour-arrecifes-ago-2026",
         date: "Agosto 2026",
         title: "Avance 54% - Instalaciones Especiales, Domótica & HVAC",
         phaseName: "Fase 3: Instalaciones Especiales",
         progress: 54,
         embedCode: '<iframe src="https://app.cloudpano.com/tours/demo-tour-uno?sceneId=2" width="100%" height="100%" frameborder="0" allowfullscreen allow="accelerometer; gyroscope; magnetometer; vr"></iframe>',
-        folderUrl: "https://drive.google.com/drive/folders/uno-arquitectos-villa-vidorra-ago2026",
+        folderUrl: "https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing",
         notes: "Supervisión 360° de canalizaciones hidrosanitarias presurizadas, cableado domótico Lutron y ductería oculta de aire acondicionado VRF inverter.",
         thumbnail: "/projects/residencial/alux-7cielos-living-open.jpg"
       },
       {
-        id: "tour-vidorra-jul-2026",
+        id: "tour-arrecifes-jul-2026",
         date: "Julio 2026",
         title: "Avance 38% - Muros, Losas de Concreto & Alberca Cenote",
         phaseName: "Fase 2: Muros y Mampostería",
         progress: 38,
         embedCode: '<iframe src="https://app.cloudpano.com/tours/demo-tour-uno?sceneId=3" width="100%" height="100%" frameborder="0" allowfullscreen allow="accelerometer; gyroscope; magnetometer; vr"></iframe>',
-        folderUrl: "https://drive.google.com/drive/folders/uno-arquitectos-villa-vidorra-jul2026",
+        folderUrl: "https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing",
         notes: "Colado de losas intermedias con cimbra aparente texturizada con duela regional y perfilado de excavación para alberca con fondo orgánico.",
         thumbnail: "/projects/residencial/alux-7cielos-ocean-pool.jpg"
       },
       {
-        id: "tour-vidorra-jun-2026",
+        id: "tour-arrecifes-jun-2026",
         date: "Junio 2026",
         title: "Avance 22% - Cimentación Ciclópea & Estructura Kárstica",
         phaseName: "Fase 1: Cimentación y Estructura",
         progress: 22,
         embedCode: '<iframe src="https://app.cloudpano.com/tours/demo-tour-uno?sceneId=4" width="100%" height="100%" frameborder="0" allowfullscreen allow="accelerometer; gyroscope; magnetometer; vr"></iframe>',
-        folderUrl: "https://drive.google.com/drive/folders/uno-arquitectos-villa-vidorra-jun2026",
+        folderUrl: "https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing",
         notes: "Prospección geofísica completada y colado de zapatas aisladas amarradas con trabes de liga sismorresistentes calculadas para huracanes Cat. 5.",
         thumbnail: "/projects/offgrid/offgrid-pabellon-living.jpg"
       }
@@ -156,7 +156,7 @@ export const defaultClientProjects: ClientProject[] = [
     ],
     photoReports: [
       {
-        id: "rep-vidorra-01",
+        id: "rep-arrecifes-01",
         period: "Septiembre 2026",
         category: "Acabados",
         title: "Aplicación de Pasta en Chukum Orgánico - Master Suite",
@@ -167,7 +167,7 @@ export const defaultClientProjects: ClientProject[] = [
         isReframed360: true
       },
       {
-        id: "rep-vidorra-02",
+        id: "rep-arrecifes-02",
         period: "Septiembre 2026",
         category: "Interiores",
         title: "Vestíbulo de Acceso & Placas de Mármol Santo Tomás",
@@ -178,7 +178,7 @@ export const defaultClientProjects: ClientProject[] = [
         isReframed360: true
       },
       {
-        id: "rep-vidorra-03",
+        id: "rep-arrecifes-03",
         period: "Septiembre 2026",
         category: "Alberca",
         title: "Pabellón de Alberca & Muro Llorón en Roca Caliza",
@@ -189,7 +189,7 @@ export const defaultClientProjects: ClientProject[] = [
         isReframed360: true
       },
       {
-        id: "rep-vidorra-04",
+        id: "rep-arrecifes-04",
         period: "Agosto 2026",
         category: "Estructura",
         title: "Colado de Cubierta y Voladizos en Concreto Aparente",
@@ -200,7 +200,7 @@ export const defaultClientProjects: ClientProject[] = [
         isReframed360: true
       },
       {
-        id: "rep-vidorra-05",
+        id: "rep-arrecifes-05",
         period: "Agosto 2026",
         category: "Instalaciones",
         title: "Canalización de Cuarto de Máquinas & PTAR",
@@ -211,7 +211,7 @@ export const defaultClientProjects: ClientProject[] = [
         isReframed360: true
       },
       {
-        id: "rep-vidorra-06",
+        id: "rep-arrecifes-06",
         period: "Julio 2026",
         category: "Fachada",
         title: "Celosía de Tzalam & Muros de Concreto Texturizado",
@@ -224,7 +224,7 @@ export const defaultClientProjects: ClientProject[] = [
     ],
     beforeAfterComparisons: [
       {
-        id: "ba-vidorra-suite",
+        id: "ba-arrecifes-suite",
         title: "Master Suite & Terraza Selvática",
         zone: "Planta Alta - Recámara Principal",
         beforeDate: "Junio 2026 (Fase Estructural)",
@@ -234,7 +234,7 @@ export const defaultClientProjects: ClientProject[] = [
         description: "Transformación desde el cajón de concreto armado con claros abiertos hacia el espacio habitable terminado con pasta de Chukum sedoso, cancelería embutida y vistas al dosel selvático."
       },
       {
-        id: "ba-vidorra-alberca",
+        id: "ba-arrecifes-alberca",
         title: "Pabellón Cenote & Alberca de Chukum",
         zone: "Área Exterior - Jardín Posterior",
         beforeDate: "Mayo 2026 (Excavación Kárstica)",
