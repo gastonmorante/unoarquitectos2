@@ -98,185 +98,132 @@ const getLocalArrecifesResponse = (query: string, project: ClientProject): { tex
 • **Cancelería & Envolvente**:
   - Línea europea Eurovent con cristales laminados reflectivos de **12 mm** de seguridad con anclajes estructurales ocultos.`,
       links: [
-        { label: "Consultar Memoria de Cálculo con el Arq. Angel", url: `https://wa.me/${project.director.whatsapp}` }
+        { label: "Ver Dictamen Técnico PDF", url: "#pdf" }
       ]
     };
   }
 
-  // 3. AVANCE 05 SEPTIEMBRE 2026 (ÚLTIMO AVANCE - CHUKUM & MÁRMOL)
+  // 3. AVANCE DE OBRA DEL 05 DE SEPTIEMBRE DE 2026 (72% GLOBAL)
   if (
-    q.includes("0509") ||
-    q.includes("05 de sep") ||
     q.includes("05 sep") ||
+    q.includes("5 sep") ||
     q.includes("septiembre") ||
-    q.includes("ultimo avance") ||
-    q.includes("reciente")
+    q.includes("ultimo") ||
+    q.includes("reciente") ||
+    q.includes("fase 4") ||
+    q.includes("acabado") ||
+    q.includes("marmol") ||
+    q.includes("chukum") ||
+    q.includes("tzalam")
   ) {
     return {
-      text: `### 🏛️ Dictamen Técnico: Avance al **05 de Septiembre de 2026** (72% Global)
+      text: `### 🏛️ Reporte Ejecutivo de Avance — **05 de Septiembre de 2026** (72% Global):
 
-El levantamiento técnico del **05 de Septiembre de 2026** corresponde a la **Fase 4: Revestimientos en Chukum Tradicional Maya & Mármol Santo Tomás**:
-
-1. **Master Suite & Doble Altura**: Culminación de la aplicación de pasta orgánica de Chukum artesanal hervida en obra con agua de pozo y corteza de *Havardia albicans*, con sellado hidrófugo de poro abierto en muros de 6.40 m.
-2. **Vestíbulo Principal**: Colocación y nivelación láser de placas de mármol Santo Tomás (**1.20 x 2.40 m**) apomazadas mate con juntas a hueso de 1.5 mm.
-3. **Alberca Cenote**: Aplicación de doble membrana epóxica y perfilado de bordes orgánicos previo al vertido de Chukum turquesa.
-4. **Carpintería Fina**: Habilitado en taller de marcos y bastidores de madera maciza de Tzalam curada en horno al 10% de humedad.`,
+• **Fase**: Fase 4 — Acabados Arquitectónicos Nobles & Revestimientos Artesanales.
+• **Chukum Maya Tradicional**:
+  - Aplicado en muros de doble altura (**6.40 m**) y fachada exterior.
+  - Elaborado con resina vegetal hervida in situ (*Havardia albicans*), polvo de piedra caliza y agua dulce de pozo filtrada, sellado con membrana de poro abierto.
+• **Mármol Santo Tomás**:
+  - Placas gran formato de **1.20 x 2.40 m** apomazadas acabado mate antideslizante con juntas milimétricas de 1.5 mm en vestíbulo y estancias.
+• **Carpintería Fina de Tzalam**:
+  - Madera tropical curada en horno al **10% de humedad relativa**, tratada contra xilófagos y sellada con aceites naturales mate.
+• **Alberca Cenote**:
+  - Doble impermeabilización epóxica flexible superada al 100% y colocación de recubrimiento en pasta de Chukum turquesa.`,
       links: [
-        { label: "Carpeta en Google Drive (05/09/2026)", url: "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link" },
-        { label: "Ver Galería de Fotos 360°", url: "#360" }
+        { label: "Abrir Carpeta Drive (05 Sep 2026)", url: "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link" },
+        { label: "Ver 19 Fotos 360° de esta fecha", url: "#360" }
       ]
     };
   }
 
-  // 4. AVANCE 27 AGOSTO 2026 (INSTALACIONES ESPECIALES, VRF & DOMÓTICA)
+  // 4. AVANCE DE OBRA DEL 27 DE AGOSTO DE 2026 (52% GLOBAL)
   if (
-    q.includes("2708") ||
-    q.includes("2808") ||
-    q.includes("27 de ago") ||
     q.includes("27 ago") ||
     q.includes("28 ago") ||
+    q.includes("agosto") ||
+    q.includes("fase 3") ||
+    q.includes("mep") ||
     q.includes("instalacion") ||
-    q.includes("vrf") ||
+    q.includes("aire") ||
+    q.includes("clima") ||
     q.includes("daikin") ||
-    q.includes("hidrostat") ||
-    q.includes("domotica") ||
     q.includes("lutron") ||
+    q.includes("electr") ||
+    q.includes("hidraul") ||
     q.includes("ptar")
   ) {
     return {
-      text: `### ⚡ Dictamen Técnico: Avance al **27 de Agosto de 2026** (52% Global)
+      text: `### ⚡ Reporte Ejecutivo de Instalaciones — **27 de Agosto de 2026** (52% Global):
 
-El levantamiento técnico del **27 de Agosto de 2026** documenta la **Fase 3: Instalaciones Especiales (MEP, Climatización & Domótica)**:
-
-1. **Climatización VRF Inverter Daikin**: Tendido de ductería aislada acústicamente en entreplantas técnicas (3.40 m) y pruebas de estanqueidad de gas refrigerante R-410A.
-2. **Pruebas Hidrostáticas**: Canalizaciones hidrosanitarias presurizadas a **7.0 kg/cm²** superadas con cero pérdidas de presión en 72 horas.
-3. **Domótica Lutron Homeworks QSX**: Tendido de cableado estructurado para control inteligente de escenas lumínicas en 2700K y persianas motorizadas.
-4. **PTAR y Drenaje Ecológico**: Instalación de biodigestores anaeróbicos y sistema de fitorremediación con humedales para recirculación de agua en riego.
-5. **Fachada Norte**: Anclaje de bastidores ocultos de acero inoxidable 316 para celosías de Tzalam.`,
+• **Fase**: Fase 3 — Instalaciones Ocultas MEP, Confort Bioclimático & Domótica.
+• **Climatización VRF Inverter Daikin**:
+  - Equipos de alta eficiencia energética ocultos en cámaras plénum de entrepiso (**3.40 m**) con ductería termoacústica y rejillas lineales perimetrales.
+• **Instalación Hidráulica & Pruebas**:
+  - Red presurizada con tubería termofusionada PPR-CT y CPVC industrial.
+  - **Prueba Hidrostática Exitosa**: 72 horas continuas presurizada a **7.0 kg/cm² (100 PSI)** con cero caídas barométricas.
+• **Domótica & Iluminación Lutron QSX**:
+  - Cableado apantallado instalado y canalizado; luminarias LED empotradas con índice cromático **CRI > 95** en temperatura cálida de **2700K**.
+• **Sustentabilidad Hídrica**:
+  - Planta de Tratamiento de Aguas Residuales (**PTAR**) biológica y humedales de fitorremediación para reuso en riego selvático.`,
       links: [
-        { label: "Carpeta en Google Drive (27/08/2026)", url: "https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link" },
-        { label: "Ver Galería de Fotos 360°", url: "#360" }
+        { label: "Abrir Carpeta Drive (27 Ago 2026)", url: "https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link" },
+        { label: "Ver 10 Fotos 360° de esta fecha", url: "#360" }
       ]
     };
   }
 
-  // 5. CHUKUM, TZALAM Y MATERIALES
+  // 5. FOTOS 360°, DRIVE & DESCARGAS
   if (
-    q.includes("chukum") ||
-    q.includes("tzalam") ||
-    q.includes("material") ||
-    q.includes("acabado") ||
-    q.includes("marmol") ||
-    q.includes("madera") ||
-    q.includes("santo tomas")
+    q.includes("360") ||
+    q.includes("foto") ||
+    q.includes("drive") ||
+    q.includes("descarg") ||
+    q.includes("ver") ||
+    q.includes("recorrido") ||
+    q.includes("galeria")
   ) {
     return {
-      text: `### 🌿 Materiales Autóctonos y Especificaciones Sensoriales de **Arrecifes**:
+      text: `### 📸 Registros Multimedia Oficiales de **${project.propertyName}**:
 
-• **Chukum Tradicional Maya**:
-  - **Origen**: Resina vegetal extraída del árbol *Havardia albicans*, hervida en obra siguiendo la receta tradicional prehispánica con agua de pozo.
-  - **Propiedades**: Acabado sedoso al tacto, impermeable natural, atérmico y con tonalidad cálida marfil-chukum que envejece con nobleza.
-  - **Mantenimiento**: Limpieza con jabón neutro sin agentes químicos abrasivos y reaplicación de cera natural cada 2 años.
-
-• **Madera Maciza de Tzalam (Nogal Maya)**:
-  - Curada y secada en horno a 10% de humedad en nuestro taller propio de Tulum.
-  - Gran densidad y resistencia a termitas y salinidad caribeña.
-
-• **Mármol Santo Tomás & Travertino Veracruz**:
-  - Placas de 1.20 x 2.40 m apomazadas mate, seleccionadas a veta continua para pisos de planta baja y baños principales.`,
+Dispones de acceso a:
+1. **Galería 360° Inmersiva**: Visor esférico interactivo con **19 puntos** para el 05 de Septiembre y **10 puntos** para el 27 de Agosto.
+2. **Galería de Fotos Encuadradas**: Fotografías con corrección de perspectiva arquitectónica (reframe) a dos puntos de fuga.
+3. **Carpetas de Descarga en Alta Resolución (Google Drive Oficial)**:
+   - Carpeta 05 Septiembre 2026: 20 fotos encuadradas + 19 equirectangulares 360°.
+   - Carpeta 27 Agosto 2026: 10 fotos encuadradas + 10 equirectangulares 360°.`,
       links: [
-        { label: "Carpeta General en Google Drive", url: "https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing" }
+        { label: "Drive 05 Septiembre 2026", url: "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link" },
+        { label: "Drive 27 Agosto 2026", url: "https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link" },
+        { label: "Carpeta Raíz Drive Maestro", url: "https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing" }
       ]
     };
   }
 
-  // 6. FECHAS DE ENTREGA Y CRONOGRAMA
-  if (
-    q.includes("fecha") ||
-    q.includes("entrega") ||
-    q.includes("cuando termin") ||
-    q.includes("cronograma") ||
-    q.includes("fase") ||
-    q.includes("plazo")
-  ) {
-    return {
-      text: `### 📅 Cronograma Oficial de Obra — **${project.propertyName}**:
-
-• **Inicio de Obra**: 01 Agosto 2026
-• **Avance Actual al 05 Sep 2026**: **72% de Ejecución** (Fase 4: Acabados en Chukum & Mármol)
-• **Fecha Estimada de Entrega Llave en Mano**: **20 Diciembre 2026**
-• **Próximos Hitos Clave**:
-  - **Octubre 2026 (82%)**: Montaje de puertas pivotantes en Tzalam y cancelería europea antihuracán DVH.
-  - **Noviembre 2026 (94%)**: Iluminación sensorial 2700K, paisajismo selvático endémico y llenado de alberca.
-  - **Diciembre 2026 (100%)**: Protocolo de entrega de llaves, manuales técnicos As-Built y garantía estructural certificada.`,
-      links: [
-        { label: "Consultar al Arq. Angel Cereceda", url: `https://wa.me/${project.director.whatsapp}` }
-      ]
-    };
-  }
-
-  // 7. COSTOS, COTIZACIONES Y PRESUPUESTO
+  // 6. COSTOS / PRECIOS / COTIZACIONES
   if (
     q.includes("costo") ||
     q.includes("precio") ||
     q.includes("cotiz") ||
-    q.includes("cuanto cuesta") ||
     q.includes("presupuesto") ||
-    q.includes("tarifa")
+    q.includes("cuanto cuesta") ||
+    q.includes("vale") ||
+    q.includes("m2 precio")
   ) {
     return {
-      text: `### 💼 Política Constructiva y Presupuestaria de **UNO Arquitectos**:
+      text: `### 💼 Política de Costos y Presupuestos — **UNO Arquitectos**:
 
-En **UNO Arquitectos**, nos regimos por el lema rector: *"Somos el estudio que diseña lo que puedes construir"*.
+En **UNO Arquitectos** no manejamos costos genéricos ni inventamos tarifas por metro cuadrado en línea, ya que cada obra se cotiza mediante un **Presupuesto Paramétrico Cerrado con Cero Sobrecostos**.
 
-• **Presupuesto Paramétrico Cerrado**: En arquitectura boutique tropical en Riviera Maya, los costos no se basan en tarifas genéricas inventadas por metro cuadrado. Se calculan con estricto rigor técnico a partir del proyecto ejecutivo, la mecánica de suelos kársticos, la topografía y las ingenierías seleccionadas.
-• **Garantía Sin Sobrecostos**: Todo proyecto se entrega bajo contrato llave en mano con trazabilidad de compras y calendario de ministraciones.
-
-Para solicitar una valoración técnica preliminar o resolver dudas presupuestarias de obra, puedes coordinar directamente con la Dirección General.`,
+Para cualquier cotización formal, ajuste volumétrico o catálogo de conceptos de **${project.propertyName}**, te invitamos a comunicarte directamente con el **${project.director.name}** (${project.director.role}).`,
       links: [
-        { label: "Contactar al Arq. Angel Cereceda", url: `https://wa.me/${project.director.whatsapp}` }
+        { label: "Contactar a Arq. Angel Cereceda vía WhatsApp", url: `https://wa.me/${project.director.whatsapp}` }
       ]
     };
   }
 
-  // 8. ENLACES A DRIVE Y FOTOS 360
-  if (
-    q.includes("drive") ||
-    q.includes("foto") ||
-    q.includes("360") ||
-    q.includes("descarg") ||
-    q.includes("link") ||
-    q.includes("carpeta")
-  ) {
-    return {
-      text: `### 📂 Repositorios Oficiales en Nube y Galerías 360°:
-
-Puedes consultar y descargar los archivos originales en alta resolución y explorar las fotos 360° en los siguientes accesos oficiales:
-
-• **Avance 05 Septiembre 2026 (Último Registro - 72%)**:
-  - Galería de Fotos 360°: 19 Puntos Esféricos HD
-  - Carpeta de Fotos Drive: [Abrir Carpeta 05/09/2026](https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link)
-
-• **Avance 27 Agosto 2026 (Instalaciones & Domótica - 52%)**:
-  - Galería de Fotos 360°: 10 Puntos Esféricos HD
-  - Carpeta de Fotos Drive: [Abrir Carpeta 27/08/2026](https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link)
-
-• **Repositorio Maestro de Obra Arrecifes**:
-  - [Google Drive Master Folder](https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing)`,
-      links: [
-        { label: "Drive 05/09/2026", url: "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link" },
-        { label: "Drive 27/08/2026", url: "https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link" },
-        { label: "Ver Galería de Fotos 360°", url: "#360" }
-      ]
-    };
-  }
-
-  // DEFAULT ARCHITECTURAL ADVISORY (STRICT VERACITY)
+  // DEFAULT CONTEXTUAL RESPONSE
   return {
-    text: `Como **Asistente Técnico de Obra de UNO Arquitectos** para **${project.propertyName}**, bajo la dirección del **${project.director.name}**:
-
-En relación a tu consulta sobre **"${query}"**:
-La residencia cuenta con **720.00 m² construidos** sobre un predio de **1,150.00 m²** (55% de conservación selvática) y se encuentra al **${project.globalProgress}% de ejecución** con fecha de entrega estimada para el **${project.estimatedDelivery}**.
+    text: `Con gusto te asisto con información verificada de **${project.propertyName}** (${project.location}).
 
 Nuestra base de conocimiento oficial abarca:
 1. **Medidas y Alturas Exactas** (6.40 m doble altura, 3.80 m master suite, 3.40 m secundarias, claros de 8.50 m, alberca de 48 m²).
@@ -395,30 +342,30 @@ Estoy entrenado con las especificaciones exactas, medidas milimétricas, dictám
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-xl font-sans select-none">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/60 backdrop-blur-md font-sans select-none">
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 15 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 15 }}
         transition={{ duration: 0.25 }}
-        className="bg-[#141418] border border-[#c2a275]/40 rounded-xs max-w-3xl w-full h-[85vh] max-h-[750px] shadow-2xl flex flex-col overflow-hidden text-left"
+        className="bg-background/98 backdrop-blur-xl border border-arena-calida/40 rounded-3xl max-w-3xl w-full h-[85vh] max-h-[750px] shadow-2xl flex flex-col overflow-hidden text-left text-gris-texto texture-overlay relative"
       >
         {/* MODAL HEADER */}
-        <div className="bg-[#181822] border-b border-[#c2a275]/25 px-5 py-4 flex items-center justify-between flex-shrink-0">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xs bg-teal-uno/20 border border-teal-uno/50 flex items-center justify-center text-teal-uno">
+        <div className="bg-surface-container-low/90 backdrop-blur-md border-b border-arena-calida/30 px-6 py-4 flex items-center justify-between flex-shrink-0">
+          <div className="flex items-center gap-3.5">
+            <div className="w-10 h-10 rounded-full bg-teal-uno/15 border border-teal-uno/30 flex items-center justify-center text-teal-uno shadow-xs">
               <Sparkles className="w-5 h-5 animate-pulse" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="font-serif text-base text-white font-semibold">
+                <h3 className="font-headline-md text-base text-teal-uno uppercase font-semibold">
                   Asesor de Obra IA • Gemini
                 </h3>
-                <span className="px-2 py-0.2 rounded-full bg-teal-uno/20 text-teal-uno border border-teal-uno/40 text-[9px] font-mono font-bold">
-                  ARRECIFES 68%
+                <span className="px-2.5 py-0.5 rounded-full bg-teal-uno/15 text-teal-uno border border-teal-uno/30 text-[10px] font-mono font-bold">
+                  ARRECIFES 72%
                 </span>
               </div>
-              <p className="text-[11px] text-[#c2a275] font-label-caps uppercase tracking-wider">
+              <p className="text-[11px] text-arena-calida font-label-caps uppercase tracking-wider font-semibold">
                 Entrenado con Especificaciones & Bitácora Oficial de Obra
               </p>
             </div>
@@ -427,7 +374,7 @@ Estoy entrenado con las especificaciones exactas, medidas milimétricas, dictám
           <div className="flex items-center gap-2">
             <button
               onClick={onClose}
-              className="p-2 text-zinc-400 hover:text-white rounded-xs hover:bg-white/5 transition-colors cursor-pointer"
+              className="p-2 text-gris-texto hover:text-teal-uno rounded-full hover:bg-arena-calida/10 transition-colors cursor-pointer"
               title="Cerrar ventana"
             >
               <X className="w-5 h-5" />
@@ -436,7 +383,7 @@ Estoy entrenado con las especificaciones exactas, medidas milimétricas, dictám
         </div>
 
         {/* CHAT MESSAGES AREA */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 no-scrollbar bg-[#0e0e10]/80">
+        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 no-scrollbar bg-surface-container-low/30">
           {messages.map((msg) => (
             <div
               key={msg.id}
@@ -445,33 +392,33 @@ Estoy entrenado con las especificaciones exactas, medidas milimétricas, dictám
               }`}
             >
               {msg.role === "assistant" && (
-                <div className="w-7 h-7 rounded-xs bg-teal-uno/20 border border-teal-uno/40 flex items-center justify-center text-teal-uno flex-shrink-0 mt-1">
+                <div className="w-8 h-8 rounded-full bg-arena-calida/20 border border-arena-calida/40 flex items-center justify-center text-teal-uno flex-shrink-0 mt-1 shadow-xs">
                   <Bot className="w-4 h-4" />
                 </div>
               )}
 
               <div
-                className={`max-w-[85%] sm:max-w-[78%] p-4 rounded-xs ${
+                className={`max-w-[85%] sm:max-w-[78%] p-5 rounded-3xl ${
                   msg.role === "user"
-                    ? "bg-teal-uno text-white font-medium shadow-md"
-                    : "bg-[#181822] border border-[#c2a275]/25 text-[#e4ded5] shadow-lg"
+                    ? "bg-teal-uno text-white font-medium shadow-sm rounded-tr-xs"
+                    : "bg-white/95 border border-arena-calida/30 text-gris-texto shadow-sm rounded-tl-xs"
                 }`}
               >
                 {/* Message formatted content */}
-                <div className="whitespace-pre-line space-y-2 text-xs sm:text-[13px] leading-relaxed">
+                <div className="whitespace-pre-line space-y-2 text-xs sm:text-[13px] leading-relaxed font-body-md">
                   {msg.content}
                 </div>
 
                 {/* Optional Drive / Action Links */}
                 {msg.driveLinks && msg.driveLinks.length > 0 && (
-                  <div className="mt-3 pt-3 border-t border-white/10 flex flex-wrap gap-2">
+                  <div className="mt-3.5 pt-3 border-t border-arena-calida/20 flex flex-wrap gap-2">
                     {msg.driveLinks.map((link, i) => (
                       <a
                         key={i}
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-2.5 py-1 bg-black/50 hover:bg-teal-uno/20 text-[#c2a275] hover:text-teal-uno border border-[#c2a275]/30 hover:border-teal-uno/40 rounded-xs text-[10px] font-label-caps uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer"
+                        className="px-3 py-1.5 bg-surface-container-low hover:bg-teal-uno hover:text-white text-teal-uno border border-arena-calida/30 rounded-full text-[10px] font-label-caps uppercase tracking-wider font-semibold flex items-center gap-1.5 transition-colors cursor-pointer shadow-xs"
                       >
                         <FolderOpen className="w-3 h-3" />
                         <span>{link.label}</span>
@@ -483,7 +430,7 @@ Estoy entrenado con las especificaciones exactas, medidas milimétricas, dictám
 
                 <div
                   className={`text-[9px] mt-2 font-mono text-right ${
-                    msg.role === "user" ? "text-white/70" : "text-zinc-500"
+                    msg.role === "user" ? "text-white/80" : "text-gris-texto/50"
                   }`}
                 >
                   {msg.timestamp}
@@ -491,7 +438,7 @@ Estoy entrenado con las especificaciones exactas, medidas milimétricas, dictám
               </div>
 
               {msg.role === "user" && (
-                <div className="w-7 h-7 rounded-xs bg-[#c2a275]/20 border border-[#c2a275]/40 flex items-center justify-center text-[#c2a275] flex-shrink-0 mt-1">
+                <div className="w-8 h-8 rounded-full bg-teal-uno/15 border border-teal-uno/30 flex items-center justify-center text-teal-uno flex-shrink-0 mt-1 shadow-xs">
                   <User className="w-4 h-4" />
                 </div>
               )}
@@ -500,12 +447,12 @@ Estoy entrenado con las especificaciones exactas, medidas milimétricas, dictám
 
           {loading && (
             <div className="flex gap-3 text-xs justify-start">
-              <div className="w-7 h-7 rounded-xs bg-teal-uno/20 border border-teal-uno/40 flex items-center justify-center text-teal-uno flex-shrink-0 mt-1">
+              <div className="w-8 h-8 rounded-full bg-arena-calida/20 border border-arena-calida/40 flex items-center justify-center text-teal-uno flex-shrink-0 mt-1 shadow-xs">
                 <Bot className="w-4 h-4" />
               </div>
-              <div className="bg-[#181822] border border-[#c2a275]/25 p-4 rounded-xs text-[#c2a275] flex items-center gap-2">
-                <Sparkles className="w-3.5 h-3.5 animate-spin-slow text-teal-uno" />
-                <span className="text-xs italic font-sans text-[#e4ded5]/80">
+              <div className="bg-white/95 border border-arena-calida/30 p-4 rounded-3xl text-teal-uno flex items-center gap-2.5 shadow-sm">
+                <Sparkles className="w-4 h-4 animate-spin-slow text-teal-uno" />
+                <span className="text-xs italic font-sans text-gris-texto">
                   Gemini analizando planos y bitácora técnica de Arrecifes...
                 </span>
               </div>
@@ -516,8 +463,8 @@ Estoy entrenado con las especificaciones exactas, medidas milimétricas, dictám
         </div>
 
         {/* QUICK QUESTIONS PILLS */}
-        <div className="bg-[#141418] border-t border-[#c2a275]/15 px-4 py-2.5 flex items-center gap-1.5 overflow-x-auto no-scrollbar">
-          <span className="text-[10px] font-label-caps uppercase text-[#c2a275] flex-shrink-0 mr-1 flex items-center gap-1">
+        <div className="bg-surface-variant/40 border-t border-arena-calida/20 px-4 py-2.5 flex items-center gap-2 overflow-x-auto no-scrollbar">
+          <span className="text-[10px] font-label-caps uppercase text-arena-calida flex-shrink-0 mr-1 flex items-center gap-1 font-semibold">
             <HelpCircle className="w-3 h-3 text-teal-uno" /> Sugerencias:
           </span>
           {QUICK_QUESTIONS.map((q, idx) => (
@@ -525,7 +472,7 @@ Estoy entrenado con las especificaciones exactas, medidas milimétricas, dictám
               key={idx}
               onClick={() => handleSendMessage(q)}
               disabled={loading}
-              className="px-3 py-1 bg-[#1a1a24] hover:bg-teal-uno/20 text-[#e4ded5]/80 hover:text-white border border-[#c2a275]/20 hover:border-teal-uno/40 rounded-xs text-[11px] font-sans whitespace-nowrap transition-colors cursor-pointer flex-shrink-0 disabled:opacity-50"
+              className="px-3.5 py-1.5 bg-white/80 hover:bg-teal-uno hover:text-white text-gris-texto border border-arena-calida/30 rounded-full text-[11px] font-sans whitespace-nowrap transition-all cursor-pointer flex-shrink-0 disabled:opacity-50 shadow-xs font-medium"
             >
               {q}
             </button>
@@ -533,13 +480,13 @@ Estoy entrenado con las especificaciones exactas, medidas milimétricas, dictám
         </div>
 
         {/* INPUT SUBMISSION FOOTER */}
-        <div className="bg-[#181822] border-t border-[#c2a275]/25 p-4 flex-shrink-0">
+        <div className="bg-surface-container-low/90 border-t border-arena-calida/30 p-4 flex-shrink-0">
           <form
             onSubmit={(e) => {
               e.preventDefault();
               handleSendMessage();
             }}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2.5"
           >
             <input
               type="text"
@@ -547,28 +494,28 @@ Estoy entrenado con las especificaciones exactas, medidas milimétricas, dictám
               onChange={(e) => setInput(e.target.value)}
               placeholder="Pregunta sobre medidas, Chukum, instalaciones, 360°, fechas o supervisión..."
               disabled={loading}
-              className="flex-1 bg-black/60 border border-[#c2a275]/30 focus:border-teal-uno px-4 py-3 rounded-xs text-xs sm:text-sm text-[#e4ded5] placeholder-zinc-500 focus:outline-none transition-colors"
+              className="flex-1 bg-white/90 border border-arena-calida/40 focus:border-teal-uno px-5 py-3 rounded-full text-xs sm:text-sm text-gris-texto placeholder-gris-texto/50 focus:outline-none transition-all shadow-xs"
             />
 
             <button
               type="submit"
               disabled={loading || !input.trim()}
-              className="px-5 py-3 bg-teal-uno hover:bg-[#008f8f] disabled:bg-zinc-700 text-white rounded-xs text-xs font-label-caps uppercase tracking-wider font-semibold flex items-center gap-1.5 transition-all cursor-pointer shadow-md active:scale-95 disabled:cursor-not-allowed flex-shrink-0"
+              className="px-6 py-3 bg-teal-uno hover:bg-arena-calida disabled:bg-zinc-300 text-white rounded-full text-xs font-label-caps uppercase tracking-wider font-semibold flex items-center gap-1.5 transition-all cursor-pointer shadow-ethereal active:scale-95 disabled:cursor-not-allowed flex-shrink-0"
             >
               <Send className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Consultar</span>
             </button>
           </form>
 
-          <div className="flex items-center justify-between text-[10px] text-zinc-500 mt-2 font-label-caps uppercase tracking-wider">
+          <div className="flex items-center justify-between text-[10px] text-gris-texto/60 mt-2.5 font-label-caps uppercase tracking-wider">
             <span>UNO Arquitectos • IA Gemini 3.6</span>
             <a
               href={`https://wa.me/${project.director.whatsapp}?text=${encodeURIComponent('Hola Arq. Angel Cereceda, tengo una duda técnica sobre Arrecifes.')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#c2a275] hover:text-white flex items-center gap-1 transition-colors"
+              className="text-teal-uno hover:text-arena-calida flex items-center gap-1 transition-colors font-semibold"
             >
-              <Phone className="w-2.5 h-2.5 text-emerald-400" />
+              <Phone className="w-3 h-3 text-emerald-600" />
               <span>Contactar a Dirección de Obra</span>
             </a>
           </div>

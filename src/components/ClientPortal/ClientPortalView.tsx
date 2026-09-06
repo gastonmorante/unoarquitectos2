@@ -24,7 +24,8 @@ import {
   FolderOpen,
   ArrowUpRight,
   CheckCircle2,
-  Globe
+  Globe,
+  X
 } from "lucide-react";
 import { ClientProject, Tour360Folder } from "../../types/clientPortal";
 import CloudPanoViewer from "./CloudPanoViewer";
@@ -96,13 +97,13 @@ export default function ClientPortalView({
   );
 
   return (
-    <div className="fixed inset-0 z-50 bg-[#0e0e10] text-[#e4ded5] overflow-y-auto font-sans flex flex-col selection:bg-teal-uno selection:text-white">
+    <div className="fixed inset-0 z-50 bg-background text-gris-texto overflow-y-auto font-sans flex flex-col selection:bg-teal-uno selection:text-white texture-overlay">
       {/* 1. LUXURY EXECUTIVE TOP NAVBAR */}
-      <header className="sticky top-0 z-40 bg-[#141418]/95 backdrop-blur-md border-b border-[#c2a275]/25 px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-2xl">
-        <div className="flex items-center gap-4 sm:gap-6">
-          <div className="flex items-center gap-2">
-            <Logo showText={true} iconSize={28} textSize="text-sm sm:text-base" />
-            <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full bg-teal-uno/15 text-teal-uno text-[10px] font-label-caps uppercase tracking-wider border border-teal-uno/30 font-semibold">
+      <header className="sticky top-0 z-40 bg-background/95 backdrop-blur-md border-b border-arena-calida/30 px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-ethereal">
+        <div className="flex items-center gap-3 sm:gap-6">
+          <div className="flex items-center gap-2.5">
+            <Logo showText={true} iconSize={32} theme="adaptive" textSize="text-xs sm:text-sm font-semibold tracking-wider" />
+            <span className="hidden sm:inline-block px-3 py-1 rounded-full bg-arena-calida/15 text-arena-calida text-[10px] font-label-caps uppercase tracking-widest border border-arena-calida/30 font-semibold">
               Área Clientes
             </span>
           </div>
@@ -111,17 +112,17 @@ export default function ClientPortalView({
           <div className="relative">
             <button
               onClick={() => setShowProjectSwitcher(!showProjectSwitcher)}
-              className="px-3.5 py-1.5 bg-[#1f1f28] hover:bg-[#282834] text-white border border-[#c2a275]/30 rounded-xs text-xs font-serif flex items-center gap-2 cursor-pointer transition-colors shadow-xs"
+              className="px-3.5 py-1.5 bg-white/80 hover:bg-white text-gris-texto border border-arena-calida/40 rounded-full text-xs font-label-caps uppercase tracking-wider flex items-center gap-2 cursor-pointer transition-all shadow-xs"
             >
-              <Building2 className="w-3.5 h-3.5 text-[#c2a275]" />
+              <Building2 className="w-3.5 h-3.5 text-teal-uno" />
               <span className="font-semibold">{currentProject.propertyName}</span>
-              <ChevronDown className="w-3 h-3 text-zinc-400" />
+              <ChevronDown className="w-3 h-3 text-gris-texto/60" />
             </button>
 
             {/* Dropdown Menu */}
             {showProjectSwitcher && (
-              <div className="absolute top-full left-0 mt-2 w-64 bg-[#141418] border border-[#c2a275]/40 rounded-xs shadow-2xl z-50 p-1 space-y-1">
-                <div className="p-2 text-[10px] font-label-caps uppercase text-zinc-400 tracking-wider border-b border-white/5">
+              <div className="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-xl border border-arena-calida/30 rounded-2xl shadow-2xl z-50 p-2 space-y-1">
+                <div className="p-2 text-[10px] font-label-caps uppercase text-arena-calida tracking-widest border-b border-arena-calida/20 font-semibold">
                   Cambiar de Propiedad
                 </div>
                 {allProjects.map((p) => (
@@ -132,14 +133,14 @@ export default function ClientPortalView({
                       setTours(p.cloudpanoTours);
                       setShowProjectSwitcher(false);
                     }}
-                    className={`w-full p-2.5 text-left rounded-xs text-xs font-serif transition-colors flex items-center justify-between cursor-pointer ${
+                    className={`w-full p-2.5 text-left rounded-xl text-xs font-sans transition-colors flex items-center justify-between cursor-pointer ${
                       p.id === currentProject.id
-                        ? "bg-teal-uno/20 text-teal-uno font-bold"
-                        : "text-[#e4ded5] hover:bg-white/5"
+                        ? "bg-teal-uno/10 text-teal-uno font-bold"
+                        : "text-gris-texto hover:bg-arena-calida/10"
                     }`}
                   >
-                    <span>{p.propertyName}</span>
-                    <span className="text-[10px] font-mono text-zinc-400">({p.globalProgress}%)</span>
+                    <span className="font-medium">{p.propertyName}</span>
+                    <span className="text-[10px] font-mono text-arena-calida">({p.globalProgress}%)</span>
                   </button>
                 ))}
               </div>
@@ -151,17 +152,17 @@ export default function ClientPortalView({
         <div className="flex items-center gap-2 sm:gap-3">
           <button
             onClick={() => setShowAIAssistant(true)}
-            className="px-3 sm:px-4 py-2 bg-gradient-to-r from-teal-uno via-[#009e9e] to-teal-uno hover:brightness-110 text-white rounded-xs text-[11px] sm:text-xs font-label-caps uppercase tracking-wider font-bold transition-all flex items-center gap-1.5 shadow-lg shadow-teal-uno/20 cursor-pointer active:scale-95 border border-teal-uno/50 animate-pulse-subtle"
+            className="px-3.5 sm:px-4 py-2 bg-teal-uno hover:bg-arena-calida text-white rounded-full text-[11px] sm:text-xs font-label-caps uppercase tracking-wider font-semibold transition-all flex items-center gap-1.5 shadow-ethereal cursor-pointer active:scale-95"
             title="Abrir Asesor Técnico con Inteligencia Artificial Gemini 3.6"
           >
-            <Sparkles className="w-3.5 h-3.5 text-[#c2a275]" />
+            <Sparkles className="w-3.5 h-3.5 text-arena-calida" />
             <span className="hidden sm:inline">IA Gemini • Asesor de Obra</span>
             <span className="sm:hidden">IA Gemini</span>
           </button>
 
           <button
             onClick={() => setShowReportModal(true)}
-            className="px-3 sm:px-4 py-2 bg-[#1f1f28] hover:bg-[#282834] text-[#e4ded5] border border-[#c2a275]/30 rounded-xs text-[11px] sm:text-xs font-label-caps uppercase tracking-wider font-semibold transition-all flex items-center gap-1.5 shadow-md cursor-pointer active:scale-95"
+            className="px-3.5 sm:px-4 py-2 bg-white/80 hover:bg-white text-teal-uno border border-arena-calida/40 rounded-full text-[11px] sm:text-xs font-label-caps uppercase tracking-wider font-semibold transition-all flex items-center gap-1.5 shadow-xs cursor-pointer active:scale-95"
             title="Generar e imprimir informe de supervisión en PDF"
           >
             <FileText className="w-3.5 h-3.5 text-teal-uno" />
@@ -171,7 +172,7 @@ export default function ClientPortalView({
 
           <button
             onClick={onLogout}
-            className="px-3 py-2 bg-white/5 hover:bg-red-500/20 text-zinc-400 hover:text-red-300 border border-white/10 hover:border-red-500/30 rounded-xs text-xs font-label-caps uppercase tracking-wider transition-colors flex items-center gap-1.5 cursor-pointer"
+            className="px-3.5 py-2 bg-surface-container-low hover:bg-red-50 text-gris-texto hover:text-red-600 border border-arena-calida/30 rounded-full text-xs font-label-caps uppercase tracking-wider transition-colors flex items-center gap-1.5 cursor-pointer"
             title="Cerrar sesión"
           >
             <LogOut className="w-3.5 h-3.5" />
@@ -180,66 +181,82 @@ export default function ClientPortalView({
 
           <button
             onClick={onClose}
-            className="text-zinc-400 hover:text-white p-2 rounded-xs transition-colors cursor-pointer"
+            className="text-gris-texto hover:text-teal-uno p-2 rounded-full hover:bg-arena-calida/10 transition-colors cursor-pointer"
             title="Salir al sitio web principal"
           >
-            ✕
+            <X className="w-5 h-5" />
           </button>
         </div>
       </header>
 
       {/* 2. EXECUTIVE HERO & RESIDENT ARCHITECT BANNER */}
-      <section className="bg-gradient-to-b from-[#141418] via-[#101014] to-[#0e0e10] border-b border-[#c2a275]/20 px-4 sm:px-8 py-8 sm:py-10">
-        <div className="max-w-7xl mx-auto space-y-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+      <section className="bg-surface-container-low/60 border-b border-arena-calida/20 px-4 sm:px-8 py-10 sm:py-14 relative texture-overlay overflow-hidden">
+        {/* Decorative Top Accent Line */}
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-arena-calida/40 to-transparent"></div>
+
+        <div className="max-w-7xl mx-auto space-y-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* LEFT: Project Executive Information */}
-            <div className="lg:col-span-7 space-y-3 text-left">
-              <div className="flex flex-wrap items-center gap-2.5">
-                <span className="text-[11px] text-zinc-400 flex items-center gap-1">
-                  <MapPin className="w-3 h-3 text-teal-uno" />
+            <div className="lg:col-span-7 space-y-4 text-left">
+              <div className="flex items-center gap-3">
+                <span className="w-8 sm:w-12 h-[1px] bg-arena-calida inline-block"></span>
+                <span className="font-label-caps text-xs sm:text-label-caps text-arena-calida uppercase tracking-widest font-semibold flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-teal-uno" />
                   {currentProject.location}
                 </span>
               </div>
 
-              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white tracking-tight leading-tight">
+              <h1 className="font-headline-xl text-headline-xl text-teal-uno uppercase font-semibold leading-tight">
                 {currentProject.propertyName}
               </h1>
 
-              <p className="text-xs sm:text-sm text-[#e4ded5]/70 max-w-xl leading-relaxed">
-                Supervisión técnica de obra para <strong className="text-white font-medium">{currentProject.clientName}</strong>. Registro oficial de avances, dictámenes de calidad y bitácora de obra con galería de fotos 360° y reportes fotográficos de Agosto a Diciembre 2026.
+              <p className="font-body-md text-body-md text-gris-texto max-w-xl leading-relaxed">
+                Supervisión técnica de obra para <strong className="text-teal-uno font-semibold">{currentProject.clientName}</strong>. Registro oficial de avances, dictámenes de calidad y bitácora de obra con galería de fotos 360° y reportes fotográficos periódicos.
               </p>
 
               {/* METADATA PILLS GRID */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
-                <div className="p-3 bg-[#181820] border border-[#c2a275]/20 rounded-xs">
-                  <span className="text-[10px] font-label-caps uppercase text-[#c2a275] block">Superficie Total</span>
-                  <span className="text-xs sm:text-sm font-semibold text-white">{currentProject.totalArea}</span>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3.5 pt-2">
+                <div className="p-4 bg-white/70 backdrop-blur-md border border-arena-calida/30 rounded-2xl shadow-xs">
+                  <span className="text-[10px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mb-1">
+                    Superficie Total
+                  </span>
+                  <span className="font-headline-md text-xs sm:text-sm font-semibold text-gris-texto block">
+                    {currentProject.totalArea}
+                  </span>
                 </div>
-                <div className="p-3 bg-[#181820] border border-[#c2a275]/20 rounded-xs">
-                  <span className="text-[10px] font-label-caps uppercase text-[#c2a275] block">Inicio Contractual</span>
-                  <span className="text-xs sm:text-sm font-semibold text-white">{currentProject.startDate}</span>
+                <div className="p-4 bg-white/70 backdrop-blur-md border border-arena-calida/30 rounded-2xl shadow-xs">
+                  <span className="text-[10px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mb-1">
+                    Inicio Contractual
+                  </span>
+                  <span className="font-headline-md text-xs sm:text-sm font-semibold text-gris-texto block">
+                    {currentProject.startDate}
+                  </span>
                 </div>
-                <div className="p-3 bg-[#181820] border border-[#c2a275]/20 rounded-xs col-span-2 sm:col-span-1">
-                  <span className="text-[10px] font-label-caps uppercase text-[#c2a275] block">Entrega Estimada</span>
-                  <span className="text-xs sm:text-sm font-semibold text-emerald-400">{currentProject.estimatedDelivery}</span>
+                <div className="p-4 bg-white/70 backdrop-blur-md border border-arena-calida/30 rounded-2xl shadow-xs col-span-2 sm:col-span-1">
+                  <span className="text-[10px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mb-1">
+                    Entrega Estimada
+                  </span>
+                  <span className="font-headline-md text-xs sm:text-sm font-semibold text-teal-uno block">
+                    {currentProject.estimatedDelivery}
+                  </span>
                 </div>
               </div>
             </div>
 
             {/* RIGHT: Dynamic Progress Radial Gauge & Architect Card */}
-            <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+            <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-5">
               {/* RADIAL PROGRESS GAUGE (DYNAMIC TO SELECTED DATE) */}
-              <div className="bg-[#181822] border border-[#c2a275]/30 p-5 rounded-xs flex items-center justify-between gap-4 shadow-xl transition-all duration-300">
-                <div className="space-y-1 text-left">
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-[10px] font-label-caps uppercase tracking-widest text-[#c2a275]">
+              <div className="bg-white/80 backdrop-blur-md border border-arena-calida/30 p-6 rounded-3xl shadow-ethereal flex items-center justify-between gap-4 transition-all duration-300">
+                <div className="space-y-1.5 text-left">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-label-caps uppercase tracking-widest text-arena-calida font-semibold">
                       Avance Seleccionado
                     </span>
-                    <span className="px-2 py-0.5 rounded-full bg-teal-uno text-[9px] text-white font-mono font-bold">
+                    <span className="px-2.5 py-0.5 rounded-full bg-teal-uno/15 text-teal-uno text-[9px] font-mono font-bold border border-teal-uno/30">
                       {activeDate.toUpperCase()}
                     </span>
                   </div>
-                  <div className="font-serif text-3xl sm:text-4xl font-bold text-white flex items-baseline gap-1">
+                  <div className="font-headline-xl text-3xl sm:text-4xl font-bold text-teal-uno flex items-baseline gap-1">
                     <motion.span
                       key={activeProgress}
                       initial={{ opacity: 0, y: -5 }}
@@ -248,21 +265,21 @@ export default function ClientPortalView({
                     >
                       {activeProgress}
                     </motion.span>
-                    <span className="text-lg text-teal-uno font-sans font-normal">%</span>
+                    <span className="text-lg text-arena-calida font-sans font-medium">%</span>
                   </div>
-                  <span className="text-[11px] text-[#e4ded5]/70 block line-clamp-1">
+                  <span className="text-xs text-gris-texto font-medium block line-clamp-1">
                     {activePhase}
                   </span>
-                  <span className="text-[10px] font-mono text-zinc-400 block">
+                  <span className="text-[10px] font-mono text-gris-texto/60 block">
                     Levantamiento Oficial: {activeDate}
                   </span>
                 </div>
 
                 {/* Animated Radial Circle */}
-                <div className="relative w-20 h-20 flex-shrink-0 flex items-center justify-center">
+                <div className="relative w-22 h-22 flex-shrink-0 flex items-center justify-center">
                   <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
                     <path
-                      className="text-black/60"
+                      className="text-foundation-gray/40"
                       strokeWidth="3.5"
                       stroke="currentColor"
                       fill="none"
@@ -278,24 +295,24 @@ export default function ClientPortalView({
                       d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                     />
                   </svg>
-                  <Award className="w-6 h-6 text-[#c2a275] absolute" />
+                  <Award className="w-7 h-7 text-arena-calida absolute" />
                 </div>
               </div>
 
               {/* RESIDENT ARCHITECT CONTACT CARD */}
-              <div className="bg-[#181822] border border-[#c2a275]/30 p-5 rounded-xs space-y-3 shadow-xl text-left">
-                <div className="flex items-center justify-between gap-2 border-b border-white/5 pb-2">
-                  <span className="text-[10px] font-label-caps uppercase tracking-wider text-[#c2a275]">
+              <div className="bg-white/80 backdrop-blur-md border border-arena-calida/30 p-6 rounded-3xl space-y-4 shadow-ethereal text-left">
+                <div className="flex items-center justify-between gap-2 border-b border-arena-calida/20 pb-3">
+                  <span className="text-[10px] font-label-caps uppercase tracking-wider text-arena-calida font-semibold">
                     Director de Obra Asignado
                   </span>
-                  <span className="text-[10px] text-emerald-400 font-mono flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                  <span className="text-[10px] text-teal-uno font-label-caps uppercase font-semibold flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-teal-uno animate-ping" />
                     En Supervisión
                   </span>
                 </div>
 
-                <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-full bg-teal-uno/20 border border-teal-uno/40 flex items-center justify-center text-teal-uno font-serif font-bold text-sm flex-shrink-0 overflow-hidden">
+                <div className="flex items-center gap-3.5">
+                  <div className="w-12 h-12 rounded-full bg-arena-calida/20 border border-arena-calida/40 flex items-center justify-center text-teal-uno font-sans font-bold text-sm flex-shrink-0 overflow-hidden shadow-xs">
                     {currentProject.director.photo ? (
                       <img
                         src={currentProject.director.photo}
@@ -307,22 +324,22 @@ export default function ClientPortalView({
                     )}
                   </div>
                   <div className="space-y-0.5">
-                    <h4 className="font-serif text-sm font-semibold text-white">
+                    <h4 className="font-headline-md text-sm sm:text-base font-semibold text-teal-uno uppercase">
                       {currentProject.director.name}
                     </h4>
-                    <p className="text-[10px] text-zinc-400 font-label-caps uppercase">
+                    <p className="text-[11px] text-arena-calida font-label-caps uppercase tracking-wider font-semibold">
                       {currentProject.director.role}
                     </p>
                   </div>
                 </div>
 
                 {/* DIRECT WHATSAPP & PHONE ACTION BUTTONS */}
-                <div className="grid grid-cols-2 gap-2 pt-1">
+                <div className="grid grid-cols-2 gap-2.5 pt-1">
                   <a
                     href={`https://wa.me/${currentProject.director.whatsapp}?text=${whatsappMessage}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="py-2 px-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xs text-[11px] font-label-caps uppercase tracking-wider font-semibold flex items-center justify-center gap-1.5 transition-colors shadow-sm"
+                    className="py-2.5 px-4 bg-teal-uno hover:bg-arena-calida text-white rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold flex items-center justify-center gap-1.5 transition-all shadow-xs cursor-pointer"
                   >
                     <MessageSquare className="w-3.5 h-3.5" />
                     <span>WhatsApp</span>
@@ -330,9 +347,9 @@ export default function ClientPortalView({
 
                   <a
                     href={`tel:${currentProject.director.phone.replace(/[^0-9+]/g, "")}`}
-                    className="py-2 px-3 bg-white/5 hover:bg-white/10 text-[#e4ded5] border border-white/10 rounded-xs text-[11px] font-label-caps uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors"
+                    className="py-2.5 px-4 bg-white/80 hover:bg-white text-gris-texto border border-arena-calida/40 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold flex items-center justify-center gap-1.5 transition-all shadow-xs cursor-pointer"
                   >
-                    <Phone className="w-3.5 h-3.5 text-[#c2a275]" />
+                    <Phone className="w-3.5 h-3.5 text-arena-calida" />
                     <span>Llamar</span>
                   </a>
                 </div>
@@ -343,56 +360,56 @@ export default function ClientPortalView({
       </section>
 
       {/* 3. EXECUTIVE PROGRESS SELECTOR CARDS (FICHAS DE AVANCE) */}
-      <section className="bg-[#141418] border-b border-[#c2a275]/25 px-4 sm:px-8 py-6">
-        <div className="max-w-7xl mx-auto space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-left">
+      <section className="bg-surface-variant/40 border-b border-arena-calida/20 px-4 sm:px-8 py-8 sm:py-10 texture-overlay">
+        <div className="max-w-7xl mx-auto space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-left">
             <div>
-              <div className="flex items-center gap-2 text-xs font-label-caps uppercase tracking-widest text-[#c2a275]">
+              <div className="flex items-center gap-2 text-xs font-label-caps uppercase tracking-widest text-arena-calida font-semibold">
                 <Calendar className="w-4 h-4 text-teal-uno" />
                 <span>Seleccionar Ficha de Avance de Obra</span>
               </div>
-              <p className="text-xs text-[#e4ded5]/70 mt-0.5">
+              <p className="font-body-md text-xs sm:text-sm text-gris-texto mt-1">
                 Al seleccionar una fecha se sincroniza la Galería de Fotos 360° y la Galería de Fotos Encuadradas.
               </p>
             </div>
 
             {/* VIEW MODE TOGGLE BUTTONS */}
-            <div className="flex items-center gap-1 bg-[#101014] p-1 rounded-xs border border-[#c2a275]/20 self-start sm:self-auto">
+            <div className="flex items-center gap-1.5 bg-white/80 backdrop-blur-md p-1.5 rounded-full border border-arena-calida/30 shadow-xs self-start sm:self-auto">
               <button
                 onClick={() => setViewMode("all")}
-                className={`px-3 py-1.5 rounded-xs text-[11px] font-label-caps uppercase tracking-wider font-semibold transition-all cursor-pointer ${
+                className={`px-4 py-2 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold transition-all cursor-pointer ${
                   viewMode === "all"
                     ? "bg-teal-uno text-white shadow-sm"
-                    : "text-zinc-400 hover:text-white"
+                    : "text-gris-texto hover:text-teal-uno"
                 }`}
               >
-                Ficha Completa (Fotos 360° + Fotos Encuadradas)
+                Ficha Completa
               </button>
               <button
                 onClick={() => setViewMode("360")}
-                className={`px-3 py-1.5 rounded-xs text-[11px] font-label-caps uppercase tracking-wider font-semibold transition-all cursor-pointer ${
+                className={`px-4 py-2 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold transition-all cursor-pointer ${
                   viewMode === "360"
                     ? "bg-teal-uno text-white shadow-sm"
-                    : "text-zinc-400 hover:text-white"
+                    : "text-gris-texto hover:text-teal-uno"
                 }`}
               >
-                Solo Fotos 360°
+                Fotos 360°
               </button>
               <button
                 onClick={() => setViewMode("photos")}
-                className={`px-3 py-1.5 rounded-xs text-[11px] font-label-caps uppercase tracking-wider font-semibold transition-all cursor-pointer ${
+                className={`px-4 py-2 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold transition-all cursor-pointer ${
                   viewMode === "photos"
                     ? "bg-teal-uno text-white shadow-sm"
-                    : "text-zinc-400 hover:text-white"
+                    : "text-gris-texto hover:text-teal-uno"
                 }`}
               >
-                Solo Fotos Encuadradas
+                Fotos Encuadradas
               </button>
             </div>
           </div>
 
           {/* DATE SELECTOR CARDS */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {tours.map((tour) => {
               const isSelected = tour.id === selectedTourId;
               const photoCount = currentProject.photoReports.filter((p) => p.period === tour.date).length;
@@ -403,54 +420,54 @@ export default function ClientPortalView({
                 <button
                   key={tour.id}
                   onClick={() => handleSelectTour(tour.id)}
-                  className={`p-4 sm:p-5 rounded-xs border text-left transition-all duration-300 cursor-pointer relative overflow-hidden group ${
+                  className={`p-6 rounded-3xl border text-left transition-all duration-500 cursor-pointer relative overflow-hidden group ${
                     isSelected
-                      ? "bg-[#1f1f2a] border-[#c2a275] shadow-2xl shadow-[#c2a275]/10 ring-1 ring-[#c2a275]/60"
-                      : "bg-[#141418] border-[#c2a275]/20 hover:border-[#c2a275]/50 hover:bg-[#191922]"
+                      ? "bg-white/95 backdrop-blur-md border-teal-uno shadow-ethereal ring-2 ring-teal-uno/40 -translate-y-1"
+                      : "bg-white/70 backdrop-blur-md border-arena-calida/30 hover:border-teal-uno/60 hover:shadow-ethereal hover:-translate-y-1"
                   }`}
                 >
                   {/* Top Active Indicator Strip */}
                   {isSelected && (
-                    <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-teal-uno via-[#c2a275] to-teal-uno" />
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal-uno via-arena-calida to-teal-uno" />
                   )}
 
-                  <div className="flex items-center justify-between gap-2 mb-2">
+                  <div className="flex items-center justify-between gap-2 mb-3">
                     <div className="flex items-center gap-2">
                       <span className={`font-label-caps text-xs uppercase tracking-wider font-bold ${
-                        isSelected ? "text-[#c2a275]" : "text-white"
+                        isSelected ? "text-teal-uno" : "text-gris-texto"
                       }`}>
                         {tour.date}
                       </span>
                       {isFirst && (
-                        <span className="px-2 py-0.5 rounded-full bg-teal-uno/20 text-teal-uno border border-teal-uno/40 text-[9px] font-label-caps uppercase font-bold">
+                        <span className="px-2.5 py-0.5 rounded-full bg-teal-uno/15 text-teal-uno border border-teal-uno/30 text-[9px] font-label-caps uppercase font-bold">
                           Último Avance
                         </span>
                       )}
                     </div>
-                    <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-black/60 text-teal-uno border border-teal-uno/30">
+                    <span className="text-xs font-mono font-bold px-3 py-1 rounded-full bg-arena-calida/15 text-arena-calida border border-arena-calida/30">
                       {tour.progress}% Avance
                     </span>
                   </div>
 
-                  <h4 className="text-sm sm:text-base font-serif font-semibold text-white group-hover:text-[#c2a275] transition-colors line-clamp-1">
+                  <h4 className="font-headline-md text-base sm:text-lg uppercase text-teal-uno font-semibold group-hover:text-arena-calida transition-colors line-clamp-1">
                     {tour.title}
                   </h4>
 
-                  <p className="text-[11px] text-[#e4ded5]/70 mt-1 line-clamp-2 leading-relaxed">
+                  <p className="font-body-md text-xs sm:text-sm text-gris-texto mt-1.5 line-clamp-2 leading-relaxed">
                     {tour.notes}
                   </p>
 
-                  <div className="flex items-center gap-4 text-[10px] text-zinc-400 mt-3 pt-2.5 border-t border-white/5 font-label-caps uppercase">
-                    <span className="flex items-center gap-1.5 text-teal-uno font-medium">
+                  <div className="flex items-center gap-4 text-[11px] text-gris-texto/70 mt-4 pt-3.5 border-t border-arena-calida/20 font-label-caps uppercase">
+                    <span className="flex items-center gap-1.5 text-teal-uno font-semibold">
                       <Compass className="w-3.5 h-3.5" />
                       {scene360Count} Fotos 360°
                     </span>
-                    <span className="flex items-center gap-1.5 text-[#c2a275] font-medium">
+                    <span className="flex items-center gap-1.5 text-arena-calida font-semibold">
                       <Camera className="w-3.5 h-3.5" />
                       {photoCount} Fotos Encuadradas
                     </span>
                     {isSelected && (
-                      <span className="ml-auto text-emerald-400 flex items-center gap-1 font-bold">
+                      <span className="ml-auto text-teal-uno flex items-center gap-1 font-bold">
                         <CheckCircle2 className="w-3.5 h-3.5" />
                         Ficha Activa
                       </span>
@@ -464,21 +481,24 @@ export default function ClientPortalView({
       </section>
 
       {/* 4. MAIN SYNCHRONIZED PROGRESS CONTENT */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-8 py-8 sm:py-10 space-y-10">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-8 py-10 sm:py-14 space-y-12">
         {/* VIEW MODE 1: FICHA COMPLETA (FOTOS 360 + FOTOS ENCUADRADAS) */}
         {viewMode === "all" && (
-          <div className="space-y-12">
+          <div className="space-y-14">
             {/* PART 1: GALERÍA DE FOTOS 360° */}
-            <section className="space-y-4 text-left">
-              <div className="flex items-center justify-between border-b border-[#c2a275]/20 pb-3">
-                <div className="flex items-center gap-2 text-xs font-label-caps uppercase tracking-widest text-[#c2a275]">
-                  <Compass className="w-4 h-4 text-teal-uno" />
-                  <h3 className="font-serif text-xl sm:text-2xl text-white normal-case">
-                    Galería de Fotos 360° Inmersiva • {activeDate} ({activeTour?.scenes?.length || 0} Puntos)
+            <section className="space-y-5 text-left">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-arena-calida/20 pb-4">
+                <div>
+                  <div className="flex items-center gap-2 text-xs font-label-caps uppercase tracking-widest text-arena-calida font-semibold">
+                    <Compass className="w-4 h-4 text-teal-uno" />
+                    <span>Recorridos & Puntos 360°</span>
+                  </div>
+                  <h3 className="font-headline-md text-xl sm:text-2xl text-teal-uno uppercase font-semibold mt-1">
+                    Galería de Fotos 360° Inmersiva • {activeDate}
                   </h3>
                 </div>
-                <span className="text-[11px] font-mono text-teal-uno hidden sm:inline">
-                  Visor Esférico 360° Interactivo
+                <span className="text-xs font-label-caps uppercase text-arena-calida font-semibold bg-arena-calida/15 px-3 py-1 rounded-full border border-arena-calida/30 self-start sm:self-auto">
+                  {activeTour?.scenes?.length || 0} Puntos Esféricos
                 </span>
               </div>
 
@@ -493,7 +513,7 @@ export default function ClientPortalView({
             </section>
 
             {/* PART 2: GALERÍA DE FOTOS ENCUADRADAS */}
-            <section className="space-y-4 text-left">
+            <section className="space-y-5 text-left">
               <PhotoReportsGrid
                 photoReports={currentProject.photoReports}
                 propertyName={currentProject.propertyName}
@@ -513,8 +533,23 @@ export default function ClientPortalView({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.25 }}
-            className="space-y-4"
+            className="space-y-5 text-left"
           >
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-arena-calida/20 pb-4">
+              <div>
+                <div className="flex items-center gap-2 text-xs font-label-caps uppercase tracking-widest text-arena-calida font-semibold">
+                  <Compass className="w-4 h-4 text-teal-uno" />
+                  <span>Recorridos & Puntos 360°</span>
+                </div>
+                <h3 className="font-headline-md text-xl sm:text-2xl text-teal-uno uppercase font-semibold mt-1">
+                  Visor Esférico Inmersivo 360° • {activeDate}
+                </h3>
+              </div>
+              <span className="text-xs font-label-caps uppercase text-arena-calida font-semibold bg-arena-calida/15 px-3 py-1 rounded-full border border-arena-calida/30 self-start sm:self-auto">
+                {activeTour?.scenes?.length || 0} Puntos Esféricos
+              </span>
+            </div>
+
             <CloudPanoViewer
               tours={tours}
               propertyName={currentProject.propertyName}
@@ -547,27 +582,27 @@ export default function ClientPortalView({
       </main>
 
       {/* 5. FOOTER PROTOCOL */}
-      <footer className="bg-[#0a0a0c] border-t border-[#c2a275]/20 py-6 px-4 sm:px-8 text-center text-xs text-zinc-500 font-label-caps uppercase tracking-wider flex flex-col sm:flex-row items-center justify-between gap-3">
+      <footer className="bg-surface-container-low border-t border-arena-calida/20 py-8 px-4 sm:px-8 text-center text-xs text-gris-texto font-label-caps uppercase tracking-wider flex flex-col sm:flex-row items-center justify-between gap-3">
         <span>UNO Arquitectos • Portal de Clientes Privado v2.2</span>
-        <span>Playa del Carmen & Tulum, México</span>
+        <span className="text-arena-calida font-semibold">Playa del Carmen & Tulum, Quintana Roo, México</span>
       </footer>
 
       {/* 6. FLOATING ACTION BUTTON FOR GEMINI AI CONSULTANT */}
       <div className="fixed bottom-6 right-6 z-40">
         <button
           onClick={() => setShowAIAssistant(true)}
-          className="group relative flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-[#c2a275] via-[#d4b98c] to-[#c2a275] text-black font-serif font-bold text-xs uppercase tracking-wider rounded-full shadow-2xl shadow-[#c2a275]/40 hover:scale-105 active:scale-95 transition-all duration-300 border border-white/50 cursor-pointer"
+          className="group relative flex items-center gap-3 px-5 py-3.5 bg-teal-uno hover:bg-arena-calida text-white font-label-caps text-xs uppercase tracking-wider rounded-full shadow-2xl shadow-teal-uno/25 hover:scale-105 active:scale-95 transition-all duration-300 border border-white/40 cursor-pointer"
           title="Consultar al Asesor de Obra con Inteligencia Artificial Gemini"
         >
-          <div className="w-8 h-8 rounded-full bg-black/90 text-[#c2a275] flex items-center justify-center flex-shrink-0">
+          <div className="w-8 h-8 rounded-full bg-white text-teal-uno flex items-center justify-center flex-shrink-0 shadow-xs">
             <Sparkles className="w-4 h-4" />
           </div>
           <div className="text-left pr-1">
-            <span className="block text-[9px] font-sans font-bold tracking-widest uppercase opacity-80">Asesor de Obra</span>
-            <span className="block text-xs font-serif font-bold tracking-wide">IA Gemini</span>
+            <span className="block text-[9px] font-sans font-semibold tracking-widest uppercase opacity-90">Asesor de Obra</span>
+            <span className="block text-xs font-semibold tracking-wide">IA Gemini</span>
           </div>
-          <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-teal-uno rounded-full border-2 border-black animate-ping" />
-          <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-teal-uno rounded-full border-2 border-black" />
+          <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-arena-calida rounded-full border-2 border-white animate-ping" />
+          <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-arena-calida rounded-full border-2 border-white" />
         </button>
       </div>
 

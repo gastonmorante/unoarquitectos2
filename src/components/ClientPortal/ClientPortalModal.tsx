@@ -85,20 +85,20 @@ export default function ClientPortalModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-xl font-sans text-left">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md font-sans text-left">
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 15 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 15 }}
-        className="bg-[#141418] border border-[#c2a275]/40 rounded-xs max-w-lg w-full shadow-2xl overflow-hidden relative"
+        className="bg-background/98 backdrop-blur-xl border border-arena-calida/40 rounded-3xl max-w-lg w-full shadow-2xl overflow-hidden relative text-gris-texto texture-overlay"
       >
         {/* TOP ACCENT LINE */}
-        <div className="w-full h-1 bg-gradient-to-r from-teal-uno via-[#c2a275] to-teal-uno" />
+        <div className="w-full h-1 bg-gradient-to-r from-teal-uno via-arena-calida to-teal-uno" />
 
         {/* CLOSE BUTTON */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-zinc-400 hover:text-white p-2 rounded-xs transition-colors cursor-pointer"
+          className="absolute top-4 right-4 text-gris-texto hover:text-teal-uno p-2 rounded-full hover:bg-arena-calida/10 transition-colors cursor-pointer"
           title="Cerrar ventana"
         >
           <X className="w-5 h-5" />
@@ -107,14 +107,14 @@ export default function ClientPortalModal({
         <div className="p-6 sm:p-8 space-y-6">
           {/* LOGO & TITLE */}
           <div className="space-y-2 text-center sm:text-left">
-            <div className="flex items-center justify-center sm:justify-start gap-2 text-[#c2a275] text-xs font-label-caps uppercase tracking-widest">
+            <div className="flex items-center justify-center sm:justify-start gap-2 text-arena-calida text-xs font-label-caps uppercase tracking-widest font-semibold">
               <ShieldCheck className="w-4 h-4 text-teal-uno" />
               <span>Plataforma Privada de Clientes</span>
             </div>
-            <h3 className="font-serif text-2xl sm:text-3xl text-white tracking-tight">
+            <h3 className="font-headline-xl text-2xl sm:text-3xl text-teal-uno uppercase font-semibold">
               Supervisión de Obra Exclusiva
             </h3>
-            <p className="text-xs sm:text-sm text-[#e4ded5]/70 leading-relaxed">
+            <p className="font-body-md text-xs sm:text-sm text-gris-texto leading-relaxed">
               Ingrese el nombre de su propiedad y clave confidencial asignada para acceder al avance en tiempo real, recorridos 360° y bitácora técnica.
             </p>
           </div>
@@ -123,7 +123,7 @@ export default function ClientPortalModal({
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* PROPERTY SELECTION */}
             <div>
-              <label className="block text-[11px] font-label-caps uppercase text-[#c2a275] tracking-wider mb-1.5 font-semibold">
+              <label className="block text-[11px] font-label-caps uppercase text-arena-calida tracking-wider mb-1.5 font-semibold">
                 Nombre de la Propiedad / Obra
               </label>
               <div className="relative">
@@ -134,7 +134,7 @@ export default function ClientPortalModal({
                   placeholder="Ej. Arrecifes, Casa Tzalam, Residencia Mayakoba"
                   required
                   list="properties-list"
-                  className="w-full bg-black/60 border border-[#c2a275]/30 px-3.5 py-2.5 rounded-xs text-xs text-white placeholder-zinc-500 focus:border-teal-uno focus:outline-none focus:ring-1 focus:ring-teal-uno"
+                  className="w-full bg-white/80 border border-arena-calida/40 px-4 py-3 rounded-xl text-xs text-gris-texto placeholder-gris-texto/40 focus:border-teal-uno focus:outline-none focus:ring-1 focus:ring-teal-uno font-sans shadow-xs"
                 />
                 <datalist id="properties-list">
                   {projects.map((p) => (
@@ -143,18 +143,18 @@ export default function ClientPortalModal({
                     </option>
                   ))}
                 </datalist>
-                <Building2 className="w-4 h-4 text-[#c2a275]/60 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <Building2 className="w-4 h-4 text-teal-uno absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
               </div>
             </div>
 
             {/* PASSWORD */}
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <label className="block text-[11px] font-label-caps uppercase text-[#c2a275] tracking-wider font-semibold">
+                <label className="block text-[11px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold">
                   Clave Confidencial de Acceso
                 </label>
-                <span className="text-[10px] text-zinc-400 font-mono">
-                  Clave Maestra: <strong className="text-teal-uno font-normal">unoarq</strong>
+                <span className="text-[10px] text-gris-texto/70 font-mono">
+                  Clave Maestra: <strong className="text-teal-uno font-bold">unoarq</strong>
                 </span>
               </div>
               <div className="relative">
@@ -164,12 +164,12 @@ export default function ClientPortalModal({
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Ingrese clave (ej. unoarq)"
                   required
-                  className="w-full bg-black/60 border border-[#c2a275]/30 px-3.5 py-2.5 rounded-xs text-xs text-white placeholder-zinc-500 focus:border-teal-uno focus:outline-none focus:ring-1 focus:ring-teal-uno font-mono"
+                  className="w-full bg-white/80 border border-arena-calida/40 px-4 py-3 rounded-xl text-xs text-gris-texto placeholder-gris-texto/40 focus:border-teal-uno focus:outline-none focus:ring-1 focus:ring-teal-uno font-mono shadow-xs"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-white p-1 cursor-pointer"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gris-texto/60 hover:text-teal-uno p-1 cursor-pointer"
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
@@ -178,14 +178,14 @@ export default function ClientPortalModal({
 
             {/* REMEMBER ME CHECKBOX */}
             <div className="flex items-center justify-between text-xs pt-1">
-              <label className="flex items-center gap-2 cursor-pointer text-[#e4ded5]/70 hover:text-white">
+              <label className="flex items-center gap-2 cursor-pointer text-gris-texto hover:text-teal-uno">
                 <input
                   type="checkbox"
                   checked={rememberMe}
                   onChange={(e) => setRememberMe(e.target.checked)}
                   className="w-3.5 h-3.5 rounded-xs accent-teal-uno"
                 />
-                <span className="text-[11px]">Recordar sesión en este dispositivo</span>
+                <span className="text-[11px] font-body-md">Recordar sesión en este dispositivo</span>
               </label>
             </div>
 
@@ -194,7 +194,7 @@ export default function ClientPortalModal({
               <motion.div
                 initial={{ opacity: 0, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="p-3 bg-red-500/15 border border-red-500/40 text-red-200 text-xs rounded-xs"
+                className="p-3.5 bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl"
               >
                 {error}
               </motion.div>
@@ -204,7 +204,7 @@ export default function ClientPortalModal({
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3 bg-teal-uno hover:bg-[#008f8f] text-white rounded-xs font-label-caps text-xs uppercase tracking-wider font-semibold flex items-center justify-center gap-2 shadow-lg transition-all cursor-pointer active:scale-98 disabled:opacity-50"
+              className="w-full py-3.5 bg-teal-uno hover:bg-arena-calida text-white rounded-full font-label-caps text-xs uppercase tracking-wider font-semibold flex items-center justify-center gap-2 shadow-ethereal transition-all cursor-pointer active:scale-98 disabled:opacity-50"
             >
               {isLoading ? (
                 <span>Validando credenciales...</span>
@@ -218,8 +218,8 @@ export default function ClientPortalModal({
           </form>
 
           {/* QUICK ACCESS CHIPS FOR DEMO */}
-          <div className="border-t border-white/10 pt-4 space-y-2">
-            <span className="text-[10px] font-label-caps uppercase text-zinc-400 tracking-wider block">
+          <div className="border-t border-arena-calida/20 pt-4 space-y-2">
+            <span className="text-[10px] font-label-caps uppercase text-arena-calida tracking-wider block font-semibold">
               Acceso Rápido a Obras en Supervisión:
             </span>
             <div className="flex flex-wrap gap-2">
@@ -227,10 +227,10 @@ export default function ClientPortalModal({
                 <button
                   key={p.id}
                   onClick={() => handleSelectQuickProject(p)}
-                  className="px-2.5 py-1.5 bg-[#1f1f28] hover:bg-[#282834] text-[#c2a275] border border-[#c2a275]/25 rounded-xs text-[11px] font-serif transition-colors cursor-pointer flex items-center gap-1.5"
+                  className="px-3.5 py-1.5 bg-surface-container-low/80 hover:bg-white text-teal-uno border border-arena-calida/30 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold transition-all cursor-pointer flex items-center gap-1.5 shadow-xs"
                 >
                   <span>{p.propertyName}</span>
-                  <span className="text-[9px] font-mono text-teal-uno">({p.globalProgress}%)</span>
+                  <span className="text-[9px] font-mono text-arena-calida font-bold">({p.globalProgress}%)</span>
                 </button>
               ))}
             </div>
@@ -238,12 +238,11 @@ export default function ClientPortalModal({
         </div>
 
         {/* FOOTER BADGE */}
-        <div className="px-6 py-3 bg-black/40 border-t border-[#c2a275]/15 text-center text-[10px] text-zinc-500 font-label-caps uppercase tracking-wider flex items-center justify-between">
+        <div className="px-6 py-3 bg-surface-container-low/70 border-t border-arena-calida/20 text-center text-[10px] text-gris-texto/60 font-label-caps uppercase tracking-wider flex items-center justify-between">
           <span>UNO Arquitectos Security Layer v2.2</span>
-          <span>Encriptación SSL 256-bit</span>
+          <span className="text-teal-uno font-semibold">Encriptación SSL 256-bit</span>
         </div>
       </motion.div>
     </div>
   );
 }
-
