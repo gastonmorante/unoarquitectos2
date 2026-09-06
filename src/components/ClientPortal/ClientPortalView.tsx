@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
   Building2, 
@@ -38,6 +38,7 @@ export default function ClientPortalView({
   onLogout,
   onClose,
 }: ClientPortalViewProps) {
+  const portalContainerRef = useRef<HTMLDivElement>(null);
   const [viewMode, setViewMode] = useState<"all" | "360" | "photos">("all");
   const [showReportModal, setShowReportModal] = useState(false);
   const [showAIAssistant, setShowAIAssistant] = useState(false);
@@ -49,10 +50,23 @@ export default function ClientPortalView({
     currentProject.cloudpanoTours[0]?.id || "tour-arrecifes-05sep2026"
   );
 
+  // On mount and project change, ensure screen is positioned at the top
+  useEffect(() => {
+    if (portalContainerRef.current) {
+      portalContainerRef.current.scrollTo({ top: 0, behavior: "instant" });
+    }
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+  }, []);
+
   useEffect(() => {
     setTours(currentProject.cloudpanoTours);
     if (currentProject.cloudpanoTours[0]?.id) {
       setSelectedTourId(currentProject.cloudpanoTours[0].id);
+    }
+    if (portalContainerRef.current) {
+      portalContainerRef.current.scrollTo({ top: 0, behavior: "smooth" });
     }
   }, [currentProject]);
 
@@ -61,8 +75,21 @@ export default function ClientPortalView({
   const activeProgress = activeTour?.progress || currentProject.globalProgress;
   const activePhase = activeTour?.phaseName || currentProject.currentPhaseName;
 
+  const scrollToSection = (sectionId: string) => {
+    const el = document.getElementById(sectionId);
+    if (el && portalContainerRef.current) {
+      const topOffset = el.offsetTop - 80;
+      portalContainerRef.current.scrollTo({ top: Math.max(0, topOffset), behavior: "smooth" });
+    } else if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   const handleSelectTour = (tourId: string) => {
     setSelectedTourId(tourId);
+    setTimeout(() => {
+      scrollToSection("seccion-galeria-activa");
+    }, 150);
   };
 
   const handleSelectPeriod = (period: string) => {
@@ -86,7 +113,11 @@ export default function ClientPortalView({
   );
 
   return (
-    <div className="fixed inset-0 z-50 bg-background text-gris-texto overflow-y-auto font-sans flex flex-col selection:bg-teal-uno selection:text-white texture-overlay">
+    <div 
+      ref={portalContainerRef}
+      id="client-portal-root"
+      className="fixed inset-0 z-50 bg-background text-gris-texto overflow-y-auto font-sans flex flex-col selection:bg-teal-uno selection:text-white texture-overlay scroll-smooth"
+    >
       {/* 1. LUXURY EXECUTIVE TOP NAVBAR */}
       <header className="sticky top-0 z-40 bg-background/95 backdrop-blur-md border-b border-arena-calida/30 px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-ethereal">
         <div className="flex items-center gap-3 sm:gap-6">
@@ -142,10 +173,10 @@ export default function ClientPortalView({
           <button
             onClick={() => setShowAIAssistant(true)}
             className="px-3.5 sm:px-4 py-2 bg-teal-uno hover:bg-arena-calida text-white rounded-full text-[11px] sm:text-xs font-label-caps uppercase tracking-wider font-semibold transition-all flex items-center gap-1.5 shadow-ethereal cursor-pointer active:scale-95"
-            title="Abrir Asesor Técnico con Inteligencia Artificial Gemini 3.6"
+            title="Abrir Asesor Técnico con Inteligencia Artificial Gemini"
           >
             <Sparkles className="w-3.5 h-3.5 text-arena-calida" />
-            <span className="hidden sm:inline">IA Gemini • Asesor de Obra</span>
+            <span className="hidden sm:inline">IA Gemini • Asesor</span>
             <span className="sm:hidden">IA Gemini</span>
           </button>
 
@@ -178,8 +209,53 @@ export default function ClientPortalView({
         </div>
       </header>
 
+      {/* QUICK JUMP SECTION SUB-NAV */}
+      <div className="bg-surface-container-lowest/90 backdrop-blur-md border-b border-arena-calida/20 px-4 sm:px-8 py-2.5 flex items-center justify-between gap-3 overflow-x-auto shadow-xs sticky top-[57px] z-30">
+        <div className="flex items-center gap-2 max-w-7xl mx-auto w-full">
+          <span className="text-[10px] font-label-caps uppercase tracking-widest text-arena-calida font-bold whitespace-nowrap mr-1 hidden md:inline-block">
+            Navegación:
+          </span>
+          <button
+            onClick={() => scrollToSection("resumen-ejecutivo")}
+            className="px-3 py-1 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold text-gris-texto hover:text-teal-uno hover:bg-white border border-arena-calida/20 transition whitespace-nowrap cursor-pointer"
+          >
+            🏛️ Resumen General
+          </button>
+          <button
+            onClick={() => scrollToSection("fichas-avance")}
+            className="px-3 py-1 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold text-gris-texto hover:text-teal-uno hover:bg-white border border-arena-calida/20 transition whitespace-nowrap cursor-pointer"
+          >
+            📅 Fichas de Obra
+          </button>
+          <button
+            onClick={() => {
+              setViewMode("360");
+              scrollToSection("seccion-galeria-activa");
+            }}
+            className="px-3 py-1 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold text-teal-uno bg-white/80 hover:bg-white border border-teal-uno/30 transition whitespace-nowrap cursor-pointer font-bold"
+          >
+            🔄 Visor 360°
+          </button>
+          <button
+            onClick={() => {
+              setViewMode("photos");
+              scrollToSection("seccion-galeria-activa");
+            }}
+            className="px-3 py-1 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold text-gris-texto hover:text-teal-uno hover:bg-white border border-arena-calida/20 transition whitespace-nowrap cursor-pointer"
+          >
+            📷 Galería HD
+          </button>
+          <button
+            onClick={() => scrollToSection("contacto-director")}
+            className="px-3 py-1 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold text-gris-texto hover:text-teal-uno hover:bg-white border border-arena-calida/20 transition whitespace-nowrap cursor-pointer ml-auto"
+          >
+            👤 Director de Obra
+          </button>
+        </div>
+      </div>
+
       {/* 2. EXECUTIVE HERO & RESIDENT ARCHITECT BANNER */}
-      <section className="bg-surface-container-low/60 border-b border-arena-calida/20 px-4 sm:px-8 py-10 sm:py-14 relative texture-overlay overflow-hidden">
+      <section id="resumen-ejecutivo" className="bg-surface-container-low/60 border-b border-arena-calida/20 px-4 sm:px-8 py-10 sm:py-14 relative texture-overlay overflow-hidden">
         {/* Decorative Top Accent Line */}
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-arena-calida/40 to-transparent"></div>
 
@@ -289,7 +365,7 @@ export default function ClientPortalView({
               </div>
 
               {/* RESIDENT ARCHITECT CONTACT CARD */}
-              <div className="bg-white/80 backdrop-blur-md border border-arena-calida/30 p-6 rounded-3xl space-y-4 shadow-ethereal text-left">
+              <div id="contacto-director" className="bg-white/80 backdrop-blur-md border border-arena-calida/30 p-6 rounded-3xl space-y-4 shadow-ethereal text-left">
                 <div className="flex items-center justify-between gap-2 border-b border-arena-calida/20 pb-3">
                   <span className="text-[10px] font-label-caps uppercase tracking-wider text-arena-calida font-semibold">
                     Director de Obra Asignado
@@ -349,7 +425,7 @@ export default function ClientPortalView({
       </section>
 
       {/* 3. EXECUTIVE PROGRESS SELECTOR CARDS (FICHAS DE AVANCE) */}
-      <section className="bg-surface-variant/40 border-b border-arena-calida/20 px-4 sm:px-8 py-8 sm:py-10 texture-overlay">
+      <section id="fichas-avance" className="bg-surface-variant/40 border-b border-arena-calida/20 px-4 sm:px-8 py-8 sm:py-10 texture-overlay">
         <div className="max-w-7xl mx-auto space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-left">
             <div>
@@ -470,12 +546,12 @@ export default function ClientPortalView({
       </section>
 
       {/* 4. MAIN SYNCHRONIZED PROGRESS CONTENT */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-8 py-10 sm:py-14 space-y-12">
+      <main id="seccion-galeria-activa" className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-8 py-10 sm:py-14 space-y-12">
         {/* VIEW MODE 1: FICHA COMPLETA (FOTOS 360 + FOTOS ENCUADRADAS) */}
         {viewMode === "all" && (
           <div className="space-y-14">
             {/* PART 1: GALERÍA DE FOTOS 360° */}
-            <section className="space-y-5 text-left">
+            <section id="visor-360" className="space-y-5 text-left">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-arena-calida/20 pb-4">
                 <div>
                   <div className="flex items-center gap-2 text-xs font-label-caps uppercase tracking-widest text-arena-calida font-semibold">
@@ -501,7 +577,7 @@ export default function ClientPortalView({
             </section>
 
             {/* PART 2: GALERÍA DE FOTOS ENCUADRADAS */}
-            <section className="space-y-5 text-left">
+            <section id="galeria-hd" className="space-y-5 text-left">
               <PhotoReportsGrid
                 photoReports={currentProject.photoReports}
                 selectedPeriod={activeDate}
@@ -555,6 +631,7 @@ export default function ClientPortalView({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.25 }}
+            className="space-y-5 text-left"
           >
             <PhotoReportsGrid
               photoReports={currentProject.photoReports}

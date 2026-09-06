@@ -65,6 +65,9 @@ export default function ClientPortalModal({
           );
         }
         setIsLoading(false);
+        if (typeof window !== "undefined") {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
         onLoginSuccess(matchedProject);
       } else {
         setError("Clave de acceso incorrecta. Utilice la clave institucional 'unoarq' o seleccione acceso rápido.");
@@ -86,6 +89,9 @@ export default function ClientPortalModal({
           timestamp: Date.now(),
         })
       );
+    }
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
     onLoginSuccess(project);
   };

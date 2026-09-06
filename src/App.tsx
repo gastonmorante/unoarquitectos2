@@ -60,6 +60,9 @@ function MainApp() {
     };
 
     const handleOpenClientPortal = () => {
+      if (typeof window !== "undefined") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
       // Reload projects if updated in admin
       let currentList = defaultClientProjects;
       const saved = localStorage.getItem("uno_client_projects_v2");
@@ -119,6 +122,9 @@ function MainApp() {
   };
 
   const handleClientLoginSuccess = (project: ClientProject) => {
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
     setActiveClientProject(project);
     setShowClientModal(false);
   };
