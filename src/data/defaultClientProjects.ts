@@ -30,18 +30,18 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Avance 68% - Revestimientos Sensoriales en Chukum & Mármol (Más Reciente)",
         phaseName: "Fase 4: Revestimientos y Acabados de Lujo",
         progress: 68,
-        embedCode: '<iframe src="https://app.cloudpano.com/tours/demo-tour-uno?sceneId=1" width="100%" height="100%" frameborder="0" allowfullscreen allow="accelerometer; gyroscope; magnetometer; vr"></iframe>',
+        embedCode: '<div id="yU6zyUhkj"><script type="text/javascript" async data-short="yU6zyUhkj" data-path="tours" data-is-self-hosted="false" width="100%" height="500px" src="https://app.cloudpano.com/public/shareScript.js"></script></div>',
         folderUrl: "https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing",
         notes: "Levantamiento 360° más reciente tras culminación de pasta de Chukum natural en doble altura, colocación de placas de mármol Santo Tomás en vestíbulos y preparación para carpintería maciza.",
         thumbnail: "/projects/residencial/alux-7cielos-chukum-suite.jpg"
       },
       {
         id: "tour-arrecifes-28ago2026",
-        date: "28 Agosto 2026",
+        date: "27 Agosto 2026",
         title: "Avance 52% - Instalaciones Especiales, Domótica & HVAC",
         phaseName: "Fase 3: Instalaciones Especiales",
         progress: 52,
-        embedCode: '<iframe src="https://app.cloudpano.com/tours/demo-tour-uno?sceneId=2" width="100%" height="100%" frameborder="0" allowfullscreen allow="accelerometer; gyroscope; magnetometer; vr"></iframe>',
+        embedCode: '<div id="yU6zyUhkj"><script type="text/javascript" async data-short="yU6zyUhkj" data-path="tours" data-is-self-hosted="false" width="100%" height="500px" src="https://app.cloudpano.com/public/shareScript.js"></script></div>',
         folderUrl: "https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing",
         notes: "Supervisión 360° de canalizaciones hidrosanitarias presurizadas, cableado domótico Lutron y ductería oculta de aire acondicionado VRF inverter.",
         thumbnail: "/projects/residencial/alux-7cielos-living-open.jpg"
@@ -52,7 +52,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Avance 34% - Muros, Losas de Concreto & Alberca Cenote",
         phaseName: "Fase 2: Muros y Mampostería",
         progress: 34,
-        embedCode: '<iframe src="https://app.cloudpano.com/tours/demo-tour-uno?sceneId=3" width="100%" height="100%" frameborder="0" allowfullscreen allow="accelerometer; gyroscope; magnetometer; vr"></iframe>',
+        embedCode: '<div id="yU6zyUhkj"><script type="text/javascript" async data-short="yU6zyUhkj" data-path="tours" data-is-self-hosted="false" width="100%" height="500px" src="https://app.cloudpano.com/public/shareScript.js"></script></div>',
         folderUrl: "https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing",
         notes: "Colado de losas intermedias con cimbra aparente texturizada con duela regional y perfilado de excavación para alberca con fondo orgánico.",
         thumbnail: "/projects/residencial/alux-7cielos-ocean-pool.jpg"
@@ -63,7 +63,7 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Avance 18% - Cimentación Ciclópea & Estructura Kárstica",
         phaseName: "Fase 1: Cimentación y Estructura",
         progress: 18,
-        embedCode: '<iframe src="https://app.cloudpano.com/tours/demo-tour-uno?sceneId=4" width="100%" height="100%" frameborder="0" allowfullscreen allow="accelerometer; gyroscope; magnetometer; vr"></iframe>',
+        embedCode: '<div id="yU6zyUhkj"><script type="text/javascript" async data-short="yU6zyUhkj" data-path="tours" data-is-self-hosted="false" width="100%" height="500px" src="https://app.cloudpano.com/public/shareScript.js"></script></div>',
         folderUrl: "https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing",
         notes: "Prospección geofísica completada y colado de zapatas aisladas amarradas con trabes de liga sismorresistentes calculadas para huracanes Cat. 5.",
         thumbnail: "/projects/offgrid/offgrid-pabellon-living.jpg"

@@ -91,12 +91,48 @@ export default function CloudPanoViewer({
     }
   };
 
-  // Helper to extract iframe src from raw string or return direct URL
+  // Helper to extract iframe src from raw string, CloudPano script tags, or direct URLs
   const getIframeSrc = (code: string) => {
     if (!code) return "";
-    const match = code.match(/src=["']([^"']+)["']/);
-    if (match && match[1]) return match[1];
-    if (code.startsWith("http://") || code.startsWith("https://")) return code;
+    const cleanCode = code.trim();
+
+    // 1. Check for CloudPano data-short attribute in script/div (e.g. data-short="yU6zyUhkj")
+    const shortMatch = cleanCode.match(/data-short=["']([^"']+)["']/i);
+    if (shortMatch && shortMatch[1]) {
+      return `https://app.cloudpano.com/tours/${shortMatch[1]}`;
+    }
+
+    // 2. Check for CloudPano div id if div format (e.g. <div id="yU6zyUhkj"><script...)
+    const divIdMatch = cleanCode.match(/<div\s+id=["']([a-zA-Z0-9_-]+)["']/i);
+    if (divIdMatch && divIdMatch[1] && cleanCode.includes("cloudpano")) {
+      return `https://app.cloudpano.com/tours/${divIdMatch[1]}`;
+    }
+
+    // 3. Check for standard iframe src="..."
+    const srcMatch = cleanCode.match(/src=["']([^"']+)["']/i);
+    if (srcMatch && srcMatch[1]) {
+      // If src is shareScript.js, don't return the script url as iframe src!
+      if (!srcMatch[1].includes("shareScript.js")) {
+        return srcMatch[1];
+      }
+    }
+
+    // 4. Check for direct CloudPano tour link inside string
+    const tourUrlMatch = cleanCode.match(/https?:\/\/app\.cloudpano\.com\/tours\/([a-zA-Z0-9_-]+)/i);
+    if (tourUrlMatch) {
+      return tourUrlMatch[0];
+    }
+
+    // 5. Direct URL
+    if (cleanCode.startsWith("http://") || cleanCode.startsWith("https://")) {
+      return cleanCode;
+    }
+
+    // 6. Direct ID
+    if (/^[a-zA-Z0-9_-]{6,20}$/.test(cleanCode)) {
+      return `https://app.cloudpano.com/tours/${cleanCode}`;
+    }
+
     return "";
   };
 

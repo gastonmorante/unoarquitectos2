@@ -38,7 +38,8 @@ export default function PhotoReportsGrid({
 
   // Extract unique categories and periods
   const categories: string[] = ["Todas", "Acabados", "Estructura", "Interiores", "Alberca", "Instalaciones", "Fachada"];
-  const periods: string[] = ["Todos", "05 Septiembre 2026", "28 Agosto 2026", "18 Agosto 2026", "05 Agosto 2026"];
+  const dynamicPeriods = Array.from(new Set(photoReports.map((p) => p.period)));
+  const periods: string[] = ["Todos", ...dynamicPeriods];
 
   // Filter photos
   const filteredPhotos = photoReports.filter((p) => {
