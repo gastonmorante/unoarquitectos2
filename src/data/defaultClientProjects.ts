@@ -27,16 +27,16 @@ export const defaultClientProjects: ClientProject[] = [
       {
         id: "tour-arrecifes-05sep2026",
         date: "05 Septiembre 2026",
-        title: "Avance 68% - Revestimientos Sensoriales en Chukum & Mármol (Más Reciente)",
+        title: "Avance 72% - Revestimientos en Chukum & Mármol (Más Reciente)",
         phaseName: "Fase 4: Revestimientos y Acabados de Lujo",
-        progress: 68,
+        progress: 72,
         embedCode: '<div id="yU6zyUhkj"><script type="text/javascript" async data-short="yU6zyUhkj" data-path="tours" data-is-self-hosted="false" width="100%" height="500px" src="https://app.cloudpano.com/public/shareScript.js"></script></div>',
         folderUrl: "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link",
         notes: "Levantamiento 360° más reciente tras culminación de pasta de Chukum natural en doble altura (6.40m libres), colocación de placas de mármol Santo Tomás (1.20x2.40m) en vestíbulos y preparación para carpintería maciza de Tzalam.",
-        thumbnail: "/projects/residencial/alux-7cielos-chukum-suite.jpg"
+        thumbnail: "/assets/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_01.jpg"
       },
       {
-        id: "tour-arrecifes-28ago2026",
+        id: "tour-arrecifes-27ago2026",
         date: "27 Agosto 2026",
         title: "Avance 52% - Instalaciones Especiales, Domótica & HVAC",
         phaseName: "Fase 3: Instalaciones Especiales",
@@ -44,29 +44,7 @@ export const defaultClientProjects: ClientProject[] = [
         embedCode: '<div id="yU6zyUhkj"><script type="text/javascript" async data-short="yU6zyUhkj" data-path="tours" data-is-self-hosted="false" width="100%" height="500px" src="https://app.cloudpano.com/public/shareScript.js"></script></div>',
         folderUrl: "https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link",
         notes: "Supervisión 360° de canalizaciones hidrosanitarias presurizadas a 7 kg/cm², cableado domótico Lutron Homeworks QSX y ductería oculta de aire acondicionado VRF inverter Daikin.",
-        thumbnail: "/projects/residencial/alux-7cielos-living-open.jpg"
-      },
-      {
-        id: "tour-arrecifes-18ago2026",
-        date: "18 Agosto 2026",
-        title: "Avance 34% - Muros, Losas de Concreto & Alberca Cenote",
-        phaseName: "Fase 2: Muros y Mampostería",
-        progress: 34,
-        embedCode: '<div id="yU6zyUhkj"><script type="text/javascript" async data-short="yU6zyUhkj" data-path="tours" data-is-self-hosted="false" width="100%" height="500px" src="https://app.cloudpano.com/public/shareScript.js"></script></div>',
-        folderUrl: "https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing",
-        notes: "Colado de losas intermedias con cimbra aparente texturizada con duela regional y perfilado de excavación para alberca con fondo orgánico.",
-        thumbnail: "/projects/residencial/alux-7cielos-ocean-pool.jpg"
-      },
-      {
-        id: "tour-arrecifes-05ago2026",
-        date: "05 Agosto 2026",
-        title: "Avance 18% - Cimentación Ciclópea & Estructura Kárstica",
-        phaseName: "Fase 1: Cimentación y Estructura",
-        progress: 18,
-        embedCode: '<div id="yU6zyUhkj"><script type="text/javascript" async data-short="yU6zyUhkj" data-path="tours" data-is-self-hosted="false" width="100%" height="500px" src="https://app.cloudpano.com/public/shareScript.js"></script></div>',
-        folderUrl: "https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing",
-        notes: "Prospección geofísica completada y colado de zapatas aisladas amarradas con trabes de liga sismorresistentes calculadas para huracanes Cat. 5.",
-        thumbnail: "/projects/offgrid/offgrid-pabellon-living.jpg"
+        thumbnail: "/assets/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_01.jpg"
       }
     ],
     phases: [
@@ -513,103 +491,33 @@ export const defaultClientProjects: ClientProject[] = [
     ],
     milestones: [
       {
-        id: "ms-arrecifes-01",
-        dateStr: "2026-08-05",
-        displayDate: "05 Agosto 2026",
+        id: "ms-arrecifes-27ago2026",
+        dateStr: "2026-08-27",
+        displayDate: "27 Agosto 2026",
         month: "Agosto",
         monthIndex: 0,
-        day: 5,
-        progress: 18,
-        phaseName: "Fase 1: Cimentación y Suelo Kárstico",
-        title: "Cimentación Ciclópea & Zapatas Aisladas",
-        summary: "Prospección geofísica GPR completada sin cavidades kársticas. Colado de zapatas aisladas y trabes de liga de concreto f'c=250 kg/cm².",
-        supervisionNotes: "Dictamen #08: Nivelación topográfica verificada con estación total. Certificado de resistencia de laboratorio aprobado.",
-        tourId: "tour-arrecifes-05ago2026"
-      },
-      {
-        id: "ms-arrecifes-02",
-        dateStr: "2026-08-18",
-        displayDate: "18 Agosto 2026",
-        month: "Agosto",
-        monthIndex: 0,
-        day: 18,
-        progress: 34,
-        phaseName: "Fase 2: Muros, Losas & Alberca Cenote",
-        title: "Colado de Losas Intermedias & Mampostería",
-        summary: "Muros perimetrales y pretiles nivelados. Colado de losas intermedias con acabado aparente texturizado y perfilado de excavación de alberca.",
-        supervisionNotes: "Dictamen #19: Desencofrado sin cangrejeras. Impermeabilización de cimentación y desplante de muros con mortero hidrófugo.",
-        tourId: "tour-arrecifes-18ago2026"
-      },
-      {
-        id: "ms-arrecifes-03",
-        dateStr: "2026-08-28",
-        displayDate: "28 Agosto 2026",
-        month: "Agosto",
-        monthIndex: 0,
-        day: 28,
+        day: 27,
         progress: 52,
         phaseName: "Fase 3: Instalaciones Especiales & Domótica",
         title: "Canalizaciones Hidrosanitarias, VRF & Sistema Lutron",
         summary: "Pruebas hidrostáticas presurizadas a 7 kg/cm² con cero caídas de presión. Tendido de ductería oculta de climatización inverter y fibra óptica.",
         supervisionNotes: "Dictamen #31: Inspección de canalizaciones aprobada. Sistema de respaldo para paneles solares y cableado domótico certificado.",
-        tourId: "tour-arrecifes-28ago2026"
+        tourId: "tour-arrecifes-27ago2026"
       },
       {
-        id: "ms-arrecifes-04",
+        id: "ms-arrecifes-05sep2026",
         dateStr: "2026-09-05",
         displayDate: "05 Septiembre 2026",
         month: "Septiembre",
         monthIndex: 1,
         day: 5,
-        progress: 68,
+        progress: 72,
         phaseName: "Fase 4: Revestimientos en Chukum Tradicional Maya & Mármol",
         title: "Pasta de Chukum en Doble Altura & Mármol Santo Tomás",
         summary: "Aplicación artesanal de pasta orgánica de Chukum hervida en obra en doble altura y master suite. Colocación de placas de mármol con juntas milimétricas.",
         supervisionNotes: "Dictamen #45: Acabado táctil sedoso de Chukum aprobado con sellador natural de poro abierto. Verificación de pendientes en terrazas.",
         tourId: "tour-arrecifes-05sep2026",
         isLatest: true
-      },
-      {
-        id: "ms-arrecifes-05",
-        dateStr: "2026-10-15",
-        displayDate: "15 Octubre 2026",
-        month: "Octubre",
-        monthIndex: 2,
-        day: 15,
-        progress: 82,
-        phaseName: "Fase 5: Carpintería en Tzalam Macizo & Cancelería Antihuracán",
-        title: "Montaje de Puertas Pivotantes de 3.20m & Cristales DVH",
-        summary: "Instalación de carpintería fina en madera maciza de Tzalam curada en horno y perfilería de aluminio europea con cristal laminado antihuracán.",
-        supervisionNotes: "Hito programado: Fabricación en taller de ebanistería al 90% lista para colocación en obra.",
-        isProjected: true
-      },
-      {
-        id: "ms-arrecifes-06",
-        dateStr: "2026-11-12",
-        displayDate: "12 Noviembre 2026",
-        month: "Noviembre",
-        monthIndex: 3,
-        day: 12,
-        progress: 94,
-        phaseName: "Fase 6: Iluminación Sensorial 2700K & Paisajismo Selvático",
-        title: "Jardín Botánico Tropical, Muro Llorón & Llenado de Alberca",
-        summary: "Siembra de palmas chit, ceibas y helechos endémicos. Configuración de escenas lumínicas warm light 2700K y puesta en marcha de cascada.",
-        supervisionNotes: "Hito programado: Selección de flora en vivero regional y luminarias arquitectónicas en tránsito.",
-        isProjected: true
-      },
-      {
-        id: "ms-arrecifes-07",
-        dateStr: "2026-12-18",
-        displayDate: "18 Diciembre 2026",
-        month: "Diciembre",
-        monthIndex: 4,
-        day: 18,
-        progress: 100,
-        phaseName: "Fase 7: Entrega de Obra, As-Built & Protocolo de Calidad",
-        title: "Cierre de Obra, Garantía Certificada & Entrega Llave en Mano",
-        summary: "Inspección técnica final, entrega de bitácora digital, planos As-Built, manuales de equipos y entrega protocolaria de llaves.",
-        supervisionNotes: "Hito programado: Protocolo de entrega formal y firma de acta de entrega-recepción.",
-        isProjected: true
       }
     ]
   },

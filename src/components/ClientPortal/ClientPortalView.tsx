@@ -23,7 +23,6 @@ import {
 } from "lucide-react";
 import { ClientProject, Tour360Folder, ProgressMilestone } from "../../types/clientPortal";
 import CloudPanoViewer from "./CloudPanoViewer";
-import ConstructionTimeline from "./ConstructionTimeline";
 import PhotoReportsGrid from "./PhotoReportsGrid";
 import ExecutiveReportModal from "./ExecutiveReportModal";
 import ClientAIAssistantModal from "./ClientAIAssistantModal";
@@ -44,7 +43,7 @@ export default function ClientPortalView({
   onLogout,
   onClose,
 }: ClientPortalViewProps) {
-  const [activeTab, setActiveTab] = useState<"360" | "timeline" | "photos">("360");
+  const [activeTab, setActiveTab] = useState<"360" | "photos">("360");
   const [showReportModal, setShowReportModal] = useState(false);
   const [showAIAssistant, setShowAIAssistant] = useState(false);
   const [showProjectSwitcher, setShowProjectSwitcher] = useState(false);
@@ -350,19 +349,6 @@ export default function ClientPortalView({
           </button>
 
           <button
-            onClick={() => setActiveTab("timeline")}
-            className={`px-4 sm:px-6 py-2.5 font-label-caps text-xs uppercase tracking-wider font-semibold rounded-xs transition-all flex items-center gap-2 cursor-pointer flex-shrink-0 ${
-              activeTab === "timeline"
-                ? "bg-teal-uno text-white shadow-lg shadow-teal-uno/10"
-                : "text-zinc-400 hover:text-white hover:bg-white/5"
-            }`}
-          >
-            <Hammer className="w-4 h-4" />
-            <span>Cronograma de Fases</span>
-            <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-black/40 font-mono">8</span>
-          </button>
-
-          <button
             onClick={() => setActiveTab("photos")}
             className={`px-4 sm:px-6 py-2.5 font-label-caps text-xs uppercase tracking-wider font-semibold rounded-xs transition-all flex items-center gap-2 cursor-pointer flex-shrink-0 ${
               activeTab === "photos"
@@ -395,22 +381,6 @@ export default function ClientPortalView({
                 propertyName={currentProject.propertyName}
                 selectedTourId={selectedMilestone?.tourId}
                 onUpdateTour={handleUpdateTour}
-              />
-            </motion.div>
-          )}
-
-          {activeTab === "timeline" && (
-            <motion.div
-              key="timeline"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.25 }}
-            >
-              <ConstructionTimeline
-                phases={currentProject.phases}
-                globalProgress={activeProgress}
-                currentPhaseName={activePhase}
               />
             </motion.div>
           )}

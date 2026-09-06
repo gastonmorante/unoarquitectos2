@@ -183,7 +183,7 @@ export default function CloudPanoViewer({
           <span className="text-[11px] text-teal-uno">Fidelidad 100% Levantamiento de Obra</span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {tours.map((tour) => {
             const isSelected = tour.id === selectedTourId;
             return (
