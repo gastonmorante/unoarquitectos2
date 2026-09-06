@@ -246,3 +246,15 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #00A3A3;
 }
+
+/* Modern Web Performance: Content Visibility & Hardware Acceleration */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 650px;
+}
+
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}

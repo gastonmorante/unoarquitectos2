@@ -174,7 +174,7 @@ export default function Metrics() {
     : "https://www.google.com/maps/place/UNO+Arquitectos+Mx/@20.6718486,-87.0504611,17z/data=!4m8!3m7!1s0x8f4e43859b311239:0x1a9cb6da851ff691!8m2!3d20.6718486!4d-87.0504611!9m1!1b1!16s%2Fg%2F11r_t7kdfg");
 
   return (
-    <section id="metricas" className="py-14 sm:py-20 md:py-24 px-4 sm:px-6 md:px-margin-desktop bg-surface-container-low/50 border-b border-arena-calida/20 font-sans">
+    <section id="metricas" className="py-14 sm:py-20 md:py-24 px-4 sm:px-6 md:px-margin-desktop bg-surface-container-low/50 border-b border-arena-calida/20 font-sans cv-auto">
       <div className="max-w-container-max mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {dynamicItems.map((item, index) => (

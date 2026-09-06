@@ -24,12 +24,24 @@ export default defineConfig({
   build: {
     target: 'es2022',
     minify: 'esbuild',
+    cssMinify: true,
+    cssCodeSplit: true,
+    chunkSizeWarningLimit: 800,
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          motion: ['motion/react'],
-          icons: ['lucide-react'],
+        manualChunks(id) {
+          if (id.includes('node_modules/three')) {
+            return 'three-bundle';
+          }
+          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
+            return 'vendor-core';
+          }
+          if (id.includes('node_modules/motion')) {
+            return 'motion-core';
+          }
+          if (id.includes('node_modules/lucide-react')) {
+            return 'icons-core';
+          }
         }
       }
     }

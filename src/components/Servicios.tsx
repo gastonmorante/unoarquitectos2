@@ -6,7 +6,7 @@ export default function Servicios() {
   const isEs = language === "es";
 
   return (
-    <section id="servicios" className="py-section-padding px-4 sm:px-6 md:px-margin-desktop bg-surface-variant relative texture-overlay border-b border-arena-calida/20 font-sans overflow-hidden">
+    <section id="servicios" className="py-section-padding px-4 sm:px-6 md:px-margin-desktop bg-surface-variant relative texture-overlay border-b border-arena-calida/20 font-sans overflow-hidden cv-auto">
       {/* Decorative organic elements */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-arena-calida/30 to-transparent"></div>
       

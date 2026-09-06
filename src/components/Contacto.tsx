@@ -76,7 +76,7 @@ export default function Contacto() {
   };
 
   return (
-    <section id="contacto" className="py-section-padding px-4 sm:px-6 md:px-margin-desktop bg-background text-gris-texto font-sans relative border-t border-arena-calida/20 texture-overlay overflow-hidden">
+    <section id="contacto" className="py-section-padding px-4 sm:px-6 md:px-margin-desktop bg-background text-gris-texto font-sans relative border-t border-arena-calida/20 texture-overlay overflow-hidden cv-auto">
       <div className="max-w-container-max mx-auto">
         
         {/* Top Tagline */}

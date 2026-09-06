@@ -7,7 +7,7 @@ export default function Filosofia() {
   const { content } = useSiteContent();
 
   return (
-    <section id="filosofia" className="py-section-padding px-4 sm:px-6 md:px-margin-desktop bg-surface-container-low relative texture-overlay border-b border-arena-calida/20 font-sans overflow-hidden">
+    <section id="filosofia" className="py-section-padding px-4 sm:px-6 md:px-margin-desktop bg-surface-container-low relative texture-overlay border-b border-arena-calida/20 font-sans overflow-hidden cv-auto">
       <div className="max-w-container-max mx-auto">
         
         {/* Brand Purpose Level 0 Hero Block */}

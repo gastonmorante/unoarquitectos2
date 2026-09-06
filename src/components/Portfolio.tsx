@@ -266,7 +266,7 @@ export default function Portfolio() {
   };
 
   return (
-    <section id="proyectos" className="py-section-padding px-4 sm:px-6 md:px-margin-desktop bg-background font-sans border-b border-arena-calida/20 text-gris-texto overflow-hidden">
+    <section id="proyectos" className="py-section-padding px-4 sm:px-6 md:px-margin-desktop bg-background font-sans border-b border-arena-calida/20 text-gris-texto overflow-hidden cv-auto">
       <div className="max-w-container-max mx-auto">
         
         {/* Section Header */}

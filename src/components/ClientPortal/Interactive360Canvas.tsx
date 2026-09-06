@@ -110,6 +110,31 @@ export default function Interactive360Canvas({
     const loader = new THREE.TextureLoader();
     textureLoaderRef.current = loader;
 
+    // Load initial scene texture immediately once mesh is created
+    if (activeScene?.equirectangularUrl) {
+      setIsLoading(true);
+      loader.load(
+        activeScene.equirectangularUrl,
+        (texture) => {
+          texture.colorSpace = THREE.SRGBColorSpace;
+          texture.minFilter = THREE.LinearFilter;
+          texture.magFilter = THREE.LinearFilter;
+          texture.generateMipmaps = false;
+
+          const mat = mesh.material as THREE.MeshBasicMaterial;
+          if (mat.map) mat.map.dispose();
+          mat.color.setHex(0xffffff);
+          mat.map = texture;
+          mat.needsUpdate = true;
+          setIsLoading(false);
+        },
+        undefined,
+        () => {
+          setIsLoading(false);
+        }
+      );
+    }
+
     // Clear previous children
     while (containerRef.current.firstChild) {
       containerRef.current.removeChild(containerRef.current.firstChild);
@@ -161,15 +186,25 @@ export default function Interactive360Canvas({
     };
   }, []);
 
-  // Load active scene texture into sphere
+  // Load active scene texture into sphere when activeScene changes
   useEffect(() => {
-    if (!activeScene?.equirectangularUrl || !textureLoaderRef.current || !sphereMeshRef.current) return;
+    if (!activeScene?.equirectangularUrl || !sphereMeshRef.current) return;
 
     setIsLoading(true);
 
-    textureLoaderRef.current.load(
+    const loader = textureLoaderRef.current || new THREE.TextureLoader();
+    textureLoaderRef.current = loader;
+
+    let isMounted = true;
+    const safetyTimer = setTimeout(() => {
+      if (isMounted) setIsLoading(false);
+    }, 1500);
+
+    loader.load(
       activeScene.equirectangularUrl,
       (texture) => {
+        if (!isMounted) return;
+        clearTimeout(safetyTimer);
         texture.colorSpace = THREE.SRGBColorSpace;
         texture.minFilter = THREE.LinearFilter;
         texture.magFilter = THREE.LinearFilter;
@@ -187,9 +222,17 @@ export default function Interactive360Canvas({
       undefined,
       (error) => {
         console.error("Error loading 360 equirectangular texture:", error);
-        setIsLoading(false);
+        if (isMounted) {
+          clearTimeout(safetyTimer);
+          setIsLoading(false);
+        }
       }
     );
+
+    return () => {
+      isMounted = false;
+      clearTimeout(safetyTimer);
+    };
   }, [activeScene?.equirectangularUrl]);
 
   // Pointer / Drag Controls

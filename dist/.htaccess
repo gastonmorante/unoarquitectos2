@@ -147,6 +147,16 @@ AddHandler application/x-httpd-ea-php82___lsphp .php .php8 .phtml
 # 7. ADVANCED SECURITY HEADERS & DEFENSIVE HARDENING
 # ------------------------------------------------------------------------------
 <IfModule mod_headers.c>
+  # 1 year immutable cache for hashed assets
+  <FilesMatch "\.(js|css|woff2|webp|jpg|png|svg)$">
+    Header set Cache-Control "max-age=31536000, public, immutable"
+  </FilesMatch>
+
+  # HTML must revalidate immediately to load new builds without stale cache
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+  </FilesMatch>
+
   # HTTP Strict Transport Security (HSTS) - Forzar HTTPS estricto por 1 año
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 

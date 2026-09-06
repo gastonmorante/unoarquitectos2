@@ -70,7 +70,7 @@ export default function Faqs() {
   };
 
   return (
-    <section id="faqs" className="py-section-padding px-4 sm:px-6 md:px-margin-desktop bg-background text-gris-texto font-sans border-b border-arena-calida/20 relative overflow-hidden">
+    <section id="faqs" className="py-section-padding px-4 sm:px-6 md:px-margin-desktop bg-background text-gris-texto font-sans border-b border-arena-calida/20 relative overflow-hidden cv-auto">
       <div className="max-w-5xl mx-auto">
         
         {/* Section Header */}
