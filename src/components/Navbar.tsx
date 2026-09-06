@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Compass, X, Menu } from "lucide-react";
+import { Compass, X, Menu, ShieldCheck } from "lucide-react";
 import Logo from "./Logo";
 import LanguageSelector from "./LanguageSelector";
 import { useLanguage } from "../context/LanguageContext";
@@ -22,6 +22,13 @@ export default function Navbar() {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleOpenClientPortal = () => {
+    setIsMobileMenuOpen(false);
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("open-client-portal"));
     }
   };
 
@@ -59,7 +66,7 @@ export default function Navbar() {
         </div>
 
         {/* DESKTOP NAV */}
-        <div className="hidden md:flex items-center gap-7 lg:gap-10">
+        <div className="hidden md:flex items-center gap-6 lg:gap-8">
           <button
             onClick={() => scrollToSection("proyectos")}
             className="font-label-caps text-label-caps text-gris-texto hover:text-arena-calida transition-colors duration-300 uppercase cursor-pointer"
@@ -91,12 +98,20 @@ export default function Navbar() {
             <Compass className="w-3.5 h-3.5 animate-spin-slow text-teal-uno" />
             {t("nav.planner") || "Asesor IA"}
           </button>
+          <button
+            onClick={handleOpenClientPortal}
+            className="font-label-caps text-label-caps text-[#c2a275] hover:text-white bg-[#c2a275]/10 hover:bg-[#c2a275]/25 border border-[#c2a275]/40 px-3.5 py-1.5 rounded-full transition-all duration-300 uppercase cursor-pointer flex items-center gap-1.5 font-semibold shadow-xs"
+            title="Portal de Seguimiento de Obra y Recorridos 360°"
+          >
+            <ShieldCheck className="w-3.5 h-3.5 text-[#c2a275]" />
+            Área Clientes
+          </button>
         </div>
 
         {/* CTA Pill Button */}
         <button
           onClick={() => scrollToSection("contacto")}
-          className="hidden md:inline-flex items-center justify-center px-7 lg:px-8 py-2.5 lg:py-3 bg-arena-calida/10 text-teal-uno border border-arena-calida/50 font-label-caps text-xs lg:text-label-caps uppercase hover:bg-arena-calida hover:text-white transition-all duration-500 rounded-full cursor-pointer shadow-xs font-semibold"
+          className="hidden md:inline-flex items-center justify-center px-6 lg:px-8 py-2.5 lg:py-3 bg-arena-calida/10 text-teal-uno border border-arena-calida/50 font-label-caps text-xs lg:text-label-caps uppercase hover:bg-arena-calida hover:text-white transition-all duration-500 rounded-full cursor-pointer shadow-xs font-semibold"
         >
           Iniciar Diálogo
         </button>
@@ -147,6 +162,13 @@ export default function Navbar() {
           >
             <Compass className="w-4 h-4 animate-spin-slow" />
             {t("nav.planner") || "Asesor IA"}
+          </button>
+          <button
+            onClick={handleOpenClientPortal}
+            className="text-left font-label-caps text-xs uppercase font-semibold text-[#c2a275] flex items-center gap-2 py-2 border-b border-arena-calida/15"
+          >
+            <ShieldCheck className="w-4 h-4 text-[#c2a275]" />
+            Área Clientes (Seguimiento 360°)
           </button>
           <button
             onClick={() => scrollToSection("contacto")}

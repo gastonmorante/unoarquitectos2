@@ -1,6 +1,6 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
 import { AnimatePresence } from 'motion/react';
-import { Lock } from 'lucide-react';
+import { Lock, ShieldCheck } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Filosofia from './components/Filosofia';
 import Metrics from './components/Metrics';
@@ -11,25 +11,79 @@ import CookieBanner from './components/CookieBanner';
 import Logo from './components/Logo';
 import { LanguageProvider } from './context/LanguageContext';
 import { ContentProvider, useSiteContent } from './context/ContentContext';
+import { ClientProject } from './types/clientPortal';
+import { defaultClientProjects } from './data/defaultClientProjects';
 
 const Portfolio = lazy(() => import('./components/Portfolio'));
 const AdminDashboard = lazy(() => import('./admin/AdminDashboard'));
 const AdminLogin = lazy(() => import('./admin/AdminLogin'));
 const LegalNotice = lazy(() => import('./components/LegalNotice'));
 const AIConsultant = lazy(() => import('./components/AIConsultant'));
+const ClientPortalModal = lazy(() => import('./components/ClientPortal/ClientPortalModal'));
+const ClientPortalView = lazy(() => import('./components/ClientPortal/ClientPortalView'));
 
 function MainApp() {
   const [showAdmin, setShowAdmin] = useState(false);
+  const [showClientModal, setShowClientModal] = useState(false);
+  const [activeClientProject, setActiveClientProject] = useState<ClientProject | null>(null);
+  const [clientProjects, setClientProjects] = useState<ClientProject[]>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("uno_client_projects_v2");
+      if (saved) {
+        try {
+          return JSON.parse(saved);
+        } catch {}
+      }
+    }
+    return defaultClientProjects;
+  });
+
   const { isAuthenticated } = useSiteContent();
 
-  // Listen to hash changes (e.g. #admin) and keyboard shortcut (Ctrl+Shift+A or Ctrl+Alt+A)
+  // Listen to hash changes (e.g. #admin, #clientes, #portal) and custom events
   useEffect(() => {
     const checkHash = () => {
       if (typeof window !== "undefined") {
         if (window.location.hash === "#admin" || window.location.search.includes("admin=true")) {
           setShowAdmin(true);
         }
+
+        if (
+          window.location.hash === "#clientes" ||
+          window.location.hash === "#portal" ||
+          window.location.search.includes("portal=true") ||
+          window.location.search.includes("cliente=true")
+        ) {
+          handleOpenClientPortal();
+        }
       }
+    };
+
+    const handleOpenClientPortal = () => {
+      // Reload projects if updated in admin
+      let currentList = defaultClientProjects;
+      const saved = localStorage.getItem("uno_client_projects_v2");
+      if (saved) {
+        try {
+          currentList = JSON.parse(saved);
+          setClientProjects(currentList);
+        } catch {}
+      }
+
+      // Check if there is an active session
+      const savedSession = localStorage.getItem("uno_client_portal_session");
+      if (savedSession) {
+        try {
+          const parsed = JSON.parse(savedSession);
+          const found = currentList.find((p) => p.id === parsed.projectId);
+          if (found) {
+            setActiveClientProject(found);
+            setShowClientModal(false);
+            return;
+          }
+        } catch {}
+      }
+      setShowClientModal(true);
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -42,9 +96,12 @@ function MainApp() {
     checkHash();
     window.addEventListener("hashchange", checkHash);
     window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("open-client-portal", handleOpenClientPortal);
+
     return () => {
       window.removeEventListener("hashchange", checkHash);
       window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("open-client-portal", handleOpenClientPortal);
     };
   }, []);
 
@@ -61,9 +118,27 @@ function MainApp() {
     }
   };
 
+  const handleClientLoginSuccess = (project: ClientProject) => {
+    setActiveClientProject(project);
+    setShowClientModal(false);
+  };
+
+  const handleCloseClientPortal = () => {
+    setShowClientModal(false);
+    setActiveClientProject(null);
+    if (window.location.hash === "#clientes" || window.location.hash === "#portal") {
+      history.pushState("", document.title, window.location.pathname + window.location.search);
+    }
+  };
+
+  const handleLogoutClient = () => {
+    localStorage.removeItem("uno_client_portal_session");
+    setActiveClientProject(null);
+    setShowClientModal(false);
+  };
+
   return (
     <>
-
       {/* ADMIN DASHBOARD OR LOGIN OVERLAY */}
       <AnimatePresence>
         {showAdmin && (
@@ -73,6 +148,34 @@ function MainApp() {
             ) : (
               <AdminLogin onClose={handleCloseAdmin} />
             )}
+          </Suspense>
+        )}
+      </AnimatePresence>
+
+      {/* CLIENT PORTAL LOGIN MODAL */}
+      <AnimatePresence>
+        {showClientModal && !activeClientProject && (
+          <Suspense fallback={null}>
+            <ClientPortalModal
+              projects={clientProjects}
+              onLoginSuccess={handleClientLoginSuccess}
+              onClose={() => setShowClientModal(false)}
+            />
+          </Suspense>
+        )}
+      </AnimatePresence>
+
+      {/* CLIENT PORTAL EXECUTIVE DASHBOARD VIEW */}
+      <AnimatePresence>
+        {activeClientProject && (
+          <Suspense fallback={null}>
+            <ClientPortalView
+              currentProject={activeClientProject}
+              allProjects={clientProjects}
+              onSelectProject={(p) => setActiveClientProject(p)}
+              onLogout={handleLogoutClient}
+              onClose={handleCloseClientPortal}
+            />
           </Suspense>
         )}
       </AnimatePresence>
@@ -123,6 +226,19 @@ function MainApp() {
                 <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-2 min-h-[36px] flex items-center" href="#proyectos">Colección</a></li>
                 <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-2 min-h-[36px] flex items-center" href="#filosofia">Esencia</a></li>
                 <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-2 min-h-[36px] flex items-center" href="#contacto">Diálogo</a></li>
+                <li>
+                  <button 
+                    onClick={() => {
+                      if (typeof window !== "undefined") {
+                        window.dispatchEvent(new CustomEvent("open-client-portal"));
+                      }
+                    }} 
+                    className="text-[#c2a275] hover:text-white transition-colors duration-300 uppercase cursor-pointer text-left inline-flex items-center gap-1.5 py-2 min-h-[36px]"
+                    title="Seguimiento de Obra y Recorridos 360°"
+                  >
+                    <ShieldCheck className="w-3.5 h-3.5 text-[#c2a275]" /> Área Clientes
+                  </button>
+                </li>
               </ul>
             </div>
             
