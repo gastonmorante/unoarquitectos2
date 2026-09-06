@@ -26,6 +26,7 @@ import CloudPanoViewer from "./CloudPanoViewer";
 import ConstructionTimeline from "./ConstructionTimeline";
 import PhotoReportsGrid from "./PhotoReportsGrid";
 import ExecutiveReportModal from "./ExecutiveReportModal";
+import ClientAIAssistantModal from "./ClientAIAssistantModal";
 import Logo from "../Logo";
 
 interface ClientPortalViewProps {
@@ -45,6 +46,7 @@ export default function ClientPortalView({
 }: ClientPortalViewProps) {
   const [activeTab, setActiveTab] = useState<"360" | "timeline" | "photos">("360");
   const [showReportModal, setShowReportModal] = useState(false);
+  const [showAIAssistant, setShowAIAssistant] = useState(false);
   const [showProjectSwitcher, setShowProjectSwitcher] = useState(false);
 
   // Default to the latest progress milestone (most recent date)
@@ -142,14 +144,24 @@ export default function ClientPortalView({
         </div>
 
         {/* TOP ACTIONS */}
-        <div className="flex items-center gap-2.5 sm:gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <button
+            onClick={() => setShowAIAssistant(true)}
+            className="px-3 sm:px-4 py-2 bg-gradient-to-r from-teal-uno via-[#009e9e] to-teal-uno hover:brightness-110 text-white rounded-xs text-[11px] sm:text-xs font-label-caps uppercase tracking-wider font-bold transition-all flex items-center gap-1.5 shadow-lg shadow-teal-uno/20 cursor-pointer active:scale-95 border border-teal-uno/50 animate-pulse-subtle"
+            title="Abrir Asesor Técnico con Inteligencia Artificial Gemini 3.6"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-[#c2a275]" />
+            <span className="hidden sm:inline">IA Gemini • Asesor de Obra</span>
+            <span className="sm:hidden">IA Gemini</span>
+          </button>
+
           <button
             onClick={() => setShowReportModal(true)}
-            className="px-3.5 sm:px-4 py-2 bg-teal-uno hover:bg-[#008f8f] text-white rounded-xs text-[11px] sm:text-xs font-label-caps uppercase tracking-wider font-semibold transition-all flex items-center gap-1.5 shadow-md cursor-pointer active:scale-95"
+            className="px-3 sm:px-4 py-2 bg-[#1f1f28] hover:bg-[#282834] text-[#e4ded5] border border-[#c2a275]/30 rounded-xs text-[11px] sm:text-xs font-label-caps uppercase tracking-wider font-semibold transition-all flex items-center gap-1.5 shadow-md cursor-pointer active:scale-95"
             title="Generar e imprimir informe de supervisión en PDF"
           >
-            <FileText className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Generar Dictamen PDF</span>
+            <FileText className="w-3.5 h-3.5 text-teal-uno" />
+            <span className="hidden sm:inline">Dictamen PDF</span>
             <span className="sm:hidden">PDF</span>
           </button>
 
@@ -186,9 +198,13 @@ export default function ClientPortalView({
                   <MapPin className="w-3 h-3 text-teal-uno" />
                   {currentProject.location}
                 </span>
-                <span className="px-2.5 py-0.5 rounded-full bg-teal-uno/15 text-teal-uno border border-teal-uno/30 text-[10px] font-mono">
-                  Ciclo de Obra: Ago — Dic 2026
-                </span>
+                <button
+                  onClick={() => setShowAIAssistant(true)}
+                  className="px-2.5 py-0.5 rounded-full bg-teal-uno/15 hover:bg-teal-uno/30 text-teal-uno border border-teal-uno/40 text-[10px] font-mono flex items-center gap-1 cursor-pointer transition-colors"
+                >
+                  <Sparkles className="w-3 h-3 text-[#c2a275]" />
+                  <span>IA Gemini Activa</span>
+                </button>
               </div>
 
               <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white tracking-tight leading-tight">
@@ -447,6 +463,16 @@ export default function ClientPortalView({
           <ExecutiveReportModal
             project={currentProject}
             onClose={() => setShowReportModal(false)}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* 7. GEMINI AI TECHNICAL CONSULTANT MODAL */}
+      <AnimatePresence>
+        {showAIAssistant && (
+          <ClientAIAssistantModal
+            project={currentProject}
+            onClose={() => setShowAIAssistant(false)}
           />
         )}
       </AnimatePresence>

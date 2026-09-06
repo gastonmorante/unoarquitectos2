@@ -31,8 +31,8 @@ export const defaultClientProjects: ClientProject[] = [
         phaseName: "Fase 4: Revestimientos y Acabados de Lujo",
         progress: 68,
         embedCode: '<div id="yU6zyUhkj"><script type="text/javascript" async data-short="yU6zyUhkj" data-path="tours" data-is-self-hosted="false" width="100%" height="500px" src="https://app.cloudpano.com/public/shareScript.js"></script></div>',
-        folderUrl: "https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing",
-        notes: "Levantamiento 360° más reciente tras culminación de pasta de Chukum natural en doble altura, colocación de placas de mármol Santo Tomás en vestíbulos y preparación para carpintería maciza.",
+        folderUrl: "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link",
+        notes: "Levantamiento 360° más reciente tras culminación de pasta de Chukum natural en doble altura (6.40m libres), colocación de placas de mármol Santo Tomás (1.20x2.40m) en vestíbulos y preparación para carpintería maciza de Tzalam.",
         thumbnail: "/projects/residencial/alux-7cielos-chukum-suite.jpg"
       },
       {
@@ -42,8 +42,8 @@ export const defaultClientProjects: ClientProject[] = [
         phaseName: "Fase 3: Instalaciones Especiales",
         progress: 52,
         embedCode: '<div id="yU6zyUhkj"><script type="text/javascript" async data-short="yU6zyUhkj" data-path="tours" data-is-self-hosted="false" width="100%" height="500px" src="https://app.cloudpano.com/public/shareScript.js"></script></div>',
-        folderUrl: "https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing",
-        notes: "Supervisión 360° de canalizaciones hidrosanitarias presurizadas, cableado domótico Lutron y ductería oculta de aire acondicionado VRF inverter.",
+        folderUrl: "https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link",
+        notes: "Supervisión 360° de canalizaciones hidrosanitarias presurizadas a 7 kg/cm², cableado domótico Lutron Homeworks QSX y ductería oculta de aire acondicionado VRF inverter Daikin.",
         thumbnail: "/projects/residencial/alux-7cielos-living-open.jpg"
       },
       {
@@ -190,38 +190,38 @@ export const defaultClientProjects: ClientProject[] = [
         isReframed360: true
       },
 
-      // 28 AGOSTO 2026 (INSTALACIONES ESPECIALES & DOMÓTICA)
+      // 27 AGOSTO 2026 (INSTALACIONES ESPECIALES & DOMÓTICA)
       {
         id: "rep-arrecifes-04",
-        period: "28 Agosto 2026",
+        period: "27 Agosto 2026",
         category: "Instalaciones",
         title: "Ductería VRF Inverter & Canalizaciones MEP Presurizadas",
-        date: "28 Agosto 2026",
-        location: "Entreplanta Técnica & Plafones",
+        date: "27 Agosto 2026",
+        location: "Entreplanta Técnica & Plafones (3.40m)",
         imageUrl: "/projects/offgrid/offgrid-rooftop-solar.jpg",
-        technicalNote: "Pruebas hidrostáticas presurizadas a 7 kg/cm² superadas sin fugas. Tendido de ductos de climatización oculta y fibra óptica.",
+        technicalNote: "Pruebas hidrostáticas presurizadas a 7 kg/cm² superadas sin fugas. Tendido de ductos de climatización oculta Daikin VRF y cableado de fibra óptica.",
         isReframed360: true
       },
       {
         id: "rep-arrecifes-05",
-        period: "28 Agosto 2026",
+        period: "27 Agosto 2026",
         category: "Instalaciones",
         title: "Cuarto de Máquinas, PTAR & Tablero Domótico Lutron",
-        date: "28 Agosto 2026",
+        date: "27 Agosto 2026",
         location: "Sótano Técnico - Planta de Tratamiento",
         imageUrl: "/projects/offgrid/offgrid-villa-cenote.jpg",
-        technicalNote: "Conexión de biodigestores anaeróbicos y filtros biológicos para recirculación de agua en sistema de riego por goteo.",
+        technicalNote: "Conexión de biodigestores anaeróbicos y filtros biológicos con fitorremediación para recirculación en sistema de riego por goteo.",
         isReframed360: true
       },
       {
         id: "rep-arrecifes-06",
-        period: "28 Agosto 2026",
+        period: "27 Agosto 2026",
         category: "Fachada",
         title: "Celosía Bioclimática de Tzalam & Anclajes Inoxidables",
-        date: "28 Agosto 2026",
+        date: "27 Agosto 2026",
         location: "Fachada Norte - Acceso Vehicular",
         imageUrl: "/projects/residencial/alux-7cielos-studio-parota.jpg",
-        technicalNote: "Anclaje de bastidores ocultos de acero inoxidable para celosías de madera maciza de Tzalam curada en horno.",
+        technicalNote: "Anclaje de bastidores ocultos de acero inoxidable 316 para celosías de madera maciza de Tzalam curada en horno al 10% de humedad.",
         isReframed360: true
       },
 

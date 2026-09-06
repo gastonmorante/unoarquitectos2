@@ -34,7 +34,17 @@ export default function PhotoReportsGrid({
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [zoomLevel, setZoomLevel] = useState<number>(1);
 
-  const driveFolderUrl = "https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing";
+  const getDriveUrlForPeriod = (period: string) => {
+    if (period === "05 Septiembre 2026") {
+      return "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link";
+    }
+    if (period === "27 Agosto 2026" || period === "28 Agosto 2026") {
+      return "https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link";
+    }
+    return "https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing";
+  };
+
+  const currentDriveUrl = getDriveUrlForPeriod(selectedPeriod);
 
   // Extract unique categories and periods
   const categories: string[] = ["Todas", "Acabados", "Estructura", "Interiores", "Alberca", "Instalaciones", "Fachada"];
@@ -89,7 +99,7 @@ export default function PhotoReportsGrid({
 
         <div className="flex flex-wrap items-center gap-2.5">
           <a
-            href={driveFolderUrl}
+            href={currentDriveUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-xs text-[#c2a275] bg-[#141418] hover:bg-[#1f1f28] hover:text-white px-3.5 py-2 rounded-xs border border-[#c2a275]/30 transition-colors shadow-xs cursor-pointer"
@@ -97,7 +107,7 @@ export default function PhotoReportsGrid({
           >
             <FolderOpen className="w-3.5 h-3.5 text-teal-uno" />
             <span className="font-label-caps uppercase text-[11px] tracking-wider">
-              Descargar en Drive
+              {selectedPeriod === "Todos" ? "Descargar en Drive" : `Drive (${selectedPeriod.slice(0, 6)})`}
             </span>
             <ExternalLink className="w-3 h-3 opacity-60" />
           </a>
