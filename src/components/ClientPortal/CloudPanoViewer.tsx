@@ -21,6 +21,8 @@ interface CloudPanoViewerProps {
   tours: Tour360Folder[];
   propertyName: string;
   selectedTourId?: string;
+  hideTourSelector?: boolean;
+  onSelectTourId?: (tourId: string) => void;
   onUpdateTour?: (tourId: string, updated: Partial<Tour360Folder>) => void;
   onAddTour?: (newTour: Tour360Folder) => void;
 }
@@ -29,6 +31,8 @@ export default function CloudPanoViewer({
   tours,
   propertyName,
   selectedTourId: externalSelectedTourId,
+  hideTourSelector = false,
+  onSelectTourId,
   onUpdateTour,
 }: CloudPanoViewerProps) {
   const [selectedTourId, setSelectedTourId] = useState<string>(
@@ -158,55 +162,60 @@ export default function CloudPanoViewer({
   return (
     <div className="space-y-6 font-sans text-left">
       {/* FOLDER SELECTION BY DATE */}
-      <div className="space-y-2">
-        <div className="flex items-center justify-between text-xs font-label-caps uppercase tracking-wider text-[#e4ded5]/60">
-          <span className="flex items-center gap-1.5">
-            <Calendar className="w-3.5 h-3.5 text-[#c2a275]" />
-            Carpetas de Levantamiento por Fecha ({tours.length} Registros)
-          </span>
-          <span className="text-[11px] text-teal-uno">Fidelidad 100% Levantamiento de Obra</span>
+      {!hideTourSelector && (
+        <div className="space-y-2">
+          <div className="flex items-center justify-between text-xs font-label-caps uppercase tracking-wider text-[#e4ded5]/60">
+            <span className="flex items-center gap-1.5">
+              <Calendar className="w-3.5 h-3.5 text-[#c2a275]" />
+              Carpetas de Levantamiento por Fecha ({tours.length} Registros)
+            </span>
+            <span className="text-[11px] text-teal-uno">Fidelidad 100% Levantamiento de Obra</span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {tours.map((tour) => {
+              const isSelected = tour.id === selectedTourId;
+              return (
+                <button
+                  key={tour.id}
+                  onClick={() => {
+                    setSelectedTourId(tour.id);
+                    if (onSelectTourId) onSelectTourId(tour.id);
+                  }}
+                  className={`p-4 rounded-xs border text-left transition-all duration-300 cursor-pointer relative overflow-hidden group ${
+                    isSelected
+                      ? "bg-[#1f1f28] border-[#c2a275] shadow-lg shadow-[#c2a275]/5"
+                      : "bg-[#141418] border-[#c2a275]/15 hover:border-[#c2a275]/40 hover:bg-[#1a1a22]"
+                  }`}
+                >
+                  {/* Active Indicator Bar */}
+                  {isSelected && (
+                    <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-teal-uno via-[#c2a275] to-teal-uno" />
+                  )}
+
+                  <div className="flex items-center justify-between gap-2 mb-1.5">
+                    <span className="font-label-caps text-[11px] uppercase tracking-wider font-bold text-[#c2a275]">
+                      {tour.date}
+                    </span>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/40 text-teal-uno border border-teal-uno/30">
+                      {tour.progress}% Avance
+                    </span>
+                  </div>
+
+                  <h4 className="text-xs font-medium text-white line-clamp-1 group-hover:text-[#c2a275] transition-colors">
+                    {tour.title}
+                  </h4>
+
+                  <div className="flex items-center gap-1.5 text-[10px] text-[#e4ded5]/50 mt-2 font-label-caps uppercase">
+                    <Layers className="w-3 h-3 text-teal-uno" />
+                    <span className="truncate">{tour.phaseName}</span>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
         </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {tours.map((tour) => {
-            const isSelected = tour.id === selectedTourId;
-            return (
-              <button
-                key={tour.id}
-                onClick={() => setSelectedTourId(tour.id)}
-                className={`p-4 rounded-xs border text-left transition-all duration-300 cursor-pointer relative overflow-hidden group ${
-                  isSelected
-                    ? "bg-[#1f1f28] border-[#c2a275] shadow-lg shadow-[#c2a275]/5"
-                    : "bg-[#141418] border-[#c2a275]/15 hover:border-[#c2a275]/40 hover:bg-[#1a1a22]"
-                }`}
-              >
-                {/* Active Indicator Bar */}
-                {isSelected && (
-                  <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-teal-uno via-[#c2a275] to-teal-uno" />
-                )}
-
-                <div className="flex items-center justify-between gap-2 mb-1.5">
-                  <span className="font-label-caps text-[11px] uppercase tracking-wider font-bold text-[#c2a275]">
-                    {tour.date}
-                  </span>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-black/40 text-teal-uno border border-teal-uno/30">
-                    {tour.progress}% Avance
-                  </span>
-                </div>
-
-                <h4 className="text-xs font-medium text-white line-clamp-1 group-hover:text-[#c2a275] transition-colors">
-                  {tour.title}
-                </h4>
-
-                <div className="flex items-center gap-1.5 text-[10px] text-[#e4ded5]/50 mt-2 font-label-caps uppercase">
-                  <Layers className="w-3 h-3 text-teal-uno" />
-                  <span className="truncate">{tour.phaseName}</span>
-                </div>
-              </button>
-            );
-          })}
-        </div>
-      </div>
+      )}
 
       {/* ACTIVE TOUR METADATA BANNER */}
       {activeTour && (
@@ -246,6 +255,7 @@ export default function CloudPanoViewer({
       >
         {iframeSrc ? (
           <iframe
+            key={activeTour?.id || activeTour?.date}
             src={iframeSrc}
             title={`Recorrido Virtual 360 - ${propertyName} (${activeTour?.date})`}
             className="w-full h-full border-0"

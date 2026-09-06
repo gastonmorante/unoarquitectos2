@@ -19,9 +19,13 @@ import {
   ChevronDown,
   Sparkles,
   Award,
-  RotateCcw
+  RotateCcw,
+  Layers,
+  FolderOpen,
+  ArrowUpRight,
+  CheckCircle2
 } from "lucide-react";
-import { ClientProject, Tour360Folder, ProgressMilestone } from "../../types/clientPortal";
+import { ClientProject, Tour360Folder } from "../../types/clientPortal";
 import CloudPanoViewer from "./CloudPanoViewer";
 import PhotoReportsGrid from "./PhotoReportsGrid";
 import ExecutiveReportModal from "./ExecutiveReportModal";
@@ -43,39 +47,42 @@ export default function ClientPortalView({
   onLogout,
   onClose,
 }: ClientPortalViewProps) {
-  const [activeTab, setActiveTab] = useState<"360" | "photos">("360");
+  const [viewMode, setViewMode] = useState<"all" | "360" | "photos">("all");
   const [showReportModal, setShowReportModal] = useState(false);
   const [showAIAssistant, setShowAIAssistant] = useState(false);
   const [showProjectSwitcher, setShowProjectSwitcher] = useState(false);
 
-  // Default to the latest progress milestone (most recent date)
-  const [selectedMilestone, setSelectedMilestone] = useState<ProgressMilestone>(() => {
-    const list = currentProject.milestones || [];
-    return list.find((m) => m.isLatest) || list[list.length - 1] || {
-      id: "ms-default",
-      dateStr: "2026-09-05",
-      displayDate: "05 Septiembre 2026",
-      month: "Septiembre",
-      monthIndex: 1,
-      day: 5,
-      progress: currentProject.globalProgress,
-      phaseName: currentProject.currentPhaseName,
-      title: "Avance Más Reciente Registrado",
-      summary: "Levantamiento de supervisión técnica de acabados.",
-      supervisionNotes: "Dictamen de supervisión técnica al día.",
-      isLatest: true,
-    };
-  });
-
-  // Local state for tours to enable in-memory updates
+  // Synchronized active tour and date state
   const [tours, setTours] = useState<Tour360Folder[]>(currentProject.cloudpanoTours);
+  const [selectedTourId, setSelectedTourId] = useState<string>(
+    currentProject.cloudpanoTours[0]?.id || "tour-arrecifes-05sep2026"
+  );
 
   useEffect(() => {
     setTours(currentProject.cloudpanoTours);
-    const list = currentProject.milestones || [];
-    const latest = list.find((m) => m.isLatest) || list[list.length - 1];
-    if (latest) setSelectedMilestone(latest);
+    if (currentProject.cloudpanoTours[0]?.id) {
+      setSelectedTourId(currentProject.cloudpanoTours[0].id);
+    }
   }, [currentProject]);
+
+  const activeTour = tours.find((t) => t.id === selectedTourId) || tours[0];
+  const activeDate = activeTour?.date || "05 Septiembre 2026";
+  const activeProgress = activeTour?.progress || currentProject.globalProgress;
+  const activePhase = activeTour?.phaseName || currentProject.currentPhaseName;
+
+  const handleSelectTour = (tourId: string) => {
+    setSelectedTourId(tourId);
+  };
+
+  const handleSelectPeriod = (period: string) => {
+    if (period === "Todos") return;
+    const matchingTour = tours.find(
+      (t) => t.date === period || period.includes(t.date) || t.date.includes(period)
+    );
+    if (matchingTour) {
+      setSelectedTourId(matchingTour.id);
+    }
+  };
 
   const handleUpdateTour = (tourId: string, updated: Partial<Tour360Folder>) => {
     setTours((prev) =>
@@ -83,11 +90,20 @@ export default function ClientPortalView({
     );
   };
 
-  const activeProgress = currentProject.globalProgress;
-  const activePhase = currentProject.currentPhaseName;
+  const getDriveUrlForDate = (date: string) => {
+    if (date.includes("05") || date.includes("Septiembre")) {
+      return "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link";
+    }
+    if (date.includes("27") || date.includes("28") || date.includes("Agosto")) {
+      return "https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link";
+    }
+    return "https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing";
+  };
+
+  const currentDriveUrl = activeTour?.folderUrl || getDriveUrlForDate(activeDate);
 
   const whatsappMessage = encodeURIComponent(
-    `Hola Arq. Angel Cereceda, consulto sobre el último avance de obra de ${currentProject.propertyName} (${currentProject.location}) - 05 Septiembre 2026 (${currentProject.globalProgress}%). Quisiera coordinar una sesión de revisión técnica.`
+    `Hola Arq. Angel Cereceda, consulto sobre el avance de obra de ${currentProject.propertyName} (${currentProject.location}) - Levantamiento del ${activeDate} (${activeProgress}% Avance). Quisiera coordinar una sesión de revisión técnica.`
   );
 
   return (
@@ -221,28 +237,35 @@ export default function ClientPortalView({
               </div>
             </div>
 
-            {/* RIGHT: Progress Radial Gauge & Architect Card */}
+            {/* RIGHT: Dynamic Progress Radial Gauge & Architect Card */}
             <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
-              {/* RADIAL PROGRESS GAUGE */}
-              <div className="bg-[#181822] border border-[#c2a275]/30 p-5 rounded-xs flex items-center justify-between gap-4 shadow-xl">
+              {/* RADIAL PROGRESS GAUGE (DYNAMIC TO SELECTED DATE) */}
+              <div className="bg-[#181822] border border-[#c2a275]/30 p-5 rounded-xs flex items-center justify-between gap-4 shadow-xl transition-all duration-300">
                 <div className="space-y-1 text-left">
                   <div className="flex items-center gap-1.5">
                     <span className="text-[10px] font-label-caps uppercase tracking-widest text-[#c2a275]">
-                      Último Avance Registrado
+                      Avance Seleccionado
                     </span>
-                    <span className="px-1.5 py-0.2 rounded-full bg-teal-uno text-[9px] text-white font-mono font-bold">
-                      05 SEP 2026
+                    <span className="px-2 py-0.5 rounded-full bg-teal-uno text-[9px] text-white font-mono font-bold">
+                      {activeDate.toUpperCase()}
                     </span>
                   </div>
                   <div className="font-serif text-3xl sm:text-4xl font-bold text-white flex items-baseline gap-1">
-                    <span>{activeProgress}</span>
+                    <motion.span
+                      key={activeProgress}
+                      initial={{ opacity: 0, y: -5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {activeProgress}
+                    </motion.span>
                     <span className="text-lg text-teal-uno font-sans font-normal">%</span>
                   </div>
                   <span className="text-[11px] text-[#e4ded5]/70 block line-clamp-1">
                     {activePhase}
                   </span>
                   <span className="text-[10px] font-mono text-zinc-400 block">
-                    Levantamiento: 05 Septiembre 2026
+                    Levantamiento Oficial: {activeDate}
                   </span>
                 </div>
 
@@ -257,7 +280,7 @@ export default function ClientPortalView({
                       d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                     />
                     <path
-                      className="text-teal-uno"
+                      className="text-teal-uno transition-all duration-700 ease-out"
                       strokeDasharray={`${activeProgress}, 100`}
                       strokeWidth="3.5"
                       strokeLinecap="round"
@@ -330,77 +353,251 @@ export default function ClientPortalView({
         </div>
       </section>
 
-      {/* 3. LUXURY TABS NAVIGATION */}
-      <section className="bg-[#141418] border-b border-[#c2a275]/25 sticky top-[57px] sm:top-[61px] z-30 px-4 sm:px-8">
-        <div className="max-w-7xl mx-auto flex items-center gap-2 sm:gap-4 overflow-x-auto no-scrollbar py-2">
-          <button
-            onClick={() => setActiveTab("360")}
-            className={`px-4 sm:px-6 py-2.5 font-label-caps text-xs uppercase tracking-wider font-semibold rounded-xs transition-all flex items-center gap-2 cursor-pointer flex-shrink-0 ${
-              activeTab === "360"
-                ? "bg-teal-uno text-white shadow-lg shadow-teal-uno/10"
-                : "text-zinc-400 hover:text-white hover:bg-white/5"
-            }`}
-          >
-            <Compass className="w-4 h-4" />
-            <span>Recorrido 360° CloudPano</span>
-            <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-black/40 font-mono">
-              {tours.length}
-            </span>
-          </button>
+      {/* 3. EXECUTIVE PROGRESS SELECTOR CARDS (FICHAS DE AVANCE) */}
+      <section className="bg-[#141418] border-b border-[#c2a275]/25 px-4 sm:px-8 py-6">
+        <div className="max-w-7xl mx-auto space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-left">
+            <div>
+              <div className="flex items-center gap-2 text-xs font-label-caps uppercase tracking-widest text-[#c2a275]">
+                <Calendar className="w-4 h-4 text-teal-uno" />
+                <span>Seleccionar Ficha de Avance de Obra</span>
+              </div>
+              <p className="text-xs text-[#e4ded5]/70 mt-0.5">
+                Al seleccionar una fecha se sincroniza el Recorrido 360° CloudPano, la Bitácora Fotográfica y las métricas de obra.
+              </p>
+            </div>
 
-          <button
-            onClick={() => setActiveTab("photos")}
-            className={`px-4 sm:px-6 py-2.5 font-label-caps text-xs uppercase tracking-wider font-semibold rounded-xs transition-all flex items-center gap-2 cursor-pointer flex-shrink-0 ${
-              activeTab === "photos"
-                ? "bg-teal-uno text-white shadow-lg shadow-teal-uno/10"
-                : "text-zinc-400 hover:text-white hover:bg-white/5"
-            }`}
-          >
-            <Camera className="w-4 h-4" />
-            <span>Bitácora Fotográfica</span>
-            <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-black/40 font-mono">
-              {currentProject.photoReports.length}
-            </span>
-          </button>
+            {/* VIEW MODE TOGGLE BUTTONS */}
+            <div className="flex items-center gap-1 bg-[#101014] p-1 rounded-xs border border-[#c2a275]/20 self-start sm:self-auto">
+              <button
+                onClick={() => setViewMode("all")}
+                className={`px-3 py-1.5 rounded-xs text-[11px] font-label-caps uppercase tracking-wider font-semibold transition-all cursor-pointer ${
+                  viewMode === "all"
+                    ? "bg-teal-uno text-white shadow-sm"
+                    : "text-zinc-400 hover:text-white"
+                }`}
+              >
+                Ficha Completa (360° + Fotos)
+              </button>
+              <button
+                onClick={() => setViewMode("360")}
+                className={`px-3 py-1.5 rounded-xs text-[11px] font-label-caps uppercase tracking-wider font-semibold transition-all cursor-pointer ${
+                  viewMode === "360"
+                    ? "bg-teal-uno text-white shadow-sm"
+                    : "text-zinc-400 hover:text-white"
+                }`}
+              >
+                Solo 360°
+              </button>
+              <button
+                onClick={() => setViewMode("photos")}
+                className={`px-3 py-1.5 rounded-xs text-[11px] font-label-caps uppercase tracking-wider font-semibold transition-all cursor-pointer ${
+                  viewMode === "photos"
+                    ? "bg-teal-uno text-white shadow-sm"
+                    : "text-zinc-400 hover:text-white"
+                }`}
+              >
+                Solo Fotos
+              </button>
+            </div>
+          </div>
+
+          {/* DATE SELECTOR CARDS */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {tours.map((tour) => {
+              const isSelected = tour.id === selectedTourId;
+              const photoCount = currentProject.photoReports.filter((p) => p.period === tour.date).length;
+              const isFirst = tour.id === tours[0].id;
+
+              return (
+                <button
+                  key={tour.id}
+                  onClick={() => handleSelectTour(tour.id)}
+                  className={`p-4 sm:p-5 rounded-xs border text-left transition-all duration-300 cursor-pointer relative overflow-hidden group ${
+                    isSelected
+                      ? "bg-[#1f1f2a] border-[#c2a275] shadow-2xl shadow-[#c2a275]/10 ring-1 ring-[#c2a275]/60"
+                      : "bg-[#141418] border-[#c2a275]/20 hover:border-[#c2a275]/50 hover:bg-[#191922]"
+                  }`}
+                >
+                  {/* Top Active Indicator Strip */}
+                  {isSelected && (
+                    <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-teal-uno via-[#c2a275] to-teal-uno" />
+                  )}
+
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <div className="flex items-center gap-2">
+                      <span className={`font-label-caps text-xs uppercase tracking-wider font-bold ${
+                        isSelected ? "text-[#c2a275]" : "text-white"
+                      }`}>
+                        {tour.date}
+                      </span>
+                      {isFirst && (
+                        <span className="px-2 py-0.5 rounded-full bg-teal-uno/20 text-teal-uno border border-teal-uno/40 text-[9px] font-label-caps uppercase font-bold">
+                          Último Avance
+                        </span>
+                      )}
+                    </div>
+                    <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-black/60 text-teal-uno border border-teal-uno/30">
+                      {tour.progress}% Avance
+                    </span>
+                  </div>
+
+                  <h4 className="text-sm sm:text-base font-serif font-semibold text-white group-hover:text-[#c2a275] transition-colors line-clamp-1">
+                    {tour.title}
+                  </h4>
+
+                  <p className="text-[11px] text-[#e4ded5]/70 mt-1 line-clamp-2 leading-relaxed">
+                    {tour.notes}
+                  </p>
+
+                  <div className="flex items-center gap-4 text-[10px] text-zinc-400 mt-3 pt-2.5 border-t border-white/5 font-label-caps uppercase">
+                    <span className="flex items-center gap-1.5 text-teal-uno font-medium">
+                      <Compass className="w-3.5 h-3.5" />
+                      Tour 360° CloudPano
+                    </span>
+                    <span className="flex items-center gap-1.5 text-[#c2a275] font-medium">
+                      <Camera className="w-3.5 h-3.5" />
+                      {photoCount} Fotos Reencuadradas
+                    </span>
+                    {isSelected && (
+                      <span className="ml-auto text-emerald-400 flex items-center gap-1 font-bold">
+                        <CheckCircle2 className="w-3.5 h-3.5" />
+                        Ficha Activa
+                      </span>
+                    )}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </section>
 
-      {/* 4. MAIN TAB CONTENT PANELS */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-8 py-8 sm:py-10">
-        <AnimatePresence mode="wait">
-          {activeTab === "360" && (
-            <motion.div
-              key="360"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.25 }}
+      {/* 4. MAIN SYNCHRONIZED PROGRESS CONTENT */}
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-8 py-8 sm:py-10 space-y-10">
+        {/* ACTIVE FICHA HEADER & ACTION BAR */}
+        <div className="bg-[#141418] border border-[#c2a275]/30 p-5 rounded-xs flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-left shadow-xl">
+          <div className="space-y-1">
+            <div className="flex items-center gap-2">
+              <span className="px-2.5 py-0.5 rounded-xs bg-[#c2a275]/15 text-[#c2a275] font-label-caps uppercase text-[11px] tracking-wider border border-[#c2a275]/30 font-bold">
+                {activeDate}
+              </span>
+              <span className="text-white font-serif text-base sm:text-lg font-semibold">
+                {activeTour?.title}
+              </span>
+            </div>
+            <p className="text-xs text-[#e4ded5]/80 leading-relaxed max-w-3xl">
+              <strong className="text-[#c2a275] font-normal">Supervisión Técnica:</strong> {activeTour?.notes}
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2.5 flex-shrink-0">
+            <button
+              onClick={() => setShowAIAssistant(true)}
+              className="flex items-center gap-1.5 text-xs text-black bg-gradient-to-r from-[#c2a275] to-[#e4ded5] hover:brightness-110 font-bold px-4 py-2.5 rounded-xs border border-[#c2a275]/50 transition-all shadow-md cursor-pointer active:scale-95"
+              title="Preguntar a la IA Gemini sobre este avance específico"
             >
+              <Sparkles className="w-3.5 h-3.5 text-black" />
+              <span className="font-label-caps uppercase text-[11px] tracking-wider">
+                Consultar IA de Obra
+              </span>
+            </button>
+
+            <a
+              href={currentDriveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-xs text-[#c2a275] bg-[#1f1f28] hover:bg-[#282834] hover:text-white px-4 py-2.5 rounded-xs border border-[#c2a275]/40 transition-colors shadow-xs cursor-pointer font-semibold"
+              title="Descargar fotos y archivos de este avance en Google Drive"
+            >
+              <FolderOpen className="w-3.5 h-3.5 text-teal-uno" />
+              <span className="font-label-caps uppercase text-[11px] tracking-wider">
+                Drive ({activeDate.slice(0, 6)})
+              </span>
+              <ExternalLink className="w-3 h-3 opacity-70" />
+            </a>
+          </div>
+        </div>
+
+        {/* VIEW MODE 1: FICHA COMPLETA (360 + FOTOS) */}
+        {viewMode === "all" && (
+          <div className="space-y-12">
+            {/* PART 1: 360 CLOUDPANO VIEWER */}
+            <section className="space-y-4 text-left">
+              <div className="flex items-center justify-between border-b border-[#c2a275]/20 pb-3">
+                <div className="flex items-center gap-2 text-xs font-label-caps uppercase tracking-widest text-[#c2a275]">
+                  <Compass className="w-4 h-4 text-teal-uno" />
+                  <h3 className="font-serif text-xl sm:text-2xl text-white normal-case">
+                    Recorrido Virtual 360° CloudPano • {activeDate}
+                  </h3>
+                </div>
+                <span className="text-[11px] font-mono text-teal-uno hidden sm:inline">
+                  Inspección Inmersiva en Vivo
+                </span>
+              </div>
+
               <CloudPanoViewer
                 tours={tours}
                 propertyName={currentProject.propertyName}
-                selectedTourId={selectedMilestone?.tourId}
+                selectedTourId={selectedTourId}
+                hideTourSelector={true}
+                onSelectTourId={handleSelectTour}
                 onUpdateTour={handleUpdateTour}
               />
-            </motion.div>
-          )}
+            </section>
 
-          {activeTab === "photos" && (
-            <motion.div
-              key="photos"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.25 }}
-            >
+            {/* PART 2: BITÁCORA FOTOGRÁFICA */}
+            <section className="space-y-4 text-left">
               <PhotoReportsGrid
                 photoReports={currentProject.photoReports}
                 propertyName={currentProject.propertyName}
+                selectedPeriod={activeDate}
+                onSelectPeriod={handleSelectPeriod}
                 onOpenAiAssistant={() => setShowAIAssistant(true)}
               />
-            </motion.div>
-          )}
-        </AnimatePresence>
+            </section>
+          </div>
+        )}
+
+        {/* VIEW MODE 2: SOLO RECORRIDO 360 */}
+        {viewMode === "360" && (
+          <motion.div
+            key={`360-${selectedTourId}`}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25 }}
+            className="space-y-4"
+          >
+            <CloudPanoViewer
+              tours={tours}
+              propertyName={currentProject.propertyName}
+              selectedTourId={selectedTourId}
+              hideTourSelector={true}
+              onSelectTourId={handleSelectTour}
+              onUpdateTour={handleUpdateTour}
+            />
+          </motion.div>
+        )}
+
+        {/* VIEW MODE 3: SOLO BITÁCORA FOTOGRÁFICA */}
+        {viewMode === "photos" && (
+          <motion.div
+            key={`photos-${selectedTourId}`}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25 }}
+          >
+            <PhotoReportsGrid
+              photoReports={currentProject.photoReports}
+              propertyName={currentProject.propertyName}
+              selectedPeriod={activeDate}
+              onSelectPeriod={handleSelectPeriod}
+              onOpenAiAssistant={() => setShowAIAssistant(true)}
+            />
+          </motion.div>
+        )}
       </main>
 
       {/* 5. FOOTER PROTOCOL */}
@@ -450,4 +647,5 @@ export default function ClientPortalView({
     </div>
   );
 }
+
 

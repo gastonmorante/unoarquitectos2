@@ -23,18 +23,30 @@ import { PhotoReport, PhotoCategory } from "../../types/clientPortal";
 interface PhotoReportsGridProps {
   photoReports: PhotoReport[];
   propertyName: string;
+  selectedPeriod?: string;
+  onSelectPeriod?: (period: string) => void;
   onOpenAiAssistant?: () => void;
 }
 
 export default function PhotoReportsGrid({
   photoReports,
   propertyName,
+  selectedPeriod: externalSelectedPeriod,
+  onSelectPeriod,
   onOpenAiAssistant,
 }: PhotoReportsGridProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("Todas");
-  const [selectedPeriod, setSelectedPeriod] = useState<string>("Todos");
+  const [selectedPeriod, setSelectedPeriod] = useState<string>(
+    externalSelectedPeriod || "Todos"
+  );
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [zoomLevel, setZoomLevel] = useState<number>(1);
+
+  useEffect(() => {
+    if (externalSelectedPeriod) {
+      setSelectedPeriod(externalSelectedPeriod);
+    }
+  }, [externalSelectedPeriod]);
 
   const getDriveUrlForPeriod = (period: string) => {
     if (period === "05 Septiembre 2026") {
@@ -148,7 +160,10 @@ export default function PhotoReportsGrid({
             </span>
             {selectedPeriod !== "Todos" && (
               <button
-                onClick={() => setSelectedPeriod("Todos")}
+                onClick={() => {
+                  setSelectedPeriod("Todos");
+                  if (onSelectPeriod) onSelectPeriod("Todos");
+                }}
                 className="text-teal-uno hover:underline cursor-pointer"
               >
                 Ver todas las fechas
@@ -167,7 +182,10 @@ export default function PhotoReportsGrid({
               return (
                 <button
                   key={per}
-                  onClick={() => setSelectedPeriod(per)}
+                  onClick={() => {
+                    setSelectedPeriod(per);
+                    if (onSelectPeriod) onSelectPeriod(per);
+                  }}
                   className={`px-3.5 py-2 rounded-xs text-xs font-label-caps uppercase tracking-wider transition-all flex items-center gap-2 cursor-pointer ${
                     isSelected
                       ? "bg-teal-uno text-white font-bold shadow-md shadow-teal-uno/15 border border-teal-uno"
