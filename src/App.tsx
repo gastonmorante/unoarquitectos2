@@ -1,6 +1,7 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
 import { Lock, ShieldCheck } from 'lucide-react';
 import Navbar from './components/Navbar';
+import Hero from './components/Hero';
 import Filosofia from './components/Filosofia';
 import Metrics from './components/Metrics';
 import Servicios from './components/Servicios';
@@ -245,6 +246,7 @@ function MainApp() {
     <div id="app-root" className="min-h-screen w-full overflow-x-hidden bg-background text-gris-texto selection:bg-arena-calida selection:text-white font-sans transition-colors duration-300 texture-overlay">
       <Navbar />
       <main id="main-content" className="w-full overflow-x-hidden">
+        <Hero />
         <section id="filosofia">
           <Filosofia />
         </section>

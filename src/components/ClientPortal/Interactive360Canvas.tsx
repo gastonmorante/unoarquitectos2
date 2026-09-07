@@ -80,13 +80,14 @@ export default function Interactive360Canvas({
   useEffect(() => {
     if (!containerRef.current) return;
 
-    const width = containerRef.current.clientWidth;
-    const height = containerRef.current.clientHeight;
+    const width = containerRef.current.clientWidth || window.innerWidth || 360;
+    const height = containerRef.current.clientHeight || 480;
+    const aspect = (width > 0 && height > 0) ? width / height : 16 / 9;
 
     const scene = new THREE.Scene();
     sceneRef.current = scene;
 
-    const camera = new THREE.PerspectiveCamera(75, width / height, 1, 1100);
+    const camera = new THREE.PerspectiveCamera(75, aspect, 1, 1100);
     cameraRef.current = camera;
 
     const geometry = new THREE.SphereGeometry(500, 60, 40);
@@ -168,18 +169,26 @@ export default function Interactive360Canvas({
 
     const handleResize = () => {
       if (!containerRef.current || !cameraRef.current || !rendererRef.current) return;
-      const newW = containerRef.current.clientWidth;
-      const newH = containerRef.current.clientHeight;
-      cameraRef.current.aspect = newW / newH;
-      cameraRef.current.updateProjectionMatrix();
-      rendererRef.current.setSize(newW, newH);
+      const newW = containerRef.current.clientWidth || window.innerWidth || 360;
+      const newH = containerRef.current.clientHeight || 480;
+      if (newW > 0 && newH > 0) {
+        cameraRef.current.aspect = newW / newH;
+        cameraRef.current.updateProjectionMatrix();
+        rendererRef.current.setSize(newW, newH);
+      }
     };
 
     window.addEventListener("resize", handleResize);
 
+    const resizeObserver = new ResizeObserver(() => {
+      handleResize();
+    });
+    resizeObserver.observe(containerRef.current);
+
     return () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener("resize", handleResize);
+      resizeObserver.disconnect();
       renderer.dispose();
       geometry.dispose();
       material.dispose();
@@ -238,6 +247,9 @@ export default function Interactive360Canvas({
   // Pointer / Drag Controls
   const handlePointerDown = (e: React.PointerEvent) => {
     isUserInteractingRef.current = true;
+    try {
+      (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    } catch {}
     onPointerDownPointerXRef.current = e.clientX;
     onPointerDownPointerYRef.current = e.clientY;
     onPointerDownLonRef.current = lonRef.current;
@@ -251,8 +263,13 @@ export default function Interactive360Canvas({
     latRef.current = (e.clientY - onPointerDownPointerYRef.current) * factor + onPointerDownLatRef.current;
   };
 
-  const handlePointerUp = () => {
+  const handlePointerUp = (e?: React.PointerEvent) => {
     isUserInteractingRef.current = false;
+    if (e) {
+      try {
+        (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
+      } catch {}
+    }
   };
 
   const handleWheel = (e: React.WheelEvent) => {
@@ -296,10 +313,11 @@ export default function Interactive360Canvas({
       {/* 3D WebGL Canvas Viewport */}
       <div
         ref={containerRef}
-        className="w-full h-full cursor-grab active:cursor-grabbing"
+        className="w-full h-full cursor-grab active:cursor-grabbing touch-none select-none"
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
         onPointerLeave={handlePointerUp}
         onWheel={handleWheel}
       />
