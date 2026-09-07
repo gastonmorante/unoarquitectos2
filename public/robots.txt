@@ -8,4 +8,4 @@ Disallow: /wp-includes/
 
 # Sitemap Location & AI LLM Discovery
 Sitemap: https://unoarquitectos.com/sitemap.xml
-LLMs: https://unoarquitectos.com/llms.txt
+# LLMs: https://unoarquitectos.com/llms.txt

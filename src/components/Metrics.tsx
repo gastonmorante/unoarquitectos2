@@ -199,7 +199,7 @@ export default function Metrics() {
           {hasReviews ? (
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3">
               <GoogleGIcon />
-              <div className="flex items-center gap-1" aria-label={`${rating} de 5 estrellas en Google Reviews`}>
+              <div className="flex items-center gap-1" role="img" aria-label={`${rating} de 5 estrellas en Google Reviews`}>
                 {[0, 1, 2, 3, 4].map((i) => {
                   const fillPct = Math.max(0, Math.min(100, (numericRating - i) * 100));
                   return (
