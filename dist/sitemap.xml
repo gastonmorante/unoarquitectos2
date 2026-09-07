@@ -5,8 +5,8 @@
   <!-- Principal / Inicio (Español - Predeterminado) -->
   <url>
     <loc>https://unoarquitectos.com/</loc>
-    <lastmod>2026-09-02</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://unoarquitectos.com/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://unoarquitectos.com/?lang=en" />
@@ -18,7 +18,7 @@
   <!-- Versión en Inglés -->
   <url>
     <loc>https://unoarquitectos.com/?lang=en</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://unoarquitectos.com/" />
@@ -31,7 +31,7 @@
   <!-- Versión en Italiano -->
   <url>
     <loc>https://unoarquitectos.com/?lang=it</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://unoarquitectos.com/" />
@@ -44,7 +44,7 @@
   <!-- Versión en Francés -->
   <url>
     <loc>https://unoarquitectos.com/?lang=fr</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://unoarquitectos.com/" />
@@ -57,7 +57,7 @@
   <!-- Aviso de Privacidad -->
   <url>
     <loc>https://unoarquitectos.com/?legal=privacy</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
@@ -65,7 +65,7 @@
   <!-- Términos y Condiciones -->
   <url>
     <loc>https://unoarquitectos.com/?legal=terms</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

@@ -19,6 +19,14 @@ AddHandler application/x-httpd-ea-php82___lsphp .php .php8 .phtml
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
+  # Canonical Host Enforcement: Redirect www to non-www
+  RewriteCond %{HTTP_HOST} ^www\.unoarquitectos\.com$ [NC]
+  RewriteRule ^(.*)$ https://unoarquitectos.com/$1 [L,R=301]
+
+  # Canonical Root: Redirect direct /index.html requests to /
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
+  RewriteRule ^index\.html$ https://unoarquitectos.com/ [R=301,L]
+
   # ----------------------------------------------------------------------------
   # 3. SEO 301 PERMANENT REDIRECTS (MIGRATION FROM OLD WORDPRESS / ELEMENTOR URLS)
   # Preserves 100% Google indexation, PageRank equity and prevents 404 penalties
