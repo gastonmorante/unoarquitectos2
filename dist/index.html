@@ -267,33 +267,49 @@
       }
     </script>
 
-    <!-- Meta Pixel Code Stub -->
+    <!-- Deferred High-Speed Analytics (GA4 + Meta Pixel) - Zero Main Thread Blocking -->
     <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      window.fbPixelId = window.ENV_FB_PIXEL_ID || '';
-      if(window.fbPixelId) {
-        fbq('init', window.fbPixelId);
-        fbq('track', 'PageView');
-      }
-    </script>
+      (function() {
+        function loadTrackers() {
+          if (window.__trackersLoaded) return;
+          window.__trackersLoaded = true;
 
-    <!-- Google tag (gtag.js) - Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T7K3Y691S8"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+          // Google Analytics 4
+          var gaScript = document.createElement('script');
+          gaScript.async = true;
+          gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-T7K3Y691S8';
+          document.head.appendChild(gaScript);
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', 'G-T7K3Y691S8', { send_page_view: true });
 
-      gtag('config', 'G-T7K3Y691S8', {
-        send_page_view: true
-      });
+          // Meta Pixel Code
+          !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          window.fbPixelId = window.ENV_FB_PIXEL_ID || '';
+          if(window.fbPixelId) {
+            fbq('init', window.fbPixelId);
+            fbq('track', 'PageView');
+          }
+        }
+
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(function() { setTimeout(loadTrackers, 1000); });
+        } else {
+          window.addEventListener('load', function() { setTimeout(loadTrackers, 1000); });
+        }
+        ['touchstart', 'scroll', 'mousemove'].forEach(function(ev) {
+          window.addEventListener(ev, loadTrackers, { once: true, passive: true });
+        });
+      })();
     </script>
     <!-- Critical Inline Styles for Ultra-Fast First Contentful Paint (FCP < 0.5s) -->
     <style>
@@ -311,11 +327,11 @@
         -webkit-font-smoothing: antialiased;
       }
     </style>
-    <script type="module" crossorigin src="/assets/index-CUmVVvYJ.js"></script>
+    <script type="module" crossorigin src="/assets/index-BctVYs0T.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/vendor-core-gxHn_UGl.js">
     <link rel="modulepreload" crossorigin href="/assets/motion-core-y8Bko375.js">
     <link rel="modulepreload" crossorigin href="/assets/icons-core-A6-16tlC.js">
-    <link rel="preload" as="style" href="/assets/index-CtdyoOIg.css"><link rel="stylesheet" href="/assets/index-CtdyoOIg.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/assets/index-CtdyoOIg.css"></noscript>
+    <link rel="preload" as="style" href="/assets/index-Bekp7lxL.css"><link rel="stylesheet" href="/assets/index-Bekp7lxL.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="/assets/index-Bekp7lxL.css"></noscript>
   </head>
   <body class="bg-[#FDFCF9] text-[#4A4A4A] texture-overlay">
     <!-- REACT ROOT MOUNTING POINT -->
