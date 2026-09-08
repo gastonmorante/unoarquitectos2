@@ -11,10 +11,13 @@ Fundado en 2017 por el Arq. Angel Cereceda en Playa del Carmen, UNO Arquitectos 
 - Correo: hola@unoarquitectos.com
 - Ubicación: Playa del Carmen, Quintana Roo, México
 
-## Secciones del Sitio
-- [Inicio](https://unoarquitectos.com/#inicio): Presentación y servicios llave en mano
-- [Portafolio](https://unoarquitectos.com/#portafolio): Colección de proyectos residenciales y de hospitalidad
+## Secciones y Páginas de Autoridad
+- [Inicio](https://unoarquitectos.com/): Presentación y servicios llave en mano
+- [Arquitectos en Tulum](https://unoarquitectos.com/arquitectos-en-tulum): Especialistas en cimentaciones sobre suelo kárstico, Chukum y residencias off-grid en Tulum
+- [Arquitectos en Quintana Roo](https://unoarquitectos.com/arquitectos-en-quintana-roo): Proyectos integrales en Cancún, Playa del Carmen, Cozumel y Riviera Maya
+- [Journal & Blog](https://unoarquitectos.com/blog): Artículos técnicos sobre ingeniería, Chukum y arquitectura bioclimática
 - [Filosofía](https://unoarquitectos.com/#filosofia): Materiales autóctonos (Chukum, maderas tropicales) y diseño bioclimático
 - [Servicios](https://unoarquitectos.com/#servicios): Diseño arquitectónico, ingenierías y construcción
+- [Portafolio](https://unoarquitectos.com/#proyectos): Colección de proyectos residenciales y de hospitalidad
 - [Preguntas Frecuentes](https://unoarquitectos.com/#faqs): Tiempos, normatividad y presupuestos
 - [Contacto](https://unoarquitectos.com/#contacto): Asesoría y cotización directa
