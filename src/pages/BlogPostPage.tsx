@@ -1,4 +1,4 @@
-﻿import React, { useEffect } from "react";
+import React, { useEffect } from "react";
 import { Clock, Calendar, ArrowLeft, ArrowRight, Share2, Tag, CheckCircle2, User, ChevronRight } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { blogPosts } from "../data/blogPosts";

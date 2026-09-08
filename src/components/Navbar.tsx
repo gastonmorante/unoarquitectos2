@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Compass, X, Menu, ShieldCheck, BookOpen, MapPin } from "lucide-react";
 import Logo from "./Logo";
 import LanguageSelector from "./LanguageSelector";

@@ -1,4 +1,4 @@
-﻿import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
+import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
 import es from "../locales/es.json";
 import en from "../locales/en.json";
 import it from "../locales/it.json";

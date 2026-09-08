@@ -1,4 +1,4 @@
-﻿export interface BlogPost {
+export interface BlogPost {
   slug: string;
   category: "ingenieria" | "materiales" | "inversion" | "bioclimatica";
   categoryLabel: {

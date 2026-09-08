@@ -1,4 +1,4 @@
-﻿import React, { useEffect } from "react";
+import React, { useEffect } from "react";
 import { Trees, ShieldCheck, Zap, Droplets, Compass, ArrowRight, CheckCircle2, MapPin, Building2, Layers } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import Contacto from "../components/Contacto";

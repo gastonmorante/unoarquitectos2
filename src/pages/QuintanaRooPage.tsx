@@ -1,4 +1,4 @@
-﻿import React, { useEffect } from "react";
+import React, { useEffect } from "react";
 import { ShieldCheck, Ruler, Clock, Building2, ArrowRight, CheckCircle2, MapPin, Award, Gem } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import Contacto from "../components/Contacto";
