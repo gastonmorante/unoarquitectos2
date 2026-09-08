@@ -5,7 +5,7 @@ import { execSync } from 'child_process';
 console.log('--- Starting Postbuild Optimization ---');
 
 // 1. Copy config files from public to dist
-const configFiles = ['.htaccess', 'robots.txt', 'sitemap.xml', 'llms.txt'];
+const configFiles = ['.htaccess', 'robots.txt', 'sitemap.xml', 'llms.txt', '404.html'];
 configFiles.forEach(f => {
   const src = path.join('public', f);
   const dest = path.join('dist', f);
@@ -76,6 +76,15 @@ if (fs.existsSync(assetsDir)) {
 console.log('Generating deployment zip packages (dist-hostgator.zip, dist.zip)...');
 try {
   execSync('python scripts/make-zip.py', { stdio: 'inherit' });
+  
+  // Mirror to Downloads folder for convenient user access
+  const downloadsPath = 'C:\\Users\\PC\\Downloads\\dist-hostgator.zip';
+  if (fs.existsSync('dist-hostgator.zip')) {
+    try {
+      fs.copyFileSync('dist-hostgator.zip', downloadsPath);
+      console.log(`Mirrored deployment package to: ${downloadsPath}`);
+    } catch {}
+  }
 } catch (err) {
   console.error('Error generating zip:', err);
 }

@@ -1,4 +1,8 @@
-import React, { createContext, useContext, useState } from "react";
+﻿import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
+import es from "../locales/es.json";
+import en from "../locales/en.json";
+import it from "../locales/it.json";
+import fr from "../locales/fr.json";
 
 export type Language = "es" | "en" | "it" | "fr";
 
@@ -11,722 +15,116 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const TRANSLATIONS: Record<Language, Record<string, any>> = {
-  es: {
-    nav: {
-      inicio: "Inicio",
-      filosofia: "Filosofía",
-      servicios: "Servicios",
-      portfolio: "Portafolio",
-      faqs: "Preguntas Frecuentes",
-      planner: "Asesor IA",
-      contacto: "Contacto",
-    },
-    hero: {
-      tagline: "Arquitectura que pertenece. Espacios que perduran.",
-      heading: "UNO Arquitectos",
-      subheading: "Servicios integrales de diseño y construcción llave en mano en Riviera Maya desde 2017. Nos especializamos en obra nueva y remodelaciones comerciales, residenciales, hospitalarios y proyectos off the grid.",
-      scroll: "Deslice para explorar",
-      metricBuild: "Metros Construidos",
-      metricProjects: "Proyectos Entregados",
-      metricDirectors: "Directores de Obra",
-    },
-    filosofia: {
-      purpose: "Materializamos espacios que suman — a quien los habita, a quien los construye, al lugar que los recibe y a la comunidad que los rodea.",
-      tagline: "Nuestra Filosofía",
-      heading: "Diseño Contemporáneo Tropical con Ejecución Confiable",
-      p1: "Somos el estudio que diseña lo que puedes construir. UNO Arquitectos es un estudio boutique de arquitectura, interiorismo y construcción llave en mano con sede en la Riviera Maya, liderado por el Arq. Angel Cereceda con más de 20 años de experiencia.",
-      p2: "Construimos desde la unidad: del equipo, del cliente y del lugar. Aplicamos un diseño bioclimático tropical con materiales de bajo impacto como el Chukum natural continuo y maderas macizas certificadas de Tzalam y Parota combinadas con concreto aparente.",
-      p3: "Ofrecemos certidumbre total mediante presupuestos paramétricos transparentes desde el primer día, cálculo de ingeniería estructural sobre suelo kárstico y gestoría técnica de permisos en Tulum, Cancún y Playa del Carmen.",
-      valSust: "Responsabilidad Ecológica",
-      valSustDesc: "Diseño bioclimático aplicativo, materiales honestos de bajo impacto y decisiones constructivas que reducen la huella ambiental.",
-      valIntegr: "Construcción Real",
-      valIntegrDesc: "Todo lo que diseñamos se puede construir dentro del presupuesto y plazo acordados. Sin renders de fantasía ni promesas inviables.",
-      valIng: "Honestidad y Transparencia",
-      valIngDesc: "Costos, tiempos y alcances claros desde el primer día. Contratos precisos sin cargos ocultos: lo que se dice se cumple.",
-    },
-    metrics: {
-      m1Val: "20+",
-      m1Title: "Años de Trayectoria",
-      m1Desc: "Más de 20 años de experiencia técnica liderando arquitectura y construcción.",
-      m2Val: "15K+",
-      m2Title: "m² Proyectados",
-      m2Desc: "Diseñados, calculados y construidos con rigor técnico.",
-      m3Val: "100%",
-      m3Title: "Viabilidad Legal & Técnica",
-      m3Desc: "Aprobación y gestoría ágil de licencias de construcción y manifiestos ambientales.",
-      m4Val: "+70",
-      m4Title: "Proyectos Entregados",
-      m4Desc: "Casas boutique y desarrollos boutique hospitality en Quintana Roo.",
-    },
-    servicios: {
-      tagline: "Proceso de Trabajo",
-      heading: "Servicios Técnicos Integrales",
-      desc: "Estudio boutique de arquitectura en Riviera Maya que integra diseño, gestión y construcción llave en mano bajo un solo techo.",
-      phases: {
-        f0: "Preconstrucción y Permisos",
-        f0Desc: "Estudios de viabilidad legal y técnica, gestoría ambiental (MIA), tramitación de licencias municipales de construcción en Tulum y Playa del Carmen.",
-        f1: "Ingeniería Estructural",
-        f1Desc: "Estudio geotécnico de ingeniería en suelo kárstico, cálculo de cargas dinámicas y cimentaciones sismorresistentes sobre cenotes.",
-        f2: "Obra Gris y Concreto",
-        f2Desc: "Construcción llave en mano de volúmenes monolíticos en concreto aparente de alta especificación y colados texturizados artesanales.",
-        f3: "Acabados y Materialidad",
-        f3Desc: "Aplicación de Chukum artesanal continuo, carpintería técnica en maderas tropicales certificadas (Tzalam/Parota) e iluminación arquitectónica.",
-        f4: "Entrega de Obra",
-        f4Desc: "Integración de instalaciones técnicas, domótica, paisajismo nativo de regeneración y entrega formal lista para habitar.",
-      },
-      cta: "Planificar Mi Proyecto",
-    },
-    portfolio: {
-      tagline: "Obras Realizadas",
-      heading: "Proyectos de Arquitectura e Ingeniería",
-      desc: "Portafolio de diseño residencial premium en Tulum, Cancún y Playa del Carmen. Elegancia tropical creíble construida en presupuesto.",
-      all: "Todos los Proyectos",
-      f_estructural: "Fase Estructural",
-      f_gris: "Obra Gris",
-      f_acabados: "Acabados",
-      f_entregado: "Entregados",
-      location: "Ubicación",
-      year: "Año",
-      status: "Estado",
-      viewDetails: "Ver Ficha Técnica",
-      carouselPrev: "Anterior",
-      carouselNext: "Siguiente",
-      items: {
-        villaChukumDesc: "Residencia boutique en la selva de Tulum terminada en Chukum natural continuo en muros interiores y exteriores. Diseño bioclimático tropical pasivo.",
-        casaTzalamDesc: "Diseño residencial premium asimétrico con terrazas en cantiléver. Madera de Tzalam local certificada combinada con muros de concreto aparente.",
-        cenoteSanctuaryDesc: "Ingeniería en suelo kárstico adaptada a la geología de Tulum. Cimentación profunda sobre pilotes que respetan los cenotes subterráneos.",
-        residenciaSascabDesc: "Proyecto de construcción llave en mano en Playa del Carmen con concreto aparente entablado y orientación bioclimática para brisas marinas.",
-        kaanVillaDesc: "Residencia costera en Cancún con cimentación profunda y ventanales estructurales resistentes a tormentas tropicales. Piscina integrada.",
-      }
-    },
-    planner: {
-      tagline: "Estudio Conceptual",
-      heading: "Asesoría Técnica Digital",
-      desc: "Defina las características de su lote. Nuestro motor calcula parámetros técnicos, costos reales de construcción y materialidad bioclimática para la Riviera Maya.",
-      formTitle: "Parámetros del Proyecto",
-      projName: "Nombre del Proyecto",
-      projNamePlaceholder: "ej. Casa Tulum, Proyecto Cancún",
-      locationLabel: "Ubicación",
-      areaLabel: "Área Deseada de Construcción",
-      esteticaLabel: "Criterio Estético",
-      fasesLabel: "Fases Requeridas",
-      lujoLabel: "Nivel de Especificación",
-      specsLabel: "Requerimientos Particulares",
-      specsPlaceholder: "ej. Muros de Chukum, ventilación cruzada y paneles solares.",
-      btnSubmit: "Generar Propuesta Técnica",
-      btnSubmitting: "Calculando...",
-      savedInquiries: "Propuestas Guardadas",
-      noPropTitle: "Análisis Arquitectónico",
-      noPropDesc: "Ingrese los datos de su terreno para obtener un reporte paramétrico con costos reales y materiales autóctonos recomendados.",
-      noPropCardTitle: "✓ Precisión Técnica",
-      noPropCardDesc: "Reportes parametrizados con costos reales de construcción para Tulum, Cancún y Playa del Carmen.",
-      loadingTitle: "Analizando Proyecto",
-      loadingSteps: [
-        "Analizando orientación solar y viento...",
-        "Seleccionando materiales locales (Chukum, Tzalam, Piedra)...",
-        "Calculando cimentación para suelo kárstico...",
-        "Diseñando estrategias bioclimáticas pasivas...",
-        "Estimando presupuesto por fases de obra..."
-      ],
-      conceptBoard: "Reporte Técnico AI",
-      stylePrefix: "Criterio",
-      downloadDossier: "Descargar Reporte PDF",
-      dossierReady: "¡Reporte Generado!",
-      dossierReadyDesc: "Se ha generado la propuesta técnica inicial. Se ha compartido una copia con nuestro equipo de ingeniería.",
-      close: "Cerrar",
-      visionLabel: "Integración al Entorno",
-      adaptationLabel: "Criterio Arquitectónico",
-      materialsLabel: "Materiales Sugeridos",
-      sustainabilityLabel: "Estrategias Pasivas",
-      budgetLabel: "Presupuesto Estimado",
-      budgetRange: "Rango Estimado",
-      directorsLabel: "Notas del Director de Obra",
-      ctaQuestion: "¿Desea agendar una revisión presencial de su proyecto en Tulum o CDMX?",
-      ctaBtn: "Agendar Cita Técnica",
-    },
-    contacto: {
-      tagline: "Contacto Directo & Ubicaciones",
-      heading: "Iniciemos la Conversación",
-      desc: "Atendemos consultas y citas técnicas en nuestras oficinas centrales de Playa del Carmen y en nuestro taller de producción en la carretera Tulum – Macario Gómez.",
-      conversionTagline: "Diseño con sentido. Construcción con criterio.",
-      officePlaya: "Oficinas Centrales",
-      officePlayaAddr: "Plaza Palmeras, Playa del Carmen, Q. Roo",
-      tallerTulum: "Taller & Bodega",
-      tallerTulumAddr: "Carretera Tulum – Macario Gómez, Q. Roo",
-      mapsUrl: "https://www.google.com/maps/place/UNO+Arquitectos+Mx/@20.6718486,-87.0504611,17z/data=!3m1!4b1!4m6!3m5!1s0x8f4e43859b311239:0x1a9cb6da851ff691!8m2!3d20.6718486!4d-87.0504611!16s%2Fg%2F11r_t7kdfg",
-      phoneVal: "+52 1 984 210 8420",
-      workHours: "Lunes a Viernes: 9:00 - 18:00 hrs",
-      formHeading: "Solicitud de Consulta Técnica",
-      formSubheading: "Complete sus datos y un especialista técnico se pondrá en contacto.",
-      fullName: "Nombre Completo",
-      fullNamePlaceholder: "ej. Ing. Fernando Gómez",
-      phone: "Teléfono / WhatsApp",
-      phonePlaceholder: "ej. +52 1 984 210 8420",
-      email: "Correo Electrónico",
-      emailPlaceholder: "ej. contacto@empresa.com",
-      additionalMsg: "Detalles del Terreno o Proyecto",
-      additionalMsgPlaceholder: "Describa la ubicación, m² aproximados y fechas estimadas.",
-      btnSubmit: "Enviar Solicitud",
-      successTitle: "Mensaje Recibido",
-      successDesc: "Gracias por escribir a UNO Arquitectos. Nos pondremos en contacto en menos de 24 horas hábiles.",
-      successAnother: "Enviar otro mensaje",
-    },
-    footer: {
-      desc: "Estudio boutique de arquitectura en Riviera Maya. Diseño residencial premium y construcción llave en mano en Tulum y Playa del Carmen.",
-      sections: "Navegación",
-      presence: "Ubicaciones",
-      attention: "Citas Técnicas",
-      attentionDesc: "Para agendar visitas a obra o terrenos en Quintana Roo, envíe una solicitud en la sección de contacto.",
-      scrollTop: "Subir",
-      privacy: "Aviso de Privacidad",
-      terms: "Términos de Servicio",
-      rights: "Todos los derechos reservados.",
-    }
-  },
-  en: {
-    nav: {
-      inicio: "Home",
-      filosofia: "Philosophy",
-      servicios: "Technical Services",
-      portfolio: "Portfolio",
-      faqs: "FAQs",
-      planner: "AI Advisor",
-      contacto: "Contact",
-    },
-    hero: {
-      tagline: "Architecture that belongs. Spaces that endure.",
-      heading: "UNO Arquitectos",
-      subheading: "Your project can be built. We tell you how and how much. Turnkey boutique residential architecture, tropical bioclimatic design, and karstic soil engineering in the Riviera Maya.",
-      scroll: "Scroll to explore",
-      metricBuild: "Sqm Constructed",
-      metricProjects: "Delivered Projects",
-      metricDirectors: "Site Directors",
-    },
-    filosofia: {
-      purpose: "We materialize spaces that add value — to those who inhabit them, those who build them, the place that receives them, and the surrounding community.",
-      tagline: "Our Philosophy",
-      heading: "Contemporary Tropical Design with Reliable Execution",
-      p1: "We are the studio that designs what you can actually build. UNO Arquitectos is a boutique residential architecture and turnkey construction firm based in the Riviera Maya, led by Arch. Angel Cereceda with over 20 years of experience.",
-      p2: "UNO means unity — of team, client, and place. When people work together with a shared purpose, projects don't just get built. They endure. We combine native low-impact materials like natural Chukum plaster and certified Tzalam hardwoods with exposed concrete.",
-      p3: "We guarantee complete technical and financial certainty through transparent parametric budgeting from day one, seismic engineering for karstic soil, and environmental permitting in Tulum, Cancun, and Playa del Carmen.",
-      valSust: "Ecological Responsibility",
-      valSustDesc: "Applicative bioclimatic design, honest low-impact materials, and construction choices that reduce environmental footprint.",
-      valIntegr: "Real Construction",
-      valIntegrDesc: "Everything we design can be built within agreed budgets and timelines. No fantasy renders or unfeasible promises.",
-      valIng: "Honesty & Transparency",
-      valIngDesc: "Clear costs, timelines, and scope from day one. Precise contracts without hidden charges: what is agreed gets delivered.",
-    },
-    metrics: {
-      m1Val: "20+",
-      m1Title: "Years of Track Record",
-      m1Desc: "Over 20 years of technical leadership in architecture and construction.",
-      m2Val: "15K+",
-      m2Title: "Sqm Projected",
-      m2Desc: "Designed, calculated, and built with technical rigor.",
-      m3Val: "100%",
-      m3Title: "Technical & Legal Feasibility",
-      m3Desc: "Agile municipal building permit and environmental licensing management.",
-      m4Val: "+70",
-      m4Title: "Delivered Projects",
-      m4Desc: "Boutique residential homes and hospitality developments in Quintana Roo.",
-    },
-    servicios: {
-      tagline: "Work Process",
-      heading: "Comprehensive Technical Services",
-      desc: "Boutique architecture studio in Riviera Maya offering turnkey residential design, permitting, and construction under one roof.",
-      phases: {
-        f0: "Preconstruction & Permitting",
-        f0Desc: "Legal and technical feasibility studies, environmental permits (MIA), and municipal construction licensing in Tulum and Playa del Carmen.",
-        f1: "Structural Engineering",
-        f1Desc: "Geotechnical karstic soil engineering, dynamic load calculation, and earthquake-resistant deep pile foundations.",
-        f2: "Gray Shell & Concrete",
-        f2Desc: "Turnkey construction of monolithic volumes in high-specification exposed concrete and textured board formwork.",
-        f3: "Finishes & Materials",
-        f3Desc: "Continuous hand-applied Chukum plaster, technical carpentry in certified tropical woods (Tzalam/Parota), and warm lighting.",
-        f4: "Project Handover",
-        f4Desc: "Integration of technical utilities, home automation, native dune regeneration landscaping, and turnkey delivery.",
-      },
-      cta: "Plan My Project",
-    },
-    portfolio: {
-      tagline: "Featured Works",
-      heading: "Architecture & Engineering Portfolio",
-      desc: "Premium residential design portfolio in Tulum, Cancun, and Playa del Carmen. Credible tropical elegance built within budget.",
-      all: "All Projects",
-      f_estructural: "Structural Phase",
-      f_gris: "Gray Shell",
-      f_acabados: "Finishes",
-      f_entregado: "Delivered",
-      location: "Location",
-      year: "Year",
-      status: "Status",
-      viewDetails: "View Technical File",
-      carouselPrev: "Previous",
-      carouselNext: "Next",
-      items: {
-        villaChukumDesc: "Boutique villa in the Tulum jungle finished in natural Chukum across interior and exterior walls. Tropical bioclimatic design.",
-        casaTzalamDesc: "Asymmetrical premium residential design featuring cantilevered terraces. Certified local Tzalam hardwood combined with exposed concrete.",
-        cenoteSanctuaryDesc: "Karstic soil engineering adapted to Tulum geology. Structure anchored on reinforced concrete piles respecting subterranean cenote flows.",
-        residenciaSascabDesc: "Turnkey construction project in Playa del Carmen featuring board-formed exposed concrete texture with bioclimatic orientation.",
-        kaanVillaDesc: "Coastal residence in Cancun featuring deep foundation engineering and hurricane-rated structural glass. Infinity pool integrated.",
-      }
-    },
-    planner: {
-      tagline: "Conceptual Study",
-      heading: "Digital Technical Consultation",
-      desc: "Define your lot parameters. Our smart engine calculates technical specs, real construction costs, and native materiality for Tulum and the Riviera Maya.",
-      formTitle: "Project Parameters",
-      projName: "Project Name",
-      projNamePlaceholder: "e.g., Casa Tulum, Cancun Project",
-      locationLabel: "Location",
-      areaLabel: "Desired Building Area",
-      esteticaLabel: "Aesthetic Direction",
-      fasesLabel: "Required Phases",
-      lujoLabel: "Specification Level",
-      specsLabel: "Specific Requirements",
-      specsPlaceholder: "e.g., Chukum walls, cross ventilation, and solar panels.",
-      btnSubmit: "Generate Technical Proposal",
-      btnSubmitting: "Calculating...",
-      savedInquiries: "Saved Proposals",
-      noPropTitle: "Architectural Analysis",
-      noPropDesc: "Enter your land details to receive a parametric report with real construction costs and native material recommendations.",
-      noPropCardTitle: "✓ Technical Precision",
-      noPropCardDesc: "Parameterized reports based on real construction costs in Tulum, Cancun, and Playa del Carmen.",
-      loadingTitle: "Analyzing Project",
-      loadingSteps: [
-        "Analyzing solar orientation and wind patterns...",
-        "Selecting native materials (Chukum, Tzalam, Stone)...",
-        "Calculating karstic soil foundation engineering...",
-        "Designing passive bioclimatic strategies...",
-        "Estimating phase-by-phase construction budget..."
-      ],
-      conceptBoard: "AI Technical Report",
-      stylePrefix: "Criteria",
-      downloadDossier: "Download PDF Report",
-      dossierReady: "Report Generated!",
-      dossierReadyDesc: "Initial technical proposal generated. A copy has been shared with our structural engineering team.",
-      close: "Close",
-      visionLabel: "Ecosystem Integration",
-      adaptationLabel: "Architectural Criteria",
-      materialsLabel: "Suggested Materials",
-      sustainabilityLabel: "Passive Strategies",
-      budgetLabel: "Estimated Budget",
-      budgetRange: "Estimated Range",
-      directorsLabel: "Site Director's Notes",
-      ctaQuestion: "Would you like to schedule an in-person review in Tulum or CDMX?",
-      ctaBtn: "Schedule Technical Meeting",
-    },
-    contacto: {
-      tagline: "Direct Contact & Locations",
-      heading: "Start the Conversation",
-      desc: "We welcome technical meetings at our central office in Playa del Carmen and our production workshop along the Tulum – Macario Gómez corridor.",
-      conversionTagline: "Architecture that belongs. Spaces that endure.",
-      officePlaya: "Headquarters",
-      officePlayaAddr: "Plaza Palmeras, Playa del Carmen, Q. Roo",
-      tallerTulum: "Workshop & Facility",
-      tallerTulumAddr: "Carretera Tulum – Macario Gómez, Q. Roo",
-      mapsUrl: "https://www.google.com/maps/place/UNO+Arquitectos+Mx/@20.6718486,-87.0504611,17z/data=!3m1!4b1!4m6!3m5!1s0x8f4e43859b311239:0x1a9cb6da851ff691!8m2!3d20.6718486!4d-87.0504611!16s%2Fg%2F11r_t7kdfg",
-      phoneVal: "+52 1 984 210 8420",
-      workHours: "Monday to Friday: 9:00 AM - 6:00 PM",
-      formHeading: "Technical Inquiry Request",
-      formSubheading: "Fill in your details and a lead architect will get in touch.",
-      fullName: "Full Name",
-      fullNamePlaceholder: "e.g., Eng. Michael Smith",
-      phone: "Phone / WhatsApp",
-      phonePlaceholder: "e.g., +52 1 984 210 8420",
-      email: "Email Address",
-      emailPlaceholder: "e.g., contact@company.com",
-      additionalMsg: "Land or Project Details",
-      additionalMsgPlaceholder: "Describe location, approximate sqm, and estimated timeframe.",
-      btnSubmit: "Send Inquiry",
-      successTitle: "Inquiry Received",
-      successDesc: "Thank you for contacting UNO Arquitectos. We will reach out within 24 business hours.",
-      successAnother: "Send another message",
-    },
-    footer: {
-      desc: "Boutique architecture studio in Riviera Maya. Premium residential design and turnkey construction in Tulum and Playa del Carmen.",
-      sections: "Navigation",
-      presence: "Locations",
-      attention: "Technical Appointments",
-      attentionDesc: "To schedule site or plot visits in Quintana Roo, please submit a request in the contact section.",
-      scrollTop: "Top",
-      privacy: "Privacy Policy",
-      terms: "Terms of Service",
-      rights: "All rights reserved.",
-    }
-  },
-  it: {
-    nav: {
-      inicio: "Inizio",
-      filosofia: "Filosofia",
-      servicios: "Servizi Tecnici",
-      portfolio: "Portfolio",
-      faqs: "Domande Frequenti",
-      planner: "Consulente AI",
-      contacto: "Contatti",
-    },
-    hero: {
-      tagline: "Architettura che appartiene. Spazi che durano.",
-      heading: "UNO Arquitectos",
-      subheading: "Il tuo progetto può essere realizzato. Ti diciamo come e quanto costa. Servizio integrale di progettazione residenziale premium e costruzione chiavi in mano nella Riviera Maya.",
-      scroll: "Scorri per esplorare",
-      metricBuild: "Mq Costruiti",
-      metricProjects: "Progetti Consegnati",
-      metricDirectors: "Direttori di Cantiere",
-    },
-    filosofia: {
-      purpose: "Materializziamo spazi che aggiungono valore — a chi li abita, a chi li costruisce, al luogo che li accoglie e alla comunità circostante.",
-      tagline: "La Nostra Filosofia",
-      heading: "Design Contemporaneo Tropicale con Esecuzione Affidabile",
-      p1: "Siamo lo studio che progetta ciò che puoi realmente costruire. UNO Arquitectos è uno studio boutique di architettura, interior design e costruzione chiavi in mano guidato dall'Arch. Angel Cereceda con oltre 20 anni di esperienza.",
-      p2: "Costruiamo a partire dall'unità: della squadra, del cliente e del luogo. Applichiamo un design bioclimatico tropicale con materiali a basso impatto come il Chukum naturale e legni pregiati di Tzalam e Parota.",
-      p3: "Garantiamo totale certezza tecnica e finanziaria attraverso bilanci parametrici trasparenti fin dal primo giorno, ingegneria su terreno carsico e gestione dei permessi a Tulum e Playa del Carmen.",
-      valSust: "Responsabilità Ecologica",
-      valSustDesc: "Design bioclimatico, materiali onesti a basso impatto e scelte costruttive che riducono l'impronta ambientale.",
-      valIntegr: "Costruzione Reale",
-      valIntegrDesc: "Tutto ciò che progettiamo può essere costruito nei budget e tempi concordati. Senza rendering di fantasia.",
-      valIng: "Onestà e Trasparenza",
-      valIngDesc: "Costi, tempi e obiettivi chiari fin dal primo giorno. Contratti precisi senza spese nascoste.",
-    },
-    metrics: {
-      m1Val: "20+",
-      m1Title: "Anni di Esperienza",
-      m1Desc: "Oltre 20 anni di esperienza tecnica guidando architettura e costruzione.",
-      m2Val: "15K+",
-      m2Title: "Mq Progettati",
-      m2Desc: "Progettati, preventivati e costruiti senza costi a sorpresa.",
-      m3Val: "100%",
-      m3Title: "Fattibilità Tecnica & Legale",
-      m3Desc: "Gestione rapida di licenze edilizie municipali e autorizzazioni ambientali.",
-      m4Val: "+70",
-      m4Title: "Progetti Consegnati",
-      m4Desc: "Case boutique e proprietà residenziali a Quintana Roo.",
-    },
-    servicios: {
-      tagline: "Processo di Lavoro",
-      heading: "Servizi Tecnici Integrali",
-      desc: "Studio boutique di architettura nella Riviera Maya che integra progettazione, gestione e costruzione chiavi in mano.",
-      phases: {
-        f0: "Pre-costruzione e Permessi",
-        f0Desc: "Studi di fattibilità legale e tecnica, gestione ambientale (MIA), pratiche per licenze edilizie municipali a Tulum e Playa del Carmen.",
-        f1: "Ingegneria Strutturale",
-        f1Desc: "Studio geotecnico del terreno carsico, calcolo dei carichi dinamici e fondazioni sismoresistenti su pali profondi.",
-        f2: "Lavori al Grezzo e Cemento",
-        f2Desc: "Costruzione chiavi in mano di volumi monolitici in cemento a vista ad alta specifica e getti testurizzati.",
-        f3: "Finiture e Materialità",
-        f3Desc: "Applicazione artigianale di Chukum continuo, falegnameria tecnica in legni tropicali certificati (Tzalam/Parota) e illuminazione calda.",
-        f4: "Consegna dell'Opera",
-        f4Desc: "Integrazione di impianti tecnici, domotica, paesaggistica nativa e consegna chiavi in mano.",
-      },
-      cta: "Pianifica il Mio Progetto",
-    },
-    portfolio: {
-      tagline: "Opere Realizzate",
-      heading: "Progetti di Architettura e Ingegneria",
-      desc: "Portfolio di progettazione residenziale premium a Tulum, Cancún e Playa del Carmen. Eleganza tropicale credibile.",
-      all: "Tutti i Progetti",
-      f_estructural: "Fase Strutturale",
-      f_gris: "Lavori al Grezzo",
-      f_acabados: "Finiture",
-      f_entregado: "Consegnati",
-      location: "Località",
-      year: "Anno",
-      status: "Stato",
-      viewDetails: "Vedi Scheda Tecnica",
-      carouselPrev: "Precedente",
-      carouselNext: "Successivo",
-      items: {
-        villaChukumDesc: "Villa boutique nella giungla di Tulum rifinita in Chukum naturale continuo su pareti interne ed esterne. Design bioclimatico.",
-        casaTzalamDesc: "Design residenziale premium asimmetrico con terrazze a sbalzo. Legno di Tzalam locale certificato abbinato al cemento a vista.",
-        cenoteSanctuaryDesc: "Ingegneria su terreno carsico adattata alla geologia di Tulum. Struttura su pali in cemento armato che rispettano i cenote.",
-        residenciaSascabDesc: "Progetto di costruzione chiavi in mano a Playa del Carmen con cemento a vista e orientamento bioclimatico.",
-        kaanVillaDesc: "Residenza costiera a Cancún con fondazioni profonde e vetrate resistenti alle tempeste tropicali. Piscina integrata.",
-      }
-    },
-    planner: {
-      tagline: "Studio Concettuale",
-      heading: "Consulenza Tecnica Digitale",
-      desc: "Definisci i parametri del tuo lotto. Il nostro motore calcola specifiche tecniche, costi reali di costruzione e materialità per Tulum e la Riviera Maya.",
-      formTitle: "Parametri del Progetto",
-      projName: "Nome del Progetto",
-      projNamePlaceholder: "es. Casa Tulum, Progetto Cancún",
-      locationLabel: "Posizione",
-      areaLabel: "Area di Costruzione Desiderata",
-      esteticaLabel: "Criterio Estetico",
-      fasesLabel: "Fasi Richieste",
-      lujoLabel: "Livello di Specifica",
-      specsLabel: "Requisiti Particolari",
-      specsPlaceholder: "es. Pareti in Chukum, ventilazione incrociata e pannelli solari.",
-      btnSubmit: "Genera Proposta Tecnica",
-      btnSubmitting: "Calcolo in corso...",
-      savedInquiries: "Proposte Salvate",
-      noPropTitle: "Analisi Architettonica",
-      noPropDesc: "Inserisci i dati del tuo terreno per ricevere un report parametrico con costi reali e materiali autoctoni raccomandati.",
-      noPropCardTitle: "✓ Precisione Tecnica",
-      noPropCardDesc: "Report parametrizzati con costi reali di costruzione per Tulum, Cancún e Playa del Carmen.",
-      loadingTitle: "Analisi del Progetto",
-      loadingSteps: [
-        "Analisi dell'orientamento solare e dei venti...",
-        "Selezione dei materiali locali (Chukum, Tzalam, Pietra)...",
-        "Calcolo delle fondazioni per terreno carsico...",
-        "Progettazione di strategie bioclimatiche passive...",
-        "Stima del budget per fasi di cantiere..."
-      ],
-      conceptBoard: "Report Tecnico AI",
-      stylePrefix: "Criterio",
-      downloadDossier: "Scarica Report PDF",
-      dossierReady: "Report Generato!",
-      dossierReadyDesc: "La proposta tecnica iniziale è pronta. Una copia è stata condivisa con il nostro team d'ingegneria.",
-      close: "Chiudi",
-      visionLabel: "Integrazione con l'Ambiente",
-      adaptationLabel: "Criterio Architettonico",
-      materialsLabel: "Materiali Suggeriti",
-      sustainabilityLabel: "Strategie Passive",
-      budgetLabel: "Budget Stimato",
-      budgetRange: "Intervallo Stimato",
-      directorsLabel: "Note del Direttore di Cantiere",
-      ctaQuestion: "Vuoi prenotare una revisione di persona del tuo progetto a Tulum o CDMX?",
-      ctaBtn: "Prenota Incontro Tecnico",
-    },
-    contacto: {
-      tagline: "Contatto Diretto & Sedi",
-      heading: "Iniziamo la Conversazione",
-      desc: "Riceviamo per consulenze tecniche presso la nostra sede centrale a Playa del Carmen e il nostro laboratorio sulla tratta Tulum – Macario Gómez.",
-      conversionTagline: "Architettura che appartiene. Spazi che durano.",
-      officePlaya: "Sede Centrale",
-      officePlayaAddr: "Plaza Palmeras, Playa del Carmen, Q. Roo",
-      tallerTulum: "Laboratorio & Magazzino",
-      tallerTulumAddr: "Carretera Tulum – Macario Gómez, Q. Roo",
-      mapsUrl: "https://www.google.com/maps/place/UNO+Arquitectos+Mx/@20.6718486,-87.0504611,17z/data=!3m1!4b1!4m6!3m5!1s0x8f4e43859b311239:0x1a9cb6da851ff691!8m2!3d20.6718486!4d-87.0504611!16s%2Fg%2F11r_t7kdfg",
-      phoneVal: "+52 1 984 210 8420",
-      workHours: "Lunedì a Venerdì: 9:00 - 18:00 hrs",
-      formHeading: "Richiesta di Consulenza Tecnica",
-      formSubheading: "Compili i suoi dati e uno specialista tecnico la contatterà a breve.",
-      fullName: "Nome Completo",
-      fullNamePlaceholder: "es. Ing. Roberto Rossi",
-      phone: "Telefono / WhatsApp",
-      phonePlaceholder: "es. +52 1 984 210 8420",
-      email: "Indirizzo Email",
-      emailPlaceholder: "es. contatto@azienda.com",
-      additionalMsg: "Dettagli del Terreno o Progetto",
-      additionalMsgPlaceholder: "Descriva posizione, mq approssimativi e tempistiche stimate.",
-      btnSubmit: "Invia Richiesta",
-      successTitle: "Messaggio Ricevuto",
-      successDesc: "Grazie per aver scritto a UNO Arquitectos. La ricontatteremo entro 24 ore lavorative.",
-      successAnother: "Invia un altro messaggio",
-    },
-    footer: {
-      desc: "Studio boutique di architettura nella Riviera Maya. Progettazione residenziale premium e costruzione chiavi in mano a Tulum e Playa del Carmen.",
-      sections: "Navigazione",
-      presence: "Sedi",
-      attention: "Appuntamenti Tecnici",
-      attentionDesc: "Per programmare visite a cantieri o terreni a Quintana Roo, invia una richiesta nella sezione contatti.",
-      scrollTop: "Su",
-      privacy: "Informativa sulla Privacy",
-      terms: "Termini di Servizio",
-      rights: "Tutti i diritti riservati.",
-    }
-  },
-  fr: {
-    nav: {
-      inicio: "Accueil",
-      filosofia: "Philosophie",
-      servicios: "Services Techniques",
-      portfolio: "Portfolio",
-      faqs: "Faq",
-      planner: "Conseiller IA",
-      contacto: "Contact",
-    },
-    hero: {
-      tagline: "Une architecture qui appartient. Des espaces qui durent.",
-      heading: "UNO Arquitectos",
-      subheading: "Votre projet peut être réalisé. Nous vous disons comment et combien. Service intégral de conception résidentielle premium et construction clés en main dans la Riviera Maya.",
-      scroll: "Faites défiler pour explorer",
-      metricBuild: "M² Construits",
-      metricProjects: "Projets Livrés",
-      metricDirectors: "Directeurs de Chantier",
-    },
-    filosofia: {
-      purpose: "Nous matérialisons des espaces qui apportent une valeur ajoutée — à ceux qui les habitent, ceux qui les construisent, au lieu qui les accueille et à la communauté.",
-      tagline: "Notre Philosophie",
-      heading: "Conception Tropicale Contemporaine avec Exécution Fiable",
-      p1: "Nous sommes le studio qui conçoit ce que vous pouvez réellement construire. UNO Arquitectos est un studio boutique d'architecture et de construction clés en main dirigé par l'Arch. Angel Cereceda avec plus de 20 ans d'expérience.",
-      p2: "Nous construisons à partir de l'unité : de l'équipe, du client et du lieu. Nous appliquons une conception bioclimatique tropicale avec des matériaux locaux à faible impact comme le Chukum naturel et les bois nobles certifiés de Tzalam et Parota.",
-      p3: "Nous garantissons une certitude technique et financière totale grâce à des budgets paramétriques transparents dès le premier jour, une ingénierie sur sol karstique et la gestion des permis à Tulum et Playa del Carmen.",
-      valSust: "Responsabilité Écologique",
-      valSustDesc: "Conception bioclimatique, matériaux honnêtes à faible impact et choix constructifs qui réduisent l'empreinte environnementale.",
-      valIntegr: "Construction Réelle",
-      valIntegrDesc: "Tout ce que nous concevons peut être construit dans les budgets et délais convenus. Sans rendus de fantaisie.",
-      valIng: "Honnêteté & Transparence",
-      valIngDesc: "Coûts, délais et objectifs clairs dès le premier jour. Contrats précis sans frais cachés.",
-    },
-    metrics: {
-      m1Val: "20+",
-      m1Title: "Années d'Expérience",
-      m1Desc: "Plus de 20 ans d'expérience technique en architecture et construction.",
-      m2Val: "15K+",
-      m2Title: "M² Projetés",
-      m2Desc: "Conçus, budgétisés et construits sans coûts surprise.",
-      m3Val: "100%",
-      m3Title: "Faisabilité Technique & Juridique",
-      m3Desc: "Gestion fluide des permis de construire municipaux et des autorisations environnementales.",
-      m4Val: "+70",
-      m4Title: "Projets Livrés",
-      m4Desc: "Maisons boutique et propriétés résidentielles dans le Quintana Roo.",
-    },
-    servicios: {
-      tagline: "Processus de Travail",
-      heading: "Services Techniques Intégraux",
-      desc: "Studio boutique d'architecture dans la Riviera Maya intégrant conception, gestion et construction clés en main.",
-      phases: {
-        f0: "Préconstruction & Permis",
-        f0Desc: "Études de faisabilité juridique et technique, licences environnementales (MIA), gestion des permis municipaux de construire à Tulum et Playa del Carmen.",
-        f1: "Ingénierie Structurelle",
-        f1Desc: "Étude géotechnique du sol karstique, calcul des charges dynamiques et fondations parasismiques sur pieux profonds.",
-        f2: "Gros Œuvre & Béton",
-        f2Desc: "Construction clés en main de volumes monolithiques en béton apparent de haute spécification et coulages texturés.",
-        f3: "Finitions & Matériaux",
-        f3Desc: "Application artisanale de Chukum continu, menuiserie technique en bois tropicaux certifiés (Tzalam/Parota) et éclairage architectural.",
-        f4: "Livraison du Chantier",
-        f4Desc: "Intégration des installations techniques, domotique, aménagement paysager indigène et livraison clés en main.",
-      },
-      cta: "Planifier Mon Projet",
-    },
-    portfolio: {
-      tagline: "Œuvres Livrées",
-      heading: "Projets d'Architecture et d'Ingénierie",
-      desc: "Portfolio de conception résidentielle premium à Tulum, Cancún et Playa del Carmen. Élégance tropicale crédible.",
-      all: "Tous les Projets",
-      f_estructural: "Phase Structurelle",
-      f_gris: "Gros Œuvre",
-      f_acabados: "Finitions",
-      f_entregado: "Livrés",
-      location: "Localisation",
-      year: "Année",
-      status: "État",
-      viewDetails: "Voir la Fiche Technique",
-      carouselPrev: "Précédent",
-      carouselNext: "Suivant",
-      items: {
-        villaChukumDesc: "Villa boutique dans la jungle de Tulum finie en Chukum naturel continu sur les murs intérieurs et extérieurs. Conception bioclimatique.",
-        casaTzalamDesc: "Design résidentiel premium asymétrique avec terrasses en porte-à-faux. Bois de Tzalam certifié local combiné au béton apparent.",
-        cenoteSanctuaryDesc: "Ingénierie sur sol karstique adaptée à la géologie de Tulum. Structure sur pieux en béton armé respectant les cénotes.",
-        residenciaSascabDesc: "Projet de construction clés en main à Playa del Carmen avec béton apparent texturé et orientation bioclimatique.",
-        kaanVillaDesc: "Résidence côtière à Cancún avec fondations profondes et vitrages résistants aux tempêtes tropicales. Piscine intégrée.",
-      }
-    },
-    planner: {
-      tagline: "Étude Conceptuelle",
-      heading: "Conseil Technique Digital",
-      desc: "Définissez les paramètres de votre terrain. Notre moteur calcule les spécifications techniques, les coûts réels de construction et la matérialité pour Tulum et la Riviera Maya.",
-      formTitle: "Paramètres du Projet",
-      projName: "Nom du Projet",
-      projNamePlaceholder: "ex. Casa Tulum, Projet Cancun",
-      locationLabel: "Localisation",
-      areaLabel: "Surface de Construction Souhaitée",
-      esteticaLabel: "Orientation Esthétique",
-      fasesLabel: "Phases Requises",
-      lujoLabel: "Niveau de Spécification",
-      specsLabel: "Exigences Particulières",
-      specsPlaceholder: "ex. Murs en Chukum, ventilation croisée et panneaux solaires.",
-      btnSubmit: "Générer la Proposition Technique",
-      btnSubmitting: "Calcul en cours...",
-      savedInquiries: "Propositions Enregistrées",
-      noPropTitle: "Analyse Architecturale",
-      noPropDesc: "Saisissez les données de votre terrain pour recevoir un rapport paramétrique avec des coûts réels et des matériaux locaux recommandés.",
-      noPropCardTitle: "✓ Précision Technique",
-      noPropCardDesc: "Rapports paramétrés selon les coûts réels de construction à Tulum, Cancún et Playa del Carmen.",
-      loadingTitle: "Analyse du Projet",
-      loadingSteps: [
-        "Analyse de l'orientation solaire et des vents...",
-        "Sélection des matériaux locaux (Chukum, Tzalam, Pierre)...",
-        "Calcul des fondations pour sol karstique...",
-        "Conception de stratégies bioclimatiques passives...",
-        "Estimation du budget par phases de chantier..."
-      ],
-      conceptBoard: "Rapport Technique IA",
-      stylePrefix: "Critère",
-      downloadDossier: "Télécharger le Rapport PDF",
-      dossierReady: "Rapport Généré !",
-      dossierReadyDesc: "La proposition technique initiale est prête. Une copie a été transmise à notre équipe d'ingénierie.",
-      close: "Fermer",
-      visionLabel: "Intégration à l'Écosystème",
-      adaptationLabel: "Critère Architectural",
-      materialsLabel: "Matériaux Suggérés",
-      sustainabilityLabel: "Stratégies Passives",
-      budgetLabel: "Budget Estimé",
-      budgetRange: "Fourchette Estimée",
-      directorsLabel: "Notes du Directeur de Chantier",
-      ctaQuestion: "Souhaitez-vous planifier une révision en personne à Tulum ou CDMX ?",
-      ctaBtn: "Planifier un Rendez-vous Technique",
-    },
-    contacto: {
-      tagline: "Contact Direct & Emplacements",
-      heading: "Commençons la Conversation",
-      desc: "Nous vous accueillons pour des rendez-vous techniques dans notre bureau principal de Playa del Carmen et notre atelier sur la route Tulum – Macario Gómez.",
-      conversionTagline: "Une architecture qui appartient. Des espaces qui durent.",
-      officePlaya: "Siège Principal",
-      officePlayaAddr: "Plaza Palmeras, Playa del Carmen, Q. Roo",
-      tallerTulum: "Atelier & Dépôt",
-      tallerTulumAddr: "Carretera Tulum – Macario Gómez, Q. Roo",
-      mapsUrl: "https://www.google.com/maps/place/UNO+Arquitectos+Mx/@20.6718486,-87.0504611,17z/data=!3m1!4b1!4m6!3m5!1s0x8f4e43859b311239:0x1a9cb6da851ff691!8m2!3d20.6718486!4d-87.0504611!16s%2Fg%2F11r_t7kdfg",
-      phoneVal: "+52 1 984 210 8420",
-      workHours: "Lundi à Vendredi: 9:00 - 18:00 hrs",
-      formHeading: "Demande de Consultation Technique",
-      formSubheading: "Remplissez vos coordonnées et un architecte vous contactera sous peu.",
-      fullName: "Nom Complet",
-      fullNamePlaceholder: "ex. Ing. Pierre Dubois",
-      phone: "Téléphone / WhatsApp",
-      phonePlaceholder: "ex. +52 1 984 210 8420",
-      email: "Adresse E-mail",
-      emailPlaceholder: "ex. contact@entreprise.com",
-      additionalMsg: "Détails du Terrain ou Projet",
-      additionalMsgPlaceholder: "Précisez l'emplacement, les m² estimés et le calendrier souhaité.",
-      btnSubmit: "Envoyer la Demande",
-      successTitle: "Message Reçu",
-      successDesc: "Merci d'avoir contacté UNO Arquitectos. Nous vous répondrons dans les 24 heures ouvrables.",
-      successAnother: "Envoyer un autre message",
-    },
-    footer: {
-      desc: "Studio boutique d'architecture dans la Riviera Maya. Conception résidentielle premium et construction clés en main à Tulum et Playa del Carmen.",
-      sections: "Navigation",
-      presence: "Localisations",
-      attention: "Rendez-vous Techniques",
-      attentionDesc: "Pour planifier des visites de chantiers ou de terrains dans le Quintana Roo, soumettez une demande dans la section contact.",
-      scrollTop: "Haut",
-      privacy: "Politique de Confidentialité",
-      terms: "Conditions d'Utilisation",
-      rights: "Tous droits réservés.",
-    }
-  }
+  es,
+  en,
+  it,
+  fr
 };
 
-export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguageState] = useState<Language>(() => {
+function getInitialLanguage(): Language {
+  if (typeof window !== "undefined") {
+    // 1. Detect from URL query param ?lang=en|es|it|fr
+    const urlParams = new URLSearchParams(window.location.search);
+    const langParam = urlParams.get("lang")?.toLowerCase();
+    if (langParam && ["es", "en", "it", "fr"].includes(langParam)) {
+      return langParam as Language;
+    }
+
+    // 2. Detect from URL pathname (e.g. /en/, /fr/, /it/)
+    const path = window.location.pathname.toLowerCase();
+    if (path.startsWith("/en")) return "en";
+    if (path.startsWith("/it")) return "it";
+    if (path.startsWith("/fr")) return "fr";
+
+    // 3. Detect from localStorage
     const saved = localStorage.getItem("uno_arquitectos_lang");
     if (saved && ["es", "en", "it", "fr"].includes(saved)) {
       return saved as Language;
     }
-    return "es";
-  });
+  }
+  return "es";
+}
 
-  const setLanguage = (lang: Language) => {
+export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [language, setLanguageState] = useState<Language>(getInitialLanguage);
+
+  const updateHeadTags = useCallback((lang: Language) => {
+    if (typeof document === "undefined") return;
+
+    // Update <html lang="...">
+    document.documentElement.lang = lang;
+
+    // Synchronize Canonical URL & Hreflangs
+    const canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (canonicalLink) {
+      if (lang === "es") {
+        canonicalLink.setAttribute("href", "https://unoarquitectos.com/");
+      } else {
+        canonicalLink.setAttribute("href", `https://unoarquitectos.com/?lang=${lang}`);
+      }
+    }
+  }, []);
+
+  const setLanguage = useCallback((lang: Language) => {
     setLanguageState(lang);
-    localStorage.setItem("uno_arquitectos_lang", lang);
-  };
+    if (typeof window !== "undefined") {
+      localStorage.setItem("uno_arquitectos_lang", lang);
 
-  React.useEffect(() => {
+      // Smoothly update URL query param without page reload
+      const url = new URL(window.location.href);
+      if (lang === "es") {
+        url.searchParams.delete("lang");
+      } else {
+        url.searchParams.set("lang", lang);
+      }
+      window.history.replaceState({}, "", url.toString());
+
+      updateHeadTags(lang);
+    }
+  }, [updateHeadTags]);
+
+  // Handle URL param on popstate / back / forward navigation
+  useEffect(() => {
+    const handlePopState = () => {
+      const detected = getInitialLanguage();
+      setLanguageState(detected);
+      updateHeadTags(detected);
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    updateHeadTags(language);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [language, updateHeadTags]);
+
+  // Sync static elements in DOM if present
+  useEffect(() => {
     const tagline = document.getElementById("hero-tagline");
     const title = document.getElementById("hero-title");
     const desc = document.getElementById("hero-desc");
     const btn1 = document.getElementById("hero-btn-primary");
     const btn2 = document.getElementById("hero-btn-secondary");
+
     if (language === "en") {
       if (tagline) tagline.textContent = "BOUTIQUE ARCHITECTURE & CONSTRUCTION STUDIO";
       if (title) title.textContent = "ARCHITECTURE THAT BELONGS. SPACES THAT ENDURE.";
       if (desc) desc.textContent = "We craft spaces that elevate — those who inhabit them, those who build them, the land that welcomes them, and the community that surrounds them.";
       if (btn1) btn1.textContent = "EXPLORE WORKS";
       if (btn2) btn2.textContent = "EXPERIENCE SPACES";
+    } else if (language === "it") {
+      if (tagline) tagline.textContent = "STUDIO BOUTIQUE DI ARCHITETTURA & COSTRUZIONE";
+      if (title) title.textContent = "ARCHITETTURA CHE APPARTIENE. SPAZI CHE DURANO.";
+      if (desc) desc.textContent = "Materializziamo spazi che aggiungono valore — a chi li abita, a chi li costruisce, al luogo che li accoglie e alla comunità circostante.";
+      if (btn1) btn1.textContent = "ESPLORA LE OPERE";
+      if (btn2) btn2.textContent = "SENTI GLI SPAZI";
+    } else if (language === "fr") {
+      if (tagline) tagline.textContent = "STUDIO BOUTIQUE D'ARCHITECTURE & CONSTRUCTION";
+      if (title) title.textContent = "UNE ARCHITECTURE QUI APPARTIENT. DES ESPACES QUI DURENT.";
+      if (desc) desc.textContent = "Nous matérialisons des espaces qui apportent une valeur ajoutée — à ceux qui les habitent, ceux qui les construisent, au lieu qui les accueille et à la communauté.";
+      if (btn1) btn1.textContent = "EXPLORER LES ŒUVRES";
+      if (btn2) btn2.textContent = "RESSENTIR LES ESPACES";
     } else {
       if (tagline) tagline.textContent = "ESTUDIO BOUTIQUE DE ARQUITECTURA & CONSTRUCCIÓN";
       if (title) title.textContent = "ARQUITECTURA QUE PERTENECE. ESPACIOS QUE PERDURAN.";
@@ -736,16 +134,17 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     }
   }, [language]);
 
-  const t = (keyPath: string) => {
+  const t = useCallback((keyPath: string) => {
     const keys = keyPath.split(".");
     let current: any = TRANSLATIONS[language];
     for (const key of keys) {
-      if (current && key in current) {
+      if (current && typeof current === "object" && key in current) {
         current = current[key];
       } else {
+        // Fallback to Spanish
         let fb: any = TRANSLATIONS["es"];
         for (const k of keys) {
-          if (fb && k in fb) {
+          if (fb && typeof fb === "object" && k in fb) {
             fb = fb[k];
           } else {
             return keyPath;
@@ -755,7 +154,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       }
     }
     return current;
-  };
+  }, [language]);
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t }}>

@@ -1,11 +1,9 @@
-User-agent: *
+﻿User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /clientes
 Disallow: /portal
-Disallow: /wp-admin/
-Disallow: /wp-includes/
+Disallow: /admin
 
-# Sitemap Location & AI LLM Discovery
+# Sitemap Location
 Sitemap: https://unoarquitectos.com/sitemap.xml
-# LLMs: https://unoarquitectos.com/llms.txt
