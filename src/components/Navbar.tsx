@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Compass, X, Menu, ShieldCheck } from "lucide-react";
+﻿import { useState, useEffect } from "react";
+import { Compass, X, Menu, ShieldCheck, BookOpen, MapPin } from "lucide-react";
 import Logo from "./Logo";
 import LanguageSelector from "./LanguageSelector";
 import { useLanguage } from "../context/LanguageContext";
@@ -7,7 +7,8 @@ import { useLanguage } from "../context/LanguageContext";
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { t } = useLanguage();
+  const { language, t, formatUrl } = useLanguage();
+  const isEs = language === "es";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,12 +18,38 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
+  const navigateOrScroll = (target: string) => {
     setIsMobileMenuOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    if (typeof window === "undefined") return;
+
+    const isHash = target.startsWith("#");
+    const currentPath = window.location.pathname.replace(/\/+$/, "") || "/";
+    const isHome = currentPath === "/" || currentPath === `/${language}`;
+
+    if (isHash) {
+      const id = target.replace("#", "");
+      if (isHome) {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+          return;
+        }
+      }
+      const targetHomeUrl = isEs ? `/${target}` : `/${language}/${target}`;
+      window.history.pushState({}, "", targetHomeUrl);
+      window.dispatchEvent(new PopStateEvent("popstate"));
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) element.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+      return;
     }
+
+    // Subpage route navigation
+    const targetUrl = formatUrl(target);
+    window.history.pushState({}, "", targetUrl);
+    window.dispatchEvent(new PopStateEvent("popstate"));
+    window.scrollTo({ top: 0, behavior: "instant" });
   };
 
   const handleOpenClientPortal = () => {
@@ -31,6 +58,7 @@ export default function Navbar() {
       window.history.pushState({}, "", "/clientes");
       window.scrollTo({ top: 0, behavior: "smooth" });
       window.dispatchEvent(new CustomEvent("open-client-portal"));
+      window.dispatchEvent(new PopStateEvent("popstate"));
     }
   };
 
@@ -49,10 +77,10 @@ export default function Navbar() {
           <LanguageSelector isScrolled={isScrolled} theme="adaptive" />
           
           <a 
-            href="/"
+            href={formatUrl("/")}
             onClick={(e) => {
               e.preventDefault();
-              scrollToSection("inicio");
+              navigateOrScroll("/");
             }}
             className="cursor-pointer group flex items-center transition-opacity hover:opacity-85"
             aria-label="UNO Arquitectos - Inicio"
@@ -68,41 +96,47 @@ export default function Navbar() {
         </div>
 
         {/* DESKTOP NAV */}
-        <div className="hidden md:flex items-center gap-6 lg:gap-8">
+        <div className="hidden lg:flex items-center gap-5 xl:gap-7">
           <button
-            onClick={() => scrollToSection("proyectos")}
-            className="font-label-caps text-label-caps text-gris-texto hover:text-arena-calida transition-colors duration-300 uppercase cursor-pointer"
+            onClick={() => navigateOrScroll("/arquitectos-en-tulum")}
+            className="font-label-caps text-xs xl:text-label-caps text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer"
+          >
+            Tulum
+          </button>
+          <button
+            onClick={() => navigateOrScroll("/arquitectos-en-quintana-roo")}
+            className="font-label-caps text-xs xl:text-label-caps text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer"
+          >
+            Riviera Maya
+          </button>
+          <button
+            onClick={() => navigateOrScroll("/blog")}
+            className="font-label-caps text-xs xl:text-label-caps text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer"
+          >
+            Blog
+          </button>
+          <button
+            onClick={() => navigateOrScroll("#proyectos")}
+            className="font-label-caps text-xs xl:text-label-caps text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer"
           >
             {t("nav.portfolio") || "Portafolio"}
           </button>
           <button
-            onClick={() => scrollToSection("filosofia")}
-            className="font-label-caps text-label-caps text-gris-texto hover:text-arena-calida transition-colors duration-300 uppercase cursor-pointer"
-          >
-            {t("nav.filosofia") || "Filosofía"}
-          </button>
-          <button
-            onClick={() => scrollToSection("servicios")}
-            className="font-label-caps text-label-caps text-gris-texto hover:text-arena-calida transition-colors duration-300 uppercase cursor-pointer"
+            onClick={() => navigateOrScroll("#servicios")}
+            className="font-label-caps text-xs xl:text-label-caps text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer"
           >
             {t("nav.servicios") || "Servicios"}
           </button>
           <button
-            onClick={() => scrollToSection("faqs")}
-            className="font-label-caps text-label-caps text-gris-texto hover:text-arena-calida transition-colors duration-300 uppercase cursor-pointer"
-          >
-            FAQs
-          </button>
-          <button
             onClick={() => window.dispatchEvent(new CustomEvent("open-ai-chat"))}
-            className="font-label-caps text-label-caps text-teal-uno hover:text-arena-calida transition-colors duration-300 uppercase cursor-pointer flex items-center gap-1.5"
+            className="font-label-caps text-xs xl:text-label-caps text-teal-uno hover:text-arena-calida transition-colors duration-300 uppercase cursor-pointer flex items-center gap-1.5"
           >
             <Compass className="w-3.5 h-3.5 animate-spin-slow text-teal-uno" />
             {t("nav.planner") || "Asesor IA"}
           </button>
           <button
             onClick={handleOpenClientPortal}
-            className="font-label-caps text-label-caps text-[#c2a275] hover:text-white bg-[#c2a275]/10 hover:bg-[#c2a275]/25 border border-[#c2a275]/40 px-3.5 py-1.5 rounded-full transition-all duration-300 uppercase cursor-pointer flex items-center gap-1.5 font-semibold shadow-xs"
+            className="font-label-caps text-xs xl:text-label-caps text-[#c2a275] hover:text-white bg-[#c2a275]/10 hover:bg-[#c2a275]/25 border border-[#c2a275]/40 px-3 py-1.5 rounded-full transition-all duration-300 uppercase cursor-pointer flex items-center gap-1.5 font-semibold shadow-xs"
             title="Portal de Seguimiento de Obra y Recorridos 360°"
           >
             <ShieldCheck className="w-3.5 h-3.5 text-[#c2a275]" />
@@ -110,18 +144,18 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* CTA Pill Button */}
+        {/* CTA Button */}
         <button
-          onClick={() => scrollToSection("contacto")}
-          className="hidden md:inline-flex items-center justify-center px-6 lg:px-8 py-2.5 lg:py-3 bg-arena-calida/10 text-teal-uno border border-arena-calida/50 font-label-caps text-xs lg:text-label-caps uppercase hover:bg-arena-calida hover:text-white transition-all duration-500 rounded-full cursor-pointer shadow-xs font-semibold"
+          onClick={() => navigateOrScroll("#contacto")}
+          className="hidden md:inline-flex items-center justify-center px-5 lg:px-7 py-2.5 bg-arena-calida/10 text-teal-uno border border-arena-calida/50 font-label-caps text-xs uppercase hover:bg-arena-calida hover:text-white transition-all duration-500 rounded-full cursor-pointer shadow-xs font-semibold"
         >
-          Iniciar Diálogo
+          {isEs ? "Iniciar Diálogo" : "Contact Studio"}
         </button>
 
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden text-teal-uno p-2 min-w-[48px] min-h-[48px] flex items-center justify-center focus:outline-none cursor-pointer rounded-lg hover:bg-arena-calida/10 transition-colors"
+          className="lg:hidden text-teal-uno p-2 min-w-[44px] min-h-[44px] flex items-center justify-center focus:outline-none cursor-pointer rounded-lg hover:bg-arena-calida/10 transition-colors"
           aria-label="Abrir menú de navegación / Open menu"
         >
           {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -130,54 +164,65 @@ export default function Navbar() {
 
       {/* MOBILE MENU DRAWER */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed top-[72px] sm:top-[80px] left-0 w-full bg-background/98 backdrop-blur-xl border-b border-arena-calida/30 py-6 px-6 flex flex-col space-y-4 shadow-2xl text-gris-texto font-sans animate-fadeIn z-40 max-h-[calc(100vh-80px)] overflow-y-auto">
+        <div className="lg:hidden fixed top-[72px] sm:top-[80px] left-0 w-full bg-background/98 backdrop-blur-xl border-b border-arena-calida/30 py-6 px-6 flex flex-col space-y-3 shadow-2xl text-gris-texto font-sans animate-fadeIn z-40 max-h-[calc(100vh-80px)] overflow-y-auto">
           <button
-            onClick={() => scrollToSection("proyectos")}
-            className="text-left font-label-caps text-xs uppercase text-gris-texto hover:text-teal-uno transition-colors py-2 border-b border-arena-calida/15"
+            onClick={() => navigateOrScroll("/arquitectos-en-tulum")}
+            className="text-left font-label-caps text-xs uppercase text-gris-texto hover:text-teal-uno transition-colors py-2 border-b border-arena-calida/15 flex items-center justify-between"
           >
-            {t("nav.portfolio") || "Portafolio"} & Tipologías
+            <span>Arquitectos en Tulum</span>
+            <MapPin className="w-3.5 h-3.5 text-teal-uno" />
           </button>
           <button
-            onClick={() => scrollToSection("filosofia")}
-            className="text-left font-label-caps text-xs uppercase text-gris-texto hover:text-teal-uno transition-colors py-2 border-b border-arena-calida/15"
+            onClick={() => navigateOrScroll("/arquitectos-en-quintana-roo")}
+            className="text-left font-label-caps text-xs uppercase text-gris-texto hover:text-teal-uno transition-colors py-2 border-b border-arena-calida/15 flex items-center justify-between"
           >
-            {t("nav.filosofia") || "Filosofía"} Arquitectónica
+            <span>Arquitectos en Quintana Roo</span>
+            <MapPin className="w-3.5 h-3.5 text-arena-calida" />
           </button>
           <button
-            onClick={() => scrollToSection("servicios")}
-            className="text-left font-label-caps text-xs uppercase text-gris-texto hover:text-teal-uno transition-colors py-2 border-b border-arena-calida/15"
+            onClick={() => navigateOrScroll("/blog")}
+            className="text-left font-label-caps text-xs uppercase text-gris-texto hover:text-teal-uno transition-colors py-2 border-b border-arena-calida/15 flex items-center justify-between"
           >
-            {t("nav.servicios") || "Servicios"} & Disciplinas
+            <span>Blog & Journal de Arquitectura</span>
+            <BookOpen className="w-3.5 h-3.5 text-teal-uno" />
           </button>
           <button
-            onClick={() => scrollToSection("faqs")}
+            onClick={() => navigateOrScroll("#proyectos")}
             className="text-left font-label-caps text-xs uppercase text-gris-texto hover:text-teal-uno transition-colors py-2 border-b border-arena-calida/15"
           >
-            Preguntas Frecuentes (FAQs)
+            {t("nav.portfolio") || "Portafolio"} & Colección
+          </button>
+          <button
+            onClick={() => navigateOrScroll("#servicios")}
+            className="text-left font-label-caps text-xs uppercase text-gris-texto hover:text-teal-uno transition-colors py-2 border-b border-arena-calida/15"
+          >
+            {t("nav.servicios") || "Servicios"} Técnicos
           </button>
           <button
             onClick={() => {
               setIsMobileMenuOpen(false);
               window.dispatchEvent(new CustomEvent("open-ai-chat"));
             }}
-            className="text-left font-label-caps text-xs uppercase font-semibold text-teal-uno flex items-center gap-2 py-2 border-b border-arena-calida/15"
+            className="text-left font-label-caps text-xs uppercase text-teal-uno font-semibold py-2 border-b border-arena-calida/15 flex items-center gap-2"
           >
-            <Compass className="w-4 h-4 animate-spin-slow" />
-            {t("nav.planner") || "Asesor IA"}
+            <Compass className="w-4 h-4 text-teal-uno animate-spin-slow" />
+            {t("nav.planner") || "Asesor IA & Estudio de Factibilidad"}
           </button>
           <button
             onClick={handleOpenClientPortal}
-            className="text-left font-label-caps text-xs uppercase font-semibold text-[#c2a275] flex items-center gap-2 py-2 border-b border-arena-calida/15"
+            className="text-left font-label-caps text-xs uppercase text-[#c2a275] font-semibold py-2.5 border-b border-arena-calida/15 flex items-center gap-2"
           >
             <ShieldCheck className="w-4 h-4 text-[#c2a275]" />
             Área Clientes (Seguimiento 360°)
           </button>
-          <button
-            onClick={() => scrollToSection("contacto")}
-            className="text-center bg-teal-uno text-white hover:bg-arena-calida py-3.5 px-6 font-label-caps text-xs uppercase rounded-full transition-all shadow-ethereal mt-2 font-semibold"
-          >
-            Iniciar Diálogo
-          </button>
+          <div className="pt-2">
+            <button
+              onClick={() => navigateOrScroll("#contacto")}
+              className="w-full text-center py-3 bg-teal-uno text-white rounded-full font-label-caps text-xs uppercase font-semibold tracking-wider hover:bg-arena-calida transition-colors shadow-sm cursor-pointer"
+            >
+              {isEs ? "Iniciar Diálogo" : "Contact Studio"}
+            </button>
+          </div>
         </div>
       )}
     </nav>

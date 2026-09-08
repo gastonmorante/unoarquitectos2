@@ -1,5 +1,5 @@
-import { useState, useEffect, lazy, Suspense } from 'react';
-import { Lock, ShieldCheck } from 'lucide-react';
+﻿import { useState, useEffect, lazy, Suspense } from 'react';
+import { Lock, ShieldCheck, MapPin, BookOpen, ExternalLink } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Filosofia from './components/Filosofia';
@@ -9,12 +9,16 @@ import Faqs from './components/Faqs';
 import Contacto from './components/Contacto';
 import CookieBanner from './components/CookieBanner';
 import Logo from './components/Logo';
-import { LanguageProvider } from './context/LanguageContext';
+import { LanguageProvider, useLanguage, extractLangAndPath } from './context/LanguageContext';
 import { ContentProvider, useSiteContent } from './context/ContentContext';
 import { ClientProject } from './types/clientPortal';
 import { defaultClientProjects } from './data/defaultClientProjects';
 
 const Portfolio = lazy(() => import('./components/Portfolio'));
+const TulumPage = lazy(() => import('./pages/TulumPage'));
+const QuintanaRooPage = lazy(() => import('./pages/QuintanaRooPage'));
+const BlogListPage = lazy(() => import('./pages/BlogListPage'));
+const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 const AdminDashboard = lazy(() => import('./admin/AdminDashboard'));
 const AdminLogin = lazy(() => import('./admin/AdminLogin'));
 const LegalNotice = lazy(() => import('./components/LegalNotice'));
@@ -22,23 +26,51 @@ const AIConsultant = lazy(() => import('./components/AIConsultant'));
 const ClientPortalModal = lazy(() => import('./components/ClientPortal/ClientPortalModal'));
 const ClientPortalView = lazy(() => import('./components/ClientPortal/ClientPortalView'));
 
-type PageRoute = "home" | "clientes" | "admin";
+export type RouteState = 
+  | { name: "home" }
+  | { name: "tulum" }
+  | { name: "quintana-roo" }
+  | { name: "blog" }
+  | { name: "blog-post"; slug: string }
+  | { name: "clientes" }
+  | { name: "admin" };
+
+function parseRoute(): RouteState {
+  if (typeof window === "undefined") return { name: "home" };
+  const pathname = window.location.pathname;
+  const { purePath } = extractLangAndPath(pathname);
+  const hash = window.location.hash.toLowerCase();
+  const search = window.location.search.toLowerCase();
+
+  if (purePath === "/clientes" || purePath === "/portal" || hash === "#clientes" || hash === "#portal" || search.includes("portal=true")) {
+    return { name: "clientes" };
+  }
+  if (purePath === "/admin" || hash === "#admin" || search.includes("admin=true")) {
+    return { name: "admin" };
+  }
+  if (purePath === "/arquitectos-en-tulum" || purePath === "/arquitectos-en-tulum/") {
+    return { name: "tulum" };
+  }
+  if (purePath === "/arquitectos-en-quintana-roo" || purePath === "/arquitectos-en-quintana-roo/") {
+    return { name: "quintana-roo" };
+  }
+  if (purePath === "/blog" || purePath === "/blog/") {
+    return { name: "blog" };
+  }
+  if (purePath.startsWith("/blog/")) {
+    const slug = purePath.replace("/blog/", "").replace(/\/+$/, "");
+    if (slug) {
+      return { name: "blog-post", slug };
+    }
+  }
+
+  return { name: "home" };
+}
 
 function MainApp() {
-  const [pageRoute, setPageRoute] = useState<PageRoute>(() => {
-    if (typeof window !== "undefined") {
-      const path = window.location.pathname.toLowerCase();
-      const hash = window.location.hash.toLowerCase();
-      const search = window.location.search.toLowerCase();
-      if (path === "/clientes" || path === "/portal" || hash === "#clientes" || hash === "#portal" || search.includes("portal=true") || search.includes("cliente=true")) {
-        return "clientes";
-      }
-      if (path === "/admin" || hash === "#admin" || search.includes("admin=true")) {
-        return "admin";
-      }
-    }
-    return "home";
-  });
+  const [route, setRoute] = useState<RouteState>(parseRoute);
+  const { language, formatUrl } = useLanguage();
+  const isEs = language === "es";
 
   const [activeClientProject, setActiveClientProject] = useState<ClientProject | null>(() => {
     if (typeof window !== "undefined") {
@@ -67,61 +99,21 @@ function MainApp() {
 
   const { isAuthenticated } = useSiteContent();
 
-  // Ensure window is strictly positioned at the very top on route change
+  // Scroll to top on route change
   useEffect(() => {
     if (typeof window === "undefined") return;
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
-    const timer = setTimeout(() => {
-      window.scrollTo(0, 0);
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    }, 30);
-    return () => clearTimeout(timer);
-  }, [pageRoute, activeClientProject]);
+  }, [route, activeClientProject]);
 
-
-  // Dynamic SEO meta tags and Page title management (Protects Google & Meta from penalty)
+  // Route listener for history popstate / back / forward / pushState
   useEffect(() => {
-    const metaRobots = document.querySelector('meta[name="robots"]');
-    if (pageRoute === "clientes") {
-      document.title = "Área Privada de Clientes • UNO Arquitectos | Supervisión 360°";
-      if (metaRobots) {
-        metaRobots.setAttribute("content", "noindex, nofollow, noarchive");
-      }
-    } else if (pageRoute === "admin") {
-      document.title = "Panel de Administración CMS • UNO Arquitectos";
-      if (metaRobots) {
-        metaRobots.setAttribute("content", "noindex, nofollow, noarchive");
-      }
-    } else {
-      document.title = "UNO Arquitectos | Arquitectura que pertenece. Espacios que perduran.";
-      if (metaRobots) {
-        metaRobots.setAttribute("content", "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1");
-      }
-    }
-  }, [pageRoute]);
-
-  // Listen to browser navigation (back/forward), hash changes, and custom events
-  useEffect(() => {
-    const handlePopState = () => {
-      if (typeof window !== "undefined") {
-        const path = window.location.pathname.toLowerCase();
-        const hash = window.location.hash.toLowerCase();
-        const search = window.location.search.toLowerCase();
-        if (path === "/clientes" || path === "/portal" || hash === "#clientes" || hash === "#portal" || search.includes("portal=true") || search.includes("cliente=true")) {
-          setPageRoute("clientes");
-        } else if (path === "/admin" || hash === "#admin" || search.includes("admin=true")) {
-          setPageRoute("admin");
-        } else {
-          setPageRoute("home");
-        }
-      }
+    const handleNavigation = () => {
+      setRoute(parseRoute());
     };
 
     const handleOpenClientPortal = () => {
-      // Reload projects if updated in admin
       let currentList = defaultClientProjects;
       const saved = localStorage.getItem("uno_client_projects_v4");
       if (saved) {
@@ -142,7 +134,7 @@ function MainApp() {
         } catch {}
       }
 
-      setPageRoute("clientes");
+      setRoute({ name: "clientes" });
       if (typeof window !== "undefined") {
         window.history.pushState({}, "", "/clientes");
         window.scrollTo({ top: 0, behavior: "instant" });
@@ -152,18 +144,18 @@ function MainApp() {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && (e.shiftKey || e.altKey) && (e.key === "a" || e.key === "A")) {
         e.preventDefault();
-        setPageRoute((prev) => (prev === "admin" ? "home" : "admin"));
+        setRoute((prev) => (prev.name === "admin" ? { name: "home" } : { name: "admin" }));
       }
     };
 
-    window.addEventListener("popstate", handlePopState);
-    window.addEventListener("hashchange", handlePopState);
+    window.addEventListener("popstate", handleNavigation);
+    window.addEventListener("hashchange", handleNavigation);
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("open-client-portal", handleOpenClientPortal);
 
     return () => {
-      window.removeEventListener("popstate", handlePopState);
-      window.removeEventListener("hashchange", handlePopState);
+      window.removeEventListener("popstate", handleNavigation);
+      window.removeEventListener("hashchange", handleNavigation);
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("open-client-portal", handleOpenClientPortal);
     };
@@ -176,16 +168,16 @@ function MainApp() {
   };
 
   const handleCloseAdmin = () => {
-    setPageRoute("home");
+    setRoute({ name: "home" });
     if (typeof window !== "undefined") {
-      window.history.pushState({}, "", "/");
+      window.history.pushState({}, "", formatUrl("/"));
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
   const handleClientLoginSuccess = (project: ClientProject) => {
     setActiveClientProject(project);
-    setPageRoute("clientes");
+    setRoute({ name: "clientes" });
     if (typeof window !== "undefined") {
       window.history.pushState({}, "", "/clientes");
       window.scrollTo({ top: 0, behavior: "instant" });
@@ -193,9 +185,9 @@ function MainApp() {
   };
 
   const handleCloseClientPortal = () => {
-    setPageRoute("home");
+    setRoute({ name: "home" });
     if (typeof window !== "undefined") {
-      window.history.pushState({}, "", "/");
+      window.history.pushState({}, "", formatUrl("/"));
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
@@ -205,8 +197,16 @@ function MainApp() {
     setActiveClientProject(null);
   };
 
-  // 1. DEDICATED ADMIN ROUTE
-  if (pageRoute === "admin") {
+  const navigateTo = (e: React.MouseEvent, path: string) => {
+    e.preventDefault();
+    const targetUrl = formatUrl(path);
+    window.history.pushState({}, "", targetUrl);
+    window.dispatchEvent(new PopStateEvent("popstate"));
+    window.scrollTo({ top: 0, behavior: "instant" });
+  };
+
+  // 1. ADMIN ROUTE
+  if (route.name === "admin") {
     return (
       <Suspense fallback={null}>
         {isAuthenticated ? (
@@ -218,8 +218,8 @@ function MainApp() {
     );
   }
 
-  // 2. DEDICATED INDEPENDENT CLIENT PORTAL PAGE ROUTE (/clientes)
-  if (pageRoute === "clientes") {
+  // 2. CLIENT PORTAL ROUTE (/clientes)
+  if (route.name === "clientes") {
     return (
       <Suspense fallback={null}>
         {activeClientProject ? (
@@ -241,103 +241,176 @@ function MainApp() {
     );
   }
 
-  // 3. MAIN LANDING PAGE ROUTE (/)
+  // 3. MULTI-PAGE APPLICATION VIEWPORT
   return (
     <div id="app-root" className="min-h-screen w-full overflow-x-hidden bg-background text-gris-texto selection:bg-arena-calida selection:text-white font-sans transition-colors duration-300 texture-overlay">
       <Navbar />
+
+      {/* DYNAMIC PAGE COMPONENT ROUTING */}
       <main id="main-content" className="w-full overflow-x-hidden">
-        <Hero />
-        <section id="filosofia">
-          <Filosofia />
-        </section>
-        <Metrics />
-        <section id="servicios">
-          <Servicios />
-        </section>
-        <section id="portfolio">
-          <Suspense fallback={null}>
-            <Portfolio />
+        {route.name === "tulum" && (
+          <Suspense fallback={<div className="min-h-screen pt-32 text-center font-label-caps text-xs text-teal-uno">Cargando Tulum...</div>}>
+            <TulumPage />
           </Suspense>
-        </section>
-        <section id="faqs">
-          <Faqs />
-        </section>
-        <section id="consulta-ia" className="relative z-10">
-          <Suspense fallback={null}>
-            <AIConsultant />
+        )}
+
+        {route.name === "quintana-roo" && (
+          <Suspense fallback={<div className="min-h-screen pt-32 text-center font-label-caps text-xs text-teal-uno">Cargando Quintana Roo...</div>}>
+            <QuintanaRooPage />
           </Suspense>
-        </section>
-        <section id="contacto">
-          <Contacto />
-        </section>
+        )}
+
+        {route.name === "blog" && (
+          <Suspense fallback={<div className="min-h-screen pt-32 text-center font-label-caps text-xs text-teal-uno">Cargando Blog...</div>}>
+            <BlogListPage />
+          </Suspense>
+        )}
+
+        {route.name === "blog-post" && (
+          <Suspense fallback={<div className="min-h-screen pt-32 text-center font-label-caps text-xs text-teal-uno">Cargando Artículo...</div>}>
+            <BlogPostPage slug={route.slug} />
+          </Suspense>
+        )}
+
+        {route.name === "home" && (
+          <>
+            <Hero />
+            <section id="filosofia">
+              <Filosofia />
+            </section>
+            <Metrics />
+            <section id="servicios">
+              <Servicios />
+            </section>
+            <section id="portfolio">
+              <Suspense fallback={null}>
+                <Portfolio />
+              </Suspense>
+            </section>
+            <section id="faqs">
+              <Faqs />
+            </section>
+            <section id="consulta-ia" className="relative z-10">
+              <Suspense fallback={null}>
+                <AIConsultant />
+              </Suspense>
+            </section>
+            <section id="contacto">
+              <Contacto />
+            </section>
+          </>
+        )}
       </main>
 
-      {/* ARCHITECTURAL FOOTER */}
+      {/* ARCHITECTURAL MULTI-PAGE FOOTER */}
       <footer id="main-footer" className="w-full pt-12 sm:pt-16 md:pt-section-padding pb-8 sm:pb-12 bg-background border-t border-arena-calida/20 texture-overlay font-sans text-left overflow-hidden">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-gutter px-4 sm:px-6 md:px-margin-desktop max-w-container-max mx-auto mb-12 sm:mb-16 md:mb-20">
           <div className="md:col-span-4 mb-6 sm:mb-8 md:mb-0">
-            <a className="block mb-4 sm:mb-6 opacity-90 hover:opacity-100 transition-opacity" href="/" aria-label="UNO Arquitectos - Inicio">
+            <a 
+              className="block mb-4 sm:mb-6 opacity-90 hover:opacity-100 transition-opacity" 
+              href={formatUrl("/")} 
+              onClick={(e) => navigateTo(e, "/")}
+              aria-label="UNO Arquitectos - Inicio"
+            >
               <Logo showText={true} iconSize={32} textSize="text-base sm:text-lg" />
             </a>
-            <p className="font-body-md text-xs sm:text-sm text-gris-texto max-w-xs leading-relaxed">
-              Arquitectura Contemporánea Tropical. Diseñando espacios con rigor técnico, sofisticación contenida y materiales honestos.
+            <p className="font-body-md text-xs sm:text-sm text-gris-texto max-w-xs leading-relaxed mb-4">
+              Arquitectura Contemporánea Tropical. Diseñando espacios con rigor técnico, sofisticación contenida y materiales honestos en Tulum y la Riviera Maya.
             </p>
+            <div className="flex gap-2 font-label-caps text-[11px] text-teal-uno font-semibold">
+              <span>Playa del Carmen</span> • <span>Tulum</span> • <span>Cancún</span>
+            </div>
           </div>
           
-          <div className="md:col-span-2 md:col-start-7 mb-6 sm:mb-8 md:mb-0">
-            <h3 className="font-label-caps text-xs sm:text-label-caps text-arena-calida mb-3 sm:mb-4 uppercase tracking-widest font-semibold">Santuario</h3>
+          {/* COL 1: SECTIONS & PAGES */}
+          <div className="md:col-span-3 md:col-start-6 mb-6 sm:mb-8 md:mb-0">
+            <h3 className="font-label-caps text-xs sm:text-label-caps text-arena-calida mb-3 sm:mb-4 uppercase tracking-widest font-semibold">
+              Destinos & Páginas
+            </h3>
             <ul className="space-y-1 font-label-caps text-xs sm:text-label-caps">
-              <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-2 min-h-[36px] flex items-center" href="#proyectos">Colección</a></li>
-              <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-2 min-h-[36px] flex items-center" href="#filosofia">Esencia</a></li>
-              <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-2 min-h-[36px] flex items-center" href="#contacto">Diálogo</a></li>
+              <li>
+                <a 
+                  className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-1.5 flex items-center gap-1.5" 
+                  href={formatUrl("/arquitectos-en-tulum")}
+                  onClick={(e) => navigateTo(e, "/arquitectos-en-tulum")}
+                >
+                  <MapPin className="w-3 h-3 text-teal-uno" /> Arquitectos en Tulum
+                </a>
+              </li>
+              <li>
+                <a 
+                  className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-1.5 flex items-center gap-1.5" 
+                  href={formatUrl("/arquitectos-en-quintana-roo")}
+                  onClick={(e) => navigateTo(e, "/arquitectos-en-quintana-roo")}
+                >
+                  <MapPin className="w-3 h-3 text-arena-calida" /> Arquitectos en Q. Roo
+                </a>
+              </li>
+              <li>
+                <a 
+                  className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-1.5 flex items-center gap-1.5" 
+                  href={formatUrl("/blog")}
+                  onClick={(e) => navigateTo(e, "/blog")}
+                >
+                  <BookOpen className="w-3 h-3 text-teal-uno" /> Blog & Journal
+                </a>
+              </li>
               <li>
                 <button 
                   onClick={() => {
                     if (typeof window !== "undefined") {
                       window.history.pushState({}, "", "/clientes");
                       window.dispatchEvent(new CustomEvent("open-client-portal"));
+                      window.dispatchEvent(new PopStateEvent("popstate"));
                     }
                   }} 
-                  className="text-[#c2a275] hover:text-white transition-colors duration-300 uppercase cursor-pointer text-left inline-flex items-center gap-1.5 py-2 min-h-[36px]"
+                  className="text-[#c2a275] hover:text-white transition-colors duration-300 uppercase cursor-pointer text-left inline-flex items-center gap-1.5 py-1.5"
                   title="Seguimiento de Obra y Recorridos 360°"
                 >
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#c2a275]" /> Área Clientes
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#c2a275]" /> Área Clientes 360°
                 </button>
               </li>
             </ul>
           </div>
           
+          {/* COL 2: SOCIAL & REPUTATION */}
           <div className="md:col-span-2 mb-6 sm:mb-8 md:mb-0">
-            <h3 className="font-label-caps text-xs sm:text-label-caps text-arena-calida mb-3 sm:mb-4 uppercase tracking-widest font-semibold">Resonancia</h3>
+            <h3 className="font-label-caps text-xs sm:text-label-caps text-arena-calida mb-3 sm:mb-4 uppercase tracking-widest font-semibold">
+              Resonancia
+            </h3>
             <ul className="space-y-1 font-label-caps text-xs sm:text-label-caps">
-              <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-2 min-h-[36px] flex items-center" href="https://www.instagram.com/unoarquitectos" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-              <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-2 min-h-[36px] flex items-center" href="https://pinterest.com" target="_blank" rel="noopener noreferrer">Pinterest</a></li>
-              <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-2 min-h-[36px] flex items-center" href="https://www.linkedin.com/company/unoarquitectos" target="_blank" rel="noopener noreferrer">Journal</a></li>
+              <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-1.5" href="https://www.instagram.com/unoarquitectos" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+              <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-1.5" href="https://www.linkedin.com/company/unoarquitectos" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+              <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-1.5" href="https://www.google.com/maps/place/UNO+Arquitectos+Mx/@20.6718486,-87.0504611,17z/data=!3m1!4b1!4m6!3m5!1s0x8f4e43859b311239:0x1a9cb6da851ff691!8m2!3d20.6718486!4d-87.0504611!16s%2Fg%2F11r_t7kdfg" target="_blank" rel="noopener noreferrer">Google Maps</a></li>
             </ul>
           </div>
           
+          {/* COL 3: LEGAL & ADMIN */}
           <div className="md:col-span-2">
-            <h3 className="font-label-caps text-xs sm:text-label-caps text-arena-calida mb-3 sm:mb-4 uppercase tracking-widest font-semibold">Acuerdos</h3>
+            <h3 className="font-label-caps text-xs sm:text-label-caps text-arena-calida mb-3 sm:mb-4 uppercase tracking-widest font-semibold">
+              Acuerdos
+            </h3>
             <ul className="space-y-1 font-label-caps text-xs sm:text-label-caps">
               <li>
-                <button onClick={() => openLegalModal("terms")} className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer text-left py-2 min-h-[36px] flex items-center">
+                <button onClick={() => openLegalModal("terms")} className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer text-left py-1.5 flex items-center">
                   Esencia Legal
                 </button>
               </li>
               <li>
-                <button onClick={() => openLegalModal("privacy")} className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer text-left py-2 min-h-[36px] flex items-center">
-                  Resguardo
+                <button onClick={() => openLegalModal("privacy")} className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer text-left py-1.5 flex items-center">
+                  Privacidad
                 </button>
               </li>
               <li>
                 <button 
                   onClick={() => {
-                    setPageRoute("admin");
+                    setRoute({ name: "admin" });
                     if (typeof window !== "undefined") {
                       window.history.pushState({}, "", "/admin");
+                      window.dispatchEvent(new PopStateEvent("popstate"));
                     }
                   }} 
-                  className="text-zinc-400 hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer text-left inline-flex items-center gap-1.5 py-2 min-h-[36px]"
+                  className="text-zinc-400 hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer text-left inline-flex items-center gap-1.5 py-1.5"
                   title="Panel de Administración"
                   aria-label="Panel de Administración CMS"
                 >
