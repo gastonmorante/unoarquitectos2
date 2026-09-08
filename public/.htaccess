@@ -1,4 +1,4 @@
-﻿# ==============================================================================
+# ==============================================================================
 # UNO ARQUITECTOS - HTACCESS PRODUCTION CONFIGURATION (APACHE / HOSTGATOR)
 # Multi-Page Architecture, Subdirectory i18n (/en/, /fr/, /it/), Strict 301 & 404
 # ==============================================================================
@@ -29,8 +29,25 @@ ErrorDocument 404 /404.html
   RewriteRule ^index\.html$ https://unoarquitectos.com/ [R=301,L]
 
   # ----------------------------------------------------------------------------
-  # 3. SEO 301 PERMANENT REDIRECTS (LEGACY MIGRATION TO HOME SECTIONS OR SUBPAGES)
+  # 3. SEO 301 PERMANENT REDIRECTS (LEGACY MIGRATION & AUDIT DISCOVERY FIXES)
   # ----------------------------------------------------------------------------
+
+  # Exact Historical URLs from Search Console Audit Table (Audit Hallazgo #1)
+  RewriteRule ^en/architects-in-playa-del-carmen/?$ /en/arquitectos-en-quintana-roo [R=301,L,NE]
+  RewriteRule ^en/architects-in-quintana-roo/?$ /en/arquitectos-en-quintana-roo [R=301,L,NE]
+  RewriteRule ^en/architects-in-tulum/?$ /en/arquitectos-en-tulum [R=301,L,NE]
+  RewriteRule ^blogs-sobre-arquitectura/?$ /blog [R=301,L,NE]
+  RewriteRule ^2023/11/27/redescubriendo-la-magia-de-la-arquitectura-maya/?$ /blog/acabado-chukum-arquitectura-bioclimatica-tropical [R=301,L,NE]
+  RewriteRule ^202[0-9]/[0-9]{2}/[0-9]{2}/.*$ /blog [R=301,L,NE]
+  RewriteRule ^202[0-9]/.*$ /blog [R=301,L,NE]
+
+  # Query Parameter Lang Migration (?lang=en -> /en/)
+  RewriteCond %{QUERY_STRING} ^lang=en$ [NC]
+  RewriteRule ^$ /en/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^lang=it$ [NC]
+  RewriteRule ^$ /it/? [R=301,L]
+  RewriteCond %{QUERY_STRING} ^lang=fr$ [NC]
+  RewriteRule ^$ /fr/? [R=301,L]
 
   # A. Sección Filosofía / Quiénes Somos / Identidad Local
   RewriteRule ^quienes-somos.*$ /#nosotros [R=301,L,NE]
