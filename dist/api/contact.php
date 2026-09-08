@@ -25,6 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+// Load optional configuration if present
+if (file_exists(__DIR__ . '/config.php')) {
+    require_once __DIR__ . '/config.php';
+}
+
 // ------------------------------------------------------------------------------
 // 1. EXTRACT & NORMALIZE INCOMING PAYLOAD (JSON OR FORM-DATA)
 // ------------------------------------------------------------------------------
@@ -145,7 +150,9 @@ $savedLocally = @file_put_contents(
 // ------------------------------------------------------------------------------
 // 4. EMAIL NOTIFICATIONS TO STUDIO LEADERSHIP (HOLA@ & ANGEL@)
 // ------------------------------------------------------------------------------
-$to = 'hola@unoarquitectos.com, angel@unoarquitectos.com';
+$to = defined('NOTIFICATION_EMAILS') && !empty(NOTIFICATION_EMAILS) 
+    ? NOTIFICATION_EMAILS 
+    : 'hola@unoarquitectos.com, angel@unoarquitectos.com';
 $subject = "=?UTF-8?B?" . base64_encode("⭐ [Nuevo Lead Web] {$name} - {$projectType} [{$leadId}]") . "?=";
 
 $msgSafe = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
@@ -193,10 +200,9 @@ $emailSent = @mail($to, $subject, $emailBody, implode("\r\n", $headers));
 // ------------------------------------------------------------------------------
 // 5. GOHIGHLEVEL (GHL / LEADCONNECTOR) CRM INTEGRATION (FASE IV)
 // ------------------------------------------------------------------------------
-$ghlWebhookUrl = getenv('GHL_WEBHOOK_URL') ?: getenv('LEADCONNECTOR_WEBHOOK_URL');
-if (empty($ghlWebhookUrl)) {
-    $ghlWebhookUrl = 'https://services.leadconnectorhq.com/hooks/unoarquitectos/lead-contact';
-}
+$ghlWebhookUrl = defined('GHL_WEBHOOK_URL') && !empty(GHL_WEBHOOK_URL)
+    ? trim(GHL_WEBHOOK_URL)
+    : (getenv('GHL_WEBHOOK_URL') ?: getenv('LEADCONNECTOR_WEBHOOK_URL') ?: '');
 
 $ghlPayload = [
     'first_name' => $firstName,
