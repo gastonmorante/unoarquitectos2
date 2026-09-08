@@ -112,24 +112,30 @@ ErrorDocument 404 /404.html
   RewriteRule ^api/leads/?$ api/contact.php [L,QSA]
 
   # ----------------------------------------------------------------------------
-  # 4. MULTI-PAGE SPA ROUTING & SUBDIRECTORIES (SERVE INDEX.HTML FOR VALID ROUTES)
-  # ----------------------------------------------------------------------------
-  # Match:
-  # - Language roots: /en/, /fr/, /it/
-  # - Main subpages: /arquitectos-en-tulum, /arquitectos-en-quintana-roo, /blog, /blog/*
-  # - Multilingual subpages: /en/arquitectos-en-tulum, /fr/blog/..., etc.
-  # - Portal / Admin: /clientes, /portal, /admin
-  RewriteRule ^(en|fr|it)?/?$ index.html [L,QSA]
-  RewriteRule ^(en|fr|it)?/?(arquitectos-en-tulum|arquitectos-en-quintana-roo|blog|clientes|portal|admin)/?$ index.html [L,QSA]
-  RewriteRule ^(en|fr|it)?/?blog/([a-zA-Z0-9_-]+)/?$ index.html [L,QSA]
-
-  # ----------------------------------------------------------------------------
-  # 5. REAL STATIC FILES & STRICT 404 ERROR HANDLING (PREVENTS SOFT 404)
+  # 4. REAL STATIC FILES & PHYSICAL DIRECTORIES
   # ----------------------------------------------------------------------------
   # If requested file or directory exists physically, serve it directly
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
+
+  # ----------------------------------------------------------------------------
+  # 5. MULTI-PAGE SUBDIRECTORIES & LOCALIZED STATIC HTML ROUTING
+  # ----------------------------------------------------------------------------
+  # Explicit localized entrypoint routing
+  RewriteRule ^(en|fr|it)/?$ $1/index.html [L,QSA]
+  RewriteRule ^(en|fr|it)/(arquitectos-en-tulum|arquitectos-en-quintana-roo|blog)/?$ $1/$2/index.html [L,QSA]
+  RewriteRule ^(en|fr|it)/blog/([a-zA-Z0-9_-]+)/?$ $1/blog/index.html [L,QSA]
+
+  # Spanish subpages routing
+  RewriteRule ^(arquitectos-en-tulum|arquitectos-en-quintana-roo|blog)/?$ $1/index.html [L,QSA]
+  RewriteRule ^blog/([a-zA-Z0-9_-]+)/?$ blog/index.html [L,QSA]
+
+  # Client Portal & Admin SPA routes
+  RewriteRule ^(clientes|portal|admin)/?$ index.html [L,QSA]
+
+  # Root Entrypoint
+  RewriteRule ^$ index.html [L,QSA]
 
   # Any other unmapped route returns REAL HTTP 404 with custom 404.html
   RewriteRule ^.+$ /404.html [R=404,L]
