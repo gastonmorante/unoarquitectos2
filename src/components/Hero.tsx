@@ -83,17 +83,19 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-3.5 sm:gap-4 justify-center items-center w-full max-w-md mx-auto sm:max-w-none">
             <button
               onClick={() => scrollToSection("contacto")}
-              className="w-full sm:w-auto inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 bg-teal-uno text-white font-label-caps text-xs sm:text-label-caps uppercase hover:bg-arena-calida transition-all duration-500 rounded-full shadow-ethereal cursor-pointer"
+              aria-label="Ir a la sección de contacto para iniciar diálogo"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 bg-teal-uno text-white font-label-caps text-xs sm:text-label-caps uppercase hover:bg-arena-calida transition-all duration-500 rounded-full shadow-ethereal cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2 font-semibold"
             >
               {(language === "es" ? content?.hero?.ctaTextEs : content?.hero?.ctaTextEn) || btn1}
             </button>
 
             <button
               onClick={() => scrollToSection("proyectos")}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 sm:px-10 py-3.5 sm:py-4 border border-teal-uno text-teal-uno font-label-caps text-xs sm:text-label-caps uppercase hover:bg-teal-uno hover:text-white transition-all duration-500 rounded-full cursor-pointer"
+              aria-label="Desplazarse a la sección de proyectos y portafolio"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 sm:px-10 py-3.5 sm:py-4 border border-teal-uno text-teal-uno font-label-caps text-xs sm:text-label-caps uppercase hover:bg-teal-uno hover:text-white transition-all duration-500 rounded-full cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2 font-semibold"
             >
               {btn2}
-              <ArrowDown className="w-4 h-4 text-current" />
+              <ArrowDown className="w-4 h-4 text-current" aria-hidden="true" />
             </button>
           </div>
         </div>

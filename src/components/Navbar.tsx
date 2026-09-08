@@ -99,47 +99,54 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-5 xl:gap-7">
           <button
             onClick={() => navigateOrScroll("/arquitectos-en-tulum")}
-            className="font-label-caps text-xs xl:text-label-caps text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer"
+            aria-label="Ir a la sección de Arquitectos en Tulum"
+            className="font-label-caps text-xs xl:text-label-caps text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2"
           >
             Tulum
           </button>
           <button
             onClick={() => navigateOrScroll("/arquitectos-en-quintana-roo")}
-            className="font-label-caps text-xs xl:text-label-caps text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer"
+            aria-label="Ir a la sección de Arquitectos en Quintana Roo"
+            className="font-label-caps text-xs xl:text-label-caps text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2"
           >
             Riviera Maya
           </button>
           <button
             onClick={() => navigateOrScroll("/blog")}
-            className="font-label-caps text-xs xl:text-label-caps text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer"
+            aria-label="Ir al Blog y Journal de Arquitectura"
+            className="font-label-caps text-xs xl:text-label-caps text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2"
           >
             Blog
           </button>
           <button
             onClick={() => navigateOrScroll("#proyectos")}
-            className="font-label-caps text-xs xl:text-label-caps text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer"
+            aria-label="Ver Portafolio de proyectos residenciales"
+            className="font-label-caps text-xs xl:text-label-caps text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2"
           >
             {t("nav.portfolio") || "Portafolio"}
           </button>
           <button
             onClick={() => navigateOrScroll("#servicios")}
-            className="font-label-caps text-xs xl:text-label-caps text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer"
+            aria-label="Ver Servicios de arquitectura y construcción"
+            className="font-label-caps text-xs xl:text-label-caps text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase cursor-pointer rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2"
           >
             {t("nav.servicios") || "Servicios"}
           </button>
           <button
             onClick={() => window.dispatchEvent(new CustomEvent("open-ai-chat"))}
-            className="font-label-caps text-xs xl:text-label-caps text-teal-uno hover:text-arena-calida transition-colors duration-300 uppercase cursor-pointer flex items-center gap-1.5"
+            aria-label="Abrir Asesor Inteligente de Arquitectura"
+            className="font-label-caps text-xs xl:text-label-caps text-teal-uno hover:text-arena-calida transition-colors duration-300 uppercase cursor-pointer flex items-center gap-1.5 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2"
           >
-            <Compass className="w-3.5 h-3.5 animate-spin-slow text-teal-uno" />
+            <Compass className="w-3.5 h-3.5 animate-spin-slow text-teal-uno" aria-hidden="true" />
             {t("nav.planner") || "Asesor IA"}
           </button>
           <button
             onClick={handleOpenClientPortal}
-            className="font-label-caps text-xs xl:text-label-caps text-[#c2a275] hover:text-white bg-[#c2a275]/10 hover:bg-[#c2a275]/25 border border-[#c2a275]/40 px-3 py-1.5 rounded-full transition-all duration-300 uppercase cursor-pointer flex items-center gap-1.5 font-semibold shadow-xs"
+            aria-label="Acceder al Portal de Clientes y Recorridos 360"
+            className="font-label-caps text-xs xl:text-label-caps text-[#c2a275] hover:text-white bg-[#c2a275]/10 hover:bg-[#c2a275]/25 border border-[#c2a275]/40 px-3 py-1.5 rounded-full transition-all duration-300 uppercase cursor-pointer flex items-center gap-1.5 font-semibold shadow-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c2a275] focus-visible:ring-offset-2"
             title="Portal de Seguimiento de Obra y Recorridos 360°"
           >
-            <ShieldCheck className="w-3.5 h-3.5 text-[#c2a275]" />
+            <ShieldCheck className="w-3.5 h-3.5 text-[#c2a275]" aria-hidden="true" />
             Área Clientes
           </button>
         </div>
@@ -147,7 +154,8 @@ export default function Navbar() {
         {/* CTA Button */}
         <button
           onClick={() => navigateOrScroll("#contacto")}
-          className="hidden md:inline-flex items-center justify-center px-5 lg:px-7 py-2.5 bg-arena-calida/10 text-teal-uno border border-arena-calida/50 font-label-caps text-xs uppercase hover:bg-arena-calida hover:text-white transition-all duration-500 rounded-full cursor-pointer shadow-xs font-semibold"
+          aria-label="Iniciar Diálogo y Contactar al Estudio"
+          className="hidden md:inline-flex items-center justify-center px-5 lg:px-7 py-2.5 bg-arena-calida/10 text-teal-uno border border-arena-calida/50 font-label-caps text-xs uppercase hover:bg-arena-calida hover:text-white transition-all duration-500 rounded-full cursor-pointer shadow-xs font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2"
         >
           {isEs ? "Iniciar Diálogo" : "Contact Studio"}
         </button>
@@ -155,46 +163,53 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="lg:hidden text-teal-uno p-2 min-w-[44px] min-h-[44px] flex items-center justify-center focus:outline-none cursor-pointer rounded-lg hover:bg-arena-calida/10 transition-colors"
-          aria-label="Abrir menú de navegación / Open menu"
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-menu-drawer"
+          aria-label={isMobileMenuOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación"}
+          className="lg:hidden text-teal-uno p-2 min-w-[48px] min-h-[48px] flex items-center justify-center rounded-lg hover:bg-arena-calida/10 transition-colors cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2"
         >
-          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {isMobileMenuOpen ? <X className="w-6 h-6" aria-hidden="true" /> : <Menu className="w-6 h-6" aria-hidden="true" />}
         </button>
       </div>
 
       {/* MOBILE MENU DRAWER */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden fixed top-[72px] sm:top-[80px] left-0 w-full bg-background/98 backdrop-blur-xl border-b border-arena-calida/30 py-6 px-6 flex flex-col space-y-3 shadow-2xl text-gris-texto font-sans animate-fadeIn z-40 max-h-[calc(100vh-80px)] overflow-y-auto">
+        <div id="mobile-menu-drawer" className="lg:hidden fixed top-[72px] sm:top-[80px] left-0 w-full bg-background/98 backdrop-blur-xl border-b border-arena-calida/30 py-6 px-6 flex flex-col space-y-3 shadow-2xl text-gris-texto font-sans animate-fadeIn z-40 max-h-[calc(100vh-80px)] overflow-y-auto">
           <button
             onClick={() => navigateOrScroll("/arquitectos-en-tulum")}
-            className="text-left font-label-caps text-xs uppercase text-gris-texto hover:text-teal-uno transition-colors py-2 border-b border-arena-calida/15 flex items-center justify-between"
+            aria-label="Ir a Arquitectos en Tulum"
+            className="text-left font-label-caps text-xs uppercase text-gris-texto hover:text-teal-uno transition-colors py-2.5 min-h-[44px] border-b border-arena-calida/15 flex items-center justify-between focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno"
           >
             <span>Arquitectos en Tulum</span>
-            <MapPin className="w-3.5 h-3.5 text-teal-uno" />
+            <MapPin className="w-4 h-4 text-teal-uno" aria-hidden="true" />
           </button>
           <button
             onClick={() => navigateOrScroll("/arquitectos-en-quintana-roo")}
-            className="text-left font-label-caps text-xs uppercase text-gris-texto hover:text-teal-uno transition-colors py-2 border-b border-arena-calida/15 flex items-center justify-between"
+            aria-label="Ir a Arquitectos en Quintana Roo"
+            className="text-left font-label-caps text-xs uppercase text-gris-texto hover:text-teal-uno transition-colors py-2.5 min-h-[44px] border-b border-arena-calida/15 flex items-center justify-between focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno"
           >
             <span>Arquitectos en Quintana Roo</span>
-            <MapPin className="w-3.5 h-3.5 text-arena-calida" />
+            <MapPin className="w-4 h-4 text-arena-calida" aria-hidden="true" />
           </button>
           <button
             onClick={() => navigateOrScroll("/blog")}
-            className="text-left font-label-caps text-xs uppercase text-gris-texto hover:text-teal-uno transition-colors py-2 border-b border-arena-calida/15 flex items-center justify-between"
+            aria-label="Ir al Blog y Journal de Arquitectura"
+            className="text-left font-label-caps text-xs uppercase text-gris-texto hover:text-teal-uno transition-colors py-2.5 min-h-[44px] border-b border-arena-calida/15 flex items-center justify-between focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno"
           >
             <span>Blog & Journal de Arquitectura</span>
-            <BookOpen className="w-3.5 h-3.5 text-teal-uno" />
+            <BookOpen className="w-4 h-4 text-teal-uno" aria-hidden="true" />
           </button>
           <button
             onClick={() => navigateOrScroll("#proyectos")}
-            className="text-left font-label-caps text-xs uppercase text-gris-texto hover:text-teal-uno transition-colors py-2 border-b border-arena-calida/15"
+            aria-label="Ir a Portafolio y Colección"
+            className="text-left font-label-caps text-xs uppercase text-gris-texto hover:text-teal-uno transition-colors py-2.5 min-h-[44px] border-b border-arena-calida/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno"
           >
             {t("nav.portfolio") || "Portafolio"} & Colección
           </button>
           <button
             onClick={() => navigateOrScroll("#servicios")}
-            className="text-left font-label-caps text-xs uppercase text-gris-texto hover:text-teal-uno transition-colors py-2 border-b border-arena-calida/15"
+            aria-label="Ir a Servicios Técnicos"
+            className="text-left font-label-caps text-xs uppercase text-gris-texto hover:text-teal-uno transition-colors py-2.5 min-h-[44px] border-b border-arena-calida/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno"
           >
             {t("nav.servicios") || "Servicios"} Técnicos
           </button>
@@ -203,22 +218,25 @@ export default function Navbar() {
               setIsMobileMenuOpen(false);
               window.dispatchEvent(new CustomEvent("open-ai-chat"));
             }}
-            className="text-left font-label-caps text-xs uppercase text-teal-uno font-semibold py-2 border-b border-arena-calida/15 flex items-center gap-2"
+            aria-label="Abrir Asesor Inteligente de Arquitectura"
+            className="text-left font-label-caps text-xs uppercase text-teal-uno font-semibold py-2.5 min-h-[44px] border-b border-arena-calida/15 flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno"
           >
-            <Compass className="w-4 h-4 text-teal-uno animate-spin-slow" />
+            <Compass className="w-4 h-4 text-teal-uno animate-spin-slow" aria-hidden="true" />
             {t("nav.planner") || "Asesor IA & Estudio de Factibilidad"}
           </button>
           <button
             onClick={handleOpenClientPortal}
-            className="text-left font-label-caps text-xs uppercase text-[#c2a275] font-semibold py-2.5 border-b border-arena-calida/15 flex items-center gap-2"
+            aria-label="Abrir Área de Clientes"
+            className="text-left font-label-caps text-xs uppercase text-[#c2a275] font-semibold py-2.5 min-h-[44px] border-b border-arena-calida/15 flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c2a275]"
           >
-            <ShieldCheck className="w-4 h-4 text-[#c2a275]" />
+            <ShieldCheck className="w-4 h-4 text-[#c2a275]" aria-hidden="true" />
             Área Clientes (Seguimiento 360°)
           </button>
           <div className="pt-2">
             <button
               onClick={() => navigateOrScroll("#contacto")}
-              className="w-full text-center py-3 bg-teal-uno text-white rounded-full font-label-caps text-xs uppercase font-semibold tracking-wider hover:bg-arena-calida transition-colors shadow-sm cursor-pointer"
+              aria-label="Iniciar Diálogo de Contacto"
+              className="w-full text-center py-3.5 min-h-[48px] bg-teal-uno text-white rounded-full font-label-caps text-xs uppercase font-semibold tracking-wider hover:bg-arena-calida transition-colors shadow-sm cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2"
             >
               {isEs ? "Iniciar Diálogo" : "Contact Studio"}
             </button>

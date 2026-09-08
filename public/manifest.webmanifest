@@ -1,0 +1,24 @@
+{
+  "name": "UNO Arquitectos | Arquitectura y Construcción",
+  "short_name": "UNO Arquitectos",
+  "description": "Estudio boutique de arquitectura y construcción sustentable llave en mano en Riviera Maya.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FDFCF9",
+  "theme_color": "#009E9B",
+  "icons": [
+    {
+      "src": "/hero-luxury-villa-mobile.webp",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/hero-luxury-villa.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -58,7 +58,26 @@ $projectType = trim($data['projectType'] ?? $data['service'] ?? 'Proyecto Reside
 $pageUrl = trim($data['pageUrl'] ?? $data['sourceUrl'] ?? 'https://unoarquitectos.com/#contacto');
 
 // ------------------------------------------------------------------------------
-// 2. VALIDATION OF REQUIRED CONTACT FIELDS
+// 2. INVISIBLE HONEYPOT BOT TRAP (ANTI-SPAM)
+// ------------------------------------------------------------------------------
+$honeypot = trim($data['form_website_hp'] ?? $data['website_hp'] ?? $data['honeypot'] ?? $data['b_address'] ?? '');
+if (!empty($honeypot)) {
+    // Silent bot trap: Return fake success 200 to bot without saving, emailing or GHL forwarding
+    http_response_code(200);
+    echo json_encode([
+        'success' => true,
+        'leadId' => 'BOT-TRAP-' . date('YmdHis'),
+        'message' => ($language === 'es') ? 'Solicitud procesada correctamente.' : 'Request processed successfully.',
+        'savedLocally' => false,
+        'emailDispatched' => false,
+        'ghlDispatched' => false,
+        'ghlStatus' => 200
+    ], JSON_UNESCAPED_UNICODE);
+    exit;
+}
+
+// ------------------------------------------------------------------------------
+// 3. VALIDATION OF REQUIRED CONTACT FIELDS
 // ------------------------------------------------------------------------------
 $errors = [];
 if (empty($name) || mb_strlen($name, 'UTF-8') < 2) {

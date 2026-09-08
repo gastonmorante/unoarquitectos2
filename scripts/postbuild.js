@@ -5,7 +5,7 @@ import { execSync } from 'child_process';
 console.log('--- Starting Postbuild Optimization ---');
 
 // 1. Copy config files from public to dist
-const configFiles = ['.htaccess', 'robots.txt', 'sitemap.xml', 'llms.txt', '404.html'];
+const configFiles = ['.htaccess', 'robots.txt', 'sitemap.xml', 'llms.txt', '404.html', 'manifest.webmanifest'];
 configFiles.forEach(f => {
   const src = path.join('public', f);
   const dest = path.join('dist', f);

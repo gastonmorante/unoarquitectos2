@@ -24,6 +24,7 @@ export default function Contacto() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [msg, setMsg] = useState("");
+  const [honeypot, setHoneypot] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [errors, setErrors] = useState<{ name?: string; email?: string; phone?: string; msg?: string }>({});
@@ -98,6 +99,7 @@ export default function Contacto() {
       message: msg.trim(),
       source: "Website UNO Arquitectos",
       language,
+      form_website_hp: honeypot.trim(),
       timestamp: new Date().toISOString(),
       pageUrl: typeof window !== "undefined" ? window.location.href : "https://unoarquitectos.com/#contacto",
       tags: ["Website Lead", "Fase IV", `Lang-${language.toUpperCase()}`]
@@ -352,15 +354,32 @@ export default function Contacto() {
                 <h3 className="font-headline-md text-lg sm:text-xl font-semibold text-teal-uno mb-1 sm:mb-2 uppercase">{t("contacto.formHeading")}</h3>
                 <p className="font-body-md text-xs text-gris-texto mb-4 sm:mb-6">{t("contacto.formSubheading")}</p>
 
+                {/* INVISIBLE HONEYPOT BOT TRAP (WCAG & Accessibility compliant: hidden from real users and screen readers, attracts spam bots) */}
+                <div className="absolute -left-[9999px] top-auto w-px h-px overflow-hidden opacity-0 pointer-events-none" aria-hidden="true" tabIndex={-1}>
+                  <label htmlFor="form_website_hp">Empresa / Sitio web (No llenar este campo)</label>
+                  <input
+                    id="form_website_hp"
+                    type="text"
+                    name="form_website_hp"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   <div>
                     <label className="block font-label-caps text-[11px] sm:text-xs uppercase tracking-wider text-teal-uno mb-1.5 sm:mb-2 font-semibold" htmlFor="con-name">
-                      {t("contacto.fullName")} <span className="text-red-500">*</span>
+                      {t("contacto.fullName")} <span className="text-red-500" aria-hidden="true">*</span>
                     </label>
                     <input
                       id="con-name"
                       type="text"
                       required
+                      aria-required="true"
+                      aria-invalid={errors.name ? "true" : "false"}
+                      aria-describedby={errors.name ? "con-name-err" : undefined}
                       autoComplete="name"
                       placeholder={t("contacto.fullNamePlaceholder")}
                       value={name}
@@ -368,21 +387,24 @@ export default function Contacto() {
                         setName(e.target.value);
                         if (errors.name) setErrors({ ...errors, name: undefined });
                       }}
-                      className={`w-full bg-white border rounded-xl py-3 px-3.5 font-body-md text-sm text-gris-texto focus:outline-none transition-colors ${
+                      className={`w-full bg-white border rounded-xl py-3 px-3.5 font-body-md text-sm text-gris-texto transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2 ${
                         errors.name ? "border-red-500 focus:border-red-600" : "border-arena-calida/30 focus:border-teal-uno"
                       }`}
                     />
-                    {errors.name && <p className="text-red-500 text-[11px] mt-1">{errors.name}</p>}
+                    {errors.name && <p id="con-name-err" className="text-red-500 text-[11px] mt-1" role="alert">{errors.name}</p>}
                   </div>
 
                   <div>
                     <label className="block font-label-caps text-[11px] sm:text-xs uppercase tracking-wider text-teal-uno mb-1.5 sm:mb-2 font-semibold" htmlFor="con-tel">
-                      {t("contacto.phone")} <span className="text-red-500">*</span>
+                      {t("contacto.phone")} <span className="text-red-500" aria-hidden="true">*</span>
                     </label>
                     <input
                       id="con-tel"
                       type="tel"
                       required
+                      aria-required="true"
+                      aria-invalid={errors.phone ? "true" : "false"}
+                      aria-describedby={errors.phone ? "con-tel-err" : undefined}
                       autoComplete="tel"
                       placeholder={t("contacto.phonePlaceholder") || "+52 1 984 210 8420"}
                       value={phone}
@@ -390,22 +412,25 @@ export default function Contacto() {
                         setPhone(e.target.value);
                         if (errors.phone) setErrors({ ...errors, phone: undefined });
                       }}
-                      className={`w-full bg-white border rounded-xl py-3 px-3.5 font-body-md text-sm text-gris-texto focus:outline-none transition-colors ${
+                      className={`w-full bg-white border rounded-xl py-3 px-3.5 font-body-md text-sm text-gris-texto transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2 ${
                         errors.phone ? "border-red-500 focus:border-red-600" : "border-arena-calida/30 focus:border-teal-uno"
                       }`}
                     />
-                    {errors.phone && <p className="text-red-500 text-[11px] mt-1">{errors.phone}</p>}
+                    {errors.phone && <p id="con-tel-err" className="text-red-500 text-[11px] mt-1" role="alert">{errors.phone}</p>}
                   </div>
                 </div>
 
                 <div>
                   <label className="block font-label-caps text-[11px] sm:text-xs uppercase tracking-wider text-teal-uno mb-1.5 sm:mb-2 font-semibold" htmlFor="con-email">
-                    {t("contacto.email")} <span className="text-red-500">*</span>
+                    {t("contacto.email")} <span className="text-red-500" aria-hidden="true">*</span>
                   </label>
                   <input
                     id="con-email"
                     type="email"
                     required
+                    aria-required="true"
+                    aria-invalid={errors.email ? "true" : "false"}
+                    aria-describedby={errors.email ? "con-email-err" : undefined}
                     autoComplete="email"
                     placeholder={t("contacto.emailPlaceholder")}
                     value={email}
@@ -413,40 +438,44 @@ export default function Contacto() {
                       setEmail(e.target.value);
                       if (errors.email) setErrors({ ...errors, email: undefined });
                     }}
-                    className={`w-full bg-white border rounded-xl py-3 px-3.5 font-body-md text-sm text-gris-texto focus:outline-none transition-colors ${
+                    className={`w-full bg-white border rounded-xl py-3 px-3.5 font-body-md text-sm text-gris-texto transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2 ${
                       errors.email ? "border-red-500 focus:border-red-600" : "border-arena-calida/30 focus:border-teal-uno"
                     }`}
                   />
-                  {errors.email && <p className="text-red-500 text-[11px] mt-1">{errors.email}</p>}
+                  {errors.email && <p id="con-email-err" className="text-red-500 text-[11px] mt-1" role="alert">{errors.email}</p>}
                 </div>
 
                 <div>
                   <label className="block font-label-caps text-[11px] sm:text-xs uppercase tracking-wider text-teal-uno mb-1.5 sm:mb-2 font-semibold" htmlFor="con-msg">
-                    {t("contacto.additionalMsg")} <span className="text-red-500">*</span>
+                    {t("contacto.additionalMsg")} <span className="text-red-500" aria-hidden="true">*</span>
                   </label>
                   <textarea
                     id="con-msg"
                     rows={4}
                     required
+                    aria-required="true"
+                    aria-invalid={errors.msg ? "true" : "false"}
+                    aria-describedby={errors.msg ? "con-msg-err" : undefined}
                     placeholder={t("contacto.additionalMsgPlaceholder")}
                     value={msg}
                     onChange={(e) => {
                       setMsg(e.target.value);
                       if (errors.msg) setErrors({ ...errors, msg: undefined });
                     }}
-                    className={`w-full bg-white border rounded-xl p-3.5 font-body-md text-sm text-gris-texto focus:outline-none transition-colors resize-none ${
+                    className={`w-full bg-white border rounded-xl p-3.5 font-body-md text-sm text-gris-texto transition-all resize-none focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2 ${
                       errors.msg ? "border-red-500 focus:border-red-600" : "border-arena-calida/30 focus:border-teal-uno"
                     }`}
                   ></textarea>
-                  {errors.msg && <p className="text-red-500 text-[11px] mt-1">{errors.msg}</p>}
+                  {errors.msg && <p id="con-msg-err" className="text-red-500 text-[11px] mt-1" role="alert">{errors.msg}</p>}
                 </div>
 
                 <button
                   type="submit"
                   disabled={isSending}
-                  className={`w-full bg-teal-uno hover:bg-arena-calida text-white py-3.5 sm:py-4 font-label-caps text-xs sm:text-label-caps uppercase tracking-wider transition-all flex items-center justify-center gap-2 rounded-full cursor-pointer shadow-ethereal font-semibold ${isSending ? "opacity-70 cursor-not-allowed" : ""}`}
+                  aria-label={isSending ? "Enviando mensaje" : "Enviar consulta de proyecto"}
+                  className={`w-full bg-teal-uno hover:bg-arena-calida text-white py-3.5 sm:py-4 font-label-caps text-xs sm:text-label-caps uppercase tracking-wider transition-all flex items-center justify-center gap-2 rounded-full cursor-pointer shadow-ethereal font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2 ${isSending ? "opacity-70 cursor-not-allowed" : ""}`}
                 >
-                  <Send className="w-4 h-4 text-white" />
+                  <Send className="w-4 h-4 text-white" aria-hidden="true" />
                   {isSending ? (isEs ? "Conectando con GoHighLevel..." : "Submitting to GoHighLevel...") : t("contacto.btnSubmit")}
                 </button>
               </form>

@@ -142,12 +142,16 @@ ErrorDocument 404 /404.html
 </IfModule>
 
 # ------------------------------------------------------------------------------
-# 6. GZIP / DEFLATE COMPRESSION FOR CORE WEB VITALS SPEED
+# 6. BROTLI & GZIP COMPRESSION FOR EXTREME CORE WEB VITALS PERFORMANCE
 # ------------------------------------------------------------------------------
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json image/svg+xml image/x-icon text/markdown font/woff font/woff2 font/ttf
+</IfModule>
+
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
   AddOutputFilterByType DEFLATE application/javascript application/x-javascript application/json
-  AddOutputFilterByType DEFLATE image/svg+xml image/x-icon text/markdown
+  AddOutputFilterByType DEFLATE image/svg+xml image/x-icon text/markdown font/woff font/woff2 font/ttf
 </IfModule>
 
 # LLMs.txt MIME Type
@@ -156,8 +160,14 @@ ErrorDocument 404 /404.html
   Header set Content-Type "text/markdown; charset=utf-8"
 </Files>
 
+# Webmanifest MIME Type
+<Files "manifest.webmanifest">
+  ForceType application/manifest+json
+  Header set Content-Type "application/manifest+json; charset=utf-8"
+</Files>
+
 # ------------------------------------------------------------------------------
-# 7. BROWSER CACHING HEADERS (LEVERAGE CACHING)
+# 7. BROWSER CACHING HEADERS (LEVERAGE AGGRESSIVE CACHING)
 # ------------------------------------------------------------------------------
 <IfModule mod_expires.c>
   ExpiresActive On
@@ -165,6 +175,7 @@ ErrorDocument 404 /404.html
 
   ExpiresByType text/html "access plus 0 seconds"
   ExpiresByType application/json "access plus 0 seconds"
+  ExpiresByType application/manifest+json "access plus 1 week"
   ExpiresByType text/css "access plus 1 year"
   ExpiresByType application/javascript "access plus 1 year"
   ExpiresByType text/javascript "access plus 1 year"
@@ -180,10 +191,10 @@ ErrorDocument 404 /404.html
 </IfModule>
 
 # ------------------------------------------------------------------------------
-# 8. ADVANCED SECURITY HEADERS & DEFENSIVE HARDENING
+# 8. MILITARY-GRADE SECURITY HEADERS & DEFENSIVE HARDENING (SSL LABS A+)
 # ------------------------------------------------------------------------------
 <IfModule mod_headers.c>
-  <FilesMatch "\.(js|css|woff2|webp|jpg|png|svg)$">
+  <FilesMatch "\.(js|css|woff2|woff|ttf|webp|jpg|png|svg|ico)$">
     Header set Cache-Control "max-age=31536000, public, immutable"
   </FilesMatch>
 
@@ -191,13 +202,26 @@ ErrorDocument 404 /404.html
     Header set Cache-Control "no-cache, no-store, must-revalidate"
   </FilesMatch>
 
+  # Strict Transport Security (HSTS) with Preload
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  
+  # Anti-Clickjacking
   Header always set X-Frame-Options "SAMEORIGIN"
+  
+  # Anti-MIME Sniffing
   Header always set X-Content-Type-Options "nosniff"
+  
+  # Referrer Policy
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  
+  # X-XSS Protection Filter
   Header always set X-XSS-Protection "1; mode=block"
-  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(self), payment=()"
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://www.googletagmanager.com https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://services.leadconnectorhq.com https://*.leadconnectorhq.com https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.facebook.com https://connect.facebook.net https://generativelanguage.googleapis.com; frame-src 'self' https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self';"
+  
+  # Browser Permissions Policy
+  Header always set Permissions-Policy "accelerometer=(), camera=(), geolocation=(self), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+  
+  # Robust Content-Security-Policy (CSP)
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://www.googletagmanager.com https://connect.facebook.net https://services.leadconnectorhq.com https://*.leadconnectorhq.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://services.leadconnectorhq.com https://*.leadconnectorhq.com https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.facebook.com https://connect.facebook.net https://generativelanguage.googleapis.com; frame-src 'self' https://www.google.com https://maps.google.com https://services.leadconnectorhq.com; object-src 'none'; base-uri 'self'; form-action 'self' https://services.leadconnectorhq.com https://*.leadconnectorhq.com;"
 </IfModule>
 
 # Block access to hidden files and sensitive developer files

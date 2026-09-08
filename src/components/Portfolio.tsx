@@ -425,10 +425,10 @@ export default function Portfolio() {
               {/* Close Button */}
               <button
                 onClick={() => setSelectedCategory(null)}
-                className="absolute top-3 sm:top-4 right-3 sm:right-4 z-30 bg-black/50 hover:bg-black/80 text-white p-2 sm:p-2.5 rounded-full transition-colors cursor-pointer backdrop-blur-md"
-                aria-label="Close modal"
+                className="absolute top-3 sm:top-4 right-3 sm:right-4 z-30 bg-black/50 hover:bg-black/80 text-white p-2 sm:p-2.5 rounded-full transition-colors cursor-pointer backdrop-blur-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                aria-label={isEs ? "Cerrar ficha técnica de proyecto" : "Close project details modal"}
               >
-                <X className="w-5 h-5" />
+                <X className="w-5 h-5" aria-hidden="true" />
               </button>
 
               {/* MEDIA GALLERY CAROUSEL HEADER */}
@@ -460,10 +460,10 @@ export default function Portfolio() {
                             prev === 0 ? selectedCategory.gallery!.length - 1 : prev - 1
                           );
                         }}
-                        className="absolute left-2.5 sm:left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/75 text-white p-2 sm:p-3 rounded-full backdrop-blur-md transition-all cursor-pointer z-10"
-                        aria-label="Previous image"
+                        className="absolute left-2.5 sm:left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/75 text-white p-2 sm:p-3 rounded-full backdrop-blur-md transition-all cursor-pointer z-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                        aria-label={isEs ? "Foto anterior" : "Previous photo"}
                       >
-                        <ChevronLeft className="w-4 sm:w-5 h-4 sm:h-5" />
+                        <ChevronLeft className="w-4 sm:w-5 h-4 sm:h-5" aria-hidden="true" />
                       </button>
 
                       <button
@@ -473,10 +473,10 @@ export default function Portfolio() {
                             (prev + 1) % selectedCategory.gallery!.length
                           );
                         }}
-                        className="absolute right-2.5 sm:right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/75 text-white p-2 sm:p-3 rounded-full backdrop-blur-md transition-all cursor-pointer z-10"
-                        aria-label="Next image"
+                        className="absolute right-2.5 sm:right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/75 text-white p-2 sm:p-3 rounded-full backdrop-blur-md transition-all cursor-pointer z-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                        aria-label={isEs ? "Foto siguiente" : "Next photo"}
                       >
-                        <ChevronRight className="w-4 sm:w-5 h-4 sm:h-5" />
+                        <ChevronRight className="w-4 sm:w-5 h-4 sm:h-5" aria-hidden="true" />
                       </button>
 
                       {/* Active Image Title Caption */}
@@ -494,18 +494,19 @@ export default function Portfolio() {
                     </div>
 
                     {/* Thumbnail Selector Bar */}
-                    <div className="p-2 sm:p-3 bg-zinc-900 border-t border-zinc-800 flex gap-2 sm:gap-3 overflow-x-auto justify-start items-center">
+                    <div className="flex gap-2 p-2 sm:p-3 bg-zinc-950/90 overflow-x-auto border-t border-zinc-800 scrollbar-thin">
                       {selectedCategory.gallery.map((img, idx) => {
                         const isSelected = idx === modalActiveImgIndex;
                         return (
                           <button
                             key={idx}
                             onClick={() => setModalActiveImgIndex(idx)}
-                            className={`flex-shrink-0 w-16 sm:w-20 md:w-24 h-11 sm:h-14 rounded-lg overflow-hidden transition-all duration-300 relative group cursor-pointer ${
+                            aria-label={isEs ? `Ver fotografía ${idx + 1}: ${img.title}` : `View photo ${idx + 1}: ${img.title}`}
+                            className={`flex-shrink-0 w-16 sm:w-20 md:w-24 h-11 sm:h-14 rounded-lg overflow-hidden transition-all duration-300 relative group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno ${
                               isSelected ? "ring-2 ring-teal-uno scale-105 opacity-100" : "opacity-50 hover:opacity-100"
                             }`}
                           >
-                            <img src={img.url} alt={img.title} className="w-full h-full object-cover" />
+                            <img src={img.url} alt={img.title} className="w-full h-full object-cover" width={96} height={56} loading="lazy" />
                             <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent"></div>
                           </button>
                         );
