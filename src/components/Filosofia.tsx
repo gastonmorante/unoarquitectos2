@@ -14,7 +14,7 @@ export default function Filosofia() {
         {/* Brand Purpose Level 0 Hero Block */}
         <div className="mb-12 sm:mb-16 md:mb-20 text-center max-w-4xl mx-auto border-b border-arena-calida/30 pb-10 sm:pb-14 md:pb-16 reveal-on-scroll is-visible">
           <span className="font-label-caps text-xs sm:text-label-caps text-arena-calida uppercase tracking-widest block mb-3 sm:mb-4 font-semibold">
-            Nuestra Esencia
+            {t("filosofia.tagline") || "Nuestra Esencia"}
           </span>
           <h2 className="font-serif-quote text-serif-quote italic text-gris-texto leading-snug px-2">
             "{t("filosofia.purpose") || "Materializamos espacios que suman — a quien los habita, a quien los construye, al lugar que los recibe y a la comunidad que los rodea."}"
@@ -27,19 +27,22 @@ export default function Filosofia() {
           <div className="md:col-span-6 lg:col-span-5 md:col-start-1 lg:col-start-2 text-left reveal-on-scroll is-visible">
             <h2 className="font-label-caps text-xs sm:text-label-caps text-arena-calida mb-4 sm:mb-6 flex items-center gap-4 sm:gap-6 uppercase tracking-widest font-semibold">
               <span className="w-10 sm:w-16 h-[1px] bg-arena-calida"></span>
-              Nuestra Esencia
+              {t("filosofia.tagline") || "Nuestra Esencia"}
             </h2>
             
             <h3 className="font-headline-xl text-headline-xl text-teal-uno mb-6 sm:mb-8 leading-tight uppercase font-semibold">
-              ARQUITECTURA CONTEMPORÁNEA TROPICAL
+              {t("filosofia.heading") || "ARQUITECTURA CONTEMPORÁNEA TROPICAL"}
             </h3>
 
             <div className="space-y-4 sm:space-y-6 font-body-md text-body-md text-gris-texto leading-relaxed mb-8 sm:mb-10">
               <p>
-                Concebimos cada proyecto con una sofisticación contenida y un rigor técnico innegociable. Empleamos materiales honestos —concreto aparente, madera de Tzalam y Chukum natural— combinados a través de una construcción con criterio para lograr una integración armoniosa y duradera con el sitio.
+                {t("filosofia.p1") || "Concebimos cada proyecto con una sofisticación contenida y un rigor técnico innegociable. Empleamos materiales honestos —concreto aparente, madera de Tzalam y Chukum natural— combinados a través de una construcción con criterio."}
               </p>
               <p>
-                Nuestra arquitectura respeta el entorno y las condiciones climáticas del trópico, logrando espacios eficientes y de alta calidad espacial mediante soluciones formales y materiales precisos.
+                {t("filosofia.p2") || "Nuestra arquitectura respeta el entorno y las condiciones climáticas del trópico, logrando espacios eficientes y de alta calidad espacial mediante soluciones formales y materiales precisos."}
+              </p>
+              <p>
+                {t("filosofia.p3") || "Ofrecemos certidumbre total mediante presupuestos paramétricos transparentes desde el primer día, cálculo de ingeniería estructural sobre suelo kárstico y gestoría técnica de permisos en Tulum, Cancún y Playa del Carmen."}
               </p>
             </div>
 
@@ -51,11 +54,11 @@ export default function Filosofia() {
                     <Trees className="w-4 h-4 stroke-[1.8]" />
                   </div>
                   <h4 className="font-label-caps text-xs uppercase text-teal-uno tracking-wider font-semibold">
-                    Sostenibilidad
+                    {t("filosofia.valSust") || "Sostenibilidad"}
                   </h4>
                 </div>
                 <p className="font-body-md text-xs text-gris-texto leading-relaxed">
-                  Estrategias bioclimáticas reales, no eslóganes decorativos.
+                  {t("filosofia.valSustDesc") || "Estrategias bioclimáticas reales, no eslóganes decorativos."}
                 </p>
               </div>
 
@@ -65,11 +68,11 @@ export default function Filosofia() {
                     <HeartHandshake className="w-4 h-4 stroke-[1.8]" />
                   </div>
                   <h4 className="font-label-caps text-xs uppercase text-teal-uno tracking-wider font-semibold">
-                    Transparencia
+                    {t("filosofia.valIng") || "Transparencia"}
                   </h4>
                 </div>
                 <p className="font-body-md text-xs text-gris-texto leading-relaxed">
-                  Presupuestos paramétricos claros desde el primer día.
+                  {t("filosofia.valIngDesc") || "Presupuestos paramétricos claros desde el primer día."}
                 </p>
               </div>
 
@@ -79,11 +82,11 @@ export default function Filosofia() {
                     <ShieldCheck className="w-4 h-4 stroke-[1.8]" />
                   </div>
                   <h4 className="font-label-caps text-xs uppercase text-teal-uno tracking-wider font-semibold">
-                    Ingeniería
+                    {t("filosofia.valIntegr") || "Ingeniería"}
                   </h4>
                 </div>
                 <p className="font-body-md text-xs text-gris-texto leading-relaxed">
-                  Cimentación calculada para suelo kárstico y sismos.
+                  {t("filosofia.valIntegrDesc") || "Cimentación calculada para suelo kárstico y sismos."}
                 </p>
               </div>
             </div>
@@ -94,7 +97,7 @@ export default function Filosofia() {
                 <CheckCircle2 className="w-5 h-5 text-teal-uno flex-shrink-0" />
                 <div>
                   <h4 className="font-label-caps text-xs sm:text-label-caps uppercase text-teal-uno font-semibold tracking-wider">
-                    {language === "es" ? "Dirección Técnica & Trayectoria" : "Technical Leadership & Track Record"}
+                    {language === "es" ? "Dirección Técnica & Trayectoria" : language === "en" ? "Technical Leadership & Track Record" : language === "it" ? "Leadership Tecnica & Esperienza" : "Leadership Technique & Expérience"}
                   </h4>
                   <p className="font-body-md text-[11px] sm:text-xs text-arena-calida font-medium">
                     {content?.filosofia?.author || "Arq. Angel Cereceda"} • {content?.filosofia?.authorRole || "Fundador & Director General"}
@@ -102,10 +105,13 @@ export default function Filosofia() {
                 </div>
               </div>
               <p className="font-body-md text-xs text-gris-texto leading-relaxed">
-                {(language === "es" ? content?.filosofia?.directorBioEs : content?.filosofia?.directorBioEn) || 
-                  (language === "es" 
-                    ? "Más de 20 años liderando desarrollo y gestión técnica en Riviera Maya. Máster en Project Management (Universidad Europea de Madrid) y Máster en Desarrollo Sostenible. Experiencia técnica directiva en obras de escala internacional como Papaya Playa Project, Inmobilia Mayaliah (25,000 m²) y Selina."
-                    : "Over 20 years leading real estate development and technical management in the Riviera Maya. Master's in Project Management (Universidad Europea de Madrid) and Master's in Sustainable Development. Prior technical leadership in international projects including Papaya Playa Project, Inmobilia Mayaliah (25,000 m²), and Selina.")}
+                {language === "es" 
+                  ? "Más de 20 años liderando desarrollo y gestión técnica en Riviera Maya. Máster en Project Management (Universidad Europea de Madrid) y Máster en Desarrollo Sostenible. Experiencia técnica directiva en obras de escala internacional como Papaya Playa Project, Inmobilia Mayaliah (25,000 m²) y Selina."
+                  : language === "en"
+                  ? "Over 20 years leading real estate development and technical management in the Riviera Maya. Master's in Project Management (Universidad Europea de Madrid) and Master's in Sustainable Development. Prior technical leadership in international projects including Papaya Playa Project, Inmobilia Mayaliah (25,000 m²), and Selina."
+                  : language === "it"
+                  ? "Oltre 20 anni di leadership nello sviluppo immobiliare e nella gestione tecnica nella Riviera Maya. Master in Project Management (Universidad Europea de Madrid) e Master in Sviluppo Sostenibile. Esperienza tecnica direttiva in progetti iconici come Papaya Playa Project e Inmobilia Mayaliah (25.000 m²)."
+                  : "Plus de 20 ans d'expérience dans le développement immobilier et la gestion technique dans la Riviera Maya. Master en Project Management (Universidad Europea de Madrid) et Master en Développement Durable. Direction technique sur des projets emblématiques tels que Papaya Playa Project et Inmobilia Mayaliah (25 000 m²)."}
               </p>
             </div>
           </div>

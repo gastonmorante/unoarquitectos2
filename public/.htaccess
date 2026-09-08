@@ -108,6 +108,8 @@ ErrorDocument 404 /404.html
 
   # G. Endpoints API en HostGator
   RewriteRule ^api/reviews/?$ api/reviews.php [L,QSA]
+  RewriteRule ^api/contact/?$ api/contact.php [L,QSA]
+  RewriteRule ^api/leads/?$ api/contact.php [L,QSA]
 
   # ----------------------------------------------------------------------------
   # 4. MULTI-PAGE SPA ROUTING & SUBDIRECTORIES (SERVE INDEX.HTML FOR VALID ROUTES)

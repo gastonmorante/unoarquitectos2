@@ -1,4 +1,4 @@
-﻿import { useState, FormEvent, useEffect } from "react";
+import { useState, FormEvent, useEffect } from "react";
 import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle, Clock, ExternalLink, X } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { useSiteContent } from "../context/ContentContext";
@@ -104,30 +104,32 @@ export default function Contacto() {
     };
 
     try {
-      // 1. Primary: Post to GoHighLevel (GHL) Webhook
+      // 1. Primary: Post to HostGator Backend (/api/contact) for Local Storage + Email + GHL Bridge
+      const localApiPromise = fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      }).then(async (res) => {
+        if (!res.ok) {
+          throw new Error(`Server returned status ${res.status}`);
+        }
+        return await res.json();
+      });
+
+      // 2. Direct Frontend GHL Webhook Dispatch (if configured)
       const ghlPromise = fetch(GHL_WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
       }).catch((err) => {
-        console.warn("GHL Webhook dispatched with non-blocking status:", err);
+        console.warn("Direct GHL Webhook non-blocking status:", err);
       });
 
-      // 2. Secondary Local Endpoint Backups
-      const localApiPromise = fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      }).catch(() => {});
-
-      const leadsApiPromise = fetch("/api/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      }).catch(() => {});
-
-      // Wait for parallel resolution
-      await Promise.allSettled([ghlPromise, localApiPromise, leadsApiPromise]);
+      // Wait for primary backend response
+      const [backendResult] = await Promise.allSettled([localApiPromise, ghlPromise]);
+      if (backendResult.status === "rejected") {
+        console.warn("Backend API notice:", backendResult.reason);
+      }
 
       // 3. Trigger Analytics Conversion Events
       if (typeof window !== "undefined") {
