@@ -67,6 +67,26 @@ function parseRoute(): RouteState {
   return { name: "home" };
 }
 
+function mergeProjectsWithDefaults(savedList: ClientProject[] = []): ClientProject[] {
+  if (!Array.isArray(savedList) || savedList.length === 0) return defaultClientProjects;
+  return defaultClientProjects.map((def) => {
+    const custom = savedList.find((p) => p.id === def.id);
+    if (!custom) return def;
+    return {
+      ...def,
+      ...custom,
+      digitalLogbook: def.digitalLogbook || custom.digitalLogbook,
+      bitacoraFotograficaUrl: def.bitacoraFotograficaUrl || custom.bitacoraFotograficaUrl,
+      bitacoraDigitalUrl: def.bitacoraDigitalUrl || custom.bitacoraDigitalUrl,
+      masterDriveFolderUrl: def.masterDriveFolderUrl || custom.masterDriveFolderUrl,
+      cloudpanoTours: (def.cloudpanoTours?.length || 0) >= (custom.cloudpanoTours?.length || 0) ? def.cloudpanoTours : custom.cloudpanoTours,
+      photoReports: (def.photoReports?.length || 0) >= (custom.photoReports?.length || 0) ? def.photoReports : custom.photoReports,
+    };
+  }).concat(
+    savedList.filter((p) => !defaultClientProjects.some((def) => def.id === p.id))
+  );
+}
+
 function MainApp() {
   const [route, setRoute] = useState<RouteState>(parseRoute);
   const { language, formatUrl } = useLanguage();
@@ -90,7 +110,7 @@ function MainApp() {
       const saved = localStorage.getItem("uno_client_projects_v4");
       if (saved) {
         try {
-          return JSON.parse(saved);
+          return mergeProjectsWithDefaults(JSON.parse(saved));
         } catch {}
       }
     }
@@ -118,7 +138,7 @@ function MainApp() {
       const saved = localStorage.getItem("uno_client_projects_v4");
       if (saved) {
         try {
-          currentList = JSON.parse(saved);
+          currentList = mergeProjectsWithDefaults(JSON.parse(saved));
           setClientProjects(currentList);
         } catch {}
       }
