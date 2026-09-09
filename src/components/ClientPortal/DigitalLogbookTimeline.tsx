@@ -41,7 +41,7 @@ export default function DigitalLogbookTimeline({
   onJumpToCarousel,
 }: DigitalLogbookTimelineProps) {
   const [expandedEntryId, setExpandedEntryId] = useState<string>(
-    entries.find(e => e.date === selectedDate)?.id || entries[entries.length - 3]?.id || entries[0]?.id || ""
+    entries.find(e => e.date === selectedDate)?.id || entries[entries.length - 1]?.id || entries[0]?.id || ""
   );
 
   return (
@@ -57,10 +57,10 @@ export default function DigitalLogbookTimeline({
               </span>
             </div>
             <h3 className="font-headline-md text-xl sm:text-2xl text-teal-uno uppercase font-bold tracking-tight">
-              Trazabilidad Técnica Mensual & Supervisión de Calidad
+              Trazabilidad Técnica de Obra & Supervisión de Calidad
             </h3>
             <p className="text-xs sm:text-sm text-gris-texto font-body-md max-w-2xl leading-relaxed">
-              Registro continuo de bitácora de obra civil, dictámenes estructurales de suelo kárstico, ensayes de laboratorio certificados y galería de fotos sincronizada por hitos cronológicos.
+              Registro continuo de bitácora de obra civil, dictámenes de supervisión técnica, ensayes de laboratorio certificados y galería de fotos sincronizada por levantamientos registrados en Google Drive.
             </p>
           </div>
 
@@ -101,7 +101,7 @@ export default function DigitalLogbookTimeline({
               Folios Registrados
             </span>
             <span className="font-headline-md text-sm sm:text-base font-bold text-teal-uno block">
-              {entries.length} Folios Técnicos
+              {entries.length} Folios Oficiales
             </span>
           </div>
           <div className="p-3.5 bg-surface-variant/30 rounded-2xl border border-arena-calida/20">
@@ -136,10 +136,10 @@ export default function DigitalLogbookTimeline({
         <div className="flex items-center justify-between text-xs font-label-caps uppercase tracking-wider text-arena-calida font-semibold px-1">
           <span className="flex items-center gap-2">
             <Calendar className="w-4 h-4 text-teal-uno" />
-            Cronología de Bitácora de Obra (Avances Mensuales 2026)
+            Cronología de Bitácora de Obra (Levantamientos Registrados en Google Drive)
           </span>
           <span className="text-[11px] text-teal-uno font-sans font-medium">
-            Sincronizado con Repositorio Nube
+            Sincronizado con Google Drive
           </span>
         </div>
 

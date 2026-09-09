@@ -734,168 +734,18 @@ export const defaultClientProjects: ClientProject[] = [
       {
         id: "log-arrecifes-01",
         entryNumber: "Folio #01",
-        date: "15 Enero 2026",
-        month: "Enero 2026",
-        phaseTitle: "Fase 1: Trazo, Nivelación & Prospección Geofísica GPR",
-        progress: 10,
-        status: "completed",
-        executiveSummary: "Inicio oficial de obra en predio selvático de 1,150 m². Levantamiento topográfico satelital y delimitación de huella respetando el 55% de conservación arbórea virgen.",
-        technicalDictum: "Estudio Geofísico con Georradar (GPR) ejecutado a 12.0 metros de profundidad. Dictamen geotécnico favorable que certifica la ausencia absoluta de cavernas, oquedades o riesgos kársticos bajo el desplante.",
-        labTestsAndQuality: [
-          "Estudio de Mecánica de Suelos y Sondeo Geofísico GPR (12m)",
-          "Levantamiento y censo de flora protegida (Palma Chit, Ceibas, Helechos)",
-          "Acta oficial de inicio de obra y licencias de construcción autorizadas"
-        ],
-        keyMilestones: [
-          "Delimitación de polígono con estación total y niveles láser",
-          "Apertura de cepas sobre estrato de roca caliza sana",
-          "Desmonte selectivo manual respetando el dosel arbóreo"
-        ],
-        personnelOnSite: "12 Oficiales de albañilería, 1 Topógrafo, 1 Ing. Geotécnico, 1 Arq. Residente",
-        inspectedBy: "Arq. Angel Cereceda & DRO",
-        driveFolderUrl: "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link",
-        photographicLogUrl: "https://drive.google.com/drive/folders/1SKrAecbj22oz23ZIjAWoeK2p8zENDTM7?usp=drive_link"
-      },
-      {
-        id: "log-arrecifes-02",
-        entryNumber: "Folio #02",
-        date: "28 Febrero 2026",
-        month: "Febrero 2026",
-        phaseTitle: "Fase 1: Cimentación Ciclópea, Zapatas Aisladas & Trabes de Liga",
-        progress: 20,
-        status: "completed",
-        executiveSummary: "Armado de acero estructural y colado de zapatas aisladas y trabes de liga de concreto con aditivo hidrófugo por cristalización.",
-        technicalDictum: "Concreto premezclado f'c = 250 kg/cm² con revenimiento 14 cm. Muestreo de cilindros de prueba ensayados a compresión a 7 y 14 días alcanzando el 94% de la resistencia de diseño.",
-        labTestsAndQuality: [
-          "Ensayes de rotura a compresión en laboratorio certificado EMA",
-          "Revisión de traslapes, escuadras y ganchos de anclaje sísmico en acero Grado 42",
-          "Impermeabilización por cristalización en elementos bajo nivel de terreno"
-        ],
-        keyMilestones: [
-          "Colado monolítico de zapatas de cimentación y dados de desplante",
-          "Tendido de drenes franceses perimetrales contra manto freático",
-          "Amarre de trabes de liga calculadas ante vientos huracanados Cat. 5"
-        ],
-        personnelOnSite: "18 Oficiales fierreros y albañiles, 1 Ing. de Calidad de Concreto",
-        inspectedBy: "Ing. Calculista Estructural & Arq. Angel Cereceda",
-        driveFolderUrl: "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link",
-        photographicLogUrl: "https://drive.google.com/drive/folders/1SKrAecbj22oz23ZIjAWoeK2p8zENDTM7?usp=drive_link"
-      },
-      {
-        id: "log-arrecifes-03",
-        entryNumber: "Folio #03",
-        date: "30 Marzo 2026",
-        month: "Marzo 2026",
-        phaseTitle: "Fase 1: Losa de Cimentación & Muros de Concreto Aparente Enduelado",
-        progress: 30,
-        status: "completed",
-        executiveSummary: "Conclusión de la cimentación e inicio de muros perimetrales con acabado de concreto aparente texturizado con cimbra de duela de madera regional.",
-        technicalDictum: "Ensayes de compresión a 28 días arrojaron f'c promedio de 268 kg/cm² (107% de resistencia de cálculo). Cimbrado artesanal con selladores hidrófugos de poro abierto.",
-        labTestsAndQuality: [
-          "Certificado final de laboratorio a 28 días (f'c = 268 kg/cm² superado)",
-          "Control de desmoldantes ecológicos base agua para evitar decoloración",
-          "Garantía de recubrimientos mínimos de 5.0 cm en todo el armado"
-        ],
-        keyMilestones: [
-          "Colado de losa de rigidez de cimentación e impermeabilización",
-          "Primer colado de muros de concreto aparente en planta baja",
-          "Canalizaciones subterráneas para cometidas eléctricas y sanitarias"
-        ],
-        personnelOnSite: "22 Especialistas en obra civil y carpintería de obra negra",
-        inspectedBy: "Arq. Angel Cereceda",
-        driveFolderUrl: "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link",
-        photographicLogUrl: "https://drive.google.com/drive/folders/1SKrAecbj22oz23ZIjAWoeK2p8zENDTM7?usp=drive_link"
-      },
-      {
-        id: "log-arrecifes-04",
-        entryNumber: "Folio #04",
-        date: "30 Abril 2026",
-        month: "Abril 2026",
-        phaseTitle: "Fase 2: Estructura de Doble Altura & Losa Nervada de Entrepiso",
-        progress: 38,
-        status: "completed",
-        executiveSummary: "Armado y colado de losa nervada de entrepiso con casetones aligerados y claros libres continuos de hasta 8.50m. Consolidación de la doble altura de 6.40m.",
-        technicalDictum: "Monitoreo topográfico de flechas y contraflechas con nivel óptico de precisión milimétrica. Cero deflexiones anómalas tras descimbrado paulatino a los 21 días.",
-        labTestsAndQuality: [
-          "Nivelación óptica y control de verticalidad en columnas y muros de 6.40m",
-          "Ensayes de compresión de probetas tomadas durante el colado de entrepiso",
-          "Inspección de cajillos para luminarias empotradas y ductos ocultos"
-        ],
-        keyMilestones: [
-          "Colado monolítico de losa nervada sobre planta baja",
-          "Desplante de muros en planta alta (Master Suite de 3.80m de altura)",
-          "Habilitado de trabes voladas hacia la terraza del caribe"
-        ],
-        personnelOnSite: "24 Oficiales de obra, 2 Fierreros maestros, 1 Residente de obra",
-        inspectedBy: "Ing. Residente de Estructura & Arq. Angel Cereceda",
-        driveFolderUrl: "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link",
-        photographicLogUrl: "https://drive.google.com/drive/folders/1SKrAecbj22oz23ZIjAWoeK2p8zENDTM7?usp=drive_link"
-      },
-      {
-        id: "log-arrecifes-05",
-        entryNumber: "Folio #05",
-        date: "31 Mayo 2026",
-        month: "Mayo 2026",
-        phaseTitle: "Fase 2: Losa de Cubierta / Azotea & Vaso de Alberca Cenote",
-        progress: 44,
-        status: "completed",
-        executiveSummary: "Cierre estructural de azotea técnica y excavación/armado del vaso de alberca cenote de 48 m² con canaleta perimetral oculta.",
-        technicalDictum: "Pendientes pluviales del 2.0% ejecutadas hacia coladeras perimetrales con bajadas de PVC sanitario embutidas en ductos registrables para mantenimiento.",
-        labTestsAndQuality: [
-          "Revisión de pendientes pluviales con niveles láser autonivelantes",
-          "Prueba de estanqueidad previa en vaso de alberca de concreto",
-          "Tratamiento anti-salino en aceros expuestos"
-        ],
-        keyMilestones: [
-          "Colado de losa de azotea y pretiles perimetrales",
-          "Armado estructural de muro de contención en alberca cenote",
-          "Canalización de preparaciones para paneles solares híbridos"
-        ],
-        personnelOnSite: "20 Oficiales albañiles y fontaneros",
-        inspectedBy: "Arq. Angel Cereceda",
-        driveFolderUrl: "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link",
-        photographicLogUrl: "https://drive.google.com/drive/folders/1SKrAecbj22oz23ZIjAWoeK2p8zENDTM7?usp=drive_link"
-      },
-      {
-        id: "log-arrecifes-06",
-        entryNumber: "Folio #06",
-        date: "30 Junio 2026",
-        month: "Junio 2026",
-        phaseTitle: "Fase 2: Mampostería, Pretiles & Aplanados Base Hidrófugos",
-        progress: 48,
-        status: "completed",
-        executiveSummary: "Conclusión de albañilerías gruesas, mampostería en piedra regional maya y repellados base con sellador integral para recibir Chukum.",
-        technicalDictum: "Aplanados rústicos con mortero cemento-arena proporción 1:4 con aditivo hidrófugo integral para garantizar adherencia mecánica del Chukum tradicional.",
-        labTestsAndQuality: [
-          "Inspección de planicidad en muros con regla de 3 metros",
-          "Comprobación de humedad en sustratos antes de revestimientos",
-          "Alineación de vanos para ventanería de piso a techo"
-        ],
-        keyMilestones: [
-          "Levantamiento de muros divisorios en máster suite y vestidores",
-          "Repellado general de fachadas exteriores y patio central",
-          "Trazo de instalaciones eléctricas y sanitarias en muros"
-        ],
-        personnelOnSite: "18 Oficiales albañiles y chalanes",
-        inspectedBy: "Arq. Residente de Obra",
-        driveFolderUrl: "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link",
-        photographicLogUrl: "https://drive.google.com/drive/folders/1SKrAecbj22oz23ZIjAWoeK2p8zENDTM7?usp=drive_link"
-      },
-      {
-        id: "log-arrecifes-07",
-        entryNumber: "Folio #07",
         date: "27 Agosto 2026",
         month: "Agosto 2026",
-        phaseTitle: "Fase 3: Instalaciones Especiales (MEP, Climatización Daikin & Domótica Lutron)",
+        phaseTitle: "Fase 3: Instalaciones Especiales (MEP, Climatización Daikin VRF & Domótica Lutron)",
         progress: 52,
         status: "completed",
-        executiveSummary: "Hito técnico de instalaciones ocultas: Climatización VRF Inverter Daikin en plenum técnico de 3.40m, domótica Lutron QSX y prueba hidrostática superada a 7 kg/cm².",
-        technicalDictum: "Dictamen #31: Prueba hidrostática de presión en tuberías PPR-CT presurizadas a 7.0 kg/cm² (100 PSI) durante 72 horas continuas con CERO caídas barométricas. Cableado apantallado Lutron probado.",
+        executiveSummary: "Levantamiento técnico de instalaciones ocultas: Climatización VRF Inverter Daikin en plenum técnico de 3.40m, domótica Lutron QSX y prueba hidrostática superada a 7 kg/cm² sin caídas de presión.",
+        technicalDictum: "Dictamen #31: Prueba hidrostática de presión en tuberías PPR-CT presurizadas a 7.0 kg/cm² (100 PSI) durante 72 horas continuas con CERO caídas barométricas. Cableado apantallado Lutron probado y anclaje de bastidores en acero inoxidable 316.",
         labTestsAndQuality: [
           "Certificado de hermeticidad y presión hidrostática (7.0 kg/cm² / 72h)",
           "Prueba de vacío y estanqueidad con nitrógeno en líneas Daikin VRF",
           "Medición de resistencia a tierra física (< 5 ohms) para domótica",
-          "Inspección 360° esférica HD de canalizaciones ocultas"
+          "Inspección 360° esférica HD de canalizaciones ocultas (10 Puntos)"
         ],
         keyMilestones: [
           "Instalación de unidades interiores Daikin VRF ocultas en plafón",
@@ -911,14 +761,14 @@ export const defaultClientProjects: ClientProject[] = [
         photosCount: 10
       },
       {
-        id: "log-arrecifes-08",
-        entryNumber: "Folio #08",
+        id: "log-arrecifes-02",
+        entryNumber: "Folio #02",
         date: "05 Septiembre 2026",
         month: "Septiembre 2026",
         phaseTitle: "Fase 4: Revestimientos en Chukum Tradicional Maya & Mármol Santo Tomás",
         progress: 72,
         status: "completed",
-        executiveSummary: "ÚLTIMO AVANCE OFICIAL DE OBRA: Aplicación de pasta de Chukum hervida en obra en muros de 6.40m de altura, colocación de mármol Santo Tomás 1.20x2.40m e impermeabilización de alberca cenote.",
+        executiveSummary: "ÚLTIMO AVANCE OFICIAL REGISTRADO EN DRIVE: Aplicación de pasta de Chukum hervida en obra en muros de 6.40m de altura, colocación de mármol Santo Tomás 1.20x2.40m e impermeabilización de alberca cenote.",
         technicalDictum: "Dictamen #45: Pasta orgánica de Chukum elaborada con caldo de corteza de Havardia albicans y polvo de piedra caliza. Sellado de poro abierto certificado. Nivelación láser en mármol con juntas milimétricas de 1.5mm.",
         labTestsAndQuality: [
           "Prueba de adherencia y estanqueidad hidrófuga en pasta de Chukum",
@@ -938,56 +788,6 @@ export const defaultClientProjects: ClientProject[] = [
         photographicLogUrl: "https://drive.google.com/drive/folders/1SKrAecbj22oz23ZIjAWoeK2p8zENDTM7?usp=drive_link",
         scenes360Count: 19,
         photosCount: 20
-      },
-      {
-        id: "log-arrecifes-09",
-        entryNumber: "Folio #09",
-        date: "31 Octubre 2026",
-        month: "Octubre 2026",
-        phaseTitle: "Fase 5: Carpintería Fina en Tzalam & Cancelería Antihuracán DVH",
-        progress: 85,
-        status: "projected",
-        executiveSummary: "Hito proyectado: Montaje de puertas monumentales pivotantes de 3.20m en madera de Tzalam maciza y cancelería europea con doble vidriado hermético 6+6.",
-        technicalDictum: "Supervisión de herrajes ocultos de alta resistencia a la corrosión marina (acero inoxidable 316). Sellado estructural perimetral con silicona estructural resistente a vientos Cat. 5 (>280 km/h).",
-        labTestsAndQuality: [
-          "Pruebas de permeabilidad al aire y estanqueidad al agua en cancelería",
-          "Verificación de anclajes estructurales ocultos",
-          "Tratamiento protector de aceites naturales en madera de Tzalam"
-        ],
-        keyMilestones: [
-          "Colocación de ventanales corredizos embutidos en muros",
-          "Instalación de vestidores y vanities en Master Suite",
-          "Armado de celosías de Tzalam para sombreado pasivo"
-        ],
-        personnelOnSite: "14 Ebanistas y técnicos de cancelería europea",
-        inspectedBy: "Director Técnico Arq. Angel Cereceda",
-        driveFolderUrl: "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link",
-        photographicLogUrl: "https://drive.google.com/drive/folders/1SKrAecbj22oz23ZIjAWoeK2p8zENDTM7?usp=drive_link"
-      },
-      {
-        id: "log-arrecifes-10",
-        entryNumber: "Folio #10",
-        date: "20 Diciembre 2026",
-        month: "Diciembre 2026",
-        phaseTitle: "Fase 6: Paisajismo Selvático, Puesta en Marcha & Entrega Llave en Mano",
-        progress: 100,
-        status: "projected",
-        executiveSummary: "Hito final: Calibración sensorial de iluminación Lutron 2700K, paisajismo con flora nativa de Quintana Roo y entrega de llaves con póliza de garantía decenal.",
-        technicalDictum: "Dictamen Final de Entrega y Cierre de Bitácora. Planos As-Built certificados, manuales de operación de equipos Daikin/Lutron y póliza decenal de estabilidad estructural.",
-        labTestsAndQuality: [
-          "Certificación de funcionamiento de sistemas solares y PTAR",
-          "Calibración fotométrica de luminarias LED CRI > 95",
-          "Acta de Entrega-Recepción y entrega de llaves"
-        ],
-        keyMilestones: [
-          "Siembra y paisajismo de palmas chit, ceibas y helechos arbóreos",
-          "Llenado y calibración química de agua en alberca cenote Chukum",
-          "Protocolo de entrega llave en mano al cliente propietario"
-        ],
-        personnelOnSite: "Equipo completo de UNO Arquitectos",
-        inspectedBy: "Arq. Angel Cereceda (Fundador y Director General)",
-        driveFolderUrl: "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link",
-        photographicLogUrl: "https://drive.google.com/drive/folders/1SKrAecbj22oz23ZIjAWoeK2p8zENDTM7?usp=drive_link"
       }
     ]
   },

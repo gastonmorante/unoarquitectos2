@@ -166,7 +166,7 @@ const getLocalArrecifesResponse = (query: string, project: ClientProject): { tex
     };
   }
 
-  // 5. BITÁCORA DIGITAL & CRONOLOGÍA DE AVANCES MENSUALES
+  // 5. BITÁCORA DIGITAL & CRONOLOGÍA DE AVANCES
   if (
     q.includes("bitacora") ||
     q.includes("cronolog") ||
@@ -181,19 +181,24 @@ const getLocalArrecifesResponse = (query: string, project: ClientProject): { tex
     return {
       text: `### 📋 Bitácora Digital Oficial & Trazabilidad Técnica — **${project.propertyName}**:
 
-La obra cuenta con un registro mensual continuo de **10 Folios Técnicos Oficiales** emitidos por la Dirección de Obra del **Arq. Angel Cereceda**:
+La bitácora digital de obra está respaldada y sincronizada directamente con los repositorios oficiales de **Google Drive** bajo la supervisión del **${project.director.name}**, contando con **2 Folios Técnicos Oficiales Registrados**:
 
-1. **Enero - Marzo 2026 (Fase 1 - 30% Avance)**:
-   - Prospección Geofísica con Georradar (GPR) a 12.0m de profundidad (ausencia de cavidades kársticas certificada).
-   - Colado de zapatas aisladas y losa de rigidez de concreto f'c=250 kg/cm² (ensayes a 28 días f'c=268 kg/cm²).
-2. **Abril - Junio 2026 (Fase 2 - 48% Avance)**:
-   - Estructura de doble altura (6.40m libres) y losas nervadas con claros de hasta 8.50m. Muros de concreto aparente enduelado.
-3. **Julio - Agosto 2026 (Fase 3 - 52% Avance • Folio #07 - 27 Ago 2026)**:
-   - Climatización VRF Daikin en plenum técnico de 3.40m y prueba hidrostática a 7.0 kg/cm² (100 PSI) en 72h sin fugas.
-4. **Septiembre 2026 (Fase 4 - 72% Avance • Folio #08 - 05 Sep 2026 • ÚLTIMO AVANCE)**:
-   - Aplicación de pasta orgánica de Chukum hervida en obra, mármol Santo Tomás 1.20x2.40m y alberca cenote impermeabilizada.
-5. **Octubre - Diciembre 2026 (Fases 5 y 6 - 85% a 100% Proyectado • Entrega 20 Dic 2026)**:
-   - Carpintería en Tzalam, cancelería Eurovent antihuracán Cat. 5, iluminación Lutron 2700K y paisajismo endémico.`,
+1. **Folio #01 (27 de Agosto de 2026 — 52% de Avance)**:
+   - **Fase 3: Instalaciones Especiales (MEP, Climatización Daikin & Domótica Lutron)**.
+   - Ductería oculta de climatización VRF Daikin en entrepisos técnicos de 3.40m.
+   - Prueba hidrostática de presión superada a **7.0 kg/cm² (100 PSI)** durante 72h continuas con cero caídas barométricas.
+   - Sistema de drenaje ecológico con biodigestores anaeróbicos y humedales PTAR.
+   - **10 Puntos 360° Esféricos HD** y 10 Fotos de supervisión técnica.
+   - [Carpeta Drive 27/08/2026](https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link).
+
+2. **Folio #02 (05 de Septiembre de 2026 — 72% de Avance • ÚLTIMO AVANCE REGISTRADO)**:
+   - **Fase 4: Revestimientos en Chukum Tradicional Maya & Mármol Santo Tomás**.
+   - Aplicación de pasta orgánica de Chukum (*Havardia albicans*) hervida en obra con agua de pozo en muros de doble altura (**6.40m**) y fachada.
+   - Colocación y nivelación láser de placas de mármol Santo Tomás (**1.20 x 2.40m**) apomazadas mate con juntas de 1.5mm.
+   - Impermeabilización de alberca cenote de **48 m²** y preparación para acabado turquesa.
+   - Carpintería en Tzalam curada al 10% de humedad en taller propio de Tulum.
+   - **19 Puntos 360° Esféricos HD** y 20 Fotografías de alta resolución.
+   - [Carpeta Drive 05/09/2026](https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link).`,
       links: [
         { label: "Abrir 03 Bitácora Digital (Google Drive)", url: "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link" },
         { label: "Abrir 02 Bitácora Fotográfica (Google Drive)", url: "https://drive.google.com/drive/folders/1SKrAecbj22oz23ZIjAWoeK2p8zENDTM7?usp=drive_link" },
@@ -280,7 +285,7 @@ export default function ClientAIAssistantModal({ project, onClose }: ClientAIAss
       role: "assistant",
       content: `Hola. Soy el **Asesor Técnico de Inteligencia Artificial (Gemini)** de **UNO Arquitectos**, asignado a la supervisión técnica de **${project.propertyName}** bajo la dirección del **${project.director.name}**.
 
-Estoy entrenado con las especificaciones exactas, medidas milimétricas, dictámenes de supervisión y bitácora de obra de **Agosto a Diciembre de 2026**.
+Estoy entrenado con las especificaciones exactas, medidas milimétricas, dictámenes de supervisión y la bitácora oficial registrada en Google Drive (27 de Agosto y 05 de Septiembre de 2026).
 
 ¿En qué aspecto técnico o avance de tu residencia puedo orientarte hoy?`,
       timestamp: "Ahora",
