@@ -353,19 +353,22 @@ export default function DigitalLogbookTimeline({
                           </a>
                         )}
 
-                        {entry.driveFolderUrl && (
+                        {/* 2. DIRECT WEEKLY PHOTO EVIDENCE FOLDER IN DRIVE */}
+                        {entry.photographicLogUrl && (
                           <a
-                            href={entry.driveFolderUrl}
+                            href={entry.photographicLogUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-3.5 py-1.5 bg-white hover:bg-teal-uno hover:text-white text-gris-texto border border-arena-calida/40 rounded-full text-[11px] font-label-caps uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-xs cursor-pointer font-medium"
-                            title="Abrir carpeta de bitácora en Google Drive"
+                            className="px-3.5 py-1.5 bg-white hover:bg-arena-calida hover:text-white text-gris-texto border border-arena-calida/50 rounded-full text-[11px] font-label-caps uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-xs cursor-pointer font-bold group/btn"
+                            title={`Abrir carpeta de fotos de evidencia (${entry.photosCount || 0} fotos) en Google Drive`}
                           >
-                            <FolderOpen className="w-3.5 h-3.5 text-teal-uno" />
-                            <span>Carpeta Drive</span>
+                            <Camera className="w-3.5 h-3.5 text-arena-calida group-hover/btn:text-white" />
+                            <span>Fotos en Drive ({entry.photosCount || 0})</span>
+                            <ExternalLink className="w-3 h-3 opacity-70" />
                           </a>
                         )}
 
+                        {/* 3. VIRTUAL 360 TOUR JUMP */}
                         {entry.scenes360Count && entry.scenes360Count > 0 && onJumpTo360 && (
                           <button
                             onClick={onJumpTo360}
@@ -376,13 +379,14 @@ export default function DigitalLogbookTimeline({
                           </button>
                         )}
 
+                        {/* 4. CAROUSEL JUMP */}
                         {entry.photosCount && entry.photosCount > 0 && onJumpToCarousel && (
                           <button
                             onClick={onJumpToCarousel}
                             className="px-3.5 py-1.5 bg-arena-calida/15 hover:bg-arena-calida hover:text-white text-arena-calida border border-arena-calida/40 rounded-full text-[11px] font-label-caps uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-xs cursor-pointer font-bold"
                           >
                             <Sparkles className="w-3.5 h-3.5" />
-                            <span>Ver en Carrusel ({entry.photosCount})</span>
+                            <span>Ver en Carrusel</span>
                           </button>
                         )}
                       </div>
