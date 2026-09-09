@@ -7,9 +7,9 @@ import {
   ExternalLink, 
   Camera, 
   Sparkles, 
-  Image as ImageIcon,
   ZoomIn,
-  Download
+  Loader2,
+  ImageOff
 } from "lucide-react";
 import { BitacoraPhoto } from "../../types/clientPortal";
 
@@ -34,7 +34,9 @@ export default function BitacoraCardGalleryCarousel({
 }: BitacoraCardGalleryCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(isOpenFullscreen);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+  const [imageSrc, setImageSrc] = useState<string>("");
 
   useEffect(() => {
     if (isOpenFullscreen) {
@@ -43,17 +45,25 @@ export default function BitacoraCardGalleryCarousel({
   }, [isOpenFullscreen]);
 
   const totalPhotos = photos.length;
+  const currentPhoto = photos[currentIndex] || photos[0];
+
+  // Set initial image source whenever index changes
+  useEffect(() => {
+    if (currentPhoto) {
+      setImageSrc(currentPhoto.url);
+      setIsLoading(true);
+      setHasError(false);
+    }
+  }, [currentIndex, currentPhoto]);
 
   const nextSlide = useCallback(() => {
     if (totalPhotos === 0) return;
     setCurrentIndex((prev) => (prev + 1) % totalPhotos);
-    setIsLoaded(false);
   }, [totalPhotos]);
 
   const prevSlide = useCallback(() => {
     if (totalPhotos === 0) return;
     setCurrentIndex((prev) => (prev - 1 + totalPhotos) % totalPhotos);
-    setIsLoaded(false);
   }, [totalPhotos]);
 
   // Keyboard navigation for fullscreen
@@ -93,7 +103,30 @@ export default function BitacoraCardGalleryCarousel({
     );
   }
 
-  const currentPhoto = photos[currentIndex] || photos[0];
+  // Fallback URL generator
+  const getFallbackUrl = (photo: BitacoraPhoto) => {
+    if (photo.driveThumbnailUrl) return photo.driveThumbnailUrl;
+    if (photo.fileId) return `https://drive.google.com/thumbnail?id=${photo.fileId}&sz=w1200`;
+    return photo.url;
+  };
+
+  const getThumbFallbackUrl = (photo: BitacoraPhoto) => {
+    if (photo.fileId) return `https://drive.google.com/thumbnail?id=${photo.fileId}&sz=w300`;
+    return photo.url;
+  };
+
+  const handleImageError = () => {
+    if (!currentPhoto) return;
+    const fallback = getFallbackUrl(currentPhoto);
+    if (imageSrc !== fallback) {
+      console.warn(`Fallback image loading for: ${currentPhoto.id}`);
+      setImageSrc(fallback);
+      setIsLoading(false);
+    } else {
+      setHasError(true);
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="space-y-3">
@@ -118,21 +151,46 @@ export default function BitacoraCardGalleryCarousel({
       </div>
 
       {/* EMBEDDED CAROUSEL VIEWPORT */}
-      <div className="relative rounded-2xl overflow-hidden bg-stone-900 border border-arena-calida/30 shadow-xs aspect-[16/10] sm:aspect-[16/9] group">
-        {/* Active Image */}
-        <img
-          src={currentPhoto.url}
-          alt={currentPhoto.caption || `Foto ${currentIndex + 1}`}
-          loading="lazy"
-          onLoad={() => setIsLoaded(true)}
-          onClick={() => setIsFullscreen(true)}
-          className={`w-full h-full object-cover sm:object-contain transition-all duration-300 cursor-zoom-in ${
-            isLoaded ? "opacity-100 scale-100" : "opacity-40 scale-98 blur-xs"
-          }`}
-        />
+      <div className="relative rounded-2xl overflow-hidden bg-stone-900 border border-arena-calida/30 shadow-xs aspect-[16/10] sm:aspect-[16/9] group flex items-center justify-center">
+        {/* Loading Spinner */}
+        {isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center bg-stone-900/60 z-10">
+            <Loader2 className="w-6 h-6 text-teal-uno animate-spin" />
+          </div>
+        )}
+
+        {/* Error Fallback Box */}
+        {hasError ? (
+          <div className="flex flex-col items-center justify-center p-6 text-center text-white/60 space-y-2">
+            <ImageOff className="w-8 h-8 text-arena-calida" />
+            <span className="text-xs">Fotografía disponible en Google Drive</span>
+            {currentPhoto?.driveUrl && (
+              <a
+                href={currentPhoto.driveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1 bg-teal-uno text-white rounded-full text-[10px] font-label-caps uppercase flex items-center gap-1 font-bold"
+              >
+                <span>Ver en Drive</span>
+                <ExternalLink className="w-2.5 h-2.5" />
+              </a>
+            )}
+          </div>
+        ) : (
+          <img
+            key={imageSrc || currentPhoto.id}
+            src={imageSrc || currentPhoto.url}
+            alt={currentPhoto.caption || `Foto ${currentIndex + 1}`}
+            onLoad={() => setIsLoading(false)}
+            onError={handleImageError}
+            onClick={() => setIsFullscreen(true)}
+            decoding="async"
+            className="w-full h-full object-cover sm:object-contain transition-opacity duration-300 cursor-zoom-in"
+          />
+        )}
 
         {/* TOP OVERLAYS: BADGES */}
-        <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+        <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none z-20">
           <span className="px-2.5 py-1 rounded-full bg-stone-900/80 backdrop-blur-md text-white text-[10px] font-mono font-bold border border-white/10 shadow-xs">
             Foto {currentIndex + 1} de {totalPhotos}
           </span>
@@ -143,7 +201,7 @@ export default function BitacoraCardGalleryCarousel({
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="px-2.5 py-1 rounded-full bg-stone-900/80 hover:bg-teal-uno backdrop-blur-md text-white text-[10px] font-label-caps uppercase font-bold border border-white/10 shadow-xs flex items-center gap-1 pointer-events-auto transition-colors"
+              className="px-2.5 py-1 rounded-full bg-stone-900/80 hover:bg-teal-uno backdrop-blur-md text-white text-[10px] font-label-caps uppercase font-bold border border-white/10 shadow-xs flex items-center gap-1 pointer-events-auto transition-colors cursor-pointer"
               title="Abrir imagen original en Google Drive"
             >
               <span>Drive Original</span>
@@ -153,7 +211,7 @@ export default function BitacoraCardGalleryCarousel({
         </div>
 
         {/* BOTTOM OVERLAY: CAPTION */}
-        <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-stone-950/90 via-stone-950/50 to-transparent p-3 pt-6 flex items-end justify-between gap-2 pointer-events-none">
+        <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-stone-950/90 via-stone-950/50 to-transparent p-3 pt-6 flex items-end justify-between gap-2 pointer-events-none z-20">
           <p className="text-white/95 text-[11px] sm:text-xs font-sans font-medium line-clamp-1">
             {currentPhoto.caption || `Registro fotográfico en sitio • ${weekDate}`}
           </p>
@@ -179,7 +237,7 @@ export default function BitacoraCardGalleryCarousel({
                 e.stopPropagation();
                 prevSlide();
               }}
-              className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-stone-900/70 hover:bg-teal-uno text-white flex items-center justify-center backdrop-blur-md border border-white/10 transition-all opacity-80 group-hover:opacity-100 hover:scale-105 cursor-pointer shadow-md"
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-stone-900/70 hover:bg-teal-uno text-white flex items-center justify-center backdrop-blur-md border border-white/10 transition-all opacity-80 group-hover:opacity-100 hover:scale-105 cursor-pointer shadow-md z-20"
               aria-label="Foto anterior"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -190,7 +248,7 @@ export default function BitacoraCardGalleryCarousel({
                 e.stopPropagation();
                 nextSlide();
               }}
-              className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-stone-900/70 hover:bg-teal-uno text-white flex items-center justify-center backdrop-blur-md border border-white/10 transition-all opacity-80 group-hover:opacity-100 hover:scale-105 cursor-pointer shadow-md"
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-stone-900/70 hover:bg-teal-uno text-white flex items-center justify-center backdrop-blur-md border border-white/10 transition-all opacity-80 group-hover:opacity-100 hover:scale-105 cursor-pointer shadow-md z-20"
               aria-label="Siguiente foto"
             >
               <ChevronRight className="w-4 h-4" />
@@ -208,21 +266,25 @@ export default function BitacoraCardGalleryCarousel({
               <button
                 key={p.id || idx}
                 type="button"
-                onClick={() => {
-                  setCurrentIndex(idx);
-                  setIsLoaded(false);
-                }}
-                className={`relative flex-shrink-0 w-14 h-11 sm:w-16 sm:h-12 rounded-lg overflow-hidden border transition-all cursor-pointer ${
+                onClick={() => setCurrentIndex(idx)}
+                className={`relative flex-shrink-0 w-14 h-11 sm:w-16 sm:h-12 rounded-lg overflow-hidden border transition-all cursor-pointer bg-stone-800 ${
                   isActive
                     ? "border-teal-uno ring-2 ring-teal-uno shadow-xs scale-105"
-                    : "border-arena-calida/30 opacity-60 hover:opacity-100 hover:border-teal-uno/50"
+                    : "border-arena-calida/30 opacity-70 hover:opacity-100 hover:border-teal-uno/50"
                 }`}
               >
                 <img
-                  src={p.url}
+                  src={p.thumbUrl || p.url}
                   alt={`Miniatura ${idx + 1}`}
                   className="w-full h-full object-cover"
                   loading="lazy"
+                  decoding="async"
+                  onError={(e) => {
+                    const thumbFallback = getThumbFallbackUrl(p);
+                    if (e.currentTarget.src !== thumbFallback) {
+                      e.currentTarget.src = thumbFallback;
+                    }
+                  }}
                 />
                 {isActive && (
                   <div className="absolute inset-0 bg-teal-uno/10" />
@@ -312,8 +374,11 @@ export default function BitacoraCardGalleryCarousel({
             onClick={(e) => e.stopPropagation()}
           >
             <img
-              src={currentPhoto.url}
+              key={`lightbox-${imageSrc || currentPhoto.id}`}
+              src={imageSrc || currentPhoto.url}
               alt={currentPhoto.caption || `Foto ${currentIndex + 1}`}
+              onError={handleImageError}
+              decoding="async"
               className="max-w-full max-h-[75vh] object-contain rounded-xl shadow-2xl transition-transform duration-200 select-none"
             />
 
@@ -361,19 +426,25 @@ export default function BitacoraCardGalleryCarousel({
                   const isActive = idx === currentIndex;
                   return (
                     <button
-                      key={p.id || idx}
+                      key={`lightbox-thumb-${p.id || idx}`}
                       type="button"
                       onClick={() => setCurrentIndex(idx)}
-                      className={`relative flex-shrink-0 w-12 h-10 sm:w-16 sm:h-12 rounded-lg overflow-hidden border transition-all cursor-pointer ${
+                      className={`relative flex-shrink-0 w-12 h-10 sm:w-16 sm:h-12 rounded-lg overflow-hidden border transition-all cursor-pointer bg-stone-800 ${
                         isActive
                           ? "border-teal-uno ring-2 ring-teal-uno shadow-md scale-105"
-                          : "border-white/20 opacity-50 hover:opacity-100"
+                          : "border-white/20 opacity-60 hover:opacity-100"
                       }`}
                     >
                       <img
-                        src={p.url}
+                        src={p.thumbUrl || p.url}
                         alt={`Miniatura ${idx + 1}`}
                         className="w-full h-full object-cover"
+                        onError={(e) => {
+                          const thumbFallback = getThumbFallbackUrl(p);
+                          if (e.currentTarget.src !== thumbFallback) {
+                            e.currentTarget.src = thumbFallback;
+                          }
+                        }}
                       />
                     </button>
                   );

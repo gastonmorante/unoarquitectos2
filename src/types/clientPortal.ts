@@ -88,8 +88,10 @@ export interface ProgressMilestone {
 export interface BitacoraPhoto {
   id: string;
   url: string;
+  thumbUrl?: string;
   originalName?: string;
   driveUrl?: string;
+  driveThumbnailUrl?: string;
   fileId?: string;
   caption?: string;
   date?: string;
