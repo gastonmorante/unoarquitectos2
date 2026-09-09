@@ -9,6 +9,9 @@ import Faqs from './components/Faqs';
 import Contacto from './components/Contacto';
 import CookieBanner from './components/CookieBanner';
 import Logo from './components/Logo';
+import PortalErrorBoundary from './components/PortalErrorBoundary';
+import ClientPortalView from './components/ClientPortal/ClientPortalView';
+import ClientPortalModal from './components/ClientPortal/ClientPortalModal';
 import { LanguageProvider, useLanguage, extractLangAndPath } from './context/LanguageContext';
 import { ContentProvider, useSiteContent } from './context/ContentContext';
 import { ClientProject } from './types/clientPortal';
@@ -23,8 +26,6 @@ const AdminDashboard = lazy(() => import('./admin/AdminDashboard'));
 const AdminLogin = lazy(() => import('./admin/AdminLogin'));
 const LegalNotice = lazy(() => import('./components/LegalNotice'));
 const AIConsultant = lazy(() => import('./components/AIConsultant'));
-const ClientPortalModal = lazy(() => import('./components/ClientPortal/ClientPortalModal'));
-const ClientPortalView = lazy(() => import('./components/ClientPortal/ClientPortalView'));
 
 export type RouteState = 
   | { name: "home" }
@@ -69,22 +70,28 @@ function parseRoute(): RouteState {
 
 function mergeProjectsWithDefaults(savedList: ClientProject[] = []): ClientProject[] {
   if (!Array.isArray(savedList) || savedList.length === 0) return defaultClientProjects;
-  return defaultClientProjects.map((def) => {
-    const custom = savedList.find((p) => p.id === def.id);
-    if (!custom) return def;
-    return {
-      ...def,
-      ...custom,
-      digitalLogbook: def.digitalLogbook || custom.digitalLogbook,
-      bitacoraFotograficaUrl: def.bitacoraFotograficaUrl || custom.bitacoraFotograficaUrl,
-      bitacoraDigitalUrl: def.bitacoraDigitalUrl || custom.bitacoraDigitalUrl,
-      masterDriveFolderUrl: def.masterDriveFolderUrl || custom.masterDriveFolderUrl,
-      cloudpanoTours: (def.cloudpanoTours?.length || 0) >= (custom.cloudpanoTours?.length || 0) ? def.cloudpanoTours : custom.cloudpanoTours,
-      photoReports: (def.photoReports?.length || 0) >= (custom.photoReports?.length || 0) ? def.photoReports : custom.photoReports,
-    };
-  }).concat(
-    savedList.filter((p) => !defaultClientProjects.some((def) => def.id === p.id))
-  );
+  try {
+    return defaultClientProjects.map((def) => {
+      const custom = savedList.find((p) => p && p.id === def.id);
+      if (!custom) return def;
+      return {
+        ...def,
+        ...custom,
+        director: def.director || custom.director,
+        digitalLogbook: (def.digitalLogbook && def.digitalLogbook.length > 0) ? def.digitalLogbook : (custom.digitalLogbook || []),
+        bitacoraFotograficaUrl: def.bitacoraFotograficaUrl || custom.bitacoraFotograficaUrl,
+        bitacoraDigitalUrl: def.bitacoraDigitalUrl || custom.bitacoraDigitalUrl,
+        masterDriveFolderUrl: def.masterDriveFolderUrl || custom.masterDriveFolderUrl,
+        cloudpanoTours: (def.cloudpanoTours?.length || 0) >= (custom.cloudpanoTours?.length || 0) ? def.cloudpanoTours : (custom.cloudpanoTours || def.cloudpanoTours),
+        photoReports: (def.photoReports?.length || 0) >= (custom.photoReports?.length || 0) ? def.photoReports : (custom.photoReports || def.photoReports),
+      };
+    }).concat(
+      savedList.filter((p) => p && p.id && !defaultClientProjects.some((def) => def.id === p.id))
+    );
+  } catch (e) {
+    console.warn("Error merging saved projects, using defaults:", e);
+    return defaultClientProjects;
+  }
 }
 
 function MainApp() {
@@ -238,22 +245,16 @@ function MainApp() {
     );
   }
 
-  // 2. CLIENT PORTAL ROUTE (/clientes)
+  // 2. CLIENT PORTAL ROUTE (/clientes) - INSTANT LOAD WITH ERROR BOUNDARY
   if (route.name === "clientes") {
     return (
-      <Suspense fallback={
-        <div className="min-h-screen w-full bg-background flex flex-col items-center justify-center space-y-4 p-8 text-center texture-overlay">
-          <div className="w-12 h-12 border-3 border-arena-calida/30 border-t-teal-uno rounded-full animate-spin"></div>
-          <div className="space-y-1">
-            <h4 className="font-headline-md text-sm uppercase text-teal-uno font-semibold tracking-wider">
-              Área de Clientes • Supervisión de Obra
-            </h4>
-            <p className="text-xs text-arena-calida font-label-caps uppercase tracking-widest">
-              UNO Arquitectos • Cargando Bitácora y Recorridos 360°...
-            </p>
-          </div>
-        </div>
-      }>
+      <PortalErrorBoundary
+        fallbackTitle="Recuperando Área de Clientes"
+        onReset={() => {
+          setActiveClientProject(defaultClientProjects[0]);
+          setRoute({ name: "clientes" });
+        }}
+      >
         {activeClientProject ? (
           <ClientPortalView
             currentProject={activeClientProject}
@@ -269,7 +270,7 @@ function MainApp() {
             onClose={handleCloseClientPortal}
           />
         )}
-      </Suspense>
+      </PortalErrorBoundary>
     );
   }
 
@@ -490,7 +491,7 @@ function MainApp() {
             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
           </svg>
           
-          {/* Elegant Tooltip on Desktop Hover */}
+          {/* Tooltip */}
           <span className="absolute right-16 bg-white/95 text-gris-texto border border-arena-calida/40 text-[11px] font-label-caps uppercase tracking-wider py-1.5 px-3 rounded-full whitespace-nowrap shadow-xl opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none hidden sm:block backdrop-blur-md">
             {language === "es" ? "WhatsApp Directo" : "Direct WhatsApp"}
           </span>
@@ -510,10 +511,12 @@ function MainApp() {
 
 export default function App() {
   return (
-    <LanguageProvider>
-      <ContentProvider>
-        <MainApp />
-      </ContentProvider>
-    </LanguageProvider>
+    <PortalErrorBoundary fallbackTitle="Error al iniciar la aplicación">
+      <LanguageProvider>
+        <ContentProvider>
+          <MainApp />
+        </ContentProvider>
+      </LanguageProvider>
+    </PortalErrorBoundary>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import * as THREE from "three";
 import { 
   ZoomIn, 
@@ -10,7 +10,8 @@ import {
   Play, 
   Pause, 
   ChevronLeft, 
-  ChevronRight 
+  ChevronRight,
+  RotateCcw
 } from "lucide-react";
 import { Scene360Item } from "../../types/clientPortal";
 
@@ -21,27 +22,40 @@ interface Interactive360CanvasProps {
   onToggleFullscreen: () => void;
 }
 
+// Robust WebGL Support Detection
+function checkWebGLSupport(): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    const canvas = document.createElement("canvas");
+    return !!(
+      window.WebGLRenderingContext &&
+      (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
+    );
+  } catch {
+    return false;
+  }
+}
+
 export default function Interactive360Canvas({
   scenes,
   dateTitle,
   isFullscreen,
   onToggleFullscreen,
 }: Interactive360CanvasProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const mountRef = useRef<HTMLDivElement>(null);
   const [activeSceneIndex, setActiveSceneIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [autoRotate, setAutoRotate] = useState(false);
   const autoRotateRef = useRef(false);
   const [showSceneList, setShowSceneList] = useState(true);
+  const [webGLSupported, setWebGLSupported] = useState(true);
 
-  // Toggle auto-rotation and sync ref immediately
-  const handleToggleAutoRotate = () => {
-    setAutoRotate((prev) => {
-      const next = !prev;
-      autoRotateRef.current = next;
-      return next;
-    });
-  };
+  // 2D Fallback Pan State
+  const [panX, setPanX] = useState(50);
+  const [zoom2D, setZoom2D] = useState(1);
+  const isDragging2D = useRef(false);
+  const startX2D = useRef(0);
+  const startPanX2D = useRef(50);
 
   // Three.js internal references
   const sceneRef = useRef<THREE.Scene | null>(null);
@@ -50,170 +64,65 @@ export default function Interactive360Canvas({
   const sphereMeshRef = useRef<THREE.Mesh | null>(null);
   const textureLoaderRef = useRef<THREE.TextureLoader | null>(null);
 
-  // Interaction coordinates
+  // Interaction coordinates for 3D
   const isUserInteractingRef = useRef(false);
   const onPointerDownPointerXRef = useRef(0);
   const onPointerDownPointerYRef = useRef(0);
   const onPointerDownLonRef = useRef(0);
   const onPointerDownLatRef = useRef(0);
-  const lonRef = useRef(0);
+  const lonRef = useRef(180);
   const latRef = useRef(0);
   const phiRef = useRef(0);
   const thetaRef = useRef(0);
 
-  const activeScene = scenes[activeSceneIndex] || scenes[0];
+  const safeScenes = Array.isArray(scenes) && scenes.length > 0 ? scenes : [
+    {
+      id: "fallback-scene",
+      title: "Punto 360° Principal",
+      equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_01.jpg",
+      thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_01.jpg",
+      roomName: "Vista General"
+    }
+  ];
 
-  // Reset to first scene when date/scenes list changes
+  const activeScene = safeScenes[activeSceneIndex] || safeScenes[0];
+
+  const handleToggleAutoRotate = () => {
+    setAutoRotate((prev) => {
+      const next = !prev;
+      autoRotateRef.current = next;
+      return next;
+    });
+  };
+
+  // Reset angle when scenes or index changes
   useEffect(() => {
-    setActiveSceneIndex(0);
     lonRef.current = 180;
     latRef.current = 0;
-  }, [scenes]);
+  }, [scenes, activeSceneIndex]);
 
-  // Reset angle when changing active scene
-  useEffect(() => {
-    lonRef.current = 180;
-    latRef.current = 0;
-  }, [activeSceneIndex]);
-
-  // Initialize Three.js WebGL Scene
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    const width = containerRef.current.clientWidth || window.innerWidth || 360;
-    const height = containerRef.current.clientHeight || 480;
-    const aspect = (width > 0 && height > 0) ? width / height : 16 / 9;
-
-    const scene = new THREE.Scene();
-    sceneRef.current = scene;
-
-    const camera = new THREE.PerspectiveCamera(75, aspect, 1, 1100);
-    cameraRef.current = camera;
-
-    const geometry = new THREE.SphereGeometry(500, 60, 40);
-    // Invert geometry so faces point inward
-    geometry.scale(-1, 1, 1);
-
-    const material = new THREE.MeshBasicMaterial({
-      color: 0xffffff,
-    });
-
-    const mesh = new THREE.Mesh(geometry, material);
-    scene.add(mesh);
-    sphereMeshRef.current = mesh;
-
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: "high-performance" });
-    renderer.outputColorSpace = THREE.SRGBColorSpace;
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setSize(width, height);
-    rendererRef.current = renderer;
-
-    const loader = new THREE.TextureLoader();
-    textureLoaderRef.current = loader;
-
-    // Load initial scene texture immediately once mesh is created
-    if (activeScene?.equirectangularUrl) {
-      setIsLoading(true);
-      loader.load(
-        activeScene.equirectangularUrl,
-        (texture) => {
-          texture.colorSpace = THREE.SRGBColorSpace;
-          texture.minFilter = THREE.LinearFilter;
-          texture.magFilter = THREE.LinearFilter;
-          texture.generateMipmaps = false;
-
-          const mat = mesh.material as THREE.MeshBasicMaterial;
-          if (mat.map) mat.map.dispose();
-          mat.color.setHex(0xffffff);
-          mat.map = texture;
-          mat.needsUpdate = true;
-          setIsLoading(false);
-        },
-        undefined,
-        () => {
-          setIsLoading(false);
-        }
-      );
-    }
-
-    // Clear previous children
-    while (containerRef.current.firstChild) {
-      containerRef.current.removeChild(containerRef.current.firstChild);
-    }
-    containerRef.current.appendChild(renderer.domElement);
-
-    let animationFrameId: number;
-
-    const animate = () => {
-      animationFrameId = requestAnimationFrame(animate);
-
-      if (autoRotateRef.current && !isUserInteractingRef.current) {
-        lonRef.current += 0.16;
-      }
-
-      latRef.current = Math.max(-85, Math.min(85, latRef.current));
-      phiRef.current = THREE.MathUtils.degToRad(90 - latRef.current);
-      thetaRef.current = THREE.MathUtils.degToRad(lonRef.current);
-
-      const targetX = 500 * Math.sin(phiRef.current) * Math.cos(thetaRef.current);
-      const targetY = 500 * Math.cos(phiRef.current);
-      const targetZ = 500 * Math.sin(phiRef.current) * Math.sin(thetaRef.current);
-
-      if (cameraRef.current) {
-        cameraRef.current.lookAt(targetX, targetY, targetZ);
-        renderer.render(scene, cameraRef.current);
-      }
-    };
-
-    animate();
-
-    const handleResize = () => {
-      if (!containerRef.current || !cameraRef.current || !rendererRef.current) return;
-      const newW = containerRef.current.clientWidth || window.innerWidth || 360;
-      const newH = containerRef.current.clientHeight || 480;
-      if (newW > 0 && newH > 0) {
-        cameraRef.current.aspect = newW / newH;
-        cameraRef.current.updateProjectionMatrix();
-        rendererRef.current.setSize(newW, newH);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    const resizeObserver = new ResizeObserver(() => {
-      handleResize();
-    });
-    resizeObserver.observe(containerRef.current);
-
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-      window.removeEventListener("resize", handleResize);
-      resizeObserver.disconnect();
-      renderer.dispose();
-      geometry.dispose();
-      material.dispose();
-    };
-  }, []);
-
-  // Load active scene texture into sphere when activeScene changes
-  useEffect(() => {
-    if (!activeScene?.equirectangularUrl || !sphereMeshRef.current) return;
-
+  // Texture loading helper
+  const loadTexture = useCallback((url: string) => {
+    if (!url || !sphereMeshRef.current) return;
     setIsLoading(true);
 
-    const loader = textureLoaderRef.current || new THREE.TextureLoader();
-    textureLoaderRef.current = loader;
+    if (!textureLoaderRef.current) {
+      textureLoaderRef.current = new THREE.TextureLoader();
+    }
 
-    let isMounted = true;
-    const safetyTimer = setTimeout(() => {
-      if (isMounted) setIsLoading(false);
-    }, 1500);
+    let isSubscribed = true;
+    const fallbackTimer = setTimeout(() => {
+      if (isSubscribed) setIsLoading(false);
+    }, 2000);
 
-    loader.load(
-      activeScene.equirectangularUrl,
+    textureLoaderRef.current.load(
+      url,
       (texture) => {
-        if (!isMounted) return;
-        clearTimeout(safetyTimer);
+        if (!isSubscribed) {
+          texture.dispose();
+          return;
+        }
+        clearTimeout(fallbackTimer);
         texture.colorSpace = THREE.SRGBColorSpace;
         texture.minFilter = THREE.LinearFilter;
         texture.magFilter = THREE.LinearFilter;
@@ -221,7 +130,9 @@ export default function Interactive360Canvas({
 
         if (sphereMeshRef.current) {
           const mat = sphereMeshRef.current.material as THREE.MeshBasicMaterial;
-          if (mat.map) mat.map.dispose();
+          if (mat.map) {
+            mat.map.dispose();
+          }
           mat.color.setHex(0xffffff);
           mat.map = texture;
           mat.needsUpdate = true;
@@ -229,22 +140,151 @@ export default function Interactive360Canvas({
         setIsLoading(false);
       },
       undefined,
-      (error) => {
-        console.error("Error loading 360 equirectangular texture:", error);
-        if (isMounted) {
-          clearTimeout(safetyTimer);
+      (err) => {
+        console.warn("Could not load equirectangular texture, using fallback preview:", err);
+        if (isSubscribed) {
+          clearTimeout(fallbackTimer);
           setIsLoading(false);
         }
       }
     );
 
     return () => {
-      isMounted = false;
-      clearTimeout(safetyTimer);
+      isSubscribed = false;
+      clearTimeout(fallbackTimer);
     };
-  }, [activeScene?.equirectangularUrl]);
+  }, []);
 
-  // Pointer / Drag Controls
+  // Initialize Three.js WebGL Scene
+  useEffect(() => {
+    if (!checkWebGLSupport()) {
+      setWebGLSupported(false);
+      setIsLoading(false);
+      return;
+    }
+
+    const container = mountRef.current;
+    if (!container) return;
+
+    let renderer: THREE.WebGLRenderer | null = null;
+    let animationFrameId: number | null = null;
+    let resizeObserver: ResizeObserver | null = null;
+
+    try {
+      const width = container.clientWidth || window.innerWidth || 360;
+      const height = container.clientHeight || 480;
+      const aspect = (width > 0 && height > 0) ? width / height : 16 / 9;
+
+      const scene = new THREE.Scene();
+      sceneRef.current = scene;
+
+      const camera = new THREE.PerspectiveCamera(75, aspect, 1, 1100);
+      cameraRef.current = camera;
+
+      const geometry = new THREE.SphereGeometry(500, 60, 40);
+      geometry.scale(-1, 1, 1);
+
+      const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
+      const mesh = new THREE.Mesh(geometry, material);
+      scene.add(mesh);
+      sphereMeshRef.current = mesh;
+
+      renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: false,
+        powerPreference: "high-performance",
+        failIfMajorPerformanceCaveat: false
+      });
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.setSize(width, height);
+      rendererRef.current = renderer;
+
+      // Safely attach canvas
+      container.innerHTML = "";
+      container.appendChild(renderer.domElement);
+
+      // Load active texture
+      if (activeScene?.equirectangularUrl) {
+        loadTexture(activeScene.equirectangularUrl);
+      }
+
+      // Animation Loop
+      const animate = () => {
+        animationFrameId = requestAnimationFrame(animate);
+
+        if (autoRotateRef.current && !isUserInteractingRef.current) {
+          lonRef.current += 0.16;
+        }
+
+        latRef.current = Math.max(-85, Math.min(85, latRef.current));
+        phiRef.current = THREE.MathUtils.degToRad(90 - latRef.current);
+        thetaRef.current = THREE.MathUtils.degToRad(lonRef.current);
+
+        const targetX = 500 * Math.sin(phiRef.current) * Math.cos(thetaRef.current);
+        const targetY = 500 * Math.cos(phiRef.current);
+        const targetZ = 500 * Math.sin(phiRef.current) * Math.sin(thetaRef.current);
+
+        if (cameraRef.current && rendererRef.current && sceneRef.current) {
+          cameraRef.current.lookAt(targetX, targetY, targetZ);
+          rendererRef.current.render(sceneRef.current, cameraRef.current);
+        }
+      };
+
+      animate();
+
+      // Resize Handler
+      const handleResize = () => {
+        if (!container || !cameraRef.current || !rendererRef.current) return;
+        const newW = container.clientWidth || window.innerWidth || 360;
+        const newH = container.clientHeight || 480;
+        if (newW > 0 && newH > 0) {
+          cameraRef.current.aspect = newW / newH;
+          cameraRef.current.updateProjectionMatrix();
+          rendererRef.current.setSize(newW, newH);
+        }
+      };
+
+      window.addEventListener("resize", handleResize);
+
+      if (typeof ResizeObserver !== "undefined") {
+        resizeObserver = new ResizeObserver(() => {
+          handleResize();
+        });
+        resizeObserver.observe(container);
+      }
+    } catch (err) {
+      console.warn("WebGL initialization failed, switching to 2D panorama:", err);
+      setWebGLSupported(false);
+      setIsLoading(false);
+    }
+
+    return () => {
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId);
+      }
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+      }
+      if (renderer) {
+        try {
+          renderer.dispose();
+          if (renderer.domElement && renderer.domElement.parentNode) {
+            renderer.domElement.parentNode.removeChild(renderer.domElement);
+          }
+        } catch {}
+      }
+    };
+  }, []);
+
+  // Update texture when active scene changes
+  useEffect(() => {
+    if (webGLSupported && activeScene?.equirectangularUrl) {
+      loadTexture(activeScene.equirectangularUrl);
+    }
+  }, [activeScene?.equirectangularUrl, webGLSupported, loadTexture]);
+
+  // Pointer / Drag Controls for 3D
   const handlePointerDown = (e: React.PointerEvent) => {
     isUserInteractingRef.current = true;
     try {
@@ -281,10 +321,13 @@ export default function Interactive360Canvas({
   };
 
   const handleZoom = (direction: "in" | "out") => {
-    if (!cameraRef.current) return;
-    const delta = direction === "in" ? -10 : 10;
-    cameraRef.current.fov = THREE.MathUtils.clamp(cameraRef.current.fov + delta, 35, 95);
-    cameraRef.current.updateProjectionMatrix();
+    if (webGLSupported && cameraRef.current) {
+      const delta = direction === "in" ? -10 : 10;
+      cameraRef.current.fov = THREE.MathUtils.clamp(cameraRef.current.fov + delta, 35, 95);
+      cameraRef.current.updateProjectionMatrix();
+    } else {
+      setZoom2D((z) => (direction === "in" ? Math.min(z + 0.25, 2.5) : Math.max(z - 0.25, 1)));
+    }
   };
 
   const handleResetView = () => {
@@ -294,14 +337,34 @@ export default function Interactive360Canvas({
       cameraRef.current.fov = 75;
       cameraRef.current.updateProjectionMatrix();
     }
+    setPanX(50);
+    setZoom2D(1);
+  };
+
+  // 2D Pan handlers for non-WebGL fallback
+  const handle2DPointerDown = (e: React.PointerEvent) => {
+    isDragging2D.current = true;
+    startX2D.current = e.clientX;
+    startPanX2D.current = panX;
+  };
+
+  const handle2DPointerMove = (e: React.PointerEvent) => {
+    if (!isDragging2D.current) return;
+    const dx = e.clientX - startX2D.current;
+    const deltaPercent = (dx / (mountRef.current?.clientWidth || 600)) * 50;
+    setPanX(Math.max(0, Math.min(100, startPanX2D.current - deltaPercent)));
+  };
+
+  const handle2DPointerUp = () => {
+    isDragging2D.current = false;
   };
 
   const handlePrevScene = () => {
-    setActiveSceneIndex((prev) => (prev > 0 ? prev - 1 : scenes.length - 1));
+    setActiveSceneIndex((prev) => (prev > 0 ? prev - 1 : safeScenes.length - 1));
   };
 
   const handleNextScene = () => {
-    setActiveSceneIndex((prev) => (prev < scenes.length - 1 ? prev + 1 : 0));
+    setActiveSceneIndex((prev) => (prev < safeScenes.length - 1 ? prev + 1 : 0));
   };
 
   return (
@@ -311,16 +374,39 @@ export default function Interactive360Canvas({
       }`}
     >
       {/* 3D WebGL Canvas Viewport */}
-      <div
-        ref={containerRef}
-        className="w-full h-full cursor-grab active:cursor-grabbing touch-none select-none"
-        onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
-        onPointerUp={handlePointerUp}
-        onPointerCancel={handlePointerUp}
-        onPointerLeave={handlePointerUp}
-        onWheel={handleWheel}
-      />
+      {webGLSupported ? (
+        <div
+          ref={mountRef}
+          className="w-full h-full cursor-grab active:cursor-grabbing touch-none select-none"
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+          onPointerCancel={handlePointerUp}
+          onPointerLeave={handlePointerUp}
+          onWheel={handleWheel}
+        />
+      ) : (
+        /* 2D PANORAMIC FALLBACK VIEW */
+        <div
+          ref={mountRef}
+          onPointerDown={handle2DPointerDown}
+          onPointerMove={handle2DPointerMove}
+          onPointerUp={handle2DPointerUp}
+          onPointerLeave={handle2DPointerUp}
+          className="w-full h-full relative overflow-hidden bg-black cursor-grab active:cursor-grabbing"
+        >
+          <img
+            src={activeScene?.equirectangularUrl || activeScene?.thumbnailUrl}
+            alt={activeScene?.title || "Vista 360°"}
+            style={{
+              objectPosition: `${panX}% center`,
+              transform: `scale(${zoom2D})`,
+            }}
+            className="w-full h-full object-cover transition-transform duration-100"
+            draggable={false}
+          />
+        </div>
+      )}
 
       {/* LOADING SPINNER OVERLAY */}
       {isLoading && (
@@ -346,7 +432,7 @@ export default function Interactive360Canvas({
                 {dateTitle}
               </span>
               <span className="text-[9px] font-mono px-2 py-0.2 bg-teal-uno/15 text-teal-uno rounded-full border border-teal-uno/30 font-bold">
-                Punto {activeSceneIndex + 1} de {scenes.length}
+                Punto {activeSceneIndex + 1} de {safeScenes.length}
               </span>
             </div>
             <h4 className="font-headline-md text-xs sm:text-sm font-semibold text-teal-uno uppercase truncate max-w-xs sm:max-w-sm">
@@ -357,17 +443,19 @@ export default function Interactive360Canvas({
 
         {/* Right: Quick Controls Toolbar */}
         <div className="flex items-center gap-1.5 bg-background/90 backdrop-blur-md p-1.5 rounded-full border border-arena-calida/30 shadow-lg pointer-events-auto">
-          <button
-            onClick={handleToggleAutoRotate}
-            className={`p-2 rounded-full text-xs transition-colors cursor-pointer ${
-              autoRotate
-                ? "bg-teal-uno text-white font-bold shadow-xs"
-                : "text-gris-texto hover:text-teal-uno hover:bg-arena-calida/20"
-            }`}
-            title={autoRotate ? "Pausar autorrotación" : "Activar autorrotación 360°"}
-          >
-            {autoRotate ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-          </button>
+          {webGLSupported && (
+            <button
+              onClick={handleToggleAutoRotate}
+              className={`p-2 rounded-full text-xs transition-colors cursor-pointer ${
+                autoRotate
+                  ? "bg-teal-uno text-white font-bold shadow-xs"
+                  : "text-gris-texto hover:text-teal-uno hover:bg-arena-calida/20"
+              }`}
+              title={autoRotate ? "Pausar autorrotación" : "Activar autorrotación 360°"}
+            >
+              {autoRotate ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
+            </button>
+          )}
 
           <button
             onClick={() => handleZoom("in")}
@@ -390,7 +478,7 @@ export default function Interactive360Canvas({
             className="p-2 rounded-full text-gris-texto hover:text-teal-uno hover:bg-arena-calida/20 transition-colors cursor-pointer text-[10px] font-label-caps uppercase"
             title="Centrar vista"
           >
-            <Compass className="w-3.5 h-3.5 text-arena-calida" />
+            {webGLSupported ? <Compass className="w-3.5 h-3.5 text-arena-calida" /> : <RotateCcw className="w-3.5 h-3.5 text-arena-calida" />}
           </button>
 
           <button
@@ -404,7 +492,7 @@ export default function Interactive360Canvas({
       </div>
 
       {/* BOTTOM SCENE SELECTOR CAROUSEL STRIP */}
-      {scenes.length > 1 && (
+      {safeScenes.length > 1 && (
         <div className="absolute bottom-4 left-4 right-4 z-10 flex flex-col gap-2">
           {/* Collapse/Expand scenes button */}
           <div className="flex items-center justify-between pointer-events-none">
@@ -413,7 +501,7 @@ export default function Interactive360Canvas({
               className="bg-background/90 backdrop-blur-md px-4 py-2 rounded-full border border-arena-calida/30 text-xs font-label-caps uppercase text-arena-calida hover:text-teal-uno transition-colors cursor-pointer pointer-events-auto flex items-center gap-2 shadow-md font-semibold"
             >
               <Layers className="w-3.5 h-3.5 text-teal-uno" />
-              <span>{showSceneList ? "Ocultar Puntos 360°" : `Ver ${scenes.length} Puntos 360°`}</span>
+              <span>{showSceneList ? "Ocultar Puntos 360°" : `Ver ${safeScenes.length} Puntos 360°`}</span>
             </button>
 
             {/* Prev / Next Scene Arrows */}
@@ -438,7 +526,7 @@ export default function Interactive360Canvas({
           {/* Horizontal Thumbnails Bar */}
           {showSceneList && (
             <div className="bg-background/90 backdrop-blur-md p-2.5 rounded-2xl border border-arena-calida/30 flex items-center gap-2.5 overflow-x-auto no-scrollbar shadow-2xl">
-              {scenes.map((scene, idx) => {
+              {safeScenes.map((scene, idx) => {
                 const isActive = idx === activeSceneIndex;
                 return (
                   <button

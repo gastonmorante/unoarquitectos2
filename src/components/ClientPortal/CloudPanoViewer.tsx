@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { 
   Calendar, 
   Layers,
-  FolderOpen
+  FolderOpen,
+  Compass
 } from "lucide-react";
 import { Tour360Folder } from "../../types/clientPortal";
-import Interactive360Canvas from "./Interactive360Canvas";
+
+const Interactive360Canvas = lazy(() => import("./Interactive360Canvas"));
 
 interface CloudPanoViewerProps {
   tours: Tour360Folder[];
@@ -17,13 +19,14 @@ interface CloudPanoViewerProps {
 }
 
 export default function CloudPanoViewer({
-  tours,
+  tours = [],
   selectedTourId: externalSelectedTourId,
   hideTourSelector = false,
   onSelectTourId,
 }: CloudPanoViewerProps) {
+  const safeTours = Array.isArray(tours) && tours.length > 0 ? tours : [];
   const [selectedTourId, setSelectedTourId] = useState<string>(
-    externalSelectedTourId || tours[0]?.id || ""
+    externalSelectedTourId || safeTours[0]?.id || ""
   );
 
   useEffect(() => {
@@ -34,7 +37,7 @@ export default function CloudPanoViewer({
 
   const [isFullscreen, setIsFullscreen] = useState(false);
 
-  const activeTour = tours.find((t) => t.id === selectedTourId) || tours[0];
+  const activeTour = safeTours.find((t) => t.id === selectedTourId) || safeTours[0];
 
   const toggleFullscreen = () => {
     setIsFullscreen((prev) => !prev);
@@ -43,18 +46,18 @@ export default function CloudPanoViewer({
   return (
     <div className="space-y-6 font-sans text-left">
       {/* FOLDER SELECTION BY DATE (IF SHOWN) */}
-      {!hideTourSelector && (
+      {!hideTourSelector && safeTours.length > 0 && (
         <div className="space-y-3">
           <div className="flex items-center justify-between text-xs font-label-caps uppercase tracking-wider text-arena-calida font-semibold">
             <span className="flex items-center gap-1.5">
               <Calendar className="w-3.5 h-3.5 text-teal-uno" />
-              Levantamientos 360° por Fecha ({tours.length} Registros)
+              Levantamientos 360° por Fecha ({safeTours.length} Registros)
             </span>
             <span className="text-[11px] text-teal-uno font-sans font-medium">Fidelidad 100% Levantamiento de Obra</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {tours.map((tour) => {
+            {safeTours.map((tour) => {
               const isSelected = tour.id === selectedTourId;
               const sceneCount = tour.scenes?.length || 0;
               return (
@@ -135,14 +138,32 @@ export default function CloudPanoViewer({
         </div>
       )}
 
-      {/* 360 INTERACTIVE SPHERE VIEWER */}
+      {/* 360 INTERACTIVE SPHERE VIEWER WITH LIGHTWEIGHT SUSPENSE FALLBACK */}
       {activeTour?.scenes && activeTour.scenes.length > 0 ? (
-        <Interactive360Canvas
-          scenes={activeTour.scenes}
-          dateTitle={activeTour.date}
-          isFullscreen={isFullscreen}
-          onToggleFullscreen={toggleFullscreen}
-        />
+        <Suspense
+          fallback={
+            <div className="h-[480px] sm:h-[580px] md:h-[640px] rounded-3xl border border-arena-calida/30 bg-surface-container-low flex flex-col items-center justify-center p-8 text-center space-y-4 shadow-ethereal">
+              <div className="w-12 h-12 rounded-full bg-teal-uno/15 border border-teal-uno/30 flex items-center justify-center text-teal-uno animate-pulse">
+                <Compass className="w-6 h-6 animate-spin-slow" />
+              </div>
+              <div className="space-y-1">
+                <span className="text-xs font-label-caps uppercase tracking-wider text-teal-uno font-bold block">
+                  Iniciando Visor 360° Inmersivo
+                </span>
+                <p className="text-[11px] text-arena-calida font-mono">
+                  {activeTour.date} • {activeTour.scenes.length} Puntos Esféricos HD
+                </p>
+              </div>
+            </div>
+          }
+        >
+          <Interactive360Canvas
+            scenes={activeTour.scenes}
+            dateTitle={activeTour.date}
+            isFullscreen={isFullscreen}
+            onToggleFullscreen={toggleFullscreen}
+          />
+        </Suspense>
       ) : (
         <div className="h-[450px] flex items-center justify-center bg-white/60 border border-arena-calida/30 rounded-3xl text-xs text-gris-texto font-medium shadow-ethereal">
           No hay escenas 360° cargadas para este levantamiento.
