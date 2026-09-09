@@ -21,7 +21,6 @@ import { defaultClientProjects } from "../../data/defaultClientProjects";
 import CloudPanoViewer from "./CloudPanoViewer";
 import PhotoReportsGrid from "./PhotoReportsGrid";
 import DigitalLogbookTimeline from "./DigitalLogbookTimeline";
-import BitacoraCarousel from "./BitacoraCarousel";
 import ClientAIAssistantModal from "./ClientAIAssistantModal";
 import Logo from "../Logo";
 import PortalErrorBoundary from "../PortalErrorBoundary";
@@ -41,7 +40,7 @@ export default function ClientPortalView({
   onClose,
 }: ClientPortalViewProps) {
   const safeProject = currentProject || defaultClientProjects[0];
-  const [viewMode, setViewMode] = useState<"all" | "bitacora" | "carrusel" | "360" | "photos">("all");
+  const [viewMode, setViewMode] = useState<"all" | "bitacora" | "360" | "photos">("all");
   const [showAIAssistant, setShowAIAssistant] = useState(false);
   const [showProjectSwitcher, setShowProjectSwitcher] = useState(false);
 
@@ -436,16 +435,6 @@ export default function ClientPortalView({
                   </button>
                 )}
                 <button
-                  onClick={() => setViewMode("carrusel")}
-                  className={`px-4 py-2 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold transition-all cursor-pointer ${
-                    viewMode === "carrusel"
-                      ? "bg-teal-uno text-white shadow-sm"
-                      : "text-gris-texto hover:text-teal-uno"
-                  }`}
-                >
-                  Carrusel Bitácora
-                </button>
-                <button
                   onClick={() => setViewMode("360")}
                   className={`px-4 py-2 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold transition-all cursor-pointer ${
                     viewMode === "360"
@@ -544,7 +533,7 @@ export default function ClientPortalView({
           {/* VIEW MODE 1: FICHA COMPLETA */}
           {viewMode === "all" && (
             <div className="space-y-14">
-              {/* PART 1: BITÁCORA DIGITAL DE SUPERVISIÓN TÉCNICA */}
+              {/* PART 1: BITÁCORA DIGITAL DE SUPERVISIÓN TÉCNICA (CON CARRUSEL INTEGRADO POR SEMANA) */}
               {safeLogbook.length > 0 && (
                 <section id="bitacora-digital" className="space-y-5 text-left">
                   <DigitalLogbookTimeline
@@ -556,24 +545,11 @@ export default function ClientPortalView({
                     onSelectDate={handleSelectPeriod}
                     onJumpTo360={() => setViewMode("360")}
                     onJumpToPhotos={() => setViewMode("photos")}
-                    onJumpToCarousel={() => setViewMode("carrusel")}
                   />
                 </section>
               )}
 
-              {/* PART 2: CARRUSEL CRONOLÓGICO DE BITÁCORA DE OBRA */}
-              <section id="carrusel-bitacora" className="space-y-5 text-left">
-                <BitacoraCarousel
-                  photoReports={safePhotoReports}
-                  selectedPeriod={activeDate}
-                  bitacoraFotograficaUrl={safeProject.bitacoraFotograficaUrl}
-                  bitacoraDigitalUrl={safeProject.bitacoraDigitalUrl}
-                  onSelectPeriod={handleSelectPeriod}
-                  onJumpTo360={() => setViewMode("360")}
-                />
-              </section>
-
-              {/* PART 3: GALERÍA DE FOTOS 360° */}
+              {/* PART 2: GALERÍA DE FOTOS 360° */}
               <section id="visor-360" className="space-y-5 text-left">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-arena-calida/20 pb-4">
                   <div>
@@ -599,7 +575,7 @@ export default function ClientPortalView({
                 />
               </section>
 
-              {/* PART 4: GALERÍA DE FOTOS ENCUADRADAS */}
+              {/* PART 3: GALERÍA DE FOTOS ENCUADRADAS */}
               <section id="galeria-hd" className="space-y-5 text-left">
                 <PhotoReportsGrid
                   photoReports={safePhotoReports}
@@ -629,28 +605,6 @@ export default function ClientPortalView({
                 onSelectDate={handleSelectPeriod}
                 onJumpTo360={() => setViewMode("360")}
                 onJumpToPhotos={() => setViewMode("photos")}
-                onJumpToCarousel={() => setViewMode("carrusel")}
-              />
-            </motion.div>
-          )}
-
-          {/* VIEW MODE: SOLO CARRUSEL DE BITÁCORA */}
-          {viewMode === "carrusel" && (
-            <motion.div
-              key={`carrusel-${selectedTourId}`}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.25 }}
-              className="space-y-5 text-left"
-            >
-              <BitacoraCarousel
-                photoReports={safePhotoReports}
-                selectedPeriod={activeDate}
-                bitacoraFotograficaUrl={safeProject.bitacoraFotograficaUrl}
-                bitacoraDigitalUrl={safeProject.bitacoraDigitalUrl}
-                onSelectPeriod={handleSelectPeriod}
-                onJumpTo360={() => setViewMode("360")}
               />
             </motion.div>
           )}

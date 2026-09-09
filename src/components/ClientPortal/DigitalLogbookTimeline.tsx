@@ -29,7 +29,6 @@ interface DigitalLogbookTimelineProps {
   onSelectDate?: (date: string) => void;
   onJumpTo360?: () => void;
   onJumpToPhotos?: () => void;
-  onJumpToCarousel?: () => void;
 }
 
 export default function DigitalLogbookTimeline({
@@ -41,7 +40,6 @@ export default function DigitalLogbookTimeline({
   onSelectDate,
   onJumpTo360,
   onJumpToPhotos,
-  onJumpToCarousel,
 }: DigitalLogbookTimelineProps) {
   const [expandedEntryId, setExpandedEntryId] = useState<string>(
     entries.find(e => e.date === selectedDate)?.id || entries[entries.length - 1]?.id || entries[0]?.id || ""
