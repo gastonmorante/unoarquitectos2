@@ -166,7 +166,43 @@ const getLocalArrecifesResponse = (query: string, project: ClientProject): { tex
     };
   }
 
-  // 5. FOTOS 360°, DRIVE & DESCARGAS
+  // 5. BITÁCORA DIGITAL & CRONOLOGÍA DE AVANCES MENSUALES
+  if (
+    q.includes("bitacora") ||
+    q.includes("cronolog") ||
+    q.includes("avance mensual") ||
+    q.includes("avances mensuales") ||
+    q.includes("folio") ||
+    q.includes("dictamen") ||
+    q.includes("laboratorio") ||
+    q.includes("ensaye") ||
+    q.includes("calidad")
+  ) {
+    return {
+      text: `### 📋 Bitácora Digital Oficial & Trazabilidad Técnica — **${project.propertyName}**:
+
+La obra cuenta con un registro mensual continuo de **10 Folios Técnicos Oficiales** emitidos por la Dirección de Obra del **Arq. Angel Cereceda**:
+
+1. **Enero - Marzo 2026 (Fase 1 - 30% Avance)**:
+   - Prospección Geofísica con Georradar (GPR) a 12.0m de profundidad (ausencia de cavidades kársticas certificada).
+   - Colado de zapatas aisladas y losa de rigidez de concreto f'c=250 kg/cm² (ensayes a 28 días f'c=268 kg/cm²).
+2. **Abril - Junio 2026 (Fase 2 - 48% Avance)**:
+   - Estructura de doble altura (6.40m libres) y losas nervadas con claros de hasta 8.50m. Muros de concreto aparente enduelado.
+3. **Julio - Agosto 2026 (Fase 3 - 52% Avance • Folio #07 - 27 Ago 2026)**:
+   - Climatización VRF Daikin en plenum técnico de 3.40m y prueba hidrostática a 7.0 kg/cm² (100 PSI) en 72h sin fugas.
+4. **Septiembre 2026 (Fase 4 - 72% Avance • Folio #08 - 05 Sep 2026 • ÚLTIMO AVANCE)**:
+   - Aplicación de pasta orgánica de Chukum hervida en obra, mármol Santo Tomás 1.20x2.40m y alberca cenote impermeabilizada.
+5. **Octubre - Diciembre 2026 (Fases 5 y 6 - 85% a 100% Proyectado • Entrega 20 Dic 2026)**:
+   - Carpintería en Tzalam, cancelería Eurovent antihuracán Cat. 5, iluminación Lutron 2700K y paisajismo endémico.`,
+      links: [
+        { label: "Abrir 03 Bitácora Digital (Google Drive)", url: "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link" },
+        { label: "Abrir 02 Bitácora Fotográfica (Google Drive)", url: "https://drive.google.com/drive/folders/1SKrAecbj22oz23ZIjAWoeK2p8zENDTM7?usp=drive_link" },
+        { label: "Ver Sección Bitácora en el Portal", url: "#bitacora-digital" }
+      ]
+    };
+  }
+
+  // 6. FOTOS 360°, DRIVE & DESCARGAS
   if (
     q.includes("360") ||
     q.includes("foto") ||
@@ -177,18 +213,22 @@ const getLocalArrecifesResponse = (query: string, project: ClientProject): { tex
     q.includes("galeria")
   ) {
     return {
-      text: `### 📸 Registros Multimedia Oficiales de **${project.propertyName}**:
+      text: `### 📸 Repositorios Multimedia Oficiales de **${project.propertyName}**:
 
-Dispones de acceso a:
-1. **Galería 360° Inmersiva**: Visor esférico interactivo con **19 puntos** para el 05 de Septiembre y **10 puntos** para el 27 de Agosto.
-2. **Galería de Fotos Encuadradas**: Fotografías con corrección de perspectiva arquitectónica (reframe) a dos puntos de fuga.
-3. **Carpetas de Descarga en Alta Resolución (Google Drive Oficial)**:
-   - Carpeta 05 Septiembre 2026: 20 fotos encuadradas + 19 equirectangulares 360°.
-   - Carpeta 27 Agosto 2026: 10 fotos encuadradas + 10 equirectangulares 360°.`,
+Dispones de acceso directo a los repositorios oficiales sincronizados en la nube:
+1. **02 Bitácora Fotográfica (Google Drive)**:
+   - Archivo fotográfico completo con fotos de alta resolución organizadas por fases y fechas de levantamiento.
+2. **03 Bitácora Digital (Google Drive)**:
+   - Dictámenes técnicos, reportes de supervisión de obra civil, certificados de laboratorio y actas oficiales.
+3. **Galería 360° Inmersiva Integrada**:
+   - **05 Septiembre 2026**: 19 Puntos Esféricos HD interactivos en WebGL Three.js.
+   - **27 Agosto 2026**: 10 Puntos Esféricos HD interactivos en WebGL Three.js.`,
       links: [
-        { label: "Drive 05 Septiembre 2026", url: "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link" },
-        { label: "Drive 27 Agosto 2026", url: "https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link" },
-        { label: "Carpeta Raíz Drive Maestro", url: "https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing" }
+        { label: "02 Bitácora Fotográfica (Drive)", url: "https://drive.google.com/drive/folders/1SKrAecbj22oz23ZIjAWoeK2p8zENDTM7?usp=drive_link" },
+        { label: "03 Bitácora Digital (Drive)", url: "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link" },
+        { label: "Carpeta 05 Sep 2026 (Drive)", url: "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link" },
+        { label: "Carpeta 27 Ago 2026 (Drive)", url: "https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link" },
+        { label: "Repositorio Maestro Drive", url: "https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing" }
       ]
     };
   }

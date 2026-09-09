@@ -85,6 +85,26 @@ export interface ProgressMilestone {
   isProjected?: boolean;
 }
 
+export interface DigitalLogbookEntry {
+  id: string;
+  entryNumber: string; // e.g. "Folio #08"
+  date: string; // e.g. "05 Septiembre 2026"
+  month: string; // e.g. "Septiembre 2026"
+  phaseTitle: string;
+  progress: number;
+  status: 'completed' | 'in_progress' | 'projected';
+  executiveSummary: string;
+  technicalDictum: string;
+  labTestsAndQuality: string[];
+  keyMilestones: string[];
+  personnelOnSite: string;
+  inspectedBy: string;
+  driveFolderUrl?: string;
+  photographicLogUrl?: string;
+  scenes360Count?: number;
+  photosCount?: number;
+}
+
 export interface ClientProject {
   id: string;
   propertyName: string;
@@ -104,5 +124,9 @@ export interface ClientProject {
   photoReports: PhotoReport[];
   beforeAfterComparisons: BeforeAfterItem[];
   milestones?: ProgressMilestone[];
+  bitacoraFotograficaUrl?: string;
+  bitacoraDigitalUrl?: string;
+  masterDriveFolderUrl?: string;
+  digitalLogbook?: DigitalLogbookEntry[];
 }
 

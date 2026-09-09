@@ -11,11 +11,15 @@ import {
   Sparkles,
   Award,
   CheckCircle2,
-  ArrowLeft
+  ArrowLeft,
+  FileText,
+  FolderOpen,
+  ExternalLink
 } from "lucide-react";
 import { ClientProject, Tour360Folder } from "../../types/clientPortal";
 import CloudPanoViewer from "./CloudPanoViewer";
 import PhotoReportsGrid from "./PhotoReportsGrid";
+import DigitalLogbookTimeline from "./DigitalLogbookTimeline";
 import ClientAIAssistantModal from "./ClientAIAssistantModal";
 import Logo from "../Logo";
 
@@ -33,7 +37,7 @@ export default function ClientPortalView({
   onSelectProject,
   onClose,
 }: ClientPortalViewProps) {
-  const [viewMode, setViewMode] = useState<"all" | "360" | "photos">("all");
+  const [viewMode, setViewMode] = useState<"all" | "bitacora" | "360" | "photos">("all");
   const [showAIAssistant, setShowAIAssistant] = useState(false);
   const [showProjectSwitcher, setShowProjectSwitcher] = useState(false);
 
@@ -221,6 +225,52 @@ export default function ClientPortalView({
                   </span>
                 </div>
               </div>
+
+              {/* GOOGLE DRIVE REPOSITORIES QUICK ACCESS PILLS */}
+              {(currentProject.bitacoraFotograficaUrl || currentProject.bitacoraDigitalUrl) && (
+                <div className="pt-2 flex flex-wrap items-center gap-2.5">
+                  {currentProject.bitacoraFotograficaUrl && (
+                    <a
+                      href={currentProject.bitacoraFotograficaUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 bg-white/90 hover:bg-teal-uno hover:text-white text-teal-uno border border-arena-calida/40 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-bold flex items-center gap-1.5 transition-all shadow-xs cursor-pointer group"
+                      title="Abrir carpeta 02 Bitácora Fotográfica en Google Drive"
+                    >
+                      <Camera className="w-3.5 h-3.5 text-arena-calida group-hover:text-white transition-colors" />
+                      <span>02 Bitácora Fotográfica</span>
+                      <ExternalLink className="w-3 h-3 opacity-60 group-hover:opacity-100" />
+                    </a>
+                  )}
+
+                  {currentProject.bitacoraDigitalUrl && (
+                    <a
+                      href={currentProject.bitacoraDigitalUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 bg-teal-uno/10 hover:bg-teal-uno hover:text-white text-teal-uno border border-teal-uno/30 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-bold flex items-center gap-1.5 transition-all shadow-xs cursor-pointer group"
+                      title="Abrir carpeta 03 Bitácora Digital en Google Drive"
+                    >
+                      <FileText className="w-3.5 h-3.5 text-arena-calida group-hover:text-white transition-colors" />
+                      <span>03 Bitácora Digital</span>
+                      <ExternalLink className="w-3 h-3 opacity-60 group-hover:opacity-100" />
+                    </a>
+                  )}
+
+                  {currentProject.masterDriveFolderUrl && (
+                    <a
+                      href={currentProject.masterDriveFolderUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3.5 py-2 bg-white/70 hover:bg-arena-calida hover:text-white text-gris-texto border border-arena-calida/30 rounded-full text-[11px] font-label-caps uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-xs cursor-pointer font-medium group"
+                      title="Abrir carpeta maestra de obra en Google Drive"
+                    >
+                      <FolderOpen className="w-3.5 h-3.5 text-teal-uno group-hover:text-white transition-colors" />
+                      <span>Drive Maestro</span>
+                    </a>
+                  )}
+                </div>
+              )}
             </div>
 
             {/* RIGHT: Dynamic Progress Radial Gauge & Architect Card */}
@@ -346,7 +396,7 @@ export default function ClientPortalView({
             </div>
 
             {/* VIEW MODE TOGGLE BUTTONS */}
-            <div className="flex items-center gap-1.5 bg-white/80 backdrop-blur-md p-1.5 rounded-full border border-arena-calida/30 shadow-xs self-start sm:self-auto">
+            <div className="flex flex-wrap items-center gap-1.5 bg-white/80 backdrop-blur-md p-1.5 rounded-full border border-arena-calida/30 shadow-xs self-start sm:self-auto">
               <button
                 onClick={() => setViewMode("all")}
                 className={`px-4 py-2 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold transition-all cursor-pointer ${
@@ -357,6 +407,18 @@ export default function ClientPortalView({
               >
                 Ficha Completa
               </button>
+              {currentProject.digitalLogbook && currentProject.digitalLogbook.length > 0 && (
+                <button
+                  onClick={() => setViewMode("bitacora")}
+                  className={`px-4 py-2 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold transition-all cursor-pointer ${
+                    viewMode === "bitacora"
+                      ? "bg-teal-uno text-white shadow-sm"
+                      : "text-gris-texto hover:text-teal-uno"
+                  }`}
+                >
+                  Bitácora Digital
+                </button>
+              )}
               <button
                 onClick={() => setViewMode("360")}
                 className={`px-4 py-2 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold transition-all cursor-pointer ${
@@ -454,10 +516,26 @@ export default function ClientPortalView({
 
       {/* 4. MAIN SYNCHRONIZED PROGRESS CONTENT */}
       <main id="seccion-galeria-activa" className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-8 py-10 sm:py-14 space-y-12">
-        {/* VIEW MODE 1: FICHA COMPLETA (FOTOS 360 + FOTOS ENCUADRADAS) */}
+        {/* VIEW MODE 1: FICHA COMPLETA (BITÁCORA DIGITAL + FOTOS 360 + FOTOS ENCUADRADAS) */}
         {viewMode === "all" && (
           <div className="space-y-14">
-            {/* PART 1: GALERÍA DE FOTOS 360° */}
+            {/* PART 1: BITÁCORA DIGITAL DE SUPERVISIÓN TÉCNICA (RESUMEN CRONOLÓGICO) */}
+            {currentProject.digitalLogbook && currentProject.digitalLogbook.length > 0 && (
+              <section id="bitacora-digital" className="space-y-5 text-left">
+                <DigitalLogbookTimeline
+                  entries={currentProject.digitalLogbook}
+                  bitacoraFotograficaUrl={currentProject.bitacoraFotograficaUrl}
+                  bitacoraDigitalUrl={currentProject.bitacoraDigitalUrl}
+                  masterDriveFolderUrl={currentProject.masterDriveFolderUrl}
+                  selectedDate={activeDate}
+                  onSelectDate={handleSelectPeriod}
+                  onJumpTo360={() => setViewMode("360")}
+                  onJumpToPhotos={() => setViewMode("photos")}
+                />
+              </section>
+            )}
+
+            {/* PART 2: GALERÍA DE FOTOS 360° */}
             <section id="visor-360" className="space-y-5 text-left">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-arena-calida/20 pb-4">
                 <div>
@@ -483,7 +561,7 @@ export default function ClientPortalView({
               />
             </section>
 
-            {/* PART 2: GALERÍA DE FOTOS ENCUADRADAS */}
+            {/* PART 3: GALERÍA DE FOTOS ENCUADRADAS */}
             <section id="galeria-hd" className="space-y-5 text-left">
               <PhotoReportsGrid
                 photoReports={currentProject.photoReports}
@@ -492,6 +570,29 @@ export default function ClientPortalView({
               />
             </section>
           </div>
+        )}
+
+        {/* VIEW MODE: SOLO BITÁCORA DIGITAL */}
+        {viewMode === "bitacora" && currentProject.digitalLogbook && (
+          <motion.div
+            key="view-bitacora"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25 }}
+            className="space-y-5 text-left"
+          >
+            <DigitalLogbookTimeline
+              entries={currentProject.digitalLogbook}
+              bitacoraFotograficaUrl={currentProject.bitacoraFotograficaUrl}
+              bitacoraDigitalUrl={currentProject.bitacoraDigitalUrl}
+              masterDriveFolderUrl={currentProject.masterDriveFolderUrl}
+              selectedDate={activeDate}
+              onSelectDate={handleSelectPeriod}
+              onJumpTo360={() => setViewMode("360")}
+              onJumpToPhotos={() => setViewMode("photos")}
+            />
+          </motion.div>
         )}
 
         {/* VIEW MODE 2: SOLO FOTOS 360° */}

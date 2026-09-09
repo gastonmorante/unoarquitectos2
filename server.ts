@@ -141,9 +141,11 @@ En arquitectura boutique tropical en Riviera Maya, los costos no se establecen c
 Para coordinar un diagnóstico técnico preliminar de su lote o proyecto, le invitamos a comunicarse con la Dirección General del **Arq. Angel Cereceda** (+52 1 984 210 8420).`;
   }
 
-  if (q.includes("drive") || q.includes("foto") || q.includes("360") || q.includes("descarg") || q.includes("link") || q.includes("carpeta")) {
-    return `### 📂 Repositorios Oficiales en Nube y Galerías 360°:
+  if (q.includes("drive") || q.includes("foto") || q.includes("360") || q.includes("descarg") || q.includes("link") || q.includes("carpeta") || q.includes("bitacora")) {
+    return `### 📂 Repositorios Oficiales en Nube, Bitácora y Galerías 360°:
 
+• **02 Bitácora Fotográfica (Drive)**: [Carpeta Google Drive 02 Bitácora Fotográfica](https://drive.google.com/drive/folders/1SKrAecbj22oz23ZIjAWoeK2p8zENDTM7?usp=drive_link)
+• **03 Bitácora Digital (Drive)**: [Carpeta Google Drive 03 Bitácora Digital](https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link)
 • **Avance 05 Septiembre 2026 (72%)**: 19 Puntos 360° Esféricos HD • [Carpeta Google Drive 05/09/2026](https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link)
 • **Avance 27 Agosto 2026 (52%)**: 10 Puntos 360° Esféricos HD • [Carpeta Google Drive 27/08/2026](https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link)
 • **Repositorio Maestro de Obra**: [Google Drive Master Folder](https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing)`;
@@ -222,6 +224,8 @@ CONOCIMIENTO OFICIAL DE RESIDENCIA ARRECIFES (BITÁCORA Y PROYECTO EJECUTIVO):
   * 27 Agosto 2026 (52% Global - Fase 3: Instalaciones Especiales MEP & Domótica): Tendido de ductería VRF Daikin, pruebas hidrostáticas presurizadas a 7.0 kg/cm² superadas en 72h sin caídas, cableado estructurado Lutron QSX, biodigestores y drenaje ecológico, anclaje de bastidores de acero inoxidable 316.
 - Cronograma de Entrega: Inicio 01 Agosto 2026 -> Entrega Estimada Llave en Mano: 20 Diciembre 2026.
 - Enlaces Oficiales:
+  * 02 Bitácora Fotográfica (Google Drive): https://drive.google.com/drive/folders/1SKrAecbj22oz23ZIjAWoeK2p8zENDTM7?usp=drive_link
+  * 03 Bitácora Digital (Google Drive): https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link
   * Carpeta Drive 05/09/2026: https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link
   * Carpeta Drive 27/08/2026: https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link
   * Carpeta Drive Maestra: https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing
