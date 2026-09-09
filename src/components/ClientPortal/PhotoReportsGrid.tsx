@@ -74,6 +74,16 @@ export default function PhotoReportsGrid({
 
   const activePhoto = lightboxIndex !== null ? filteredPhotos[lightboxIndex] : null;
 
+  // Get WebP optimized url if available
+  const getWebpUrl = (url: string) => {
+    if (!url) return "";
+    if (url.endsWith(".jpg") || url.endsWith(".jpeg") || url.endsWith(".png")) {
+      const base = url.substring(0, url.lastIndexOf("."));
+      return `${base}.webp`;
+    }
+    return url;
+  };
+
   return (
     <div className="space-y-8 font-sans text-left">
       {/* SECTION HEADER (CLEANED) */}
@@ -86,7 +96,7 @@ export default function PhotoReportsGrid({
           Galería de Fotos Encuadradas
         </h3>
         <p className="font-body-md text-xs sm:text-sm text-gris-texto max-w-2xl mt-1 leading-relaxed">
-          Fotografía técnica con reframe arquitectónico a 2 puntos de fuga y corrección de perspectiva rectilinear, clasificada por fechas de supervisión.
+          Fotografía técnica con reframe arquitectónico a 2 puntos de fuga y corrección de perspectiva rectilinear, clasificada por fechas de supervisión. Formato WebP ultra ligero y alta fidelidad.
         </p>
       </div>
 
@@ -208,12 +218,16 @@ export default function PhotoReportsGrid({
             >
               {/* Image Container */}
               <div className="relative aspect-[4/3] overflow-hidden bg-foundation-gray">
-                <img
-                  src={photo.imageUrl}
-                  alt={photo.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+                <picture className="w-full h-full block">
+                  <source srcSet={getWebpUrl(photo.imageUrl)} type="image/webp" />
+                  <img
+                    src={photo.imageUrl}
+                    alt={photo.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                </picture>
 
                 {/* Top Badge: Category */}
                 <div className="absolute top-3 left-3 bg-teal-uno/90 backdrop-blur-md text-white text-[10px] font-label-caps uppercase tracking-wider font-semibold px-3 py-1 rounded-full shadow-md border border-white/20">
@@ -337,12 +351,15 @@ export default function PhotoReportsGrid({
 
               {/* Image */}
               <div className="max-w-6xl max-h-[75vh] flex items-center justify-center overflow-hidden">
-                <img
-                  src={activePhoto.imageUrl}
-                  alt={activePhoto.title}
-                  style={{ transform: `scale(${zoomLevel})` }}
-                  className="max-w-full max-h-[75vh] object-contain transition-transform duration-200 rounded-lg shadow-2xl"
-                />
+                <picture className="max-w-full max-h-[75vh] block">
+                  <source srcSet={getWebpUrl(activePhoto.imageUrl)} type="image/webp" />
+                  <img
+                    src={activePhoto.imageUrl}
+                    alt={activePhoto.title}
+                    style={{ transform: `scale(${zoomLevel})` }}
+                    className="max-w-full max-h-[75vh] object-contain transition-transform duration-200 rounded-lg shadow-2xl"
+                  />
+                </picture>
               </div>
 
               {/* Next Arrow */}

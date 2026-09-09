@@ -25,6 +25,7 @@ interface DigitalLogbookTimelineProps {
   onSelectDate?: (date: string) => void;
   onJumpTo360?: () => void;
   onJumpToPhotos?: () => void;
+  onJumpToCarousel?: () => void;
 }
 
 export default function DigitalLogbookTimeline({
@@ -36,6 +37,7 @@ export default function DigitalLogbookTimeline({
   onSelectDate,
   onJumpTo360,
   onJumpToPhotos,
+  onJumpToCarousel,
 }: DigitalLogbookTimelineProps) {
   const [expandedEntryId, setExpandedEntryId] = useState<string>(
     entries.find(e => e.date === selectedDate)?.id || entries[entries.length - 3]?.id || entries[0]?.id || ""
@@ -316,13 +318,23 @@ export default function DigitalLogbookTimeline({
                           </button>
                         )}
 
+                        {entry.photosCount && entry.photosCount > 0 && onJumpToCarousel && (
+                          <button
+                            onClick={onJumpToCarousel}
+                            className="px-3.5 py-1.5 bg-teal-uno/15 hover:bg-teal-uno hover:text-white text-teal-uno border border-teal-uno/30 rounded-full text-[11px] font-label-caps uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-xs cursor-pointer font-bold"
+                          >
+                            <Sparkles className="w-3.5 h-3.5" />
+                            <span>Ver en Carrusel ({entry.photosCount})</span>
+                          </button>
+                        )}
+
                         {entry.photosCount && entry.photosCount > 0 && onJumpToPhotos && (
                           <button
                             onClick={onJumpToPhotos}
                             className="px-3.5 py-1.5 bg-arena-calida/15 hover:bg-arena-calida hover:text-white text-arena-calida border border-arena-calida/40 rounded-full text-[11px] font-label-caps uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-xs cursor-pointer font-bold"
                           >
                             <Camera className="w-3.5 h-3.5" />
-                            <span>Ver Fotos ({entry.photosCount})</span>
+                            <span>Ver Cuadrícula ({entry.photosCount})</span>
                           </button>
                         )}
                       </div>
