@@ -166,43 +166,50 @@ const getLocalArrecifesResponse = (query: string, project: ClientProject): { tex
     };
   }
 
-  // 5. BITÁCORA DIGITAL & CRONOLOGÍA DE AVANCES
+  // 5. BITÁCORA DIGITAL & CRONOLOGÍA DE AVANCES (18 FICHAS SEMANALES EN DRIVE)
   if (
     q.includes("bitacora") ||
     q.includes("cronolog") ||
-    q.includes("avance mensual") ||
-    q.includes("avances mensuales") ||
+    q.includes("avance") ||
     q.includes("folio") ||
+    q.includes("semana") ||
     q.includes("dictamen") ||
     q.includes("laboratorio") ||
     q.includes("ensaye") ||
-    q.includes("calidad")
+    q.includes("calidad") ||
+    q.includes("documento") ||
+    q.includes("pdf")
   ) {
     return {
       text: `### 📋 Bitácora Digital Oficial & Trazabilidad Técnica — **${project.propertyName}**:
 
-La bitácora digital de obra está respaldada y sincronizada directamente con los repositorios oficiales de **Google Drive** bajo la supervisión del **${project.director.name}**, contando con **2 Folios Técnicos Oficiales Registrados**:
+La bitácora digital de obra está respaldada y sincronizada directamente con los **18 Documentos PDF Oficiales de Bitácora** en Google Drive bajo la supervisión técnica del **${project.director.name}**:
 
-1. **Folio #01 (27 de Agosto de 2026 — 52% de Avance)**:
-   - **Fase 3: Instalaciones Especiales (MEP, Climatización Daikin & Domótica Lutron)**.
-   - Ductería oculta de climatización VRF Daikin en entrepisos técnicos de 3.40m.
-   - Prueba hidrostática de presión superada a **7.0 kg/cm² (100 PSI)** durante 72h continuas con cero caídas barométricas.
-   - Sistema de drenaje ecológico con biodigestores anaeróbicos y humedales PTAR.
-   - **10 Puntos 360° Esféricos HD** y 10 Fotos de supervisión técnica.
-   - [Carpeta Drive 27/08/2026](https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link).
+1. **Abril 2026 (Semana 15 a Semana 17)**:
+   - **S15 (10/04/2026)**: Limpieza del terreno, desmonte selectivo de maleza y rocas, trazo inicial y excavación para cimentación de mampostería.
+   - **S16 (17/04/2026)**: Construcción de bodega de materiales (3x5m), excavación de zanjas, colocación de mampostería alineada y conexiones provisionales.
+   - **S17 (24/04/2026)**: Conclusión de cimentación de mampostería en barda perimetral.
 
-2. **Folio #02 (05 de Septiembre de 2026 — 72% de Avance • ÚLTIMO AVANCE REGISTRADO)**:
-   - **Fase 4: Revestimientos en Chukum Tradicional Maya & Mármol Santo Tomás**.
-   - Aplicación de pasta orgánica de Chukum (*Havardia albicans*) hervida en obra con agua de pozo en muros de doble altura (**6.40m**) y fachada.
-   - Colocación y nivelación láser de placas de mármol Santo Tomás (**1.20 x 2.40m**) apomazadas mate con juntas de 1.5mm.
-   - Impermeabilización de alberca cenote de **48 m²** y preparación para acabado turquesa.
-   - Carpintería en Tzalam curada al 10% de humedad en taller propio de Tulum.
-   - **19 Puntos 360° Esféricos HD** y 20 Fotografías de alta resolución.
-   - [Carpeta Drive 05/09/2026](https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link).`,
+2. **Mayo 2026 (Semana 18 a Semana 21)**:
+   - **S18 (01/05/2026)**: Conclusión de mampostería perimetral y armados de acero.
+   - **S19 (08/05/2026)** a **S21 (22/05/2026)**: Estructuración de zapatas, dados de concreto armado, desplante de castillos y trabes de liga.
+
+3. **Junio 2026 (Semana 23 a Semana 26)**:
+   - **S23 (05/06/2026)** a **S26 (26/06/2026)**: Muros de mampostería, cimbrado aparente y colado de losas de entrepiso y trabes principales.
+
+4. **Julio 2026 (Semana 27 a Semana 31)**:
+   - **S27 (02/07/2026)** a **S31 (30/07/2026)**: Estructura de cubierta, pendientes pluviales, albañilería interior y preparaciones MEP.
+
+5. **Agosto 2026 (Semana 32 a Semana 35 • 52% a 70% Avance)**:
+   - **S32 (07/08/2026)**: Canalizaciones hidráulicas y sanitarias en firme.
+   - **S35 (28/08/2026)**: Climatización Daikin VRF en plenum técnico de 3.40m, prueba hidrostática a **7.0 kg/cm² (100 PSI)** superada en 72h sin caídas, domótica Lutron QSX y **10 Puntos 360° HD**.
+
+6. **Septiembre 2026 (Semana 36 • 72% Avance • ÚLTIMO AVANCE REGISTRADO)**:
+   - **S36 (04/09/2026)**: Revestimientos en Chukum tradicional en doble altura (**6.40m**), placas de mármol Santo Tomás (**1.20x2.40m**), carpintería en Tzalam, impermeabilización de alberca cenote (**48 m²**) y **19 Puntos 360° HD**.`,
       links: [
-        { label: "Abrir 03 Bitácora Digital (Google Drive)", url: "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link" },
+        { label: "Abrir 03 Bitácora Digital (18 PDFs en Google Drive)", url: "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link" },
         { label: "Abrir 02 Bitácora Fotográfica (Google Drive)", url: "https://drive.google.com/drive/folders/1SKrAecbj22oz23ZIjAWoeK2p8zENDTM7?usp=drive_link" },
-        { label: "Ver Sección Bitácora en el Portal", url: "#bitacora-digital" }
+        { label: "Ver Cronología de 18 Fichas en el Portal", url: "#bitacora-digital" }
       ]
     };
   }

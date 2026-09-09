@@ -148,15 +148,16 @@ En arquitectura boutique tropical en Riviera Maya, los costos no se establecen c
 
 Para coordinar un diagn\xF3stico t\xE9cnico preliminar de su lote o proyecto, le invitamos a comunicarse con la Direcci\xF3n General del **Arq. Angel Cereceda** (+52 1 984 210 8420).`;
   }
-  if (q.includes("drive") || q.includes("foto") || q.includes("360") || q.includes("descarg") || q.includes("link") || q.includes("carpeta") || q.includes("bitacora") || q.includes("folio")) {
-    return `### \u{1F4C2} Repositorios Oficiales en Nube & Bit\xE1cora Digital:
+  if (q.includes("drive") || q.includes("foto") || q.includes("360") || q.includes("descarg") || q.includes("link") || q.includes("carpeta") || q.includes("bitacora") || q.includes("folio") || q.includes("semana") || q.includes("pdf")) {
+    return `### \u{1F4C2} Repositorios Oficiales en Nube & Bit\xE1cora Digital (18 Fichas Semanales):
 
-La bit\xE1cora digital de **Residencia Arrecifes** est\xE1 respaldada en Google Drive y documenta los levantamientos t\xE9cnicos oficiales:
+La bit\xE1cora digital de **Residencia Arrecifes** est\xE1 respaldada en Google Drive y documenta los 18 levantamientos t\xE9cnicos oficiales desde la **Semana 15 (10 Abril 2026)** hasta la **Semana 36 (04 Septiembre 2026)**:
 
-\u2022 **02 Bit\xE1cora Fotogr\xE1fica (Drive)**: [Carpeta Google Drive 02 Bit\xE1cora Fotogr\xE1fica](https://drive.google.com/drive/folders/1SKrAecbj22oz23ZIjAWoeK2p8zENDTM7?usp=drive_link)
-\u2022 **03 Bit\xE1cora Digital (Drive)**: [Carpeta Google Drive 03 Bit\xE1cora Digital](https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link)
-\u2022 **Folio #02 \u2014 05 Septiembre 2026 (72% Avance - \xDALTIMO)**: 19 Puntos 360\xB0 Esf\xE9ricos HD \u2022 [Carpeta Google Drive 05/09/2026](https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link)
-\u2022 **Folio #01 \u2014 27 Agosto 2026 (52% Avance)**: 10 Puntos 360\xB0 Esf\xE9ricos HD \u2022 [Carpeta Google Drive 27/08/2026](https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link)
+\u2022 **03 Bit\xE1cora Digital (18 Documentos PDF Oficiales)**: [Carpeta Google Drive 03 Bit\xE1cora Digital](https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link)
+\u2022 **02 Bit\xE1cora Fotogr\xE1fica (Fotos y Levantamientos)**: [Carpeta Google Drive 02 Bit\xE1cora Fotogr\xE1fica](https://drive.google.com/drive/folders/1SKrAecbj22oz23ZIjAWoeK2p8zENDTM7?usp=drive_link)
+\u2022 **Semana 36 (04/09/2026 \u2014 72% Avance \u2022 \xDALTIMO)**: Chukum en 6.40m, M\xE1rmol Santo Tom\xE1s 1.20x2.40m, Alberca Cenote y 19 Puntos 360\xB0 HD \u2022 [Carpeta Google Drive 05/09/2026](https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link)
+\u2022 **Semana 35 (28/08/2026 \u2014 52% Avance)**: Climatizaci\xF3n Daikin VRF, pruebas hidrost\xE1ticas a 7.0 kg/cm\xB2, Lutron QSX y 10 Puntos 360\xB0 HD \u2022 [Carpeta Google Drive 27/08/2026](https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link)
+\u2022 **Semanas 15 a 32 (Abril - Agosto 2026)**: Cimentaci\xF3n k\xE1rstica, mamposter\xEDa, losas nervadas, bodega de obra y canalizaciones hidrosanitarias.
 \u2022 **Repositorio Maestro de Obra**: [Google Drive Master Folder](https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing)`;
   }
   return `Como **Asesor T\xE9cnico de Inteligencia Artificial de UNO Arquitectos** para **Residencia Arrecifes**, bajo la direcci\xF3n del **Arq. Angel Cereceda**:

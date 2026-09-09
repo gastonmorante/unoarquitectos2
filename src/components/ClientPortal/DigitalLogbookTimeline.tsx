@@ -13,7 +13,9 @@ import {
   Award,
   ChevronRight,
   ShieldCheck,
-  Sparkles
+  Sparkles,
+  Download,
+  Filter
 } from "lucide-react";
 import { DigitalLogbookEntry } from "../../types/clientPortal";
 
@@ -43,6 +45,13 @@ export default function DigitalLogbookTimeline({
   const [expandedEntryId, setExpandedEntryId] = useState<string>(
     entries.find(e => e.date === selectedDate)?.id || entries[entries.length - 1]?.id || entries[0]?.id || ""
   );
+  const [selectedMonth, setSelectedMonth] = useState<string>("all");
+
+  const availableMonths = Array.from(new Set(entries.map(e => e.month))).filter(Boolean);
+
+  const filteredEntries = selectedMonth === "all" 
+    ? entries 
+    : entries.filter(e => e.month === selectedMonth);
 
   return (
     <div className="space-y-8 font-sans text-left">
@@ -53,14 +62,14 @@ export default function DigitalLogbookTimeline({
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-teal-uno animate-pulse" />
               <span className="text-[11px] font-label-caps uppercase tracking-widest text-arena-calida font-bold">
-                Bitácora Digital Oficial & Archivo Fotográfico
+                Bitácora Digital Oficial & Archivo de Documentos
               </span>
             </div>
             <h3 className="font-headline-md text-xl sm:text-2xl text-teal-uno uppercase font-bold tracking-tight">
-              Trazabilidad Técnica de Obra & Supervisión de Calidad
+              Trazabilidad Técnica de Obra & Fichas Semanales
             </h3>
             <p className="text-xs sm:text-sm text-gris-texto font-body-md max-w-2xl leading-relaxed">
-              Registro continuo de bitácora de obra civil, dictámenes de supervisión técnica, ensayes de laboratorio certificados y galería de fotos sincronizada por levantamientos registrados en Google Drive.
+              Registro continuo de bitácoras de obra civil en formato PDF oficial, dictámenes de supervisión técnica, control de cuadrilla en sitio y galería de fotos sincronizada por fecha.
             </p>
           </div>
 
@@ -88,7 +97,7 @@ export default function DigitalLogbookTimeline({
               title="Abrir carpeta oficial de bitácora técnica digital en Google Drive"
             >
               <FileText className="w-4 h-4 text-arena-calida group-hover:text-white transition-colors" />
-              <span>03 Bitácora Digital</span>
+              <span>03 Bitácora Digital ({entries.length} PDFs)</span>
               <ExternalLink className="w-3.5 h-3.5 opacity-80 group-hover:opacity-100" />
             </a>
           </div>
@@ -98,26 +107,26 @@ export default function DigitalLogbookTimeline({
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5 pt-4 border-t border-arena-calida/20">
           <div className="p-3.5 bg-surface-variant/30 rounded-2xl border border-arena-calida/20">
             <span className="text-[10px] font-label-caps uppercase text-arena-calida font-semibold block mb-0.5">
-              Folios Registrados
+              Fichas de Bitácora
             </span>
             <span className="font-headline-md text-sm sm:text-base font-bold text-teal-uno block">
-              {entries.length} Folios Oficiales
+              {entries.length} Documentos PDF
             </span>
           </div>
           <div className="p-3.5 bg-surface-variant/30 rounded-2xl border border-arena-calida/20">
             <span className="text-[10px] font-label-caps uppercase text-arena-calida font-semibold block mb-0.5">
-              Ensayes de Calidad
+              Rango Cronológico
+            </span>
+            <span className="font-headline-md text-xs sm:text-sm font-bold text-teal-uno block truncate">
+              {entries[0]?.date || "Abril"} → {entries[entries.length - 1]?.date || "Septiembre"}
+            </span>
+          </div>
+          <div className="p-3.5 bg-surface-variant/30 rounded-2xl border border-arena-calida/20">
+            <span className="text-[10px] font-label-caps uppercase text-arena-calida font-semibold block mb-0.5">
+              Ensayes & Calidad
             </span>
             <span className="font-headline-md text-sm sm:text-base font-bold text-emerald-700 block flex items-center gap-1">
               <ShieldCheck className="w-4 h-4 inline" /> 100% Aprobados
-            </span>
-          </div>
-          <div className="p-3.5 bg-surface-variant/30 rounded-2xl border border-arena-calida/20">
-            <span className="text-[10px] font-label-caps uppercase text-arena-calida font-semibold block mb-0.5">
-              Sondeo Geofísico GPR
-            </span>
-            <span className="font-headline-md text-sm sm:text-base font-bold text-teal-uno block">
-              12.0m Sin Cavidades
             </span>
           </div>
           <div className="p-3.5 bg-surface-variant/30 rounded-2xl border border-arena-calida/20">
@@ -131,20 +140,48 @@ export default function DigitalLogbookTimeline({
         </div>
       </div>
 
-      {/* 2. CHRONOLOGICAL MONTHLY TIMELINE ENTRIES */}
+      {/* 2. MONTH FILTER BAR & HEADER */}
       <div className="space-y-4">
-        <div className="flex items-center justify-between text-xs font-label-caps uppercase tracking-wider text-arena-calida font-semibold px-1">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-label-caps uppercase tracking-wider text-arena-calida font-semibold px-1">
           <span className="flex items-center gap-2">
             <Calendar className="w-4 h-4 text-teal-uno" />
-            Cronología de Bitácora de Obra (Levantamientos Registrados en Google Drive)
+            Cronología de Documentos de Bitácora ({filteredEntries.length} Fichas)
           </span>
-          <span className="text-[11px] text-teal-uno font-sans font-medium">
-            Sincronizado con Google Drive
-          </span>
+          
+          {/* MONTH FILTER PILLS */}
+          <div className="flex flex-wrap items-center gap-1.5 self-start sm:self-auto">
+            <button
+              onClick={() => setSelectedMonth("all")}
+              className={`px-3 py-1.5 rounded-full text-[10px] font-label-caps uppercase tracking-wider font-semibold transition-all cursor-pointer ${
+                selectedMonth === "all"
+                  ? "bg-teal-uno text-white shadow-xs"
+                  : "bg-white/80 text-gris-texto hover:text-teal-uno border border-arena-calida/30"
+              }`}
+            >
+              Todos ({entries.length})
+            </button>
+            {availableMonths.map((m) => {
+              const count = entries.filter(e => e.month === m).length;
+              return (
+                <button
+                  key={m}
+                  onClick={() => setSelectedMonth(m)}
+                  className={`px-3 py-1.5 rounded-full text-[10px] font-label-caps uppercase tracking-wider font-semibold transition-all cursor-pointer ${
+                    selectedMonth === m
+                      ? "bg-teal-uno text-white shadow-xs"
+                      : "bg-white/80 text-gris-texto hover:text-teal-uno border border-arena-calida/30"
+                  }`}
+                >
+                  {m.split(" ")[0]} ({count})
+                </button>
+              );
+            })}
+          </div>
         </div>
 
+        {/* 3. CHRONOLOGICAL LIST OF ACCORDION CARDS */}
         <div className="space-y-4">
-          {entries.map((entry) => {
+          {filteredEntries.map((entry) => {
             const isExpanded = expandedEntryId === entry.id;
             const isCompleted = entry.status === "completed";
             const isProjected = entry.status === "projected";
@@ -208,7 +245,7 @@ export default function DigitalLogbookTimeline({
 
                   <div className="flex items-center gap-3 self-end md:self-center">
                     <span className="text-xs text-teal-uno font-label-caps uppercase font-semibold hidden sm:inline">
-                      {isExpanded ? "Ocultar Detalle" : "Ver Dictamen Técnico"}
+                      {isExpanded ? "Ocultar Detalle" : "Ver Ficha de Bitácora"}
                     </span>
                     <div className={`w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-gris-texto transition-transform duration-300 ${
                       isExpanded ? "rotate-90 bg-teal-uno text-white" : "group-hover:bg-arena-calida/20"
@@ -224,7 +261,7 @@ export default function DigitalLogbookTimeline({
                     {/* EXECUTIVE SUMMARY */}
                     <div className="p-4 rounded-2xl bg-surface-container-low/80 border border-arena-calida/25 space-y-1.5">
                       <span className="text-[10px] font-label-caps uppercase text-arena-calida tracking-wider font-bold block">
-                        Resumen Ejecutivo de la Bitácora
+                        Resumen Oficial de Bitácora de Obra
                       </span>
                       <p className="text-gris-texto font-body-md leading-relaxed text-xs sm:text-sm">
                         {entry.executiveSummary}
@@ -246,7 +283,7 @@ export default function DigitalLogbookTimeline({
                       <div className="space-y-2">
                         <span className="text-[10px] font-label-caps uppercase text-arena-calida tracking-wider font-bold flex items-center gap-1.5">
                           <Microscope className="w-3.5 h-3.5 text-teal-uno" />
-                          Pruebas de Laboratorio & Certificaciones de Calidad
+                          Pruebas de Calidad & Controles en Sitio
                         </span>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                           {entry.labTestsAndQuality.map((test, tIdx) => (
@@ -292,17 +329,37 @@ export default function DigitalLogbookTimeline({
                         <div className="text-[10px] text-arena-calida font-label-caps uppercase font-semibold">
                           Supervisado por: {entry.inspectedBy}
                         </div>
+                        {entry.pdfFileName && (
+                          <div className="text-[10px] text-gris-texto/60 font-mono">
+                            Documento: {entry.pdfFileName}
+                          </div>
+                        )}
                       </div>
 
                       {/* QUICK ACTION BUTTONS */}
                       <div className="flex flex-wrap items-center gap-2 self-start sm:self-auto">
+                        {/* 1. DIRECT OFFICIAL PDF DOCUMENT LINK */}
+                        {entry.pdfDriveUrl && (
+                          <a
+                            href={entry.pdfDriveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-3.5 py-1.5 bg-teal-uno hover:bg-arena-calida text-white rounded-full text-[11px] font-label-caps uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-xs cursor-pointer font-bold"
+                            title="Abrir PDF oficial de esta bitácora en Google Drive"
+                          >
+                            <FileText className="w-3.5 h-3.5" />
+                            <span>Ver PDF Oficial</span>
+                            <ExternalLink className="w-3 h-3 opacity-80" />
+                          </a>
+                        )}
+
                         {entry.driveFolderUrl && (
                           <a
                             href={entry.driveFolderUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-3.5 py-1.5 bg-white hover:bg-teal-uno hover:text-white text-gris-texto border border-arena-calida/40 rounded-full text-[11px] font-label-caps uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-xs cursor-pointer font-medium"
-                            title="Abrir carpeta de esta fecha en Google Drive"
+                            title="Abrir carpeta de bitácora en Google Drive"
                           >
                             <FolderOpen className="w-3.5 h-3.5 text-teal-uno" />
                             <span>Carpeta Drive</span>
@@ -312,7 +369,7 @@ export default function DigitalLogbookTimeline({
                         {entry.scenes360Count && entry.scenes360Count > 0 && onJumpTo360 && (
                           <button
                             onClick={onJumpTo360}
-                            className="px-3.5 py-1.5 bg-teal-uno hover:bg-arena-calida text-white rounded-full text-[11px] font-label-caps uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-xs cursor-pointer font-bold"
+                            className="px-3.5 py-1.5 bg-teal-uno/15 hover:bg-teal-uno hover:text-white text-teal-uno border border-teal-uno/30 rounded-full text-[11px] font-label-caps uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-xs cursor-pointer font-bold"
                           >
                             <Compass className="w-3.5 h-3.5" />
                             <span>Ver en 360° ({entry.scenes360Count})</span>
@@ -322,20 +379,10 @@ export default function DigitalLogbookTimeline({
                         {entry.photosCount && entry.photosCount > 0 && onJumpToCarousel && (
                           <button
                             onClick={onJumpToCarousel}
-                            className="px-3.5 py-1.5 bg-teal-uno/15 hover:bg-teal-uno hover:text-white text-teal-uno border border-teal-uno/30 rounded-full text-[11px] font-label-caps uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-xs cursor-pointer font-bold"
+                            className="px-3.5 py-1.5 bg-arena-calida/15 hover:bg-arena-calida hover:text-white text-arena-calida border border-arena-calida/40 rounded-full text-[11px] font-label-caps uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-xs cursor-pointer font-bold"
                           >
                             <Sparkles className="w-3.5 h-3.5" />
                             <span>Ver en Carrusel ({entry.photosCount})</span>
-                          </button>
-                        )}
-
-                        {entry.photosCount && entry.photosCount > 0 && onJumpToPhotos && (
-                          <button
-                            onClick={onJumpToPhotos}
-                            className="px-3.5 py-1.5 bg-arena-calida/15 hover:bg-arena-calida hover:text-white text-arena-calida border border-arena-calida/40 rounded-full text-[11px] font-label-caps uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-xs cursor-pointer font-bold"
-                          >
-                            <Camera className="w-3.5 h-3.5" />
-                            <span>Ver Cuadrícula ({entry.photosCount})</span>
                           </button>
                         )}
                       </div>

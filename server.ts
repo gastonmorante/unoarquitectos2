@@ -150,15 +150,16 @@ En arquitectura boutique tropical en Riviera Maya, los costos no se establecen c
 Para coordinar un diagnóstico técnico preliminar de su lote o proyecto, le invitamos a comunicarse con la Dirección General del **Arq. Angel Cereceda** (+52 1 984 210 8420).`;
   }
 
-  if (q.includes("drive") || q.includes("foto") || q.includes("360") || q.includes("descarg") || q.includes("link") || q.includes("carpeta") || q.includes("bitacora") || q.includes("folio")) {
-    return `### 📂 Repositorios Oficiales en Nube & Bitácora Digital:
+  if (q.includes("drive") || q.includes("foto") || q.includes("360") || q.includes("descarg") || q.includes("link") || q.includes("carpeta") || q.includes("bitacora") || q.includes("folio") || q.includes("semana") || q.includes("pdf")) {
+    return `### 📂 Repositorios Oficiales en Nube & Bitácora Digital (18 Fichas Semanales):
 
-La bitácora digital de **Residencia Arrecifes** está respaldada en Google Drive y documenta los levantamientos técnicos oficiales:
+La bitácora digital de **Residencia Arrecifes** está respaldada en Google Drive y documenta los 18 levantamientos técnicos oficiales desde la **Semana 15 (10 Abril 2026)** hasta la **Semana 36 (04 Septiembre 2026)**:
 
-• **02 Bitácora Fotográfica (Drive)**: [Carpeta Google Drive 02 Bitácora Fotográfica](https://drive.google.com/drive/folders/1SKrAecbj22oz23ZIjAWoeK2p8zENDTM7?usp=drive_link)
-• **03 Bitácora Digital (Drive)**: [Carpeta Google Drive 03 Bitácora Digital](https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link)
-• **Folio #02 — 05 Septiembre 2026 (72% Avance - ÚLTIMO)**: 19 Puntos 360° Esféricos HD • [Carpeta Google Drive 05/09/2026](https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link)
-• **Folio #01 — 27 Agosto 2026 (52% Avance)**: 10 Puntos 360° Esféricos HD • [Carpeta Google Drive 27/08/2026](https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link)
+• **03 Bitácora Digital (18 Documentos PDF Oficiales)**: [Carpeta Google Drive 03 Bitácora Digital](https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link)
+• **02 Bitácora Fotográfica (Fotos y Levantamientos)**: [Carpeta Google Drive 02 Bitácora Fotográfica](https://drive.google.com/drive/folders/1SKrAecbj22oz23ZIjAWoeK2p8zENDTM7?usp=drive_link)
+• **Semana 36 (04/09/2026 — 72% Avance • ÚLTIMO)**: Chukum en 6.40m, Mármol Santo Tomás 1.20x2.40m, Alberca Cenote y 19 Puntos 360° HD • [Carpeta Google Drive 05/09/2026](https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link)
+• **Semana 35 (28/08/2026 — 52% Avance)**: Climatización Daikin VRF, pruebas hidrostáticas a 7.0 kg/cm², Lutron QSX y 10 Puntos 360° HD • [Carpeta Google Drive 27/08/2026](https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link)
+• **Semanas 15 a 32 (Abril - Agosto 2026)**: Cimentación kárstica, mampostería, losas nervadas, bodega de obra y canalizaciones hidrosanitarias.
 • **Repositorio Maestro de Obra**: [Google Drive Master Folder](https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing)`;
   }
 

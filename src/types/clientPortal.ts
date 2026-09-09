@@ -101,6 +101,8 @@ export interface DigitalLogbookEntry {
   inspectedBy: string;
   driveFolderUrl?: string;
   photographicLogUrl?: string;
+  pdfFileName?: string;
+  pdfDriveUrl?: string;
   scenes360Count?: number;
   photosCount?: number;
 }
