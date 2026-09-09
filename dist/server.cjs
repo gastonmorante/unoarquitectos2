@@ -35,6 +35,15 @@ import_dotenv.default.config();
 var app = (0, import_express.default)();
 var PORT = process.env.PORT || 3e3;
 app.disable("x-powered-by");
+app.use((req, res, next) => {
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  res.setHeader("X-Frame-Options", "SAMEORIGIN");
+  res.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload");
+  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  res.setHeader("X-XSS-Protection", "1; mode=block");
+  res.setHeader("Permissions-Policy", "accelerometer=(), camera=(), geolocation=(self), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()");
+  next();
+});
 app.use((0, import_cors.default)());
 app.use(import_express.default.json({ limit: "15mb" }));
 app.use(import_express.default.urlencoded({ extended: true, limit: "15mb" }));

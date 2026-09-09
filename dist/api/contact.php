@@ -48,14 +48,27 @@ if (empty($data) && !empty($_POST)) {
     $data = $_POST;
 }
 
-// Extract fields with fallbacks
-$name = trim($data['name'] ?? $data['fullName'] ?? '');
-$email = trim($data['email'] ?? '');
-$phone = trim($data['phone'] ?? $data['telephone'] ?? '');
-$message = trim($data['message'] ?? $data['msg'] ?? $data['comments'] ?? '');
-$language = strtolower(trim($data['language'] ?? $data['lang'] ?? 'es'));
-$projectType = trim($data['projectType'] ?? $data['service'] ?? 'Proyecto Residencial / Boutique');
-$pageUrl = trim($data['pageUrl'] ?? $data['sourceUrl'] ?? 'https://unoarquitectos.com/#contacto');
+// ------------------------------------------------------------------------------
+// Helper: Strict XSS & Input Sanitization
+// ------------------------------------------------------------------------------
+function sanitize_text($input, $maxLength = 1000) {
+    if (!is_string($input)) return '';
+    $clean = strip_tags($input);
+    $clean = htmlspecialchars($clean, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+    return mb_substr(trim($clean), 0, $maxLength, 'UTF-8');
+}
+
+// Extract fields with fallbacks & strict sanitization
+$name = sanitize_text($data['name'] ?? $data['fullName'] ?? '', 120);
+$email = filter_var(trim($data['email'] ?? ''), FILTER_SANITIZE_EMAIL);
+$phone = sanitize_text($data['phone'] ?? $data['telephone'] ?? '', 30);
+$message = sanitize_text($data['message'] ?? $data['msg'] ?? $data['comments'] ?? '', 3000);
+$language = strtolower(sanitize_text($data['language'] ?? $data['lang'] ?? 'es', 5));
+if (!in_array($language, ['es', 'en', 'it', 'fr'])) {
+    $language = 'es';
+}
+$projectType = sanitize_text($data['projectType'] ?? $data['service'] ?? 'Proyecto Residencial / Boutique', 150);
+$pageUrl = filter_var(trim($data['pageUrl'] ?? $data['sourceUrl'] ?? 'https://unoarquitectos.com/#contacto'), FILTER_SANITIZE_URL);
 
 // ------------------------------------------------------------------------------
 // 2. INVISIBLE HONEYPOT BOT TRAP (ANTI-SPAM)
