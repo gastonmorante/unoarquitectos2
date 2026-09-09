@@ -12,7 +12,8 @@ import {
   FolderOpen,
   Award,
   ChevronRight,
-  ShieldCheck
+  ShieldCheck,
+  Sparkles
 } from "lucide-react";
 import { DigitalLogbookEntry } from "../../types/clientPortal";
 
