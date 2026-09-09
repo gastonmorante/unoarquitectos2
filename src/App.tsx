@@ -102,7 +102,7 @@ function MainApp() {
         } catch {}
       }
     }
-    return null;
+    return defaultClientProjects[0];
   });
 
   const [clientProjects, setClientProjects] = useState<ClientProject[]>(() => {
@@ -241,7 +241,19 @@ function MainApp() {
   // 2. CLIENT PORTAL ROUTE (/clientes)
   if (route.name === "clientes") {
     return (
-      <Suspense fallback={null}>
+      <Suspense fallback={
+        <div className="min-h-screen w-full bg-background flex flex-col items-center justify-center space-y-4 p-8 text-center texture-overlay">
+          <div className="w-12 h-12 border-3 border-arena-calida/30 border-t-teal-uno rounded-full animate-spin"></div>
+          <div className="space-y-1">
+            <h4 className="font-headline-md text-sm uppercase text-teal-uno font-semibold tracking-wider">
+              Área de Clientes • Supervisión de Obra
+            </h4>
+            <p className="text-xs text-arena-calida font-label-caps uppercase tracking-widest">
+              UNO Arquitectos • Cargando Bitácora y Recorridos 360°...
+            </p>
+          </div>
+        </div>
+      }>
         {activeClientProject ? (
           <ClientPortalView
             currentProject={activeClientProject}

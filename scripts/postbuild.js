@@ -93,9 +93,15 @@ if (fs.existsSync(indexPath)) {
 
   // Generate subpage static entrypoints
   const subpages = [
+    { dir: 'clientes', title: 'Portal de Clientes • Supervisión de Obra 360° | UNO Arquitectos', desc: 'Área privada de supervisión técnica de obra para clientes de UNO Arquitectos. Registro oficial de avances, bitácoras de obra y recorridos 360°.' },
+    { dir: 'portal', title: 'Portal de Clientes • Supervisión de Obra 360° | UNO Arquitectos', desc: 'Área privada de supervisión técnica de obra para clientes de UNO Arquitectos. Registro oficial de avances, bitácoras de obra y recorridos 360°.' },
+    { dir: 'admin', title: 'Panel de Administración de Proyectos | UNO Arquitectos', desc: 'Panel administrativo para gestión de proyectos, bitácoras y recorridos 360° de UNO Arquitectos.' },
     { dir: 'arquitectos-en-tulum', title: 'Arquitectos en Tulum | Estudio Boutique de Arquitectura y Construcción Llave en Mano', desc: 'Estudio boutique de arquitectura y construcción sustentable en Tulum. Cimentaciones en suelo kárstico, acabados en Chukum y proyectos off-grid.' },
     { dir: 'arquitectos-en-quintana-roo', title: 'Arquitectos en Quintana Roo | Cancún, Playa del Carmen, Tulum & Riviera Maya', desc: 'Estudio de arquitectura boutique y constructora llave en mano en Quintana Roo. Respaldo técnico, licencias de construcción y gestión integral.' },
     { dir: 'blog', title: 'Journal & Blog de Arquitectura | UNO Arquitectos Riviera Maya', desc: 'Artículos técnicos sobre arquitectura tropical, construcción en suelo kárstico, acabados en Chukum natural y proyectos en Tulum.' },
+    { dir: 'en/clientes', title: 'Client Portal • 360° Construction Supervision | UNO Arquitectos', desc: 'Private technical supervision portal for UNO Arquitectos clients. Digital construction logbooks, lab certifications, and 360° virtual tours.' },
+    { dir: 'en/portal', title: 'Client Portal • 360° Construction Supervision | UNO Arquitectos', desc: 'Private technical supervision portal for UNO Arquitectos clients. Digital construction logbooks, lab certifications, and 360° virtual tours.' },
+    { dir: 'en/admin', title: 'Project Admin Dashboard | UNO Arquitectos', desc: 'Administrative dashboard for project and client portal management.' },
     { dir: 'en/arquitectos-en-tulum', title: 'Architects in Tulum | Boutique Architecture & Turnkey Construction Studio', desc: 'Boutique architecture studio and turnkey construction in Tulum. Karstic soil foundation engineering, natural Chukum plaster, and off-grid estates.' },
     { dir: 'en/arquitectos-en-quintana-roo', title: 'Architects in Quintana Roo | Cancun, Playa del Carmen & Tulum Turnkey Studio', desc: 'Turnkey boutique architecture and construction in Quintana Roo. Technical certitude, municipal permits, and luxury residential estates.' },
     { dir: 'en/blog', title: 'Architecture Journal & Insights | UNO Arquitectos Riviera Maya', desc: 'Technical articles on contemporary tropical architecture, karstic soil engineering, Chukum plaster, and turnkey construction.' }
