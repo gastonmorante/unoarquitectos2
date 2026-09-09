@@ -18,6 +18,7 @@ import {
   Filter
 } from "lucide-react";
 import { DigitalLogbookEntry } from "../../types/clientPortal";
+import BitacoraCardGalleryCarousel from "./BitacoraCardGalleryCarousel";
 
 interface DigitalLogbookTimelineProps {
   entries: DigitalLogbookEntry[];
@@ -45,6 +46,7 @@ export default function DigitalLogbookTimeline({
   const [expandedEntryId, setExpandedEntryId] = useState<string>(
     entries.find(e => e.date === selectedDate)?.id || entries[entries.length - 1]?.id || entries[0]?.id || ""
   );
+  const [fullscreenCarouselEntryId, setFullscreenCarouselEntryId] = useState<string>("");
   const [selectedMonth, setSelectedMonth] = useState<string>("all");
 
   const availableMonths = Array.from(new Set(entries.map(e => e.month))).filter(Boolean);
@@ -319,6 +321,21 @@ export default function DigitalLogbookTimeline({
                       </div>
                     )}
 
+                    {/* 5. EMBEDDED PHOTO GALLERY & CAROUSEL FOR THIS WEEK */}
+                    {entry.photos && entry.photos.length > 0 && (
+                      <div className="pt-2">
+                        <BitacoraCardGalleryCarousel
+                          photos={entry.photos}
+                          folderDriveUrl={entry.photographicLogUrl}
+                          weekTitle={entry.phaseTitle}
+                          weekDate={entry.date}
+                          entryNumber={entry.entryNumber}
+                          isOpenFullscreen={fullscreenCarouselEntryId === entry.id}
+                          onCloseFullscreen={() => setFullscreenCarouselEntryId("")}
+                        />
+                      </div>
+                    )}
+
                     {/* METADATA FOOTER: PERSONNEL & ACTIONS */}
                     <div className="pt-4 border-t border-arena-calida/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                       <div className="space-y-1 text-[11px] text-gris-texto/80 font-sans">
@@ -371,6 +388,7 @@ export default function DigitalLogbookTimeline({
                         {/* 3. VIRTUAL 360 TOUR JUMP */}
                         {entry.scenes360Count && entry.scenes360Count > 0 && onJumpTo360 && (
                           <button
+                            type="button"
                             onClick={onJumpTo360}
                             className="px-3.5 py-1.5 bg-teal-uno/15 hover:bg-teal-uno hover:text-white text-teal-uno border border-teal-uno/30 rounded-full text-[11px] font-label-caps uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-xs cursor-pointer font-bold"
                           >
@@ -379,16 +397,27 @@ export default function DigitalLogbookTimeline({
                           </button>
                         )}
 
-                        {/* 4. CAROUSEL JUMP */}
-                        {entry.photosCount && entry.photosCount > 0 && onJumpToCarousel && (
+                        {/* 4. CAROUSEL JUMP / FULLSCREEN MODAL */}
+                        {entry.photos && entry.photos.length > 0 ? (
                           <button
+                            type="button"
+                            onClick={() => setFullscreenCarouselEntryId(entry.id)}
+                            className="px-3.5 py-1.5 bg-arena-calida hover:bg-teal-uno text-white rounded-full text-[11px] font-label-caps uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-xs cursor-pointer font-bold"
+                            title="Ver carrusel ampliado de fotografías"
+                          >
+                            <Sparkles className="w-3.5 h-3.5" />
+                            <span>Ver en Carrusel ({entry.photos.length})</span>
+                          </button>
+                        ) : onJumpToCarousel ? (
+                          <button
+                            type="button"
                             onClick={onJumpToCarousel}
                             className="px-3.5 py-1.5 bg-arena-calida/15 hover:bg-arena-calida hover:text-white text-arena-calida border border-arena-calida/40 rounded-full text-[11px] font-label-caps uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-xs cursor-pointer font-bold"
                           >
                             <Sparkles className="w-3.5 h-3.5" />
                             <span>Ver en Carrusel</span>
                           </button>
-                        )}
+                        ) : null}
                       </div>
                     </div>
                   </div>

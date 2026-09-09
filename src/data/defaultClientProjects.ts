@@ -758,6 +758,118 @@ export const defaultClientProjects: ClientProject[] = [
         pdfFileName: "20260410_Formato_Bit__cora_de_Obra_S15_-_Arrecifes.pdf",
         pdfDriveUrl: "https://drive.google.com/file/d/1IHW2xr_0Ov9Y935G-qnfsWnaW8PEMz1K/view?usp=sharing",
         photosCount: 11,
+        photos: [
+          {
+                    "id": "photo-s15-01",
+                    "originalName": "WhatsApp Image 2026-04-06 at 3.34.25 PM..jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s15/photo_01.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1WcDcyX0-aMRpjRHKNxnpHLCMFgq3D1wK/view?usp=sharing",
+                    "fileId": "1WcDcyX0-aMRpjRHKNxnpHLCMFgq3D1wK",
+                    "caption": "Registro fotográfico 06/04/2026 3.34.25 PM",
+                    "date": "10 Abril 2026",
+                    "order": 1
+          },
+          {
+                    "id": "photo-s15-02",
+                    "originalName": "WhatsApp Image 2026-04-06 at 3.34.25 PMQ.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s15/photo_02.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1Xe0Ro5xHEnn3lnN_3SGjV2Y9BYebE_DA/view?usp=sharing",
+                    "fileId": "1Xe0Ro5xHEnn3lnN_3SGjV2Y9BYebE_DA",
+                    "caption": "Registro fotográfico 06/04/2026 3.34.25 PM",
+                    "date": "10 Abril 2026",
+                    "order": 2
+          },
+          {
+                    "id": "photo-s15-03",
+                    "originalName": "WhatsApp Image 2026-04-06 at 3.34.28 PM...jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s15/photo_03.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1UkbHyt9gokrbNiuD8eqI_ASUrunSTcRy/view?usp=sharing",
+                    "fileId": "1UkbHyt9gokrbNiuD8eqI_ASUrunSTcRy",
+                    "caption": "Registro fotográfico 06/04/2026 3.34.28 PM",
+                    "date": "10 Abril 2026",
+                    "order": 3
+          },
+          {
+                    "id": "photo-s15-04",
+                    "originalName": "WhatsApp Image 2026-04-06 at 3.34.28 PMV.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s15/photo_04.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1n2NLmmYsvZC7ofpLLy-U_bbKjoEBqeAX/view?usp=sharing",
+                    "fileId": "1n2NLmmYsvZC7ofpLLy-U_bbKjoEBqeAX",
+                    "caption": "Registro fotográfico 06/04/2026 3.34.28 PM",
+                    "date": "10 Abril 2026",
+                    "order": 4
+          },
+          {
+                    "id": "photo-s15-05",
+                    "originalName": "WhatsApp Image 2026-04-06 at 3.34.30 PM,,.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s15/photo_05.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1b3MnNcOly-RynoLcxyKwgzXimSBldhtk/view?usp=sharing",
+                    "fileId": "1b3MnNcOly-RynoLcxyKwgzXimSBldhtk",
+                    "caption": "Registro fotográfico 06/04/2026 3.34.30 PM",
+                    "date": "10 Abril 2026",
+                    "order": 5
+          },
+          {
+                    "id": "photo-s15-06",
+                    "originalName": "WhatsApp Image 2026-04-06 at 3.34.30 PM......jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s15/photo_06.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1hdLGfFpT_DnH6tl0OmrA7YRv3HKWQSWh/view?usp=sharing",
+                    "fileId": "1hdLGfFpT_DnH6tl0OmrA7YRv3HKWQSWh",
+                    "caption": "Registro fotográfico 06/04/2026 3.34.30 PM",
+                    "date": "10 Abril 2026",
+                    "order": 6
+          },
+          {
+                    "id": "photo-s15-07",
+                    "originalName": "WhatsApp Image 2026-04-07 at 5.05.28 PM..jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s15/photo_07.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1l-lUt71I5OmK6HLWIDr2zISdXsXZfcZY/view?usp=sharing",
+                    "fileId": "1l-lUt71I5OmK6HLWIDr2zISdXsXZfcZY",
+                    "caption": "Registro fotográfico 07/04/2026 5.05.28 PM",
+                    "date": "10 Abril 2026",
+                    "order": 7
+          },
+          {
+                    "id": "photo-s15-08",
+                    "originalName": "WhatsApp Image 2026-04-07 at 5.05.28 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s15/photo_08.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1i9ZgeVVZwy5Fhomz8cgPMN9X8SexyJLm/view?usp=sharing",
+                    "fileId": "1i9ZgeVVZwy5Fhomz8cgPMN9X8SexyJLm",
+                    "caption": "Registro fotográfico 07/04/2026 5.05.28 PM",
+                    "date": "10 Abril 2026",
+                    "order": 8
+          },
+          {
+                    "id": "photo-s15-09",
+                    "originalName": "WhatsApp Image 2026-04-07 at 5.05.30 PM,.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s15/photo_09.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1aSH0burZUKLj4-N6U8T0MmvXqvICWNZv/view?usp=sharing",
+                    "fileId": "1aSH0burZUKLj4-N6U8T0MmvXqvICWNZv",
+                    "caption": "Registro fotográfico 07/04/2026 5.05.30 PM",
+                    "date": "10 Abril 2026",
+                    "order": 9
+          },
+          {
+                    "id": "photo-s15-10",
+                    "originalName": "WhatsApp Image 2026-04-07 at 5.05.30 PM...jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s15/photo_10.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1Ks99EUYB41UxMoVXRY7G0dCR2mtuKp09/view?usp=sharing",
+                    "fileId": "1Ks99EUYB41UxMoVXRY7G0dCR2mtuKp09",
+                    "caption": "Registro fotográfico 07/04/2026 5.05.30 PM",
+                    "date": "10 Abril 2026",
+                    "order": 10
+          },
+          {
+                    "id": "photo-s15-11",
+                    "originalName": "WhatsApp Image 2026-04-07 at 5.05.30 PM..jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s15/photo_11.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1H_dqazcRhPg2kLU-Fz6FOa0aXV3MBIem/view?usp=sharing",
+                    "fileId": "1H_dqazcRhPg2kLU-Fz6FOa0aXV3MBIem",
+                    "caption": "Registro fotográfico 07/04/2026 5.05.30 PM",
+                    "date": "10 Abril 2026",
+                    "order": 11
+          }
+],
       },
       {
         id: "log-arrecifes-s16-20260417",
@@ -786,6 +898,88 @@ export const defaultClientProjects: ClientProject[] = [
         pdfFileName: "20260416_Formato_Bit__cora_de_Obra_S16_-_Arrecifes.pdf",
         pdfDriveUrl: "https://drive.google.com/file/d/11AMaJRwDWn5tODeq9u6ge2mIBbd8TAjk/view?usp=sharing",
         photosCount: 8,
+        photos: [
+          {
+                    "id": "photo-s16-01",
+                    "originalName": "WhatsApp Image 2026-04-13 at 12.25.48 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s16/photo_01.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1FIbUFrUqkuy8JQbo1sXfhg8VTbM6dQNP/view?usp=sharing",
+                    "fileId": "1FIbUFrUqkuy8JQbo1sXfhg8VTbM6dQNP",
+                    "caption": "Registro fotográfico 13/04/2026 12.25.48 PM",
+                    "date": "17 Abril 2026",
+                    "order": 1
+          },
+          {
+                    "id": "photo-s16-02",
+                    "originalName": "WhatsApp Image 2026-04-13 at 12.25.481 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s16/photo_02.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1ObZZQHaq3R9w595UnVCWzA3JeNc8O60-/view?usp=sharing",
+                    "fileId": "1ObZZQHaq3R9w595UnVCWzA3JeNc8O60-",
+                    "caption": "Registro fotográfico 13/04/2026 12.25.481 PM",
+                    "date": "17 Abril 2026",
+                    "order": 2
+          },
+          {
+                    "id": "photo-s16-03",
+                    "originalName": "WhatsApp Image 2026-04-14 at 11.09.06 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s16/photo_03.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1kIOfsZZxUhg9TuKDewYrgc0hMwt51cbh/view?usp=sharing",
+                    "fileId": "1kIOfsZZxUhg9TuKDewYrgc0hMwt51cbh",
+                    "caption": "Registro fotográfico 14/04/2026 11.09.06 AM",
+                    "date": "17 Abril 2026",
+                    "order": 3
+          },
+          {
+                    "id": "photo-s16-04",
+                    "originalName": "WhatsApp Image 2026-04-14 at 11.09.07 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s16/photo_04.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1nbyjVZkN1IU-szJXS5g9vuIHQJb9Ku3d/view?usp=sharing",
+                    "fileId": "1nbyjVZkN1IU-szJXS5g9vuIHQJb9Ku3d",
+                    "caption": "Registro fotográfico 14/04/2026 11.09.07 AM",
+                    "date": "17 Abril 2026",
+                    "order": 4
+          },
+          {
+                    "id": "photo-s16-05",
+                    "originalName": "WhatsApp Image 2026-04-15 at 3.39.25 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s16/photo_05.webp",
+                    "driveUrl": "https://drive.google.com/file/d/14TYPjlAnWrqwfPrszuCPkmZYECLZE5oc/view?usp=sharing",
+                    "fileId": "14TYPjlAnWrqwfPrszuCPkmZYECLZE5oc",
+                    "caption": "Registro fotográfico 15/04/2026 3.39.25 PM",
+                    "date": "17 Abril 2026",
+                    "order": 5
+          },
+          {
+                    "id": "photo-s16-06",
+                    "originalName": "WhatsApp Image 2026-04-15 at 9.00.17 AM (1).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s16/photo_06.webp",
+                    "driveUrl": "https://drive.google.com/file/d/10H7cmv-wnQbsnt826q42uYe5_ZFwtXDf/view?usp=sharing",
+                    "fileId": "10H7cmv-wnQbsnt826q42uYe5_ZFwtXDf",
+                    "caption": "Registro fotográfico 15/04/2026 9.00.17 AM",
+                    "date": "17 Abril 2026",
+                    "order": 6
+          },
+          {
+                    "id": "photo-s16-07",
+                    "originalName": "WhatsApp Image 2026-04-15 at 9.00.17 AM (2).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s16/photo_07.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1Lsp-bxubxlH6JLO8FXGkdN6QlEq5FgoK/view?usp=sharing",
+                    "fileId": "1Lsp-bxubxlH6JLO8FXGkdN6QlEq5FgoK",
+                    "caption": "Registro fotográfico 15/04/2026 9.00.17 AM",
+                    "date": "17 Abril 2026",
+                    "order": 7
+          },
+          {
+                    "id": "photo-s16-08",
+                    "originalName": "WhatsApp Image 2026-04-15 at 9.00.17 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s16/photo_08.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1n1kkM4phVkzlPs2sMPELPayOiqJ_hvsh/view?usp=sharing",
+                    "fileId": "1n1kkM4phVkzlPs2sMPELPayOiqJ_hvsh",
+                    "caption": "Registro fotográfico 15/04/2026 9.00.17 AM",
+                    "date": "17 Abril 2026",
+                    "order": 8
+          }
+],
       },
       {
         id: "log-arrecifes-s17-20260424",
@@ -814,6 +1008,88 @@ export const defaultClientProjects: ClientProject[] = [
         pdfFileName: "20260424_Bit__cora_de_Obra_Arrecifes_S17_-_Arrecifes.pdf",
         pdfDriveUrl: "https://drive.google.com/file/d/1ff9qxO460t6rnnd3KuK8iMj1xmux_CEZ/view?usp=sharing",
         photosCount: 8,
+        photos: [
+          {
+                    "id": "photo-s17-01",
+                    "originalName": "WhatsApp Image 2026-04-20 at 11.45.51 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s17/photo_01.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1NkBpOSF86w-Tlp_u691-211GHy_OCf-z/view?usp=sharing",
+                    "fileId": "1NkBpOSF86w-Tlp_u691-211GHy_OCf-z",
+                    "caption": "Registro fotográfico 20/04/2026 11.45.51 AM",
+                    "date": "24 Abril 2026",
+                    "order": 1
+          },
+          {
+                    "id": "photo-s17-02",
+                    "originalName": "WhatsApp Image 2026-04-20 at 5.23.15 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s17/photo_02.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1b4dkYM5OrjrrmpcpVeO02GTXoINgdP20/view?usp=sharing",
+                    "fileId": "1b4dkYM5OrjrrmpcpVeO02GTXoINgdP20",
+                    "caption": "Registro fotográfico 20/04/2026 5.23.15 PM",
+                    "date": "24 Abril 2026",
+                    "order": 2
+          },
+          {
+                    "id": "photo-s17-03",
+                    "originalName": "WhatsApp Image 2026-04-20 at 5.30.06 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s17/photo_03.webp",
+                    "driveUrl": "https://drive.google.com/file/d/19C8zPSTPyeEvP3kZE--5FkyzqEpnisQ5/view?usp=sharing",
+                    "fileId": "19C8zPSTPyeEvP3kZE--5FkyzqEpnisQ5",
+                    "caption": "Registro fotográfico 20/04/2026 5.30.06 PM",
+                    "date": "24 Abril 2026",
+                    "order": 3
+          },
+          {
+                    "id": "photo-s17-04",
+                    "originalName": "WhatsApp Image 2026-04-21 at 10.18.16 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s17/photo_04.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1dCN2GgxzKbJpyelZ1QzLnh2il888iBu2/view?usp=sharing",
+                    "fileId": "1dCN2GgxzKbJpyelZ1QzLnh2il888iBu2",
+                    "caption": "Registro fotográfico 21/04/2026 10.18.16 AM",
+                    "date": "24 Abril 2026",
+                    "order": 4
+          },
+          {
+                    "id": "photo-s17-05",
+                    "originalName": "WhatsApp Image 2026-04-21 at 9.21.42 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s17/photo_05.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1kOnJH0WvYJmLhYWDgEUVbFlyV4ZXCiE6/view?usp=sharing",
+                    "fileId": "1kOnJH0WvYJmLhYWDgEUVbFlyV4ZXCiE6",
+                    "caption": "Registro fotográfico 21/04/2026 9.21.42 AM",
+                    "date": "24 Abril 2026",
+                    "order": 5
+          },
+          {
+                    "id": "photo-s17-06",
+                    "originalName": "WhatsApp Image 2026-04-23 at 11.22.21 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s17/photo_06.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1Qxd9Ycfsh2JidQaEG1ev7skjDrguOH2t/view?usp=sharing",
+                    "fileId": "1Qxd9Ycfsh2JidQaEG1ev7skjDrguOH2t",
+                    "caption": "Registro fotográfico 23/04/2026 11.22.21 AM",
+                    "date": "24 Abril 2026",
+                    "order": 6
+          },
+          {
+                    "id": "photo-s17-07",
+                    "originalName": "WhatsApp Image 2026-04-23 at 2.45.59 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s17/photo_07.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1XyiH7e1SOp9IMdOo8jP6HFGr87vjr4tv/view?usp=sharing",
+                    "fileId": "1XyiH7e1SOp9IMdOo8jP6HFGr87vjr4tv",
+                    "caption": "Registro fotográfico 23/04/2026 2.45.59 PM",
+                    "date": "24 Abril 2026",
+                    "order": 7
+          },
+          {
+                    "id": "photo-s17-08",
+                    "originalName": "WhatsApp Image 2026-04-23 at 5.36.18 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s17/photo_08.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1ufDOAGsENEn7NcnWkrHyWhcEZXTp_56C/view?usp=sharing",
+                    "fileId": "1ufDOAGsENEn7NcnWkrHyWhcEZXTp_56C",
+                    "caption": "Registro fotográfico 23/04/2026 5.36.18 PM",
+                    "date": "24 Abril 2026",
+                    "order": 8
+          }
+],
       },
       {
         id: "log-arrecifes-s18-20260501",
@@ -842,6 +1118,78 @@ export const defaultClientProjects: ClientProject[] = [
         pdfFileName: "20260501_Bit__cora_de_Obra_Arrecifes_S18_-_Arrecifes.pdf",
         pdfDriveUrl: "https://drive.google.com/file/d/16ZCTK6BunxqCtIjnW1hZx0Q3LgvfLLJ5/view?usp=sharing",
         photosCount: 7,
+        photos: [
+          {
+                    "id": "photo-s18-01",
+                    "originalName": "WhatsApp Image 2026-04-28 at 12.07.17 PM (1).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s18/photo_01.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1lHLwwGzmsXSWdKlWgaglTbq_kwwyDo4B/view?usp=sharing",
+                    "fileId": "1lHLwwGzmsXSWdKlWgaglTbq_kwwyDo4B",
+                    "caption": "Registro fotográfico 28/04/2026 12.07.17 PM",
+                    "date": "01 Mayo 2026",
+                    "order": 1
+          },
+          {
+                    "id": "photo-s18-02",
+                    "originalName": "WhatsApp Image 2026-04-28 at 12.07.17 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s18/photo_02.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1qARPPWjQCZsOpc-U7xJmadnIiRbbipzd/view?usp=sharing",
+                    "fileId": "1qARPPWjQCZsOpc-U7xJmadnIiRbbipzd",
+                    "caption": "Registro fotográfico 28/04/2026 12.07.17 PM",
+                    "date": "01 Mayo 2026",
+                    "order": 2
+          },
+          {
+                    "id": "photo-s18-03",
+                    "originalName": "WhatsApp Image 2026-04-30 at 12.04.21 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s18/photo_03.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1U6Ox6xow9WUrcVhoo-6v82IbVD1N-jZ0/view?usp=sharing",
+                    "fileId": "1U6Ox6xow9WUrcVhoo-6v82IbVD1N-jZ0",
+                    "caption": "Registro fotográfico 30/04/2026 12.04.21 PM",
+                    "date": "01 Mayo 2026",
+                    "order": 3
+          },
+          {
+                    "id": "photo-s18-04",
+                    "originalName": "WhatsApp Image 2026-04-30 at 12.09.27 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s18/photo_04.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1pvoG0YBfRJrxtuDkWA183RDidYkrzHwt/view?usp=sharing",
+                    "fileId": "1pvoG0YBfRJrxtuDkWA183RDidYkrzHwt",
+                    "caption": "Registro fotográfico 30/04/2026 12.09.27 PM",
+                    "date": "01 Mayo 2026",
+                    "order": 4
+          },
+          {
+                    "id": "photo-s18-05",
+                    "originalName": "WhatsApp Image 2026-04-30 at 12.15.33 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s18/photo_05.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1cwWqGiK7T2WoMF4MwfPFWnyY8PMGV9c4/view?usp=sharing",
+                    "fileId": "1cwWqGiK7T2WoMF4MwfPFWnyY8PMGV9c4",
+                    "caption": "Registro fotográfico 30/04/2026 12.15.33 PM",
+                    "date": "01 Mayo 2026",
+                    "order": 5
+          },
+          {
+                    "id": "photo-s18-06",
+                    "originalName": "WhatsApp Image 2026-04-30 at 12.15.33 PM1.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s18/photo_06.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1ll7OvHaNzK-vy7Euo9n-O1lhShICdckr/view?usp=sharing",
+                    "fileId": "1ll7OvHaNzK-vy7Euo9n-O1lhShICdckr",
+                    "caption": "Registro fotográfico 30/04/2026 12.15.33 PM",
+                    "date": "01 Mayo 2026",
+                    "order": 6
+          },
+          {
+                    "id": "photo-s18-07",
+                    "originalName": "WhatsApp Image 2026-04-30 at 12.15.33 PM2.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s18/photo_07.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1mh3RKOEOSs7okascL6Susvdp5pvbPgGF/view?usp=sharing",
+                    "fileId": "1mh3RKOEOSs7okascL6Susvdp5pvbPgGF",
+                    "caption": "Registro fotográfico 30/04/2026 12.15.33 PM",
+                    "date": "01 Mayo 2026",
+                    "order": 7
+          }
+],
       },
       {
         id: "log-arrecifes-s19-20260508",
@@ -870,6 +1218,108 @@ export const defaultClientProjects: ClientProject[] = [
         pdfFileName: "20260508_Bit__cora_de_Obra_Arrecifes_S19_-_Arrecifes.pdf",
         pdfDriveUrl: "https://drive.google.com/file/d/1JneoaJCsTbjF2Fe70JkFMHXlQTC3LSKq/view?usp=sharing",
         photosCount: 10,
+        photos: [
+          {
+                    "id": "photo-s19-01",
+                    "originalName": "WhatsApp Image 2026-05-06 at 11.37.30 PM,,.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s19/photo_01.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1PkeTYX3vFVlQVMvSW9iVrFsgGaB014Kj/view?usp=sharing",
+                    "fileId": "1PkeTYX3vFVlQVMvSW9iVrFsgGaB014Kj",
+                    "caption": "Registro fotográfico 06/05/2026 11.37.30 PM",
+                    "date": "08 Mayo 2026",
+                    "order": 1
+          },
+          {
+                    "id": "photo-s19-02",
+                    "originalName": "WhatsApp Image 2026-05-06 at 11.37.30 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s19/photo_02.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1fBKm9lJgp8nYy70eOy877c_xONFVEj0E/view?usp=sharing",
+                    "fileId": "1fBKm9lJgp8nYy70eOy877c_xONFVEj0E",
+                    "caption": "Registro fotográfico 06/05/2026 11.37.30 PM",
+                    "date": "08 Mayo 2026",
+                    "order": 2
+          },
+          {
+                    "id": "photo-s19-03",
+                    "originalName": "WhatsApp Image 2026-05-06 at 11.37.30 PMV.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s19/photo_03.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1boU2dmfHgvwnudmGFaySjREnLrQhGgyY/view?usp=sharing",
+                    "fileId": "1boU2dmfHgvwnudmGFaySjREnLrQhGgyY",
+                    "caption": "Registro fotográfico 06/05/2026 11.37.30 PM",
+                    "date": "08 Mayo 2026",
+                    "order": 3
+          },
+          {
+                    "id": "photo-s19-04",
+                    "originalName": "WhatsApp Image 2026-05-06 at 11.37.31 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s19/photo_04.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1YrV-SflWAumBJZe8G8fdB0KTfDZKVt36/view?usp=sharing",
+                    "fileId": "1YrV-SflWAumBJZe8G8fdB0KTfDZKVt36",
+                    "caption": "Registro fotográfico 06/05/2026 11.37.31 PM",
+                    "date": "08 Mayo 2026",
+                    "order": 4
+          },
+          {
+                    "id": "photo-s19-05",
+                    "originalName": "WhatsApp Image 2026-05-06 at 11.37.31 PM2.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s19/photo_05.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1NLL_FTgtP_BtPg1J2OqyLA6Tc0UaET4h/view?usp=sharing",
+                    "fileId": "1NLL_FTgtP_BtPg1J2OqyLA6Tc0UaET4h",
+                    "caption": "Registro fotográfico 06/05/2026 11.37.31 PM",
+                    "date": "08 Mayo 2026",
+                    "order": 5
+          },
+          {
+                    "id": "photo-s19-06",
+                    "originalName": "WhatsApp Image 2026-05-06 at 11.37.32 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s19/photo_06.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1wRS9WXdnmz_4gVxciC4KnhieM9p263hw/view?usp=sharing",
+                    "fileId": "1wRS9WXdnmz_4gVxciC4KnhieM9p263hw",
+                    "caption": "Registro fotográfico 06/05/2026 11.37.32 PM",
+                    "date": "08 Mayo 2026",
+                    "order": 6
+          },
+          {
+                    "id": "photo-s19-07",
+                    "originalName": "WhatsApp Image 2026-05-06 at 11.37.33 PM..jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s19/photo_07.webp",
+                    "driveUrl": "https://drive.google.com/file/d/17VB7t2CWfEuUMczGJtcouMLR6seInTwW/view?usp=sharing",
+                    "fileId": "17VB7t2CWfEuUMczGJtcouMLR6seInTwW",
+                    "caption": "Registro fotográfico 06/05/2026 11.37.33 PM",
+                    "date": "08 Mayo 2026",
+                    "order": 7
+          },
+          {
+                    "id": "photo-s19-08",
+                    "originalName": "WhatsApp Image 2026-05-06 at 11.37.33 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s19/photo_08.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1SNjM68K89A45AnuMFs3_4WsuUxkrHcAa/view?usp=sharing",
+                    "fileId": "1SNjM68K89A45AnuMFs3_4WsuUxkrHcAa",
+                    "caption": "Registro fotográfico 06/05/2026 11.37.33 PM",
+                    "date": "08 Mayo 2026",
+                    "order": 8
+          },
+          {
+                    "id": "photo-s19-09",
+                    "originalName": "WhatsApp Image 2026-05-06 at 11.37.33 PMA.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s19/photo_09.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1UFGDHfUte8ViR4IUKDWpQGI2KF9NMKTt/view?usp=sharing",
+                    "fileId": "1UFGDHfUte8ViR4IUKDWpQGI2KF9NMKTt",
+                    "caption": "Registro fotográfico 06/05/2026 11.37.33 PM",
+                    "date": "08 Mayo 2026",
+                    "order": 9
+          },
+          {
+                    "id": "photo-s19-10",
+                    "originalName": "WhatsApp Image 2026-05-07 at 5.40.48 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s19/photo_10.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1u-FKwlrLAYAsirlDj6H-3V-_q-1H98rU/view?usp=sharing",
+                    "fileId": "1u-FKwlrLAYAsirlDj6H-3V-_q-1H98rU",
+                    "caption": "Registro fotográfico 07/05/2026 5.40.48 PM",
+                    "date": "08 Mayo 2026",
+                    "order": 10
+          }
+],
       },
       {
         id: "log-arrecifes-s20-20260515",
@@ -898,6 +1348,128 @@ export const defaultClientProjects: ClientProject[] = [
         pdfFileName: "20260515_Bit__cora_de_Obra_Arrecifes_S20_-_Arrecifes.pdf",
         pdfDriveUrl: "https://drive.google.com/file/d/1d1T5mSZNmP0gKbUwwwIxoylOiqi4KQ5v/view?usp=sharing",
         photosCount: 12,
+        photos: [
+          {
+                    "id": "photo-s20-01",
+                    "originalName": "WhatsApp Image 2026-05-11 at 12.49.02 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s20/photo_01.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1EVXeyTRh_NMzdOP18Livc5GbX1Xhsi-C/view?usp=sharing",
+                    "fileId": "1EVXeyTRh_NMzdOP18Livc5GbX1Xhsi-C",
+                    "caption": "Registro fotográfico 11/05/2026 12.49.02 PM",
+                    "date": "15 Mayo 2026",
+                    "order": 1
+          },
+          {
+                    "id": "photo-s20-02",
+                    "originalName": "WhatsApp Image 2026-05-11 at 12.49.03 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s20/photo_02.webp",
+                    "driveUrl": "https://drive.google.com/file/d/18Bj16AiwSYD91vEbajyIwet3NQLCilKH/view?usp=sharing",
+                    "fileId": "18Bj16AiwSYD91vEbajyIwet3NQLCilKH",
+                    "caption": "Registro fotográfico 11/05/2026 12.49.03 PM",
+                    "date": "15 Mayo 2026",
+                    "order": 2
+          },
+          {
+                    "id": "photo-s20-03",
+                    "originalName": "WhatsApp Image 2026-05-11 at 12.49.04 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s20/photo_03.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1fbdNPaAZxmD9imzciv9zSxHterNljIop/view?usp=sharing",
+                    "fileId": "1fbdNPaAZxmD9imzciv9zSxHterNljIop",
+                    "caption": "Registro fotográfico 11/05/2026 12.49.04 PM",
+                    "date": "15 Mayo 2026",
+                    "order": 3
+          },
+          {
+                    "id": "photo-s20-04",
+                    "originalName": "WhatsApp Image 2026-05-11 at 3.46.02 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s20/photo_04.webp",
+                    "driveUrl": "https://drive.google.com/file/d/11zsvSvvnyfz8GpY9aZYEi3lLESrnnVO-/view?usp=sharing",
+                    "fileId": "11zsvSvvnyfz8GpY9aZYEi3lLESrnnVO-",
+                    "caption": "Registro fotográfico 11/05/2026 3.46.02 PM",
+                    "date": "15 Mayo 2026",
+                    "order": 4
+          },
+          {
+                    "id": "photo-s20-05",
+                    "originalName": "WhatsApp Image 2026-05-11 at 5.39.53 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s20/photo_05.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1q2O8ksazrqdEm5qvMj_UVUDCHbTgOD2z/view?usp=sharing",
+                    "fileId": "1q2O8ksazrqdEm5qvMj_UVUDCHbTgOD2z",
+                    "caption": "Registro fotográfico 11/05/2026 5.39.53 PM",
+                    "date": "15 Mayo 2026",
+                    "order": 5
+          },
+          {
+                    "id": "photo-s20-06",
+                    "originalName": "WhatsApp Image 2026-05-12 at 11.24.30 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s20/photo_06.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1XY788F4bqBiZGduMAWdzgX-ikX8R3XEX/view?usp=sharing",
+                    "fileId": "1XY788F4bqBiZGduMAWdzgX-ikX8R3XEX",
+                    "caption": "Registro fotográfico 12/05/2026 11.24.30 AM",
+                    "date": "15 Mayo 2026",
+                    "order": 6
+          },
+          {
+                    "id": "photo-s20-07",
+                    "originalName": "WhatsApp Image 2026-05-12 at 11.26.19 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s20/photo_07.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1VJrQMP6gISL3hM1RIBz2xYlULYSzNClB/view?usp=sharing",
+                    "fileId": "1VJrQMP6gISL3hM1RIBz2xYlULYSzNClB",
+                    "caption": "Registro fotográfico 12/05/2026 11.26.19 AM",
+                    "date": "15 Mayo 2026",
+                    "order": 7
+          },
+          {
+                    "id": "photo-s20-08",
+                    "originalName": "WhatsApp Image 2026-05-12 at 11.43.01 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s20/photo_08.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1ZOX0Q8v4vkYn5q4VgaG4IdnqSPIt-yDt/view?usp=sharing",
+                    "fileId": "1ZOX0Q8v4vkYn5q4VgaG4IdnqSPIt-yDt",
+                    "caption": "Registro fotográfico 12/05/2026 11.43.01 AM",
+                    "date": "15 Mayo 2026",
+                    "order": 8
+          },
+          {
+                    "id": "photo-s20-09",
+                    "originalName": "WhatsApp Image 2026-05-13 at 4.05.40 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s20/photo_09.webp",
+                    "driveUrl": "https://drive.google.com/file/d/13He6zgitefe_GHunksYBQ7QS8_raSwf-/view?usp=sharing",
+                    "fileId": "13He6zgitefe_GHunksYBQ7QS8_raSwf-",
+                    "caption": "Registro fotográfico 13/05/2026 4.05.40 PM",
+                    "date": "15 Mayo 2026",
+                    "order": 9
+          },
+          {
+                    "id": "photo-s20-10",
+                    "originalName": "WhatsApp Image 2026-05-14 at 1.52.08 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s20/photo_10.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1nsXi3Cay0Bn3sMPvDVG-NAEEWyRfE_HQ/view?usp=sharing",
+                    "fileId": "1nsXi3Cay0Bn3sMPvDVG-NAEEWyRfE_HQ",
+                    "caption": "Registro fotográfico 14/05/2026 1.52.08 PM",
+                    "date": "15 Mayo 2026",
+                    "order": 10
+          },
+          {
+                    "id": "photo-s20-11",
+                    "originalName": "WhatsApp Image 2026-05-14 at 6.12.24 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s20/photo_11.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1ckP1nHF0921DsF12ON-nHkhFytJChW-1/view?usp=sharing",
+                    "fileId": "1ckP1nHF0921DsF12ON-nHkhFytJChW-1",
+                    "caption": "Registro fotográfico 14/05/2026 6.12.24 PM",
+                    "date": "15 Mayo 2026",
+                    "order": 11
+          },
+          {
+                    "id": "photo-s20-12",
+                    "originalName": "WhatsApp Image 2026-05-15 at 11.16.54 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s20/photo_12.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1hkg-vXaWD87XdxoCgb9zq3HhLrlxn8Ol/view?usp=sharing",
+                    "fileId": "1hkg-vXaWD87XdxoCgb9zq3HhLrlxn8Ol",
+                    "caption": "Registro fotográfico 15/05/2026 11.16.54 AM",
+                    "date": "15 Mayo 2026",
+                    "order": 12
+          }
+],
       },
       {
         id: "log-arrecifes-s21-20260522",
@@ -925,7 +1497,139 @@ export const defaultClientProjects: ClientProject[] = [
         photographicLogUrl: "https://drive.google.com/drive/folders/1bg-7PKQqJ3enY9jcdYrtLQnoOlXTPELT?usp=drive_link",
         pdfFileName: "20260522_Bit__cora_de_Obra_Arrecifes_S21_-_Arrecifes.pdf",
         pdfDriveUrl: "https://drive.google.com/file/d/1-B8JMqP3zAqQLmVhHip7tJxzhvmp6KJz/view?usp=sharing",
-        photosCount: 11,
+        photosCount: 13,
+        photos: [
+          {
+                    "id": "photo-s21-01",
+                    "originalName": "PHOTO-2026-05-22-11-18-09.jpg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s21/photo_01.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1n1ODAZtFpKr7VllwFuoKUTK5Zghc_hIX/view?usp=sharing",
+                    "fileId": "1n1ODAZtFpKr7VllwFuoKUTK5Zghc_hIX",
+                    "caption": "Registro fotográfico 22/05/2026",
+                    "date": "22 Mayo 2026",
+                    "order": 1
+          },
+          {
+                    "id": "photo-s21-02",
+                    "originalName": "PHOTO-2026-05-22-17-02-44.jpg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s21/photo_02.webp",
+                    "driveUrl": "https://drive.google.com/file/d/11MNqC60biGKUSCsCsSwamxwMAD8TCXv7/view?usp=sharing",
+                    "fileId": "11MNqC60biGKUSCsCsSwamxwMAD8TCXv7",
+                    "caption": "Registro fotográfico 22/05/2026",
+                    "date": "22 Mayo 2026",
+                    "order": 2
+          },
+          {
+                    "id": "photo-s21-03",
+                    "originalName": "PHOTO-2026-05-22-17-02-44.jpg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s21/photo_03.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1X7-5V6MA6rZ1g3TxBHBB6SRmLRrZVJAe/view?usp=sharing",
+                    "fileId": "1X7-5V6MA6rZ1g3TxBHBB6SRmLRrZVJAe",
+                    "caption": "Registro fotográfico 22/05/2026",
+                    "date": "22 Mayo 2026",
+                    "order": 3
+          },
+          {
+                    "id": "photo-s21-04",
+                    "originalName": "PHOTO-2026-05-22-17-02-44.jpg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s21/photo_04.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1h2pYd2PGXEZ0fVRfKi--2oyUhEFpuGqf/view?usp=sharing",
+                    "fileId": "1h2pYd2PGXEZ0fVRfKi--2oyUhEFpuGqf",
+                    "caption": "Registro fotográfico 22/05/2026",
+                    "date": "22 Mayo 2026",
+                    "order": 4
+          },
+          {
+                    "id": "photo-s21-05",
+                    "originalName": "VIDEO-2026-05-22-17-02-44.mp4",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s21/photo_05.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1XwMNzOTeTOuzEFL_nFus8Zv0SDzid_sm/view?usp=sharing",
+                    "fileId": "1XwMNzOTeTOuzEFL_nFus8Zv0SDzid_sm",
+                    "caption": "Registro fotográfico 22/05/2026",
+                    "date": "22 Mayo 2026",
+                    "order": 5
+          },
+          {
+                    "id": "photo-s21-06",
+                    "originalName": "WhatsApp Image 2026-05-20 at 11.33.51 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s21/photo_06.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1AF_aHfMAKnwc7fjjEwvGSNKo-ltwilaj/view?usp=sharing",
+                    "fileId": "1AF_aHfMAKnwc7fjjEwvGSNKo-ltwilaj",
+                    "caption": "Registro fotográfico 20/05/2026 11.33.51 AM",
+                    "date": "22 Mayo 2026",
+                    "order": 6
+          },
+          {
+                    "id": "photo-s21-07",
+                    "originalName": "WhatsApp Image 2026-05-20 at 4.13.58 PM (1).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s21/photo_07.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1K6HO6qC-Dfy7PtAQ-69z5lB2ZWG9qHx2/view?usp=sharing",
+                    "fileId": "1K6HO6qC-Dfy7PtAQ-69z5lB2ZWG9qHx2",
+                    "caption": "Registro fotográfico 20/05/2026 4.13.58 PM",
+                    "date": "22 Mayo 2026",
+                    "order": 7
+          },
+          {
+                    "id": "photo-s21-08",
+                    "originalName": "WhatsApp Image 2026-05-20 at 4.13.58 PM (2).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s21/photo_08.webp",
+                    "driveUrl": "https://drive.google.com/file/d/177AUkU_yeboJhlkROfvgIg0M999EzL7Y/view?usp=sharing",
+                    "fileId": "177AUkU_yeboJhlkROfvgIg0M999EzL7Y",
+                    "caption": "Registro fotográfico 20/05/2026 4.13.58 PM",
+                    "date": "22 Mayo 2026",
+                    "order": 8
+          },
+          {
+                    "id": "photo-s21-09",
+                    "originalName": "WhatsApp Image 2026-05-20 at 4.13.59 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s21/photo_09.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1PJyBnEFCYiDEdxxwoRhuFPScAmtIqekd/view?usp=sharing",
+                    "fileId": "1PJyBnEFCYiDEdxxwoRhuFPScAmtIqekd",
+                    "caption": "Registro fotográfico 20/05/2026 4.13.59 PM",
+                    "date": "22 Mayo 2026",
+                    "order": 9
+          },
+          {
+                    "id": "photo-s21-10",
+                    "originalName": "WhatsApp Image 2026-05-21 at 12.39.23 PM (1).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s21/photo_10.webp",
+                    "driveUrl": "https://drive.google.com/file/d/15C_23WyKYhWjmQLalIhXZU6XZ4rqtC7k/view?usp=sharing",
+                    "fileId": "15C_23WyKYhWjmQLalIhXZU6XZ4rqtC7k",
+                    "caption": "Registro fotográfico 21/05/2026 12.39.23 PM",
+                    "date": "22 Mayo 2026",
+                    "order": 10
+          },
+          {
+                    "id": "photo-s21-11",
+                    "originalName": "WhatsApp Image 2026-05-21 at 12.39.23 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s21/photo_11.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1cRUxrl4N1lfzf3HVImWDTgB7RGl9Ur5Q/view?usp=sharing",
+                    "fileId": "1cRUxrl4N1lfzf3HVImWDTgB7RGl9Ur5Q",
+                    "caption": "Registro fotográfico 21/05/2026 12.39.23 PM",
+                    "date": "22 Mayo 2026",
+                    "order": 11
+          },
+          {
+                    "id": "photo-s21-12",
+                    "originalName": "WhatsApp Image 2026-05-21 at 12.39.24 PM (1).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s21/photo_12.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1bba5FtqbCLds98n4SlYGByFPx8xakb-f/view?usp=sharing",
+                    "fileId": "1bba5FtqbCLds98n4SlYGByFPx8xakb-f",
+                    "caption": "Registro fotográfico 21/05/2026 12.39.24 PM",
+                    "date": "22 Mayo 2026",
+                    "order": 12
+          },
+          {
+                    "id": "photo-s21-13",
+                    "originalName": "WhatsApp Image 2026-05-21 at 12.39.24 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s21/photo_13.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1883KuHUWLQrxDkxQOXlkzVq4wATz5YQC/view?usp=sharing",
+                    "fileId": "1883KuHUWLQrxDkxQOXlkzVq4wATz5YQC",
+                    "caption": "Registro fotográfico 21/05/2026 12.39.24 PM",
+                    "date": "22 Mayo 2026",
+                    "order": 13
+          }
+],
       },
       {
         id: "log-arrecifes-s23-20260605",
@@ -954,6 +1658,128 @@ export const defaultClientProjects: ClientProject[] = [
         pdfFileName: "20260604_Bit__cora_de_Obra_Arrecifes_S23_-_Arrecifes.pdf",
         pdfDriveUrl: "https://drive.google.com/file/d/1CXgVj08FrcAgQKYmXEW2nFT03QecnGii/view?usp=sharing",
         photosCount: 12,
+        photos: [
+          {
+                    "id": "photo-s23-01",
+                    "originalName": "WhatsApp Image 2026-06-02 at 10.55.50 AM (1).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s23/photo_01.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1zapNE54Ni-syTJXnzZGozHpnAGkdIjCe/view?usp=sharing",
+                    "fileId": "1zapNE54Ni-syTJXnzZGozHpnAGkdIjCe",
+                    "caption": "Registro fotográfico 02/06/2026 10.55.50 AM",
+                    "date": "05 Junio 2026",
+                    "order": 1
+          },
+          {
+                    "id": "photo-s23-02",
+                    "originalName": "WhatsApp Image 2026-06-02 at 10.55.50 AM (2).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s23/photo_02.webp",
+                    "driveUrl": "https://drive.google.com/file/d/196VzSCIrr6JDkkAMLGIGyWT6OvTCckTS/view?usp=sharing",
+                    "fileId": "196VzSCIrr6JDkkAMLGIGyWT6OvTCckTS",
+                    "caption": "Registro fotográfico 02/06/2026 10.55.50 AM",
+                    "date": "05 Junio 2026",
+                    "order": 2
+          },
+          {
+                    "id": "photo-s23-03",
+                    "originalName": "WhatsApp Image 2026-06-02 at 10.55.50 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s23/photo_03.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1GUaVEO7fM7t6_QhVyYU9jE5TZmjgvrro/view?usp=sharing",
+                    "fileId": "1GUaVEO7fM7t6_QhVyYU9jE5TZmjgvrro",
+                    "caption": "Registro fotográfico 02/06/2026 10.55.50 AM",
+                    "date": "05 Junio 2026",
+                    "order": 3
+          },
+          {
+                    "id": "photo-s23-04",
+                    "originalName": "WhatsApp Image 2026-06-02 at 12.49.27 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s23/photo_04.webp",
+                    "driveUrl": "https://drive.google.com/file/d/11PCHqkMQ1jFQQtpA18CAtO4aJTebm6y3/view?usp=sharing",
+                    "fileId": "11PCHqkMQ1jFQQtpA18CAtO4aJTebm6y3",
+                    "caption": "Registro fotográfico 02/06/2026 12.49.27 PM",
+                    "date": "05 Junio 2026",
+                    "order": 4
+          },
+          {
+                    "id": "photo-s23-05",
+                    "originalName": "WhatsApp Image 2026-06-02 at 12.49.27 PMA.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s23/photo_05.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1fug_sGnboUi9jltJrVFIbp2lAf3SI10L/view?usp=sharing",
+                    "fileId": "1fug_sGnboUi9jltJrVFIbp2lAf3SI10L",
+                    "caption": "Registro fotográfico 02/06/2026 12.49.27 PM",
+                    "date": "05 Junio 2026",
+                    "order": 5
+          },
+          {
+                    "id": "photo-s23-06",
+                    "originalName": "WhatsApp Image 2026-06-02 at 8.28.23 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s23/photo_06.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1E-UR3aRX9UMZ1naa9VCEvvl364uetdZS/view?usp=sharing",
+                    "fileId": "1E-UR3aRX9UMZ1naa9VCEvvl364uetdZS",
+                    "caption": "Registro fotográfico 02/06/2026 8.28.23 AM",
+                    "date": "05 Junio 2026",
+                    "order": 6
+          },
+          {
+                    "id": "photo-s23-07",
+                    "originalName": "WhatsApp Image 2026-06-02 at 8.28.42 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s23/photo_07.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1ThlOaRObbGpGxUd0RthKNSKmHquYus4w/view?usp=sharing",
+                    "fileId": "1ThlOaRObbGpGxUd0RthKNSKmHquYus4w",
+                    "caption": "Registro fotográfico 02/06/2026 8.28.42 AM",
+                    "date": "05 Junio 2026",
+                    "order": 7
+          },
+          {
+                    "id": "photo-s23-08",
+                    "originalName": "WhatsApp Image 2026-06-03 at 10.56.35 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s23/photo_08.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1aG89dBf0dAA6w_YtQfLGCscDGz9SyLTM/view?usp=sharing",
+                    "fileId": "1aG89dBf0dAA6w_YtQfLGCscDGz9SyLTM",
+                    "caption": "Registro fotográfico 03/06/2026 10.56.35 AM",
+                    "date": "05 Junio 2026",
+                    "order": 8
+          },
+          {
+                    "id": "photo-s23-09",
+                    "originalName": "WhatsApp Image 2026-06-03 at 11.43.24 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s23/photo_09.webp",
+                    "driveUrl": "https://drive.google.com/file/d/17mdqfqiNtKSK7Z55jkJQOYWsZTDEQCWI/view?usp=sharing",
+                    "fileId": "17mdqfqiNtKSK7Z55jkJQOYWsZTDEQCWI",
+                    "caption": "Registro fotográfico 03/06/2026 11.43.24 AM",
+                    "date": "05 Junio 2026",
+                    "order": 9
+          },
+          {
+                    "id": "photo-s23-10",
+                    "originalName": "WhatsApp Image 2026-06-03 at 8.10.20 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s23/photo_10.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1g4k0sGpktSqDEtw8FJclH_hAwgOGYgea/view?usp=sharing",
+                    "fileId": "1g4k0sGpktSqDEtw8FJclH_hAwgOGYgea",
+                    "caption": "Registro fotográfico 03/06/2026 8.10.20 AM",
+                    "date": "05 Junio 2026",
+                    "order": 10
+          },
+          {
+                    "id": "photo-s23-11",
+                    "originalName": "WhatsApp Image 2026-06-03 at 8.11.16 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s23/photo_11.webp",
+                    "driveUrl": "https://drive.google.com/file/d/18wdiTwlU1AYMwphjgLGA8GBN1QuvrRbo/view?usp=sharing",
+                    "fileId": "18wdiTwlU1AYMwphjgLGA8GBN1QuvrRbo",
+                    "caption": "Registro fotográfico 03/06/2026 8.11.16 AM",
+                    "date": "05 Junio 2026",
+                    "order": 11
+          },
+          {
+                    "id": "photo-s23-12",
+                    "originalName": "WhatsApp Image 2026-06-04 at 10.09.43 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s23/photo_12.webp",
+                    "driveUrl": "https://drive.google.com/file/d/176cVRR0tj3eTg1gT--uAlzwzrrs0zmZo/view?usp=sharing",
+                    "fileId": "176cVRR0tj3eTg1gT--uAlzwzrrs0zmZo",
+                    "caption": "Registro fotográfico 04/06/2026 10.09.43 AM",
+                    "date": "05 Junio 2026",
+                    "order": 12
+          }
+],
       },
       {
         id: "log-arrecifes-s24-20260612",
@@ -980,6 +1806,118 @@ export const defaultClientProjects: ClientProject[] = [
         pdfFileName: "20260612__Bit__cora_de_Obra_Arrecifes_S24_-_Arrecifes.pdf",
         pdfDriveUrl: "https://drive.google.com/file/d/1q6Etb2dLS871RIkgzqAWdGWmgacYx86j/view?usp=sharing",
         photosCount: 11,
+        photos: [
+          {
+                    "id": "photo-s24-01",
+                    "originalName": "WhatsApp Image 2026-06-08 at 9.43.25 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s24/photo_01.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1ApTqYrhrTmxAqmb85mGr3pcJyzbWIy1l/view?usp=sharing",
+                    "fileId": "1ApTqYrhrTmxAqmb85mGr3pcJyzbWIy1l",
+                    "caption": "Registro fotográfico 08/06/2026 9.43.25 AM",
+                    "date": "12 Junio 2026",
+                    "order": 1
+          },
+          {
+                    "id": "photo-s24-02",
+                    "originalName": "WhatsApp Image 2026-06-08 at 9.43.35 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s24/photo_02.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1WLCmPqMCv0i0ziU48C3ka7wKIXKT9wWy/view?usp=sharing",
+                    "fileId": "1WLCmPqMCv0i0ziU48C3ka7wKIXKT9wWy",
+                    "caption": "Registro fotográfico 08/06/2026 9.43.35 AM",
+                    "date": "12 Junio 2026",
+                    "order": 2
+          },
+          {
+                    "id": "photo-s24-03",
+                    "originalName": "WhatsApp Image 2026-06-09 at 11.54.23 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s24/photo_03.webp",
+                    "driveUrl": "https://drive.google.com/file/d/13wBfvX5M7Nvg4QyQpmQf_QtMU_NrIbod/view?usp=sharing",
+                    "fileId": "13wBfvX5M7Nvg4QyQpmQf_QtMU_NrIbod",
+                    "caption": "Registro fotográfico 09/06/2026 11.54.23 AM",
+                    "date": "12 Junio 2026",
+                    "order": 3
+          },
+          {
+                    "id": "photo-s24-04",
+                    "originalName": "WhatsApp Image 2026-06-09 at 11.54.26 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s24/photo_04.webp",
+                    "driveUrl": "https://drive.google.com/file/d/17FatPjsF1uYAaOiDNSmUpehCJuP28jom/view?usp=sharing",
+                    "fileId": "17FatPjsF1uYAaOiDNSmUpehCJuP28jom",
+                    "caption": "Registro fotográfico 09/06/2026 11.54.26 AM",
+                    "date": "12 Junio 2026",
+                    "order": 4
+          },
+          {
+                    "id": "photo-s24-05",
+                    "originalName": "WhatsApp Image 2026-06-09 at 11.58.39 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s24/photo_05.webp",
+                    "driveUrl": "https://drive.google.com/file/d/12oBq8Pqp0ieWIAUU-xuOVD5T6zIhZwcT/view?usp=sharing",
+                    "fileId": "12oBq8Pqp0ieWIAUU-xuOVD5T6zIhZwcT",
+                    "caption": "Registro fotográfico 09/06/2026 11.58.39 AM",
+                    "date": "12 Junio 2026",
+                    "order": 5
+          },
+          {
+                    "id": "photo-s24-06",
+                    "originalName": "WhatsApp Image 2026-06-09 at 4.29.22 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s24/photo_06.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1W_PZD0cG6vNwg5gSnenQrOUkJDlUYsXd/view?usp=sharing",
+                    "fileId": "1W_PZD0cG6vNwg5gSnenQrOUkJDlUYsXd",
+                    "caption": "Registro fotográfico 09/06/2026 4.29.22 PM",
+                    "date": "12 Junio 2026",
+                    "order": 6
+          },
+          {
+                    "id": "photo-s24-07",
+                    "originalName": "WhatsApp Image 2026-06-10 at 5.29.05 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s24/photo_07.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1TowpzyrSGTdnELVPIooD7I31QHNT7HKC/view?usp=sharing",
+                    "fileId": "1TowpzyrSGTdnELVPIooD7I31QHNT7HKC",
+                    "caption": "Registro fotográfico 10/06/2026 5.29.05 PM",
+                    "date": "12 Junio 2026",
+                    "order": 7
+          },
+          {
+                    "id": "photo-s24-08",
+                    "originalName": "WhatsApp Image 2026-06-10 at 9.09.00 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s24/photo_08.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1jVd51WGnhAr0C3VtWHtzyf0GD8ZQI6dz/view?usp=sharing",
+                    "fileId": "1jVd51WGnhAr0C3VtWHtzyf0GD8ZQI6dz",
+                    "caption": "Registro fotográfico 10/06/2026 9.09.00 AM",
+                    "date": "12 Junio 2026",
+                    "order": 8
+          },
+          {
+                    "id": "photo-s24-09",
+                    "originalName": "WhatsApp Image 2026-06-10 at 9.10.03 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s24/photo_09.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1fOHOY1fEiEE9T7BQYan5z7m17p8wzawa/view?usp=sharing",
+                    "fileId": "1fOHOY1fEiEE9T7BQYan5z7m17p8wzawa",
+                    "caption": "Registro fotográfico 10/06/2026 9.10.03 AM",
+                    "date": "12 Junio 2026",
+                    "order": 9
+          },
+          {
+                    "id": "photo-s24-10",
+                    "originalName": "WhatsApp Image 2026-06-10 at 9.10.56 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s24/photo_10.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1ngxpbMfDjGWMuTdaczOY74NSq2qur7T8/view?usp=sharing",
+                    "fileId": "1ngxpbMfDjGWMuTdaczOY74NSq2qur7T8",
+                    "caption": "Registro fotográfico 10/06/2026 9.10.56 AM",
+                    "date": "12 Junio 2026",
+                    "order": 10
+          },
+          {
+                    "id": "photo-s24-11",
+                    "originalName": "WhatsApp Image 2026-06-11 at 10.56.13 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s24/photo_11.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1DObfi7gRQUmHJ20dS2arEN7ICy-i01vV/view?usp=sharing",
+                    "fileId": "1DObfi7gRQUmHJ20dS2arEN7ICy-i01vV",
+                    "caption": "Registro fotográfico 11/06/2026 10.56.13 AM",
+                    "date": "12 Junio 2026",
+                    "order": 11
+          }
+],
       },
       {
         id: "log-arrecifes-s25-20260619",
@@ -1008,6 +1946,138 @@ export const defaultClientProjects: ClientProject[] = [
         pdfFileName: "20260619__Bit__cora_de_Obra_Arrecifes_S25_-_Arrecifes.pdf",
         pdfDriveUrl: "https://drive.google.com/file/d/10VqDs2Qu5mDI_9_CXz9oCf48iX9OJLgD/view?usp=sharing",
         photosCount: 13,
+        photos: [
+          {
+                    "id": "photo-s25-01",
+                    "originalName": "WhatsApp Image 2026-06-16 at 3.11.04 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s25/photo_01.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1t9jRyyAkqmsaNH4cdPBHJA02-feRY9Ln/view?usp=sharing",
+                    "fileId": "1t9jRyyAkqmsaNH4cdPBHJA02-feRY9Ln",
+                    "caption": "Registro fotográfico 16/06/2026 3.11.04 PM",
+                    "date": "19 Junio 2026",
+                    "order": 1
+          },
+          {
+                    "id": "photo-s25-02",
+                    "originalName": "WhatsApp Image 2026-06-16 at 3.11.05 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s25/photo_02.webp",
+                    "driveUrl": "https://drive.google.com/file/d/17bY_yPRQke8LCFJc3sqsggPmwVaTSAPA/view?usp=sharing",
+                    "fileId": "17bY_yPRQke8LCFJc3sqsggPmwVaTSAPA",
+                    "caption": "Registro fotográfico 16/06/2026 3.11.05 PM",
+                    "date": "19 Junio 2026",
+                    "order": 2
+          },
+          {
+                    "id": "photo-s25-03",
+                    "originalName": "WhatsApp Image 2026-06-16 at 5.52.35 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s25/photo_03.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1A7XY1ALW5KaW3byiwnhIGAs4cMe7-LjW/view?usp=sharing",
+                    "fileId": "1A7XY1ALW5KaW3byiwnhIGAs4cMe7-LjW",
+                    "caption": "Registro fotográfico 16/06/2026 5.52.35 PM",
+                    "date": "19 Junio 2026",
+                    "order": 3
+          },
+          {
+                    "id": "photo-s25-04",
+                    "originalName": "WhatsApp Image 2026-06-16 at 5.52.35 PM1.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s25/photo_04.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1NqsLXs_WRkpLBdwlkwQuK-M22y6sgd7l/view?usp=sharing",
+                    "fileId": "1NqsLXs_WRkpLBdwlkwQuK-M22y6sgd7l",
+                    "caption": "Registro fotográfico 16/06/2026 5.52.35 PM",
+                    "date": "19 Junio 2026",
+                    "order": 4
+          },
+          {
+                    "id": "photo-s25-05",
+                    "originalName": "WhatsApp Image 2026-06-17 at 11.37.27 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s25/photo_05.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1XM2OuuSttOafQMoWsyejioUOAgNhZZGt/view?usp=sharing",
+                    "fileId": "1XM2OuuSttOafQMoWsyejioUOAgNhZZGt",
+                    "caption": "Registro fotográfico 17/06/2026 11.37.27 AM",
+                    "date": "19 Junio 2026",
+                    "order": 5
+          },
+          {
+                    "id": "photo-s25-06",
+                    "originalName": "WhatsApp Image 2026-06-17 at 11.37.27 AM2.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s25/photo_06.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1t-efR_nD5melWYajSkXqwhdWou3LHQY9/view?usp=sharing",
+                    "fileId": "1t-efR_nD5melWYajSkXqwhdWou3LHQY9",
+                    "caption": "Registro fotográfico 17/06/2026 11.37.27 AM",
+                    "date": "19 Junio 2026",
+                    "order": 6
+          },
+          {
+                    "id": "photo-s25-07",
+                    "originalName": "WhatsApp Image 2026-06-17 at 3.59.16 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s25/photo_07.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1KSptFfy4MHaFEdElNqu09I1k-VTDQaBN/view?usp=sharing",
+                    "fileId": "1KSptFfy4MHaFEdElNqu09I1k-VTDQaBN",
+                    "caption": "Registro fotográfico 17/06/2026 3.59.16 PM",
+                    "date": "19 Junio 2026",
+                    "order": 7
+          },
+          {
+                    "id": "photo-s25-08",
+                    "originalName": "WhatsApp Image 2026-06-17 at 3.59.16 PM33.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s25/photo_08.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1-Qskeaog6MbHtBJH9dYa4_rPIAWSkSvO/view?usp=sharing",
+                    "fileId": "1-Qskeaog6MbHtBJH9dYa4_rPIAWSkSvO",
+                    "caption": "Registro fotográfico 17/06/2026 3.59.16 PM",
+                    "date": "19 Junio 2026",
+                    "order": 8
+          },
+          {
+                    "id": "photo-s25-09",
+                    "originalName": "WhatsApp Image 2026-06-17 at 3.59.16 PMa.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s25/photo_09.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1xgCBnDK4ldCFdKjDosjHiglzHVQXyLsK/view?usp=sharing",
+                    "fileId": "1xgCBnDK4ldCFdKjDosjHiglzHVQXyLsK",
+                    "caption": "Registro fotográfico 17/06/2026 3.59.16 PM",
+                    "date": "19 Junio 2026",
+                    "order": 9
+          },
+          {
+                    "id": "photo-s25-10",
+                    "originalName": "WhatsApp Image 2026-06-17 at 4.58.22 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s25/photo_10.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1mRgOf4Vk_Js_40vnX3UPlhNgHkslk6HJ/view?usp=sharing",
+                    "fileId": "1mRgOf4Vk_Js_40vnX3UPlhNgHkslk6HJ",
+                    "caption": "Registro fotográfico 17/06/2026 4.58.22 PM",
+                    "date": "19 Junio 2026",
+                    "order": 10
+          },
+          {
+                    "id": "photo-s25-11",
+                    "originalName": "WhatsApp Image 2026-06-17 at 4.58.22 PMss.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s25/photo_11.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1_pLHow3yyJw3uaVZMOWc0VEzuzA-ypqi/view?usp=sharing",
+                    "fileId": "1_pLHow3yyJw3uaVZMOWc0VEzuzA-ypqi",
+                    "caption": "Registro fotográfico 17/06/2026 4.58.22 PM",
+                    "date": "19 Junio 2026",
+                    "order": 11
+          },
+          {
+                    "id": "photo-s25-12",
+                    "originalName": "WhatsApp Image 2026-06-17 at 4.58.23 PMm.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s25/photo_12.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1mdsY4y4tBmUBa7LiJYaqhB3_VANvHwuq/view?usp=sharing",
+                    "fileId": "1mdsY4y4tBmUBa7LiJYaqhB3_VANvHwuq",
+                    "caption": "Registro fotográfico 17/06/2026 4.58.23 PM",
+                    "date": "19 Junio 2026",
+                    "order": 12
+          },
+          {
+                    "id": "photo-s25-13",
+                    "originalName": "WhatsApp Image 2026-06-18 at 4.37.31 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s25/photo_13.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1BbT3DWpOLwAZLg4-Z3iYg98LSLCQtWxL/view?usp=sharing",
+                    "fileId": "1BbT3DWpOLwAZLg4-Z3iYg98LSLCQtWxL",
+                    "caption": "Registro fotográfico 18/06/2026 4.37.31 PM",
+                    "date": "19 Junio 2026",
+                    "order": 13
+          }
+],
       },
       {
         id: "log-arrecifes-s26-20260626",
@@ -1036,6 +2106,148 @@ export const defaultClientProjects: ClientProject[] = [
         pdfFileName: "20260625__Bit__cora_de_Obra_Arrecifes_S26_-_Arrecifes.pdf",
         pdfDriveUrl: "https://drive.google.com/file/d/136IL9FHcwwhc8sRQd-6l_Ql3ra61sgyR/view?usp=sharing",
         photosCount: 14,
+        photos: [
+          {
+                    "id": "photo-s26-01",
+                    "originalName": "WhatsApp Image 2026-06-22 at 12.29.22 PM (1).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s26/photo_01.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1_wUXcoJKzikR9v9xVaVZ1qlH-MjERizD/view?usp=sharing",
+                    "fileId": "1_wUXcoJKzikR9v9xVaVZ1qlH-MjERizD",
+                    "caption": "Registro fotográfico 22/06/2026 12.29.22 PM",
+                    "date": "26 Junio 2026",
+                    "order": 1
+          },
+          {
+                    "id": "photo-s26-02",
+                    "originalName": "WhatsApp Image 2026-06-22 at 12.29.22 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s26/photo_02.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1nF0ey0GU6cSKOroOuoH09NYi3lTlI5iG/view?usp=sharing",
+                    "fileId": "1nF0ey0GU6cSKOroOuoH09NYi3lTlI5iG",
+                    "caption": "Registro fotográfico 22/06/2026 12.29.22 PM",
+                    "date": "26 Junio 2026",
+                    "order": 2
+          },
+          {
+                    "id": "photo-s26-03",
+                    "originalName": "WhatsApp Image 2026-06-22 at 12.29.23 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s26/photo_03.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1BtutFTKv3SaZB3JNqunFN-xGexo3zHYy/view?usp=sharing",
+                    "fileId": "1BtutFTKv3SaZB3JNqunFN-xGexo3zHYy",
+                    "caption": "Registro fotográfico 22/06/2026 12.29.23 PM",
+                    "date": "26 Junio 2026",
+                    "order": 3
+          },
+          {
+                    "id": "photo-s26-04",
+                    "originalName": "WhatsApp Image 2026-06-22 at 5.02.02 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s26/photo_04.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1ga5abFGX80e9OYmWkkhWtBH018M1-E9B/view?usp=sharing",
+                    "fileId": "1ga5abFGX80e9OYmWkkhWtBH018M1-E9B",
+                    "caption": "Registro fotográfico 22/06/2026 5.02.02 PM",
+                    "date": "26 Junio 2026",
+                    "order": 4
+          },
+          {
+                    "id": "photo-s26-05",
+                    "originalName": "WhatsApp Image 2026-06-22 at 5.02.06 PM (1).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s26/photo_05.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1YqNU8h2Xhb6hDSYNJ-x7rX_w7v0ZOHiV/view?usp=sharing",
+                    "fileId": "1YqNU8h2Xhb6hDSYNJ-x7rX_w7v0ZOHiV",
+                    "caption": "Registro fotográfico 22/06/2026 5.02.06 PM",
+                    "date": "26 Junio 2026",
+                    "order": 5
+          },
+          {
+                    "id": "photo-s26-06",
+                    "originalName": "WhatsApp Image 2026-06-22 at 5.02.06 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s26/photo_06.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1w-ltGE5qMqlGgDGh2Ysk4PGDA6Hzb73M/view?usp=sharing",
+                    "fileId": "1w-ltGE5qMqlGgDGh2Ysk4PGDA6Hzb73M",
+                    "caption": "Registro fotográfico 22/06/2026 5.02.06 PM",
+                    "date": "26 Junio 2026",
+                    "order": 6
+          },
+          {
+                    "id": "photo-s26-07",
+                    "originalName": "WhatsApp Image 2026-06-23 at 11.33.00 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s26/photo_07.webp",
+                    "driveUrl": "https://drive.google.com/file/d/10K1B4sPFDA9-43Cqc28JYhFml8XYRfRb/view?usp=sharing",
+                    "fileId": "10K1B4sPFDA9-43Cqc28JYhFml8XYRfRb",
+                    "caption": "Registro fotográfico 23/06/2026 11.33.00 AM",
+                    "date": "26 Junio 2026",
+                    "order": 7
+          },
+          {
+                    "id": "photo-s26-08",
+                    "originalName": "WhatsApp Image 2026-06-23 at 3.05.38 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s26/photo_08.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1agS0UQ6akaJ9pDOoV-DupZrFPu8oZcTT/view?usp=sharing",
+                    "fileId": "1agS0UQ6akaJ9pDOoV-DupZrFPu8oZcTT",
+                    "caption": "Registro fotográfico 23/06/2026 3.05.38 PM",
+                    "date": "26 Junio 2026",
+                    "order": 8
+          },
+          {
+                    "id": "photo-s26-09",
+                    "originalName": "WhatsApp Image 2026-06-23 at 8.59.39 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s26/photo_09.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1yvhZJ5ha7x0aFzZ5WcCxMboQAgAfXAfP/view?usp=sharing",
+                    "fileId": "1yvhZJ5ha7x0aFzZ5WcCxMboQAgAfXAfP",
+                    "caption": "Registro fotográfico 23/06/2026 8.59.39 AM",
+                    "date": "26 Junio 2026",
+                    "order": 9
+          },
+          {
+                    "id": "photo-s26-10",
+                    "originalName": "WhatsApp Image 2026-06-24 at 5.39.37 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s26/photo_10.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1LXak1rqJ3TTl9L5H7sK_fasoYERlaNd7/view?usp=sharing",
+                    "fileId": "1LXak1rqJ3TTl9L5H7sK_fasoYERlaNd7",
+                    "caption": "Registro fotográfico 24/06/2026 5.39.37 PM",
+                    "date": "26 Junio 2026",
+                    "order": 10
+          },
+          {
+                    "id": "photo-s26-11",
+                    "originalName": "WhatsApp Image 2026-06-24 at 8.34.33 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s26/photo_11.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1Grnwrexn-au65c1c746PP1uufj0rO_7e/view?usp=sharing",
+                    "fileId": "1Grnwrexn-au65c1c746PP1uufj0rO_7e",
+                    "caption": "Registro fotográfico 24/06/2026 8.34.33 AM",
+                    "date": "26 Junio 2026",
+                    "order": 11
+          },
+          {
+                    "id": "photo-s26-12",
+                    "originalName": "WhatsApp Image 2026-06-24 at 8.34.34 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s26/photo_12.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1XVOsBsFXOBhq-e70rLi6HfbAD1ExbUgn/view?usp=sharing",
+                    "fileId": "1XVOsBsFXOBhq-e70rLi6HfbAD1ExbUgn",
+                    "caption": "Registro fotográfico 24/06/2026 8.34.34 AM",
+                    "date": "26 Junio 2026",
+                    "order": 12
+          },
+          {
+                    "id": "photo-s26-13",
+                    "originalName": "WhatsApp Image 2026-06-24 at 8.34.49 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s26/photo_13.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1t6-68n0iCGlFBeiYfDAWZcjEjB_vygCk/view?usp=sharing",
+                    "fileId": "1t6-68n0iCGlFBeiYfDAWZcjEjB_vygCk",
+                    "caption": "Registro fotográfico 24/06/2026 8.34.49 AM",
+                    "date": "26 Junio 2026",
+                    "order": 13
+          },
+          {
+                    "id": "photo-s26-14",
+                    "originalName": "WhatsApp Image 2026-06-25 at 12.26.05 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s26/photo_14.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1Op3x5jRnQtB_8pnl-GD7YV4kODc2d-oU/view?usp=sharing",
+                    "fileId": "1Op3x5jRnQtB_8pnl-GD7YV4kODc2d-oU",
+                    "caption": "Registro fotográfico 25/06/2026 12.26.05 PM",
+                    "date": "26 Junio 2026",
+                    "order": 14
+          }
+],
       },
       {
         id: "log-arrecifes-s27-20260702",
@@ -1064,6 +2276,98 @@ export const defaultClientProjects: ClientProject[] = [
         pdfFileName: "20260703__Bit__cora_de_Obra_Arrecifes_S27_-_Arrecifes.pdf",
         pdfDriveUrl: "https://drive.google.com/file/d/1uGIxT4Y7xkS2ViAWHNBrORHucWFUy51V/view?usp=sharing",
         photosCount: 9,
+        photos: [
+          {
+                    "id": "photo-s27-01",
+                    "originalName": "WhatsApp Image 2026-06-30 at 12.30.31 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s27/photo_01.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1QwVsdha17QkzRgSR7OmcaGx4vfSQ3RpO/view?usp=sharing",
+                    "fileId": "1QwVsdha17QkzRgSR7OmcaGx4vfSQ3RpO",
+                    "caption": "Registro fotográfico 30/06/2026 12.30.31 PM",
+                    "date": "02 Julio 2026",
+                    "order": 1
+          },
+          {
+                    "id": "photo-s27-02",
+                    "originalName": "WhatsApp Image 2026-06-30 at 2.06.53 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s27/photo_02.webp",
+                    "driveUrl": "https://drive.google.com/file/d/13-CT790sbXNogxTA3yHBKQ4-m4Db4jwv/view?usp=sharing",
+                    "fileId": "13-CT790sbXNogxTA3yHBKQ4-m4Db4jwv",
+                    "caption": "Registro fotográfico 30/06/2026 2.06.53 PM",
+                    "date": "02 Julio 2026",
+                    "order": 2
+          },
+          {
+                    "id": "photo-s27-03",
+                    "originalName": "WhatsApp Image 2026-06-30 at 8.33.14 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s27/photo_03.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1cvW7xTNuZ4ks8FgdZWqIq4YhepH-iw0q/view?usp=sharing",
+                    "fileId": "1cvW7xTNuZ4ks8FgdZWqIq4YhepH-iw0q",
+                    "caption": "Registro fotográfico 30/06/2026 8.33.14 AM",
+                    "date": "02 Julio 2026",
+                    "order": 3
+          },
+          {
+                    "id": "photo-s27-04",
+                    "originalName": "WhatsApp Image 2026-07-01 at 4.54.48 PM..jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s27/photo_04.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1cgunnlGrx4nJHMJs2QtPTY3M7PPLDOUI/view?usp=sharing",
+                    "fileId": "1cgunnlGrx4nJHMJs2QtPTY3M7PPLDOUI",
+                    "caption": "Registro fotográfico 01/07/2026 4.54.48 PM",
+                    "date": "02 Julio 2026",
+                    "order": 4
+          },
+          {
+                    "id": "photo-s27-05",
+                    "originalName": "WhatsApp Image 2026-07-01 at 4.54.48 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s27/photo_05.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1KCrYtwCpCBS8LNbiQmX8-FGUzy3l9AWo/view?usp=sharing",
+                    "fileId": "1KCrYtwCpCBS8LNbiQmX8-FGUzy3l9AWo",
+                    "caption": "Registro fotográfico 01/07/2026 4.54.48 PM",
+                    "date": "02 Julio 2026",
+                    "order": 5
+          },
+          {
+                    "id": "photo-s27-06",
+                    "originalName": "WhatsApp Image 2026-07-02 at 12.23.02 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s27/photo_06.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1liyfe4L7xGahMP_IxzrzpxjYez9LXB_K/view?usp=sharing",
+                    "fileId": "1liyfe4L7xGahMP_IxzrzpxjYez9LXB_K",
+                    "caption": "Registro fotográfico 02/07/2026 12.23.02 PM",
+                    "date": "02 Julio 2026",
+                    "order": 6
+          },
+          {
+                    "id": "photo-s27-07",
+                    "originalName": "WhatsApp Image 2026-07-02 at 12.59.11 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s27/photo_07.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1wDt48f4WCGLTfPb-FHiFQUIxKICsGx3g/view?usp=sharing",
+                    "fileId": "1wDt48f4WCGLTfPb-FHiFQUIxKICsGx3g",
+                    "caption": "Registro fotográfico 02/07/2026 12.59.11 PM",
+                    "date": "02 Julio 2026",
+                    "order": 7
+          },
+          {
+                    "id": "photo-s27-08",
+                    "originalName": "WhatsApp Image 2026-07-02 at 4.05.43 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s27/photo_08.webp",
+                    "driveUrl": "https://drive.google.com/file/d/10pD2PAanH0aULiR-0dobl8azvAjOp_Bp/view?usp=sharing",
+                    "fileId": "10pD2PAanH0aULiR-0dobl8azvAjOp_Bp",
+                    "caption": "Registro fotográfico 02/07/2026 4.05.43 PM",
+                    "date": "02 Julio 2026",
+                    "order": 8
+          },
+          {
+                    "id": "photo-s27-09",
+                    "originalName": "WhatsApp Image 2026-07-02 at 4.05.44 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s27/photo_09.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1BSXClKqgDCIJb5PH8GKrM0ioR6H9JJO9/view?usp=sharing",
+                    "fileId": "1BSXClKqgDCIJb5PH8GKrM0ioR6H9JJO9",
+                    "caption": "Registro fotográfico 02/07/2026 4.05.44 PM",
+                    "date": "02 Julio 2026",
+                    "order": 9
+          }
+],
       },
       {
         id: "log-arrecifes-s28-20260710",
@@ -1092,6 +2396,118 @@ export const defaultClientProjects: ClientProject[] = [
         pdfFileName: "20260710__Bit__cora_de_Obra_Arrecifes_S28_-_Arrecifes.pdf",
         pdfDriveUrl: "https://drive.google.com/file/d/1BOC-70bvwAGCC41n5ntjYptxtnoAhWRw/view?usp=sharing",
         photosCount: 11,
+        photos: [
+          {
+                    "id": "photo-s28-01",
+                    "originalName": "WhatsApp Image 2026-07-06 at 9.58.03 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s28/photo_01.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1dgvtfAjRQ8RcbJm3mplkeb6bj3XJlJyk/view?usp=sharing",
+                    "fileId": "1dgvtfAjRQ8RcbJm3mplkeb6bj3XJlJyk",
+                    "caption": "Registro fotográfico 06/07/2026 9.58.03 AM",
+                    "date": "10 Julio 2026",
+                    "order": 1
+          },
+          {
+                    "id": "photo-s28-02",
+                    "originalName": "WhatsApp Image 2026-07-06 at 9.58.04 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s28/photo_02.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1_65A6XRPiF7skw2owm0a9ERdvcrMTRqY/view?usp=sharing",
+                    "fileId": "1_65A6XRPiF7skw2owm0a9ERdvcrMTRqY",
+                    "caption": "Registro fotográfico 06/07/2026 9.58.04 AM",
+                    "date": "10 Julio 2026",
+                    "order": 2
+          },
+          {
+                    "id": "photo-s28-03",
+                    "originalName": "WhatsApp Image 2026-07-06 at 9.58.05 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s28/photo_03.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1tDxr0RBSm1XfzL8jiG2mwGwbA6MwLCqm/view?usp=sharing",
+                    "fileId": "1tDxr0RBSm1XfzL8jiG2mwGwbA6MwLCqm",
+                    "caption": "Registro fotográfico 06/07/2026 9.58.05 AM",
+                    "date": "10 Julio 2026",
+                    "order": 3
+          },
+          {
+                    "id": "photo-s28-04",
+                    "originalName": "WhatsApp Image 2026-07-07 at 1.20.54 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s28/photo_04.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1MzD0AOXmxzeUC8EYMuduxVXoKjL_sulA/view?usp=sharing",
+                    "fileId": "1MzD0AOXmxzeUC8EYMuduxVXoKjL_sulA",
+                    "caption": "Registro fotográfico 07/07/2026 1.20.54 PM",
+                    "date": "10 Julio 2026",
+                    "order": 4
+          },
+          {
+                    "id": "photo-s28-05",
+                    "originalName": "WhatsApp Image 2026-07-07 at 9.14.00 AM..jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s28/photo_05.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1NL8CnHnar3t9MgCh0uOw1Ng7dmHGkDm7/view?usp=sharing",
+                    "fileId": "1NL8CnHnar3t9MgCh0uOw1Ng7dmHGkDm7",
+                    "caption": "Registro fotográfico 07/07/2026 9.14.00 AM",
+                    "date": "10 Julio 2026",
+                    "order": 5
+          },
+          {
+                    "id": "photo-s28-06",
+                    "originalName": "WhatsApp Image 2026-07-07 at 9.14.00 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s28/photo_06.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1ucev9esmH59ebsy-M8UPJOEKqj-bDfcY/view?usp=sharing",
+                    "fileId": "1ucev9esmH59ebsy-M8UPJOEKqj-bDfcY",
+                    "caption": "Registro fotográfico 07/07/2026 9.14.00 AM",
+                    "date": "10 Julio 2026",
+                    "order": 6
+          },
+          {
+                    "id": "photo-s28-07",
+                    "originalName": "WhatsApp Image 2026-07-07 at 9.14.00 AMA.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s28/photo_07.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1TKmzX94dERBjIz5EFnjx7FlSnzwn1szt/view?usp=sharing",
+                    "fileId": "1TKmzX94dERBjIz5EFnjx7FlSnzwn1szt",
+                    "caption": "Registro fotográfico 07/07/2026 9.14.00 AM",
+                    "date": "10 Julio 2026",
+                    "order": 7
+          },
+          {
+                    "id": "photo-s28-08",
+                    "originalName": "WhatsApp Image 2026-07-07 at 9.14.01 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s28/photo_08.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1JAq65JrbXEwgN-yMgURXWlAKYBpBf60v/view?usp=sharing",
+                    "fileId": "1JAq65JrbXEwgN-yMgURXWlAKYBpBf60v",
+                    "caption": "Registro fotográfico 07/07/2026 9.14.01 AM",
+                    "date": "10 Julio 2026",
+                    "order": 8
+          },
+          {
+                    "id": "photo-s28-09",
+                    "originalName": "WhatsApp Image 2026-07-09 at 5.14.49 PM (1).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s28/photo_09.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1NjzaeHI9XU5Ye-WLCYYQDvhQiRN0OoY5/view?usp=sharing",
+                    "fileId": "1NjzaeHI9XU5Ye-WLCYYQDvhQiRN0OoY5",
+                    "caption": "Registro fotográfico 09/07/2026 5.14.49 PM",
+                    "date": "10 Julio 2026",
+                    "order": 9
+          },
+          {
+                    "id": "photo-s28-10",
+                    "originalName": "WhatsApp Image 2026-07-09 at 5.14.49 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s28/photo_10.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1uKegBzRFkvjafRYl0WjMGLgI2lrVqGAg/view?usp=sharing",
+                    "fileId": "1uKegBzRFkvjafRYl0WjMGLgI2lrVqGAg",
+                    "caption": "Registro fotográfico 09/07/2026 5.14.49 PM",
+                    "date": "10 Julio 2026",
+                    "order": 10
+          },
+          {
+                    "id": "photo-s28-11",
+                    "originalName": "WhatsApp Image 2026-07-09 at 5.14.50 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s28/photo_11.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1mWPyBTzNUGMMPH_MhiWhyO7ScCFsGZMw/view?usp=sharing",
+                    "fileId": "1mWPyBTzNUGMMPH_MhiWhyO7ScCFsGZMw",
+                    "caption": "Registro fotográfico 09/07/2026 5.14.50 PM",
+                    "date": "10 Julio 2026",
+                    "order": 11
+          }
+],
       },
       {
         id: "log-arrecifes-s29-20260717",
@@ -1120,6 +2536,188 @@ export const defaultClientProjects: ClientProject[] = [
         pdfFileName: "20260717__Bit__cora_de_Obra_Arrecifes_S29_-_Arrecifes.pdf",
         pdfDriveUrl: "https://drive.google.com/file/d/1_rJK47AUuxBm6zAlURZHgw6z-Ivo1_SQ/view?usp=sharing",
         photosCount: 18,
+        photos: [
+          {
+                    "id": "photo-s29-01",
+                    "originalName": "WhatsApp Image 2026-07-13 at 5.17.45 PM (1).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s29/photo_01.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1v7A86Ue2mlmR5vOri7pxtxnUnUvl-eUK/view?usp=sharing",
+                    "fileId": "1v7A86Ue2mlmR5vOri7pxtxnUnUvl-eUK",
+                    "caption": "Registro fotográfico 13/07/2026 5.17.45 PM",
+                    "date": "17 Julio 2026",
+                    "order": 1
+          },
+          {
+                    "id": "photo-s29-02",
+                    "originalName": "WhatsApp Image 2026-07-13 at 5.17.45 PM (2).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s29/photo_02.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1kXphTw34Rg3Ttw7VB_eTUQ5akYWJIF8p/view?usp=sharing",
+                    "fileId": "1kXphTw34Rg3Ttw7VB_eTUQ5akYWJIF8p",
+                    "caption": "Registro fotográfico 13/07/2026 5.17.45 PM",
+                    "date": "17 Julio 2026",
+                    "order": 2
+          },
+          {
+                    "id": "photo-s29-03",
+                    "originalName": "WhatsApp Image 2026-07-13 at 5.17.45 PM (3).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s29/photo_03.webp",
+                    "driveUrl": "https://drive.google.com/file/d/130EcP10ar-nnbf9eN4W6Z1tb6Oyzw9B1/view?usp=sharing",
+                    "fileId": "130EcP10ar-nnbf9eN4W6Z1tb6Oyzw9B1",
+                    "caption": "Registro fotográfico 13/07/2026 5.17.45 PM",
+                    "date": "17 Julio 2026",
+                    "order": 3
+          },
+          {
+                    "id": "photo-s29-04",
+                    "originalName": "WhatsApp Image 2026-07-13 at 5.17.45 PM (4).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s29/photo_04.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1uHeLWfWf5FvGFdNGVw8yplGcZrIPMjaJ/view?usp=sharing",
+                    "fileId": "1uHeLWfWf5FvGFdNGVw8yplGcZrIPMjaJ",
+                    "caption": "Registro fotográfico 13/07/2026 5.17.45 PM",
+                    "date": "17 Julio 2026",
+                    "order": 4
+          },
+          {
+                    "id": "photo-s29-05",
+                    "originalName": "WhatsApp Image 2026-07-13 at 5.17.45 PM (5).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s29/photo_05.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1_k57qeW_vow4ee5LXKkSBrtsnZTC9Pdu/view?usp=sharing",
+                    "fileId": "1_k57qeW_vow4ee5LXKkSBrtsnZTC9Pdu",
+                    "caption": "Registro fotográfico 13/07/2026 5.17.45 PM",
+                    "date": "17 Julio 2026",
+                    "order": 5
+          },
+          {
+                    "id": "photo-s29-06",
+                    "originalName": "WhatsApp Image 2026-07-13 at 5.17.45 PM (6).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s29/photo_06.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1ZvEWeyv7-I28AZ1YcuYPwKlmQtsdALa3/view?usp=sharing",
+                    "fileId": "1ZvEWeyv7-I28AZ1YcuYPwKlmQtsdALa3",
+                    "caption": "Registro fotográfico 13/07/2026 5.17.45 PM",
+                    "date": "17 Julio 2026",
+                    "order": 6
+          },
+          {
+                    "id": "photo-s29-07",
+                    "originalName": "WhatsApp Image 2026-07-13 at 5.17.45 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s29/photo_07.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1j4SQ2w2C9sKmoyhjstPjw6JxX6dJLJwp/view?usp=sharing",
+                    "fileId": "1j4SQ2w2C9sKmoyhjstPjw6JxX6dJLJwp",
+                    "caption": "Registro fotográfico 13/07/2026 5.17.45 PM",
+                    "date": "17 Julio 2026",
+                    "order": 7
+          },
+          {
+                    "id": "photo-s29-08",
+                    "originalName": "WhatsApp Image 2026-07-13 at 5.17.46 PM (1).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s29/photo_08.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1GUrEQ4dknAJXcF8OHGIp7zA87GZzeSlW/view?usp=sharing",
+                    "fileId": "1GUrEQ4dknAJXcF8OHGIp7zA87GZzeSlW",
+                    "caption": "Registro fotográfico 13/07/2026 5.17.46 PM",
+                    "date": "17 Julio 2026",
+                    "order": 8
+          },
+          {
+                    "id": "photo-s29-09",
+                    "originalName": "WhatsApp Image 2026-07-13 at 5.17.46 PM (2).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s29/photo_09.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1r-Z-6n_Y6Fp5R7-PNFrsfi-gzBqAX2n7/view?usp=sharing",
+                    "fileId": "1r-Z-6n_Y6Fp5R7-PNFrsfi-gzBqAX2n7",
+                    "caption": "Registro fotográfico 13/07/2026 5.17.46 PM",
+                    "date": "17 Julio 2026",
+                    "order": 9
+          },
+          {
+                    "id": "photo-s29-10",
+                    "originalName": "WhatsApp Image 2026-07-13 at 5.17.46 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s29/photo_10.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1P5-R26DLnKRV5DA85qDYGRkSNh6VfozH/view?usp=sharing",
+                    "fileId": "1P5-R26DLnKRV5DA85qDYGRkSNh6VfozH",
+                    "caption": "Registro fotográfico 13/07/2026 5.17.46 PM",
+                    "date": "17 Julio 2026",
+                    "order": 10
+          },
+          {
+                    "id": "photo-s29-11",
+                    "originalName": "WhatsApp Image 2026-07-15 at 9.04.29 AM (1).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s29/photo_11.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1-oZAJUBCedZIbUKDUXaO8s0O_e_3ckDn/view?usp=sharing",
+                    "fileId": "1-oZAJUBCedZIbUKDUXaO8s0O_e_3ckDn",
+                    "caption": "Registro fotográfico 15/07/2026 9.04.29 AM",
+                    "date": "17 Julio 2026",
+                    "order": 11
+          },
+          {
+                    "id": "photo-s29-12",
+                    "originalName": "WhatsApp Image 2026-07-15 at 9.04.29 AM (2).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s29/photo_12.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1-ybLaHzCrZRmG9pr5haES6O3hdaWLHNy/view?usp=sharing",
+                    "fileId": "1-ybLaHzCrZRmG9pr5haES6O3hdaWLHNy",
+                    "caption": "Registro fotográfico 15/07/2026 9.04.29 AM",
+                    "date": "17 Julio 2026",
+                    "order": 12
+          },
+          {
+                    "id": "photo-s29-13",
+                    "originalName": "WhatsApp Image 2026-07-15 at 9.04.29 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s29/photo_13.webp",
+                    "driveUrl": "https://drive.google.com/file/d/18NsYrA4x-IzN2t-TUmcS6e404PWb9gKR/view?usp=sharing",
+                    "fileId": "18NsYrA4x-IzN2t-TUmcS6e404PWb9gKR",
+                    "caption": "Registro fotográfico 15/07/2026 9.04.29 AM",
+                    "date": "17 Julio 2026",
+                    "order": 13
+          },
+          {
+                    "id": "photo-s29-14",
+                    "originalName": "WhatsApp Image 2026-07-15 at 9.04.30 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s29/photo_14.webp",
+                    "driveUrl": "https://drive.google.com/file/d/109CimEoOozuYywqf_wFNza0IEBgb3nFg/view?usp=sharing",
+                    "fileId": "109CimEoOozuYywqf_wFNza0IEBgb3nFg",
+                    "caption": "Registro fotográfico 15/07/2026 9.04.30 AM",
+                    "date": "17 Julio 2026",
+                    "order": 14
+          },
+          {
+                    "id": "photo-s29-15",
+                    "originalName": "WhatsApp Image 2026-07-16 at 1.31.49 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s29/photo_15.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1F8Hm6JpP1mWu0jQFz-qgEwsK4cFrH1U7/view?usp=sharing",
+                    "fileId": "1F8Hm6JpP1mWu0jQFz-qgEwsK4cFrH1U7",
+                    "caption": "Registro fotográfico 16/07/2026 1.31.49 PM",
+                    "date": "17 Julio 2026",
+                    "order": 15
+          },
+          {
+                    "id": "photo-s29-16",
+                    "originalName": "WhatsApp Image 2026-07-16 at 12.50.27 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s29/photo_16.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1oEYrOpT9N_wtSWZ2nVHOGEdu6LvxX62g/view?usp=sharing",
+                    "fileId": "1oEYrOpT9N_wtSWZ2nVHOGEdu6LvxX62g",
+                    "caption": "Registro fotográfico 16/07/2026 12.50.27 PM",
+                    "date": "17 Julio 2026",
+                    "order": 16
+          },
+          {
+                    "id": "photo-s29-17",
+                    "originalName": "WhatsApp Image 2026-07-16 at 5.30.08 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s29/photo_17.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1t-0tdrY8AY80aycNrZQJQLmzIBT_LYl7/view?usp=sharing",
+                    "fileId": "1t-0tdrY8AY80aycNrZQJQLmzIBT_LYl7",
+                    "caption": "Registro fotográfico 16/07/2026 5.30.08 PM",
+                    "date": "17 Julio 2026",
+                    "order": 17
+          },
+          {
+                    "id": "photo-s29-18",
+                    "originalName": "WhatsApp Image 2026-07-16 at 5.30.09 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s29/photo_18.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1gC1TqYIPsalIqv64ftdT4ECaBV8roCMW/view?usp=sharing",
+                    "fileId": "1gC1TqYIPsalIqv64ftdT4ECaBV8roCMW",
+                    "caption": "Registro fotográfico 16/07/2026 5.30.09 PM",
+                    "date": "17 Julio 2026",
+                    "order": 18
+          }
+],
       },
       {
         id: "log-arrecifes-s31-20260730",
@@ -1148,6 +2746,178 @@ export const defaultClientProjects: ClientProject[] = [
         pdfFileName: "20260730__Bit__cora_de_Obra_Arrecifes_S31_-_Arrecifes.pdf",
         pdfDriveUrl: "https://drive.google.com/file/d/1e5vF729rcAP4J3tNxVs4-lUafTY7-S9B/view?usp=sharing",
         photosCount: 17,
+        photos: [
+          {
+                    "id": "photo-s31-01",
+                    "originalName": "WhatsApp Image 2026-07-28 at 12.01.02 PM (1).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s31/photo_01.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1mTLtV_KfM_8llhgVLmsGDmgDeNfuNBjM/view?usp=sharing",
+                    "fileId": "1mTLtV_KfM_8llhgVLmsGDmgDeNfuNBjM",
+                    "caption": "Registro fotográfico 28/07/2026 12.01.02 PM",
+                    "date": "30 Julio 2026",
+                    "order": 1
+          },
+          {
+                    "id": "photo-s31-02",
+                    "originalName": "WhatsApp Image 2026-07-28 at 12.01.02 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s31/photo_02.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1y0G0xqEpDKTa1EYwwEsKG_vYjMVS0qRp/view?usp=sharing",
+                    "fileId": "1y0G0xqEpDKTa1EYwwEsKG_vYjMVS0qRp",
+                    "caption": "Registro fotográfico 28/07/2026 12.01.02 PM",
+                    "date": "30 Julio 2026",
+                    "order": 2
+          },
+          {
+                    "id": "photo-s31-03",
+                    "originalName": "WhatsApp Image 2026-07-28 at 12.33.14 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s31/photo_03.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1gG7ZLYWjMkCVB32qh_xzBfwmGPPmy6XP/view?usp=sharing",
+                    "fileId": "1gG7ZLYWjMkCVB32qh_xzBfwmGPPmy6XP",
+                    "caption": "Registro fotográfico 28/07/2026 12.33.14 PM",
+                    "date": "30 Julio 2026",
+                    "order": 3
+          },
+          {
+                    "id": "photo-s31-04",
+                    "originalName": "WhatsApp Image 2026-07-28 at 4.33.12 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s31/photo_04.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1LEnFk-lYnNJyjC_Kt6Nf4eDnTcvJocg7/view?usp=sharing",
+                    "fileId": "1LEnFk-lYnNJyjC_Kt6Nf4eDnTcvJocg7",
+                    "caption": "Registro fotográfico 28/07/2026 4.33.12 PM",
+                    "date": "30 Julio 2026",
+                    "order": 4
+          },
+          {
+                    "id": "photo-s31-05",
+                    "originalName": "WhatsApp Image 2026-07-28 at 4.33.14 PM (1).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s31/photo_05.webp",
+                    "driveUrl": "https://drive.google.com/file/d/17psVNjtmsNDQvJ8udoe7qFevlY650OhL/view?usp=sharing",
+                    "fileId": "17psVNjtmsNDQvJ8udoe7qFevlY650OhL",
+                    "caption": "Registro fotográfico 28/07/2026 4.33.14 PM",
+                    "date": "30 Julio 2026",
+                    "order": 5
+          },
+          {
+                    "id": "photo-s31-06",
+                    "originalName": "WhatsApp Image 2026-07-28 at 4.33.14 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s31/photo_06.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1w9TEQILrANIpZZDgNdFS2xpsgAUXCYEz/view?usp=sharing",
+                    "fileId": "1w9TEQILrANIpZZDgNdFS2xpsgAUXCYEz",
+                    "caption": "Registro fotográfico 28/07/2026 4.33.14 PM",
+                    "date": "30 Julio 2026",
+                    "order": 6
+          },
+          {
+                    "id": "photo-s31-07",
+                    "originalName": "WhatsApp Image 2026-07-28 at 8.06.55 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s31/photo_07.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1ZrXeSt2LJbP1gVyJyV-n-Q2NTWVUzPt6/view?usp=sharing",
+                    "fileId": "1ZrXeSt2LJbP1gVyJyV-n-Q2NTWVUzPt6",
+                    "caption": "Registro fotográfico 28/07/2026 8.06.55 AM",
+                    "date": "30 Julio 2026",
+                    "order": 7
+          },
+          {
+                    "id": "photo-s31-08",
+                    "originalName": "WhatsApp Image 2026-07-28 at 8.06.56 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s31/photo_08.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1ZWD9jwBNVNUXKGGx76HOXS61R7M_1M3d/view?usp=sharing",
+                    "fileId": "1ZWD9jwBNVNUXKGGx76HOXS61R7M_1M3d",
+                    "caption": "Registro fotográfico 28/07/2026 8.06.56 AM",
+                    "date": "30 Julio 2026",
+                    "order": 8
+          },
+          {
+                    "id": "photo-s31-09",
+                    "originalName": "WhatsApp Image 2026-07-29 at 5.22.06 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s31/photo_09.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1_n080E9OwgEFyb2OoP9A5Nn5S9Ufg17K/view?usp=sharing",
+                    "fileId": "1_n080E9OwgEFyb2OoP9A5Nn5S9Ufg17K",
+                    "caption": "Registro fotográfico 29/07/2026 5.22.06 PM",
+                    "date": "30 Julio 2026",
+                    "order": 9
+          },
+          {
+                    "id": "photo-s31-10",
+                    "originalName": "WhatsApp Image 2026-07-29 at 5.22.07 PM (1).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s31/photo_10.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1X9q47cbBz_3k9C5ymjRuNKkGVFSZjB4p/view?usp=sharing",
+                    "fileId": "1X9q47cbBz_3k9C5ymjRuNKkGVFSZjB4p",
+                    "caption": "Registro fotográfico 29/07/2026 5.22.07 PM",
+                    "date": "30 Julio 2026",
+                    "order": 10
+          },
+          {
+                    "id": "photo-s31-11",
+                    "originalName": "WhatsApp Image 2026-07-29 at 5.22.07 PM (2).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s31/photo_11.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1oMoTD_NXSVh5mFGQlk0zm5c1z-FKchJF/view?usp=sharing",
+                    "fileId": "1oMoTD_NXSVh5mFGQlk0zm5c1z-FKchJF",
+                    "caption": "Registro fotográfico 29/07/2026 5.22.07 PM",
+                    "date": "30 Julio 2026",
+                    "order": 11
+          },
+          {
+                    "id": "photo-s31-12",
+                    "originalName": "WhatsApp Image 2026-07-29 at 5.22.07 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s31/photo_12.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1cFX9NtkXw9vNZkuvTOCfJdaYoTNkd528/view?usp=sharing",
+                    "fileId": "1cFX9NtkXw9vNZkuvTOCfJdaYoTNkd528",
+                    "caption": "Registro fotográfico 29/07/2026 5.22.07 PM",
+                    "date": "30 Julio 2026",
+                    "order": 12
+          },
+          {
+                    "id": "photo-s31-13",
+                    "originalName": "WhatsApp Image 2026-07-29 at 5.22.08 PM (1).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s31/photo_13.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1zb1HpCpOT83a8ckxiSycN7qE7mUxJGHZ/view?usp=sharing",
+                    "fileId": "1zb1HpCpOT83a8ckxiSycN7qE7mUxJGHZ",
+                    "caption": "Registro fotográfico 29/07/2026 5.22.08 PM",
+                    "date": "30 Julio 2026",
+                    "order": 13
+          },
+          {
+                    "id": "photo-s31-14",
+                    "originalName": "WhatsApp Image 2026-07-29 at 5.22.08 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s31/photo_14.webp",
+                    "driveUrl": "https://drive.google.com/file/d/15N0R0ZBmZKGNB3_BBAilZtkyy_h8V5K0/view?usp=sharing",
+                    "fileId": "15N0R0ZBmZKGNB3_BBAilZtkyy_h8V5K0",
+                    "caption": "Registro fotográfico 29/07/2026 5.22.08 PM",
+                    "date": "30 Julio 2026",
+                    "order": 14
+          },
+          {
+                    "id": "photo-s31-15",
+                    "originalName": "WhatsApp Image 2026-07-30 at 9.27.39 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s31/photo_15.webp",
+                    "driveUrl": "https://drive.google.com/file/d/18-MHCqG-OSZ-ddeT7-w8WJlwhkKlJ1yO/view?usp=sharing",
+                    "fileId": "18-MHCqG-OSZ-ddeT7-w8WJlwhkKlJ1yO",
+                    "caption": "Registro fotográfico 30/07/2026 9.27.39 AM",
+                    "date": "30 Julio 2026",
+                    "order": 15
+          },
+          {
+                    "id": "photo-s31-16",
+                    "originalName": "WhatsApp Image 2026-07-30 at 9.28.04 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s31/photo_16.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1cGuS75vBuhvlJkMUT4qCJX395PwoXJRx/view?usp=sharing",
+                    "fileId": "1cGuS75vBuhvlJkMUT4qCJX395PwoXJRx",
+                    "caption": "Registro fotográfico 30/07/2026 9.28.04 AM",
+                    "date": "30 Julio 2026",
+                    "order": 16
+          },
+          {
+                    "id": "photo-s31-17",
+                    "originalName": "WhatsApp Image 2026-07-30 at 9.28.06 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s31/photo_17.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1D7hIuHDl2JETrvaNihhHCznnvFp8dY5o/view?usp=sharing",
+                    "fileId": "1D7hIuHDl2JETrvaNihhHCznnvFp8dY5o",
+                    "caption": "Registro fotográfico 30/07/2026 9.28.06 AM",
+                    "date": "30 Julio 2026",
+                    "order": 17
+          }
+],
       },
       {
         id: "log-arrecifes-s32-20260730",
@@ -1176,6 +2946,148 @@ export const defaultClientProjects: ClientProject[] = [
         pdfFileName: "20260807__Bit__cora_de_Obra_Arrecifes_S32_-_Arrecifes.pdf",
         pdfDriveUrl: "https://drive.google.com/file/d/1K4OitaHN0Hu10jbz47xYb9NuiE7DaYxu/view?usp=sharing",
         photosCount: 14,
+        photos: [
+          {
+                    "id": "photo-s32-01",
+                    "originalName": "WhatsApp Image 2026-08-03 at 9.56.11 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s32/photo_01.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1SLmBRi5IZPlCME5Acs-v6dkDkUaXJtQM/view?usp=sharing",
+                    "fileId": "1SLmBRi5IZPlCME5Acs-v6dkDkUaXJtQM",
+                    "caption": "Registro fotográfico 03/08/2026 9.56.11 AM",
+                    "date": "07 Agosto 2026",
+                    "order": 1
+          },
+          {
+                    "id": "photo-s32-02",
+                    "originalName": "WhatsApp Image 2026-08-04 at 4.29.31 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s32/photo_02.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1ztjOa3xyGoM0NlCwamI5s4mJVmNgCSg9/view?usp=sharing",
+                    "fileId": "1ztjOa3xyGoM0NlCwamI5s4mJVmNgCSg9",
+                    "caption": "Registro fotográfico 04/08/2026 4.29.31 PM",
+                    "date": "07 Agosto 2026",
+                    "order": 2
+          },
+          {
+                    "id": "photo-s32-03",
+                    "originalName": "WhatsApp Image 2026-08-04 at 4.29.32 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s32/photo_03.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1w1a78veTOnIHHc_7qv_T2dM2JYRCMUsN/view?usp=sharing",
+                    "fileId": "1w1a78veTOnIHHc_7qv_T2dM2JYRCMUsN",
+                    "caption": "Registro fotográfico 04/08/2026 4.29.32 PM",
+                    "date": "07 Agosto 2026",
+                    "order": 3
+          },
+          {
+                    "id": "photo-s32-04",
+                    "originalName": "WhatsApp Image 2026-08-05 at 10.52.01 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s32/photo_04.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1TRUd7WUh1782w8nO0sbKsY-I6fqyQmcp/view?usp=sharing",
+                    "fileId": "1TRUd7WUh1782w8nO0sbKsY-I6fqyQmcp",
+                    "caption": "Registro fotográfico 05/08/2026 10.52.01 AM",
+                    "date": "07 Agosto 2026",
+                    "order": 4
+          },
+          {
+                    "id": "photo-s32-05",
+                    "originalName": "WhatsApp Image 2026-08-06 at 4.59.19 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s32/photo_05.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1ctKk0aebeYlTtwOfJP0VVUHmUU4ZShIp/view?usp=sharing",
+                    "fileId": "1ctKk0aebeYlTtwOfJP0VVUHmUU4ZShIp",
+                    "caption": "Registro fotográfico 06/08/2026 4.59.19 PM",
+                    "date": "07 Agosto 2026",
+                    "order": 5
+          },
+          {
+                    "id": "photo-s32-06",
+                    "originalName": "WhatsApp Image 2026-08-06 at 4.59.21 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s32/photo_06.webp",
+                    "driveUrl": "https://drive.google.com/file/d/16yw832AyvbKiesmkgD56oRmvALN_VxXX/view?usp=sharing",
+                    "fileId": "16yw832AyvbKiesmkgD56oRmvALN_VxXX",
+                    "caption": "Registro fotográfico 06/08/2026 4.59.21 PM",
+                    "date": "07 Agosto 2026",
+                    "order": 6
+          },
+          {
+                    "id": "photo-s32-07",
+                    "originalName": "WhatsApp Image 2026-08-06 at 4.59.58 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s32/photo_07.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1zKntheIVdihT8qv4B13bljiZjcWfQ0-V/view?usp=sharing",
+                    "fileId": "1zKntheIVdihT8qv4B13bljiZjcWfQ0-V",
+                    "caption": "Registro fotográfico 06/08/2026 4.59.58 PM",
+                    "date": "07 Agosto 2026",
+                    "order": 7
+          },
+          {
+                    "id": "photo-s32-08",
+                    "originalName": "WhatsApp Image 2026-08-07 at 11.04.30 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s32/photo_08.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1D4qzf7Y_9vhVb3hKCEP_6U2j0MsuzlZe/view?usp=sharing",
+                    "fileId": "1D4qzf7Y_9vhVb3hKCEP_6U2j0MsuzlZe",
+                    "caption": "Registro fotográfico 07/08/2026 11.04.30 AM",
+                    "date": "07 Agosto 2026",
+                    "order": 8
+          },
+          {
+                    "id": "photo-s32-09",
+                    "originalName": "WhatsApp Image 2026-08-07 at 11.04.31 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s32/photo_09.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1upKf7wu1c8b2FS5RHRN_96huB5dqGuOR/view?usp=sharing",
+                    "fileId": "1upKf7wu1c8b2FS5RHRN_96huB5dqGuOR",
+                    "caption": "Registro fotográfico 07/08/2026 11.04.31 AM",
+                    "date": "07 Agosto 2026",
+                    "order": 9
+          },
+          {
+                    "id": "photo-s32-10",
+                    "originalName": "WhatsApp Image 2026-08-07 at 4.27.18 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s32/photo_10.webp",
+                    "driveUrl": "https://drive.google.com/file/d/13HH4rVIfRs7kSCE2IHdAG670RiIxasUb/view?usp=sharing",
+                    "fileId": "13HH4rVIfRs7kSCE2IHdAG670RiIxasUb",
+                    "caption": "Registro fotográfico 07/08/2026 4.27.18 PM",
+                    "date": "07 Agosto 2026",
+                    "order": 10
+          },
+          {
+                    "id": "photo-s32-11",
+                    "originalName": "WhatsApp Image 2026-08-07 at 4.42.42 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s32/photo_11.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1WrzOJsIgGF-Jsx1iT3WMGFQn80VWIL7T/view?usp=sharing",
+                    "fileId": "1WrzOJsIgGF-Jsx1iT3WMGFQn80VWIL7T",
+                    "caption": "Registro fotográfico 07/08/2026 4.42.42 PM",
+                    "date": "07 Agosto 2026",
+                    "order": 11
+          },
+          {
+                    "id": "photo-s32-12",
+                    "originalName": "WhatsApp Image 2026-08-07 at 4.42.43 PM (1).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s32/photo_12.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1EzMBCR3qnAjEkBtWeEyZatwr4J2gHYt-/view?usp=sharing",
+                    "fileId": "1EzMBCR3qnAjEkBtWeEyZatwr4J2gHYt-",
+                    "caption": "Registro fotográfico 07/08/2026 4.42.43 PM",
+                    "date": "07 Agosto 2026",
+                    "order": 12
+          },
+          {
+                    "id": "photo-s32-13",
+                    "originalName": "WhatsApp Image 2026-08-07 at 4.42.43 PM (2).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s32/photo_13.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1XksnF9BVqeGvF1PWDuN27yOFGBlAEaWL/view?usp=sharing",
+                    "fileId": "1XksnF9BVqeGvF1PWDuN27yOFGBlAEaWL",
+                    "caption": "Registro fotográfico 07/08/2026 4.42.43 PM",
+                    "date": "07 Agosto 2026",
+                    "order": 13
+          },
+          {
+                    "id": "photo-s32-14",
+                    "originalName": "WhatsApp Image 2026-08-07 at 4.42.43 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s32/photo_14.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1H7tTJ-9zAiyQ3KKqmBNxT389R8RLr8D7/view?usp=sharing",
+                    "fileId": "1H7tTJ-9zAiyQ3KKqmBNxT389R8RLr8D7",
+                    "caption": "Registro fotográfico 07/08/2026 4.42.43 PM",
+                    "date": "07 Agosto 2026",
+                    "order": 14
+          }
+],
       },
       {
         id: "log-arrecifes-s35-20260828",
@@ -1205,6 +3117,228 @@ export const defaultClientProjects: ClientProject[] = [
         pdfDriveUrl: "https://drive.google.com/file/d/1x6Riem6sbrafp79aS3zpdN6rx-khUuNr/view?usp=sharing",
         scenes360Count: 10,
         photosCount: 22,
+        photos: [
+          {
+                    "id": "photo-s35-01",
+                    "originalName": "WhatsApp Image 2026-09-04 at 6.15.47 PM (1).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s35/photo_01.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1JMv3cKQPrP_MI6FIUionGPCzHAai_8pF/view?usp=sharing",
+                    "fileId": "1JMv3cKQPrP_MI6FIUionGPCzHAai_8pF",
+                    "caption": "Registro fotográfico 04/09/2026 6.15.47 PM",
+                    "date": "28 Agosto 2026",
+                    "order": 1
+          },
+          {
+                    "id": "photo-s35-02",
+                    "originalName": "WhatsApp Image 2026-09-04 at 6.15.47 PM (2).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s35/photo_02.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1E1pPE9DpCYBo9cKyqBMGRLABpo1Wxf7G/view?usp=sharing",
+                    "fileId": "1E1pPE9DpCYBo9cKyqBMGRLABpo1Wxf7G",
+                    "caption": "Registro fotográfico 04/09/2026 6.15.47 PM",
+                    "date": "28 Agosto 2026",
+                    "order": 2
+          },
+          {
+                    "id": "photo-s35-03",
+                    "originalName": "WhatsApp Image 2026-09-04 at 6.15.47 PM (3).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s35/photo_03.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1jlsnDDU4qqr0ql3qjXCLLUZBVuhcv3dK/view?usp=sharing",
+                    "fileId": "1jlsnDDU4qqr0ql3qjXCLLUZBVuhcv3dK",
+                    "caption": "Registro fotográfico 04/09/2026 6.15.47 PM",
+                    "date": "28 Agosto 2026",
+                    "order": 3
+          },
+          {
+                    "id": "photo-s35-04",
+                    "originalName": "WhatsApp Image 2026-09-04 at 6.15.47 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s35/photo_04.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1gKzIftS0StsKtdJRE8HfJLsh5BQANN9U/view?usp=sharing",
+                    "fileId": "1gKzIftS0StsKtdJRE8HfJLsh5BQANN9U",
+                    "caption": "Registro fotográfico 04/09/2026 6.15.47 PM",
+                    "date": "28 Agosto 2026",
+                    "order": 4
+          },
+          {
+                    "id": "photo-s35-05",
+                    "originalName": "WhatsApp Image 2026-09-04 at 6.15.48 PM (1).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s35/photo_05.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1HlGNGVrAYCU0eejMryw4oCzk3xpolX0x/view?usp=sharing",
+                    "fileId": "1HlGNGVrAYCU0eejMryw4oCzk3xpolX0x",
+                    "caption": "Registro fotográfico 04/09/2026 6.15.48 PM",
+                    "date": "28 Agosto 2026",
+                    "order": 5
+          },
+          {
+                    "id": "photo-s35-06",
+                    "originalName": "WhatsApp Image 2026-09-04 at 6.15.48 PM (10).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s35/photo_06.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1LCJ3-nuKWjMRtokyN4acrPZN9cGPGQg2/view?usp=sharing",
+                    "fileId": "1LCJ3-nuKWjMRtokyN4acrPZN9cGPGQg2",
+                    "caption": "Registro fotográfico 04/09/2026 6.15.48 PM",
+                    "date": "28 Agosto 2026",
+                    "order": 6
+          },
+          {
+                    "id": "photo-s35-07",
+                    "originalName": "WhatsApp Image 2026-09-04 at 6.15.48 PM (11).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s35/photo_07.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1d_F_sWxIS_6ZzDJDiLa_TckK1w_z6ys6/view?usp=sharing",
+                    "fileId": "1d_F_sWxIS_6ZzDJDiLa_TckK1w_z6ys6",
+                    "caption": "Registro fotográfico 04/09/2026 6.15.48 PM",
+                    "date": "28 Agosto 2026",
+                    "order": 7
+          },
+          {
+                    "id": "photo-s35-08",
+                    "originalName": "WhatsApp Image 2026-09-04 at 6.15.48 PM (12).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s35/photo_08.webp",
+                    "driveUrl": "https://drive.google.com/file/d/19Fz4HE41dEyIyG7XGO6ptPrKaMj9fmey/view?usp=sharing",
+                    "fileId": "19Fz4HE41dEyIyG7XGO6ptPrKaMj9fmey",
+                    "caption": "Registro fotográfico 04/09/2026 6.15.48 PM",
+                    "date": "28 Agosto 2026",
+                    "order": 8
+          },
+          {
+                    "id": "photo-s35-09",
+                    "originalName": "WhatsApp Image 2026-09-04 at 6.15.48 PM (13).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s35/photo_09.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1ZS0_MaTSDg6LODMBDl8rYtI0-JX4ZtDq/view?usp=sharing",
+                    "fileId": "1ZS0_MaTSDg6LODMBDl8rYtI0-JX4ZtDq",
+                    "caption": "Registro fotográfico 04/09/2026 6.15.48 PM",
+                    "date": "28 Agosto 2026",
+                    "order": 9
+          },
+          {
+                    "id": "photo-s35-10",
+                    "originalName": "WhatsApp Image 2026-09-04 at 6.15.48 PM (14).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s35/photo_10.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1D-eRtBnhCNJMK7rJBJYk4nLBLpAO518J/view?usp=sharing",
+                    "fileId": "1D-eRtBnhCNJMK7rJBJYk4nLBLpAO518J",
+                    "caption": "Registro fotográfico 04/09/2026 6.15.48 PM",
+                    "date": "28 Agosto 2026",
+                    "order": 10
+          },
+          {
+                    "id": "photo-s35-11",
+                    "originalName": "WhatsApp Image 2026-09-04 at 6.15.48 PM (15).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s35/photo_11.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1Hzof_hGMplEdMPSiXeV2q63XUPmYDn0g/view?usp=sharing",
+                    "fileId": "1Hzof_hGMplEdMPSiXeV2q63XUPmYDn0g",
+                    "caption": "Registro fotográfico 04/09/2026 6.15.48 PM",
+                    "date": "28 Agosto 2026",
+                    "order": 11
+          },
+          {
+                    "id": "photo-s35-12",
+                    "originalName": "WhatsApp Image 2026-09-04 at 6.15.48 PM (16).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s35/photo_12.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1bmnch0O7UHG1KdqAM2dqVzyVyStUzBDA/view?usp=sharing",
+                    "fileId": "1bmnch0O7UHG1KdqAM2dqVzyVyStUzBDA",
+                    "caption": "Registro fotográfico 04/09/2026 6.15.48 PM",
+                    "date": "28 Agosto 2026",
+                    "order": 12
+          },
+          {
+                    "id": "photo-s35-13",
+                    "originalName": "WhatsApp Image 2026-09-04 at 6.15.48 PM (2).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s35/photo_13.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1TQsHfOHWc1rAXnPwV0c97RnJ1G1IFysG/view?usp=sharing",
+                    "fileId": "1TQsHfOHWc1rAXnPwV0c97RnJ1G1IFysG",
+                    "caption": "Registro fotográfico 04/09/2026 6.15.48 PM",
+                    "date": "28 Agosto 2026",
+                    "order": 13
+          },
+          {
+                    "id": "photo-s35-14",
+                    "originalName": "WhatsApp Image 2026-09-04 at 6.15.48 PM (3).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s35/photo_14.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1LxaFTmLmSOGDnOGW-qjxaSdJRTC-ZHc8/view?usp=sharing",
+                    "fileId": "1LxaFTmLmSOGDnOGW-qjxaSdJRTC-ZHc8",
+                    "caption": "Registro fotográfico 04/09/2026 6.15.48 PM",
+                    "date": "28 Agosto 2026",
+                    "order": 14
+          },
+          {
+                    "id": "photo-s35-15",
+                    "originalName": "WhatsApp Image 2026-09-04 at 6.15.48 PM (4).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s35/photo_15.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1yI7qDOG2K774WUVRMYvjvg463qhsv5NG/view?usp=sharing",
+                    "fileId": "1yI7qDOG2K774WUVRMYvjvg463qhsv5NG",
+                    "caption": "Registro fotográfico 04/09/2026 6.15.48 PM",
+                    "date": "28 Agosto 2026",
+                    "order": 15
+          },
+          {
+                    "id": "photo-s35-16",
+                    "originalName": "WhatsApp Image 2026-09-04 at 6.15.48 PM (5).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s35/photo_16.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1XlM1FpIpkBCBzOA78YNKAlQAHosXwHA3/view?usp=sharing",
+                    "fileId": "1XlM1FpIpkBCBzOA78YNKAlQAHosXwHA3",
+                    "caption": "Registro fotográfico 04/09/2026 6.15.48 PM",
+                    "date": "28 Agosto 2026",
+                    "order": 16
+          },
+          {
+                    "id": "photo-s35-17",
+                    "originalName": "WhatsApp Image 2026-09-04 at 6.15.48 PM (6).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s35/photo_17.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1A3D0dAByHhxyPWbO2xtk_fj5688eBDVU/view?usp=sharing",
+                    "fileId": "1A3D0dAByHhxyPWbO2xtk_fj5688eBDVU",
+                    "caption": "Registro fotográfico 04/09/2026 6.15.48 PM",
+                    "date": "28 Agosto 2026",
+                    "order": 17
+          },
+          {
+                    "id": "photo-s35-18",
+                    "originalName": "WhatsApp Image 2026-09-04 at 6.15.48 PM (7).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s35/photo_18.webp",
+                    "driveUrl": "https://drive.google.com/file/d/12AkBkpeqm1onkY0yVFjPOl-5GorrhAEW/view?usp=sharing",
+                    "fileId": "12AkBkpeqm1onkY0yVFjPOl-5GorrhAEW",
+                    "caption": "Registro fotográfico 04/09/2026 6.15.48 PM",
+                    "date": "28 Agosto 2026",
+                    "order": 18
+          },
+          {
+                    "id": "photo-s35-19",
+                    "originalName": "WhatsApp Image 2026-09-04 at 6.15.48 PM (8).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s35/photo_19.webp",
+                    "driveUrl": "https://drive.google.com/file/d/12Tu-lPhTNyxiJUd5mFbckr6RiRdU-nXx/view?usp=sharing",
+                    "fileId": "12Tu-lPhTNyxiJUd5mFbckr6RiRdU-nXx",
+                    "caption": "Registro fotográfico 04/09/2026 6.15.48 PM",
+                    "date": "28 Agosto 2026",
+                    "order": 19
+          },
+          {
+                    "id": "photo-s35-20",
+                    "originalName": "WhatsApp Image 2026-09-04 at 6.15.48 PM (9).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s35/photo_20.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1ziU3qe9OnywojzoezMjcOI4Vzn66BxdQ/view?usp=sharing",
+                    "fileId": "1ziU3qe9OnywojzoezMjcOI4Vzn66BxdQ",
+                    "caption": "Registro fotográfico 04/09/2026 6.15.48 PM",
+                    "date": "28 Agosto 2026",
+                    "order": 20
+          },
+          {
+                    "id": "photo-s35-21",
+                    "originalName": "WhatsApp Image 2026-09-04 at 6.15.48 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s35/photo_21.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1EYw48Fp6TcoywXTTFKzsaMI97_JgRgXz/view?usp=sharing",
+                    "fileId": "1EYw48Fp6TcoywXTTFKzsaMI97_JgRgXz",
+                    "caption": "Registro fotográfico 04/09/2026 6.15.48 PM",
+                    "date": "28 Agosto 2026",
+                    "order": 21
+          },
+          {
+                    "id": "photo-s35-22",
+                    "originalName": "WhatsApp Image 2026-09-04 at 6.15.49 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s35/photo_22.webp",
+                    "driveUrl": "https://drive.google.com/file/d/12PFV51Q6JBHuk81QSHjizdPqj8CcUZvG/view?usp=sharing",
+                    "fileId": "12PFV51Q6JBHuk81QSHjizdPqj8CcUZvG",
+                    "caption": "Registro fotográfico 04/09/2026 6.15.49 PM",
+                    "date": "28 Agosto 2026",
+                    "order": 22
+          }
+],
       },
       {
         id: "log-arrecifes-s36-20260904",
@@ -1234,6 +3368,198 @@ export const defaultClientProjects: ClientProject[] = [
         pdfDriveUrl: "https://drive.google.com/file/d/1bwQt0oef0MMpPYI1uOeGcZE_vE3EbcnS/view?usp=sharing",
         scenes360Count: 19,
         photosCount: 19,
+        photos: [
+          {
+                    "id": "photo-s36-01",
+                    "originalName": "WhatsApp Image 2026-09-02 at 11.32.24 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s36/photo_01.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1L0wnDp6KzU4Vbpzz0uI3jRACzSRdT6HY/view?usp=sharing",
+                    "fileId": "1L0wnDp6KzU4Vbpzz0uI3jRACzSRdT6HY",
+                    "caption": "Registro fotográfico 02/09/2026 11.32.24 AM",
+                    "date": "04 Septiembre 2026",
+                    "order": 1
+          },
+          {
+                    "id": "photo-s36-02",
+                    "originalName": "WhatsApp Image 2026-09-02 at 11.53.43 AM (1).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s36/photo_02.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1cyFoXd_bshrq98W8EtnzuPK072uuUees/view?usp=sharing",
+                    "fileId": "1cyFoXd_bshrq98W8EtnzuPK072uuUees",
+                    "caption": "Registro fotográfico 02/09/2026 11.53.43 AM",
+                    "date": "04 Septiembre 2026",
+                    "order": 2
+          },
+          {
+                    "id": "photo-s36-03",
+                    "originalName": "WhatsApp Image 2026-09-02 at 11.53.43 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s36/photo_03.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1sPt3FjYWej9cxgFSTHAeilPADhXVhbzq/view?usp=sharing",
+                    "fileId": "1sPt3FjYWej9cxgFSTHAeilPADhXVhbzq",
+                    "caption": "Registro fotográfico 02/09/2026 11.53.43 AM",
+                    "date": "04 Septiembre 2026",
+                    "order": 3
+          },
+          {
+                    "id": "photo-s36-04",
+                    "originalName": "WhatsApp Image 2026-09-02 at 11.53.44 AM (1).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s36/photo_04.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1J4Vhh8Ehtot-Jw27Oo7imtrkVOiNzrt8/view?usp=sharing",
+                    "fileId": "1J4Vhh8Ehtot-Jw27Oo7imtrkVOiNzrt8",
+                    "caption": "Registro fotográfico 02/09/2026 11.53.44 AM",
+                    "date": "04 Septiembre 2026",
+                    "order": 4
+          },
+          {
+                    "id": "photo-s36-05",
+                    "originalName": "WhatsApp Image 2026-09-02 at 11.53.44 AM (2).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s36/photo_05.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1htV0kZDzcfdmNr_p15zCsc8xq5Mt2CnU/view?usp=sharing",
+                    "fileId": "1htV0kZDzcfdmNr_p15zCsc8xq5Mt2CnU",
+                    "caption": "Registro fotográfico 02/09/2026 11.53.44 AM",
+                    "date": "04 Septiembre 2026",
+                    "order": 5
+          },
+          {
+                    "id": "photo-s36-06",
+                    "originalName": "WhatsApp Image 2026-09-02 at 11.53.44 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s36/photo_06.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1tkdukz8DaUpJlxlYJxm3AgCdqmq1TQYS/view?usp=sharing",
+                    "fileId": "1tkdukz8DaUpJlxlYJxm3AgCdqmq1TQYS",
+                    "caption": "Registro fotográfico 02/09/2026 11.53.44 AM",
+                    "date": "04 Septiembre 2026",
+                    "order": 6
+          },
+          {
+                    "id": "photo-s36-07",
+                    "originalName": "WhatsApp Image 2026-09-03 at 8.22.09 AM (1).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s36/photo_07.webp",
+                    "driveUrl": "https://drive.google.com/file/d/19JkOOaNwtOqXqE2vK9I-lsFlfIleZ9tp/view?usp=sharing",
+                    "fileId": "19JkOOaNwtOqXqE2vK9I-lsFlfIleZ9tp",
+                    "caption": "Registro fotográfico 03/09/2026 8.22.09 AM",
+                    "date": "04 Septiembre 2026",
+                    "order": 7
+          },
+          {
+                    "id": "photo-s36-08",
+                    "originalName": "WhatsApp Image 2026-09-03 at 8.22.09 AM (2).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s36/photo_08.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1bFo6NzUo2YsDRmi4U97phl2q3KeiA41o/view?usp=sharing",
+                    "fileId": "1bFo6NzUo2YsDRmi4U97phl2q3KeiA41o",
+                    "caption": "Registro fotográfico 03/09/2026 8.22.09 AM",
+                    "date": "04 Septiembre 2026",
+                    "order": 8
+          },
+          {
+                    "id": "photo-s36-09",
+                    "originalName": "WhatsApp Image 2026-09-03 at 8.22.09 AM (3).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s36/photo_09.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1UwiAQZdb8u0a5t6igH5wpZ8T3-PyXXbK/view?usp=sharing",
+                    "fileId": "1UwiAQZdb8u0a5t6igH5wpZ8T3-PyXXbK",
+                    "caption": "Registro fotográfico 03/09/2026 8.22.09 AM",
+                    "date": "04 Septiembre 2026",
+                    "order": 9
+          },
+          {
+                    "id": "photo-s36-10",
+                    "originalName": "WhatsApp Image 2026-09-03 at 8.22.09 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s36/photo_10.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1JBN8yc6Ol7rGUjOMsHjx-MUz2QFOUbGd/view?usp=sharing",
+                    "fileId": "1JBN8yc6Ol7rGUjOMsHjx-MUz2QFOUbGd",
+                    "caption": "Registro fotográfico 03/09/2026 8.22.09 AM",
+                    "date": "04 Septiembre 2026",
+                    "order": 10
+          },
+          {
+                    "id": "photo-s36-11",
+                    "originalName": "WhatsApp Image 2026-09-03 at 8.26.44 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s36/photo_11.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1jIWyxn5wJBnuWNMdLO7tRj_CHLicE5xv/view?usp=sharing",
+                    "fileId": "1jIWyxn5wJBnuWNMdLO7tRj_CHLicE5xv",
+                    "caption": "Registro fotográfico 03/09/2026 8.26.44 AM",
+                    "date": "04 Septiembre 2026",
+                    "order": 11
+          },
+          {
+                    "id": "photo-s36-12",
+                    "originalName": "WhatsApp Image 2026-09-03 at 9.26.05 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s36/photo_12.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1wFpd9or_eLNntpQaNZx3rsSmDR0-RFPU/view?usp=sharing",
+                    "fileId": "1wFpd9or_eLNntpQaNZx3rsSmDR0-RFPU",
+                    "caption": "Registro fotográfico 03/09/2026 9.26.05 AM",
+                    "date": "04 Septiembre 2026",
+                    "order": 12
+          },
+          {
+                    "id": "photo-s36-13",
+                    "originalName": "WhatsApp Image 2026-09-04 at 11.13.50 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s36/photo_13.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1oDM1o6yyhut6FQPfCQMxyu3v7YrtjgjS/view?usp=sharing",
+                    "fileId": "1oDM1o6yyhut6FQPfCQMxyu3v7YrtjgjS",
+                    "caption": "Registro fotográfico 04/09/2026 11.13.50 AM",
+                    "date": "04 Septiembre 2026",
+                    "order": 13
+          },
+          {
+                    "id": "photo-s36-14",
+                    "originalName": "WhatsApp Image 2026-09-04 at 11.13.51 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s36/photo_14.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1A6izPHSb580gNYo1mkgcNdjuOat3EDqw/view?usp=sharing",
+                    "fileId": "1A6izPHSb580gNYo1mkgcNdjuOat3EDqw",
+                    "caption": "Registro fotográfico 04/09/2026 11.13.51 AM",
+                    "date": "04 Septiembre 2026",
+                    "order": 14
+          },
+          {
+                    "id": "photo-s36-15",
+                    "originalName": "WhatsApp Image 2026-09-04 at 11.13.52 AM (1).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s36/photo_15.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1qZtstXpPzmSXLfvJ6U5wRsPbH2f91ZA3/view?usp=sharing",
+                    "fileId": "1qZtstXpPzmSXLfvJ6U5wRsPbH2f91ZA3",
+                    "caption": "Registro fotográfico 04/09/2026 11.13.52 AM",
+                    "date": "04 Septiembre 2026",
+                    "order": 15
+          },
+          {
+                    "id": "photo-s36-16",
+                    "originalName": "WhatsApp Image 2026-09-04 at 11.13.52 AM (2).jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s36/photo_16.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1PO0SntwCKegE2--TP9MUoqL29hDtpbzu/view?usp=sharing",
+                    "fileId": "1PO0SntwCKegE2--TP9MUoqL29hDtpbzu",
+                    "caption": "Registro fotográfico 04/09/2026 11.13.52 AM",
+                    "date": "04 Septiembre 2026",
+                    "order": 16
+          },
+          {
+                    "id": "photo-s36-17",
+                    "originalName": "WhatsApp Image 2026-09-04 at 11.13.52 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s36/photo_17.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1XTOppxA1mp08IPj6itOaf8WlD24ZYDlI/view?usp=sharing",
+                    "fileId": "1XTOppxA1mp08IPj6itOaf8WlD24ZYDlI",
+                    "caption": "Registro fotográfico 04/09/2026 11.13.52 AM",
+                    "date": "04 Septiembre 2026",
+                    "order": 17
+          },
+          {
+                    "id": "photo-s36-18",
+                    "originalName": "WhatsApp Image 2026-09-04 at 11.16.37 AM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s36/photo_18.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1oYnXEj8p_pJaln9VTum2IzuYvMiUDeQ-/view?usp=sharing",
+                    "fileId": "1oYnXEj8p_pJaln9VTum2IzuYvMiUDeQ-",
+                    "caption": "Registro fotográfico 04/09/2026 11.16.37 AM",
+                    "date": "04 Septiembre 2026",
+                    "order": 18
+          },
+          {
+                    "id": "photo-s36-19",
+                    "originalName": "WhatsApp Image 2026-09-04 at 3.50.43 PM.jpeg",
+                    "url": "/client-portal/arrecifes/bitacora-photos/s36/photo_19.webp",
+                    "driveUrl": "https://drive.google.com/file/d/1tCFXTdTfEfaui-jnDAJDnHGZxX7KqrkD/view?usp=sharing",
+                    "fileId": "1tCFXTdTfEfaui-jnDAJDnHGZxX7KqrkD",
+                    "caption": "Registro fotográfico 04/09/2026 3.50.43 PM",
+                    "date": "04 Septiembre 2026",
+                    "order": 19
+          }
+],
       }
     ]
   },

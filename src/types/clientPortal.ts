@@ -85,6 +85,17 @@ export interface ProgressMilestone {
   isProjected?: boolean;
 }
 
+export interface BitacoraPhoto {
+  id: string;
+  url: string;
+  originalName?: string;
+  driveUrl?: string;
+  fileId?: string;
+  caption?: string;
+  date?: string;
+  order?: number;
+}
+
 export interface DigitalLogbookEntry {
   id: string;
   entryNumber: string; // e.g. "Folio #08"
@@ -105,6 +116,7 @@ export interface DigitalLogbookEntry {
   pdfDriveUrl?: string;
   scenes360Count?: number;
   photosCount?: number;
+  photos?: BitacoraPhoto[];
 }
 
 export interface ClientProject {
