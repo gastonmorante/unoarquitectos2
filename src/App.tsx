@@ -412,8 +412,9 @@ function MainApp() {
               Resonancia
             </h3>
             <ul className="space-y-1 font-label-caps text-xs sm:text-label-caps">
-              <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-1.5" href="https://www.instagram.com/unoarquitectos" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-              <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-1.5" href="https://www.linkedin.com/company/unoarquitectos" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+              <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-1.5" href="https://www.instagram.com/unoarquitectosmx/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+              <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-1.5" href="https://www.facebook.com/unoarquitectosmx" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+              <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-1.5" href="https://www.linkedin.com/company/unoarquitectosmx/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
               <li><a className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-1.5" href="https://www.google.com/maps/place/UNO+Arquitectos+Mx/@20.6718486,-87.0504611,17z/data=!3m1!4b1!4m6!3m5!1s0x8f4e43859b311239:0x1a9cb6da851ff691!8m2!3d20.6718486!4d-87.0504611!16s%2Fg%2F11r_t7kdfg" target="_blank" rel="noopener noreferrer">Google Maps</a></li>
             </ul>
           </div>
