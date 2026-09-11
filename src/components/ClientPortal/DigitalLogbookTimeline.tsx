@@ -476,10 +476,10 @@ export default function DigitalLogbookTimeline({
                             <Sparkles className="w-3.5 h-3.5" />
                             <span>Ver en Carrusel ({entry.photos.length})</span>
                           </button>
-                        ) : onJumpToCarousel ? (
+                        ) : onJumpToPhotos ? (
                           <button
                             type="button"
-                            onClick={onJumpToCarousel}
+                            onClick={onJumpToPhotos}
                             className="px-3.5 py-1.5 bg-arena-calida/15 hover:bg-arena-calida hover:text-white text-arena-calida border border-arena-calida/40 rounded-full text-[11px] font-label-caps uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-xs cursor-pointer font-bold"
                           >
                             <Sparkles className="w-3.5 h-3.5" />

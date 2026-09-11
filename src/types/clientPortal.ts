@@ -131,6 +131,7 @@ export interface DigitalLogbookEntry {
   scenes360Count?: number;
   photosCount?: number;
   photos?: BitacoraPhoto[];
+  originalName?: string;
   tourInfo?: LogbookTourInfo;
 }
 
