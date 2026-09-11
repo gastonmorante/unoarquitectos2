@@ -12,7 +12,10 @@ import {
   ArrowLeft, 
   FileText, 
   FolderOpen, 
-  ExternalLink 
+  ExternalLink,
+  ShieldCheck,
+  Layers,
+  CheckCircle2
 } from "lucide-react";
 import { ClientProject, Tour360Folder } from "../../types/clientPortal";
 import { defaultClientProjects } from "../../data/defaultClientProjects";
@@ -185,14 +188,14 @@ export default function ClientPortalView({
           </div>
         </header>
 
-        {/* 2. EXECUTIVE HERO & RESIDENT ARCHITECT BANNER */}
+        {/* 2. EXECUTIVE HERO & TECHNICAL SPECIFICATIONS */}
         <section id="resumen-ejecutivo" className="bg-surface-container-low/60 border-b border-arena-calida/20 px-4 sm:px-8 py-10 sm:py-14 relative texture-overlay overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-arena-calida/40 to-transparent"></div>
 
           <div className="max-w-7xl mx-auto space-y-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              {/* LEFT: Project Executive Information */}
-              <div className="lg:col-span-7 space-y-4 text-left">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+              {/* LEFT: Project Executive Information & Director Contact */}
+              <div className="lg:col-span-6 space-y-4 text-left">
                 <div className="flex items-center gap-3">
                   <span className="w-8 sm:w-12 h-[1px] bg-arena-calida inline-block"></span>
                   <span className="font-label-caps text-xs sm:text-label-caps text-arena-calida uppercase tracking-widest font-semibold flex items-center gap-1.5">
@@ -206,12 +209,12 @@ export default function ClientPortalView({
                 </h1>
 
                 <p className="font-body-md text-body-md text-gris-texto max-w-xl leading-relaxed">
-                  Supervisión técnica de obra para <strong className="text-teal-uno font-semibold">{safeProject.clientName}</strong>. Registro oficial de avances, dictámenes de calidad y bitácora de obra con galería de fotos 360° y reportes fotográficos periódicos.
+                  Supervisión técnica de obra para <strong className="text-teal-uno font-semibold">{safeProject.clientName}</strong>. Registro oficial de avances, dictámenes de calidad y bitácora de obra con galería de fotos 360° y reportes periódicos de supervisión.
                 </p>
 
                 {/* METADATA PILLS GRID */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3.5 pt-2">
-                  <div className="p-4 bg-white/70 backdrop-blur-md border border-arena-calida/30 rounded-2xl shadow-xs">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-1">
+                  <div className="p-3.5 bg-white/70 backdrop-blur-md border border-arena-calida/30 rounded-2xl shadow-xs">
                     <span className="text-[10px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mb-1">
                       Superficie Total
                     </span>
@@ -219,7 +222,7 @@ export default function ClientPortalView({
                       {safeProject.totalArea}
                     </span>
                   </div>
-                  <div className="p-4 bg-white/70 backdrop-blur-md border border-arena-calida/30 rounded-2xl shadow-xs">
+                  <div className="p-3.5 bg-white/70 backdrop-blur-md border border-arena-calida/30 rounded-2xl shadow-xs">
                     <span className="text-[10px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mb-1">
                       Inicio Contractual
                     </span>
@@ -227,7 +230,7 @@ export default function ClientPortalView({
                       {safeProject.startDate}
                     </span>
                   </div>
-                  <div className="p-4 bg-white/70 backdrop-blur-md border border-arena-calida/30 rounded-2xl shadow-xs col-span-2 sm:col-span-1">
+                  <div className="p-3.5 bg-white/70 backdrop-blur-md border border-arena-calida/30 rounded-2xl shadow-xs col-span-2 sm:col-span-1">
                     <span className="text-[10px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mb-1">
                       Entrega Estimada
                     </span>
@@ -237,154 +240,173 @@ export default function ClientPortalView({
                   </div>
                 </div>
 
-                {/* GOOGLE DRIVE REPOSITORIES QUICK ACCESS PILLS */}
-                {(safeProject.bitacoraFotograficaUrl || safeProject.bitacoraDigitalUrl) && (
-                  <div className="pt-2 flex flex-wrap items-center gap-2.5">
-                    {safeProject.bitacoraFotograficaUrl && (
-                      <a
-                        href={safeProject.bitacoraFotograficaUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-4 py-2 bg-white/90 hover:bg-teal-uno hover:text-white text-teal-uno border border-arena-calida/40 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-bold flex items-center gap-1.5 transition-all shadow-xs cursor-pointer group"
-                        title="Abrir carpeta 02 Bitácora Fotográfica en Google Drive"
-                      >
-                        <Camera className="w-3.5 h-3.5 text-arena-calida group-hover:text-white transition-colors" />
-                        <span>02 Bitácora Fotográfica</span>
-                        <ExternalLink className="w-3 h-3 opacity-60 group-hover:opacity-100" />
-                      </a>
-                    )}
+                {/* RESIDENT ARCHITECT CONTACT CARD (PLACED DIRECTLY ON LEFT, REPLACING DRIVE BUTTONS) */}
+                <div id="contacto-director" className="pt-2">
+                  <div className="bg-white/85 backdrop-blur-md border border-arena-calida/30 p-5 rounded-2xl space-y-3.5 shadow-sm text-left">
+                    <div className="flex items-center justify-between gap-2 border-b border-arena-calida/20 pb-2.5">
+                      <span className="text-[10px] font-label-caps uppercase tracking-wider text-arena-calida font-semibold">
+                        Director de Obra Asignado
+                      </span>
+                      <span className="text-[10px] text-teal-uno font-label-caps uppercase font-semibold flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-teal-uno animate-ping" />
+                        En Supervisión
+                      </span>
+                    </div>
 
-                    {safeProject.bitacoraDigitalUrl && (
-                      <a
-                        href={safeProject.bitacoraDigitalUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-4 py-2 bg-teal-uno/10 hover:bg-teal-uno hover:text-white text-teal-uno border border-teal-uno/30 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-bold flex items-center gap-1.5 transition-all shadow-xs cursor-pointer group"
-                        title="Abrir carpeta 03 Bitácora Digital en Google Drive"
-                      >
-                        <FileText className="w-3.5 h-3.5 text-arena-calida group-hover:text-white transition-colors" />
-                        <span>03 Bitácora Digital</span>
-                        <ExternalLink className="w-3 h-3 opacity-60 group-hover:opacity-100" />
-                      </a>
-                    )}
+                    <div className="flex items-center gap-3.5">
+                      <div className="w-12 h-12 rounded-full bg-arena-calida/20 border border-arena-calida/40 flex items-center justify-center text-teal-uno font-sans font-bold text-sm flex-shrink-0 overflow-hidden shadow-xs">
+                        {director.photo ? (
+                          <img
+                            src={director.photo}
+                            alt={director.name}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <span>AC</span>
+                        )}
+                      </div>
+                      <div className="space-y-0.5">
+                        <h4 className="font-headline-md text-sm sm:text-base font-semibold text-teal-uno uppercase">
+                          {director.name}
+                        </h4>
+                        <p className="text-[11px] text-arena-calida font-label-caps uppercase tracking-wider font-semibold">
+                          {director.role}
+                        </p>
+                        {director.credentials && (
+                          <p className="text-[10px] text-gris-texto/70 font-mono">
+                            {director.credentials}
+                          </p>
+                        )}
+                      </div>
+                    </div>
 
-                    {safeProject.masterDriveFolderUrl && (
+                    {/* DIRECT WHATSAPP ACTION BUTTON */}
+                    <div className="pt-1">
                       <a
-                        href={safeProject.masterDriveFolderUrl}
+                        href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-3.5 py-2 bg-white/70 hover:bg-arena-calida hover:text-white text-gris-texto border border-arena-calida/30 rounded-full text-[11px] font-label-caps uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-xs cursor-pointer font-medium group"
-                        title="Abrir carpeta maestra de obra en Google Drive"
+                        className="w-full py-2.5 px-4 bg-teal-uno hover:bg-arena-calida text-white rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold flex items-center justify-center gap-1.5 transition-all shadow-xs cursor-pointer active:scale-95"
                       >
-                        <FolderOpen className="w-3.5 h-3.5 text-teal-uno group-hover:text-white transition-colors" />
-                        <span>Drive Maestro</span>
+                        <MessageSquare className="w-3.5 h-3.5" />
+                        <span>Contactar por WhatsApp</span>
                       </a>
-                    )}
+                    </div>
                   </div>
-                )}
+                </div>
               </div>
 
-              {/* RIGHT: Dynamic Progress Radial Gauge & Architect Card */}
-              <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-5">
-                {/* RADIAL PROGRESS GAUGE (DYNAMIC TO SELECTED DATE) */}
-                <div className="bg-white/80 backdrop-blur-md border border-arena-calida/30 p-6 rounded-3xl shadow-ethereal flex items-center justify-between gap-4 transition-all duration-300">
-                  <div className="space-y-1.5 text-left">
+              {/* RIGHT: Technical Specifications Summary & Official Documentation */}
+              <div className="lg:col-span-6 space-y-4">
+                {/* ACTIVE PROGRESS & LEVANTAMIENTO STATUS */}
+                <div className="bg-white/85 backdrop-blur-md border border-arena-calida/30 p-5 rounded-2xl shadow-sm flex items-center justify-between gap-4 text-left">
+                  <div className="space-y-1">
                     <div className="flex items-center gap-2">
                       <span className="text-[10px] font-label-caps uppercase tracking-widest text-arena-calida font-semibold">
-                        Avance Seleccionado
+                        Avance Oficial en Obra
                       </span>
-                      <span className="px-2.5 py-0.5 rounded-full bg-teal-uno/15 text-teal-uno text-[9px] font-mono font-bold border border-teal-uno/30">
+                      <span className="px-2 py-0.5 rounded-full bg-teal-uno/15 text-teal-uno text-[9px] font-mono font-bold border border-teal-uno/30">
                         {activeDate.toUpperCase()}
                       </span>
                     </div>
-                    <div className="font-headline-xl text-3xl sm:text-4xl font-bold text-teal-uno flex items-baseline gap-1">
-                      <motion.span
-                        key={activeProgress}
-                        initial={{ opacity: 0, y: -5 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        {activeProgress}
-                      </motion.span>
-                      <span className="text-lg text-arena-calida font-sans font-medium">%</span>
-                    </div>
-                    <span className="text-xs text-gris-texto font-medium block line-clamp-1">
+                    <div className="text-xs font-semibold text-teal-uno line-clamp-1">
                       {activePhase}
-                    </span>
-                    <span className="text-[10px] font-mono text-gris-texto/60 block">
-                      Levantamiento Oficial: {activeDate}
-                    </span>
+                    </div>
                   </div>
-
-                  {/* Radial Circle */}
-                  <div className="relative w-22 h-22 flex-shrink-0 flex items-center justify-center">
-                    <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
-                      <path
-                        className="text-foundation-gray/40"
-                        strokeWidth="3.5"
-                        stroke="currentColor"
-                        fill="none"
-                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                      />
-                      <path
-                        className="text-teal-uno transition-all duration-700 ease-out"
-                        strokeDasharray={`${activeProgress}, 100`}
-                        strokeWidth="3.5"
-                        strokeLinecap="round"
-                        stroke="currentColor"
-                        fill="none"
-                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                      />
-                    </svg>
-                    <Award className="w-7 h-7 text-arena-calida absolute" />
+                  <div className="flex items-baseline gap-1 font-headline-xl text-3xl sm:text-4xl font-bold text-teal-uno flex-shrink-0">
+                    <motion.span
+                      key={activeProgress}
+                      initial={{ opacity: 0, y: -5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {activeProgress}
+                    </motion.span>
+                    <span className="text-base text-arena-calida font-sans font-medium">%</span>
                   </div>
                 </div>
 
-                {/* RESIDENT ARCHITECT CONTACT CARD */}
-                <div id="contacto-director" className="bg-white/80 backdrop-blur-md border border-arena-calida/30 p-6 rounded-3xl space-y-4 shadow-ethereal text-left">
-                  <div className="flex items-center justify-between gap-2 border-b border-arena-calida/20 pb-3">
-                    <span className="text-[10px] font-label-caps uppercase tracking-wider text-arena-calida font-semibold">
-                      Director de Obra Asignado
-                    </span>
-                    <span className="text-[10px] text-teal-uno font-label-caps uppercase font-semibold flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-teal-uno animate-ping" />
-                      En Supervisión
+                {/* EXECUTIVE TECHNICAL SPECIFICATIONS CARD */}
+                <div className="bg-white/90 backdrop-blur-md border border-arena-calida/30 p-5 sm:p-6 rounded-3xl shadow-ethereal space-y-3.5 text-left">
+                  <div className="flex items-center justify-between gap-2 border-b border-arena-calida/20 pb-2.5">
+                    <div className="flex items-center gap-2">
+                      <ShieldCheck className="w-4 h-4 text-teal-uno" />
+                      <span className="text-xs font-label-caps uppercase tracking-wider text-teal-uno font-bold">
+                        Ficha Técnica & Memorias de Obra
+                      </span>
+                    </div>
+                    <span className="text-[10px] text-arena-calida font-mono font-bold bg-arena-calida/10 px-2.5 py-0.5 rounded-full border border-arena-calida/20">
+                      DOCS OFICIALES
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-3.5">
-                    <div className="w-12 h-12 rounded-full bg-arena-calida/20 border border-arena-calida/40 flex items-center justify-center text-teal-uno font-sans font-bold text-sm flex-shrink-0 overflow-hidden shadow-xs">
-                      {director.photo ? (
-                        <img
-                          src={director.photo}
-                          alt={director.name}
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <span>AC</span>
-                      )}
+                  {/* Technical Spec Points */}
+                  <div className="space-y-2.5 text-xs leading-relaxed text-gris-texto">
+                    <div className="p-3 bg-surface-container-low/70 rounded-xl border border-arena-calida/20 space-y-1">
+                      <div className="flex items-center gap-1.5 text-teal-uno font-semibold text-[11px] uppercase tracking-wide">
+                        <Layers className="w-3.5 h-3.5 text-arena-calida" />
+                        <span>Estructura & Cimentación</span>
+                      </div>
+                      <p className="text-[11px] text-gris-texto/90">
+                        Cimentación sobre manto kárstico con zapatas y losa en concreto f'c = 250-300 kg/cm² con aditivo hidrófugo integral y refuerzo de acero grado 42.
+                      </p>
                     </div>
-                    <div className="space-y-0.5">
-                      <h4 className="font-headline-md text-sm sm:text-base font-semibold text-teal-uno uppercase">
-                        {director.name}
-                      </h4>
-                      <p className="text-[11px] text-arena-calida font-label-caps uppercase tracking-wider font-semibold">
-                        {director.role}
+
+                    <div className="p-3 bg-surface-container-low/70 rounded-xl border border-arena-calida/20 space-y-1">
+                      <div className="flex items-center gap-1.5 text-teal-uno font-semibold text-[11px] uppercase tracking-wide">
+                        <Sparkles className="w-3.5 h-3.5 text-arena-calida" />
+                        <span>Revestimientos & Acabados de Alta Gama</span>
+                      </div>
+                      <p className="text-[11px] text-gris-texto/90">
+                        Pasta artesanal de Chukum natural sellado a 2 manos en muros y plafones de doble altura (6.40m); placas de Mármol Travertino Santo Tomás (1.20x2.40m) y carpintería maciza en Tzalam/Parota.
+                      </p>
+                    </div>
+
+                    <div className="p-3 bg-surface-container-low/70 rounded-xl border border-arena-calida/20 space-y-1">
+                      <div className="flex items-center gap-1.5 text-teal-uno font-semibold text-[11px] uppercase tracking-wide">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-arena-calida" />
+                        <span>Ingenierías & Confort Tropical</span>
+                      </div>
+                      <p className="text-[11px] text-gris-texto/90">
+                        Presión constante con filtración UV y descalcificador, climatización centralizada VRF Inverter de alta eficiencia y canalizaciones listas para domótica e iluminación cálida 2700K.
                       </p>
                     </div>
                   </div>
 
-                  {/* DIRECT WHATSAPP ACTION BUTTON */}
-                  <div className="pt-1">
-                    <a
-                      href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full py-2.5 px-4 bg-teal-uno hover:bg-arena-calida text-white rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold flex items-center justify-center gap-1.5 transition-all shadow-xs cursor-pointer"
-                    >
-                      <MessageSquare className="w-3.5 h-3.5" />
-                      <span>Contactar por WhatsApp</span>
-                    </a>
+                  {/* Direct Links to Google Drive Technical Documents */}
+                  <div className="pt-2 border-t border-arena-calida/20 space-y-2">
+                    <span className="text-[10px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block">
+                      Documentos Técnicos de Consulta
+                    </span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      <a
+                        href="https://drive.google.com/file/d/1996CkVYgWRCUHdvQVUC9OhPnoyYUpxXK/view?usp=drive_link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2.5 bg-white hover:bg-teal-uno hover:text-white text-teal-uno border border-arena-calida/40 rounded-xl text-[10px] font-label-caps uppercase tracking-wider font-bold flex items-center justify-between transition-all shadow-2xs group"
+                        title="Abrir Especificaciones Técnicas en Google Drive"
+                      >
+                        <div className="flex items-center gap-1.5 truncate">
+                          <FileText className="w-3.5 h-3.5 text-arena-calida group-hover:text-white flex-shrink-0" />
+                          <span className="truncate">Especificaciones Técnicas</span>
+                        </div>
+                        <ExternalLink className="w-3 h-3 opacity-60 group-hover:opacity-100 flex-shrink-0 ml-1" />
+                      </a>
+
+                      <a
+                        href="https://drive.google.com/file/d/1wsVn6tyRU5ZPhua6QKLi5Oc_UMvaCXEh/view?usp=drive_link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2.5 bg-white hover:bg-teal-uno hover:text-white text-teal-uno border border-arena-calida/40 rounded-xl text-[10px] font-label-caps uppercase tracking-wider font-bold flex items-center justify-between transition-all shadow-2xs group"
+                        title="Abrir Memoria Descriptiva de Obra en Google Drive"
+                      >
+                        <div className="flex items-center gap-1.5 truncate">
+                          <FileText className="w-3.5 h-3.5 text-arena-calida group-hover:text-white flex-shrink-0" />
+                          <span className="truncate">Memoria Descriptiva</span>
+                        </div>
+                        <ExternalLink className="w-3 h-3 opacity-60 group-hover:opacity-100 flex-shrink-0 ml-1" />
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
