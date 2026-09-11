@@ -15,7 +15,11 @@ import {
   ExternalLink,
   ShieldCheck,
   Layers,
-  CheckCircle2
+  CheckCircle2,
+  Ruler,
+  Wind,
+  Zap,
+  Droplets
 } from "lucide-react";
 import { ClientProject, Tour360Folder } from "../../types/clientPortal";
 import { defaultClientProjects } from "../../data/defaultClientProjects";
@@ -188,14 +192,14 @@ export default function ClientPortalView({
           </div>
         </header>
 
-        {/* 2. EXECUTIVE HERO & TECHNICAL SPECIFICATIONS */}
+        {/* 2. EXECUTIVE HERO & TECHNICAL INFOGRAPHIC */}
         <section id="resumen-ejecutivo" className="bg-surface-container-low/60 border-b border-arena-calida/20 px-4 sm:px-8 py-10 sm:py-14 relative texture-overlay overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-arena-calida/40 to-transparent"></div>
 
           <div className="max-w-7xl mx-auto space-y-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
               {/* LEFT: Project Executive Information & Director Contact */}
-              <div className="lg:col-span-6 space-y-4 text-left">
+              <div className="lg:col-span-5 space-y-4 text-left">
                 <div className="flex items-center gap-3">
                   <span className="w-8 sm:w-12 h-[1px] bg-arena-calida inline-block"></span>
                   <span className="font-label-caps text-xs sm:text-label-caps text-arena-calida uppercase tracking-widest font-semibold flex items-center gap-1.5">
@@ -214,7 +218,7 @@ export default function ClientPortalView({
 
                 {/* METADATA PILLS GRID */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-1">
-                  <div className="p-3.5 bg-white/70 backdrop-blur-md border border-arena-calida/30 rounded-2xl shadow-xs">
+                  <div className="p-3.5 bg-white/80 backdrop-blur-md border border-arena-calida/30 rounded-2xl shadow-xs">
                     <span className="text-[10px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mb-1">
                       Superficie Total
                     </span>
@@ -222,15 +226,15 @@ export default function ClientPortalView({
                       {safeProject.totalArea}
                     </span>
                   </div>
-                  <div className="p-3.5 bg-white/70 backdrop-blur-md border border-arena-calida/30 rounded-2xl shadow-xs">
+                  <div className="p-3.5 bg-white/80 backdrop-blur-md border border-arena-calida/30 rounded-2xl shadow-xs">
                     <span className="text-[10px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mb-1">
                       Inicio Contractual
                     </span>
                     <span className="font-headline-md text-xs sm:text-sm font-semibold text-gris-texto block">
-                      {safeProject.startDate}
+                      {safeProject.startDate || "01 Abril 2026"}
                     </span>
                   </div>
-                  <div className="p-3.5 bg-white/70 backdrop-blur-md border border-arena-calida/30 rounded-2xl shadow-xs col-span-2 sm:col-span-1">
+                  <div className="p-3.5 bg-white/80 backdrop-blur-md border border-arena-calida/30 rounded-2xl shadow-xs col-span-2 sm:col-span-1">
                     <span className="text-[10px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mb-1">
                       Entrega Estimada
                     </span>
@@ -242,7 +246,7 @@ export default function ClientPortalView({
 
                 {/* RESIDENT ARCHITECT CONTACT CARD (PLACED DIRECTLY ON LEFT, REPLACING DRIVE BUTTONS) */}
                 <div id="contacto-director" className="pt-2">
-                  <div className="bg-white/85 backdrop-blur-md border border-arena-calida/30 p-5 rounded-2xl space-y-3.5 shadow-sm text-left">
+                  <div className="bg-white/90 backdrop-blur-md border border-arena-calida/30 p-5 rounded-2xl space-y-3.5 shadow-sm text-left">
                     <div className="flex items-center justify-between gap-2 border-b border-arena-calida/20 pb-2.5">
                       <span className="text-[10px] font-label-caps uppercase tracking-wider text-arena-calida font-semibold">
                         Director de Obra Asignado
@@ -274,7 +278,7 @@ export default function ClientPortalView({
                         </p>
                         {director.credentials && (
                           <p className="text-[10px] text-gris-texto/70 font-mono">
-                            {director.credentials}
+                            {director.credentials.replace(/\|\s*20\+\s*años de experiencia/gi, "").trim()}
                           </p>
                         )}
                       </div>
@@ -296,115 +300,163 @@ export default function ClientPortalView({
                 </div>
               </div>
 
-              {/* RIGHT: Technical Specifications Summary & Official Documentation */}
-              <div className="lg:col-span-6 space-y-4">
-                {/* ACTIVE PROGRESS & LEVANTAMIENTO STATUS */}
-                <div className="bg-white/85 backdrop-blur-md border border-arena-calida/30 p-5 rounded-2xl shadow-sm flex items-center justify-between gap-4 text-left">
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-2">
-                      <span className="text-[10px] font-label-caps uppercase tracking-widest text-arena-calida font-semibold">
-                        Avance Oficial en Obra
-                      </span>
-                      <span className="px-2 py-0.5 rounded-full bg-teal-uno/15 text-teal-uno text-[9px] font-mono font-bold border border-teal-uno/30">
-                        {activeDate.toUpperCase()}
-                      </span>
-                    </div>
-                    <div className="text-xs font-semibold text-teal-uno line-clamp-1">
-                      {activePhase}
-                    </div>
-                  </div>
-                  <div className="flex items-baseline gap-1 font-headline-xl text-3xl sm:text-4xl font-bold text-teal-uno flex-shrink-0">
-                    <motion.span
-                      key={activeProgress}
-                      initial={{ opacity: 0, y: -5 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      {activeProgress}
-                    </motion.span>
-                    <span className="text-base text-arena-calida font-sans font-medium">%</span>
-                  </div>
-                </div>
-
-                {/* EXECUTIVE TECHNICAL SPECIFICATIONS CARD */}
-                <div className="bg-white/90 backdrop-blur-md border border-arena-calida/30 p-5 sm:p-6 rounded-3xl shadow-ethereal space-y-3.5 text-left">
-                  <div className="flex items-center justify-between gap-2 border-b border-arena-calida/20 pb-2.5">
-                    <div className="flex items-center gap-2">
-                      <ShieldCheck className="w-4 h-4 text-teal-uno" />
-                      <span className="text-xs font-label-caps uppercase tracking-wider text-teal-uno font-bold">
-                        Ficha Técnica & Memorias de Obra
-                      </span>
-                    </div>
-                    <span className="text-[10px] text-arena-calida font-mono font-bold bg-arena-calida/10 px-2.5 py-0.5 rounded-full border border-arena-calida/20">
-                      DOCS OFICIALES
-                    </span>
-                  </div>
-
-                  {/* Technical Spec Points */}
-                  <div className="space-y-2.5 text-xs leading-relaxed text-gris-texto">
-                    <div className="p-3 bg-surface-container-low/70 rounded-xl border border-arena-calida/20 space-y-1">
-                      <div className="flex items-center gap-1.5 text-teal-uno font-semibold text-[11px] uppercase tracking-wide">
-                        <Layers className="w-3.5 h-3.5 text-arena-calida" />
-                        <span>Estructura & Cimentación</span>
+              {/* RIGHT: High-Impact Architectural Infographic & Official Documentation */}
+              <div className="lg:col-span-7 space-y-4">
+                {/* INFOGRAPHIC MAIN CONTAINER */}
+                <div className="bg-gradient-to-br from-white/95 via-surface-container-low/90 to-white/95 backdrop-blur-xl border border-arena-calida/40 p-5 sm:p-6 rounded-3xl shadow-ethereal space-y-5 text-left">
+                  
+                  {/* 1. INFOGRAPHIC HEADER */}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-arena-calida/25 pb-4">
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="px-2.5 py-0.5 rounded-full bg-teal-uno/15 text-teal-uno text-[9px] font-mono font-bold border border-teal-uno/30 uppercase tracking-widest">
+                          INFOGRAFÍA TÉCNICA OFICIAL
+                        </span>
+                        <span className="text-[10px] text-arena-calida font-mono font-bold">
+                          PROYECTO ARRECIFES
+                        </span>
                       </div>
-                      <p className="text-[11px] text-gris-texto/90">
-                        Cimentación sobre manto kárstico con zapatas y losa en concreto f'c = 250-300 kg/cm² con aditivo hidrófugo integral y refuerzo de acero grado 42.
+                      <h3 className="font-headline-md text-base sm:text-lg font-bold text-teal-uno uppercase tracking-wide">
+                        Dictamen Estructural & Especificaciones
+                      </h3>
+                    </div>
+                    
+                    {/* GLOBAL PROGRESS BADGE */}
+                    <div className="flex items-center gap-3 bg-teal-uno/10 border border-teal-uno/25 px-4 py-2 rounded-2xl self-start sm:self-auto">
+                      <div className="text-right">
+                        <span className="text-[9px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block">
+                          Avance Total
+                        </span>
+                        <span className="text-xs font-semibold text-teal-uno block">
+                          En Cronograma
+                        </span>
+                      </div>
+                      <div className="font-headline-xl text-2xl sm:text-3xl font-bold text-teal-uno flex items-baseline">
+                        <span>{safeProject.globalProgress || 63}</span>
+                        <span className="text-xs text-arena-calida font-sans font-medium">%</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 2. INFOGRAPHIC METRIC TILES GRID */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                    <div className="p-3 bg-white/80 border border-arena-calida/30 rounded-xl text-center shadow-2xs">
+                      <span className="text-base sm:text-lg font-bold text-teal-uno font-headline-md block">720 m²</span>
+                      <span className="text-[9px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mt-0.5">Superficie Total</span>
+                    </div>
+                    <div className="p-3 bg-white/80 border border-arena-calida/30 rounded-xl text-center shadow-2xs">
+                      <span className="text-base sm:text-lg font-bold text-teal-uno font-headline-md block">6.40 m</span>
+                      <span className="text-[9px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mt-0.5">Doble Altura</span>
+                    </div>
+                    <div className="p-3 bg-white/80 border border-arena-calida/30 rounded-xl text-center shadow-2xs">
+                      <span className="text-base sm:text-lg font-bold text-teal-uno font-headline-md block">f'c 250-300</span>
+                      <span className="text-[9px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mt-0.5">Concreto Marino</span>
+                    </div>
+                    <div className="p-3 bg-white/80 border border-arena-calida/30 rounded-xl text-center shadow-2xs">
+                      <span className="text-base sm:text-lg font-bold text-teal-uno font-headline-md block">Cat. 5</span>
+                      <span className="text-[9px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mt-0.5">Antihuracán</span>
+                    </div>
+                  </div>
+
+                  {/* 3. FOUR CORE TECHNICAL PILLARS */}
+                  <div className="space-y-2.5 text-xs">
+                    {/* Pillar 1: Estructura & Cimentación */}
+                    <div className="p-3.5 bg-surface-container-low/80 border border-arena-calida/25 rounded-2xl space-y-1.5 transition-all hover:bg-white">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2 text-teal-uno font-bold text-xs uppercase tracking-wide">
+                          <Layers className="w-4 h-4 text-arena-calida flex-shrink-0" />
+                          <span>1. Cimentación Kárstica & Estructura</span>
+                        </div>
+                        <span className="text-[9px] font-mono font-semibold text-teal-uno bg-teal-uno/10 px-2 py-0.5 rounded-md">
+                          GPR 12m • f'c 250-300
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-gris-texto/90 leading-relaxed pl-6">
+                        Zapatas aisladas y losa de rigidez sobre roca kárstica verificada por georradar GPR. Concreto hidráulico con aditivo hidrófugo integral anti-salinidad y acero Grado 42 sismorresistente.
                       </p>
                     </div>
 
-                    <div className="p-3 bg-surface-container-low/70 rounded-xl border border-arena-calida/20 space-y-1">
-                      <div className="flex items-center gap-1.5 text-teal-uno font-semibold text-[11px] uppercase tracking-wide">
-                        <Sparkles className="w-3.5 h-3.5 text-arena-calida" />
-                        <span>Revestimientos & Acabados de Alta Gama</span>
+                    {/* Pillar 2: Acabados Nobles */}
+                    <div className="p-3.5 bg-surface-container-low/80 border border-arena-calida/25 rounded-2xl space-y-1.5 transition-all hover:bg-white">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2 text-teal-uno font-bold text-xs uppercase tracking-wide">
+                          <Sparkles className="w-4 h-4 text-arena-calida flex-shrink-0" />
+                          <span>2. Revestimientos Nobles & Acabados</span>
+                        </div>
+                        <span className="text-[9px] font-mono font-semibold text-teal-uno bg-teal-uno/10 px-2 py-0.5 rounded-md">
+                          Chukum • Travertino
+                        </span>
                       </div>
-                      <p className="text-[11px] text-gris-texto/90">
-                        Pasta artesanal de Chukum natural sellado a 2 manos en muros y plafones de doble altura (6.40m); placas de Mármol Travertino Santo Tomás (1.20x2.40m) y carpintería maciza en Tzalam/Parota.
+                      <p className="text-[11px] text-gris-texto/90 leading-relaxed pl-6">
+                        Pasta artesanal de Chukum natural sellado a 2 manos en muros y plafones de 6.40m; placas de Mármol Travertino Santo Tomás (1.20x2.40m) y carpintería maciza en Tzalam y Parota.
                       </p>
                     </div>
 
-                    <div className="p-3 bg-surface-container-low/70 rounded-xl border border-arena-calida/20 space-y-1">
-                      <div className="flex items-center gap-1.5 text-teal-uno font-semibold text-[11px] uppercase tracking-wide">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-arena-calida" />
-                        <span>Ingenierías & Confort Tropical</span>
+                    {/* Pillar 3: Ingenierías & Confort */}
+                    <div className="p-3.5 bg-surface-container-low/80 border border-arena-calida/25 rounded-2xl space-y-1.5 transition-all hover:bg-white">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2 text-teal-uno font-bold text-xs uppercase tracking-wide">
+                          <Zap className="w-4 h-4 text-arena-calida flex-shrink-0" />
+                          <span>3. Ingenierías, Climatización & Domótica</span>
+                        </div>
+                        <span className="text-[9px] font-mono font-semibold text-teal-uno bg-teal-uno/10 px-2 py-0.5 rounded-md">
+                          VRF Inverter • UV
+                        </span>
                       </div>
-                      <p className="text-[11px] text-gris-texto/90">
-                        Presión constante con filtración UV y descalcificador, climatización centralizada VRF Inverter de alta eficiencia y canalizaciones listas para domótica e iluminación cálida 2700K.
+                      <p className="text-[11px] text-gris-texto/90 leading-relaxed pl-6">
+                        Presión constante hidroneumática con esterilización UV y descalcificador, climatización centralizada VRF Inverter oculta y canalizaciones listas para domótica e iluminación cálida 2700K.
+                      </p>
+                    </div>
+
+                    {/* Pillar 4: Control de Calidad */}
+                    <div className="p-3.5 bg-surface-container-low/80 border border-arena-calida/25 rounded-2xl space-y-1.5 transition-all hover:bg-white">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2 text-teal-uno font-bold text-xs uppercase tracking-wide">
+                          <ShieldCheck className="w-4 h-4 text-teal-uno flex-shrink-0" />
+                          <span>4. Normativa Costera & Certificación</span>
+                        </div>
+                        <span className="text-[9px] font-mono font-semibold text-teal-uno bg-teal-uno/10 px-2 py-0.5 rounded-md">
+                          RCDF / NMX
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-gris-texto/90 leading-relaxed pl-6">
+                        Supervisión residente continua bajo normativas de construcción costera de Quintana Roo con pruebas de revenimiento en sitio y ensayos certificados de compresión en laboratorio.
                       </p>
                     </div>
                   </div>
 
-                  {/* Direct Links to Google Drive Technical Documents */}
-                  <div className="pt-2 border-t border-arena-calida/20 space-y-2">
+                  {/* 4. OFFICIAL GOOGLE DRIVE DOCUMENT BUTTONS */}
+                  <div className="pt-2 border-t border-arena-calida/25 space-y-2">
                     <span className="text-[10px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block">
-                      Documentos Técnicos de Consulta
+                      Documentación Oficial de Consulta (Memorias & Catálogo)
                     </span>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                       <a
                         href="https://drive.google.com/file/d/1996CkVYgWRCUHdvQVUC9OhPnoyYUpxXK/view?usp=drive_link"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2.5 bg-white hover:bg-teal-uno hover:text-white text-teal-uno border border-arena-calida/40 rounded-xl text-[10px] font-label-caps uppercase tracking-wider font-bold flex items-center justify-between transition-all shadow-2xs group"
-                        title="Abrir Especificaciones Técnicas en Google Drive"
+                        className="p-3 bg-white hover:bg-teal-uno hover:text-white text-teal-uno border border-arena-calida/40 rounded-xl text-[10px] font-label-caps uppercase tracking-wider font-bold flex items-center justify-between transition-all shadow-xs group cursor-pointer active:scale-95"
+                        title="Abrir Especificaciones Técnicas Oficiales en Google Drive"
                       >
-                        <div className="flex items-center gap-1.5 truncate">
-                          <FileText className="w-3.5 h-3.5 text-arena-calida group-hover:text-white flex-shrink-0" />
+                        <div className="flex items-center gap-2 truncate">
+                          <FileText className="w-4 h-4 text-arena-calida group-hover:text-white flex-shrink-0 transition-colors" />
                           <span className="truncate">Especificaciones Técnicas</span>
                         </div>
-                        <ExternalLink className="w-3 h-3 opacity-60 group-hover:opacity-100 flex-shrink-0 ml-1" />
+                        <ExternalLink className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 flex-shrink-0 ml-1.5" />
                       </a>
 
                       <a
                         href="https://drive.google.com/file/d/1wsVn6tyRU5ZPhua6QKLi5Oc_UMvaCXEh/view?usp=drive_link"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2.5 bg-white hover:bg-teal-uno hover:text-white text-teal-uno border border-arena-calida/40 rounded-xl text-[10px] font-label-caps uppercase tracking-wider font-bold flex items-center justify-between transition-all shadow-2xs group"
-                        title="Abrir Memoria Descriptiva de Obra en Google Drive"
+                        className="p-3 bg-white hover:bg-teal-uno hover:text-white text-teal-uno border border-arena-calida/40 rounded-xl text-[10px] font-label-caps uppercase tracking-wider font-bold flex items-center justify-between transition-all shadow-xs group cursor-pointer active:scale-95"
+                        title="Abrir Memoria Descriptiva Oficial de Obra en Google Drive"
                       >
-                        <div className="flex items-center gap-1.5 truncate">
-                          <FileText className="w-3.5 h-3.5 text-arena-calida group-hover:text-white flex-shrink-0" />
+                        <div className="flex items-center gap-2 truncate">
+                          <FileText className="w-4 h-4 text-arena-calida group-hover:text-white flex-shrink-0 transition-colors" />
                           <span className="truncate">Memoria Descriptiva</span>
                         </div>
-                        <ExternalLink className="w-3 h-3 opacity-60 group-hover:opacity-100 flex-shrink-0 ml-1" />
+                        <ExternalLink className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 flex-shrink-0 ml-1.5" />
                       </a>
                     </div>
                   </div>
