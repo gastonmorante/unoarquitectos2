@@ -19,7 +19,8 @@ import {
   Ruler,
   Wind,
   Zap,
-  Droplets
+  Droplets,
+  TrendingDown
 } from "lucide-react";
 import { ClientProject, Tour360Folder } from "../../types/clientPortal";
 import { defaultClientProjects } from "../../data/defaultClientProjects";
@@ -86,7 +87,7 @@ export default function ClientPortalView({
   };
 
   const activeDate = activeTour?.date || "05 Septiembre 2026";
-  const activeProgress = activeTour?.progress || safeProject.globalProgress || 72;
+  const activeProgress = activeTour?.progress || safeProject.globalProgress || 63;
   const activePhase = activeTour?.phaseName || safeProject.currentPhaseName || "Fase 4: Acabados";
 
   const handleSelectTour = (tourId: string) => {
@@ -197,50 +198,217 @@ export default function ClientPortalView({
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-arena-calida/40 to-transparent"></div>
 
           <div className="max-w-7xl mx-auto space-y-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-              {/* LEFT: Project Executive Information & Director Contact */}
-              <div className="lg:col-span-5 space-y-4 text-left">
-                <div className="flex items-center gap-3">
-                  <span className="w-8 sm:w-12 h-[1px] bg-arena-calida inline-block"></span>
-                  <span className="font-label-caps text-xs sm:text-label-caps text-arena-calida uppercase tracking-widest font-semibold flex items-center gap-1.5">
-                    <MapPin className="w-3.5 h-3.5 text-teal-uno" />
-                    {safeProject.location}
-                  </span>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-start">
+              {/* LEFT: Financial Control & Savings Infographic + Director Contact */}
+              <div className="lg:col-span-6 space-y-4 text-left">
+                {/* PROJECT BADGE & TITLE */}
+                <div className="space-y-1">
+                  <div className="flex items-center gap-3">
+                    <span className="w-8 sm:w-12 h-[1px] bg-arena-calida inline-block"></span>
+                    <span className="font-label-caps text-xs sm:text-label-caps text-arena-calida uppercase tracking-widest font-semibold flex items-center gap-1.5">
+                      <MapPin className="w-3.5 h-3.5 text-teal-uno" />
+                      {safeProject.location}
+                    </span>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+                    <h1 className="font-headline-xl text-headline-xl text-teal-uno uppercase font-semibold leading-tight">
+                      {safeProject.propertyName}
+                    </h1>
+                    <span className="text-[11px] font-mono text-arena-calida uppercase tracking-wider font-semibold">
+                      {safeProject.clientName}
+                    </span>
+                  </div>
                 </div>
 
-                <h1 className="font-headline-xl text-headline-xl text-teal-uno uppercase font-semibold leading-tight">
-                  {safeProject.propertyName}
-                </h1>
-
-                <p className="font-body-md text-body-md text-gris-texto max-w-xl leading-relaxed">
-                  Supervisión técnica de obra para <strong className="text-teal-uno font-semibold">{safeProject.clientName}</strong>. Registro oficial de avances, dictámenes de calidad y bitácora de obra con galería de fotos 360° y reportes periódicos de supervisión.
-                </p>
-
-                {/* METADATA PILLS GRID */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-1">
-                  <div className="p-3.5 bg-white/80 backdrop-blur-md border border-arena-calida/30 rounded-2xl shadow-xs">
-                    <span className="text-[10px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mb-1">
-                      Superficie Total
-                    </span>
-                    <span className="font-headline-md text-xs sm:text-sm font-semibold text-gris-texto block">
-                      {safeProject.totalArea}
-                    </span>
+                {/* INFOGRAPHIC CONTAINER: CONTROL PRESUPUESTAL */}
+                <div className="bg-gradient-to-br from-white/95 via-surface-container-low/90 to-white/95 backdrop-blur-xl border border-arena-calida/40 p-5 sm:p-6 rounded-3xl shadow-ethereal space-y-5 text-left">
+                  
+                  {/* 1. HEADER & HERO SAVING BADGE */}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-arena-calida/25 pb-4">
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[9px] font-mono font-bold border border-emerald-300/60 uppercase tracking-widest flex items-center gap-1">
+                          <TrendingDown className="w-3 h-3 text-emerald-600" />
+                          CONTROL PRESUPUESTAL OFICIAL
+                        </span>
+                        <span className="text-[10px] text-arena-calida font-mono font-bold">
+                          SEMANA 35 • 05/09/2026
+                        </span>
+                      </div>
+                      <h3 className="font-headline-md text-base sm:text-lg font-bold text-teal-uno uppercase tracking-wide">
+                        Eficiencia Financiera & Ahorro Logrado
+                      </h3>
+                    </div>
+                    
+                    {/* HERO SAVINGS METRIC */}
+                    <div className="flex items-center gap-3 bg-emerald-500/10 border border-emerald-500/30 px-3.5 py-2 rounded-2xl self-start sm:self-auto shadow-2xs">
+                      <div className="text-right">
+                        <span className="text-[9px] font-label-caps uppercase text-emerald-800 tracking-wider font-bold block">
+                          Ahorro Logrado
+                        </span>
+                        <span className="text-[10px] font-semibold text-emerald-700 block">
+                          -22% vs Estimado
+                        </span>
+                      </div>
+                      <div className="font-headline-xl text-xl sm:text-2xl font-extrabold text-emerald-700 flex items-baseline">
+                        <span>-$692,618</span>
+                        <span className="text-[10px] text-emerald-800/70 font-mono font-bold ml-1">MXN</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="p-3.5 bg-white/80 backdrop-blur-md border border-arena-calida/30 rounded-2xl shadow-xs">
-                    <span className="text-[10px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mb-1">
-                      Inicio Contractual
-                    </span>
-                    <span className="font-headline-md text-xs sm:text-sm font-semibold text-gris-texto block">
-                      {safeProject.startDate || "01 Abril 2026"}
-                    </span>
+
+                  {/* 2. FOUR FINANCIAL METRIC TILES */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                    <div className="p-3 bg-white/80 border border-arena-calida/30 rounded-xl text-center shadow-2xs">
+                      <span className="text-xs sm:text-sm font-bold text-teal-uno font-headline-md block truncate">$4,925,212</span>
+                      <span className="text-[9px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mt-0.5">Presupuesto Act.</span>
+                    </div>
+                    <div className="p-3 bg-white/80 border border-arena-calida/30 rounded-xl text-center shadow-2xs">
+                      <span className="text-xs sm:text-sm font-bold text-gris-texto font-headline-md block truncate">$3,096,844</span>
+                      <span className="text-[9px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mt-0.5">Estimado (63%)</span>
+                    </div>
+                    <div className="p-3 bg-white/80 border border-arena-calida/30 rounded-xl text-center shadow-2xs">
+                      <span className="text-xs sm:text-sm font-bold text-teal-uno font-headline-md block truncate">$2,404,226</span>
+                      <span className="text-[9px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mt-0.5">Gasto Real</span>
+                    </div>
+                    <div className="p-3 bg-emerald-50/90 border border-emerald-300/60 rounded-xl text-center shadow-2xs">
+                      <span className="text-xs sm:text-sm font-bold text-emerald-700 font-headline-md block truncate">-$692,618</span>
+                      <span className="text-[9px] font-label-caps uppercase text-emerald-800 tracking-wider font-bold block mt-0.5">Ahorro (-22%)</span>
+                    </div>
                   </div>
-                  <div className="p-3.5 bg-white/80 backdrop-blur-md border border-arena-calida/30 rounded-2xl shadow-xs col-span-2 sm:col-span-1">
-                    <span className="text-[10px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mb-1">
-                      Entrega Estimada
-                    </span>
-                    <span className="font-headline-md text-xs sm:text-sm font-semibold text-teal-uno block">
-                      {safeProject.estimatedDelivery}
-                    </span>
+
+                  {/* 3. FOUR PARTIDAS BREAKDOWN CARDS */}
+                  <div className="space-y-2.5 text-xs">
+                    {/* Partida 1: Edificación */}
+                    <div className="p-3.5 bg-surface-container-low/80 border border-arena-calida/25 rounded-2xl space-y-1.5 transition-all hover:bg-white">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2 text-teal-uno font-bold text-xs uppercase tracking-wide">
+                          <Layers className="w-4 h-4 text-arena-calida flex-shrink-0" />
+                          <span>1. Edificación (Obra Civil, Inst. & Acabados)</span>
+                        </div>
+                        <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-100/80 px-2 py-0.5 rounded-md border border-emerald-200">
+                          -$577,694 (-22%)
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2 text-[10px] text-gris-texto/80 font-mono pt-1">
+                        <div className="bg-white/70 px-2 py-1 rounded-lg border border-arena-calida/20">
+                          <span className="text-arena-calida block text-[8px] uppercase">Presupuesto Act.</span>
+                          <span className="font-semibold text-gris-texto">$3,980,321</span>
+                        </div>
+                        <div className="bg-white/70 px-2 py-1 rounded-lg border border-arena-calida/20">
+                          <span className="text-arena-calida block text-[8px] uppercase">Estimado (65%)</span>
+                          <span className="font-semibold text-gris-texto">$2,603,725</span>
+                        </div>
+                        <div className="bg-white/70 px-2 py-1 rounded-lg border border-arena-calida/20">
+                          <span className="text-teal-uno block text-[8px] uppercase font-bold">Gasto Real</span>
+                          <span className="font-bold text-teal-uno">$2,026,031</span>
+                        </div>
+                      </div>
+                      <p className="text-[10px] text-gris-texto/70 leading-tight pl-1 pt-0.5">
+                        Optimización en suministro de concreto marino f'c 300, acero Grado 42 y negociación directa en mármol Travertino.
+                      </p>
+                    </div>
+
+                    {/* Partida 2: Fachada y Barda */}
+                    <div className="p-3.5 bg-surface-container-low/80 border border-arena-calida/25 rounded-2xl space-y-1.5 transition-all hover:bg-white">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2 text-teal-uno font-bold text-xs uppercase tracking-wide">
+                          <Building2 className="w-4 h-4 text-arena-calida flex-shrink-0" />
+                          <span>2. Fachada Principal & Barda Perimetral</span>
+                        </div>
+                        <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-100/80 px-2 py-0.5 rounded-md border border-emerald-200">
+                          -$162,729 (-37%)
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2 text-[10px] text-gris-texto/80 font-mono pt-1">
+                        <div className="bg-white/70 px-2 py-1 rounded-lg border border-arena-calida/20">
+                          <span className="text-arena-calida block text-[8px] uppercase">Presupuesto Act.</span>
+                          <span className="font-semibold text-gris-texto">$677,050</span>
+                        </div>
+                        <div className="bg-white/70 px-2 py-1 rounded-lg border border-arena-calida/20">
+                          <span className="text-arena-calida block text-[8px] uppercase">Estimado (57%)</span>
+                          <span className="font-semibold text-gris-texto">$435,147</span>
+                        </div>
+                        <div className="bg-white/70 px-2 py-1 rounded-lg border border-arena-calida/20">
+                          <span className="text-teal-uno block text-[8px] uppercase font-bold">Gasto Real</span>
+                          <span className="font-bold text-teal-uno">$272,418</span>
+                        </div>
+                      </div>
+                      <p className="text-[10px] text-gris-texto/70 leading-tight pl-1 pt-0.5">
+                        Ahorro del 37% por consolidación de módulos de barda perimetral y modulación previa de celosías.
+                      </p>
+                    </div>
+
+                    {/* Partida 3: Alberca y Exteriores */}
+                    <div className="p-3.5 bg-surface-container-low/80 border border-arena-calida/25 rounded-2xl space-y-1.5 transition-all hover:bg-white">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2 text-teal-uno font-bold text-xs uppercase tracking-wide">
+                          <Droplets className="w-4 h-4 text-arena-calida flex-shrink-0" />
+                          <span>3. Alberca & Amenidades Exteriores</span>
+                        </div>
+                        <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-100/80 px-2 py-0.5 rounded-md border border-emerald-200">
+                          -$562 (-1%)
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2 text-[10px] text-gris-texto/80 font-mono pt-1">
+                        <div className="bg-white/70 px-2 py-1 rounded-lg border border-arena-calida/20">
+                          <span className="text-arena-calida block text-[8px] uppercase">Presupuesto Act.</span>
+                          <span className="font-semibold text-gris-texto">$207,478</span>
+                        </div>
+                        <div className="bg-white/70 px-2 py-1 rounded-lg border border-arena-calida/20">
+                          <span className="text-arena-calida block text-[8px] uppercase">Estimado (22%)</span>
+                          <span className="font-semibold text-gris-texto">$44,640</span>
+                        </div>
+                        <div className="bg-white/70 px-2 py-1 rounded-lg border border-arena-calida/20">
+                          <span className="text-teal-uno block text-[8px] uppercase font-bold">Gasto Real</span>
+                          <span className="font-bold text-teal-uno">$44,078</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Partida 4: Generales */}
+                    <div className="p-3.5 bg-surface-container-low/80 border border-arena-calida/25 rounded-2xl space-y-1.5 transition-all hover:bg-white">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2 text-teal-uno font-bold text-xs uppercase tracking-wide">
+                          <FileText className="w-4 h-4 text-arena-calida flex-shrink-0" />
+                          <span>4. Gastos Generales & Licencias</span>
+                        </div>
+                        <span className="text-[10px] font-mono font-bold text-teal-uno bg-teal-uno/10 px-2 py-0.5 rounded-md border border-teal-uno/20">
+                          +$47,030 (Adendas)
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-3 gap-2 text-[10px] text-gris-texto/80 font-mono pt-1">
+                        <div className="bg-white/70 px-2 py-1 rounded-lg border border-arena-calida/20">
+                          <span className="text-arena-calida block text-[8px] uppercase">Presupuesto Act.</span>
+                          <span className="font-semibold text-gris-texto">$60,363</span>
+                        </div>
+                        <div className="bg-white/70 px-2 py-1 rounded-lg border border-arena-calida/20">
+                          <span className="text-arena-calida block text-[8px] uppercase">Adenda Autorizada</span>
+                          <span className="font-semibold text-teal-uno">+$47,030</span>
+                        </div>
+                        <div className="bg-white/70 px-2 py-1 rounded-lg border border-arena-calida/20">
+                          <span className="text-teal-uno block text-[8px] uppercase font-bold">Gasto Real</span>
+                          <span className="font-bold text-teal-uno">$60,363</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 4. FOOTER SPECS SUMMARY PILLS */}
+                  <div className="pt-2 border-t border-arena-calida/25 grid grid-cols-3 gap-2">
+                    <div className="p-2.5 bg-white/80 border border-arena-calida/20 rounded-xl text-center">
+                      <span className="text-[8px] font-label-caps uppercase text-arena-calida block">Inicio Contractual</span>
+                      <span className="text-[11px] font-semibold text-gris-texto font-headline-md block">{safeProject.startDate || "01 Abril 2026"}</span>
+                    </div>
+                    <div className="p-2.5 bg-white/80 border border-arena-calida/20 rounded-xl text-center">
+                      <span className="text-[8px] font-label-caps uppercase text-arena-calida block">Entrega Estimada</span>
+                      <span className="text-[11px] font-semibold text-teal-uno font-headline-md block">{safeProject.estimatedDelivery || "20 Diciembre 2026"}</span>
+                    </div>
+                    <div className="p-2.5 bg-white/80 border border-arena-calida/20 rounded-xl text-center">
+                      <span className="text-[8px] font-label-caps uppercase text-arena-calida block">Superficie Total</span>
+                      <span className="text-[11px] font-semibold text-gris-texto font-headline-md block">720 m²</span>
+                    </div>
                   </div>
                 </div>
 
@@ -301,7 +469,7 @@ export default function ClientPortalView({
               </div>
 
               {/* RIGHT: High-Impact Architectural Infographic & Official Documentation */}
-              <div className="lg:col-span-7 space-y-4">
+              <div className="lg:col-span-6 space-y-4">
                 {/* INFOGRAPHIC MAIN CONTAINER */}
                 <div className="bg-gradient-to-br from-white/95 via-surface-container-low/90 to-white/95 backdrop-blur-xl border border-arena-calida/40 p-5 sm:p-6 rounded-3xl shadow-ethereal space-y-5 text-left">
                   
