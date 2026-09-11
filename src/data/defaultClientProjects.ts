@@ -4127,9 +4127,7 @@ export const defaultClientProjects: ClientProject[] = [
                     "caption": "Registro fotográfico 04/09/2026 3.50.43 PM",
                     "date": "04 Septiembre 2026",
                     "order": 19
-          }
-],
-      },
+          },
           {
             "id": "photo-s36-encuadrada-01",
             "originalName": "arrecifes_20260905_reframe_01.jpg",
@@ -4138,7 +4136,7 @@ export const defaultClientProjects: ClientProject[] = [
             "caption": "Fotografía Encuadrada HD #01 • Acabados Chukum, Estructura & Mármol",
             "date": "05 Septiembre 2026",
             "order": 101
-},
+          },
           {
             "id": "photo-s36-encuadrada-02",
             "originalName": "arrecifes_20260905_reframe_02.jpg",
@@ -4147,7 +4145,7 @@ export const defaultClientProjects: ClientProject[] = [
             "caption": "Fotografía Encuadrada HD #02 • Acabados Chukum, Estructura & Mármol",
             "date": "05 Septiembre 2026",
             "order": 102
-},
+          },
           {
             "id": "photo-s36-encuadrada-03",
             "originalName": "arrecifes_20260905_reframe_03.jpg",
@@ -4156,7 +4154,7 @@ export const defaultClientProjects: ClientProject[] = [
             "caption": "Fotografía Encuadrada HD #03 • Acabados Chukum, Estructura & Mármol",
             "date": "05 Septiembre 2026",
             "order": 103
-},
+          },
           {
             "id": "photo-s36-encuadrada-04",
             "originalName": "arrecifes_20260905_reframe_04.jpg",
@@ -4165,7 +4163,7 @@ export const defaultClientProjects: ClientProject[] = [
             "caption": "Fotografía Encuadrada HD #04 • Acabados Chukum, Estructura & Mármol",
             "date": "05 Septiembre 2026",
             "order": 104
-},
+          },
           {
             "id": "photo-s36-encuadrada-05",
             "originalName": "arrecifes_20260905_reframe_05.jpg",
@@ -4174,7 +4172,7 @@ export const defaultClientProjects: ClientProject[] = [
             "caption": "Fotografía Encuadrada HD #05 • Acabados Chukum, Estructura & Mármol",
             "date": "05 Septiembre 2026",
             "order": 105
-},
+          },
           {
             "id": "photo-s36-encuadrada-06",
             "originalName": "arrecifes_20260905_reframe_06.jpg",
@@ -4183,7 +4181,7 @@ export const defaultClientProjects: ClientProject[] = [
             "caption": "Fotografía Encuadrada HD #06 • Acabados Chukum, Estructura & Mármol",
             "date": "05 Septiembre 2026",
             "order": 106
-},
+          },
           {
             "id": "photo-s36-encuadrada-07",
             "originalName": "arrecifes_20260905_reframe_07.jpg",
@@ -4192,7 +4190,7 @@ export const defaultClientProjects: ClientProject[] = [
             "caption": "Fotografía Encuadrada HD #07 • Acabados Chukum, Estructura & Mármol",
             "date": "05 Septiembre 2026",
             "order": 107
-},
+          },
           {
             "id": "photo-s36-encuadrada-08",
             "originalName": "arrecifes_20260905_reframe_08.jpg",
@@ -4201,7 +4199,7 @@ export const defaultClientProjects: ClientProject[] = [
             "caption": "Fotografía Encuadrada HD #08 • Acabados Chukum, Estructura & Mármol",
             "date": "05 Septiembre 2026",
             "order": 108
-},
+          },
           {
             "id": "photo-s36-encuadrada-09",
             "originalName": "arrecifes_20260905_reframe_09.jpg",
@@ -4210,7 +4208,7 @@ export const defaultClientProjects: ClientProject[] = [
             "caption": "Fotografía Encuadrada HD #09 • Acabados Chukum, Estructura & Mármol",
             "date": "05 Septiembre 2026",
             "order": 109
-},
+          },
           {
             "id": "photo-s36-encuadrada-10",
             "originalName": "arrecifes_20260905_reframe_10.jpg",
@@ -4219,7 +4217,7 @@ export const defaultClientProjects: ClientProject[] = [
             "caption": "Fotografía Encuadrada HD #10 • Acabados Chukum, Estructura & Mármol",
             "date": "05 Septiembre 2026",
             "order": 110
-},
+          },
           {
             "id": "photo-s36-encuadrada-11",
             "originalName": "arrecifes_20260905_reframe_11.jpg",
@@ -4228,7 +4226,7 @@ export const defaultClientProjects: ClientProject[] = [
             "caption": "Fotografía Encuadrada HD #11 • Acabados Chukum, Estructura & Mármol",
             "date": "05 Septiembre 2026",
             "order": 111
-},
+          },
           {
             "id": "photo-s36-encuadrada-12",
             "originalName": "arrecifes_20260905_reframe_12.jpg",
@@ -4237,7 +4235,7 @@ export const defaultClientProjects: ClientProject[] = [
             "caption": "Fotografía Encuadrada HD #12 • Acabados Chukum, Estructura & Mármol",
             "date": "05 Septiembre 2026",
             "order": 112
-},
+          },
           {
             "id": "photo-s36-encuadrada-13",
             "originalName": "arrecifes_20260905_reframe_13.jpg",
@@ -4246,7 +4244,7 @@ export const defaultClientProjects: ClientProject[] = [
             "caption": "Fotografía Encuadrada HD #13 • Acabados Chukum, Estructura & Mármol",
             "date": "05 Septiembre 2026",
             "order": 113
-},
+          },
           {
             "id": "photo-s36-encuadrada-14",
             "originalName": "arrecifes_20260905_reframe_14.jpg",
@@ -4255,7 +4253,7 @@ export const defaultClientProjects: ClientProject[] = [
             "caption": "Fotografía Encuadrada HD #14 • Acabados Chukum, Estructura & Mármol",
             "date": "05 Septiembre 2026",
             "order": 114
-},
+          },
           {
             "id": "photo-s36-encuadrada-15",
             "originalName": "arrecifes_20260905_reframe_15.jpg",
@@ -4264,7 +4262,7 @@ export const defaultClientProjects: ClientProject[] = [
             "caption": "Fotografía Encuadrada HD #15 • Acabados Chukum, Estructura & Mármol",
             "date": "05 Septiembre 2026",
             "order": 115
-},
+          },
           {
             "id": "photo-s36-encuadrada-16",
             "originalName": "arrecifes_20260905_reframe_16.jpg",
@@ -4273,7 +4271,7 @@ export const defaultClientProjects: ClientProject[] = [
             "caption": "Fotografía Encuadrada HD #16 • Acabados Chukum, Estructura & Mármol",
             "date": "05 Septiembre 2026",
             "order": 116
-},
+          },
           {
             "id": "photo-s36-encuadrada-17",
             "originalName": "arrecifes_20260905_reframe_17.jpg",
@@ -4282,7 +4280,7 @@ export const defaultClientProjects: ClientProject[] = [
             "caption": "Fotografía Encuadrada HD #17 • Acabados Chukum, Estructura & Mármol",
             "date": "05 Septiembre 2026",
             "order": 117
-},
+          },
           {
             "id": "photo-s36-encuadrada-18",
             "originalName": "arrecifes_20260905_reframe_18.jpg",
@@ -4291,7 +4289,7 @@ export const defaultClientProjects: ClientProject[] = [
             "caption": "Fotografía Encuadrada HD #18 • Acabados Chukum, Estructura & Mármol",
             "date": "05 Septiembre 2026",
             "order": 118
-},
+          },
           {
             "id": "photo-s36-encuadrada-19",
             "originalName": "arrecifes_20260905_reframe_19.jpg",
@@ -4300,7 +4298,7 @@ export const defaultClientProjects: ClientProject[] = [
             "caption": "Fotografía Encuadrada HD #19 • Acabados Chukum, Estructura & Mármol",
             "date": "05 Septiembre 2026",
             "order": 119
-},
+          },
           {
             "id": "photo-s36-encuadrada-20",
             "originalName": "arrecifes_20260905_reframe_20.jpg",
@@ -4309,7 +4307,9 @@ export const defaultClientProjects: ClientProject[] = [
             "caption": "Fotografía Encuadrada HD #20 • Acabados Chukum, Estructura & Mármol",
             "date": "05 Septiembre 2026",
             "order": 120
-}
+          }
+        ]
+      }
     ]
   },
   {

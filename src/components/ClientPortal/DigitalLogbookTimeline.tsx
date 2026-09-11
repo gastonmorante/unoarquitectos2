@@ -47,11 +47,15 @@ export default function DigitalLogbookTimeline({
   const [fullscreenCarouselEntryId, setFullscreenCarouselEntryId] = useState<string>("");
   const [selectedMonth, setSelectedMonth] = useState<string>("all");
 
-  const availableMonths = Array.from(new Set(entries.map(e => e.month))).filter(Boolean);
+  const validEntries = (Array.isArray(entries) ? entries : []).filter(
+    (e) => e && e.id && typeof e.entryNumber === "string" && e.entryNumber.trim().length > 0 && e.phaseTitle
+  );
+
+  const availableMonths = Array.from(new Set(validEntries.map(e => e.month))).filter(Boolean);
 
   const filteredEntries = selectedMonth === "all" 
-    ? entries 
-    : entries.filter(e => e.month === selectedMonth);
+    ? validEntries 
+    : validEntries.filter(e => e.month === selectedMonth);
 
   return (
     <div className="space-y-8 font-sans text-left">
@@ -97,7 +101,7 @@ export default function DigitalLogbookTimeline({
               title="Abrir carpeta oficial de bitácora técnica digital en Google Drive"
             >
               <FileText className="w-4 h-4 text-arena-calida group-hover:text-white transition-colors" />
-              <span>03 Bitácora Digital ({entries.length} PDFs)</span>
+              <span>03 Bitácora Digital ({validEntries.length} PDFs)</span>
               <ExternalLink className="w-3.5 h-3.5 opacity-80 group-hover:opacity-100" />
             </a>
           </div>
@@ -110,7 +114,7 @@ export default function DigitalLogbookTimeline({
               Fichas de Bitácora
             </span>
             <span className="font-headline-md text-sm sm:text-base font-bold text-teal-uno block">
-              {entries.length} Documentos PDF
+              {validEntries.length} Documentos PDF
             </span>
           </div>
           <div className="p-3.5 bg-surface-variant/30 rounded-2xl border border-arena-calida/20">
@@ -118,7 +122,7 @@ export default function DigitalLogbookTimeline({
               Rango Cronológico
             </span>
             <span className="font-headline-md text-xs sm:text-sm font-bold text-teal-uno block truncate">
-              {entries[0]?.date || "Abril"} → {entries[entries.length - 1]?.date || "Septiembre"}
+              {validEntries[0]?.date || "Abril"} → {validEntries[validEntries.length - 1]?.date || "Septiembre"}
             </span>
           </div>
           <div className="p-3.5 bg-surface-variant/30 rounded-2xl border border-arena-calida/20">
@@ -158,10 +162,10 @@ export default function DigitalLogbookTimeline({
                   : "bg-white/80 text-gris-texto hover:text-teal-uno border border-arena-calida/30"
               }`}
             >
-              Todos ({entries.length})
+              Todos ({validEntries.length})
             </button>
             {availableMonths.map((m) => {
-              const count = entries.filter(e => e.month === m).length;
+              const count = validEntries.filter(e => e.month === m).length;
               return (
                 <button
                   key={m}
