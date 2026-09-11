@@ -258,6 +258,76 @@ export default function DigitalLogbookTimeline({
                 {/* EXPANDED TECHNICAL DETAIL BODY */}
                 {isExpanded && (
                   <div className="px-5 pb-6 sm:px-6 sm:pb-6 pt-2 border-t border-arena-calida/20 space-y-6 text-xs sm:text-sm">
+                    {/* TOUR 360 & LEVANTAMIENTO TÉCNICO HIGHLIGHT (MATCHING AESTHETIC FROM DATE SELECTOR) */}
+                    {entry.tourInfo && (
+                      <div className="p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-white via-surface-container-low/90 to-white/95 border border-teal-uno/40 hover:border-teal-uno shadow-xs relative overflow-hidden space-y-3 transition-all">
+                        {entry.tourInfo.isLatest && (
+                          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal-uno via-arena-calida to-teal-uno" />
+                        )}
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                          <div className="flex items-center gap-2">
+                            <span className="font-label-caps text-xs uppercase tracking-wider font-bold text-teal-uno">
+                              {entry.tourInfo.date}
+                            </span>
+                            {entry.tourInfo.isLatest && (
+                              <span className="px-2.5 py-0.5 rounded-full bg-teal-uno/15 text-teal-uno border border-teal-uno/30 text-[9px] font-label-caps uppercase font-bold">
+                                ÚLTIMO AVANCE
+                              </span>
+                            )}
+                          </div>
+                          <span className="text-xs font-mono font-bold px-3 py-1 rounded-full bg-arena-calida/15 text-arena-calida border border-arena-calida/30">
+                            {entry.tourInfo.progress}% Avance
+                          </span>
+                        </div>
+
+                        <h4 className="font-headline-md text-base sm:text-lg uppercase text-teal-uno font-semibold">
+                          {entry.tourInfo.title}
+                        </h4>
+
+                        <p className="font-body-md text-xs sm:text-sm text-gris-texto leading-relaxed">
+                          {entry.tourInfo.notes}
+                        </p>
+
+                        <div className="flex flex-wrap items-center gap-4 pt-3.5 border-t border-arena-calida/20 text-[11px] font-label-caps uppercase">
+                          {onJumpTo360 && (
+                            <button
+                              type="button"
+                              onClick={() => {
+                                onJumpTo360();
+                                if (onSelectDate) onSelectDate(entry.tourInfo!.date);
+                              }}
+                              className="flex items-center gap-1.5 text-teal-uno hover:text-arena-calida font-bold transition-colors cursor-pointer"
+                              title="Explorar puntos esféricos en el Visor 360°"
+                            >
+                              <Compass className="w-3.5 h-3.5" />
+                              <span>{entry.tourInfo.scenes360Count} FOTOS 360°</span>
+                            </button>
+                          )}
+
+                          {entry.tourInfo.encuadradasCount && (
+                            <span className="flex items-center gap-1.5 text-arena-calida font-semibold">
+                              <Camera className="w-3.5 h-3.5" />
+                              <span>{entry.tourInfo.encuadradasCount} FOTOS ENCUADRADAS</span>
+                            </span>
+                          )}
+
+                          {entry.tourInfo.folderUrl && (
+                            <a
+                              href={entry.tourInfo.folderUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="ml-auto flex items-center gap-1.5 text-teal-uno hover:text-arena-calida font-bold transition-colors cursor-pointer"
+                              title="Abrir carpeta de recorrido 360° en Google Drive"
+                            >
+                              <FolderOpen className="w-3.5 h-3.5 text-arena-calida" />
+                              <span>Carpeta 360° Drive</span>
+                              <ExternalLink className="w-3 h-3 opacity-70" />
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    )}
+
                     {/* EXECUTIVE SUMMARY */}
                     <div className="p-4 rounded-2xl bg-surface-container-low/80 border border-arena-calida/25 space-y-1.5">
                       <span className="text-[10px] font-label-caps uppercase text-arena-calida tracking-wider font-bold block">

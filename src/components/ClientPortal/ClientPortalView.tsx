@@ -3,14 +3,12 @@ import { motion, AnimatePresence } from "motion/react";
 import { 
   Building2, 
   MapPin, 
-  Calendar, 
   MessageSquare, 
   Compass, 
   Camera, 
   ChevronDown, 
   Sparkles, 
   Award, 
-  CheckCircle2, 
   ArrowLeft, 
   FileText, 
   FolderOpen, 
@@ -19,7 +17,6 @@ import {
 import { ClientProject, Tour360Folder } from "../../types/clientPortal";
 import { defaultClientProjects } from "../../data/defaultClientProjects";
 import CloudPanoViewer from "./CloudPanoViewer";
-import PhotoReportsGrid from "./PhotoReportsGrid";
 import DigitalLogbookTimeline from "./DigitalLogbookTimeline";
 import ClientAIAssistantModal from "./ClientAIAssistantModal";
 import Logo from "../Logo";
@@ -40,7 +37,6 @@ export default function ClientPortalView({
   onClose,
 }: ClientPortalViewProps) {
   const safeProject = currentProject || defaultClientProjects[0];
-  const [viewMode, setViewMode] = useState<"all" | "bitacora" | "360" | "photos">("all");
   const [showAIAssistant, setShowAIAssistant] = useState(false);
   const [showProjectSwitcher, setShowProjectSwitcher] = useState(false);
 
@@ -396,206 +392,11 @@ export default function ClientPortalView({
           </div>
         </section>
 
-        {/* 3. EXECUTIVE PROGRESS SELECTOR CARDS (FICHAS DE AVANCE) */}
-        <section id="fichas-avance" className="bg-surface-variant/40 border-b border-arena-calida/20 px-4 sm:px-8 py-8 sm:py-10 texture-overlay">
-          <div className="max-w-7xl mx-auto space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-left">
-              <div>
-                <div className="flex items-center gap-2 text-xs font-label-caps uppercase tracking-widest text-arena-calida font-semibold">
-                  <Calendar className="w-4 h-4 text-teal-uno" />
-                  <span>Seleccionar Ficha de Avance de Obra</span>
-                </div>
-                <p className="font-body-md text-xs sm:text-sm text-gris-texto mt-1">
-                  Al seleccionar una fecha se sincroniza la Galería de Fotos 360° y la Galería de Fotos Encuadradas.
-                </p>
-              </div>
-
-              {/* VIEW MODE TOGGLE BUTTONS */}
-              <div className="flex flex-wrap items-center gap-1.5 bg-white/80 backdrop-blur-md p-1.5 rounded-full border border-arena-calida/30 shadow-xs self-start sm:self-auto">
-                <button
-                  onClick={() => setViewMode("all")}
-                  className={`px-4 py-2 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold transition-all cursor-pointer ${
-                    viewMode === "all"
-                      ? "bg-teal-uno text-white shadow-sm"
-                      : "text-gris-texto hover:text-teal-uno"
-                  }`}
-                >
-                  Ficha Completa
-                </button>
-                {safeLogbook.length > 0 && (
-                  <button
-                    onClick={() => setViewMode("bitacora")}
-                    className={`px-4 py-2 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold transition-all cursor-pointer ${
-                      viewMode === "bitacora"
-                        ? "bg-teal-uno text-white shadow-sm"
-                        : "text-gris-texto hover:text-teal-uno"
-                    }`}
-                  >
-                    Bitácora Digital
-                  </button>
-                )}
-                <button
-                  onClick={() => setViewMode("360")}
-                  className={`px-4 py-2 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold transition-all cursor-pointer ${
-                    viewMode === "360"
-                      ? "bg-teal-uno text-white shadow-sm"
-                      : "text-gris-texto hover:text-teal-uno"
-                  }`}
-                >
-                  Fotos 360°
-                </button>
-                <button
-                  onClick={() => setViewMode("photos")}
-                  className={`px-4 py-2 rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold transition-all cursor-pointer ${
-                    viewMode === "photos"
-                      ? "bg-teal-uno text-white shadow-sm"
-                      : "text-gris-texto hover:text-teal-uno"
-                  }`}
-                >
-                  Fotos Encuadradas
-                </button>
-              </div>
-            </div>
-
-            {/* DATE SELECTOR CARDS */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {tours.map((tour) => {
-                const isSelected = tour.id === selectedTourId;
-                const photoCount = safePhotoReports.filter((p) => p.period === tour.date).length;
-                const scene360Count = tour.scenes?.length || 0;
-                const isFirst = tour.id === tours[0]?.id;
-
-                return (
-                  <button
-                    key={tour.id}
-                    onClick={() => handleSelectTour(tour.id)}
-                    className={`p-6 rounded-3xl border text-left transition-all duration-500 cursor-pointer relative overflow-hidden group ${
-                      isSelected
-                        ? "bg-white/95 backdrop-blur-md border-teal-uno shadow-ethereal ring-2 ring-teal-uno/40 -translate-y-1"
-                        : "bg-white/70 backdrop-blur-md border-arena-calida/30 hover:border-teal-uno/60 hover:shadow-ethereal hover:-translate-y-1"
-                    }`}
-                  >
-                    {isSelected && (
-                      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-teal-uno via-arena-calida to-teal-uno" />
-                    )}
-
-                    <div className="flex items-center justify-between gap-2 mb-3">
-                      <div className="flex items-center gap-2">
-                        <span className={`font-label-caps text-xs uppercase tracking-wider font-bold ${
-                          isSelected ? "text-teal-uno" : "text-gris-texto"
-                        }`}>
-                          {tour.date}
-                        </span>
-                        {isFirst && (
-                          <span className="px-2.5 py-0.5 rounded-full bg-teal-uno/15 text-teal-uno border border-teal-uno/30 text-[9px] font-label-caps uppercase font-bold">
-                            Último Avance
-                          </span>
-                        )}
-                      </div>
-                      <span className="text-xs font-mono font-bold px-3 py-1 rounded-full bg-arena-calida/15 text-arena-calida border border-arena-calida/30">
-                        {tour.progress}% Avance
-                      </span>
-                    </div>
-
-                    <h4 className="font-headline-md text-base sm:text-lg uppercase text-teal-uno font-semibold group-hover:text-arena-calida transition-colors line-clamp-1">
-                      {tour.title}
-                    </h4>
-
-                    <p className="font-body-md text-xs sm:text-sm text-gris-texto mt-1.5 line-clamp-2 leading-relaxed">
-                      {tour.notes}
-                    </p>
-
-                    <div className="flex items-center gap-4 text-[11px] text-gris-texto/70 mt-4 pt-3.5 border-t border-arena-calida/20 font-label-caps uppercase">
-                      <span className="flex items-center gap-1.5 text-teal-uno font-semibold">
-                        <Compass className="w-3.5 h-3.5" />
-                        {scene360Count} Fotos 360°
-                      </span>
-                      <span className="flex items-center gap-1.5 text-arena-calida font-semibold">
-                        <Camera className="w-3.5 h-3.5" />
-                        {photoCount} Fotos Encuadradas
-                      </span>
-                      {isSelected && (
-                        <span className="ml-auto text-teal-uno flex items-center gap-1 font-bold">
-                          <CheckCircle2 className="w-3.5 h-3.5" />
-                          Ficha Activa
-                        </span>
-                      )}
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* 4. MAIN SYNCHRONIZED PROGRESS CONTENT */}
-        <main id="seccion-galeria-activa" className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-8 py-10 sm:py-14 space-y-12">
-          {/* VIEW MODE 1: FICHA COMPLETA */}
-          {viewMode === "all" && (
-            <div className="space-y-14">
-              {/* PART 1: BITÁCORA DIGITAL DE SUPERVISIÓN TÉCNICA (CON CARRUSEL INTEGRADO POR SEMANA) */}
-              {safeLogbook.length > 0 && (
-                <section id="bitacora-digital" className="space-y-5 text-left">
-                  <DigitalLogbookTimeline
-                    entries={safeLogbook}
-                    bitacoraFotograficaUrl={safeProject.bitacoraFotograficaUrl}
-                    bitacoraDigitalUrl={safeProject.bitacoraDigitalUrl}
-                    masterDriveFolderUrl={safeProject.masterDriveFolderUrl}
-                    selectedDate={activeDate}
-                    onSelectDate={handleSelectPeriod}
-                    onJumpTo360={() => setViewMode("360")}
-                    onJumpToPhotos={() => setViewMode("photos")}
-                  />
-                </section>
-              )}
-
-              {/* PART 2: GALERÍA DE FOTOS 360° */}
-              <section id="visor-360" className="space-y-5 text-left">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-arena-calida/20 pb-4">
-                  <div>
-                    <div className="flex items-center gap-2 text-xs font-label-caps uppercase tracking-widest text-arena-calida font-semibold">
-                      <Compass className="w-4 h-4 text-teal-uno" />
-                      <span>Recorridos & Puntos 360°</span>
-                    </div>
-                    <h3 className="font-headline-md text-xl sm:text-2xl text-teal-uno uppercase font-semibold mt-1">
-                      Galería de Fotos 360° Inmersiva • {activeDate}
-                    </h3>
-                  </div>
-                  <span className="text-xs font-label-caps uppercase text-arena-calida font-semibold bg-arena-calida/15 px-3 py-1 rounded-full border border-arena-calida/30 self-start sm:self-auto">
-                    {activeTour?.scenes?.length || 0} Puntos Esféricos
-                  </span>
-                </div>
-
-                <CloudPanoViewer
-                  tours={tours}
-                  selectedTourId={selectedTourId}
-                  hideTourSelector={true}
-                  onSelectTourId={handleSelectTour}
-                  onUpdateTour={handleUpdateTour}
-                />
-              </section>
-
-              {/* PART 3: GALERÍA DE FOTOS ENCUADRADAS */}
-              <section id="galeria-hd" className="space-y-5 text-left">
-                <PhotoReportsGrid
-                  photoReports={safePhotoReports}
-                  selectedPeriod={activeDate}
-                  onSelectPeriod={handleSelectPeriod}
-                />
-              </section>
-            </div>
-          )}
-
-          {/* VIEW MODE: SOLO BITÁCORA DIGITAL */}
-          {viewMode === "bitacora" && safeLogbook.length > 0 && (
-            <motion.div
-              key="view-bitacora"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.25 }}
-              className="space-y-5 text-left"
-            >
+        {/* 3. MAIN PROGRESS & DIGITAL LOGBOOK CONTENT */}
+        <main id="seccion-galeria-activa" className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-8 py-10 sm:py-14 space-y-14">
+          {/* PART 1: BITÁCORA DIGITAL DE SUPERVISIÓN TÉCNICA (CON TODAS LAS FOTOS, REENMARCADAS Y DOCUMENTOS OFICIALES) */}
+          {safeLogbook.length > 0 && (
+            <section id="bitacora-digital" className="space-y-5 text-left">
               <DigitalLogbookTimeline
                 entries={safeLogbook}
                 bitacoraFotograficaUrl={safeProject.bitacoraFotograficaUrl}
@@ -603,64 +404,39 @@ export default function ClientPortalView({
                 masterDriveFolderUrl={safeProject.masterDriveFolderUrl}
                 selectedDate={activeDate}
                 onSelectDate={handleSelectPeriod}
-                onJumpTo360={() => setViewMode("360")}
-                onJumpToPhotos={() => setViewMode("photos")}
+                onJumpTo360={() => {
+                  const el = document.getElementById("visor-360");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                }}
               />
-            </motion.div>
+            </section>
           )}
 
-          {/* VIEW MODE: SOLO FOTOS 360° */}
-          {viewMode === "360" && (
-            <motion.div
-              key={`360-${selectedTourId}`}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.25 }}
-              className="space-y-5 text-left"
-            >
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-arena-calida/20 pb-4">
-                <div>
-                  <div className="flex items-center gap-2 text-xs font-label-caps uppercase tracking-widest text-arena-calida font-semibold">
-                    <Compass className="w-4 h-4 text-teal-uno" />
-                    <span>Recorridos & Puntos 360°</span>
-                  </div>
-                  <h3 className="font-headline-md text-xl sm:text-2xl text-teal-uno uppercase font-semibold mt-1">
-                    Visor Esférico Inmersivo 360° • {activeDate}
-                  </h3>
+          {/* PART 2: VISOR INTERACTIVO DE FOTOS & RECORRIDOS 360° */}
+          <section id="visor-360" className="space-y-5 text-left">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-arena-calida/20 pb-4">
+              <div>
+                <div className="flex items-center gap-2 text-xs font-label-caps uppercase tracking-widest text-arena-calida font-semibold">
+                  <Compass className="w-4 h-4 text-teal-uno" />
+                  <span>Recorridos & Puntos 360°</span>
                 </div>
-                <span className="text-xs font-label-caps uppercase text-arena-calida font-semibold bg-arena-calida/15 px-3 py-1 rounded-full border border-arena-calida/30 self-start sm:self-auto">
-                  {activeTour?.scenes?.length || 0} Puntos Esféricos
-                </span>
+                <h3 className="font-headline-md text-xl sm:text-2xl text-teal-uno uppercase font-semibold mt-1">
+                  Visor Esférico Inmersivo 360° • {activeDate}
+                </h3>
               </div>
+              <span className="text-xs font-label-caps uppercase text-arena-calida font-semibold bg-arena-calida/15 px-3 py-1 rounded-full border border-arena-calida/30 self-start sm:self-auto">
+                {activeTour?.scenes?.length || 0} Puntos Esféricos
+              </span>
+            </div>
 
-              <CloudPanoViewer
-                tours={tours}
-                selectedTourId={selectedTourId}
-                hideTourSelector={true}
-                onSelectTourId={handleSelectTour}
-                onUpdateTour={handleUpdateTour}
-              />
-            </motion.div>
-          )}
-
-          {/* VIEW MODE: SOLO FOTOS ENCUADRADAS */}
-          {viewMode === "photos" && (
-            <motion.div
-              key={`photos-${selectedTourId}`}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.25 }}
-              className="space-y-5 text-left"
-            >
-              <PhotoReportsGrid
-                photoReports={safePhotoReports}
-                selectedPeriod={activeDate}
-                onSelectPeriod={handleSelectPeriod}
-              />
-            </motion.div>
-          )}
+            <CloudPanoViewer
+              tours={tours}
+              selectedTourId={selectedTourId}
+              hideTourSelector={false}
+              onSelectTourId={handleSelectTour}
+              onUpdateTour={handleUpdateTour}
+            />
+          </section>
         </main>
 
         {/* 5. FOOTER PROTOCOL */}

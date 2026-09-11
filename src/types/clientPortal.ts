@@ -98,6 +98,18 @@ export interface BitacoraPhoto {
   order?: number;
 }
 
+export interface LogbookTourInfo {
+  id: string;
+  date: string;
+  progress: number;
+  title: string;
+  notes: string;
+  scenes360Count: number;
+  encuadradasCount?: number;
+  folderUrl?: string;
+  isLatest?: boolean;
+}
+
 export interface DigitalLogbookEntry {
   id: string;
   entryNumber: string; // e.g. "Folio #08"
@@ -119,6 +131,7 @@ export interface DigitalLogbookEntry {
   scenes360Count?: number;
   photosCount?: number;
   photos?: BitacoraPhoto[];
+  tourInfo?: LogbookTourInfo;
 }
 
 export interface ClientProject {

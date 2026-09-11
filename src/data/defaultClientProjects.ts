@@ -3473,6 +3473,16 @@ export const defaultClientProjects: ClientProject[] = [
         phaseTitle: "Fase 2: Estructura Portante, Losas & Cimbrado Aparente",
         progress: 70,
         status: "completed",
+        tourInfo: {
+          id: "tour-arrecifes-27ago2026",
+          date: "27 Agosto 2026",
+          progress: 52,
+          title: "AVANCE 52% - INSTALACIONES ESPECIALES, DOMÓTICA & HVAC",
+          notes: "Supervisión 360° de canalizaciones hidrosanitarias presurizadas a 7 kg/cm², cableado domótico Lutron Homeworks QSX y ductería oculta de aire acondicionado VRF inverter.",
+          scenes360Count: 10,
+          encuadradasCount: 10,
+          folderUrl: "https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link"
+        },
         executiveSummary: "Durante la semana 35 (24-28 Agosto del 2026). Durante la semana se dio inicio con el colado del calcreto en la azotea, dando continuidad a los trabajos de acabado y protección de la cubierta. Asimismo, se realizaron trabajos de aplanado en los pretiles y se concluyó la base para el tinaco, veriﬁcando niveles y dimensiones conforme a proyecto. De manera paralela, se continuó con el armado estructural de la alberca, realizando el habilitado y colocación del acero de refuerzo correspondiente. Finalmente, se llevaron a cabo trabajos de cimbrado de los pollos y mesetas, dejando preparados los elementos para las siguientes etapas de colado.",
         technicalDictum: "Dictamen de Supervisión S35: Trabajos ejecutados bajo supervisión residente de UNO Arquitectos. Verificación de alineaciones, niveles, calidades de materiales y control de cuadrilla en sitio.",
         labTestsAndQuality: [
@@ -3492,7 +3502,7 @@ export const defaultClientProjects: ClientProject[] = [
         pdfFileName: "20260828__Bit__cora_de_Obra_Arrecifes_S35_-_Arrecifes.pdf",
         pdfDriveUrl: "https://drive.google.com/file/d/1x6Riem6sbrafp79aS3zpdN6rx-khUuNr/view?usp=sharing",
         scenes360Count: 10,
-        photosCount: 22,
+        photosCount: 32,
         photos: [
           {
                     "id": "photo-s35-01",
@@ -3757,8 +3767,98 @@ export const defaultClientProjects: ClientProject[] = [
                     "caption": "Registro fotográfico 04/09/2026 6.15.49 PM",
                     "date": "28 Agosto 2026",
                     "order": 22
-          }
-],
+          },
+          {
+            "id": "photo-s35-encuadrada-01",
+            "originalName": "arrecifes_20260827_reframe_01.jpg",
+            "url": "/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_01.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-08-27/thumb_arrecifes_20260827_reframe_01.webp",
+            "caption": "Fotografía Encuadrada HD #01 • Supervisión Especial de Instalaciones & HVAC",
+            "date": "27 Agosto 2026",
+            "order": 101
+},
+          {
+            "id": "photo-s35-encuadrada-02",
+            "originalName": "arrecifes_20260827_reframe_02.jpg",
+            "url": "/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_02.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-08-27/thumb_arrecifes_20260827_reframe_02.webp",
+            "caption": "Fotografía Encuadrada HD #02 • Supervisión Especial de Instalaciones & HVAC",
+            "date": "27 Agosto 2026",
+            "order": 102
+},
+          {
+            "id": "photo-s35-encuadrada-03",
+            "originalName": "arrecifes_20260827_reframe_03.jpg",
+            "url": "/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_03.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-08-27/thumb_arrecifes_20260827_reframe_03.webp",
+            "caption": "Fotografía Encuadrada HD #03 • Supervisión Especial de Instalaciones & HVAC",
+            "date": "27 Agosto 2026",
+            "order": 103
+},
+          {
+            "id": "photo-s35-encuadrada-04",
+            "originalName": "arrecifes_20260827_reframe_04.jpg",
+            "url": "/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_04.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-08-27/thumb_arrecifes_20260827_reframe_04.webp",
+            "caption": "Fotografía Encuadrada HD #04 • Supervisión Especial de Instalaciones & HVAC",
+            "date": "27 Agosto 2026",
+            "order": 104
+},
+          {
+            "id": "photo-s35-encuadrada-05",
+            "originalName": "arrecifes_20260827_reframe_05.jpg",
+            "url": "/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_05.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-08-27/thumb_arrecifes_20260827_reframe_05.webp",
+            "caption": "Fotografía Encuadrada HD #05 • Supervisión Especial de Instalaciones & HVAC",
+            "date": "27 Agosto 2026",
+            "order": 105
+},
+          {
+            "id": "photo-s35-encuadrada-06",
+            "originalName": "arrecifes_20260827_reframe_06.jpg",
+            "url": "/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_06.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-08-27/thumb_arrecifes_20260827_reframe_06.webp",
+            "caption": "Fotografía Encuadrada HD #06 • Supervisión Especial de Instalaciones & HVAC",
+            "date": "27 Agosto 2026",
+            "order": 106
+},
+          {
+            "id": "photo-s35-encuadrada-07",
+            "originalName": "arrecifes_20260827_reframe_07.jpg",
+            "url": "/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_07.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-08-27/thumb_arrecifes_20260827_reframe_07.webp",
+            "caption": "Fotografía Encuadrada HD #07 • Supervisión Especial de Instalaciones & HVAC",
+            "date": "27 Agosto 2026",
+            "order": 107
+},
+          {
+            "id": "photo-s35-encuadrada-08",
+            "originalName": "arrecifes_20260827_reframe_08.jpg",
+            "url": "/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_08.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-08-27/thumb_arrecifes_20260827_reframe_08.webp",
+            "caption": "Fotografía Encuadrada HD #08 • Supervisión Especial de Instalaciones & HVAC",
+            "date": "27 Agosto 2026",
+            "order": 108
+},
+          {
+            "id": "photo-s35-encuadrada-09",
+            "originalName": "arrecifes_20260827_reframe_09.jpg",
+            "url": "/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_09.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-08-27/thumb_arrecifes_20260827_reframe_09.webp",
+            "caption": "Fotografía Encuadrada HD #09 • Supervisión Especial de Instalaciones & HVAC",
+            "date": "27 Agosto 2026",
+            "order": 109
+},
+          {
+            "id": "photo-s35-encuadrada-10",
+            "originalName": "arrecifes_20260827_reframe_10.jpg",
+            "url": "/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_10.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-08-27/thumb_arrecifes_20260827_reframe_10.webp",
+            "caption": "Fotografía Encuadrada HD #10 • Supervisión Especial de Instalaciones & HVAC",
+            "date": "27 Agosto 2026",
+            "order": 110
+}
+        ],
       },
       {
         id: "log-arrecifes-s36-20260904",
@@ -3768,6 +3868,17 @@ export const defaultClientProjects: ClientProject[] = [
         phaseTitle: "Fase 2: Estructura Portante, Losas & Cimbrado Aparente",
         progress: 72,
         status: "completed",
+        tourInfo: {
+          id: "tour-arrecifes-05sep2026",
+          date: "05 Septiembre 2026",
+          progress: 72,
+          isLatest: true,
+          title: "AVANCE 72% - REVESTIMIENTOS EN CHUKUM & MÁRMOL (MÁSTER SUITE & PB)",
+          notes: "Levantamiento 360° más reciente tras culminación de pasta de Chukum natural en doble altura (6.40m libres), colocación de placas de mármol Santo Tomás (1.20x2.40m) en vestíbulos y preparación para carpintería maciza de Tzalam.",
+          scenes360Count: 19,
+          encuadradasCount: 20,
+          folderUrl: "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link"
+        },
         executiveSummary: "Durante la semana 36 (01-04 de septiembre del 2026). Durante la semana se realizaron trabajos de aplanados en diferentes áreas de la edificación, dando continuidad a los acabados de albañilería. Asimismo, se ejecutaron trabajos de aplicación de masilla en plafones, preparando las superficies para las siguientes etapas de acabado. De manera paralela, se continuó con el cimbrado de la alberca, verificando niveles, alineación y dimensiones conforme al proyecto. Finalmente, se realizaron trabajos de habilitado, cimbrado y colado de elementos de albañilería, dando continuidad al avance de la obra.",
         technicalDictum: "Dictamen de Supervisión S36: Trabajos ejecutados bajo supervisión residente de UNO Arquitectos. Verificación de alineaciones, niveles, calidades de materiales y control de cuadrilla en sitio.",
         labTestsAndQuality: [
@@ -3787,7 +3898,7 @@ export const defaultClientProjects: ClientProject[] = [
         pdfFileName: "20260904__Bit__cora_de_Obra_Arrecifes_S36_-_Arrecifes.pdf",
         pdfDriveUrl: "https://drive.google.com/file/d/1bwQt0oef0MMpPYI1uOeGcZE_vE3EbcnS/view?usp=sharing",
         scenes360Count: 19,
-        photosCount: 19,
+        photosCount: 39,
         photos: [
           {
                     "id": "photo-s36-01",
@@ -4018,7 +4129,187 @@ export const defaultClientProjects: ClientProject[] = [
                     "order": 19
           }
 ],
-      }
+      },
+          {
+            "id": "photo-s36-encuadrada-01",
+            "originalName": "arrecifes_20260905_reframe_01.jpg",
+            "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_01.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_01.webp",
+            "caption": "Fotografía Encuadrada HD #01 • Acabados Chukum, Estructura & Mármol",
+            "date": "05 Septiembre 2026",
+            "order": 101
+},
+          {
+            "id": "photo-s36-encuadrada-02",
+            "originalName": "arrecifes_20260905_reframe_02.jpg",
+            "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_02.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_02.webp",
+            "caption": "Fotografía Encuadrada HD #02 • Acabados Chukum, Estructura & Mármol",
+            "date": "05 Septiembre 2026",
+            "order": 102
+},
+          {
+            "id": "photo-s36-encuadrada-03",
+            "originalName": "arrecifes_20260905_reframe_03.jpg",
+            "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_03.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_03.webp",
+            "caption": "Fotografía Encuadrada HD #03 • Acabados Chukum, Estructura & Mármol",
+            "date": "05 Septiembre 2026",
+            "order": 103
+},
+          {
+            "id": "photo-s36-encuadrada-04",
+            "originalName": "arrecifes_20260905_reframe_04.jpg",
+            "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_04.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_04.webp",
+            "caption": "Fotografía Encuadrada HD #04 • Acabados Chukum, Estructura & Mármol",
+            "date": "05 Septiembre 2026",
+            "order": 104
+},
+          {
+            "id": "photo-s36-encuadrada-05",
+            "originalName": "arrecifes_20260905_reframe_05.jpg",
+            "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_05.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_05.webp",
+            "caption": "Fotografía Encuadrada HD #05 • Acabados Chukum, Estructura & Mármol",
+            "date": "05 Septiembre 2026",
+            "order": 105
+},
+          {
+            "id": "photo-s36-encuadrada-06",
+            "originalName": "arrecifes_20260905_reframe_06.jpg",
+            "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_06.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_06.webp",
+            "caption": "Fotografía Encuadrada HD #06 • Acabados Chukum, Estructura & Mármol",
+            "date": "05 Septiembre 2026",
+            "order": 106
+},
+          {
+            "id": "photo-s36-encuadrada-07",
+            "originalName": "arrecifes_20260905_reframe_07.jpg",
+            "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_07.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_07.webp",
+            "caption": "Fotografía Encuadrada HD #07 • Acabados Chukum, Estructura & Mármol",
+            "date": "05 Septiembre 2026",
+            "order": 107
+},
+          {
+            "id": "photo-s36-encuadrada-08",
+            "originalName": "arrecifes_20260905_reframe_08.jpg",
+            "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_08.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_08.webp",
+            "caption": "Fotografía Encuadrada HD #08 • Acabados Chukum, Estructura & Mármol",
+            "date": "05 Septiembre 2026",
+            "order": 108
+},
+          {
+            "id": "photo-s36-encuadrada-09",
+            "originalName": "arrecifes_20260905_reframe_09.jpg",
+            "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_09.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_09.webp",
+            "caption": "Fotografía Encuadrada HD #09 • Acabados Chukum, Estructura & Mármol",
+            "date": "05 Septiembre 2026",
+            "order": 109
+},
+          {
+            "id": "photo-s36-encuadrada-10",
+            "originalName": "arrecifes_20260905_reframe_10.jpg",
+            "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_10.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_10.webp",
+            "caption": "Fotografía Encuadrada HD #10 • Acabados Chukum, Estructura & Mármol",
+            "date": "05 Septiembre 2026",
+            "order": 110
+},
+          {
+            "id": "photo-s36-encuadrada-11",
+            "originalName": "arrecifes_20260905_reframe_11.jpg",
+            "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_11.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_11.webp",
+            "caption": "Fotografía Encuadrada HD #11 • Acabados Chukum, Estructura & Mármol",
+            "date": "05 Septiembre 2026",
+            "order": 111
+},
+          {
+            "id": "photo-s36-encuadrada-12",
+            "originalName": "arrecifes_20260905_reframe_12.jpg",
+            "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_12.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_12.webp",
+            "caption": "Fotografía Encuadrada HD #12 • Acabados Chukum, Estructura & Mármol",
+            "date": "05 Septiembre 2026",
+            "order": 112
+},
+          {
+            "id": "photo-s36-encuadrada-13",
+            "originalName": "arrecifes_20260905_reframe_13.jpg",
+            "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_13.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_13.webp",
+            "caption": "Fotografía Encuadrada HD #13 • Acabados Chukum, Estructura & Mármol",
+            "date": "05 Septiembre 2026",
+            "order": 113
+},
+          {
+            "id": "photo-s36-encuadrada-14",
+            "originalName": "arrecifes_20260905_reframe_14.jpg",
+            "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_14.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_14.webp",
+            "caption": "Fotografía Encuadrada HD #14 • Acabados Chukum, Estructura & Mármol",
+            "date": "05 Septiembre 2026",
+            "order": 114
+},
+          {
+            "id": "photo-s36-encuadrada-15",
+            "originalName": "arrecifes_20260905_reframe_15.jpg",
+            "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_15.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_15.webp",
+            "caption": "Fotografía Encuadrada HD #15 • Acabados Chukum, Estructura & Mármol",
+            "date": "05 Septiembre 2026",
+            "order": 115
+},
+          {
+            "id": "photo-s36-encuadrada-16",
+            "originalName": "arrecifes_20260905_reframe_16.jpg",
+            "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_16.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_16.webp",
+            "caption": "Fotografía Encuadrada HD #16 • Acabados Chukum, Estructura & Mármol",
+            "date": "05 Septiembre 2026",
+            "order": 116
+},
+          {
+            "id": "photo-s36-encuadrada-17",
+            "originalName": "arrecifes_20260905_reframe_17.jpg",
+            "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_17.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_17.webp",
+            "caption": "Fotografía Encuadrada HD #17 • Acabados Chukum, Estructura & Mármol",
+            "date": "05 Septiembre 2026",
+            "order": 117
+},
+          {
+            "id": "photo-s36-encuadrada-18",
+            "originalName": "arrecifes_20260905_reframe_18.jpg",
+            "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_18.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_18.webp",
+            "caption": "Fotografía Encuadrada HD #18 • Acabados Chukum, Estructura & Mármol",
+            "date": "05 Septiembre 2026",
+            "order": 118
+},
+          {
+            "id": "photo-s36-encuadrada-19",
+            "originalName": "arrecifes_20260905_reframe_19.jpg",
+            "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_19.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_19.webp",
+            "caption": "Fotografía Encuadrada HD #19 • Acabados Chukum, Estructura & Mármol",
+            "date": "05 Septiembre 2026",
+            "order": 119
+},
+          {
+            "id": "photo-s36-encuadrada-20",
+            "originalName": "arrecifes_20260905_reframe_20.jpg",
+            "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_20.webp",
+            "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_20.webp",
+            "caption": "Fotografía Encuadrada HD #20 • Acabados Chukum, Estructura & Mármol",
+            "date": "05 Septiembre 2026",
+            "order": 120
+}
     ]
   },
   {
