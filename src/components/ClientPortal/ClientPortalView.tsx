@@ -193,38 +193,120 @@ export default function ClientPortalView({
           </div>
         </header>
 
-        {/* 2. EXECUTIVE HERO & TECHNICAL INFOGRAPHIC */}
+        {/* 2. EXECUTIVE HERO & INFOGRAPHIC SECTION */}
         <section id="resumen-ejecutivo" className="bg-surface-container-low/60 border-b border-arena-calida/20 px-4 sm:px-8 py-10 sm:py-14 relative texture-overlay overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-arena-calida/40 to-transparent"></div>
 
           <div className="max-w-7xl mx-auto space-y-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-start">
-              {/* LEFT: Financial Control & Savings Infographic + Director Contact */}
-              <div className="lg:col-span-6 space-y-4 text-left">
-                {/* PROJECT BADGE & TITLE */}
-                <div className="space-y-1">
-                  <div className="flex items-center gap-3">
-                    <span className="w-8 sm:w-12 h-[1px] bg-arena-calida inline-block"></span>
-                    <span className="font-label-caps text-xs sm:text-label-caps text-arena-calida uppercase tracking-widest font-semibold flex items-center gap-1.5">
-                      <MapPin className="w-3.5 h-3.5 text-teal-uno" />
-                      {safeProject.location}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+              {/* LEFT: Project Executive Information & Director Contact */}
+              <div className="lg:col-span-5 space-y-4 text-left">
+                <div className="flex items-center gap-3">
+                  <span className="w-8 sm:w-12 h-[1px] bg-arena-calida inline-block"></span>
+                  <span className="font-label-caps text-xs sm:text-label-caps text-arena-calida uppercase tracking-widest font-semibold flex items-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5 text-teal-uno" />
+                    {safeProject.location}
+                  </span>
+                </div>
+
+                <h1 className="font-headline-xl text-headline-xl text-teal-uno uppercase font-semibold leading-tight">
+                  {safeProject.propertyName}
+                </h1>
+
+                <p className="font-body-md text-body-md text-gris-texto max-w-xl leading-relaxed">
+                  Supervisión técnica de obra para <strong className="text-teal-uno font-semibold">{safeProject.clientName}</strong>. Registro oficial de avances, dictámenes de calidad y bitácora de obra con galería de fotos 360° y reportes periódicos de supervisión.
+                </p>
+
+                {/* METADATA PILLS GRID */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-1">
+                  <div className="p-3.5 bg-white/80 backdrop-blur-md border border-arena-calida/30 rounded-2xl shadow-xs">
+                    <span className="text-[10px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mb-1">
+                      Superficie Total
+                    </span>
+                    <span className="font-headline-md text-xs sm:text-sm font-semibold text-gris-texto block">
+                      {safeProject.totalArea}
                     </span>
                   </div>
-
-                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                    <h1 className="font-headline-xl text-headline-xl text-teal-uno uppercase font-semibold leading-tight">
-                      {safeProject.propertyName}
-                    </h1>
-                    <span className="text-[11px] font-mono text-arena-calida uppercase tracking-wider font-semibold">
-                      {safeProject.clientName}
+                  <div className="p-3.5 bg-white/80 backdrop-blur-md border border-arena-calida/30 rounded-2xl shadow-xs">
+                    <span className="text-[10px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mb-1">
+                      Inicio Contractual
+                    </span>
+                    <span className="font-headline-md text-xs sm:text-sm font-semibold text-gris-texto block">
+                      {safeProject.startDate || "01 Abril 2026"}
+                    </span>
+                  </div>
+                  <div className="p-3.5 bg-white/80 backdrop-blur-md border border-arena-calida/30 rounded-2xl shadow-xs col-span-2 sm:col-span-1">
+                    <span className="text-[10px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mb-1">
+                      Entrega Estimada
+                    </span>
+                    <span className="font-headline-md text-xs sm:text-sm font-semibold text-teal-uno block">
+                      {safeProject.estimatedDelivery}
                     </span>
                   </div>
                 </div>
 
-                {/* INFOGRAPHIC CONTAINER: CONTROL PRESUPUESTAL */}
+                {/* RESIDENT ARCHITECT CONTACT CARD */}
+                <div id="contacto-director" className="pt-2">
+                  <div className="bg-white/90 backdrop-blur-md border border-arena-calida/30 p-5 rounded-2xl space-y-3.5 shadow-sm text-left">
+                    <div className="flex items-center justify-between gap-2 border-b border-arena-calida/20 pb-2.5">
+                      <span className="text-[10px] font-label-caps uppercase tracking-wider text-arena-calida font-semibold">
+                        Director de Obra Asignado
+                      </span>
+                      <span className="text-[10px] text-teal-uno font-label-caps uppercase font-semibold flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-teal-uno animate-ping" />
+                        En Supervisión
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-3.5">
+                      <div className="w-12 h-12 rounded-full bg-arena-calida/20 border border-arena-calida/40 flex items-center justify-center text-teal-uno font-sans font-bold text-sm flex-shrink-0 overflow-hidden shadow-xs">
+                        {director.photo ? (
+                          <img
+                            src={director.photo}
+                            alt={director.name}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <span>AC</span>
+                        )}
+                      </div>
+                      <div className="space-y-0.5">
+                        <h4 className="font-headline-md text-sm sm:text-base font-semibold text-teal-uno uppercase">
+                          {director.name}
+                        </h4>
+                        <p className="text-[11px] text-arena-calida font-label-caps uppercase tracking-wider font-semibold">
+                          {director.role}
+                        </p>
+                        {director.credentials && (
+                          <p className="text-[10px] text-gris-texto/70 font-mono">
+                            {director.credentials.replace(/\|\s*20\+\s*años de experiencia/gi, "").trim()}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* DIRECT WHATSAPP ACTION BUTTON */}
+                    <div className="pt-1">
+                      <a
+                        href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full py-2.5 px-4 bg-teal-uno hover:bg-arena-calida text-white rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold flex items-center justify-center gap-1.5 transition-all shadow-xs cursor-pointer active:scale-95"
+                      >
+                        <MessageSquare className="w-3.5 h-3.5" />
+                        <span>Contactar por WhatsApp</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* RIGHT: Financial Control & Savings Infographic + Official Documents */}
+              <div className="lg:col-span-7 space-y-4">
+                {/* INFOGRAPHIC MAIN CONTAINER */}
                 <div className="bg-gradient-to-br from-white/95 via-surface-container-low/90 to-white/95 backdrop-blur-xl border border-arena-calida/40 p-5 sm:p-6 rounded-3xl shadow-ethereal space-y-5 text-left">
                   
-                  {/* 1. HEADER & HERO SAVING BADGE */}
+                  {/* 1. INFOGRAPHIC HEADER */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-arena-calida/25 pb-4">
                     <div>
                       <div className="flex items-center gap-2 mb-1">
@@ -241,24 +323,45 @@ export default function ClientPortalView({
                       </h3>
                     </div>
                     
-                    {/* HERO SAVINGS METRIC */}
-                    <div className="flex items-center gap-3 bg-emerald-500/10 border border-emerald-500/30 px-3.5 py-2 rounded-2xl self-start sm:self-auto shadow-2xs">
+                    {/* GLOBAL PROGRESS BADGE */}
+                    <div className="flex items-center gap-3 bg-teal-uno/10 border border-teal-uno/25 px-4 py-2 rounded-2xl self-start sm:self-auto">
                       <div className="text-right">
-                        <span className="text-[9px] font-label-caps uppercase text-emerald-800 tracking-wider font-bold block">
-                          Ahorro Logrado
+                        <span className="text-[9px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block">
+                          Avance Total
                         </span>
-                        <span className="text-[10px] font-semibold text-emerald-700 block">
-                          -22% vs Estimado
+                        <span className="text-xs font-semibold text-teal-uno block">
+                          En Cronograma
                         </span>
                       </div>
-                      <div className="font-headline-xl text-xl sm:text-2xl font-extrabold text-emerald-700 flex items-baseline">
-                        <span>-$692,618</span>
-                        <span className="text-[10px] text-emerald-800/70 font-mono font-bold ml-1">MXN</span>
+                      <div className="font-headline-xl text-2xl sm:text-3xl font-bold text-teal-uno flex items-baseline">
+                        <span>{safeProject.globalProgress || 63}</span>
+                        <span className="text-xs text-arena-calida font-sans font-medium">%</span>
                       </div>
                     </div>
                   </div>
 
-                  {/* 2. FOUR FINANCIAL METRIC TILES */}
+                  {/* 2. HERO SAVING HIGHLIGHT BANNER */}
+                  <div className="p-4 bg-gradient-to-r from-emerald-500/15 via-emerald-500/10 to-teal-uno/10 border border-emerald-500/30 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
+                    <div className="space-y-0.5">
+                      <span className="text-[10px] font-label-caps uppercase tracking-wider text-emerald-900 font-bold block">
+                        Ahorro Neto Acumulado a la Fecha
+                      </span>
+                      <p className="text-[11px] text-gris-texto/80 font-sans">
+                        Desviación favorable del gasto real frente a lo proyectado al 63% de avance.
+                      </p>
+                    </div>
+                    <div className="flex items-baseline gap-1.5 self-start sm:self-auto bg-white/90 px-4 py-2 rounded-xl border border-emerald-300/60 shadow-xs">
+                      <span className="font-headline-xl text-xl sm:text-2xl font-extrabold text-emerald-700">
+                        -$692,618
+                      </span>
+                      <span className="text-[10px] text-emerald-800 font-mono font-bold">MXN</span>
+                      <span className="text-[10px] font-bold text-white bg-emerald-600 px-1.5 py-0.5 rounded ml-1 font-mono">
+                        -22%
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* 3. FOUR FINANCIAL METRIC TILES */}
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                     <div className="p-3 bg-white/80 border border-arena-calida/30 rounded-xl text-center shadow-2xs">
                       <span className="text-xs sm:text-sm font-bold text-teal-uno font-headline-md block truncate">$4,925,212</span>
@@ -278,7 +381,7 @@ export default function ClientPortalView({
                     </div>
                   </div>
 
-                  {/* 3. FOUR PARTIDAS BREAKDOWN CARDS */}
+                  {/* 4. TWO MAIN PARTIDAS BREAKDOWN CARDS */}
                   <div className="space-y-2.5 text-xs">
                     {/* Partida 1: Edificación */}
                     <div className="p-3.5 bg-surface-container-low/80 border border-arena-calida/25 rounded-2xl space-y-1.5 transition-all hover:bg-white">
@@ -339,261 +442,9 @@ export default function ClientPortalView({
                         Ahorro del 37% por consolidación de módulos de barda perimetral y modulación previa de celosías.
                       </p>
                     </div>
-
-                    {/* Partida 3: Alberca y Exteriores */}
-                    <div className="p-3.5 bg-surface-container-low/80 border border-arena-calida/25 rounded-2xl space-y-1.5 transition-all hover:bg-white">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2 text-teal-uno font-bold text-xs uppercase tracking-wide">
-                          <Droplets className="w-4 h-4 text-arena-calida flex-shrink-0" />
-                          <span>3. Alberca & Amenidades Exteriores</span>
-                        </div>
-                        <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-100/80 px-2 py-0.5 rounded-md border border-emerald-200">
-                          -$562 (-1%)
-                        </span>
-                      </div>
-                      <div className="grid grid-cols-3 gap-2 text-[10px] text-gris-texto/80 font-mono pt-1">
-                        <div className="bg-white/70 px-2 py-1 rounded-lg border border-arena-calida/20">
-                          <span className="text-arena-calida block text-[8px] uppercase">Presupuesto Act.</span>
-                          <span className="font-semibold text-gris-texto">$207,478</span>
-                        </div>
-                        <div className="bg-white/70 px-2 py-1 rounded-lg border border-arena-calida/20">
-                          <span className="text-arena-calida block text-[8px] uppercase">Estimado (22%)</span>
-                          <span className="font-semibold text-gris-texto">$44,640</span>
-                        </div>
-                        <div className="bg-white/70 px-2 py-1 rounded-lg border border-arena-calida/20">
-                          <span className="text-teal-uno block text-[8px] uppercase font-bold">Gasto Real</span>
-                          <span className="font-bold text-teal-uno">$44,078</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Partida 4: Generales */}
-                    <div className="p-3.5 bg-surface-container-low/80 border border-arena-calida/25 rounded-2xl space-y-1.5 transition-all hover:bg-white">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2 text-teal-uno font-bold text-xs uppercase tracking-wide">
-                          <FileText className="w-4 h-4 text-arena-calida flex-shrink-0" />
-                          <span>4. Gastos Generales & Licencias</span>
-                        </div>
-                        <span className="text-[10px] font-mono font-bold text-teal-uno bg-teal-uno/10 px-2 py-0.5 rounded-md border border-teal-uno/20">
-                          +$47,030 (Adendas)
-                        </span>
-                      </div>
-                      <div className="grid grid-cols-3 gap-2 text-[10px] text-gris-texto/80 font-mono pt-1">
-                        <div className="bg-white/70 px-2 py-1 rounded-lg border border-arena-calida/20">
-                          <span className="text-arena-calida block text-[8px] uppercase">Presupuesto Act.</span>
-                          <span className="font-semibold text-gris-texto">$60,363</span>
-                        </div>
-                        <div className="bg-white/70 px-2 py-1 rounded-lg border border-arena-calida/20">
-                          <span className="text-arena-calida block text-[8px] uppercase">Adenda Autorizada</span>
-                          <span className="font-semibold text-teal-uno">+$47,030</span>
-                        </div>
-                        <div className="bg-white/70 px-2 py-1 rounded-lg border border-arena-calida/20">
-                          <span className="text-teal-uno block text-[8px] uppercase font-bold">Gasto Real</span>
-                          <span className="font-bold text-teal-uno">$60,363</span>
-                        </div>
-                      </div>
-                    </div>
                   </div>
 
-                  {/* 4. FOOTER SPECS SUMMARY PILLS */}
-                  <div className="pt-2 border-t border-arena-calida/25 grid grid-cols-3 gap-2">
-                    <div className="p-2.5 bg-white/80 border border-arena-calida/20 rounded-xl text-center">
-                      <span className="text-[8px] font-label-caps uppercase text-arena-calida block">Inicio Contractual</span>
-                      <span className="text-[11px] font-semibold text-gris-texto font-headline-md block">{safeProject.startDate || "01 Abril 2026"}</span>
-                    </div>
-                    <div className="p-2.5 bg-white/80 border border-arena-calida/20 rounded-xl text-center">
-                      <span className="text-[8px] font-label-caps uppercase text-arena-calida block">Entrega Estimada</span>
-                      <span className="text-[11px] font-semibold text-teal-uno font-headline-md block">{safeProject.estimatedDelivery || "20 Diciembre 2026"}</span>
-                    </div>
-                    <div className="p-2.5 bg-white/80 border border-arena-calida/20 rounded-xl text-center">
-                      <span className="text-[8px] font-label-caps uppercase text-arena-calida block">Superficie Total</span>
-                      <span className="text-[11px] font-semibold text-gris-texto font-headline-md block">720 m²</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* RESIDENT ARCHITECT CONTACT CARD (PLACED DIRECTLY ON LEFT, REPLACING DRIVE BUTTONS) */}
-                <div id="contacto-director" className="pt-2">
-                  <div className="bg-white/90 backdrop-blur-md border border-arena-calida/30 p-5 rounded-2xl space-y-3.5 shadow-sm text-left">
-                    <div className="flex items-center justify-between gap-2 border-b border-arena-calida/20 pb-2.5">
-                      <span className="text-[10px] font-label-caps uppercase tracking-wider text-arena-calida font-semibold">
-                        Director de Obra Asignado
-                      </span>
-                      <span className="text-[10px] text-teal-uno font-label-caps uppercase font-semibold flex items-center gap-1.5">
-                        <span className="w-2 h-2 rounded-full bg-teal-uno animate-ping" />
-                        En Supervisión
-                      </span>
-                    </div>
-
-                    <div className="flex items-center gap-3.5">
-                      <div className="w-12 h-12 rounded-full bg-arena-calida/20 border border-arena-calida/40 flex items-center justify-center text-teal-uno font-sans font-bold text-sm flex-shrink-0 overflow-hidden shadow-xs">
-                        {director.photo ? (
-                          <img
-                            src={director.photo}
-                            alt={director.name}
-                            className="w-full h-full object-cover"
-                          />
-                        ) : (
-                          <span>AC</span>
-                        )}
-                      </div>
-                      <div className="space-y-0.5">
-                        <h4 className="font-headline-md text-sm sm:text-base font-semibold text-teal-uno uppercase">
-                          {director.name}
-                        </h4>
-                        <p className="text-[11px] text-arena-calida font-label-caps uppercase tracking-wider font-semibold">
-                          {director.role}
-                        </p>
-                        {director.credentials && (
-                          <p className="text-[10px] text-gris-texto/70 font-mono">
-                            {director.credentials.replace(/\|\s*20\+\s*años de experiencia/gi, "").trim()}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* DIRECT WHATSAPP ACTION BUTTON */}
-                    <div className="pt-1">
-                      <a
-                        href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full py-2.5 px-4 bg-teal-uno hover:bg-arena-calida text-white rounded-full text-[11px] font-label-caps uppercase tracking-wider font-semibold flex items-center justify-center gap-1.5 transition-all shadow-xs cursor-pointer active:scale-95"
-                      >
-                        <MessageSquare className="w-3.5 h-3.5" />
-                        <span>Contactar por WhatsApp</span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* RIGHT: High-Impact Architectural Infographic & Official Documentation */}
-              <div className="lg:col-span-6 space-y-4">
-                {/* INFOGRAPHIC MAIN CONTAINER */}
-                <div className="bg-gradient-to-br from-white/95 via-surface-container-low/90 to-white/95 backdrop-blur-xl border border-arena-calida/40 p-5 sm:p-6 rounded-3xl shadow-ethereal space-y-5 text-left">
-                  
-                  {/* 1. INFOGRAPHIC HEADER */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-arena-calida/25 pb-4">
-                    <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="px-2.5 py-0.5 rounded-full bg-teal-uno/15 text-teal-uno text-[9px] font-mono font-bold border border-teal-uno/30 uppercase tracking-widest">
-                          INFOGRAFÍA TÉCNICA OFICIAL
-                        </span>
-                        <span className="text-[10px] text-arena-calida font-mono font-bold">
-                          PROYECTO ARRECIFES
-                        </span>
-                      </div>
-                      <h3 className="font-headline-md text-base sm:text-lg font-bold text-teal-uno uppercase tracking-wide">
-                        Dictamen Estructural & Especificaciones
-                      </h3>
-                    </div>
-                    
-                    {/* GLOBAL PROGRESS BADGE */}
-                    <div className="flex items-center gap-3 bg-teal-uno/10 border border-teal-uno/25 px-4 py-2 rounded-2xl self-start sm:self-auto">
-                      <div className="text-right">
-                        <span className="text-[9px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block">
-                          Avance Total
-                        </span>
-                        <span className="text-xs font-semibold text-teal-uno block">
-                          En Cronograma
-                        </span>
-                      </div>
-                      <div className="font-headline-xl text-2xl sm:text-3xl font-bold text-teal-uno flex items-baseline">
-                        <span>{safeProject.globalProgress || 63}</span>
-                        <span className="text-xs text-arena-calida font-sans font-medium">%</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* 2. INFOGRAPHIC METRIC TILES GRID */}
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                    <div className="p-3 bg-white/80 border border-arena-calida/30 rounded-xl text-center shadow-2xs">
-                      <span className="text-base sm:text-lg font-bold text-teal-uno font-headline-md block">720 m²</span>
-                      <span className="text-[9px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mt-0.5">Superficie Total</span>
-                    </div>
-                    <div className="p-3 bg-white/80 border border-arena-calida/30 rounded-xl text-center shadow-2xs">
-                      <span className="text-base sm:text-lg font-bold text-teal-uno font-headline-md block">6.40 m</span>
-                      <span className="text-[9px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mt-0.5">Doble Altura</span>
-                    </div>
-                    <div className="p-3 bg-white/80 border border-arena-calida/30 rounded-xl text-center shadow-2xs">
-                      <span className="text-base sm:text-lg font-bold text-teal-uno font-headline-md block">f'c 250-300</span>
-                      <span className="text-[9px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mt-0.5">Concreto Marino</span>
-                    </div>
-                    <div className="p-3 bg-white/80 border border-arena-calida/30 rounded-xl text-center shadow-2xs">
-                      <span className="text-base sm:text-lg font-bold text-teal-uno font-headline-md block">Cat. 5</span>
-                      <span className="text-[9px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mt-0.5">Antihuracán</span>
-                    </div>
-                  </div>
-
-                  {/* 3. FOUR CORE TECHNICAL PILLARS */}
-                  <div className="space-y-2.5 text-xs">
-                    {/* Pillar 1: Estructura & Cimentación */}
-                    <div className="p-3.5 bg-surface-container-low/80 border border-arena-calida/25 rounded-2xl space-y-1.5 transition-all hover:bg-white">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2 text-teal-uno font-bold text-xs uppercase tracking-wide">
-                          <Layers className="w-4 h-4 text-arena-calida flex-shrink-0" />
-                          <span>1. Cimentación Kárstica & Estructura</span>
-                        </div>
-                        <span className="text-[9px] font-mono font-semibold text-teal-uno bg-teal-uno/10 px-2 py-0.5 rounded-md">
-                          GPR 12m • f'c 250-300
-                        </span>
-                      </div>
-                      <p className="text-[11px] text-gris-texto/90 leading-relaxed pl-6">
-                        Zapatas aisladas y losa de rigidez sobre roca kárstica verificada por georradar GPR. Concreto hidráulico con aditivo hidrófugo integral anti-salinidad y acero Grado 42 sismorresistente.
-                      </p>
-                    </div>
-
-                    {/* Pillar 2: Acabados Nobles */}
-                    <div className="p-3.5 bg-surface-container-low/80 border border-arena-calida/25 rounded-2xl space-y-1.5 transition-all hover:bg-white">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2 text-teal-uno font-bold text-xs uppercase tracking-wide">
-                          <Sparkles className="w-4 h-4 text-arena-calida flex-shrink-0" />
-                          <span>2. Revestimientos Nobles & Acabados</span>
-                        </div>
-                        <span className="text-[9px] font-mono font-semibold text-teal-uno bg-teal-uno/10 px-2 py-0.5 rounded-md">
-                          Chukum • Travertino
-                        </span>
-                      </div>
-                      <p className="text-[11px] text-gris-texto/90 leading-relaxed pl-6">
-                        Pasta artesanal de Chukum natural sellado a 2 manos en muros y plafones de 6.40m; placas de Mármol Travertino Santo Tomás (1.20x2.40m) y carpintería maciza en Tzalam y Parota.
-                      </p>
-                    </div>
-
-                    {/* Pillar 3: Ingenierías & Confort */}
-                    <div className="p-3.5 bg-surface-container-low/80 border border-arena-calida/25 rounded-2xl space-y-1.5 transition-all hover:bg-white">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2 text-teal-uno font-bold text-xs uppercase tracking-wide">
-                          <Zap className="w-4 h-4 text-arena-calida flex-shrink-0" />
-                          <span>3. Ingenierías, Climatización & Domótica</span>
-                        </div>
-                        <span className="text-[9px] font-mono font-semibold text-teal-uno bg-teal-uno/10 px-2 py-0.5 rounded-md">
-                          VRF Inverter • UV
-                        </span>
-                      </div>
-                      <p className="text-[11px] text-gris-texto/90 leading-relaxed pl-6">
-                        Presión constante hidroneumática con esterilización UV y descalcificador, climatización centralizada VRF Inverter oculta y canalizaciones listas para domótica e iluminación cálida 2700K.
-                      </p>
-                    </div>
-
-                    {/* Pillar 4: Control de Calidad */}
-                    <div className="p-3.5 bg-surface-container-low/80 border border-arena-calida/25 rounded-2xl space-y-1.5 transition-all hover:bg-white">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2 text-teal-uno font-bold text-xs uppercase tracking-wide">
-                          <ShieldCheck className="w-4 h-4 text-teal-uno flex-shrink-0" />
-                          <span>4. Normativa Costera & Certificación</span>
-                        </div>
-                        <span className="text-[9px] font-mono font-semibold text-teal-uno bg-teal-uno/10 px-2 py-0.5 rounded-md">
-                          RCDF / NMX
-                        </span>
-                      </div>
-                      <p className="text-[11px] text-gris-texto/90 leading-relaxed pl-6">
-                        Supervisión residente continua bajo normativas de construcción costera de Quintana Roo con pruebas de revenimiento en sitio y ensayos certificados de compresión en laboratorio.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* 4. OFFICIAL GOOGLE DRIVE DOCUMENT BUTTONS */}
+                  {/* 5. OFFICIAL GOOGLE DRIVE DOCUMENT BUTTONS */}
                   <div className="pt-2 border-t border-arena-calida/25 space-y-2">
                     <span className="text-[10px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block">
                       Documentación Oficial de Consulta (Memorias & Catálogo)
