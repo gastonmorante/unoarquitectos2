@@ -284,19 +284,49 @@ export default function Interactive360Canvas({
     }
   }, [activeScene?.equirectangularUrl, webGLSupported, loadTexture]);
 
+  // Multi-touch tracking for pinch-to-zoom
+  const activePointersRef = useRef<Map<number, { x: number; y: number }>>(new Map());
+  const prevPinchDistRef = useRef<number | null>(null);
+
   // Pointer / Drag Controls for 3D
   const handlePointerDown = (e: React.PointerEvent) => {
-    isUserInteractingRef.current = true;
     try {
       (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
     } catch {}
-    onPointerDownPointerXRef.current = e.clientX;
-    onPointerDownPointerYRef.current = e.clientY;
-    onPointerDownLonRef.current = lonRef.current;
-    onPointerDownLatRef.current = latRef.current;
+    activePointersRef.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+
+    if (activePointersRef.current.size === 1) {
+      isUserInteractingRef.current = true;
+      onPointerDownPointerXRef.current = e.clientX;
+      onPointerDownPointerYRef.current = e.clientY;
+      onPointerDownLonRef.current = lonRef.current;
+      onPointerDownLatRef.current = latRef.current;
+    } else if (activePointersRef.current.size === 2) {
+      isUserInteractingRef.current = false;
+      const pts = Array.from(activePointersRef.current.values());
+      prevPinchDistRef.current = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y);
+    }
   };
 
   const handlePointerMove = (e: React.PointerEvent) => {
+    if (!activePointersRef.current.has(e.pointerId)) return;
+    activePointersRef.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+
+    // Dual-touch Pinch to Zoom
+    if (activePointersRef.current.size === 2) {
+      const pts = Array.from(activePointersRef.current.values());
+      const currentDist = Math.hypot(pts[0].x - pts[1].x, pts[0].y - pts[1].y);
+      if (prevPinchDistRef.current !== null && cameraRef.current) {
+        const delta = (currentDist - prevPinchDistRef.current) * 0.15;
+        const fov = cameraRef.current.fov - delta;
+        cameraRef.current.fov = THREE.MathUtils.clamp(fov, 35, 95);
+        cameraRef.current.updateProjectionMatrix();
+      }
+      prevPinchDistRef.current = currentDist;
+      return;
+    }
+
+    // Single-touch / Mouse drag rotation
     if (!isUserInteractingRef.current) return;
     const factor = 0.15 * (cameraRef.current ? cameraRef.current.fov / 75 : 1);
     lonRef.current = (onPointerDownPointerXRef.current - e.clientX) * factor + onPointerDownLonRef.current;
@@ -304,11 +334,26 @@ export default function Interactive360Canvas({
   };
 
   const handlePointerUp = (e?: React.PointerEvent) => {
-    isUserInteractingRef.current = false;
     if (e) {
+      activePointersRef.current.delete(e.pointerId);
       try {
         (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
       } catch {}
+    } else {
+      activePointersRef.current.clear();
+    }
+    if (activePointersRef.current.size < 2) {
+      prevPinchDistRef.current = null;
+    }
+    if (activePointersRef.current.size === 1) {
+      const remaining = Array.from(activePointersRef.current.values())[0];
+      isUserInteractingRef.current = true;
+      onPointerDownPointerXRef.current = remaining.x;
+      onPointerDownPointerYRef.current = remaining.y;
+      onPointerDownLonRef.current = lonRef.current;
+      onPointerDownLatRef.current = latRef.current;
+    } else {
+      isUserInteractingRef.current = false;
     }
   };
 
@@ -422,31 +467,31 @@ export default function Interactive360Canvas({
       )}
 
       {/* TOP OVERLAY BAR (HUD) */}
-      <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between gap-3 pointer-events-none">
+      <div className="absolute top-3 left-3 right-3 sm:top-4 sm:left-4 sm:right-4 z-10 flex items-center justify-between gap-2 pointer-events-none">
         {/* Left: Active Scene & Date Info */}
-        <div className="bg-background/90 backdrop-blur-md px-4 py-2.5 rounded-full border border-arena-calida/30 shadow-lg pointer-events-auto flex items-center gap-3">
-          <span className="w-2 h-2 rounded-full bg-teal-uno animate-pulse" />
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-[10px] font-label-caps uppercase text-arena-calida font-bold tracking-wider">
+        <div className="bg-background/92 backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2.5 rounded-2xl sm:rounded-full border border-arena-calida/30 shadow-lg pointer-events-auto flex items-center gap-2 sm:gap-3">
+          <span className="w-2 h-2 rounded-full bg-teal-uno animate-pulse flex-shrink-0" />
+          <div className="min-w-0">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <span className="text-[9px] sm:text-[10px] font-label-caps uppercase text-arena-calida font-bold tracking-wider truncate">
                 {dateTitle}
               </span>
-              <span className="text-[9px] font-mono px-2 py-0.2 bg-teal-uno/15 text-teal-uno rounded-full border border-teal-uno/30 font-bold">
-                Punto {activeSceneIndex + 1} de {safeScenes.length}
+              <span className="text-[8px] sm:text-[9px] font-mono px-1.5 py-0.2 bg-teal-uno/15 text-teal-uno rounded-full border border-teal-uno/30 font-bold flex-shrink-0">
+                Punto {activeSceneIndex + 1}/{safeScenes.length}
               </span>
             </div>
-            <h4 className="font-headline-md text-xs sm:text-sm font-semibold text-teal-uno uppercase truncate max-w-xs sm:max-w-sm">
+            <h4 className="font-headline-md text-xs sm:text-sm font-semibold text-teal-uno uppercase truncate max-w-[120px] xs:max-w-[170px] sm:max-w-xs md:max-w-sm">
               {activeScene?.title || `Escena 360° ${activeSceneIndex + 1}`}
             </h4>
           </div>
         </div>
 
         {/* Right: Quick Controls Toolbar */}
-        <div className="flex items-center gap-1.5 bg-background/90 backdrop-blur-md p-1.5 rounded-full border border-arena-calida/30 shadow-lg pointer-events-auto">
+        <div className="flex items-center gap-1 sm:gap-1.5 bg-background/92 backdrop-blur-md p-1 sm:p-1.5 rounded-full border border-arena-calida/30 shadow-lg pointer-events-auto flex-shrink-0">
           {webGLSupported && (
             <button
               onClick={handleToggleAutoRotate}
-              className={`p-2 rounded-full text-xs transition-colors cursor-pointer ${
+              className={`p-1.5 sm:p-2 rounded-full text-xs transition-colors cursor-pointer ${
                 autoRotate
                   ? "bg-teal-uno text-white font-bold shadow-xs"
                   : "text-gris-texto hover:text-teal-uno hover:bg-arena-calida/20"
@@ -459,7 +504,7 @@ export default function Interactive360Canvas({
 
           <button
             onClick={() => handleZoom("in")}
-            className="p-2 rounded-full text-gris-texto hover:text-teal-uno hover:bg-arena-calida/20 transition-colors cursor-pointer"
+            className="p-1.5 sm:p-2 rounded-full text-gris-texto hover:text-teal-uno hover:bg-arena-calida/20 transition-colors cursor-pointer hidden xs:inline-flex"
             title="Acercar (Zoom In)"
           >
             <ZoomIn className="w-3.5 h-3.5" />
@@ -467,7 +512,7 @@ export default function Interactive360Canvas({
 
           <button
             onClick={() => handleZoom("out")}
-            className="p-2 rounded-full text-gris-texto hover:text-teal-uno hover:bg-arena-calida/20 transition-colors cursor-pointer"
+            className="p-1.5 sm:p-2 rounded-full text-gris-texto hover:text-teal-uno hover:bg-arena-calida/20 transition-colors cursor-pointer hidden xs:inline-flex"
             title="Alejar (Zoom Out)"
           >
             <ZoomOut className="w-3.5 h-3.5" />
@@ -475,7 +520,7 @@ export default function Interactive360Canvas({
 
           <button
             onClick={handleResetView}
-            className="p-2 rounded-full text-gris-texto hover:text-teal-uno hover:bg-arena-calida/20 transition-colors cursor-pointer text-[10px] font-label-caps uppercase"
+            className="p-1.5 sm:p-2 rounded-full text-gris-texto hover:text-teal-uno hover:bg-arena-calida/20 transition-colors cursor-pointer text-[10px] font-label-caps uppercase"
             title="Centrar vista"
           >
             {webGLSupported ? <Compass className="w-3.5 h-3.5 text-arena-calida" /> : <RotateCcw className="w-3.5 h-3.5 text-arena-calida" />}
@@ -483,7 +528,7 @@ export default function Interactive360Canvas({
 
           <button
             onClick={onToggleFullscreen}
-            className="p-2 rounded-full text-gris-texto hover:text-teal-uno hover:bg-arena-calida/20 transition-colors cursor-pointer"
+            className="p-1.5 sm:p-2 rounded-full text-gris-texto hover:text-teal-uno hover:bg-arena-calida/20 transition-colors cursor-pointer"
             title={isFullscreen ? "Salir de pantalla completa" : "Pantalla completa"}
           >
             {isFullscreen ? <Minimize2 className="w-3.5 h-3.5" /> : <Maximize2 className="w-3.5 h-3.5" />}

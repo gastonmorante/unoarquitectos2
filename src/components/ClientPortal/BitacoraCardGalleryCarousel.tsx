@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { 
   ChevronLeft, 
   ChevronRight, 
@@ -65,6 +65,32 @@ export default function BitacoraCardGalleryCarousel({
     if (totalPhotos === 0) return;
     setCurrentIndex((prev) => (prev - 1 + totalPhotos) % totalPhotos);
   }, [totalPhotos]);
+
+  // Mobile Touch Swipe Gesture Handling
+  const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null || touchStartY.current === null) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+    const deltaY = e.changedTouches[0].clientY - touchStartY.current;
+
+    // Only swipe if horizontal motion exceeds vertical motion and threshold (40px)
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 40) {
+      if (deltaX > 0) {
+        prevSlide();
+      } else {
+        nextSlide();
+      }
+    }
+    touchStartX.current = null;
+    touchStartY.current = null;
+  };
 
   // Keyboard navigation for fullscreen
   useEffect(() => {
@@ -151,7 +177,11 @@ export default function BitacoraCardGalleryCarousel({
       </div>
 
       {/* EMBEDDED CAROUSEL VIEWPORT */}
-      <div className="relative rounded-2xl overflow-hidden bg-stone-900 border border-arena-calida/30 shadow-xs aspect-[16/10] sm:aspect-[16/9] group flex items-center justify-center">
+      <div 
+        className="relative rounded-2xl overflow-hidden bg-stone-900 border border-arena-calida/30 shadow-xs aspect-[16/10] sm:aspect-[16/9] group flex items-center justify-center touch-pan-y"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         {/* Loading Spinner */}
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center bg-stone-900/60 z-10">
@@ -237,7 +267,7 @@ export default function BitacoraCardGalleryCarousel({
                 e.stopPropagation();
                 prevSlide();
               }}
-              className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-stone-900/70 hover:bg-teal-uno text-white flex items-center justify-center backdrop-blur-md border border-white/10 transition-all opacity-80 group-hover:opacity-100 hover:scale-105 cursor-pointer shadow-md z-20"
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-8 sm:h-8 rounded-full bg-stone-900/70 hover:bg-teal-uno text-white flex items-center justify-center backdrop-blur-md border border-white/10 transition-all opacity-80 group-hover:opacity-100 hover:scale-105 cursor-pointer shadow-md z-20"
               aria-label="Foto anterior"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -248,7 +278,7 @@ export default function BitacoraCardGalleryCarousel({
                 e.stopPropagation();
                 nextSlide();
               }}
-              className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-stone-900/70 hover:bg-teal-uno text-white flex items-center justify-center backdrop-blur-md border border-white/10 transition-all opacity-80 group-hover:opacity-100 hover:scale-105 cursor-pointer shadow-md z-20"
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-8 sm:h-8 rounded-full bg-stone-900/70 hover:bg-teal-uno text-white flex items-center justify-center backdrop-blur-md border border-white/10 transition-all opacity-80 group-hover:opacity-100 hover:scale-105 cursor-pointer shadow-md z-20"
               aria-label="Siguiente foto"
             >
               <ChevronRight className="w-4 h-4" />
@@ -370,8 +400,10 @@ export default function BitacoraCardGalleryCarousel({
 
           {/* MAIN HIGH-RES IMAGE VIEWPORT */}
           <div 
-            className="relative flex-1 flex items-center justify-center my-4 overflow-hidden"
+            className="relative flex-1 flex items-center justify-center my-4 overflow-hidden touch-pan-y"
             onClick={(e) => e.stopPropagation()}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
           >
             <img
               key={`lightbox-${imageSrc || currentPhoto.id}`}

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X, CheckCircle2, ArrowRight, ChevronLeft, ChevronRight, Sparkles, Layers, Coffee, Home, HeartPulse, Zap, Store, Leaf } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
@@ -260,6 +260,32 @@ export default function Portfolio() {
   // Modal active image state
   const [modalActiveImgIndex, setModalActiveImgIndex] = useState(0);
 
+  // Mobile Touch Swipe Handling for Modal Gallery
+  const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!selectedCategory?.gallery || touchStartX.current === null || touchStartY.current === null) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+    const deltaY = e.changedTouches[0].clientY - touchStartY.current;
+    const total = selectedCategory.gallery.length;
+
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 40) {
+      if (deltaX > 0) {
+        setModalActiveImgIndex((prev) => (prev === 0 ? total - 1 : prev - 1));
+      } else {
+        setModalActiveImgIndex((prev) => (prev + 1) % total);
+      }
+    }
+    touchStartX.current = null;
+    touchStartY.current = null;
+  };
+
   const handleOpenCategory = (item: CategoryTypology) => {
     setSelectedCategory(item);
     setModalActiveImgIndex(0);
@@ -436,7 +462,11 @@ export default function Portfolio() {
                 {selectedCategory.gallery ? (
                   <div className="relative">
                     {/* Main Active Image Display */}
-                    <div className="relative h-[240px] sm:h-[340px] md:h-[460px] w-full overflow-hidden flex items-center justify-center bg-zinc-950">
+                    <div 
+                      className="relative h-[240px] sm:h-[340px] md:h-[460px] w-full overflow-hidden flex items-center justify-center bg-zinc-950 touch-pan-y"
+                      onTouchStart={handleTouchStart}
+                      onTouchEnd={handleTouchEnd}
+                    >
                       <AnimatePresence mode="wait">
                         <motion.img
                           key={modalActiveImgIndex}
