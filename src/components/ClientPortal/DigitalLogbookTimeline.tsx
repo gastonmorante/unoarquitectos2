@@ -297,14 +297,14 @@ export default function DigitalLogbookTimeline({
                             <button
                               type="button"
                               onClick={() => {
-                                onJumpTo360();
                                 if (onSelectDate) onSelectDate(entry.tourInfo!.date);
+                                onJumpTo360();
                               }}
-                              className="flex items-center gap-1.5 text-teal-uno hover:text-arena-calida font-bold transition-colors cursor-pointer"
+                              className="px-4 py-2 bg-teal-uno hover:bg-arena-calida text-white rounded-full text-xs font-label-caps uppercase font-bold flex items-center gap-2 transition-all shadow-md hover:shadow-lg cursor-pointer active:scale-95"
                               title="Explorar puntos esféricos en el Visor 360°"
                             >
-                              <Compass className="w-3.5 h-3.5" />
-                              <span>{entry.tourInfo.scenes360Count} FOTOS 360°</span>
+                              <Compass className="w-4 h-4 animate-spin-slow" />
+                              <span>Abrir Tour Virtual 360° ({entry.tourInfo.scenes360Count} Puntos HD)</span>
                             </button>
                           )}
 
@@ -461,11 +461,15 @@ export default function DigitalLogbookTimeline({
                         {entry.scenes360Count && entry.scenes360Count > 0 && onJumpTo360 && (
                           <button
                             type="button"
-                            onClick={onJumpTo360}
-                            className="px-3.5 py-1.5 bg-teal-uno/15 hover:bg-teal-uno hover:text-white text-teal-uno border border-teal-uno/30 rounded-full text-[11px] font-label-caps uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-xs cursor-pointer font-bold"
+                            onClick={() => {
+                              if (onSelectDate) onSelectDate(entry.date);
+                              onJumpTo360();
+                            }}
+                            className="px-3.5 py-1.5 bg-teal-uno/15 hover:bg-teal-uno hover:text-white text-teal-uno border border-teal-uno/30 rounded-full text-[11px] font-label-caps uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-xs cursor-pointer font-bold active:scale-95"
+                            title="Abrir Tour Virtual 360°"
                           >
-                            <Compass className="w-3.5 h-3.5" />
-                            <span>Ver en 360° ({entry.scenes360Count})</span>
+                            <Compass className="w-3.5 h-3.5 animate-spin-slow" />
+                            <span>Tour Virtual 360° ({entry.scenes360Count} Puntos)</span>
                           </button>
                         )}
 

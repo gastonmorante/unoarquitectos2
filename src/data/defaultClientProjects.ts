@@ -40,136 +40,136 @@ export const defaultClientProjects: ClientProject[] = [
         scenes: [
         {
                 "id": "scene-0509-01",
-                "title": "Punto 360° #01 • 05 Sep",
+                "title": "Punto #01 • Vestíbulo Principal & Doble Altura (6.40m)",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_01.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_01.jpg",
-                "roomName": "Zona #01"
+                "roomName": "Vestíbulo Principal"
         },
         {
                 "id": "scene-0509-02",
-                "title": "Punto 360° #02 • 05 Sep",
+                "title": "Punto #02 • Estancia Central & Muros en Chukum Maya",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_02.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_02.jpg",
-                "roomName": "Zona #02"
+                "roomName": "Estancia Central"
         },
         {
                 "id": "scene-0509-03",
-                "title": "Punto 360° #03 • 05 Sep",
+                "title": "Punto #03 • Comedor Open-Concept & Madera de Parota",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_03.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_03.jpg",
-                "roomName": "Zona #03"
+                "roomName": "Comedor & Cocina"
         },
         {
                 "id": "scene-0509-04",
-                "title": "Punto 360° #04 • 05 Sep",
+                "title": "Punto #04 • Terraza Exterior & Alberca Cenote (48 m²)",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_04.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_04.jpg",
-                "roomName": "Zona #04"
+                "roomName": "Terraza & Alberca"
         },
         {
                 "id": "scene-0509-05",
-                "title": "Punto 360° #05 • 05 Sep",
+                "title": "Punto #05 • Asoleadero Húmedo & Jardineras Selváticas",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_05.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_05.jpg",
-                "roomName": "Zona #05"
+                "roomName": "Asoleadero Húmedo"
         },
         {
                 "id": "scene-0509-06",
-                "title": "Punto 360° #06 • 05 Sep",
+                "title": "Punto #06 • Placas de Mármol Santo Tomás (1.20x2.40m)",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_06.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_06.jpg",
-                "roomName": "Zona #06"
+                "roomName": "Vestíbulo de Acceso"
         },
         {
                 "id": "scene-0509-07",
-                "title": "Punto 360° #07 • 05 Sep",
+                "title": "Punto #07 • Escalera Escultórica en Concreto & Tzalam",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_07.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_07.jpg",
-                "roomName": "Zona #07"
+                "roomName": "Núcleo de Escaleras"
         },
         {
                 "id": "scene-0509-08",
-                "title": "Punto 360° #08 • 05 Sep",
+                "title": "Punto #08 • Master Suite Principal con Terraza Volada",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_08.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_08.jpg",
-                "roomName": "Zona #08"
+                "roomName": "Master Suite Nivel 2"
         },
         {
                 "id": "scene-0509-09",
-                "title": "Punto 360° #09 • 05 Sep",
+                "title": "Punto #09 • Baño Master Suite & Tina de Chukum",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_09.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_09.jpg",
-                "roomName": "Zona #09"
+                "roomName": "Baño Principal"
         },
         {
                 "id": "scene-0509-10",
-                "title": "Punto 360° #10 • 05 Sep",
+                "title": "Punto #10 • Recámara Secundaria 1 & Vista a la Selva",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_10.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_10.jpg",
-                "roomName": "Zona #10"
+                "roomName": "Recámara 1"
         },
         {
                 "id": "scene-0509-11",
-                "title": "Punto 360° #11 • 05 Sep",
+                "title": "Punto #11 • Recámara Secundaria 2 & Acabados en Cal",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_11.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_11.jpg",
-                "roomName": "Zona #11"
+                "roomName": "Recámara 2"
         },
         {
                 "id": "scene-0509-12",
-                "title": "Punto 360° #12 • 05 Sep",
+                "title": "Punto #12 • Terraza Volada Superior (Nivel 2)",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_12.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_12.jpg",
-                "roomName": "Zona #12"
+                "roomName": "Terraza Superior"
         },
         {
                 "id": "scene-0509-13",
-                "title": "Punto 360° #13 • 05 Sep",
+                "title": "Punto #13 • Rooftop Panorámico & Pérgola Solar",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_13.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_13.jpg",
-                "roomName": "Zona #13"
+                "roomName": "Rooftop & Mirador"
         },
         {
                 "id": "scene-0509-14",
-                "title": "Punto 360° #14 • 05 Sep",
+                "title": "Punto #14 • Plafones Técnicos & Ductería Daikin VRF",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_14.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_14.jpg",
-                "roomName": "Zona #14"
+                "roomName": "Área de Climatización"
         },
         {
                 "id": "scene-0509-15",
-                "title": "Punto 360° #15 • 05 Sep",
+                "title": "Punto #15 • Cuarto de Máquinas & Tableros Lutron QSX",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_15.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_15.jpg",
-                "roomName": "Zona #15"
+                "roomName": "Cuarto de Control"
         },
         {
                 "id": "scene-0509-16",
-                "title": "Punto 360° #16 • 05 Sep",
+                "title": "Punto #16 • Fachada Principal & Cancelería Eurovent 12mm",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_16.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_16.jpg",
-                "roomName": "Zona #16"
+                "roomName": "Fachada Principal"
         },
         {
                 "id": "scene-0509-17",
-                "title": "Punto 360° #17 • 05 Sep",
+                "title": "Punto #17 • Barda Perimetral & Celosías Moduladas",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_17.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_17.jpg",
-                "roomName": "Zona #17"
+                "roomName": "Barda Perimetral"
         },
         {
                 "id": "scene-0509-18",
-                "title": "Punto 360° #18 • 05 Sep",
+                "title": "Punto #18 • Pasillo de Distribución & Plafón en Madera",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_18.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_18.jpg",
-                "roomName": "Zona #18"
+                "roomName": "Pasillo Nivel 2"
         },
         {
                 "id": "scene-0509-19",
-                "title": "Punto 360° #19 • 05 Sep",
+                "title": "Punto #19 • Vista Esférica 360° • Envolvente de Obra",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_19.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_19.jpg",
-                "roomName": "Zona #19"
+                "roomName": "Vista General 360°"
         }
 ]
       },
@@ -186,73 +186,73 @@ export const defaultClientProjects: ClientProject[] = [
         scenes: [
         {
                 "id": "scene-2708-01",
-                "title": "Punto 360° #01 • 27 Ago",
+                "title": "Punto #01 • Canalizaciones Hidráulicas Presurizadas a 100 PSI",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_01.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_01.jpg",
-                "roomName": "Zona #01"
+                "roomName": "Área Hidrosanitaria"
         },
         {
                 "id": "scene-2708-02",
-                "title": "Punto 360° #02 • 27 Ago",
+                "title": "Punto #02 • Cámara Plénum Climatización Daikin VRF (3.40m)",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_02.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_02.jpg",
-                "roomName": "Zona #02"
+                "roomName": "Plénum Técnico"
         },
         {
                 "id": "scene-2708-03",
-                "title": "Punto 360° #03 • 27 Ago",
+                "title": "Punto #03 • Cableado Apantallado para Domótica Lutron QSX",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_03.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_03.jpg",
-                "roomName": "Zona #03"
+                "roomName": "Tablero Domótica"
         },
         {
                 "id": "scene-2708-04",
-                "title": "Punto 360° #04 • 27 Ago",
+                "title": "Punto #04 • Estructuración de Muros & Confinamiento",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_04.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_04.jpg",
-                "roomName": "Zona #04"
+                "roomName": "Muros Estructurales"
         },
         {
                 "id": "scene-2708-05",
-                "title": "Punto 360° #05 • 27 Ago",
+                "title": "Punto #05 • Firme de Concreto Armado & Zapatas Aisladas",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_05.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_05.jpg",
-                "roomName": "Zona #05"
+                "roomName": "Firme & Cimentación"
         },
         {
                 "id": "scene-2708-06",
-                "title": "Punto 360° #06 • 27 Ago",
+                "title": "Punto #06 • Vaso de Alberca Cenote & Doble Impermeabilización",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_06.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_06.jpg",
-                "roomName": "Zona #06"
+                "roomName": "Alberca en Obra"
         },
         {
                 "id": "scene-2708-07",
-                "title": "Punto 360° #07 • 27 Ago",
+                "title": "Punto #07 • Pasos de Instalaciones MEP en Losas",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_07.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_07.jpg",
-                "roomName": "Zona #07"
+                "roomName": "Entrepiso Estructural"
         },
         {
                 "id": "scene-2708-08",
-                "title": "Punto 360° #08 • 27 Ago",
+                "title": "Punto #08 • Cuarto de Control & Tubería PPR-CT Termofusionada",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_08.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_08.jpg",
-                "roomName": "Zona #08"
+                "roomName": "Cuarto de Máquinas"
         },
         {
                 "id": "scene-2708-09",
-                "title": "Punto 360° #09 • 27 Ago",
+                "title": "Punto #09 • Barda Perimetral de Mampostería Concluida",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_09.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_09.jpg",
-                "roomName": "Zona #09"
+                "roomName": "Barda Perimetral"
         },
         {
                 "id": "scene-2708-10",
-                "title": "Punto 360° #10 • 27 Ago",
+                "title": "Punto #10 • Vista Esférica 360° de Estructura en Obra Negra",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_10.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_10.jpg",
-                "roomName": "Zona #10"
+                "roomName": "Estructura Global"
         }
 ]
       }
