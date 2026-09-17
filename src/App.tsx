@@ -126,12 +126,29 @@ function MainApp() {
 
   const { isAuthenticated } = useSiteContent();
 
-  // Scroll to top on route change
+  // Scroll to top on route change & ensure top position on refresh
   useEffect(() => {
     if (typeof window === "undefined") return;
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
+
+    const handleResetScroll = () => {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    };
+
+    window.addEventListener("pageshow", handleResetScroll);
+    window.addEventListener("load", handleResetScroll);
+
+    return () => {
+      window.removeEventListener("pageshow", handleResetScroll);
+      window.removeEventListener("load", handleResetScroll);
+    };
   }, [route, activeClientProject]);
 
   // Route listener for history popstate / back / forward / pushState

@@ -41,9 +41,7 @@ export default function DigitalLogbookTimeline({
   onJumpTo360,
   onJumpToPhotos,
 }: DigitalLogbookTimelineProps) {
-  const [expandedEntryId, setExpandedEntryId] = useState<string>(
-    entries.find(e => e.date === selectedDate)?.id || entries[entries.length - 1]?.id || entries[0]?.id || ""
-  );
+  const [expandedEntryId, setExpandedEntryId] = useState<string>("");
   const [fullscreenCarouselEntryId, setFullscreenCarouselEntryId] = useState<string>("");
   const [selectedMonth, setSelectedMonth] = useState<string>("all");
 

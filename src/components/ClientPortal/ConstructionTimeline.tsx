@@ -21,9 +21,7 @@ export default function ConstructionTimeline({
   globalProgress,
   currentPhaseName,
 }: ConstructionTimelineProps) {
-  const [expandedPhaseId, setExpandedPhaseId] = useState<string | null>(
-    phases.find((p) => p.status === "in_progress")?.id || phases[0]?.id || null
-  );
+  const [expandedPhaseId, setExpandedPhaseId] = useState<string | null>(null);
 
   const completedCount = phases.filter((p) => p.status === "completed").length;
   const inProgressCount = phases.filter((p) => p.status === "in_progress").length;
