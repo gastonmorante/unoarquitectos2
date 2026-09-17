@@ -385,7 +385,10 @@ export default function Portfolio() {
                       alt={isEs ? item.title : item.titleEn} 
                       className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-90 group-hover:opacity-100" 
                       src={item.image}
+                      width={600}
+                      height={400}
                       loading="lazy"
+                      decoding="async"
                       referrerPolicy="no-referrer"
                     />
                   )}
@@ -549,6 +552,10 @@ export default function Portfolio() {
                       src={selectedCategory.image}
                       alt={isEs ? selectedCategory.title : selectedCategory.titleEn}
                       className="w-full h-full object-cover"
+                      width={800}
+                      height={400}
+                      loading="lazy"
+                      decoding="async"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-black/20"></div>
                   </div>
