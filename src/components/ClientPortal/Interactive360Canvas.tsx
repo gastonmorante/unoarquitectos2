@@ -11,13 +11,9 @@ import {
   Pause, 
   ChevronLeft, 
   ChevronRight,
-  RotateCcw,
-  Sparkles,
   Smartphone,
-  Footprints,
   MapPin,
-  CheckCircle2,
-  Navigation
+  CheckCircle2
 } from "lucide-react";
 import { Scene360Item } from "../../types/clientPortal";
 
@@ -26,17 +22,6 @@ interface Interactive360CanvasProps {
   dateTitle: string;
   isFullscreen: boolean;
   onToggleFullscreen: () => void;
-}
-
-interface Hotspot2D {
-  sceneIndex: number;
-  title: string;
-  roomName: string;
-  type: "forward" | "backward" | "zone";
-  screenX: number;
-  screenY: number;
-  visible: boolean;
-  headingText: string;
 }
 
 // Robust WebGL Support Detection
@@ -76,9 +61,6 @@ export default function Interactive360Canvas({
 
   // Compass Heading State
   const [currentHeading, setCurrentHeading] = useState(0);
-
-  // 3D Hotspots Screen Positions State
-  const [hotspots2D, setHotspots2D] = useState<Hotspot2D[]>([]);
 
   // 2D Fallback Pan State
   const [panX, setPanX] = useState(50);
@@ -275,8 +257,6 @@ export default function Interactive360Canvas({
     let renderer: THREE.WebGLRenderer | null = null;
     let animationFrameId: number | null = null;
     let resizeObserver: ResizeObserver | null = null;
-    const vec3 = new THREE.Vector3();
-
     try {
       const width = container.clientWidth || window.innerWidth || 360;
       const height = container.clientHeight || 480;
@@ -316,7 +296,7 @@ export default function Interactive360Canvas({
         loadTexture(activeScene.equirectangularUrl);
       }
 
-      // Animation Loop with 3D Hotspot Screen Projections
+      // Animation Loop
       const animate = () => {
         animationFrameId = requestAnimationFrame(animate);
 
@@ -339,96 +319,6 @@ export default function Interactive360Canvas({
           // Update real-time compass heading
           const normalizedLon = ((lonRef.current % 360) + 360) % 360;
           setCurrentHeading(Math.round(normalizedLon));
-
-          // Project 3D Hotspots to 2D Screen Coordinates
-          const cW = container.clientWidth || 600;
-          const cH = container.clientHeight || 450;
-          
-          if (safeScenes.length > 1) {
-            const nextIdx = (activeSceneIndex + 1) % safeScenes.length;
-            const prevIdx = (activeSceneIndex - 1 + safeScenes.length) % safeScenes.length;
-            const nextSceneObj = safeScenes[nextIdx];
-            const prevSceneObj = safeScenes[prevIdx];
-
-            // Forward Hotspot (Yaw +35°, Pitch -14°)
-            const forwardYaw = 180 + 35;
-            const forwardPitch = -14;
-            const phiF = THREE.MathUtils.degToRad(90 - forwardPitch);
-            const thetaF = THREE.MathUtils.degToRad(forwardYaw);
-            vec3.set(450 * Math.sin(phiF) * Math.cos(thetaF), 450 * Math.cos(phiF), 450 * Math.sin(phiF) * Math.sin(thetaF));
-            vec3.project(cameraRef.current);
-
-            const isForwardInFront = vec3.z < 1;
-            const forwardX = (vec3.x * 0.5 + 0.5) * cW;
-            const forwardY = (-(vec3.y * 0.5) + 0.5) * cH;
-            const isForwardVisible = isForwardInFront && forwardX >= 30 && forwardX <= cW - 30 && forwardY >= 40 && forwardY <= cH - 60;
-
-            // Backward Hotspot (Yaw -145°, Pitch -14°)
-            const backwardYaw = 180 - 145;
-            const backwardPitch = -14;
-            const phiB = THREE.MathUtils.degToRad(90 - backwardPitch);
-            const thetaB = THREE.MathUtils.degToRad(backwardYaw);
-            vec3.set(450 * Math.sin(phiB) * Math.cos(thetaB), 450 * Math.cos(phiB), 450 * Math.sin(phiB) * Math.sin(thetaB));
-            vec3.project(cameraRef.current);
-
-            const isBackwardInFront = vec3.z < 1;
-            const backwardX = (vec3.x * 0.5 + 0.5) * cW;
-            const backwardY = (-(vec3.y * 0.5) + 0.5) * cH;
-            const isBackwardVisible = isBackwardInFront && backwardX >= 30 && backwardX <= cW - 30 && backwardY >= 40 && backwardY <= cH - 60;
-
-            const newHotspots: Hotspot2D[] = [
-              {
-                sceneIndex: nextIdx,
-                title: nextSceneObj.title,
-                roomName: nextSceneObj.roomName || `Punto #${nextIdx + 1}`,
-                type: "forward",
-                screenX: forwardX,
-                screenY: forwardY,
-                visible: isForwardVisible,
-                headingText: "Avanzar a"
-              },
-              {
-                sceneIndex: prevIdx,
-                title: prevSceneObj.title,
-                roomName: prevSceneObj.roomName || `Punto #${prevIdx + 1}`,
-                type: "backward",
-                screenX: backwardX,
-                screenY: backwardY,
-                visible: isBackwardVisible,
-                headingText: "Volver a"
-              }
-            ];
-
-            // Key Zone Hotspot (if more than 3 scenes)
-            if (safeScenes.length >= 4) {
-              const zoneIdx = (activeSceneIndex + 3) % safeScenes.length;
-              const zoneSceneObj = safeScenes[zoneIdx];
-              const zoneYaw = 180 + 130;
-              const zonePitch = -10;
-              const phiZ = THREE.MathUtils.degToRad(90 - zonePitch);
-              const thetaZ = THREE.MathUtils.degToRad(zoneYaw);
-              vec3.set(450 * Math.sin(phiZ) * Math.cos(thetaZ), 450 * Math.cos(phiZ), 450 * Math.sin(phiZ) * Math.sin(thetaZ));
-              vec3.project(cameraRef.current);
-
-              const isZoneInFront = vec3.z < 1;
-              const zoneX = (vec3.x * 0.5 + 0.5) * cW;
-              const zoneY = (-(vec3.y * 0.5) + 0.5) * cH;
-              const isZoneVisible = isZoneInFront && zoneX >= 30 && zoneX <= cW - 30 && zoneY >= 40 && zoneY <= cH - 60;
-
-              newHotspots.push({
-                sceneIndex: zoneIdx,
-                title: zoneSceneObj.title,
-                roomName: zoneSceneObj.roomName || `Zona #${zoneIdx + 1}`,
-                type: "zone",
-                screenX: zoneX,
-                screenY: zoneY,
-                visible: isZoneVisible,
-                headingText: "Explorar"
-              });
-            }
-
-            setHotspots2D(newHotspots);
-          }
         }
       };
 
@@ -665,56 +555,6 @@ export default function Interactive360Canvas({
             className="w-full h-full object-cover transition-transform duration-100"
             draggable={false}
           />
-        </div>
-      )}
-
-      {/* 3D INTERACTIVE TELEPORT HOTSPOTS OVERLAY */}
-      {webGLSupported && !isLoading && (
-        <div className="absolute inset-0 pointer-events-none z-15 overflow-hidden">
-          {hotspots2D.map((hp) => {
-            if (!hp.visible) return null;
-            return (
-              <button
-                key={`${hp.type}-${hp.sceneIndex}`}
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleTeleportToScene(hp.sceneIndex);
-                }}
-                style={{
-                  transform: `translate(${hp.screenX}px, ${hp.screenY}px) translate(-50%, -50%)`,
-                }}
-                className="absolute pointer-events-auto group cursor-pointer flex flex-col items-center transition-transform hover:scale-110 active:scale-95 focus:outline-none"
-                title={`${hp.headingText}: ${hp.title}`}
-              >
-                {/* Pulsing Hotspot Radar Core */}
-                <div className="relative flex items-center justify-center">
-                  <span className="absolute w-10 h-10 rounded-full bg-teal-uno/40 animate-ping pointer-events-none" />
-                  <span className="absolute w-7 h-7 rounded-full bg-arena-calida/60 animate-pulse pointer-events-none" />
-                  <div className="w-9 h-9 rounded-full bg-teal-uno hover:bg-arena-calida text-white flex items-center justify-center shadow-2xl border-2 border-white transition-colors duration-200">
-                    {hp.type === "forward" ? (
-                      <Footprints className="w-4 h-4 text-white" />
-                    ) : hp.type === "backward" ? (
-                      <RotateCcw className="w-4 h-4 text-white" />
-                    ) : (
-                      <Navigation className="w-4 h-4 text-white" />
-                    )}
-                  </div>
-                </div>
-
-                {/* Hotspot Floating Tooltip Tag */}
-                <div className="mt-1.5 px-3 py-1 bg-stone-950/85 backdrop-blur-md rounded-full border border-white/20 text-white shadow-xl flex items-center gap-1.5 whitespace-nowrap opacity-90 group-hover:opacity-100 group-hover:bg-teal-uno transition-all">
-                  <span className="text-[9px] font-label-caps uppercase text-arena-calida group-hover:text-white font-bold">
-                    {hp.headingText}
-                  </span>
-                  <span className="text-[10px] font-sans font-semibold">
-                    {hp.roomName}
-                  </span>
-                  <ChevronRight className="w-3 h-3 text-white/70" />
-                </div>
-              </button>
-            );
-          })}
         </div>
       )}
 
