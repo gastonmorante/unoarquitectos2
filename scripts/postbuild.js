@@ -28,22 +28,21 @@ if (fs.existsSync(apiSrcDir)) {
   });
 }
 
-// 2. Make stylesheet non-blocking in dist/index.html
+// 2. Preload stylesheet in dist/index.html
 const indexPath = path.join('dist', 'index.html');
 if (fs.existsSync(indexPath)) {
   let html = fs.readFileSync(indexPath, 'utf8');
   
-  // Transform render-blocking CSS link to non-blocking preload + media=print swap
   const cssMatch = html.match(/<link rel="stylesheet" crossorigin href="(\/assets\/index-[^"]+\.css)">/);
   if (cssMatch) {
     const cssPath = cssMatch[1];
-    const nonBlockingCss = `<link rel="preload" as="style" href="${cssPath}"><link rel="stylesheet" href="${cssPath}" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="${cssPath}"></noscript>`;
-    html = html.replace(cssMatch[0], nonBlockingCss);
-    console.log(`Optimized stylesheet loading to non-blocking: ${cssPath}`);
+    const optimizedCss = `<link rel="preload" as="style" href="${cssPath}"><link rel="stylesheet" crossorigin href="${cssPath}">`;
+    html = html.replace(cssMatch[0], optimizedCss);
+    console.log(`Preloaded primary stylesheet: ${cssPath}`);
   }
   
   fs.writeFileSync(indexPath, html);
-  console.log('Updated dist/index.html with non-blocking CSS.');
+  console.log('Updated dist/index.html with preloaded CSS.');
 
   // Generate Localized Static HTML Entrypoints (en, it, fr, and subpages)
   const localizedMeta = {

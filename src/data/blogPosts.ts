@@ -22,7 +22,7 @@ export const blogPosts: BlogPost[] = [
       fr: "Découvrez les méthodes de micro-pieux profonds, l'analyse des cavités karstiques et les calculs parasismiques pour bâtir en toute sécurité dans la jungle de Tulum.",
       it: "Scopri i metodi di micropali profondi, l'analisi delle cavità carsiche e i calcoli antisismici per costruire in sicurezza nella giungla di Tulum."
     },
-    coverImage: "/projects/offgrid/offgrid-villa-cenote.jpg",
+    coverImage: "/projects/offgrid/offgrid-villa-cenote.webp",
     publishDate: "2026-08-15",
     readTime: "7 min",
     author: {
@@ -162,7 +162,7 @@ export const blogPosts: BlogPost[] = [
       fr: "Guide architectural complet sur le stuc maya Chukum : résine naturelle, étanchéité pour piscines et réduction thermique passive jusqu'à 4°C.",
       it: "Guida architettonica all'intonaco Chukum: resina naturale, impermeabilità per piscine e riduzione termica passiva fino a 4°C."
     },
-    coverImage: "/projects/residencial/alux-7cielos-ocean-pool.jpg",
+    coverImage: "/projects/residencial/alux-7cielos-ocean-pool.webp",
     publishDate: "2026-08-28",
     readTime: "6 min",
     author: {

@@ -17,27 +17,27 @@ const renderPortfolioIcon = (iconName: string) => {
 
 const residentialGallery: GalleryImage[] = [
   {
-    url: "/projects/residencial/alux-7cielos-ocean-pool.jpg",
+    url: "/projects/residencial/alux-7cielos-ocean-pool.webp",
     title: "Alberca & Jacuzzi Frente al Mar Caribe (7 Cielos)",
     desc: "Muros y alberca con acabado continuo de Chukum natural pulido, pérgola en madera de Tzalam, cancelería marina y vista directa al mar turquesa."
   },
   {
-    url: "/projects/residencial/alux-7cielos-master-jungle-view.jpg",
+    url: "/projects/residencial/alux-7cielos-master-jungle-view.webp",
     title: "Master Suite con Cabecera Monumental (7 Cielos)",
     desc: "Cabecera de piso a techo con capitoné acolchado en tono arena, cama plataforma de Tzalam y cancel corredizo con balcón hacia la copa de los árboles."
   },
   {
-    url: "/projects/residencial/alux-7cielos-chukum-suite.jpg",
+    url: "/projects/residencial/alux-7cielos-chukum-suite.webp",
     title: "Recámara Doble en Microcemento & Rattán (Alux)",
     desc: "Muros en estuco mineral texturizado gris piedra para inercia térmica, cabeceros de rattán, luminarias colgantes cálidas y ventanales a la selva."
   },
   {
-    url: "/projects/residencial/alux-7cielos-studio-parota.jpg",
+    url: "/projects/residencial/alux-7cielos-studio-parota.webp",
     title: "Studio & Comedor en Madera de Parota (Alux)",
     desc: "Pisos y muros en microcemento pulido continuo, carpintería integral de piso a techo en Parota sólida, mesa de tronco vivo y lámpara de cobre."
   },
   {
-    url: "/projects/residencial/alux-7cielos-living-open.jpg",
+    url: "/projects/residencial/alux-7cielos-living-open.webp",
     title: "Gran Salón & Comedor Open-Concept (Alux)",
     desc: "Espacio diáfano sin columnas intermedias, piso de porcelanato gran formato brillante, lámpara escultórica de cristal soplado y comedor en Parota."
   }
@@ -45,22 +45,22 @@ const residentialGallery: GalleryImage[] = [
 
 const lavazzaGallery: GalleryImage[] = [
   {
-    url: "/projects/lavazza/lavazza-facade.jpg",
+    url: "/projects/lavazza/lavazza-facade.webp",
     title: "Fachada Principal & Acceso",
     desc: "Friso superior en azul corporativo con volumetría 3D 'Lavazza Torino 1895', iluminación lineal empotrada y mobiliario bistró."
   },
   {
-    url: "/projects/lavazza/lavazza-counter-detail.jpg",
+    url: "/projects/lavazza/lavazza-counter-detail.webp",
     title: "Barra Barista & Detalle Material",
     desc: "Barra entablada en duelas de roble, cubierta blanca continua, máquina de espresso Rancilio y hornacina con cerámica artesanal."
   },
   {
-    url: "/projects/lavazza/lavazza-interior.jpg",
+    url: "/projects/lavazza/lavazza-interior.webp",
     title: "Salón Gourmet & Iluminación",
     desc: "Muros en estuco mineral cálido, luminarias colgantes en latón satinado, rieles lineales y cuadros de autor con historia italiana."
   },
   {
-    url: "/projects/lavazza/lavazza-kiosk-terrace.jpg",
+    url: "/projects/lavazza/lavazza-kiosk-terrace.webp",
     title: "Kiosko & Terraza Exterior",
     desc: "Pabellón abierto con cerramiento plegable de seguridad, sombrillas arquitectónicas, vitrina refrigerada y muro vegetal."
   }
@@ -68,22 +68,22 @@ const lavazzaGallery: GalleryImage[] = [
 
 const hospitalityGallery: GalleryImage[] = [
   {
-    url: "/projects/hospitalidad/hospitalidad-santuario-arcos.jpg",
+    url: "/projects/hospitalidad/hospitalidad-santuario-arcos.webp",
     title: "Santuario Holístico & Arcos Escultóricos (Papaya Playa Project)",
     desc: "Bóvedas catenarias monumentales esculpidas en ferrocemento y Chukum, columnas envueltas en bejuco regional y celosía suspendida de cuerdas de henequén."
   },
   {
-    url: "/projects/hospitalidad/hospitalidad-domo-organico.jpg",
+    url: "/projects/hospitalidad/hospitalidad-domo-organico.webp",
     title: "Domo Bioclimático & Cápsula Escultórica (Papaya Playa Project)",
     desc: "Estructura biomórfica de doble curvatura con acabado en estuco de cal hidráulica, ventanales elípticos en madera de Parota y techumbre de zacate."
   },
   {
-    url: "/projects/hospitalidad/hospitalidad-suite-mirador.jpg",
+    url: "/projects/hospitalidad/hospitalidad-suite-mirador.webp",
     title: "Suite Mirador & Treetop Sanctuary (Papaya Playa Project)",
     desc: "Bóveda interior trenzada en costillaje de bejuco, duela ancha de madera tropical tratada, miradores elípticos y luz dorada al atardecer."
   },
   {
-    url: "/projects/hospitalidad/hospitalidad-sendero-selva.jpg",
+    url: "/projects/hospitalidad/hospitalidad-sendero-selva.webp",
     title: "Pasarela Elevada entre el Dosel Selvático (Papaya Playa Project)",
     desc: "Sendero sinuoso sobre pilotes de bajo impacto en madera dura de Zapote/Tzalam que preserva el manto freático y flora endémica."
   }
@@ -91,22 +91,22 @@ const hospitalityGallery: GalleryImage[] = [
 
 const offGridGallery: GalleryImage[] = [
   {
-    url: "/projects/offgrid/offgrid-villa-cenote.jpg",
+    url: "/projects/offgrid/offgrid-villa-cenote.webp",
     title: "Villa Cenote & Volumetría en Tapial y Piedra (Santuario Ka'an)",
     desc: "Residencia 100% autosuficiente en la selva de Tulum. Muros monolíticos de tierra compactada (tapial), plataforma volada en Tzalam y cenote plunge pool."
   },
   {
-    url: "/projects/offgrid/offgrid-pabellon-living.jpg",
+    url: "/projects/offgrid/offgrid-pabellon-living.webp",
     title: "Pabellón Social Open-Concept & Ventanales Pocket (Santuario Ka'an)",
     desc: "Conexión interior-exterior total sin cristales divisorios fijos, mobiliario en maderas endémicas recuperadas y ventilación cruzada pasiva permanente."
   },
   {
-    url: "/projects/offgrid/offgrid-rooftop-solar.jpg",
+    url: "/projects/offgrid/offgrid-rooftop-solar.webp",
     title: "Pérgola Solar & Mirador sobre el Dosel Selvático (Santuario Ka'an)",
     desc: "Terraza panorámica 360° con pérgola fotovoltaica de paneles bifaciales semi-translúcidos, lounge exterior y tina de inmersión en Chukum."
   },
   {
-    url: "/projects/offgrid/offgrid-suite-tulum.jpg",
+    url: "/projects/offgrid/offgrid-suite-tulum.webp",
     title: "Master Suite Bioclimática & Muros de Tierra (Santuario Ka'an)",
     desc: "Suite principal inmersa en la fronda selvática, muros de alta inercia térmica en tapial y microcemento, cancelería esquinera sin postes y textiles de lino."
   }
@@ -120,7 +120,7 @@ const categoryTypologies: CategoryTypology[] = [
     subtitle: "HABITAT Y SOFISTICACIÓN",
     subtitleEn: "HABITAT & SOPHISTICATION",
     icon: "home",
-    image: "/projects/residencial/alux-7cielos-ocean-pool.jpg",
+    image: "/projects/residencial/alux-7cielos-ocean-pool.webp",
     badge: "Alux & 7 Cielos",
     gallery: residentialGallery,
     projectHighlight: "Residencias Boutique: Alux & 7 Cielos",
@@ -151,7 +151,7 @@ const categoryTypologies: CategoryTypology[] = [
     subtitle: "ESPACIOS DE INTERACCIÓN",
     subtitleEn: "SPACES OF INTERACTION",
     icon: "storefront",
-    image: "/projects/lavazza/lavazza-facade.jpg",
+    image: "/projects/lavazza/lavazza-facade.webp",
     badge: "Lavazza Coffee Bar",
     gallery: lavazzaGallery,
     projectHighlight: "Cafetería & Espresso Bar Lavazza",
@@ -182,7 +182,7 @@ const categoryTypologies: CategoryTypology[] = [
     subtitle: "BIENESTAR Y PRECISIÓN",
     subtitleEn: "WELLNESS & PRECISION",
     icon: "medical_services",
-    image: "/projects/hospitalidad/hospitalidad-santuario-arcos.jpg",
+    image: "/projects/hospitalidad/hospitalidad-santuario-arcos.webp",
     badge: "Papaya Playa Project",
     gallery: hospitalityGallery,
     projectHighlight: "Papaya Playa Project (Tulum) • Eco-Sanctuary",
@@ -213,7 +213,7 @@ const categoryTypologies: CategoryTypology[] = [
     subtitle: "AUTOSUFICIENCIA TROPICAL",
     subtitleEn: "TROPICAL SELF-SUFFICIENCY",
     icon: "eco",
-    image: "/projects/offgrid/offgrid-villa-cenote.jpg",
+    image: "/projects/offgrid/offgrid-villa-cenote.webp",
     badge: "Santuario Ka'an (Tulum)",
     gallery: offGridGallery,
     projectHighlight: "Santuario Ka'an • Off-Grid Jungle Compound (Tulum)",
@@ -352,6 +352,9 @@ export default function Portfolio() {
                           exit={{ opacity: 0, scale: 0.98 }}
                           transition={{ duration: 1.3, ease: [0.25, 0.1, 0.25, 1.0] }}
                           loading="lazy"
+                          width={600}
+                          height={400}
+                          decoding="async"
                         />
                       </AnimatePresence>
 

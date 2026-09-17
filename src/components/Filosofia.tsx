@@ -122,12 +122,11 @@ export default function Filosofia() {
             <img 
               alt="Filosofía y diseño arquitectónico contemporáneo tropical en Riviera Maya - UNO Arquitectos" 
               className="w-full h-auto object-cover aspect-[3/4] rounded-xl shadow-ethereal" 
-              src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&h=800&q=80"
+              src="/projects/residencial/alux-7cielos-chukum-suite.webp"
               width={600}
               height={800}
               loading="lazy"
               decoding="async"
-              referrerPolicy="no-referrer"
             />
           </div>
 
