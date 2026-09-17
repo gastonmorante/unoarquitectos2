@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
+Allow: /clientes
+Allow: /portal
+Allow: /en/clientes
+Allow: /en/portal
 Disallow: /api/
 Disallow: /admin
 
