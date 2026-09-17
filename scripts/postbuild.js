@@ -109,9 +109,26 @@ if (fs.existsSync(indexPath)) {
 
   subpages.forEach(sub => {
     let subHtml = html;
+    const isEn = sub.dir.startsWith('en/');
+    const baseSlug = isEn ? sub.dir.replace(/^en\//, '') : sub.dir;
+    const esUrl = `https://unoarquitectos.com/${baseSlug}`;
+    const enUrl = `https://unoarquitectos.com/en/${baseSlug}`;
+    
+    if (isEn) {
+      subHtml = subHtml.replace(/<html lang="es">/, '<html lang="en">');
+    }
     subHtml = subHtml.replace(/<title>[^<]+<\/title>/, `<title>${sub.title}</title>`);
     subHtml = subHtml.replace(/<meta name="description" content="[^"]+" \/>/, `<meta name="description" content="${sub.desc}" />`);
     subHtml = subHtml.replace(/<link rel="canonical" href="https:\/\/unoarquitectos\.com\/" \/>/, `<link rel="canonical" href="https://unoarquitectos.com/${sub.dir}" />`);
+    subHtml = subHtml.replace(/<link rel="alternate" hreflang="es" href="https:\/\/unoarquitectos\.com\/" \/>/, `<link rel="alternate" hreflang="es" href="${esUrl}" />`);
+    subHtml = subHtml.replace(/<link rel="alternate" hreflang="en" href="https:\/\/unoarquitectos\.com\/en\/" \/>/, `<link rel="alternate" hreflang="en" href="${enUrl}" />`);
+    subHtml = subHtml.replace(/<link rel="alternate" hreflang="x-default" href="https:\/\/unoarquitectos\.com\/" \/>/, `<link rel="alternate" hreflang="x-default" href="${esUrl}" />`);
+    subHtml = subHtml.replace(/<meta property="og:title" content="[^"]+" \/>/, `<meta property="og:title" content="${sub.title}" />`);
+    subHtml = subHtml.replace(/<meta property="og:description" content="[^"]+" \/>/, `<meta property="og:description" content="${sub.desc}" />`);
+    subHtml = subHtml.replace(/<meta property="og:url" content="https:\/\/unoarquitectos\.com\/" \/>/, `<meta property="og:url" content="https://unoarquitectos.com/${sub.dir}" />`);
+    subHtml = subHtml.replace(/<meta name="twitter:title" content="[^"]+" \/>/, `<meta name="twitter:title" content="${sub.title}" />`);
+    subHtml = subHtml.replace(/<meta name="twitter:description" content="[^"]+" \/>/, `<meta name="twitter:description" content="${sub.desc}" />`);
+    subHtml = subHtml.replace(/<meta name="twitter:url" content="https:\/\/unoarquitectos\.com\/" \/>/, `<meta name="twitter:url" content="https://unoarquitectos.com/${sub.dir}" />`);
     
     const targetDir = path.join('dist', sub.dir);
     if (!fs.existsSync(targetDir)) {

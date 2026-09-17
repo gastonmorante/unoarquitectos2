@@ -1,9 +1,8 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /clientes
-Disallow: /portal
 Disallow: /admin
 
 # Sitemap Location
 Sitemap: https://unoarquitectos.com/sitemap.xml
+

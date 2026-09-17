@@ -248,7 +248,29 @@
   </url>
 
   <!-- ==================================================================== -->
-  <!-- 6. AVISOS LEGALES                                                    -->
+  <!-- 6. PORTAL DE CLIENTES & SUPERVISIÓN DE OBRA 360°                    -->
+  <!-- ==================================================================== -->
+  <url>
+    <loc>https://unoarquitectos.com/clientes</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://unoarquitectos.com/clientes" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://unoarquitectos.com/en/clientes" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://unoarquitectos.com/clientes" />
+  </url>
+  <url>
+    <loc>https://unoarquitectos.com/en/clientes</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://unoarquitectos.com/clientes" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://unoarquitectos.com/en/clientes" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://unoarquitectos.com/clientes" />
+  </url>
+
+  <!-- ==================================================================== -->
+  <!-- 7. AVISOS LEGALES                                                    -->
   <!-- ==================================================================== -->
   <url>
     <loc>https://unoarquitectos.com/?legal=privacy</loc>
