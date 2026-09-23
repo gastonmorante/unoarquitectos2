@@ -28,14 +28,188 @@ export const defaultClientProjects: ClientProject[] = [
     masterDriveFolderUrl: "https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing",
     cloudpanoTours: [
       {
+        id: "tour-arrecifes-19sep2026",
+        date: "19 Septiembre 2026",
+        title: "Avance 75% - Acabados Chukum, Carpintería Tzalam & Ventanería (Más Reciente)",
+        phaseName: "Fase 4: Acabados, Chukum & Carpintería de Lujo",
+        progress: 75,
+        embedCode: '',
+        folderUrl: "https://drive.google.com/drive/folders/1-67v7_NQrUfG2BwvKXI83Ddf0j40EZsE?usp=drive_link",
+        notes: "Levantamiento 360° oficial (19/09/2026) tras culminación de pastas finas de Chukum en doble altura y master suite, habilitado de carpinterías macizas en Tzalam y montaje de cancelería antihuracán Eurovent con cristal doble laminado.",
+        thumbnail: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_01.jpg",
+        scenes: [
+          {
+            id: "scene-1909-01",
+            title: "Punto #01 • Acceso Principal & Vestíbulo de Obra",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_01.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_01.jpg",
+            roomName: "Vestíbulo Principal"
+          },
+          {
+            id: "scene-1909-02",
+            title: "Punto #02 • Estancia Principal & Doble Altura en Chukum",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_02.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_02.jpg",
+            roomName: "Estancia Principal"
+          },
+          {
+            id: "scene-1909-03",
+            title: "Punto #03 • Área de Comedor & Conexión Exterior",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_03.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_03.jpg",
+            roomName: "Comedor"
+          },
+          {
+            id: "scene-1909-04",
+            title: "Punto #04 • Cocina Integral & Preparaciones MEP",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_04.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_04.jpg",
+            roomName: "Cocina"
+          },
+          {
+            id: "scene-1909-05",
+            title: "Punto #05 • Terraza Exterior & Alberca Cenote",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_05.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_05.jpg",
+            roomName: "Terraza & Alberca"
+          },
+          {
+            id: "scene-1909-06",
+            title: "Punto #06 • Asoleadero & Muros de Chukum",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_06.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_06.jpg",
+            roomName: "Asoleadero"
+          },
+          {
+            id: "scene-1909-07",
+            title: "Punto #07 • Núcleo de Escalera Escultórica",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_07.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_07.jpg",
+            roomName: "Escaleras Nivel 1"
+          },
+          {
+            id: "scene-1909-08",
+            title: "Punto #08 • Pasillo de Distribución Planta Alta",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_08.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_08.jpg",
+            roomName: "Pasillo Nivel 2"
+          },
+          {
+            id: "scene-1909-09",
+            title: "Punto #09 • Master Suite Principal & Vista Panorámica",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_09.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_09.jpg",
+            roomName: "Master Suite Nivel 2"
+          },
+          {
+            id: "scene-1909-10",
+            title: "Punto #10 • Baño Master Suite & Tina de Chukum",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_10.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_10.jpg",
+            roomName: "Baño Master"
+          },
+          {
+            id: "scene-1909-11",
+            title: "Punto #11 • Vestidor Master & Carpintería Tzalam",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_11.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_11.jpg",
+            roomName: "Vestidor Master"
+          },
+          {
+            id: "scene-1909-12",
+            title: "Punto #12 • Recámara Secundaria 1 & Vista a Selva",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_12.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_12.jpg",
+            roomName: "Recámara 1"
+          },
+          {
+            id: "scene-1909-13",
+            title: "Punto #13 • Baño Recámara 1 & Mármol Travertino",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_13.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_13.jpg",
+            roomName: "Baño Recámara 1"
+          },
+          {
+            id: "scene-1909-14",
+            title: "Punto #14 • Recámara Secundaria 2 & Acabados Finales",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_14.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_14.jpg",
+            roomName: "Recámara 2"
+          },
+          {
+            id: "scene-1909-15",
+            title: "Punto #15 • Baño Recámara 2 & Instalaciones",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_15.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_15.jpg",
+            roomName: "Baño Recámara 2"
+          },
+          {
+            id: "scene-1909-16",
+            title: "Punto #16 • Terraza Volada Superior & Barandales",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_16.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_16.jpg",
+            roomName: "Terraza Nivel 2"
+          },
+          {
+            id: "scene-1909-17",
+            title: "Punto #17 • Acceso a Rooftop & Escalera Marina",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_17.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_17.jpg",
+            roomName: "Acceso Rooftop"
+          },
+          {
+            id: "scene-1909-18",
+            title: "Punto #18 • Rooftop Panorámico & Pérgola Solar",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_18.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_18.jpg",
+            roomName: "Rooftop & Mirador"
+          },
+          {
+            id: "scene-1909-19",
+            title: "Punto #19 • Cuarto de Máquinas & Climatización VRF",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_19.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_19.jpg",
+            roomName: "Cuarto de Máquinas"
+          },
+          {
+            id: "scene-1909-20",
+            title: "Punto #20 • Fachada Principal & Cancelería Eurovent",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_20.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_20.jpg",
+            roomName: "Fachada Principal"
+          },
+          {
+            id: "scene-1909-21",
+            title: "Punto #21 • Barda Perimetral & Portón de Acceso",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_21.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_21.jpg",
+            roomName: "Barda Perimetral"
+          },
+          {
+            id: "scene-1909-22",
+            title: "Punto #22 • Jardín Posterior & Cisterna de Agua Tratada",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_22.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_22.jpg",
+            roomName: "Jardín Posterior"
+          },
+          {
+            id: "scene-1909-23",
+            title: "Punto #23 • Vista Esférica 360° • Envolvente General de Obra",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_23.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_23.jpg",
+            roomName: "Vista General 360°"
+          }
+        ]
+      },
+      {
         id: "tour-arrecifes-05sep2026",
         date: "05 Septiembre 2026",
-        title: "Avance 72% - Revestimientos en Chukum & Mármol (Más Reciente)",
+        title: "Avance 72% - Revestimientos en Chukum & Mármol",
         phaseName: "Fase 4: Revestimientos y Acabados de Lujo",
         progress: 72,
         embedCode: '',
         folderUrl: "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link",
-        notes: "Levantamiento 360° más reciente tras culminación de pasta de Chukum natural en doble altura (6.40m libres), colocación de placas de mármol Santo Tomás (1.20x2.40m) en vestíbulos y preparación para carpintería maciza de Tzalam.",
+        notes: "Levantamiento 360° tras culminación de pasta de Chukum natural en doble altura (6.40m libres), colocación de placas de mármol Santo Tomás (1.20x2.40m) en vestíbulos y preparación para carpintería maciza de Tzalam.",
         thumbnail: "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_01.jpg",
         scenes: [
         {
@@ -726,7 +900,21 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Pasta de Chukum en Doble Altura & Mármol Santo Tomás",
         summary: "Aplicación artesanal de pasta orgánica de Chukum hervida en obra en doble altura y master suite. Colocación de placas de mármol con juntas milimétricas.",
         supervisionNotes: "Dictamen #45: Acabado táctil sedoso de Chukum aprobado con sellador natural de poro abierto. Verificación de pendientes en terrazas.",
-        tourId: "tour-arrecifes-05sep2026",
+        tourId: "tour-arrecifes-05sep2026"
+      },
+      {
+        id: "ms-arrecifes-19sep2026",
+        dateStr: "2026-09-19",
+        displayDate: "19 Septiembre 2026",
+        month: "Septiembre",
+        monthIndex: 1,
+        day: 19,
+        progress: 75,
+        phaseName: "Fase 4: Acabados, Chukum & Carpintería de Lujo",
+        title: "Acabados Chukum, Carpintería Tzalam & Ventanería Eurovent",
+        summary: "Culminación de aplicación de Chukum natural en doble altura y master suite. Habilitado de cancelería antihuracán Eurovent con doble vidriado y fabricación de carpintería fina.",
+        supervisionNotes: "Dictamen #48: Sellado hidrófugo de Chukum certificado. Instalación de perfiles de cancelería con sellado perimetral contra humedad y viento.",
+        tourId: "tour-arrecifes-19sep2026",
         isLatest: true
       }
     ],
