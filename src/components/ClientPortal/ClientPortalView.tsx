@@ -306,23 +306,23 @@ export default function ClientPortalView({
 
               {/* RIGHT: Financial Control & Savings Infographic + Official Documents */}
               <div className="lg:col-span-7 space-y-4">
-                {/* INFOGRAPHIC MAIN CONTAINER */}
+                {/* TECHNICAL SUPERVISION & PROJECT STATUS CONTAINER */}
                 <div className="bg-gradient-to-br from-white/95 via-surface-container-low/90 to-white/95 backdrop-blur-xl border border-arena-calida/40 p-5 sm:p-6 rounded-3xl shadow-ethereal space-y-5 text-left">
                   
-                  {/* 1. INFOGRAPHIC HEADER */}
+                  {/* 1. STATUS HEADER */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-arena-calida/25 pb-4">
                     <div>
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[9px] font-mono font-bold border border-emerald-300/60 uppercase tracking-widest flex items-center gap-1">
-                          <TrendingDown className="w-3 h-3 text-emerald-600" />
-                          CONTROL PRESUPUESTAL OFICIAL
+                        <span className="px-2.5 py-0.5 rounded-full bg-teal-uno/10 text-teal-uno text-[9px] font-mono font-bold border border-teal-uno/30 uppercase tracking-widest flex items-center gap-1">
+                          <ShieldCheck className="w-3 h-3 text-teal-uno" />
+                          SUPERVISIÓN TÉCNICA OFICIAL
                         </span>
                         <span className="text-[10px] text-arena-calida font-mono font-bold">
-                          SEMANA 35 • 05/09/2026
+                          SEMANA 37 • SEPTIEMBRE 2026
                         </span>
                       </div>
                       <h3 className="font-headline-md text-base sm:text-lg font-bold text-teal-uno uppercase tracking-wide">
-                        Eficiencia Financiera & Ahorro Logrado
+                        Estatus de Obra & Control de Calidad
                       </h3>
                     </div>
                     
@@ -330,155 +330,117 @@ export default function ClientPortalView({
                     <div className="flex items-center gap-3 bg-teal-uno/10 border border-teal-uno/25 px-4 py-2 rounded-2xl self-start sm:self-auto">
                       <div className="text-right">
                         <span className="text-[9px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block">
-                          Avance Total
+                          Avance Global
                         </span>
                         <span className="text-xs font-semibold text-teal-uno block">
                           En Cronograma
                         </span>
                       </div>
                       <div className="font-headline-xl text-2xl sm:text-3xl font-bold text-teal-uno flex items-baseline">
-                        <span>{safeProject.globalProgress || 63}</span>
+                        <span>{activeProgress || safeProject.globalProgress || 75}</span>
                         <span className="text-xs text-arena-calida font-sans font-medium">%</span>
                       </div>
                     </div>
                   </div>
 
-                  {/* 2. HERO SAVING HIGHLIGHT BANNER */}
-                  <div className="p-4 bg-gradient-to-r from-emerald-500/15 via-emerald-500/10 to-teal-uno/10 border border-emerald-500/30 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-2xs">
-                    <div className="space-y-0.5">
-                      <span className="text-[10px] font-label-caps uppercase tracking-wider text-emerald-900 font-bold block">
-                        Ahorro Neto Acumulado a la Fecha
-                      </span>
-                      <p className="text-[11px] text-gris-texto/80 font-sans">
-                        Desviación favorable del gasto real frente a lo proyectado al 63% de avance.
-                      </p>
-                    </div>
-                    <div className="flex items-baseline gap-1.5 self-start sm:self-auto bg-white/90 px-4 py-2 rounded-xl border border-emerald-300/60 shadow-xs">
-                      <span className="font-headline-xl text-xl sm:text-2xl font-extrabold text-emerald-700">
-                        -$692,618
-                      </span>
-                      <span className="text-[10px] text-emerald-800 font-mono font-bold">MXN</span>
-                      <span className="text-[10px] font-bold text-white bg-emerald-600 px-1.5 py-0.5 rounded ml-1 font-mono">
-                        -22%
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* 3. FOUR FINANCIAL METRIC TILES */}
+                  {/* 2. FOUR TECHNICAL METRIC TILES */}
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                     <div className="p-3 bg-white/80 border border-arena-calida/30 rounded-xl text-center shadow-2xs">
-                      <span className="text-xs sm:text-sm font-bold text-teal-uno font-headline-md block truncate">$4,925,212</span>
-                      <span className="text-[9px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mt-0.5">Presupuesto Act.</span>
+                      <span className="text-xs sm:text-sm font-bold text-teal-uno font-headline-md block truncate">
+                        {safeLogbook.length} Fichas
+                      </span>
+                      <span className="text-[9px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mt-0.5">
+                        Bitácoras PDF
+                      </span>
                     </div>
                     <div className="p-3 bg-white/80 border border-arena-calida/30 rounded-xl text-center shadow-2xs">
-                      <span className="text-xs sm:text-sm font-bold text-gris-texto font-headline-md block truncate">$3,096,844</span>
-                      <span className="text-[9px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mt-0.5">Estimado (63%)</span>
+                      <span className="text-xs sm:text-sm font-bold text-teal-uno font-headline-md block truncate">
+                        {tours.length} Recorridos
+                      </span>
+                      <span className="text-[9px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mt-0.5">
+                        Levantamientos 360°
+                      </span>
                     </div>
                     <div className="p-3 bg-white/80 border border-arena-calida/30 rounded-xl text-center shadow-2xs">
-                      <span className="text-xs sm:text-sm font-bold text-teal-uno font-headline-md block truncate">$2,404,226</span>
-                      <span className="text-[9px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mt-0.5">Gasto Real</span>
+                      <span className="text-xs sm:text-sm font-bold text-teal-uno font-headline-md block truncate">
+                        {activeTour?.scenes?.length || 23} Puntos HD
+                      </span>
+                      <span className="text-[9px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mt-0.5">
+                        Escenas Esféricas
+                      </span>
                     </div>
                     <div className="p-3 bg-emerald-50/90 border border-emerald-300/60 rounded-xl text-center shadow-2xs">
-                      <span className="text-xs sm:text-sm font-bold text-emerald-700 font-headline-md block truncate">-$692,618</span>
-                      <span className="text-[9px] font-label-caps uppercase text-emerald-800 tracking-wider font-bold block mt-0.5">Ahorro (-22%)</span>
+                      <span className="text-xs sm:text-sm font-bold text-emerald-700 font-headline-md block truncate flex items-center justify-center gap-1">
+                        <CheckCircle2 className="w-3.5 h-3.5 inline text-emerald-600" /> 100%
+                      </span>
+                      <span className="text-[9px] font-label-caps uppercase text-emerald-800 tracking-wider font-bold block mt-0.5">
+                        Calidad Aprobada
+                      </span>
                     </div>
                   </div>
 
-                  {/* 4. TWO MAIN PARTIDAS BREAKDOWN CARDS */}
-                  <div className="space-y-2.5 text-xs">
-                    {/* Partida 1: Edificación */}
-                    <div className="p-3.5 bg-surface-container-low/80 border border-arena-calida/25 rounded-2xl space-y-1.5 transition-all hover:bg-white">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2 text-teal-uno font-bold text-xs uppercase tracking-wide">
-                          <Layers className="w-4 h-4 text-arena-calida flex-shrink-0" />
-                          <span>1. Edificación (Obra Civil, Inst. & Acabados)</span>
-                        </div>
-                        <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-100/80 px-2 py-0.5 rounded-md border border-emerald-200">
-                          -$577,694 (-22%)
-                        </span>
+                  {/* 3. CURRENT ACTIVE PHASE & SUPERVISION SUMMARY */}
+                  <div className="p-4 bg-surface-container-low/90 border border-arena-calida/30 rounded-2xl space-y-2">
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-2 text-teal-uno font-bold text-xs uppercase tracking-wide">
+                        <Layers className="w-4 h-4 text-arena-calida flex-shrink-0" />
+                        <span>Fase en Ejecución: {activePhase}</span>
                       </div>
-                      <div className="grid grid-cols-3 gap-2 text-[10px] text-gris-texto/80 font-mono pt-1">
-                        <div className="bg-white/70 px-2 py-1 rounded-lg border border-arena-calida/20">
-                          <span className="text-arena-calida block text-[8px] uppercase">Presupuesto Act.</span>
-                          <span className="font-semibold text-gris-texto">$3,980,321</span>
-                        </div>
-                        <div className="bg-white/70 px-2 py-1 rounded-lg border border-arena-calida/20">
-                          <span className="text-arena-calida block text-[8px] uppercase">Estimado (65%)</span>
-                          <span className="font-semibold text-gris-texto">$2,603,725</span>
-                        </div>
-                        <div className="bg-white/70 px-2 py-1 rounded-lg border border-arena-calida/20">
-                          <span className="text-teal-uno block text-[8px] uppercase font-bold">Gasto Real</span>
-                          <span className="font-bold text-teal-uno">$2,026,031</span>
-                        </div>
-                      </div>
-                      <p className="text-[10px] text-gris-texto/70 leading-tight pl-1 pt-0.5">
-                        Optimización en suministro de concreto marino f'c 300, acero Grado 42 y negociación directa en mármol Travertino.
-                      </p>
+                      <span className="text-[10px] font-mono font-bold text-teal-uno bg-teal-uno/15 px-2.5 py-0.5 rounded-full border border-teal-uno/30">
+                        {activeProgress}% Avance
+                      </span>
                     </div>
-
-                    {/* Partida 2: Fachada y Barda */}
-                    <div className="p-3.5 bg-surface-container-low/80 border border-arena-calida/25 rounded-2xl space-y-1.5 transition-all hover:bg-white">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2 text-teal-uno font-bold text-xs uppercase tracking-wide">
-                          <Building2 className="w-4 h-4 text-arena-calida flex-shrink-0" />
-                          <span>2. Fachada Principal & Barda Perimetral</span>
-                        </div>
-                        <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-100/80 px-2 py-0.5 rounded-md border border-emerald-200">
-                          -$162,729 (-37%)
-                        </span>
-                      </div>
-                      <div className="grid grid-cols-3 gap-2 text-[10px] text-gris-texto/80 font-mono pt-1">
-                        <div className="bg-white/70 px-2 py-1 rounded-lg border border-arena-calida/20">
-                          <span className="text-arena-calida block text-[8px] uppercase">Presupuesto Act.</span>
-                          <span className="font-semibold text-gris-texto">$677,050</span>
-                        </div>
-                        <div className="bg-white/70 px-2 py-1 rounded-lg border border-arena-calida/20">
-                          <span className="text-arena-calida block text-[8px] uppercase">Estimado (57%)</span>
-                          <span className="font-semibold text-gris-texto">$435,147</span>
-                        </div>
-                        <div className="bg-white/70 px-2 py-1 rounded-lg border border-arena-calida/20">
-                          <span className="text-teal-uno block text-[8px] uppercase font-bold">Gasto Real</span>
-                          <span className="font-bold text-teal-uno">$272,418</span>
-                        </div>
-                      </div>
-                      <p className="text-[10px] text-gris-texto/70 leading-tight pl-1 pt-0.5">
-                        Ahorro del 37% por consolidación de módulos de barda perimetral y modulación previa de celosías.
-                      </p>
-                    </div>
+                    <p className="text-xs text-gris-texto leading-relaxed">
+                      Supervisión técnica continua en sitio bajo dirección de obra. Registro de actividades de albañilería, aplanados en muros interiores y exteriores, aplicación de masilla en plafones, armado de alberca y canalizaciones de instalaciones hidrosanitarias y eléctricas.
+                    </p>
                   </div>
 
-                  {/* 5. OFFICIAL GOOGLE DRIVE DOCUMENT BUTTONS */}
+                  {/* 4. OFFICIAL CLOUD REPOSITORY ACCESS BUTTONS */}
                   <div className="pt-2 border-t border-arena-calida/25 space-y-2">
                     <span className="text-[10px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block">
-                      Documentación Oficial de Consulta (Memorias & Catálogo)
+                      Repositorios Oficiales en la Nube (Google Drive)
                     </span>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                       <a
-                        href="https://drive.google.com/file/d/1996CkVYgWRCUHdvQVUC9OhPnoyYUpxXK/view?usp=drive_link"
+                        href={safeProject.bitacoraFotograficaUrl || "https://drive.google.com/drive/folders/1SKrAecbj22oz23ZIjAWoeK2p8zENDTM7?usp=drive_link"}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-3 bg-white hover:bg-teal-uno hover:text-white text-teal-uno border border-arena-calida/40 rounded-xl text-[10px] font-label-caps uppercase tracking-wider font-bold flex items-center justify-between transition-all shadow-xs group cursor-pointer active:scale-95"
-                        title="Abrir Especificaciones Técnicas Oficiales en Google Drive"
+                        title="Abrir Bitácora Fotográfica oficial en Google Drive"
                       >
                         <div className="flex items-center gap-2 truncate">
-                          <FileText className="w-4 h-4 text-arena-calida group-hover:text-white flex-shrink-0 transition-colors" />
-                          <span className="truncate">Especificaciones Técnicas</span>
+                          <Camera className="w-4 h-4 text-arena-calida group-hover:text-white flex-shrink-0 transition-colors" />
+                          <span className="truncate">02 Bitácora Fotográfica</span>
                         </div>
-                        <ExternalLink className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 flex-shrink-0 ml-1.5" />
+                        <ExternalLink className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 flex-shrink-0 ml-1" />
                       </a>
 
                       <a
-                        href="https://drive.google.com/file/d/1wsVn6tyRU5ZPhua6QKLi5Oc_UMvaCXEh/view?usp=drive_link"
+                        href={safeProject.bitacoraDigitalUrl || "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link"}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-3 bg-white hover:bg-teal-uno hover:text-white text-teal-uno border border-arena-calida/40 rounded-xl text-[10px] font-label-caps uppercase tracking-wider font-bold flex items-center justify-between transition-all shadow-xs group cursor-pointer active:scale-95"
-                        title="Abrir Memoria Descriptiva Oficial de Obra en Google Drive"
+                        title="Abrir Bitácora Digital oficial en Google Drive"
                       >
                         <div className="flex items-center gap-2 truncate">
                           <FileText className="w-4 h-4 text-arena-calida group-hover:text-white flex-shrink-0 transition-colors" />
-                          <span className="truncate">Memoria Descriptiva</span>
+                          <span className="truncate">03 Bitácora Digital ({safeLogbook.length} PDFs)</span>
                         </div>
-                        <ExternalLink className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 flex-shrink-0 ml-1.5" />
+                        <ExternalLink className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 flex-shrink-0 ml-1" />
+                      </a>
+
+                      <a
+                        href={safeProject.masterDriveFolderUrl || "https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 bg-white hover:bg-teal-uno hover:text-white text-teal-uno border border-arena-calida/40 rounded-xl text-[10px] font-label-caps uppercase tracking-wider font-bold flex items-center justify-between transition-all shadow-xs group cursor-pointer active:scale-95"
+                        title="Abrir Carpeta Maestra del Proyecto en Google Drive"
+                      >
+                        <div className="flex items-center gap-2 truncate">
+                          <FolderOpen className="w-4 h-4 text-arena-calida group-hover:text-white flex-shrink-0 transition-colors" />
+                          <span className="truncate">Carpeta Maestra Drive</span>
+                        </div>
+                        <ExternalLink className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 flex-shrink-0 ml-1" />
                       </a>
                     </div>
                   </div>

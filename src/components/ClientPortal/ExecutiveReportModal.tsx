@@ -120,21 +120,31 @@ export default function ExecutiveReportModal({
             <div className="space-y-3 text-xs leading-relaxed text-zinc-700">
               <div className="p-3.5 bg-zinc-50 rounded-lg border border-zinc-200 space-y-1">
                 <div className="flex items-center justify-between font-bold text-zinc-900">
-                  <span>Dictamen de Acabados Arquitectónicos Nobles (05 Septiembre 2026)</span>
-                  <span className="text-[#00A3A3] font-mono">72% Físico</span>
+                  <span>Dictamen de Albañilería, Aplanados & Acabados (19 Septiembre 2026)</span>
+                  <span className="text-[#00A3A3] font-mono">75% Físico</span>
                 </div>
                 <p>
-                  Aplicación artesanal de pasta de Chukum tradicional maya en muros de 6.40m y alberca cenote. Colocación de mármol Santo Tomás 1.20x2.40m con junta de 1.5mm y carpinterías finas de madera tropical de Tzalam curada al 10% de humedad.
+                  Aplanados con mortero en muros interiores y exteriores, aplicación de masilla fina en plafones, perfilado de aristas, preparación de registros de instalaciones y avance en vaso de alberca (23 puntos 360° HD verificados).
                 </p>
               </div>
 
               <div className="p-3.5 bg-zinc-50 rounded-lg border border-zinc-200 space-y-1">
                 <div className="flex items-center justify-between font-bold text-zinc-900">
-                  <span>Dictamen de Instalaciones MEP & Confort Bioclimático (27 Agosto 2026)</span>
+                  <span>Dictamen de Albañilería & Aplanados (05 Septiembre 2026)</span>
+                  <span className="text-[#00A3A3] font-mono">72% Físico</span>
+                </div>
+                <p>
+                  Aplanados en muros de doble altura (6.40 m), emboquillado de vanos para cancelería, pretiles perimetrales en azotea e impermeabilización de vaso de alberca (19 puntos 360° HD verificados).
+                </p>
+              </div>
+
+              <div className="p-3.5 bg-zinc-50 rounded-lg border border-zinc-200 space-y-1">
+                <div className="flex items-center justify-between font-bold text-zinc-900">
+                  <span>Dictamen de Instalaciones MEP & Cimentación (27 Agosto 2026)</span>
                   <span className="text-[#00A3A3] font-mono">52% Físico</span>
                 </div>
                 <p>
-                  Prueba hidrostática superada a 7.0 kg/cm² (100 PSI) durante 72h con cero fugas. Red Daikin VRF oculta en plafones de 3.40m y domótica Lutron HomeWorks QSX con escenas de iluminación cálida en 2700K.
+                  Prueba hidrostática superada a 7.0 kg/cm² (100 PSI) durante 72h continuas con cero caídas de presión, canalizaciones hidrosanitarias y eléctricas ocultas (10 puntos 360° HD verificados).
                 </p>
               </div>
             </div>
@@ -148,7 +158,7 @@ export default function ExecutiveReportModal({
                 <li>• Superficie Construida: <strong>{project.totalArea}</strong></li>
                 <li>• Superficie de Terreno: <strong>1,150.00 m²</strong></li>
                 <li>• Altura Máxima Vestíbulo: <strong>6.40 m libre</strong></li>
-                <li>• Capacidad de Vaso Alberca: <strong>48.00 m² Chukum</strong></li>
+                <li>• Capacidad de Vaso Alberca: <strong>48.00 m²</strong></li>
               </ul>
             </div>
 
@@ -158,7 +168,7 @@ export default function ExecutiveReportModal({
                 <li>• Georradar (GPR): <strong>12.0m sin cavernas</strong></li>
                 <li>• Concreto Estructural: <strong>f'c = 250 kg/cm²</strong></li>
                 <li>• Resistencia a Viento: <strong>Huracán Cat. 5 (&gt;280 km/h)</strong></li>
-                <li>• Cancelería: <strong>Eurovent 12mm laminado</strong></li>
+                <li>• Cancelería: <strong>Cristal laminado de seguridad 12mm</strong></li>
               </ul>
             </div>
           </div>

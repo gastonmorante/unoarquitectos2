@@ -27,11 +27,11 @@ interface Message {
 }
 
 const QUICK_QUESTIONS = [
-  "¿Cuáles son las medidas exactas y alturas de Arrecifes?",
-  "¿Qué avances se completaron el 05 de Septiembre?",
+  "¿Cuáles son las medidas y áreas de Arrecifes?",
+  "¿Qué avances se completaron el 19 de Septiembre?",
+  "¿Qué avances se registraron el 05 de Septiembre?",
   "¿Qué especificaciones tienen las instalaciones del 27 de Agosto?",
-  "¿Cómo se aplicó el Chukum y qué cuidados requiere?",
-  "¿Dónde descargo las fotos y veo las fotos 360°?"
+  "¿Dónde descargo las bitácoras PDF y fotos 360°?"
 ];
 
 // Motor de Conocimiento Especializado para Residencia Arrecifes & UNO Arquitectos
@@ -53,14 +53,14 @@ const getLocalArrecifesResponse = (query: string, project: ClientProject): { tex
     return {
       text: `### 📐 Medidas y Especificaciones Constructivas de **${project.propertyName}**:
 
-• **Superficie Construida**: **720.00 m²** de construcción cubierta y terrazas voladas con vistas panorámicas al Caribe.
-• **Superficie del Terreno**: **1,150.00 m²** con respeto del 55% de huella selvática virgen (palmas chit, ceibas y helechos arbóreos).
+• **Superficie Construida**: **720.00 m²** de construcción cubierta y terrazas con vistas panorámicas.
+• **Superficie del Terreno**: **1,150.00 m²** con respeto de vegetación nativa y retiros normativos.
 • **Alturas Libres de Entrepiso**:
-  - **Vestíbulo Principal & Estancia**: Doble altura libre de **6.40 m** con losas nervadas y ventanales embutidos.
-  - **Master Suite (Planta Alta)**: Altura libre de **3.80 m** con terraza privada volada.
+  - **Vestíbulo Principal & Estancia**: Doble altura libre de **6.40 m** con losas nervadas y ventanales panorámicos.
+  - **Master Suite (Planta Alta)**: Altura libre de **3.80 m** con terraza privada.
   - **Recámaras Secundarias & Suites de Huéspedes**: Altura libre de **3.40 m**.
-• **Alberca Cenote**: Vaso de **48.00 m²** con profundidad gradual (0.40 m en asoleadero húmedo hasta 1.60 m en zona profunda) con canaleta perimetral oculta y acabado en Chukum turquesa natural.
-• **Claros Estructurales**: Claros continuos de hasta **8.50 m** sin columnas intermedias para integración total con el entorno selvático.`,
+• **Alberca**: Vaso de concreto armado de **48.00 m²** con profundidad gradual (0.40 m en asoleadero húmedo hasta 1.60 m en zona profunda) con canaleta perimetral e impermeabilización integral.
+• **Claros Estructurales**: Claros continuos de hasta **8.50 m** sin columnas intermedias para integración visual completa.`,
       links: [
         { label: "Ver Galería de Fotos por Fecha", url: "#photos" }
       ]
@@ -90,39 +90,60 @@ const getLocalArrecifesResponse = (query: string, project: ClientProject): { tex
 • **Certificación Antihuracán**:
   - Estructura calculada para resistir vientos hidrodinámicos de **Huracanes Categoría 5 (>280 km/h)**.
 • **Cancelería & Envolvente**:
-  - Línea europea Eurovent con cristales laminados reflectivos de **12 mm** de seguridad con anclajes estructurales ocultos.`,
+  - Cancelería de alta especificación con cristales laminados reflectivos de **12 mm** de seguridad con anclajes estructurales ocultos.`,
       links: [
         { label: "Ver Dictamen Técnico PDF", url: "#pdf" }
       ]
     };
   }
 
-  // 3. AVANCE DE OBRA DEL 05 DE SEPTIEMBRE DE 2026 (72% GLOBAL)
+  // 3. AVANCE DE OBRA DEL 19 DE SEPTIEMBRE DE 2026 (75% GLOBAL - MÁS RECIENTE)
+  if (
+    q.includes("19 sep") ||
+    q.includes("190926") ||
+    q.includes("ultimo") ||
+    q.includes("reciente") ||
+    q.includes("mas nuevo")
+  ) {
+    return {
+      text: `### 🏛️ Reporte Ejecutivo de Avance — **19 de Septiembre de 2026** (75% Global • Más Reciente):
+
+• **Fase**: Fase 4 — Albañilería, Aplanados en Muros & Acabados.
+• **Trabajos de Albañilería y Aplanados**:
+  - Aplanados con mortero en muros interiores y exteriores en planta baja y planta alta.
+  - Aplicación de masilla fina y perfilado de aristas en plafones y muros de doble altura.
+• **Área de Alberca & Exteriores**:
+  - Sellado de vaso de alberca, nivelación de andadores y preparación de registros.
+• **Instalaciones**:
+  - Ranurado y guiado de cableado eléctrico, preparaciones de tubería sanitaria e hidráulica en núcleos húmedos.`,
+      links: [
+        { label: "Abrir Carpeta Drive (19 Sep 2026)", url: "https://drive.google.com/drive/folders/1-67v7_NQrUfG2BwvKXI83Ddf0j40EZsE?usp=drive_link" },
+        { label: "Ver 23 Fotos 360° de esta fecha", url: "#360" }
+      ]
+    };
+  }
+
+  // 4. AVANCE DE OBRA DEL 05 DE SEPTIEMBRE DE 2026 (72% GLOBAL)
   if (
     q.includes("05 sep") ||
     q.includes("5 sep") ||
-    q.includes("septiembre") ||
-    q.includes("ultimo") ||
-    q.includes("reciente") ||
+    q.includes("050926") ||
     q.includes("fase 4") ||
     q.includes("acabado") ||
-    q.includes("marmol") ||
-    q.includes("chukum") ||
-    q.includes("tzalam")
+    q.includes("aplanado") ||
+    q.includes("albanileria")
   ) {
     return {
       text: `### 🏛️ Reporte Ejecutivo de Avance — **05 de Septiembre de 2026** (72% Global):
 
-• **Fase**: Fase 4 — Acabados Arquitectónicos Nobles & Revestimientos Artesanales.
-• **Chukum Maya Tradicional**:
-  - Aplicado en muros de doble altura (**6.40 m**) y fachada exterior.
-  - Elaborado con resina vegetal hervida in situ (*Havardia albicans*), polvo de piedra caliza y agua dulce de pozo filtrada, sellado con membrana de poro abierto.
-• **Mármol Santo Tomás**:
-  - Placas gran formato de **1.20 x 2.40 m** apomazadas acabado mate antideslizante con juntas milimétricas de 1.5 mm en vestíbulo y estancias.
-• **Carpintería Fina de Tzalam**:
-  - Madera tropical curada en horno al **10% de humedad relativa**, tratada contra xilófagos y sellada con aceites naturales mate.
-• **Alberca Cenote**:
-  - Doble impermeabilización epóxica flexible superada al 100% y colocación de recubrimiento en pasta de Chukum turquesa.`,
+• **Fase**: Fase 4 — Albañilería & Aplanados.
+• **Aplanados en Muros y Fachadas**:
+  - Aplicación de aplanados en muros de doble altura (**6.40 m**) y fachada exterior.
+  - Perfilado de vanos y pretiles perimetrales en azotea.
+• **Albañilería Interior**:
+  - Emboquillado de vanos para cancelería y colocación de firmes nivelados.
+• **Vaso de Alberca**:
+  - Impermeabilización de vaso de alberca y pruebas de estanqueidad.`,
       links: [
         { label: "Abrir Carpeta Drive (05 Sep 2026)", url: "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link" },
         { label: "Ver 19 Fotos 360° de esta fecha", url: "#360" }
@@ -130,18 +151,17 @@ const getLocalArrecifesResponse = (query: string, project: ClientProject): { tex
     };
   }
 
-  // 4. AVANCE DE OBRA DEL 27 DE AGOSTO DE 2026 (52% GLOBAL)
+  // 5. AVANCE DE OBRA DEL 27 DE AGOSTO DE 2026 (52% GLOBAL)
   if (
     q.includes("27 ago") ||
     q.includes("28 ago") ||
+    q.includes("270826") ||
     q.includes("agosto") ||
     q.includes("fase 3") ||
     q.includes("mep") ||
     q.includes("instalacion") ||
     q.includes("aire") ||
     q.includes("clima") ||
-    q.includes("daikin") ||
-    q.includes("lutron") ||
     q.includes("electr") ||
     q.includes("hidraul") ||
     q.includes("ptar")
@@ -149,16 +169,16 @@ const getLocalArrecifesResponse = (query: string, project: ClientProject): { tex
     return {
       text: `### ⚡ Reporte Ejecutivo de Instalaciones — **27 de Agosto de 2026** (52% Global):
 
-• **Fase**: Fase 3 — Instalaciones Ocultas MEP, Confort Bioclimático & Domótica.
-• **Climatización VRF Inverter Daikin**:
-  - Equipos de alta eficiencia energética ocultos en cámaras plénum de entrepiso (**3.40 m**) con ductería termoacústica y rejillas lineales perimetrales.
+• **Fase**: Fase 3 — Instalaciones Hidrosanitarias, Eléctricas & Preparaciones MEP.
+• **Climatización & Ductería**:
+  - Preparaciones para equipos de climatización en entrepisos técnicos (**3.40 m**) y salidas perimetrales.
 • **Instalación Hidráulica & Pruebas**:
-  - Red presurizada con tubería termofusionada PPR-CT y CPVC industrial.
-  - **Prueba Hidrostática Exitosa**: 72 horas continuas presurizada a **7.0 kg/cm² (100 PSI)** con cero caídas barométricas.
-• **Domótica & Iluminación Lutron QSX**:
-  - Cableado apantallado instalado y canalizado; luminarias LED empotradas con índice cromático **CRI > 95** en temperatura cálida de **2700K**.
+  - Red presurizada de alimentación hidráulica.
+  - **Prueba Hidrostática**: Presurizada a **7.0 kg/cm² (100 PSI)** superada en 72 horas continuas sin fugas.
+• **Instalación Eléctrica & Luminarias**:
+  - Canalizaciones, cajas de registro y cableado debidamente identificado.
 • **Sustentabilidad Hídrica**:
-  - Planta de Tratamiento de Aguas Residuales (**PTAR**) biológica y humedales de fitorremediación para reuso en riego selvático.`,
+  - Conexión a sistema de tratamiento de aguas y registros de descarga pluvial y sanitaria.`,
       links: [
         { label: "Abrir Carpeta Drive (27 Ago 2026)", url: "https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link" },
         { label: "Ver 10 Fotos 360° de esta fecha", url: "#360" }
@@ -166,7 +186,7 @@ const getLocalArrecifesResponse = (query: string, project: ClientProject): { tex
     };
   }
 
-  // 5. BITÁCORA DIGITAL & CRONOLOGÍA DE AVANCES (18 FICHAS SEMANALES EN DRIVE)
+  // 6. BITÁCORA DIGITAL & CRONOLOGÍA DE AVANCES (18 FICHAS SEMANALES EN DRIVE)
   if (
     q.includes("bitacora") ||
     q.includes("cronolog") ||
@@ -195,17 +215,18 @@ La bitácora digital de obra está respaldada y sincronizada directamente con lo
    - **S19 (08/05/2026)** a **S21 (22/05/2026)**: Estructuración de zapatas, dados de concreto armado, desplante de castillos y trabes de liga.
 
 3. **Junio 2026 (Semana 23 a Semana 26)**:
-   - **S23 (05/06/2026)** a **S26 (26/06/2026)**: Muros de mampostería, cimbrado aparente y colado de losas de entrepiso y trabes principales.
+   - **S23 (05/06/2026)** a **S26 (26/06/2026)**: Muros de mampostería, cimbrado y colado de losas de entrepiso y trabes principales.
 
 4. **Julio 2026 (Semana 27 a Semana 31)**:
    - **S27 (02/07/2026)** a **S31 (30/07/2026)**: Estructura de cubierta, pendientes pluviales, albañilería interior y preparaciones MEP.
 
 5. **Agosto 2026 (Semana 32 a Semana 35 • 52% a 70% Avance)**:
    - **S32 (07/08/2026)**: Canalizaciones hidráulicas y sanitarias en firme.
-   - **S35 (28/08/2026)**: Climatización Daikin VRF en plenum técnico de 3.40m, prueba hidrostática a **7.0 kg/cm² (100 PSI)** superada en 72h sin caídas, domótica Lutron QSX y **10 Puntos 360° HD**.
+   - **S35 (28/08/2026)**: Preparaciones de climatización en plenum técnico de 3.40m, prueba hidrostática a **7.0 kg/cm² (100 PSI)** superada en 72h sin caídas, preparaciones eléctricas y **10 Puntos 360° HD**.
 
-6. **Septiembre 2026 (Semana 36 • 72% Avance • ÚLTIMO AVANCE REGISTRADO)**:
-   - **S36 (04/09/2026)**: Revestimientos en Chukum tradicional en doble altura (**6.40m**), placas de mármol Santo Tomás (**1.20x2.40m**), carpintería en Tzalam, impermeabilización de alberca cenote (**48 m²**) y **19 Puntos 360° HD**.`,
+6. **Septiembre 2026 (Semana 36 a Semana 38 • 72% a 75% Avance)**:
+   - **S36 (04/09/2026)**: Aplanados en muros de doble altura (**6.40m**), emboquillados, impermeabilización de alberca (**48 m²**) y **19 Puntos 360° HD**.
+   - **S38/S39 (19/09/2026)**: Aplanados finos en muros interiores y exteriores, masilla en plafones, alberca e instalaciones con **23 Puntos 360° HD**.`,
       links: [
         { label: "Abrir 03 Bitácora Digital (18 PDFs en Google Drive)", url: "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link" },
         { label: "Abrir 02 Bitácora Fotográfica (Google Drive)", url: "https://drive.google.com/drive/folders/1SKrAecbj22oz23ZIjAWoeK2p8zENDTM7?usp=drive_link" },
@@ -214,7 +235,7 @@ La bitácora digital de obra está respaldada y sincronizada directamente con lo
     };
   }
 
-  // 6. FOTOS 360°, DRIVE & DESCARGAS
+  // 7. FOTOS 360°, DRIVE & DESCARGAS
   if (
     q.includes("360") ||
     q.includes("foto") ||
@@ -231,21 +252,22 @@ Dispones de acceso directo a los repositorios oficiales sincronizados en la nube
 1. **02 Bitácora Fotográfica (Google Drive)**:
    - Archivo fotográfico completo con fotos de alta resolución organizadas por fases y fechas de levantamiento.
 2. **03 Bitácora Digital (Google Drive)**:
-   - Dictámenes técnicos, reportes de supervisión de obra civil, certificados de laboratorio y actas oficiales.
+   - Dictámenes técnicos, reportes de supervisión de obra civil, certificados de laboratorio y actas oficiales (18 PDFs).
 3. **Galería 360° Inmersiva Integrada**:
+   - **19 Septiembre 2026**: 23 Puntos Esféricos HD interactivos en WebGL Three.js.
    - **05 Septiembre 2026**: 19 Puntos Esféricos HD interactivos en WebGL Three.js.
    - **27 Agosto 2026**: 10 Puntos Esféricos HD interactivos en WebGL Three.js.`,
       links: [
-        { label: "02 Bitácora Fotográfica (Drive)", url: "https://drive.google.com/drive/folders/1SKrAecbj22oz23ZIjAWoeK2p8zENDTM7?usp=drive_link" },
-        { label: "03 Bitácora Digital (Drive)", url: "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link" },
+        { label: "Carpeta 19 Sep 2026 (Drive)", url: "https://drive.google.com/drive/folders/1-67v7_NQrUfG2BwvKXI83Ddf0j40EZsE?usp=drive_link" },
         { label: "Carpeta 05 Sep 2026 (Drive)", url: "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link" },
         { label: "Carpeta 27 Ago 2026 (Drive)", url: "https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link" },
-        { label: "Repositorio Maestro Drive", url: "https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing" }
+        { label: "02 Bitácora Fotográfica (Drive)", url: "https://drive.google.com/drive/folders/1SKrAecbj22oz23ZIjAWoeK2p8zENDTM7?usp=drive_link" },
+        { label: "03 Bitácora Digital (Drive)", url: "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link" }
       ]
     };
   }
 
-  // 6. COSTOS / PRECIOS / COTIZACIONES
+  // 8. COSTOS / PRECIOS / COTIZACIONES
   if (
     q.includes("costo") ||
     q.includes("precio") ||
@@ -274,9 +296,10 @@ Para cualquier cotización formal, ajuste volumétrico o catálogo de conceptos 
 Nuestra base de conocimiento oficial abarca:
 1. **Medidas y Alturas Exactas** (6.40 m doble altura, 3.80 m master suite, 3.40 m secundarias, claros de 8.50 m, alberca de 48 m²).
 2. **Cimentación & GPR** (prospección a 12 m sin cavernas, zapatas aisladas f'c=250 kg/cm², resistencia a huracanes Cat 5).
-3. **Avance 05 Sep 2026** (Chukum tradicional en muros de 6.40m, mármol Santo Tomás 1.20x2.40m, carpintería Tzalam).
-4. **Avance 27 Ago 2026** (Climatización Daikin VRF, pruebas a 7.0 kg/cm², domótica Lutron QSX 2700K, PTAR biológica).
-5. **Carpetas de Fotos en Google Drive** y **Galería 360° Inmersiva**.
+3. **Avance 19 Sep 2026** (Albañilería, aplanados finos en muros, masilla en plafones, alberca e instalaciones).
+4. **Avance 05 Sep 2026** (Aplanados en muros de 6.40m, perfilado de vanos y pretiles, vaso de alberca).
+5. **Avance 27 Ago 2026** (Preparaciones de climatización, pruebas hidrostáticas a 7.0 kg/cm², canalizaciones eléctricas y PTAR).
+6. **Carpetas de Fotos en Google Drive** y **Galería 360° Inmersiva (52 puntos esféricos HD)**.
 
 Si necesitas información adicional no contemplada en este registro, te sugerimos contactar directamente a la Dirección Técnica.`,
     links: [
@@ -292,12 +315,12 @@ export default function ClientAIAssistantModal({ project, onClose }: ClientAIAss
       role: "assistant",
       content: `Hola. Soy el **Asesor Técnico de Inteligencia Artificial (Gemini)** de **UNO Arquitectos**, asignado a la supervisión técnica de **${project.propertyName}** bajo la dirección del **${project.director.name}**.
 
-Estoy entrenado con las especificaciones exactas, medidas milimétricas, dictámenes de supervisión y la bitácora oficial registrada en Google Drive (27 de Agosto y 05 de Septiembre de 2026).
+Estoy entrenado con las especificaciones exactas, medidas milimétricas, dictámenes de supervisión y la bitácora oficial registrada en Google Drive (27 de Agosto, 05 de Septiembre y 19 de Septiembre de 2026).
 
 ¿En qué aspecto técnico o avance de tu residencia puedo orientarte hoy?`,
       timestamp: "Ahora",
       driveLinks: [
-        { label: "Ver Último Avance (05 Sep)", url: "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link" },
+        { label: "Ver Último Avance (19 Sep)", url: "https://drive.google.com/drive/folders/1-67v7_NQrUfG2BwvKXI83Ddf0j40EZsE?usp=drive_link" },
         { label: "Ver Galería de Fotos 360°", url: "#360" }
       ]
     }
@@ -344,6 +367,7 @@ Estoy entrenado con las especificaciones exactas, medidas milimétricas, dictám
             totalArea: project.totalArea,
             estimatedDelivery: project.estimatedDelivery,
             director: project.director.name,
+            driveFolder19Sep: "https://drive.google.com/drive/folders/1-67v7_NQrUfG2BwvKXI83Ddf0j40EZsE?usp=drive_link",
             driveFolder05Sep: "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link",
             driveFolder27Ago: "https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link",
             tour360: "Visor 360° Nativo"
@@ -538,7 +562,7 @@ Estoy entrenado con las especificaciones exactas, medidas milimétricas, dictám
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Pregunta sobre medidas, Chukum, instalaciones, 360°, fechas o supervisión..."
+              placeholder="Pregunta sobre medidas, albañilería, aplanados, instalaciones, 360°, fechas o supervisión..."
               disabled={loading}
               className="flex-1 bg-white/90 border border-arena-calida/40 focus:border-teal-uno px-5 py-3 rounded-full text-xs sm:text-sm text-gris-texto placeholder-gris-texto/50 focus:outline-none transition-all shadow-xs"
             />

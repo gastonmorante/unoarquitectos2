@@ -7,12 +7,12 @@ export const defaultClientProjects: ClientProject[] = [
     accessCode: "unoarq",
     clientName: "Familia Propietaria / Residencia Arrecifes",
     location: "Playa del Carmen, Riviera Maya, Q. Roo",
-    typology: "Residencia de Lujo Tropical Contemporánea Frente al Mar",
+    typology: "Residencia Arrecifes • Obra Civil & Acabados Residenciales",
     totalArea: "720 m² de Construcción & Terrazas Voladas",
     startDate: "01 Abril 2026",
     estimatedDelivery: "20 Diciembre 2026",
     globalProgress: 63,
-    currentPhaseName: "Fase 4: Revestimientos en Chukum & Mármol Travertino",
+    currentPhaseName: "Fase 4: Albañilería, Aplanados & Acabados",
     heroImage: "/hero-luxury-villa.webp",
     director: {
       name: "Arq. Angel Cereceda",
@@ -30,12 +30,12 @@ export const defaultClientProjects: ClientProject[] = [
       {
         id: "tour-arrecifes-19sep2026",
         date: "19 Septiembre 2026",
-        title: "Avance 75% - Acabados Chukum, Carpintería Tzalam & Ventanería (Más Reciente)",
-        phaseName: "Fase 4: Acabados, Chukum & Carpintería de Lujo",
+        title: "Avance 75% - Albañilería, Aplanados & Preparaciones de Acabados (Más Reciente)",
+        phaseName: "Fase 4: Albañilería, Aplanados & Acabados",
         progress: 75,
         embedCode: '',
         folderUrl: "https://drive.google.com/drive/folders/1-67v7_NQrUfG2BwvKXI83Ddf0j40EZsE?usp=drive_link",
-        notes: "Levantamiento 360° oficial (19/09/2026) tras culminación de pastas finas de Chukum en doble altura y master suite, habilitado de carpinterías macizas en Tzalam y montaje de cancelería antihuracán Eurovent con cristal doble laminado.",
+        notes: "Levantamiento 360° oficial (19/09/2026). Registro del avance en aplanados de muros interiores y exteriores, aplicación de masilla en plafones, habilitado de vanos y preparaciones de instalaciones en planta baja y planta alta.",
         thumbnail: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_01.jpg",
         scenes: [
           {
@@ -47,7 +47,7 @@ export const defaultClientProjects: ClientProject[] = [
           },
           {
             id: "scene-1909-02",
-            title: "Punto #02 • Estancia Principal & Doble Altura en Chukum",
+            title: "Punto #02 • Estancia Principal & Doble Altura",
             equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_02.jpg",
             thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_02.jpg",
             roomName: "Estancia Principal"
@@ -75,7 +75,7 @@ export const defaultClientProjects: ClientProject[] = [
           },
           {
             id: "scene-1909-06",
-            title: "Punto #06 • Asoleadero & Muros de Chukum",
+            title: "Punto #06 • Asoleadero & Muros Exteriores",
             equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_06.jpg",
             thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_06.jpg",
             roomName: "Asoleadero"
@@ -103,7 +103,7 @@ export const defaultClientProjects: ClientProject[] = [
           },
           {
             id: "scene-1909-10",
-            title: "Punto #10 • Baño Master Suite & Tina de Chukum",
+            title: "Punto #10 • Baño Master Suite",
             equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_10.jpg",
             thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_10.jpg",
             roomName: "Baño Master"
@@ -124,7 +124,7 @@ export const defaultClientProjects: ClientProject[] = [
           },
           {
             id: "scene-1909-13",
-            title: "Punto #13 • Baño Recámara 1 & Mármol Travertino",
+            title: "Punto #13 • Baño Recámara 1",
             equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_13.jpg",
             thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_13.jpg",
             roomName: "Baño Recámara 1"
@@ -173,7 +173,7 @@ export const defaultClientProjects: ClientProject[] = [
           },
           {
             id: "scene-1909-20",
-            title: "Punto #20 • Fachada Principal & Cancelería Eurovent",
+            title: "Punto #20 • Fachada Principal & Vanos de Ventanería",
             equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_20.jpg",
             thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_20.jpg",
             roomName: "Fachada Principal"
@@ -204,143 +204,143 @@ export const defaultClientProjects: ClientProject[] = [
       {
         id: "tour-arrecifes-05sep2026",
         date: "05 Septiembre 2026",
-        title: "Avance 72% - Revestimientos en Chukum & Mármol",
-        phaseName: "Fase 4: Revestimientos y Acabados de Lujo",
+        title: "Avance 72% - Albañilería, Aplanados & Cimbrado de Alberca",
+        phaseName: "Fase 4: Albañilería & Aplanados",
         progress: 72,
         embedCode: '',
         folderUrl: "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link",
-        notes: "Levantamiento 360° tras culminación de pasta de Chukum natural en doble altura (6.40m libres), colocación de placas de mármol Santo Tomás (1.20x2.40m) en vestíbulos y preparación para carpintería maciza de Tzalam.",
+        notes: "Levantamiento 360° correspondiente a la semana 36 de obra. Supervisión de aplanados en muros de diferentes áreas, aplicación de masilla en plafones, cimbrado y armado de alberca, y habilitado de elementos de albañilería.",
         thumbnail: "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_01.jpg",
         scenes: [
         {
                 "id": "scene-0509-01",
-                "title": "Punto #01 • Vestíbulo Principal & Doble Altura (6.40m)",
+                "title": "Punto #01 • Vestíbulo Principal & Doble Altura",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_01.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_01.jpg",
                 "roomName": "Vestíbulo Principal"
         },
         {
                 "id": "scene-0509-02",
-                "title": "Punto #02 • Estancia Central & Muros en Chukum Maya",
+                "title": "Punto #02 • Estancia Central & Muros de Albañilería",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_02.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_02.jpg",
                 "roomName": "Estancia Central"
         },
         {
                 "id": "scene-0509-03",
-                "title": "Punto #03 • Comedor Open-Concept & Madera de Parota",
+                "title": "Punto #03 • Área de Comedor & Cocina",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_03.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_03.jpg",
                 "roomName": "Comedor & Cocina"
         },
         {
                 "id": "scene-0509-04",
-                "title": "Punto #04 • Terraza Exterior & Alberca Cenote (48 m²)",
+                "title": "Punto #04 • Terraza Exterior & Área de Alberca",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_04.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_04.jpg",
                 "roomName": "Terraza & Alberca"
         },
         {
                 "id": "scene-0509-05",
-                "title": "Punto #05 • Asoleadero Húmedo & Jardineras Selváticas",
+                "title": "Punto #05 • Asoleadero & Muros Exteriores",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_05.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_05.jpg",
                 "roomName": "Asoleadero Húmedo"
         },
         {
                 "id": "scene-0509-06",
-                "title": "Punto #06 • Placas de Mármol Santo Tomás (1.20x2.40m)",
+                "title": "Punto #06 • Vestíbulo & Pasillo de Acceso",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_06.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_06.jpg",
                 "roomName": "Vestíbulo de Acceso"
         },
         {
                 "id": "scene-0509-07",
-                "title": "Punto #07 • Escalera Escultórica en Concreto & Tzalam",
+                "title": "Punto #07 • Núcleo de Escalera en Concreto",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_07.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_07.jpg",
                 "roomName": "Núcleo de Escaleras"
         },
         {
                 "id": "scene-0509-08",
-                "title": "Punto #08 • Master Suite Principal con Terraza Volada",
+                "title": "Punto #08 • Master Suite Principal (Nivel 2)",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_08.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_08.jpg",
                 "roomName": "Master Suite Nivel 2"
         },
         {
                 "id": "scene-0509-09",
-                "title": "Punto #09 • Baño Master Suite & Tina de Chukum",
+                "title": "Punto #09 • Área de Baño Master Suite",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_09.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_09.jpg",
                 "roomName": "Baño Principal"
         },
         {
                 "id": "scene-0509-10",
-                "title": "Punto #10 • Recámara Secundaria 1 & Vista a la Selva",
+                "title": "Punto #10 • Recámara Secundaria 1",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_10.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_10.jpg",
                 "roomName": "Recámara 1"
         },
         {
                 "id": "scene-0509-11",
-                "title": "Punto #11 • Recámara Secundaria 2 & Acabados en Cal",
+                "title": "Punto #11 • Recámara Secundaria 2",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_11.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_11.jpg",
                 "roomName": "Recámara 2"
         },
         {
                 "id": "scene-0509-12",
-                "title": "Punto #12 • Terraza Volada Superior (Nivel 2)",
+                "title": "Punto #12 • Terraza Superior",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_12.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_12.jpg",
                 "roomName": "Terraza Superior"
         },
         {
                 "id": "scene-0509-13",
-                "title": "Punto #13 • Rooftop Panorámico & Pérgola Solar",
+                "title": "Punto #13 • Rooftop & Vista Panorámica",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_13.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_13.jpg",
                 "roomName": "Rooftop & Mirador"
         },
         {
                 "id": "scene-0509-14",
-                "title": "Punto #14 • Plafones Técnicos & Ductería Daikin VRF",
+                "title": "Punto #14 • Plafones & Instalaciones en Entrepiso",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_14.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_14.jpg",
                 "roomName": "Área de Climatización"
         },
         {
                 "id": "scene-0509-15",
-                "title": "Punto #15 • Cuarto de Máquinas & Tableros Lutron QSX",
+                "title": "Punto #15 • Cuarto de Máquinas & Instalaciones Eléctricas",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_15.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_15.jpg",
                 "roomName": "Cuarto de Control"
         },
         {
                 "id": "scene-0509-16",
-                "title": "Punto #16 • Fachada Principal & Cancelería Eurovent 12mm",
+                "title": "Punto #16 • Fachada Principal & Vanos de Ventanería",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_16.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_16.jpg",
                 "roomName": "Fachada Principal"
         },
         {
                 "id": "scene-0509-17",
-                "title": "Punto #17 • Barda Perimetral & Celosías Moduladas",
+                "title": "Punto #17 • Barda Perimetral & Muros",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_17.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_17.jpg",
                 "roomName": "Barda Perimetral"
         },
         {
                 "id": "scene-0509-18",
-                "title": "Punto #18 • Pasillo de Distribución & Plafón en Madera",
+                "title": "Punto #18 • Pasillo de Distribución Planta Alta",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_18.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_18.jpg",
                 "roomName": "Pasillo Nivel 2"
         },
         {
                 "id": "scene-0509-19",
-                "title": "Punto #19 • Vista Esférica 360° • Envolvente de Obra",
+                "title": "Punto #19 • Vista Esférica 360° • Envolvente General",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_19.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_19.jpg",
                 "roomName": "Vista General 360°"
@@ -350,31 +350,31 @@ export const defaultClientProjects: ClientProject[] = [
       {
         id: "tour-arrecifes-27ago2026",
         date: "27 Agosto 2026",
-        title: "Avance 52% - Instalaciones Especiales, Domótica & HVAC",
+        title: "Avance 52% - Instalaciones Hidrosanitarias, Eléctricas & Estructura",
         phaseName: "Fase 3: Instalaciones Especiales",
         progress: 52,
         embedCode: '',
         folderUrl: "https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link",
-        notes: "Supervisión 360° de canalizaciones hidrosanitarias presurizadas a 7 kg/cm², cableado domótico Lutron Homeworks QSX y ductería oculta de aire acondicionado VRF inverter Daikin.",
+        notes: "Supervisión 360° de canalizaciones hidrosanitarias, salidas eléctricas, bajantes pluviales y habilitado de elementos estructurales.",
         thumbnail: "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_01.jpg",
         scenes: [
         {
                 "id": "scene-2708-01",
-                "title": "Punto #01 • Canalizaciones Hidráulicas Presurizadas a 100 PSI",
+                "title": "Punto #01 • Canalizaciones Hidráulicas & Salidas Hidrosanitarias",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_01.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_01.jpg",
                 "roomName": "Área Hidrosanitaria"
         },
         {
                 "id": "scene-2708-02",
-                "title": "Punto #02 • Cámara Plénum Climatización Daikin VRF (3.40m)",
+                "title": "Punto #02 • Preparación de Plafones & Entrepiso",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_02.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_02.jpg",
                 "roomName": "Plénum Técnico"
         },
         {
                 "id": "scene-2708-03",
-                "title": "Punto #03 • Cableado Apantallado para Domótica Lutron QSX",
+                "title": "Punto #03 • Centro de Carga & Canalizaciones Eléctricas",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_03.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_03.jpg",
                 "roomName": "Tablero Domótica"
@@ -388,42 +388,42 @@ export const defaultClientProjects: ClientProject[] = [
         },
         {
                 "id": "scene-2708-05",
-                "title": "Punto #05 • Firme de Concreto Armado & Zapatas Aisladas",
+                "title": "Punto #05 • Firme de Concreto Armado & Cimentación",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_05.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_05.jpg",
                 "roomName": "Firme & Cimentación"
         },
         {
                 "id": "scene-2708-06",
-                "title": "Punto #06 • Vaso de Alberca Cenote & Doble Impermeabilización",
+                "title": "Punto #06 • Vaso de Alberca en Obra",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_06.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_06.jpg",
                 "roomName": "Alberca en Obra"
         },
         {
                 "id": "scene-2708-07",
-                "title": "Punto #07 • Pasos de Instalaciones MEP en Losas",
+                "title": "Punto #07 • Pasos de Instalaciones en Losas",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_07.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_07.jpg",
                 "roomName": "Entrepiso Estructural"
         },
         {
                 "id": "scene-2708-08",
-                "title": "Punto #08 • Cuarto de Control & Tubería PPR-CT Termofusionada",
+                "title": "Punto #08 • Cuarto de Control & Tuberías Hidrosanitarias",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_08.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_08.jpg",
                 "roomName": "Cuarto de Máquinas"
         },
         {
                 "id": "scene-2708-09",
-                "title": "Punto #09 • Barda Perimetral de Mampostería Concluida",
+                "title": "Punto #09 • Barda Perimetral de Mampostería",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_09.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_09.jpg",
                 "roomName": "Barda Perimetral"
         },
         {
                 "id": "scene-2708-10",
-                "title": "Punto #10 • Vista Esférica 360° de Estructura en Obra Negra",
+                "title": "Punto #10 • Vista Esférica 360° de Estructura",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_10.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_10.jpg",
                 "roomName": "Estructura Global"
@@ -435,84 +435,84 @@ export const defaultClientProjects: ClientProject[] = [
       {
         id: "ph-1",
         order: 1,
-        title: "1. Cimentación y Estructura en Suelo Kárstico",
+        title: "1. Cimentación y Estructura Portante",
         progress: 100,
         status: "completed",
         targetDates: "15 Ene 2026 - 15 Abr 2026",
-        supervisionNotes: "Dictamen #12: Geoprospección GPR completada sin cavidades kársticas. Concreto ciclópeo f'c=250 kg/cm² certificado por laboratorio estructural.",
+        supervisionNotes: "Dictamen #12: Excavación, cimentación de mampostería y armado de acero completados y certificados por laboratorio estructural.",
         inspectedBy: "Arq. Angel Cereceda & Director Responsable de Obra",
         completionDate: "12 Abril 2026"
       },
       {
         id: "ph-2",
         order: 2,
-        title: "2. Muros, Mampostería y Cimbra Aparente",
+        title: "2. Muros, Mampostería y Cimbra",
         progress: 100,
         status: "completed",
         targetDates: "16 Abr 2026 - 30 Jun 2026",
-        supervisionNotes: "Dictamen #24: Muros perimetrales y pretiles nivelados con plomada láser. Texturizado de muros en concreto con duela de madera tratada.",
+        supervisionNotes: "Dictamen #24: Muros de block, castillos, cadenas de cerramiento y losas nivelados con plomada y equipo topográfico.",
         inspectedBy: "Ing. Residente de Estructura",
         completionDate: "28 Junio 2026"
       },
       {
         id: "ph-3",
         order: 3,
-        title: "3. Instalaciones Especiales (Hidrosanitaria, Eléctrica & Domótica)",
+        title: "3. Instalaciones Hidrosanitarias y Eléctricas",
         progress: 100,
         status: "completed",
         targetDates: "01 Jul 2026 - 15 Ago 2026",
-        supervisionNotes: "Dictamen #35: Prueba hidrostática de presión a 7 kg/cm² aprobada con cero fugas. Tendido de fibra óptica y cableado para sistema Lutron.",
+        supervisionNotes: "Dictamen #35: Canalizaciones de tuberías hidráulicas, sanitarias, eléctricas y bajantes pluviales verificadas.",
         inspectedBy: "Ing. Especialista en MEP & Domótica",
         completionDate: "14 Agosto 2026"
       },
       {
         id: "ph-4",
         order: 4,
-        title: "4. Revestimientos en Chukum Tradicional Maya & Mármol",
+        title: "4. Albañilería, Aplanados y Masilla en Plafones",
         progress: 75,
         status: "in_progress",
         targetDates: "16 Ago 2026 - 31 Oct 2026",
-        supervisionNotes: "Dictamen #48: Aplicación de resina de Chukum natural hervida en obra en baños máster y doble altura. Sellado hidrófugo de poro abierto en proceso.",
+        supervisionNotes: "Dictamen #48: Aplanados en muros interiores y exteriores, aplicación de masilla en plafones y emboquillados en proceso.",
         inspectedBy: "Arq. Angel Cereceda",
       },
       {
         id: "ph-5",
         order: 5,
-        title: "5. Carpintería Fina en Madera Maciza de Tzalam",
+        title: "5. Alberca y Obras Exteriores",
         progress: 40,
         status: "in_progress",
         targetDates: "01 Oct 2026 - 30 Nov 2026",
-        supervisionNotes: "Dictamen #52: Madera de Tzalam y Zapote curada y secada en horno. Puertas pivotantes de 3.20m de altura y vestidores en fabricación en taller.",
+        supervisionNotes: "Dictamen #52: Cimbrado, armado de acero y colado de vaso de alberca y áreas exteriores.",
         inspectedBy: "Maestro Ebanista & Arq. Residente",
       },
       {
         id: "ph-6",
         order: 6,
-        title: "6. Cancelería Antihuracán & Doble Vidriado Hermético (DVH)",
+        title: "6. Carpinterías y Cancelería",
         progress: 15,
         status: "in_progress",
         targetDates: "01 Nov 2026 - 15 Dic 2026",
-        supervisionNotes: "Perfilería europea de aluminio extruido con cristal laminado 6+6 con película PVB resistente a impacto de proyectiles Cat. 5.",
+        supervisionNotes: "Habilitado de vanos y preparación de boquillas para colocación de cancelería y carpinterías.",
         inspectedBy: "Ing. de Fachadas & Cancelería",
       },
       {
         id: "ph-7",
         order: 7,
-        title: "7. Iluminación Sensorial, Paisajismo Selvático & Alberca",
+        title: "7. Instalaciones Finales y Exteriores",
         progress: 0,
         status: "scheduled",
         targetDates: "15 Dic 2026 - 31 Ene 2027",
-        supervisionNotes: "Siembra de flora endémica (palmas chit, ceibas, helechos gigantes) y luminarias arquitectónicas warm light 2700K integradas.",
+        supervisionNotes: "Instalaciones de luminarias, cableado final y adecuación de áreas exteriores.",
         inspectedBy: "Diseñador Paisajista & Iluminación",
       },
       {
         id: "ph-8",
         order: 8,
-        title: "8. Entrega de Llaves, Protocolo de Calidad & As-Built",
+        title: "8. Entrega de Obra y Protocolo de Calidad",
         progress: 0,
         status: "scheduled",
         targetDates: "01 Feb 2027 - 28 Feb 2027",
-        supervisionNotes: "Inspección final de acabados, entrega de manuales técnicos de operación, planos As-Built y garantía estructural certificada.",
+        supervisionNotes: "Inspección final de acabados, entrega de planos finales de obra y protocolo de entrega.",
         inspectedBy: "Arq. Angel Cereceda / Dirección General",
       }
     ],
@@ -559,7 +559,7 @@ export const defaultClientProjects: ClientProject[] = [
         date: "05 Septiembre 2026",
         location: "Área Técnica - Núcleo Húmedo",
         imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_04.jpg",
-        technicalNote: "Prueba de hermeticidad en tuberías termofusionadas PPR y tubería conduit tipo pesado para domótica.",
+        technicalNote: "Prueba de hermeticidad en tuberías termofusionadas PPR y tubería conduit de alta resistencia.",
         isReframed360: true
       },
       {
@@ -614,7 +614,7 @@ export const defaultClientProjects: ClientProject[] = [
         date: "05 Septiembre 2026",
         location: "Recámara 1 - Planta Alta",
         imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_09.jpg",
-        technicalNote: "Preparación de boquillas y vanos para cancelería Eurovent con tolerancias milimétricas.",
+        technicalNote: "Preparación de boquillas y vanos para cancelería con tolerancias milimétricas.",
         isReframed360: true
       },
       {
@@ -632,11 +632,11 @@ export const defaultClientProjects: ClientProject[] = [
         id: "rep-arrecifes-0509-11",
         period: "05 Septiembre 2026",
         category: "Alberca",
-        title: "Excavación y Conformación de Alberca Cenote",
+        title: "Cimbrado y Armado de Vaso de Alberca",
         date: "05 Septiembre 2026",
-        location: "Área Exterior - Alberca Cenote 48m²",
+        location: "Área Exterior - Alberca",
         imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_11.jpg",
-        technicalNote: "Armado de parrilla doble de acero #3 y preparación para concreto lanzado (gunite) con acabado Chukum.",
+        technicalNote: "Armado de parrilla doble de acero #3 y preparación para concreto y elementos de confinamiento.",
         isReframed360: true
       },
       {
@@ -654,11 +654,11 @@ export const defaultClientProjects: ClientProject[] = [
         id: "rep-arrecifes-0509-13",
         period: "05 Septiembre 2026",
         category: "Instalaciones",
-        title: "Tablero Eléctrico Principal & Nodos Lutron",
+        title: "Centro de Carga Principal & Canalizaciones Eléctricas",
         date: "05 Septiembre 2026",
-        location: "Centro de Cargas & Domótica",
+        location: "Centro de Carga Principal",
         imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_13.jpg",
-        technicalNote: "Distribución de circuitos balanceados y canalización de buses QSX para control de iluminación y cortinas.",
+        technicalNote: "Distribución de circuitos balanceados y canalización de circuitos eléctricos e iluminación.",
         isReframed360: true
       },
       {
@@ -669,18 +669,18 @@ export const defaultClientProjects: ClientProject[] = [
         date: "05 Septiembre 2026",
         location: "Terraza Posterior & Deck",
         imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_14.jpg",
-        technicalNote: "Anclaje de placas de acero inoxidable para fijación de vigas de madera dura regional Tzalam.",
+        technicalNote: "Anclaje de placas de acero inoxidable para fijación de vigas de madera tratada.",
         isReframed360: true
       },
       {
         id: "rep-arrecifes-0509-15",
         period: "05 Septiembre 2026",
         category: "Acabados",
-        title: "Muestras de Pasta de Chukum & Selladores Mate",
+        title: "Muestras de Aplanados & Acabados",
         date: "05 Septiembre 2026",
-        location: "Área de Pruebas de Acabados",
+        location: "Área de Muestras",
         imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_15.jpg",
-        technicalNote: "Preparación artesanal de caldo de corteza de Chukum con polvo de piedra caliza y cemento blanco.",
+        technicalNote: "Pruebas de texturas de aplanados y proporciones de mortero para acabados en muros.",
         isReframed360: true
       },
       {
@@ -713,7 +713,7 @@ export const defaultClientProjects: ClientProject[] = [
         date: "05 Septiembre 2026",
         location: "Vanos Fachada Sur",
         imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_18.jpg",
-        technicalNote: "Comprobación dimensional con distanciómetro láser para cristales laminados de 12mm templado.",
+        technicalNote: "Comprobación dimensional con distanciómetro láser para cancelería y ventanería.",
         isReframed360: true
       },
       {
@@ -724,7 +724,7 @@ export const defaultClientProjects: ClientProject[] = [
         date: "05 Septiembre 2026",
         location: "Perímetro de Cimentación",
         imageUrl: "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_19.jpg",
-        technicalNote: "Instalación de trampas de grasa y líneas de drenaje conectadas a la planta de tratamiento biológica.",
+        technicalNote: "Instalación de trampas de grasa y líneas de drenaje de obra.",
         isReframed360: true
       },
       {
@@ -857,20 +857,20 @@ export const defaultClientProjects: ClientProject[] = [
         title: "Master Suite & Terraza Selvática",
         zone: "Planta Alta - Recámara Principal",
         beforeDate: "Junio 2026 (Fase Estructural)",
-        afterDate: "Septiembre 2026 (Revestimientos & Chukum)",
+        afterDate: "Septiembre 2026 (Albañilería & Aplanados)",
         beforeImage: "/projects/offgrid/offgrid-suite-tulum.jpg",
-        afterImage: "/projects/residencial/alux-7cielos-chukum-suite.jpg",
-        description: "Transformación desde el cajón de concreto armado con claros abiertos hacia el espacio habitable terminado con pasta de Chukum sedoso, cancelería embutida y vistas al dosel selvático."
+        afterImage: "/projects/residencial/alux-7cielos-master-jungle-view.jpg",
+        description: "Transformación desde el cajón de concreto armado con claros abiertos hacia el espacio habitable terminado con aplanados en muros, masilla en plafones y vanos de ventanería."
       },
       {
         id: "ba-arrecifes-alberca",
-        title: "Pabellón Cenote & Alberca de Chukum",
+        title: "Área de Alberca & Terraza Exterior",
         zone: "Área Exterior - Jardín Posterior",
         beforeDate: "Mayo 2026 (Excavación Kárstica)",
         afterDate: "Septiembre 2026 (Alberca Concluida)",
         beforeImage: "/projects/offgrid/offgrid-villa-cenote.jpg",
         afterImage: "/projects/residencial/alux-7cielos-ocean-pool.jpg",
-        description: "Evolución desde el corte en roca caliza con compactación controlada hasta la alberca boutique con acabado Chukum natural que refleja el agua en tonalidades turquesa caribeño."
+        description: "Evolución desde el corte en roca caliza con compactación controlada hasta la conformación de alberca, firmes de concreto y áreas exteriores."
       }
     ],
     milestones: [
@@ -882,10 +882,10 @@ export const defaultClientProjects: ClientProject[] = [
         monthIndex: 0,
         day: 27,
         progress: 52,
-        phaseName: "Fase 3: Instalaciones Especiales & Domótica",
-        title: "Canalizaciones Hidrosanitarias, VRF & Sistema Lutron",
-        summary: "Pruebas hidrostáticas presurizadas a 7 kg/cm² con cero caídas de presión. Tendido de ductería oculta de climatización inverter y fibra óptica.",
-        supervisionNotes: "Dictamen #31: Inspección de canalizaciones aprobada. Sistema de respaldo para paneles solares y cableado domótico certificado.",
+        phaseName: "Fase 3: Instalaciones Hidrosanitarias & Eléctricas",
+        title: "Canalizaciones Hidrosanitarias & Eléctricas",
+        summary: "Canalizaciones de tuberías hidráulicas, sanitarias y eléctricas ahogadas en losas y muros.",
+        supervisionNotes: "Dictamen #31: Inspección de canalizaciones hidrosanitarias y salidas eléctricas aprobada.",
         tourId: "tour-arrecifes-27ago2026"
       },
       {
@@ -896,10 +896,10 @@ export const defaultClientProjects: ClientProject[] = [
         monthIndex: 1,
         day: 5,
         progress: 72,
-        phaseName: "Fase 4: Revestimientos en Chukum Tradicional Maya & Mármol",
-        title: "Pasta de Chukum en Doble Altura & Mármol Santo Tomás",
-        summary: "Aplicación artesanal de pasta orgánica de Chukum hervida en obra en doble altura y master suite. Colocación de placas de mármol con juntas milimétricas.",
-        supervisionNotes: "Dictamen #45: Acabado táctil sedoso de Chukum aprobado con sellador natural de poro abierto. Verificación de pendientes en terrazas.",
+        phaseName: "Fase 4: Albañilería, Aplanados & Alberca",
+        title: "Aplanados en Muros, Masilla en Plafones & Alberca",
+        summary: "Trabajos de aplanados en diferentes áreas de la edificación, aplicación de masilla en plafones y cimbrado de alberca.",
+        supervisionNotes: "Dictamen #45: Verificación de niveles y alineación en aplanados de muros y cimbrado de alberca.",
         tourId: "tour-arrecifes-05sep2026"
       },
       {
@@ -910,10 +910,10 @@ export const defaultClientProjects: ClientProject[] = [
         monthIndex: 1,
         day: 19,
         progress: 75,
-        phaseName: "Fase 4: Acabados, Chukum & Carpintería de Lujo",
-        title: "Acabados Chukum, Carpintería Tzalam & Ventanería Eurovent",
-        summary: "Culminación de aplicación de Chukum natural en doble altura y master suite. Habilitado de cancelería antihuracán Eurovent con doble vidriado y fabricación de carpintería fina.",
-        supervisionNotes: "Dictamen #48: Sellado hidrófugo de Chukum certificado. Instalación de perfiles de cancelería con sellado perimetral contra humedad y viento.",
+        phaseName: "Fase 4: Albañilería, Aplanados & Acabados",
+        title: "Albañilería, Aplanados & Preparaciones de Acabados",
+        summary: "Avance de aplanados en muros interiores y exteriores, aplicación de masilla en plafones y preparaciones para acabados.",
+        supervisionNotes: "Dictamen #48: Supervisión de plomadas en muros y preparación de boquillas para ventanería.",
         tourId: "tour-arrecifes-19sep2026",
         isLatest: true
       }
@@ -3666,7 +3666,7 @@ export const defaultClientProjects: ClientProject[] = [
           date: "27 Agosto 2026",
           progress: 52,
           title: "AVANCE 52% - INSTALACIONES ESPECIALES, DOMÓTICA & HVAC",
-          notes: "Supervisión 360° de canalizaciones hidrosanitarias presurizadas a 7 kg/cm², cableado domótico Lutron Homeworks QSX y ductería oculta de aire acondicionado VRF inverter.",
+          notes: "Supervisión 360° de canalizaciones hidrosanitarias, salidas eléctricas, bajantes pluviales y habilitado de elementos estructurales.",
           scenes360Count: 10,
           encuadradasCount: 10,
           folderUrl: "https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link"
@@ -4061,8 +4061,8 @@ export const defaultClientProjects: ClientProject[] = [
           date: "05 Septiembre 2026",
           progress: 72,
           isLatest: true,
-          title: "AVANCE 72% - REVESTIMIENTOS EN CHUKUM & MÁRMOL (MÁSTER SUITE & PB)",
-          notes: "Levantamiento 360° más reciente tras culminación de pasta de Chukum natural en doble altura (6.40m libres), colocación de placas de mármol Santo Tomás (1.20x2.40m) en vestíbulos y preparación para carpintería maciza de Tzalam.",
+          title: "AVANCE 72% - ALBAÑILERÍA, APLANADOS & CIMBRADO DE ALBERCA",
+          notes: "Levantamiento 360° correspondiente a la semana 36 de obra. Supervisión de aplanados en muros de diferentes áreas, aplicación de masilla en plafones, cimbrado de alberca y elementos de albañilería.",
           scenes360Count: 19,
           encuadradasCount: 20,
           folderUrl: "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link"
@@ -4321,7 +4321,7 @@ export const defaultClientProjects: ClientProject[] = [
             "originalName": "arrecifes_20260905_reframe_01.jpg",
             "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_01.webp",
             "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_01.webp",
-            "caption": "Fotografía Encuadrada HD #01 • Acabados Chukum, Estructura & Mármol",
+            "caption": "Registro Fotográfico de Supervisión #01 • Albañilería, Muros & Estructura",
             "date": "05 Septiembre 2026",
             "order": 101
           },
@@ -4330,7 +4330,7 @@ export const defaultClientProjects: ClientProject[] = [
             "originalName": "arrecifes_20260905_reframe_02.jpg",
             "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_02.webp",
             "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_02.webp",
-            "caption": "Fotografía Encuadrada HD #02 • Acabados Chukum, Estructura & Mármol",
+            "caption": "Registro Fotográfico de Supervisión #02 • Albañilería, Muros & Estructura",
             "date": "05 Septiembre 2026",
             "order": 102
           },
@@ -4339,7 +4339,7 @@ export const defaultClientProjects: ClientProject[] = [
             "originalName": "arrecifes_20260905_reframe_03.jpg",
             "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_03.webp",
             "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_03.webp",
-            "caption": "Fotografía Encuadrada HD #03 • Acabados Chukum, Estructura & Mármol",
+            "caption": "Registro Fotográfico de Supervisión #03 • Albañilería, Muros & Estructura",
             "date": "05 Septiembre 2026",
             "order": 103
           },
@@ -4348,7 +4348,7 @@ export const defaultClientProjects: ClientProject[] = [
             "originalName": "arrecifes_20260905_reframe_04.jpg",
             "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_04.webp",
             "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_04.webp",
-            "caption": "Fotografía Encuadrada HD #04 • Acabados Chukum, Estructura & Mármol",
+            "caption": "Registro Fotográfico de Supervisión #04 • Albañilería, Muros & Estructura",
             "date": "05 Septiembre 2026",
             "order": 104
           },
@@ -4357,7 +4357,7 @@ export const defaultClientProjects: ClientProject[] = [
             "originalName": "arrecifes_20260905_reframe_05.jpg",
             "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_05.webp",
             "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_05.webp",
-            "caption": "Fotografía Encuadrada HD #05 • Acabados Chukum, Estructura & Mármol",
+            "caption": "Registro Fotográfico de Supervisión #05 • Albañilería, Muros & Estructura",
             "date": "05 Septiembre 2026",
             "order": 105
           },
@@ -4366,7 +4366,7 @@ export const defaultClientProjects: ClientProject[] = [
             "originalName": "arrecifes_20260905_reframe_06.jpg",
             "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_06.webp",
             "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_06.webp",
-            "caption": "Fotografía Encuadrada HD #06 • Acabados Chukum, Estructura & Mármol",
+            "caption": "Registro Fotográfico de Supervisión #06 • Albañilería, Muros & Estructura",
             "date": "05 Septiembre 2026",
             "order": 106
           },
@@ -4375,7 +4375,7 @@ export const defaultClientProjects: ClientProject[] = [
             "originalName": "arrecifes_20260905_reframe_07.jpg",
             "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_07.webp",
             "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_07.webp",
-            "caption": "Fotografía Encuadrada HD #07 • Acabados Chukum, Estructura & Mármol",
+            "caption": "Registro Fotográfico de Supervisión #07 • Albañilería, Muros & Estructura",
             "date": "05 Septiembre 2026",
             "order": 107
           },
@@ -4384,7 +4384,7 @@ export const defaultClientProjects: ClientProject[] = [
             "originalName": "arrecifes_20260905_reframe_08.jpg",
             "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_08.webp",
             "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_08.webp",
-            "caption": "Fotografía Encuadrada HD #08 • Acabados Chukum, Estructura & Mármol",
+            "caption": "Registro Fotográfico de Supervisión #08 • Albañilería, Muros & Estructura",
             "date": "05 Septiembre 2026",
             "order": 108
           },
@@ -4393,7 +4393,7 @@ export const defaultClientProjects: ClientProject[] = [
             "originalName": "arrecifes_20260905_reframe_09.jpg",
             "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_09.webp",
             "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_09.webp",
-            "caption": "Fotografía Encuadrada HD #09 • Acabados Chukum, Estructura & Mármol",
+            "caption": "Registro Fotográfico de Supervisión #09 • Albañilería, Muros & Estructura",
             "date": "05 Septiembre 2026",
             "order": 109
           },
@@ -4402,7 +4402,7 @@ export const defaultClientProjects: ClientProject[] = [
             "originalName": "arrecifes_20260905_reframe_10.jpg",
             "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_10.webp",
             "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_10.webp",
-            "caption": "Fotografía Encuadrada HD #10 • Acabados Chukum, Estructura & Mármol",
+            "caption": "Registro Fotográfico de Supervisión #10 • Albañilería, Muros & Estructura",
             "date": "05 Septiembre 2026",
             "order": 110
           },
@@ -4411,7 +4411,7 @@ export const defaultClientProjects: ClientProject[] = [
             "originalName": "arrecifes_20260905_reframe_11.jpg",
             "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_11.webp",
             "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_11.webp",
-            "caption": "Fotografía Encuadrada HD #11 • Acabados Chukum, Estructura & Mármol",
+            "caption": "Registro Fotográfico de Supervisión #11 • Albañilería, Muros & Estructura",
             "date": "05 Septiembre 2026",
             "order": 111
           },
@@ -4420,7 +4420,7 @@ export const defaultClientProjects: ClientProject[] = [
             "originalName": "arrecifes_20260905_reframe_12.jpg",
             "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_12.webp",
             "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_12.webp",
-            "caption": "Fotografía Encuadrada HD #12 • Acabados Chukum, Estructura & Mármol",
+            "caption": "Registro Fotográfico de Supervisión #12 • Albañilería, Muros & Estructura",
             "date": "05 Septiembre 2026",
             "order": 112
           },
@@ -4429,7 +4429,7 @@ export const defaultClientProjects: ClientProject[] = [
             "originalName": "arrecifes_20260905_reframe_13.jpg",
             "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_13.webp",
             "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_13.webp",
-            "caption": "Fotografía Encuadrada HD #13 • Acabados Chukum, Estructura & Mármol",
+            "caption": "Registro Fotográfico de Supervisión #13 • Albañilería, Muros & Estructura",
             "date": "05 Septiembre 2026",
             "order": 113
           },
@@ -4438,7 +4438,7 @@ export const defaultClientProjects: ClientProject[] = [
             "originalName": "arrecifes_20260905_reframe_14.jpg",
             "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_14.webp",
             "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_14.webp",
-            "caption": "Fotografía Encuadrada HD #14 • Acabados Chukum, Estructura & Mármol",
+            "caption": "Registro Fotográfico de Supervisión #14 • Albañilería, Muros & Estructura",
             "date": "05 Septiembre 2026",
             "order": 114
           },
@@ -4447,7 +4447,7 @@ export const defaultClientProjects: ClientProject[] = [
             "originalName": "arrecifes_20260905_reframe_15.jpg",
             "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_15.webp",
             "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_15.webp",
-            "caption": "Fotografía Encuadrada HD #15 • Acabados Chukum, Estructura & Mármol",
+            "caption": "Registro Fotográfico de Supervisión #15 • Albañilería, Muros & Estructura",
             "date": "05 Septiembre 2026",
             "order": 115
           },
@@ -4456,7 +4456,7 @@ export const defaultClientProjects: ClientProject[] = [
             "originalName": "arrecifes_20260905_reframe_16.jpg",
             "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_16.webp",
             "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_16.webp",
-            "caption": "Fotografía Encuadrada HD #16 • Acabados Chukum, Estructura & Mármol",
+            "caption": "Registro Fotográfico de Supervisión #16 • Albañilería, Muros & Estructura",
             "date": "05 Septiembre 2026",
             "order": 116
           },
@@ -4465,7 +4465,7 @@ export const defaultClientProjects: ClientProject[] = [
             "originalName": "arrecifes_20260905_reframe_17.jpg",
             "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_17.webp",
             "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_17.webp",
-            "caption": "Fotografía Encuadrada HD #17 • Acabados Chukum, Estructura & Mármol",
+            "caption": "Registro Fotográfico de Supervisión #17 • Albañilería, Muros & Estructura",
             "date": "05 Septiembre 2026",
             "order": 117
           },
@@ -4474,7 +4474,7 @@ export const defaultClientProjects: ClientProject[] = [
             "originalName": "arrecifes_20260905_reframe_18.jpg",
             "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_18.webp",
             "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_18.webp",
-            "caption": "Fotografía Encuadrada HD #18 • Acabados Chukum, Estructura & Mármol",
+            "caption": "Registro Fotográfico de Supervisión #18 • Albañilería, Muros & Estructura",
             "date": "05 Septiembre 2026",
             "order": 118
           },
@@ -4483,7 +4483,7 @@ export const defaultClientProjects: ClientProject[] = [
             "originalName": "arrecifes_20260905_reframe_19.jpg",
             "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_19.webp",
             "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_19.webp",
-            "caption": "Fotografía Encuadrada HD #19 • Acabados Chukum, Estructura & Mármol",
+            "caption": "Registro Fotográfico de Supervisión #19 • Albañilería, Muros & Estructura",
             "date": "05 Septiembre 2026",
             "order": 119
           },
@@ -4492,7 +4492,7 @@ export const defaultClientProjects: ClientProject[] = [
             "originalName": "arrecifes_20260905_reframe_20.jpg",
             "url": "/client-portal/arrecifes/2026-09-05/arrecifes_20260905_reframe_20.webp",
             "thumbUrl": "/client-portal/arrecifes/2026-09-05/thumb_arrecifes_20260905_reframe_20.webp",
-            "caption": "Fotografía Encuadrada HD #20 • Acabados Chukum, Estructura & Mármol",
+            "caption": "Registro Fotográfico de Supervisión #20 • Albañilería, Muros & Estructura",
             "date": "05 Septiembre 2026",
             "order": 120
           }
@@ -4537,7 +4537,7 @@ export const defaultClientProjects: ClientProject[] = [
       {
         id: "tour-tzalam-ago-2026",
         date: "Agosto 2026",
-        title: "Avance 72% - Revestimientos en Chukum & Sistema Solar",
+        title: "Avance 72% - Albañilería, Aplanados & Instalaciones",
         phaseName: "Fase 4: Revestimientos y Acabados",
         progress: 72,
         embedCode: '<iframe src="https://app.cloudpano.com/tours/demo-tour-uno?sceneId=2" width="100%" height="100%" frameborder="0" allowfullscreen allow="accelerometer; gyroscope; magnetometer; vr"></iframe>',
@@ -4550,7 +4550,7 @@ export const defaultClientProjects: ClientProject[] = [
       {
         id: "tz-1",
         order: 1,
-        title: "1. Cimentación y Estructura en Suelo Kárstico",
+        title: "1. Cimentación y Estructura Portante",
         progress: 100,
         status: "completed",
         targetDates: "Nov 2025 - Feb 2026",
@@ -4583,18 +4583,18 @@ export const defaultClientProjects: ClientProject[] = [
       {
         id: "tz-4",
         order: 4,
-        title: "4. Revestimientos en Chukum Tradicional Maya",
+        title: "4. Albañilería, Aplanados y Acabados",
         progress: 100,
         status: "completed",
         targetDates: "Jul 2026 - Ago 2026",
-        supervisionNotes: "100% de muros interiores y alberca revestidos en pasta de Chukum.",
+        supervisionNotes: "100% de aplanados en muros interiores y exteriores concluidos.",
         inspectedBy: "Arq. Angel Cereceda",
         completionDate: "30 Agosto 2026"
       },
       {
         id: "tz-5",
         order: 5,
-        title: "5. Carpintería Fina en Madera Maciza de Tzalam",
+        title: "5. Alberca y Obras Exteriores",
         progress: 80,
         status: "in_progress",
         targetDates: "Ago 2026 - Oct 2026",
@@ -4708,7 +4708,7 @@ export const defaultClientProjects: ClientProject[] = [
       {
         id: "my-1",
         order: 1,
-        title: "1. Cimentación y Estructura en Suelo Kárstico",
+        title: "1. Cimentación y Estructura Portante",
         progress: 100,
         status: "completed",
         targetDates: "Mar 2026 - May 2026",
@@ -4719,7 +4719,7 @@ export const defaultClientProjects: ClientProject[] = [
       {
         id: "my-2",
         order: 2,
-        title: "2. Muros, Mampostería y Cimbra Aparente",
+        title: "2. Muros, Mampostería y Cimbra",
         progress: 100,
         status: "completed",
         targetDates: "Jun 2026 - Ago 2026",
@@ -4740,7 +4740,7 @@ export const defaultClientProjects: ClientProject[] = [
       {
         id: "my-4",
         order: 4,
-        title: "4. Revestimientos en Chukum & Mármol Travertino",
+        title: "4. Albañilería, Aplanados y Acabados",
         progress: 0,
         status: "scheduled",
         targetDates: "Nov 2026 - Ene 2027",
@@ -4750,7 +4750,7 @@ export const defaultClientProjects: ClientProject[] = [
       {
         id: "my-5",
         order: 5,
-        title: "5. Carpintería Fina en Madera Maciza de Tzalam",
+        title: "5. Alberca y Obras Exteriores",
         progress: 0,
         status: "scheduled",
         targetDates: "Ene 2027 - Mar 2027",
