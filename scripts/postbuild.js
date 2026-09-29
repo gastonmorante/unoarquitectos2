@@ -95,39 +95,70 @@ if (fs.existsSync(indexPath)) {
     { dir: 'clientes', title: 'Portal de Clientes • Supervisión de Obra 360° | UNO Arquitectos', desc: 'Área privada de supervisión técnica de obra para clientes de UNO Arquitectos. Registro oficial de avances, bitácoras de obra y recorridos 360°.' },
     { dir: 'portal', title: 'Portal de Clientes • Supervisión de Obra 360° | UNO Arquitectos', desc: 'Área privada de supervisión técnica de obra para clientes de UNO Arquitectos. Registro oficial de avances, bitácoras de obra y recorridos 360°.' },
     { dir: 'admin', title: 'Panel de Administración de Proyectos | UNO Arquitectos', desc: 'Panel administrativo para gestión de proyectos, bitácoras y recorridos 360° de UNO Arquitectos.' },
-    { dir: 'arquitectos-en-tulum', title: 'Arquitectos en Tulum | Estudio Boutique de Arquitectura y Construcción Llave en Mano', desc: 'Estudio boutique de arquitectura y construcción sustentable en Tulum. Cimentaciones en suelo kárstico, acabados en Chukum y proyectos off-grid.' },
+    { dir: 'arquitectos-en-tulum', title: 'Arquitectos en Tulum | Estudio Boutique de Arquitectura y Construcción Llave en Mano', desc: 'Estudio boutique de arquitectura y construcción sustentable en Tulum. Cimentaciones en suelo kárstico, acabados y proyectos off-grid.' },
     { dir: 'arquitectos-en-quintana-roo', title: 'Arquitectos en Quintana Roo | Cancún, Playa del Carmen, Tulum & Riviera Maya', desc: 'Estudio de arquitectura boutique y constructora llave en mano en Quintana Roo. Respaldo técnico, licencias de construcción y gestión integral.' },
-    { dir: 'blog', title: 'Journal & Blog de Arquitectura | UNO Arquitectos Riviera Maya', desc: 'Artículos técnicos sobre arquitectura tropical, construcción en suelo kárstico, acabados en Chukum natural y proyectos en Tulum.' },
+    { dir: 'blog', title: 'Journal & Blog de Arquitectura | UNO Arquitectos Riviera Maya', desc: 'Artículos técnicos sobre arquitectura tropical, construcción en suelo kárstico, acabados y proyectos en Tulum.' },
+    
+    // EN subpages
     { dir: 'en/clientes', title: 'Client Portal • 360° Construction Supervision | UNO Arquitectos', desc: 'Private technical supervision portal for UNO Arquitectos clients. Digital construction logbooks, lab certifications, and 360° virtual tours.' },
     { dir: 'en/portal', title: 'Client Portal • 360° Construction Supervision | UNO Arquitectos', desc: 'Private technical supervision portal for UNO Arquitectos clients. Digital construction logbooks, lab certifications, and 360° virtual tours.' },
     { dir: 'en/admin', title: 'Project Admin Dashboard | UNO Arquitectos', desc: 'Administrative dashboard for project and client portal management.' },
-    { dir: 'en/arquitectos-en-tulum', title: 'Architects in Tulum | Boutique Architecture & Turnkey Construction Studio', desc: 'Boutique architecture studio and turnkey construction in Tulum. Karstic soil foundation engineering, natural Chukum plaster, and off-grid estates.' },
+    { dir: 'en/arquitectos-en-tulum', title: 'Architects in Tulum | Boutique Architecture & Turnkey Construction Studio', desc: 'Boutique architecture studio and turnkey construction in Tulum. Karstic soil foundation engineering, natural finishes, and off-grid estates.' },
     { dir: 'en/arquitectos-en-quintana-roo', title: 'Architects in Quintana Roo | Cancun, Playa del Carmen & Tulum Turnkey Studio', desc: 'Turnkey boutique architecture and construction in Quintana Roo. Technical certitude, municipal permits, and luxury residential estates.' },
-    { dir: 'en/blog', title: 'Architecture Journal & Insights | UNO Arquitectos Riviera Maya', desc: 'Technical articles on contemporary tropical architecture, karstic soil engineering, Chukum plaster, and turnkey construction.' }
+    { dir: 'en/blog', title: 'Architecture Journal & Insights | UNO Arquitectos Riviera Maya', desc: 'Technical articles on contemporary tropical architecture, karstic soil engineering, finishes, and turnkey construction.' },
+
+    // IT subpages
+    { dir: 'it/clientes', title: 'Area Clienti • Supervisione Cantieri 360° | UNO Arquitectos', desc: 'Area tecnica riservata per i clienti di UNO Arquitectos. Registro ufficiale dei lavori, perizie tecniche e tour virtuali 360°.' },
+    { dir: 'it/portal', title: 'Area Clienti • Supervisione Cantieri 360° | UNO Arquitectos', desc: 'Area tecnica riservata per i clienti di UNO Arquitectos. Registro ufficiale dei lavori, perizie tecniche e tour virtuali 360°.' },
+    { dir: 'it/arquitectos-en-tulum', title: 'Architetti a Tulum | Studio Boutique di Architettura e Costruzione', desc: 'Studio boutique di architettura e costruzione chiavi in mano a Tulum. Ingegneria su suolo carsico e progetti sostenibili.' },
+    { dir: 'it/arquitectos-en-quintana-roo', title: 'Architetti in Quintana Roo | Cancun, Playa del Carmen & Tulum', desc: 'Studio di architettura e costruzione chiavi in mano in Quintana Roo. Gestione completa e licenze edilizie.' },
+    { dir: 'it/blog', title: 'Journal & Blog di Architettura | UNO Arquitectos Riviera Maya', desc: 'Articoli tecnici su architettura tropicale, ingegneria su suoli carsici e costruzioni chiavi in mano.' },
+
+    // FR subpages
+    { dir: 'fr/clientes', title: 'Espace Clients • Supervision de Chantier 360° | UNO Arquitectos', desc: 'Espace privé de supervision technique de chantier pour les clients de UNO Arquitectos. Rapports officiels et visites virtuelles 360°.' },
+    { dir: 'fr/portal', title: 'Espace Clients • Supervision de Chantier 360° | UNO Arquitectos', desc: 'Espace privé de supervision technique de chantier pour les clients de UNO Arquitectos. Rapports officiels et visites virtuelles 360°.' },
+    { dir: 'fr/arquitectos-en-tulum', title: 'Architectes à Tulum | Studio Boutique d\'Architecture et Construction', desc: 'Studio boutique d\'architecture et construction clés en main à Tulum. Ingénierie des sols karstiques et projets autonomes.' },
+    { dir: 'fr/arquitectos-en-quintana-roo', title: 'Architectes à Quintana Roo | Cancun, Playa del Carmen & Tulum', desc: 'Studio d\'architecture et constructeur clés en main à Quintana Roo. Certitude technique et gestion intégrale.' },
+    { dir: 'fr/blog', title: 'Journal & Blog d\'Architecture | UNO Arquitectos Riviera Maya', desc: 'Articles techniques sur l\'architecture tropicale, l\'ingénierie des sols karstiques et la construction clés en main.' }
   ];
 
   subpages.forEach(sub => {
     let subHtml = html;
-    const isEn = sub.dir.startsWith('en/');
-    const baseSlug = isEn ? sub.dir.replace(/^en\//, '') : sub.dir;
+    let lang = 'es';
+    let baseSlug = sub.dir;
+
+    if (sub.dir.startsWith('en/')) {
+      lang = 'en';
+      baseSlug = sub.dir.replace(/^en\//, '');
+    } else if (sub.dir.startsWith('it/')) {
+      lang = 'it';
+      baseSlug = sub.dir.replace(/^it\//, '');
+    } else if (sub.dir.startsWith('fr/')) {
+      lang = 'fr';
+      baseSlug = sub.dir.replace(/^fr\//, '');
+    }
+
     const esUrl = `https://unoarquitectos.com/${baseSlug}`;
     const enUrl = `https://unoarquitectos.com/en/${baseSlug}`;
+    const itUrl = `https://unoarquitectos.com/it/${baseSlug}`;
+    const frUrl = `https://unoarquitectos.com/fr/${baseSlug}`;
+    const canonicalUrl = `https://unoarquitectos.com/${sub.dir}`;
     
-    if (isEn) {
-      subHtml = subHtml.replace(/<html lang="es">/, '<html lang="en">');
-    }
+    subHtml = subHtml.replace(/<html lang="es">/, `<html lang="${lang}">`);
     subHtml = subHtml.replace(/<title>[^<]+<\/title>/, `<title>${sub.title}</title>`);
     subHtml = subHtml.replace(/<meta name="description" content="[^"]+" \/>/, `<meta name="description" content="${sub.desc}" />`);
-    subHtml = subHtml.replace(/<link rel="canonical" href="https:\/\/unoarquitectos\.com\/" \/>/, `<link rel="canonical" href="https://unoarquitectos.com/${sub.dir}" />`);
+    subHtml = subHtml.replace(/<link rel="canonical" href="https:\/\/unoarquitectos\.com\/" \/>/, `<link rel="canonical" href="${canonicalUrl}" />`);
     subHtml = subHtml.replace(/<link rel="alternate" hreflang="es" href="https:\/\/unoarquitectos\.com\/" \/>/, `<link rel="alternate" hreflang="es" href="${esUrl}" />`);
     subHtml = subHtml.replace(/<link rel="alternate" hreflang="en" href="https:\/\/unoarquitectos\.com\/en\/" \/>/, `<link rel="alternate" hreflang="en" href="${enUrl}" />`);
+    subHtml = subHtml.replace(/<link rel="alternate" hreflang="it" href="https:\/\/unoarquitectos\.com\/it\/" \/>/, `<link rel="alternate" hreflang="it" href="${itUrl}" />`);
+    subHtml = subHtml.replace(/<link rel="alternate" hreflang="fr" href="https:\/\/unoarquitectos\.com\/fr\/" \/>/, `<link rel="alternate" hreflang="fr" href="${frUrl}" />`);
     subHtml = subHtml.replace(/<link rel="alternate" hreflang="x-default" href="https:\/\/unoarquitectos\.com\/" \/>/, `<link rel="alternate" hreflang="x-default" href="${esUrl}" />`);
     subHtml = subHtml.replace(/<meta property="og:title" content="[^"]+" \/>/, `<meta property="og:title" content="${sub.title}" />`);
     subHtml = subHtml.replace(/<meta property="og:description" content="[^"]+" \/>/, `<meta property="og:description" content="${sub.desc}" />`);
-    subHtml = subHtml.replace(/<meta property="og:url" content="https:\/\/unoarquitectos\.com\/" \/>/, `<meta property="og:url" content="https://unoarquitectos.com/${sub.dir}" />`);
+    subHtml = subHtml.replace(/<meta property="og:url" content="https:\/\/unoarquitectos\.com\/" \/>/, `<meta property="og:url" content="${canonicalUrl}" />`);
     subHtml = subHtml.replace(/<meta name="twitter:title" content="[^"]+" \/>/, `<meta name="twitter:title" content="${sub.title}" />`);
     subHtml = subHtml.replace(/<meta name="twitter:description" content="[^"]+" \/>/, `<meta name="twitter:description" content="${sub.desc}" />`);
-    subHtml = subHtml.replace(/<meta name="twitter:url" content="https:\/\/unoarquitectos\.com\/" \/>/, `<meta name="twitter:url" content="https://unoarquitectos.com/${sub.dir}" />`);
+    subHtml = subHtml.replace(/<meta name="twitter:url" content="https:\/\/unoarquitectos\.com\/" \/>/, `<meta name="twitter:url" content="${canonicalUrl}" />`);
     
     const targetDir = path.join('dist', sub.dir);
     if (!fs.existsSync(targetDir)) {

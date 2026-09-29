@@ -38,8 +38,8 @@
     <!-- Hreflang Tags for Multilingual Indexation (Aligned with Canonical URL) -->
     <link rel="alternate" hreflang="es" href="https://unoarquitectos.com/arquitectos-en-quintana-roo" />
     <link rel="alternate" hreflang="en" href="https://unoarquitectos.com/en/arquitectos-en-quintana-roo" />
-    <link rel="alternate" hreflang="it" href="https://unoarquitectos.com/it/" />
-    <link rel="alternate" hreflang="fr" href="https://unoarquitectos.com/fr/" />
+    <link rel="alternate" hreflang="it" href="https://unoarquitectos.com/it/arquitectos-en-quintana-roo" />
+    <link rel="alternate" hreflang="fr" href="https://unoarquitectos.com/fr/arquitectos-en-quintana-roo" />
     <link rel="alternate" hreflang="x-default" href="https://unoarquitectos.com/arquitectos-en-quintana-roo" />
 
     <!-- Open Graph / Meta / WhatsApp / Instagram Sharing Protocol -->
@@ -71,10 +71,14 @@
     <link rel="preload" as="image" href="/hero-luxury-villa.webp" type="image/webp" media="(min-width: 769px)" fetchpriority="high" />
     <link rel="alternate" type="text/markdown" title="LLM documentation" href="/llms.txt" />
 
-    <!-- Font Optimization: Raleway with display=swap and instant preconnect -->
+    <!-- Font Optimization: Raleway with display=swap and instant preconnect (Non-blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    </noscript>
 
 
     <!-- JSON-LD Structured Data (Schema.org: ArchitecturalOffice + WebSite + FAQPage) -->
@@ -345,11 +349,11 @@
         -webkit-font-smoothing: antialiased;
       }
     </style>
-    <script type="module" crossorigin src="/assets/index-Bmxg2lF0.js"></script>
+    <script type="module" crossorigin src="/assets/index-CvVoE1P0.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/vendor-core-MGy1wL6B.js">
     <link rel="modulepreload" crossorigin href="/assets/motion-core-DVXJ7Fck.js">
-    <link rel="modulepreload" crossorigin href="/assets/icons-core--jg8Ub6y.js">
-    <link rel="preload" as="style" href="/assets/index-YLdkCCL6.css"><link rel="stylesheet" crossorigin href="/assets/index-YLdkCCL6.css">
+    <link rel="modulepreload" crossorigin href="/assets/icons-core-D4Sc_D_1.js">
+    <link rel="preload" as="style" href="/assets/index-xObCSa_P.css"><link rel="stylesheet" crossorigin href="/assets/index-xObCSa_P.css">
   </head>
   <body class="bg-[#FDFCF9] text-[#4A4A4A] texture-overlay">
     <!-- REACT ROOT MOUNTING POINT -->

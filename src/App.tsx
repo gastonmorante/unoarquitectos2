@@ -10,13 +10,13 @@ import Contacto from './components/Contacto';
 import CookieBanner from './components/CookieBanner';
 import Logo from './components/Logo';
 import PortalErrorBoundary from './components/PortalErrorBoundary';
-import ClientPortalView from './components/ClientPortal/ClientPortalView';
-import ClientPortalModal from './components/ClientPortal/ClientPortalModal';
 import { LanguageProvider, useLanguage, extractLangAndPath } from './context/LanguageContext';
 import { ContentProvider, useSiteContent } from './context/ContentContext';
 import { ClientProject } from './types/clientPortal';
 import { defaultClientProjects } from './data/defaultClientProjects';
 
+const ClientPortalView = lazy(() => import('./components/ClientPortal/ClientPortalView'));
+const ClientPortalModal = lazy(() => import('./components/ClientPortal/ClientPortalModal'));
 const Portfolio = lazy(() => import('./components/Portfolio'));
 const TulumPage = lazy(() => import('./pages/TulumPage'));
 const QuintanaRooPage = lazy(() => import('./pages/QuintanaRooPage'));
@@ -272,21 +272,28 @@ function MainApp() {
           setRoute({ name: "clientes" });
         }}
       >
-        {activeClientProject ? (
-          <ClientPortalView
-            currentProject={activeClientProject}
-            allProjects={clientProjects}
-            onSelectProject={(p) => setActiveClientProject(p)}
-            onLogout={handleLogoutClient}
-            onClose={handleCloseClientPortal}
-          />
-        ) : (
-          <ClientPortalModal
-            projects={clientProjects}
-            onLoginSuccess={handleClientLoginSuccess}
-            onClose={handleCloseClientPortal}
-          />
-        )}
+        <Suspense fallback={
+          <div className="min-h-screen w-full flex flex-col items-center justify-center bg-background p-6 font-sans text-center">
+            <div className="w-12 h-12 rounded-full border-2 border-teal-uno/30 border-t-teal-uno animate-spin mb-4"></div>
+            <p className="font-label-caps text-xs text-teal-uno tracking-widest uppercase font-semibold">Cargando Área de Supervisión 360°...</p>
+          </div>
+        }>
+          {activeClientProject ? (
+            <ClientPortalView
+              currentProject={activeClientProject}
+              allProjects={clientProjects}
+              onSelectProject={(p) => setActiveClientProject(p)}
+              onLogout={handleLogoutClient}
+              onClose={handleCloseClientPortal}
+            />
+          ) : (
+            <ClientPortalModal
+              projects={clientProjects}
+              onLoginSuccess={handleClientLoginSuccess}
+              onClose={handleCloseClientPortal}
+            />
+          )}
+        </Suspense>
       </PortalErrorBoundary>
     );
   }

@@ -4,9 +4,12 @@ Allow: /clientes
 Allow: /portal
 Allow: /en/clientes
 Allow: /en/portal
+Allow: /it/clientes
+Allow: /it/portal
+Allow: /fr/clientes
+Allow: /fr/portal
 Disallow: /api/
 Disallow: /admin
 
 # Sitemap Location
 Sitemap: https://unoarquitectos.com/sitemap.xml
-

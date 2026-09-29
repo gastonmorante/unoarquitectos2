@@ -229,12 +229,9 @@ $headers = [
 
 $emailSent = @mail($to, $subject, $emailBody, implode("\r\n", $headers));
 
-// ------------------------------------------------------------------------------
-// 5. GOHIGHLEVEL (GHL / LEADCONNECTOR) CRM INTEGRATION (FASE IV)
-// ------------------------------------------------------------------------------
 $ghlWebhookUrl = defined('GHL_WEBHOOK_URL') && !empty(GHL_WEBHOOK_URL)
     ? trim(GHL_WEBHOOK_URL)
-    : (getenv('GHL_WEBHOOK_URL') ?: getenv('LEADCONNECTOR_WEBHOOK_URL') ?: '');
+    : (getenv('GHL_WEBHOOK_URL') ?: ($_ENV['GHL_WEBHOOK_URL'] ?? ($_SERVER['GHL_WEBHOOK_URL'] ?? (getenv('LEADCONNECTOR_WEBHOOK_URL') ?: ''))));
 
 $ghlPayload = [
     'first_name' => $firstName,
