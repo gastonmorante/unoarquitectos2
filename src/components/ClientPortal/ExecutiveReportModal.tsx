@@ -124,7 +124,7 @@ export default function ExecutiveReportModal({
                   <span className="text-[#00A3A3] font-mono">75% Físico</span>
                 </div>
                 <p>
-                  Aplanados con mortero en muros interiores y exteriores, aplicación de masilla fina en plafones, perfilado de aristas, preparación de registros de instalaciones y avance en vaso de alberca (23 puntos 360° HD verificados).
+                  Aplanados con mortero en muros interiores y exteriores, aplicación de masilla en plafones, perfilado de vanos, preparación de registros de instalaciones y avance en vaso de alberca (23 puntos 360° HD verificados).
                 </p>
               </div>
 
@@ -134,17 +134,17 @@ export default function ExecutiveReportModal({
                   <span className="text-[#00A3A3] font-mono">72% Físico</span>
                 </div>
                 <p>
-                  Aplanados en muros de doble altura (6.40 m), emboquillado de vanos para cancelería, pretiles perimetrales en azotea e impermeabilización de vaso de alberca (19 puntos 360° HD verificados).
+                  Aplanados en muros, emboquillado de vanos para cancelería, pretiles perimetrales en azotea y cimbrado de vaso de alberca (19 puntos 360° HD verificados).
                 </p>
               </div>
 
               <div className="p-3.5 bg-zinc-50 rounded-lg border border-zinc-200 space-y-1">
                 <div className="flex items-center justify-between font-bold text-zinc-900">
-                  <span>Dictamen de Instalaciones MEP & Cimentación (27 Agosto 2026)</span>
+                  <span>Dictamen de Instalaciones Hidrosanitarias & Estructura (27 Agosto 2026)</span>
                   <span className="text-[#00A3A3] font-mono">52% Físico</span>
                 </div>
                 <p>
-                  Prueba hidrostática superada a 7.0 kg/cm² (100 PSI) durante 72h continuas con cero caídas de presión, canalizaciones hidrosanitarias y eléctricas ocultas (10 puntos 360° HD verificados).
+                  Canalizaciones de instalaciones hidráulicas, sanitarias y eléctricas ahogadas en firmes y losas, habilitado de elementos estructurales (10 puntos 360° HD verificados).
                 </p>
               </div>
             </div>
@@ -153,22 +153,22 @@ export default function ExecutiveReportModal({
           {/* METRICS & PARAMETRIC DETAILS */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="p-4 border border-zinc-200 rounded-xl space-y-2">
-              <h5 className="text-[11px] font-label-caps uppercase text-zinc-900 font-bold">Datos Físicos del Inmueble</h5>
+              <h5 className="text-[11px] font-label-caps uppercase text-zinc-900 font-bold">Datos de Supervisión de Obra</h5>
               <ul className="text-xs space-y-1 text-zinc-600">
-                <li>• Superficie Construida: <strong>{project.totalArea}</strong></li>
-                <li>• Superficie de Terreno: <strong>1,150.00 m²</strong></li>
-                <li>• Altura Máxima Vestíbulo: <strong>6.40 m libre</strong></li>
-                <li>• Capacidad de Vaso Alberca: <strong>48.00 m²</strong></li>
+                <li>• Inmueble: <strong>{project.propertyName}</strong></li>
+                <li>• Ubicación: <strong>{project.location}</strong></li>
+                <li>• Régimen de Supervisión: <strong>Dirección y Residencia de Obra</strong></li>
+                <li>• Trazabilidad: <strong>18 Bitácoras Técnicas en PDF Oficial</strong></li>
               </ul>
             </div>
 
             <div className="p-4 border border-zinc-200 rounded-xl space-y-2">
-              <h5 className="text-[11px] font-label-caps uppercase text-zinc-900 font-bold">Respaldo Estructural & Calidad</h5>
+              <h5 className="text-[11px] font-label-caps uppercase text-zinc-900 font-bold">Respaldo Técnico & Calidad</h5>
               <ul className="text-xs space-y-1 text-zinc-600">
-                <li>• Georradar (GPR): <strong>12.0m sin cavernas</strong></li>
-                <li>• Concreto Estructural: <strong>f'c = 250 kg/cm²</strong></li>
-                <li>• Resistencia a Viento: <strong>Huracán Cat. 5 (&gt;280 km/h)</strong></li>
-                <li>• Cancelería: <strong>Cristal laminado de seguridad 12mm</strong></li>
+                <li>• Fichas Técnicas: <strong>18 Fichas Semanales Registradas</strong></li>
+                <li>• Inspección Visual: <strong>Registro Fotográfico y 360° por Fecha</strong></li>
+                <li>• Control en Sitio: <strong>Alineación, Niveles y Plomos Verificados</strong></li>
+                <li>• Dictamen: <strong>100% de Ensayes y Procesos Aprobados</strong></li>
               </ul>
             </div>
           </div>
@@ -183,7 +183,7 @@ export default function ExecutiveReportModal({
                 {project.director.name}
               </div>
               <div className="text-[10px] text-zinc-500 uppercase tracking-wider font-label-caps font-semibold">
-                {project.director.role} • Céd. Prof. 8492049
+                {project.director.role} • UNO Arquitectos
               </div>
             </div>
 
@@ -192,10 +192,10 @@ export default function ExecutiveReportModal({
                 Supervisión de Obra
               </div>
               <div className="border-t border-zinc-400 pt-1 font-bold text-zinc-900">
-                Dirección Responsable de Obra (DRO)
+                Dirección y Supervisión Técnica
               </div>
               <div className="text-[10px] text-zinc-500 uppercase tracking-wider font-label-caps font-semibold">
-                Colegio de Arquitectos de la Riviera Maya
+                UNO Arquitectos • Riviera Maya
               </div>
             </div>
           </div>

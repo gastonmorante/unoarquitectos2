@@ -205,11 +205,11 @@ export default function DigitalLogbookTimeline({
       </div>
 
       {/* 2. COMPACT & CLEAN DATE / FOLIO SELECTOR BAR */}
-      <div className="bg-white/95 backdrop-blur-xl border border-arena-calida/30 p-4 sm:p-5 rounded-3xl shadow-xs space-y-3">
+      <div className="relative z-30 bg-white/95 backdrop-blur-xl border border-arena-calida/30 p-4 sm:p-5 rounded-3xl shadow-xs space-y-3">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
           
           {/* LEFT: CUSTOM DROPDOWN SELECTOR FOR THE ACTIVE BITÁCORA */}
-          <div className="relative flex-1" ref={dropdownRef}>
+          <div className="relative z-40 flex-1" ref={dropdownRef}>
             <button
               type="button"
               onClick={() => setShowDropdown(!showDropdown)}
@@ -249,7 +249,7 @@ export default function DigitalLogbookTimeline({
 
             {/* DROPDOWN MENU WITH ALL 18 BITÁCORAS (SORTED REVERSE CHRONOLOGICAL) */}
             {showDropdown && (
-              <div className="absolute top-full left-0 mt-2 w-full sm:w-[420px] max-h-[380px] overflow-y-auto bg-white/98 backdrop-blur-2xl border border-arena-calida/40 rounded-2xl shadow-2xl z-50 p-2 space-y-1 text-left">
+              <div className="absolute top-full left-0 mt-2 w-full sm:w-[420px] max-h-[380px] overflow-y-auto bg-white/98 backdrop-blur-2xl border border-arena-calida/40 rounded-2xl shadow-2xl z-50 p-2 space-y-1 text-left ring-1 ring-black/5">
                 <div className="px-3 py-2 text-[10px] font-label-caps uppercase text-arena-calida tracking-widest border-b border-arena-calida/20 font-bold flex items-center justify-between">
                   <span>Seleccionar Ficha de Bitácora ({validEntries.length} Disponibles)</span>
                   <span className="text-gris-texto/60">Recientes primero</span>
@@ -354,7 +354,7 @@ export default function DigitalLogbookTimeline({
       {/* 3. THE SINGLE ACTIVE BITÁCORA CARD (CLEAN & COMPLETE) */}
       <div
         key={activeEntry.id}
-        className="rounded-3xl border border-teal-uno/40 bg-white/95 backdrop-blur-xl shadow-ethereal overflow-hidden transition-all duration-300 ring-1 ring-teal-uno/20"
+        className="relative z-10 rounded-3xl border border-teal-uno/40 bg-white/95 backdrop-blur-xl shadow-ethereal overflow-hidden transition-all duration-300 ring-1 ring-teal-uno/20"
       >
         {/* TOP ACCENT STRIPE */}
         {isLatest && (

@@ -8,11 +8,11 @@ export const defaultClientProjects: ClientProject[] = [
     clientName: "Familia Propietaria / Residencia Arrecifes",
     location: "Playa del Carmen, Riviera Maya, Q. Roo",
     typology: "Residencia Arrecifes • Obra Civil & Acabados Residenciales",
-    totalArea: "720 m² de Construcción & Terrazas Voladas",
+    totalArea: "Obra Civil & Acabados Residenciales",
     startDate: "01 Abril 2026",
     estimatedDelivery: "20 Diciembre 2026",
     globalProgress: 63,
-    currentPhaseName: "Fase 4: Albañilería, Aplanados & Acabados",
+    currentPhaseName: "Albañilería, Aplanados & Acabados",
     heroImage: "/hero-luxury-villa.webp",
     director: {
       name: "Arq. Angel Cereceda",
@@ -31,7 +31,7 @@ export const defaultClientProjects: ClientProject[] = [
         id: "tour-arrecifes-19sep2026",
         date: "19 Septiembre 2026",
         title: "Avance 75% - Albañilería, Aplanados & Preparaciones de Acabados (Más Reciente)",
-        phaseName: "Fase 4: Albañilería, Aplanados & Acabados",
+        phaseName: "Albañilería, Aplanados & Acabados",
         progress: 75,
         embedCode: '',
         folderUrl: "https://drive.google.com/drive/folders/1-67v7_NQrUfG2BwvKXI83Ddf0j40EZsE?usp=drive_link",
@@ -61,14 +61,14 @@ export const defaultClientProjects: ClientProject[] = [
           },
           {
             id: "scene-1909-04",
-            title: "Punto #04 • Cocina Integral & Preparaciones MEP",
+            title: "Punto #04 • Cocina & Preparaciones de Instalaciones",
             equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_04.jpg",
             thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_04.jpg",
             roomName: "Cocina"
           },
           {
             id: "scene-1909-05",
-            title: "Punto #05 • Terraza Exterior & Alberca Cenote",
+            title: "Punto #05 • Terraza Exterior & Alberca",
             equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_05.jpg",
             thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_05.jpg",
             roomName: "Terraza & Alberca"
@@ -82,7 +82,7 @@ export const defaultClientProjects: ClientProject[] = [
           },
           {
             id: "scene-1909-07",
-            title: "Punto #07 • Núcleo de Escalera Escultórica",
+            title: "Punto #07 • Núcleo de Escalera de Concreto",
             equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_07.jpg",
             thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_07.jpg",
             roomName: "Escaleras Nivel 1"
@@ -110,14 +110,14 @@ export const defaultClientProjects: ClientProject[] = [
           },
           {
             id: "scene-1909-11",
-            title: "Punto #11 • Vestidor Master & Carpintería Tzalam",
+            title: "Punto #11 • Área de Vestidor Master",
             equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_11.jpg",
             thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_11.jpg",
             roomName: "Vestidor Master"
           },
           {
             id: "scene-1909-12",
-            title: "Punto #12 • Recámara Secundaria 1 & Vista a Selva",
+            title: "Punto #12 • Recámara Secundaria 1",
             equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_12.jpg",
             thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_12.jpg",
             roomName: "Recámara 1"
@@ -131,7 +131,7 @@ export const defaultClientProjects: ClientProject[] = [
           },
           {
             id: "scene-1909-14",
-            title: "Punto #14 • Recámara Secundaria 2 & Acabados Finales",
+            title: "Punto #14 • Recámara Secundaria 2",
             equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_14.jpg",
             thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_14.jpg",
             roomName: "Recámara 2"
@@ -145,28 +145,28 @@ export const defaultClientProjects: ClientProject[] = [
           },
           {
             id: "scene-1909-16",
-            title: "Punto #16 • Terraza Volada Superior & Barandales",
+            title: "Punto #16 • Terraza Planta Alta",
             equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_16.jpg",
             thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_16.jpg",
             roomName: "Terraza Nivel 2"
           },
           {
             id: "scene-1909-17",
-            title: "Punto #17 • Acceso a Rooftop & Escalera Marina",
+            title: "Punto #17 • Acceso a Azotea",
             equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_17.jpg",
             thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_17.jpg",
-            roomName: "Acceso Rooftop"
+            roomName: "Acceso Azotea"
           },
           {
             id: "scene-1909-18",
-            title: "Punto #18 • Rooftop Panorámico & Pérgola Solar",
+            title: "Punto #18 • Azotea / Rooftop",
             equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_18.jpg",
             thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_18.jpg",
-            roomName: "Rooftop & Mirador"
+            roomName: "Azotea & Mirador"
           },
           {
             id: "scene-1909-19",
-            title: "Punto #19 • Cuarto de Máquinas & Climatización VRF",
+            title: "Punto #19 • Cuarto de Máquinas e Instalaciones",
             equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_19.jpg",
             thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_19.jpg",
             roomName: "Cuarto de Máquinas"
@@ -180,17 +180,17 @@ export const defaultClientProjects: ClientProject[] = [
           },
           {
             id: "scene-1909-21",
-            title: "Punto #21 • Barda Perimetral & Portón de Acceso",
+            title: "Punto #21 • Barda Perimetral & Acceso",
             equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_21.jpg",
             thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_21.jpg",
             roomName: "Barda Perimetral"
           },
           {
             id: "scene-1909-22",
-            title: "Punto #22 • Jardín Posterior & Cisterna de Agua Tratada",
+            title: "Punto #22 • Área Posterior & Cisterna",
             equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_22.jpg",
             thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-09-19/scene_190926_22.jpg",
-            roomName: "Jardín Posterior"
+            roomName: "Área Posterior"
           },
           {
             id: "scene-1909-23",
@@ -205,7 +205,7 @@ export const defaultClientProjects: ClientProject[] = [
         id: "tour-arrecifes-05sep2026",
         date: "05 Septiembre 2026",
         title: "Avance 72% - Albañilería, Aplanados & Cimbrado de Alberca",
-        phaseName: "Fase 4: Albañilería & Aplanados",
+        phaseName: "Albañilería & Aplanados",
         progress: 72,
         embedCode: '',
         folderUrl: "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link",
@@ -245,7 +245,7 @@ export const defaultClientProjects: ClientProject[] = [
                 "title": "Punto #05 • Asoleadero & Muros Exteriores",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_05.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_05.jpg",
-                "roomName": "Asoleadero Húmedo"
+                "roomName": "Asoleadero"
         },
         {
                 "id": "scene-0509-06",
@@ -308,14 +308,14 @@ export const defaultClientProjects: ClientProject[] = [
                 "title": "Punto #14 • Plafones & Instalaciones en Entrepiso",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_14.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_14.jpg",
-                "roomName": "Área de Climatización"
+                "roomName": "Plafones e Instalaciones"
         },
         {
                 "id": "scene-0509-15",
                 "title": "Punto #15 • Cuarto de Máquinas & Instalaciones Eléctricas",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_15.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-09-05/scene_050926_15.jpg",
-                "roomName": "Cuarto de Control"
+                "roomName": "Cuarto de Máquinas"
         },
         {
                 "id": "scene-0509-16",
@@ -351,7 +351,7 @@ export const defaultClientProjects: ClientProject[] = [
         id: "tour-arrecifes-27ago2026",
         date: "27 Agosto 2026",
         title: "Avance 52% - Instalaciones Hidrosanitarias, Eléctricas & Estructura",
-        phaseName: "Fase 3: Instalaciones Especiales",
+        phaseName: "Instalaciones Hidrosanitarias & Eléctricas",
         progress: 52,
         embedCode: '',
         folderUrl: "https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link",
@@ -370,14 +370,14 @@ export const defaultClientProjects: ClientProject[] = [
                 "title": "Punto #02 • Preparación de Plafones & Entrepiso",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_02.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_02.jpg",
-                "roomName": "Plénum Técnico"
+                "roomName": "Plafones & Entrepiso"
         },
         {
                 "id": "scene-2708-03",
                 "title": "Punto #03 • Centro de Carga & Canalizaciones Eléctricas",
                 "equirectangularUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_03.jpg",
                 "thumbnailUrl": "/client-portal/arrecifes/360-equirect/2026-08-27/scene_270826_03.jpg",
-                "roomName": "Tablero Domótica"
+                "roomName": "Tablero Eléctrico"
         },
         {
                 "id": "scene-2708-04",
@@ -462,7 +462,7 @@ export const defaultClientProjects: ClientProject[] = [
         status: "completed",
         targetDates: "01 Jul 2026 - 15 Ago 2026",
         supervisionNotes: "Dictamen #35: Canalizaciones de tuberías hidráulicas, sanitarias, eléctricas y bajantes pluviales verificadas.",
-        inspectedBy: "Ing. Especialista en MEP & Domótica",
+        inspectedBy: "Ingeniería e Instalaciones",
         completionDate: "14 Agosto 2026"
       },
       {
@@ -483,7 +483,7 @@ export const defaultClientProjects: ClientProject[] = [
         status: "in_progress",
         targetDates: "01 Oct 2026 - 30 Nov 2026",
         supervisionNotes: "Dictamen #52: Cimbrado, armado de acero y colado de vaso de alberca y áreas exteriores.",
-        inspectedBy: "Maestro Ebanista & Arq. Residente",
+        inspectedBy: "Supervisión Residente UNO Arquitectos",
       },
       {
         id: "ph-6",
@@ -493,7 +493,7 @@ export const defaultClientProjects: ClientProject[] = [
         status: "in_progress",
         targetDates: "01 Nov 2026 - 15 Dic 2026",
         supervisionNotes: "Habilitado de vanos y preparación de boquillas para colocación de cancelería y carpinterías.",
-        inspectedBy: "Ing. de Fachadas & Cancelería",
+        inspectedBy: "Supervisión Residente UNO Arquitectos",
       },
       {
         id: "ph-7",
@@ -503,7 +503,7 @@ export const defaultClientProjects: ClientProject[] = [
         status: "scheduled",
         targetDates: "15 Dic 2026 - 31 Ene 2027",
         supervisionNotes: "Instalaciones de luminarias, cableado final y adecuación de áreas exteriores.",
-        inspectedBy: "Diseñador Paisajista & Iluminación",
+        inspectedBy: "Supervisión de Instalaciones",
       },
       {
         id: "ph-8",
@@ -825,7 +825,7 @@ export const defaultClientProjects: ClientProject[] = [
         date: "27 Agosto 2026",
         location: "Área Exterior - Alberca",
         imageUrl: "/client-portal/arrecifes/2026-08-27/arrecifes_20260827_reframe_08.jpg",
-        technicalNote: "Corte en roca caliza mediante martillo hidráulico y perfilado manual de taludes para alberca cenote.",
+        technicalNote: "Corte en roca caliza y excavación para desplante de vaso de alberca.",
         isReframed360: true
       },
       {
@@ -854,23 +854,23 @@ export const defaultClientProjects: ClientProject[] = [
     beforeAfterComparisons: [
       {
         id: "ba-arrecifes-suite",
-        title: "Master Suite & Terraza Selvática",
+        title: "Master Suite & Terraza",
         zone: "Planta Alta - Recámara Principal",
         beforeDate: "Junio 2026 (Fase Estructural)",
         afterDate: "Septiembre 2026 (Albañilería & Aplanados)",
         beforeImage: "/projects/offgrid/offgrid-suite-tulum.jpg",
         afterImage: "/projects/residencial/alux-7cielos-master-jungle-view.jpg",
-        description: "Transformación desde el cajón de concreto armado con claros abiertos hacia el espacio habitable terminado con aplanados en muros, masilla en plafones y vanos de ventanería."
+        description: "Transformación desde la estructura de concreto armado hacia el espacio con aplanados en muros, masilla en plafones y vanos de ventanería."
       },
       {
         id: "ba-arrecifes-alberca",
         title: "Área de Alberca & Terraza Exterior",
         zone: "Área Exterior - Jardín Posterior",
-        beforeDate: "Mayo 2026 (Excavación Kárstica)",
-        afterDate: "Septiembre 2026 (Alberca Concluida)",
+        beforeDate: "Mayo 2026 (Excavación de Terreno)",
+        afterDate: "Septiembre 2026 (Alberca en Obra)",
         beforeImage: "/projects/offgrid/offgrid-villa-cenote.jpg",
         afterImage: "/projects/residencial/alux-7cielos-ocean-pool.jpg",
-        description: "Evolución desde el corte en roca caliza con compactación controlada hasta la conformación de alberca, firmes de concreto y áreas exteriores."
+        description: "Evolución desde el corte en roca caliza hasta la conformación de alberca, firmes de concreto y áreas exteriores."
       }
     ],
     milestones: [
@@ -3658,14 +3658,14 @@ export const defaultClientProjects: ClientProject[] = [
         entryNumber: "Folio #17 (S35)",
         date: "28 Agosto 2026",
         month: "Agosto 2026",
-        phaseTitle: "Fase 2: Estructura Portante, Losas & Cimbrado Aparente",
+        phaseTitle: "Albañilería, Pretiles, Alberca & Calcreto",
         progress: 70,
         status: "completed",
         tourInfo: {
           id: "tour-arrecifes-27ago2026",
           date: "27 Agosto 2026",
           progress: 52,
-          title: "AVANCE 52% - INSTALACIONES ESPECIALES, DOMÓTICA & HVAC",
+          title: "Avance 52% - Instalaciones Hidrosanitarias, Eléctricas & Estructura",
           notes: "Supervisión 360° de canalizaciones hidrosanitarias, salidas eléctricas, bajantes pluviales y habilitado de elementos estructurales.",
           scenes360Count: 10,
           encuadradasCount: 10,
@@ -4499,320 +4499,7 @@ export const defaultClientProjects: ClientProject[] = [
         ]
       }
     ]
-  },
-  {
-    id: "casa-tzalam",
-    propertyName: "Casa Tzalam",
-    accessCode: "unoarq",
-    clientName: "Ing. Roberto Garza / Residencia Privada",
-    location: "Carretera Tulum – Macario Gómez, Tulum, Q. Roo",
-    typology: "Villa Boutique Sensorial Off-Grid",
-    totalArea: "480 m² de Construcción",
-    startDate: "10 Noviembre 2025",
-    estimatedDelivery: "15 Diciembre 2026",
-    globalProgress: 85,
-    currentPhaseName: "Fase 6: Cancelería Antihuracán & Carpintería Fina en Tzalam",
-    heroImage: "/projects/offgrid/offgrid-pabellon-living.jpg",
-    director: {
-      name: "Arq. Angel Cereceda",
-      role: "Director General & Supervisión Técnica",
-      credentials: "Máster Project Management UEM",
-      phone: "+52 1 984 210 8420",
-      email: "direccion@unoarquitectos.com",
-      whatsapp: "5219842108420",
-      photo: "/projects/residencial/alux-7cielos-master-jungle-view.jpg"
-    },
-    cloudpanoTours: [
-      {
-        id: "tour-tzalam-sep-2026",
-        date: "Septiembre 2026",
-        title: "Avance 85% - Carpintería Maciza de Tzalam & Domótica",
-        phaseName: "Fase 6: Carpintería y Cancelería",
-        progress: 85,
-        embedCode: '<iframe src="https://app.cloudpano.com/tours/demo-tour-uno?sceneId=1" width="100%" height="100%" frameborder="0" allowfullscreen allow="accelerometer; gyroscope; magnetometer; vr"></iframe>',
-        folderUrl: "https://drive.google.com/drive/folders/uno-arquitectos-casa-tzalam-sep2026",
-        notes: "Montaje final de puertas monumentales de 3.40m en madera de Tzalam, celosías pivotantes y encendido de circuitos de iluminación sensorial.",
-        thumbnail: "/projects/offgrid/offgrid-pabellon-living.jpg"
-      },
-      {
-        id: "tour-tzalam-ago-2026",
-        date: "Agosto 2026",
-        title: "Avance 72% - Albañilería, Aplanados & Instalaciones",
-        phaseName: "Fase 4: Revestimientos y Acabados",
-        progress: 72,
-        embedCode: '<iframe src="https://app.cloudpano.com/tours/demo-tour-uno?sceneId=2" width="100%" height="100%" frameborder="0" allowfullscreen allow="accelerometer; gyroscope; magnetometer; vr"></iframe>',
-        folderUrl: "https://drive.google.com/drive/folders/uno-arquitectos-casa-tzalam-ago2026",
-        notes: "Instalación de banco de baterías de litio LiFePO4 y 24 paneles solares monocristalinos para operación 100% autónoma off-grid.",
-        thumbnail: "/projects/offgrid/offgrid-rooftop-solar.jpg"
-      }
-    ],
-    phases: [
-      {
-        id: "tz-1",
-        order: 1,
-        title: "1. Cimentación y Estructura Portante",
-        progress: 100,
-        status: "completed",
-        targetDates: "Nov 2025 - Feb 2026",
-        supervisionNotes: "Estructura monolítica amarrada con losa de cimentación compensada.",
-        inspectedBy: "Arq. Angel Cereceda",
-        completionDate: "18 Febrero 2026"
-      },
-      {
-        id: "tz-2",
-        order: 2,
-        title: "2. Muros, Mampostería y Albañilería",
-        progress: 100,
-        status: "completed",
-        targetDates: "Mar 2026 - May 2026",
-        supervisionNotes: "Muros térmicos de piedra caliza regional y concreto aparente.",
-        inspectedBy: "Ing. Residente",
-        completionDate: "20 Mayo 2026"
-      },
-      {
-        id: "tz-3",
-        order: 3,
-        title: "3. Instalaciones Especiales & Sistema Solar Off-Grid",
-        progress: 100,
-        status: "completed",
-        targetDates: "May 2026 - Jul 2026",
-        supervisionNotes: "Sistema solar fotovoltaico híbrido y captación pluvial con filtración UV.",
-        inspectedBy: "Ing. de Energías Renovables",
-        completionDate: "25 Julio 2026"
-      },
-      {
-        id: "tz-4",
-        order: 4,
-        title: "4. Albañilería, Aplanados y Acabados",
-        progress: 100,
-        status: "completed",
-        targetDates: "Jul 2026 - Ago 2026",
-        supervisionNotes: "100% de aplanados en muros interiores y exteriores concluidos.",
-        inspectedBy: "Arq. Angel Cereceda",
-        completionDate: "30 Agosto 2026"
-      },
-      {
-        id: "tz-5",
-        order: 5,
-        title: "5. Alberca y Obras Exteriores",
-        progress: 80,
-        status: "in_progress",
-        targetDates: "Ago 2026 - Oct 2026",
-        supervisionNotes: "Instalación de closets, pergolados y cocina integral en madera maciza.",
-        inspectedBy: "Maestro Ebanista",
-      },
-      {
-        id: "tz-6",
-        order: 6,
-        title: "6. Cancelería Antihuracán & Doble Vidriado Hermético",
-        progress: 60,
-        status: "in_progress",
-        targetDates: "Sep 2026 - Nov 2026",
-        supervisionNotes: "Montaje de ventanales corredizos empotrados en piso.",
-        inspectedBy: "Ing. Cancelería",
-      },
-      {
-        id: "tz-7",
-        order: 7,
-        title: "7. Iluminación Sensorial & Paisajismo Selvático",
-        progress: 20,
-        status: "in_progress",
-        targetDates: "Nov 2026 - Dic 2026",
-        supervisionNotes: "Integración de senderos en grava caliza y luminarias cálidas.",
-        inspectedBy: "Diseñador Paisajista",
-      },
-      {
-        id: "tz-8",
-        order: 8,
-        title: "8. Entrega de Llaves & Protocolo de Calidad",
-        progress: 0,
-        status: "scheduled",
-        targetDates: "Dic 2026",
-        supervisionNotes: "Inspección de entrega y manual de operación off-grid.",
-        inspectedBy: "Arq. Angel Cereceda",
-      }
-    ],
-    photoReports: [
-      {
-        id: "rep-tzalam-01",
-        period: "Septiembre 2026",
-        category: "Interiores",
-        title: "Living Principal & Ventilación Cruzada Bernoulli",
-        date: "03 Septiembre 2026",
-        location: "Planta Baja - Sala Comedor",
-        imageUrl: "/projects/offgrid/offgrid-pabellon-living.jpg",
-        technicalNote: "Reframe arquitectónico libre de distorsión. Muestra la integración de techos altos en madera de Tzalam y piso en microcemento pulido.",
-        isReframed360: true
-      },
-      {
-        id: "rep-tzalam-02",
-        period: "Agosto 2026",
-        category: "Instalaciones",
-        title: "Planta Solar Rooftop & Captación Pluvial",
-        date: "20 Agosto 2026",
-        location: "Azotea Técnica",
-        imageUrl: "/projects/offgrid/offgrid-rooftop-solar.jpg",
-        technicalNote: "Arreglo fotovoltaico montado con inclinación óptima de 21° para captación solar máxima en Riviera Maya.",
-        isReframed360: true
-      }
-    ],
-    beforeAfterComparisons: [
-      {
-        id: "ba-tzalam-pabellon",
-        title: "Pabellón Central & Pérgola de Tzalam",
-        zone: "Área Social",
-        beforeDate: "Marzo 2026 (Estructura)",
-        afterDate: "Septiembre 2026 (Acabados)",
-        beforeImage: "/projects/offgrid/offgrid-suite-tulum.jpg",
-        afterImage: "/projects/offgrid/offgrid-pabellon-living.jpg",
-        description: "Evolución del claro principal de 12 metros sin columnas intermedias, logrando apertura total hacia el jardín selvático."
-      }
-    ]
-  },
-  {
-    id: "residencia-mayakoba",
-    propertyName: "Residencia Mayakoba",
-    accessCode: "unoarq",
-    clientName: "Inversiones Mayakoba / Residencia Familiar",
-    location: "Mayakoba Country Club, Playa del Carmen, Q. Roo",
-    typology: "Residencia Contemporánea Tropical de Alta Gama",
-    totalArea: "820 m² de Construcción",
-    startDate: "01 Marzo 2026",
-    estimatedDelivery: "30 Mayo 2027",
-    globalProgress: 42,
-    currentPhaseName: "Fase 3: Instalaciones Especiales & Mampostería",
-    heroImage: "/projects/hospitalidad/hospitalidad-santuario-arcos.jpg",
-    director: {
-      name: "Arq. Angel Cereceda",
-      role: "Director General & Supervisión Técnica",
-      credentials: "Máster Project Management UEM",
-      phone: "+52 1 984 210 8420",
-      email: "direccion@unoarquitectos.com",
-      whatsapp: "5219842108420",
-      photo: "/projects/residencial/alux-7cielos-master-jungle-view.jpg"
-    },
-    cloudpanoTours: [
-      {
-        id: "tour-mayakoba-sep-2026",
-        date: "Septiembre 2026",
-        title: "Avance 42% - Albañilería, Dobles Alturas & Red Hidrosanitaria",
-        phaseName: "Fase 3: Instalaciones Especiales",
-        progress: 42,
-        embedCode: '<iframe src="https://app.cloudpano.com/tours/demo-tour-uno?sceneId=1" width="100%" height="100%" frameborder="0" allowfullscreen allow="accelerometer; gyroscope; magnetometer; vr"></iframe>',
-        folderUrl: "https://drive.google.com/drive/folders/uno-arquitectos-residencia-mayakoba-sep2026",
-        notes: "Levantamiento 360° de entrepisos, muros de carga y canalizaciones de alberca infinity con vista al campo de golf.",
-        thumbnail: "/projects/hospitalidad/hospitalidad-santuario-arcos.jpg"
-      }
-    ],
-    phases: [
-      {
-        id: "my-1",
-        order: 1,
-        title: "1. Cimentación y Estructura Portante",
-        progress: 100,
-        status: "completed",
-        targetDates: "Mar 2026 - May 2026",
-        supervisionNotes: "Losa de cimentación con concreto de alta resistencia hidrófugo.",
-        inspectedBy: "Arq. Angel Cereceda",
-        completionDate: "28 Mayo 2026"
-      },
-      {
-        id: "my-2",
-        order: 2,
-        title: "2. Muros, Mampostería y Cimbra",
-        progress: 100,
-        status: "completed",
-        targetDates: "Jun 2026 - Ago 2026",
-        supervisionNotes: "Muros de block pesado con refuerzo horizontal y castillos ahogados.",
-        inspectedBy: "Ing. Residente",
-        completionDate: "30 Agosto 2026"
-      },
-      {
-        id: "my-3",
-        order: 3,
-        title: "3. Instalaciones Especiales (MEP & Climatización)",
-        progress: 35,
-        status: "in_progress",
-        targetDates: "Sep 2026 - Nov 2026",
-        supervisionNotes: "Tendido de tubería hidráulica termofusionada en proceso.",
-        inspectedBy: "Ing. Instalaciones",
-      },
-      {
-        id: "my-4",
-        order: 4,
-        title: "4. Albañilería, Aplanados y Acabados",
-        progress: 0,
-        status: "scheduled",
-        targetDates: "Nov 2026 - Ene 2027",
-        supervisionNotes: "Programado tras pruebas de presión hidrostática.",
-        inspectedBy: "Arq. Angel Cereceda",
-      },
-      {
-        id: "my-5",
-        order: 5,
-        title: "5. Alberca y Obras Exteriores",
-        progress: 0,
-        status: "scheduled",
-        targetDates: "Ene 2027 - Mar 2027",
-        supervisionNotes: "Habilitado de madera en taller de carpintería.",
-        inspectedBy: "Maestro Ebanista",
-      },
-      {
-        id: "my-6",
-        order: 6,
-        title: "6. Cancelería Antihuracán & Cristalería DVH",
-        progress: 0,
-        status: "scheduled",
-        targetDates: "Mar 2027 - Abr 2027",
-        supervisionNotes: "Cancelería perimetral de piso a techo.",
-        inspectedBy: "Ing. Cancelería",
-      },
-      {
-        id: "my-7",
-        order: 7,
-        title: "7. Iluminación Sensorial, Paisajismo & Alberca Infinity",
-        progress: 0,
-        status: "scheduled",
-        targetDates: "Abr 2027 - May 2027",
-        supervisionNotes: "Alberca con borde infinito y jardinería tropical.",
-        inspectedBy: "Diseñador Paisajista",
-      },
-      {
-        id: "my-8",
-        order: 8,
-        title: "8. Entrega de Llaves & Protocolo de Calidad",
-        progress: 0,
-        status: "scheduled",
-        targetDates: "Mayo 2027",
-        supervisionNotes: "Entrega protocolaria y entrega de llaves.",
-        inspectedBy: "Arq. Angel Cereceda",
-      }
-    ],
-    photoReports: [
-      {
-        id: "rep-mayakoba-01",
-        period: "Septiembre 2026",
-        category: "Estructura",
-        title: "Doble Altura & Arcos Estructurales en Concreto",
-        date: "01 Septiembre 2026",
-        location: "Planta Baja - Galería Central",
-        imageUrl: "/projects/hospitalidad/hospitalidad-santuario-arcos.jpg",
-        technicalNote: "Reframe fotográfico profesional de 360°. Detalle de cimbrado y desencofrado con acabado terso en concreto blanco.",
-        isReframed360: true
-      }
-    ],
-    beforeAfterComparisons: [
-      {
-        id: "ba-mayakoba-galeria",
-        title: "Galería de Arcos & Patio Central",
-        zone: "Galería Principal",
-        beforeDate: "Abril 2026 (Cimentación)",
-        afterDate: "Septiembre 2026 (Arcos Estructurales)",
-        beforeImage: "/projects/hospitalidad/hospitalidad-sendero-selva.jpg",
-        afterImage: "/projects/hospitalidad/hospitalidad-santuario-arcos.jpg",
-        description: "Proceso constructivo desde la preparación del terreno kárstico hasta la elevación de la arcada de concreto blanco."
-      }
-    ]
   }
 ];
+
 

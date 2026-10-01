@@ -27,18 +27,18 @@ interface Message {
 }
 
 const QUICK_QUESTIONS = [
-  "¿Cuáles son las medidas y áreas de Arrecifes?",
+  "¿Qué trabajos de obra se registran en las bitácoras?",
   "¿Qué avances se completaron el 19 de Septiembre?",
   "¿Qué avances se registraron el 05 de Septiembre?",
-  "¿Qué especificaciones tienen las instalaciones del 27 de Agosto?",
-  "¿Dónde descargo las bitácoras PDF y fotos 360°?"
+  "¿Qué actividades de obra se reportaron en Agosto?",
+  "¿Dónde descargo las bitácoras PDF y fotos de obra?"
 ];
 
 // Motor de Conocimiento Especializado para Residencia Arrecifes & UNO Arquitectos
 const getLocalArrecifesResponse = (query: string, project: ClientProject): { text: string; links?: { label: string; url: string }[] } => {
   const q = query.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
 
-  // 1. MEDIDAS EXACTAS / SUPERFICIES / ALTURAS / LOTE
+  // 1. INFORMACIÓN GENERAL Y SUPERVISIÓN
   if (
     q.includes("medida") ||
     q.includes("altura") ||
@@ -51,23 +51,20 @@ const getLocalArrecifesResponse = (query: string, project: ClientProject): { tex
     q.includes("area")
   ) {
     return {
-      text: `### 📐 Medidas y Especificaciones Constructivas de **${project.propertyName}**:
+      text: `### 📐 Información del Proyecto **${project.propertyName}**:
 
-• **Superficie Construida**: **720.00 m²** de construcción cubierta y terrazas con vistas panorámicas.
-• **Superficie del Terreno**: **1,150.00 m²** con respeto de vegetación nativa y retiros normativos.
-• **Alturas Libres de Entrepiso**:
-  - **Vestíbulo Principal & Estancia**: Doble altura libre de **6.40 m** con losas nervadas y ventanales panorámicos.
-  - **Master Suite (Planta Alta)**: Altura libre de **3.80 m** con terraza privada.
-  - **Recámaras Secundarias & Suites de Huéspedes**: Altura libre de **3.40 m**.
-• **Alberca**: Vaso de concreto armado de **48.00 m²** con profundidad gradual (0.40 m en asoleadero húmedo hasta 1.60 m en zona profunda) con canaleta perimetral e impermeabilización integral.
-• **Claros Estructurales**: Claros continuos de hasta **8.50 m** sin columnas intermedias para integración visual completa.`,
+• **Inmueble**: ${project.propertyName} • Obra Civil & Acabados Residenciales.
+• **Ubicación**: ${project.location}.
+• **Dirección y Supervisión de Obra**: ${project.director.name} (${project.director.role}).
+• **Trazabilidad Documental**: 18 Bitácoras Técnicas en formato PDF Oficial (Semana 15 a Semana 36).
+• **Registro Inmersivo**: 3 Levantamientos de fotografías 360° esféricas (27 Ago, 05 Sep y 19 Sep 2026) y bitácora fotográfica continua en Google Drive.`,
       links: [
         { label: "Ver Galería de Fotos por Fecha", url: "#photos" }
       ]
     };
   }
 
-  // 2. CIMENTACIÓN, MECÁNICA DE SUELOS KÁRSTICOS & INGENIERÍA ESTRUCTURAL
+  // 2. CIMENTACIÓN Y ESTRUCTURA SEGÚN BITÁCORAS
   if (
     q.includes("suelo") ||
     q.includes("cimentacion") ||
@@ -81,18 +78,15 @@ const getLocalArrecifesResponse = (query: string, project: ClientProject): { tex
     q.includes("resistencia")
   ) {
     return {
-      text: `### 🛡️ Cimentación, Mecánica de Suelos & Resistencia Estructural — **${project.propertyName}**:
+      text: `### 🛡️ Cimentación & Estructura — **${project.propertyName}**:
 
-• **Prospección Geofísica (GPR)**:
-  - Estudio realizado con Georradar a **12.0 m de profundidad**, certificando la ausencia de cavernas, dolinas u oquedades kársticas bajo la huella de cimentación.
-• **Sistema de Cimentación**:
-  - Zapatas aisladas y losa de rigidez de concreto armado de alta resistencia (**f'c = 250 kg/cm²**) interconectadas mediante trabes de liga continuas sismorresistentes.
-• **Certificación Antihuracán**:
-  - Estructura calculada para resistir vientos hidrodinámicos de **Huracanes Categoría 5 (>280 km/h)**.
-• **Cancelería & Envolvente**:
-  - Cancelería de alta especificación con cristales laminados reflectivos de **12 mm** de seguridad con anclajes estructurales ocultos.`,
+De acuerdo con las bitácoras técnicas oficiales (S15 a S26):
+• **Cimentación**: Cimentación de mampostería en barda y terreno, zanjas de desplante, zapatas y dados de concreto armado con cadenas de desplante y trabes de liga.
+• **Muros y Castillos**: Muros de block y mampostería confinados con castillos y cadenas de cerramiento nivelados y plomados bajo supervisión residente.
+• **Losas**: Cimbrado, armado de acero de refuerzo y colado de losas de entrepiso y losa de azotea con pendientes pluviales y calcreto.
+• **Control de Calidad**: Verificación semanal de trazos, niveles y calidades de agregados, cemento y aceros en sitio.`,
       links: [
-        { label: "Ver Dictamen Técnico PDF", url: "#pdf" }
+        { label: "Ver Bitácoras Digitales PDF", url: "#bitacora-digital" }
       ]
     };
   }
@@ -108,17 +102,17 @@ const getLocalArrecifesResponse = (query: string, project: ClientProject): { tex
     return {
       text: `### 🏛️ Reporte Ejecutivo de Avance — **19 de Septiembre de 2026** (75% Global • Más Reciente):
 
-• **Fase**: Fase 4 — Albañilería, Aplanados en Muros & Acabados.
+• **Fase**: Albañilería, Aplanados en Muros & Acabados.
 • **Trabajos de Albañilería y Aplanados**:
   - Aplanados con mortero en muros interiores y exteriores en planta baja y planta alta.
-  - Aplicación de masilla fina y perfilado de aristas en plafones y muros de doble altura.
+  - Aplicación de masilla en plafones y perfilado de vanos.
 • **Área de Alberca & Exteriores**:
-  - Sellado de vaso de alberca, nivelación de andadores y preparación de registros.
+  - Avance en armado y conformación de vaso de alberca y áreas exteriores.
 • **Instalaciones**:
-  - Ranurado y guiado de cableado eléctrico, preparaciones de tubería sanitaria e hidráulica en núcleos húmedos.`,
+  - Preparaciones y canalizaciones de instalaciones hidrosanitarias y eléctricas.`,
       links: [
         { label: "Abrir Carpeta Drive (19 Sep 2026)", url: "https://drive.google.com/drive/folders/1-67v7_NQrUfG2BwvKXI83Ddf0j40EZsE?usp=drive_link" },
-        { label: "Ver 23 Fotos 360° de esta fecha", url: "#360" }
+        { label: "Ver 23 Fotos 360° de esta fecha", url: "#visor-360" }
       ]
     };
   }
@@ -134,19 +128,19 @@ const getLocalArrecifesResponse = (query: string, project: ClientProject): { tex
     q.includes("albanileria")
   ) {
     return {
-      text: `### 🏛️ Reporte Ejecutivo de Avance — **05 de Septiembre de 2026** (72% Global):
+      text: `### 🏛️ Reporte Ejecutivo de Avance — **05 de Septiembre de 2026** (72% Global • Semana 36):
 
-• **Fase**: Fase 4 — Albañilería & Aplanados.
-• **Aplanados en Muros y Fachadas**:
-  - Aplicación de aplanados en muros de doble altura (**6.40 m**) y fachada exterior.
-  - Perfilado de vanos y pretiles perimetrales en azotea.
-• **Albañilería Interior**:
-  - Emboquillado de vanos para cancelería y colocación de firmes nivelados.
+• **Fase**: Albañilería & Aplanados.
+• **Aplanados en Muros**:
+  - Aplanados en muros de diferentes áreas y fachadas.
+  - Aplicación de masilla en plafones y perfilado de pretiles perimetrales.
+• **Albañilería Interior & Vanos**:
+  - Emboquillado de vanos y habilitado de elementos de albañilería.
 • **Vaso de Alberca**:
-  - Impermeabilización de vaso de alberca y pruebas de estanqueidad.`,
+  - Cimbrado, armado y habilitado de vaso de alberca.`,
       links: [
         { label: "Abrir Carpeta Drive (05 Sep 2026)", url: "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link" },
-        { label: "Ver 19 Fotos 360° de esta fecha", url: "#360" }
+        { label: "Ver 19 Fotos 360° de esta fecha", url: "#visor-360" }
       ]
     };
   }
@@ -167,21 +161,18 @@ const getLocalArrecifesResponse = (query: string, project: ClientProject): { tex
     q.includes("ptar")
   ) {
     return {
-      text: `### ⚡ Reporte Ejecutivo de Instalaciones — **27 de Agosto de 2026** (52% Global):
+      text: `### ⚡ Reporte Ejecutivo de Instalaciones — **27 de Agosto de 2026** (52% Global • Semana 35):
 
-• **Fase**: Fase 3 — Instalaciones Hidrosanitarias, Eléctricas & Preparaciones MEP.
-• **Climatización & Ductería**:
-  - Preparaciones para equipos de climatización en entrepisos técnicos (**3.40 m**) y salidas perimetrales.
-• **Instalación Hidráulica & Pruebas**:
-  - Red presurizada de alimentación hidráulica.
-  - **Prueba Hidrostática**: Presurizada a **7.0 kg/cm² (100 PSI)** superada en 72 horas continuas sin fugas.
-• **Instalación Eléctrica & Luminarias**:
-  - Canalizaciones, cajas de registro y cableado debidamente identificado.
-• **Sustentabilidad Hídrica**:
-  - Conexión a sistema de tratamiento de aguas y registros de descarga pluvial y sanitaria.`,
+• **Fase**: Instalaciones Hidrosanitarias, Eléctricas & Albañilería.
+• **Instalación Hidráulica y Sanitaria**:
+  - Canalizaciones de tuberías hidráulicas y sanitarias ahogadas en firmes y losas.
+• **Instalación Eléctrica**:
+  - Canalizaciones, tuberías conduit y cajas de registro para circuitos eléctricos.
+• **Actividades de Albañilería & Cubiertas**:
+  - Colado de calcreto en azotea para pendientes pluviales, aplanados en pretiles, base de tinaco y armado de alberca.`,
       links: [
         { label: "Abrir Carpeta Drive (27 Ago 2026)", url: "https://drive.google.com/drive/folders/1l0jp1jiRCOXMMI6sjqweEwhXh0BPkxPU?usp=drive_link" },
-        { label: "Ver 10 Fotos 360° de esta fecha", url: "#360" }
+        { label: "Ver 10 Fotos 360° de esta fecha", url: "#visor-360" }
       ]
     };
   }
@@ -203,30 +194,29 @@ const getLocalArrecifesResponse = (query: string, project: ClientProject): { tex
     return {
       text: `### 📋 Bitácora Digital Oficial & Trazabilidad Técnica — **${project.propertyName}**:
 
-La bitácora digital de obra está respaldada y sincronizada directamente con los **18 Documentos PDF Oficiales de Bitácora** en Google Drive bajo la supervisión técnica del **${project.director.name}**:
+La bitácora digital de obra está respaldada por los **18 Documentos PDF Oficiales de Bitácora** en Google Drive bajo la dirección del **${project.director.name}**:
 
 1. **Abril 2026 (Semana 15 a Semana 17)**:
-   - **S15 (10/04/2026)**: Limpieza del terreno, desmonte selectivo de maleza y rocas, trazo inicial y excavación para cimentación de mampostería.
-   - **S16 (17/04/2026)**: Construcción de bodega de materiales (3x5m), excavación de zanjas, colocación de mampostería alineada y conexiones provisionales.
-   - **S17 (24/04/2026)**: Conclusión de cimentación de mampostería en barda perimetral.
+   - **S15 (10/04/2026)**: Limpieza del terreno, trazo, nivelación y excavación de zanjas.
+   - **S16 (17/04/2026)**: Construcción de bodega de materiales (3x5m), excavación de zanjas, colocación de mampostería y conexiones provisionales.
+   - **S17 (24/04/2026)**: Cimentación de mampostería de barda perimetral, armados de acero y dados.
 
 2. **Mayo 2026 (Semana 18 a Semana 21)**:
-   - **S18 (01/05/2026)**: Conclusión de mampostería perimetral y armados de acero.
-   - **S19 (08/05/2026)** a **S21 (22/05/2026)**: Estructuración de zapatas, dados de concreto armado, desplante de castillos y trabes de liga.
+   - **S18 (01/05/2026)**: Colado de cadenas de desplante, mampostería de barda y zapatas.
+   - **S19 a S21**: Armado y colado de zapatas, dados de cimentación y desplante de columnas.
 
 3. **Junio 2026 (Semana 23 a Semana 26)**:
-   - **S23 (05/06/2026)** a **S26 (26/06/2026)**: Muros de mampostería, cimbrado y colado de losas de entrepiso y trabes principales.
+   - **S23 a S26**: Muros de block, castillos, cimbrado y colado de losas de entrepiso.
 
 4. **Julio 2026 (Semana 27 a Semana 31)**:
-   - **S27 (02/07/2026)** a **S31 (30/07/2026)**: Estructura de cubierta, pendientes pluviales, albañilería interior y preparaciones MEP.
+   - **S27 a S31**: Albañilería en planta alta, cerramientos, cimbrado, armado y colado de losa de azotea.
 
-5. **Agosto 2026 (Semana 32 a Semana 35 • 52% a 70% Avance)**:
-   - **S32 (07/08/2026)**: Canalizaciones hidráulicas y sanitarias en firme.
-   - **S35 (28/08/2026)**: Preparaciones de climatización en plenum técnico de 3.40m, prueba hidrostática a **7.0 kg/cm² (100 PSI)** superada en 72h sin caídas, preparaciones eléctricas y **10 Puntos 360° HD**.
+5. **Agosto 2026 (Semana 32 a Semana 35)**:
+   - **S32 a S35**: Pretiles, base de tinaco, colado de calcreto en azotea, canalizaciones hidrosanitarias y eléctricas, y armado de alberca.
 
-6. **Septiembre 2026 (Semana 36 a Semana 38 • 72% a 75% Avance)**:
-   - **S36 (04/09/2026)**: Aplanados en muros de doble altura (**6.40m**), emboquillados, impermeabilización de alberca (**48 m²**) y **19 Puntos 360° HD**.
-   - **S38/S39 (19/09/2026)**: Aplanados finos en muros interiores y exteriores, masilla en plafones, alberca e instalaciones con **23 Puntos 360° HD**.`,
+6. **Septiembre 2026 (Semana 36 y levantamientos 360°)**:
+   - **S36**: Aplanados en muros interiores y exteriores, aplicación de masilla en plafones, cimbrado y armado de alberca.
+   - **Levantamientos 360°**: 27 Ago (10 puntos), 05 Sep (19 puntos) y 19 Sep (23 puntos).`,
       links: [
         { label: "Abrir 03 Bitácora Digital (18 PDFs en Google Drive)", url: "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link" },
         { label: "Abrir 02 Bitácora Fotográfica (Google Drive)", url: "https://drive.google.com/drive/folders/1SKrAecbj22oz23ZIjAWoeK2p8zENDTM7?usp=drive_link" },
@@ -250,13 +240,13 @@ La bitácora digital de obra está respaldada y sincronizada directamente con lo
 
 Dispones de acceso directo a los repositorios oficiales sincronizados en la nube:
 1. **02 Bitácora Fotográfica (Google Drive)**:
-   - Archivo fotográfico completo con fotos de alta resolución organizadas por fases y fechas de levantamiento.
+   - Archivo fotográfico completo con fotos de avance organizadas por carpetas semanales.
 2. **03 Bitácora Digital (Google Drive)**:
-   - Dictámenes técnicos, reportes de supervisión de obra civil, certificados de laboratorio y actas oficiales (18 PDFs).
+   - Dictámenes y bitácoras semanales en formato PDF oficial (18 documentos).
 3. **Galería 360° Inmersiva Integrada**:
-   - **19 Septiembre 2026**: 23 Puntos Esféricos HD interactivos en WebGL Three.js.
-   - **05 Septiembre 2026**: 19 Puntos Esféricos HD interactivos en WebGL Three.js.
-   - **27 Agosto 2026**: 10 Puntos Esféricos HD interactivos en WebGL Three.js.`,
+   - **19 Septiembre 2026**: 23 Puntos Esféricos HD.
+   - **05 Septiembre 2026**: 19 Puntos Esféricos HD.
+   - **27 Agosto 2026**: 10 Puntos Esféricos HD.`,
       links: [
         { label: "Carpeta 19 Sep 2026 (Drive)", url: "https://drive.google.com/drive/folders/1-67v7_NQrUfG2BwvKXI83Ddf0j40EZsE?usp=drive_link" },
         { label: "Carpeta 05 Sep 2026 (Drive)", url: "https://drive.google.com/drive/folders/1CgBZbtS-CHUvISmdfnmg3TPKJIwNXV4n?usp=drive_link" },
@@ -278,11 +268,9 @@ Dispones de acceso directo a los repositorios oficiales sincronizados en la nube
     q.includes("m2 precio")
   ) {
     return {
-      text: `### 💼 Política de Costos y Presupuestos — **UNO Arquitectos**:
+      text: `### 💼 Información de Obra y Contacto Directo — **UNO Arquitectos**:
 
-En **UNO Arquitectos** no manejamos costos genéricos ni inventamos tarifas por metro cuadrado en línea, ya que cada obra se cotiza mediante un **Presupuesto Paramétrico Cerrado con Cero Sobrecostos**.
-
-Para cualquier cotización formal, ajuste volumétrico o catálogo de conceptos de **${project.propertyName}**, te invitamos a comunicarte directamente con el **${project.director.name}** (${project.director.role}).`,
+Para cualquier consulta sobre el programa de obra, catálogo de conceptos o temas contractuales de **${project.propertyName}**, te invitamos a comunicarte directamente con el **${project.director.name}** (${project.director.role}).`,
       links: [
         { label: "Contactar a Arq. Angel Cereceda vía WhatsApp", url: `https://wa.me/${project.director.whatsapp}` }
       ]
@@ -294,12 +282,11 @@ Para cualquier cotización formal, ajuste volumétrico o catálogo de conceptos 
     text: `Con gusto te asisto con información verificada de **${project.propertyName}** (${project.location}).
 
 Nuestra base de conocimiento oficial abarca:
-1. **Medidas y Alturas Exactas** (6.40 m doble altura, 3.80 m master suite, 3.40 m secundarias, claros de 8.50 m, alberca de 48 m²).
-2. **Cimentación & GPR** (prospección a 12 m sin cavernas, zapatas aisladas f'c=250 kg/cm², resistencia a huracanes Cat 5).
-3. **Avance 19 Sep 2026** (Albañilería, aplanados finos en muros, masilla en plafones, alberca e instalaciones).
-4. **Avance 05 Sep 2026** (Aplanados en muros de 6.40m, perfilado de vanos y pretiles, vaso de alberca).
-5. **Avance 27 Ago 2026** (Preparaciones de climatización, pruebas hidrostáticas a 7.0 kg/cm², canalizaciones eléctricas y PTAR).
-6. **Carpetas de Fotos en Google Drive** y **Galería 360° Inmersiva (52 puntos esféricos HD)**.
+1. **Bitácoras Técnicas Oficiales** (18 Documentos PDF de la Semana 15 a la Semana 36).
+2. **Avance 19 Sep 2026** (Albañilería, aplanados en muros, masilla en plafones, alberca e instalaciones).
+3. **Avance 05 Sep 2026** (Aplanados en muros, perfilado de vanos y pretiles, vaso de alberca).
+4. **Avance 27 Ago 2026** (Calcreto en azotea, pretiles, base de tinaco, canalizaciones hidrosanitarias y eléctricas).
+5. **Carpetas de Fotos en Google Drive** y **Visor 360° Inmersivo (52 puntos esféricos HD en total)**.
 
 Si necesitas información adicional no contemplada en este registro, te sugerimos contactar directamente a la Dirección Técnica.`,
     links: [
@@ -315,13 +302,13 @@ export default function ClientAIAssistantModal({ project, onClose }: ClientAIAss
       role: "assistant",
       content: `Hola. Soy el **Asesor Técnico de Inteligencia Artificial (Gemini)** de **UNO Arquitectos**, asignado a la supervisión técnica de **${project.propertyName}** bajo la dirección del **${project.director.name}**.
 
-Estoy entrenado con las especificaciones exactas, medidas milimétricas, dictámenes de supervisión y la bitácora oficial registrada en Google Drive (27 de Agosto, 05 de Septiembre y 19 de Septiembre de 2026).
+Estoy conectado a los registros oficiales de supervisión, bitácoras semanales en PDF y levantamientos fotográficos y 360° en Google Drive.
 
-¿En qué aspecto técnico o avance de tu residencia puedo orientarte hoy?`,
+¿En qué aspecto técnico o avance de obra puedo orientarte hoy?`,
       timestamp: "Ahora",
       driveLinks: [
         { label: "Ver Último Avance (19 Sep)", url: "https://drive.google.com/drive/folders/1-67v7_NQrUfG2BwvKXI83Ddf0j40EZsE?usp=drive_link" },
-        { label: "Ver Galería de Fotos 360°", url: "#360" }
+        { label: "Ver Visor 360°", url: "#visor-360" }
       ]
     }
   ]);

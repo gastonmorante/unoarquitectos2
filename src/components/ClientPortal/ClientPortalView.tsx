@@ -142,44 +142,51 @@ export default function ClientPortalView({
               </span>
             </button>
 
-            {/* PROJECT SWITCHER DROPDOWN */}
-            <div className="relative">
-              <button
-                onClick={() => setShowProjectSwitcher(!showProjectSwitcher)}
-                className="px-3.5 py-1.5 bg-white/80 hover:bg-white text-gris-texto border border-arena-calida/40 rounded-full text-xs font-label-caps uppercase tracking-wider flex items-center gap-2 cursor-pointer transition-all shadow-xs"
-              >
+            {/* PROJECT BADGE / SWITCHER */}
+            {allProjects.length > 1 ? (
+              <div className="relative">
+                <button
+                  onClick={() => setShowProjectSwitcher(!showProjectSwitcher)}
+                  className="px-3.5 py-1.5 bg-white/80 hover:bg-white text-gris-texto border border-arena-calida/40 rounded-full text-xs font-label-caps uppercase tracking-wider flex items-center gap-2 cursor-pointer transition-all shadow-xs"
+                >
+                  <Building2 className="w-3.5 h-3.5 text-teal-uno" />
+                  <span className="font-semibold">{safeProject.propertyName}</span>
+                  <ChevronDown className="w-3 h-3 text-gris-texto/60" />
+                </button>
+
+                {/* Dropdown Menu */}
+                {showProjectSwitcher && (
+                  <div className="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-xl border border-arena-calida/30 rounded-2xl shadow-2xl z-50 p-2 space-y-1">
+                    <div className="p-2 text-[10px] font-label-caps uppercase text-arena-calida tracking-widest border-b border-arena-calida/20 font-semibold">
+                      Cambiar de Propiedad
+                    </div>
+                    {allProjects.map((p) => (
+                      <button
+                        key={p.id}
+                        onClick={() => {
+                          onSelectProject(p);
+                          setTours(p.cloudpanoTours || []);
+                          setShowProjectSwitcher(false);
+                        }}
+                        className={`w-full p-2.5 text-left rounded-xl text-xs font-sans transition-colors flex items-center justify-between cursor-pointer ${
+                          p.id === safeProject.id
+                            ? "bg-teal-uno/10 text-teal-uno font-bold"
+                            : "text-gris-texto hover:bg-arena-calida/10"
+                        }`}
+                      >
+                        <span className="font-medium">{p.propertyName}</span>
+                        <span className="text-[10px] font-mono text-arena-calida">({p.globalProgress}%)</span>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="px-3.5 py-1.5 bg-white/80 text-gris-texto border border-arena-calida/40 rounded-full text-xs font-label-caps uppercase tracking-wider flex items-center gap-2 shadow-xs">
                 <Building2 className="w-3.5 h-3.5 text-teal-uno" />
                 <span className="font-semibold">{safeProject.propertyName}</span>
-                <ChevronDown className="w-3 h-3 text-gris-texto/60" />
-              </button>
-
-              {/* Dropdown Menu */}
-              {showProjectSwitcher && (
-                <div className="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-xl border border-arena-calida/30 rounded-2xl shadow-2xl z-50 p-2 space-y-1">
-                  <div className="p-2 text-[10px] font-label-caps uppercase text-arena-calida tracking-widest border-b border-arena-calida/20 font-semibold">
-                    Cambiar de Propiedad
-                  </div>
-                  {allProjects.map((p) => (
-                    <button
-                      key={p.id}
-                      onClick={() => {
-                        onSelectProject(p);
-                        setTours(p.cloudpanoTours || []);
-                        setShowProjectSwitcher(false);
-                      }}
-                      className={`w-full p-2.5 text-left rounded-xl text-xs font-sans transition-colors flex items-center justify-between cursor-pointer ${
-                        p.id === safeProject.id
-                          ? "bg-teal-uno/10 text-teal-uno font-bold"
-                          : "text-gris-texto hover:bg-arena-calida/10"
-                      }`}
-                    >
-                      <span className="font-medium">{p.propertyName}</span>
-                      <span className="text-[10px] font-mono text-arena-calida">({p.globalProgress}%)</span>
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
+              </div>
+            )}
           </div>
 
           {/* TOP ACTIONS: CERRAR Y VOLVER AL INICIO */}
@@ -224,7 +231,7 @@ export default function ClientPortalView({
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-1">
                   <div className="p-3.5 bg-white/80 backdrop-blur-md border border-arena-calida/30 rounded-2xl shadow-xs">
                     <span className="text-[10px] font-label-caps uppercase text-arena-calida tracking-wider font-semibold block mb-1">
-                      Superficie Total
+                      Tipología de Obra
                     </span>
                     <span className="font-headline-md text-xs sm:text-sm font-semibold text-gris-texto block">
                       {safeProject.totalArea}
