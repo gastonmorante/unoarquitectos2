@@ -11,7 +11,7 @@ export const defaultClientProjects: ClientProject[] = [
     totalArea: "Obra Civil & Acabados Residenciales",
     startDate: "01 Abril 2026",
     estimatedDelivery: "20 Diciembre 2026",
-    globalProgress: 63,
+    globalProgress: 75,
     currentPhaseName: "Albañilería, Aplanados & Acabados",
     heroImage: "/hero-luxury-villa.webp",
     director: {

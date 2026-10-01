@@ -419,7 +419,7 @@ Estoy conectado a los registros oficiales de supervisión, bitácoras semanales 
                   Asesor de Obra IA • Gemini
                 </h3>
                 <span className="px-2.5 py-0.5 rounded-full bg-teal-uno/15 text-teal-uno border border-teal-uno/30 text-[10px] font-mono font-bold">
-                  ARRECIFES 72%
+                  ARRECIFES {project.globalProgress || 75}%
                 </span>
               </div>
               <p className="text-[11px] text-arena-calida font-label-caps uppercase tracking-wider font-semibold">
