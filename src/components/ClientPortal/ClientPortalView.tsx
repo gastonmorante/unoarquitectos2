@@ -452,25 +452,7 @@ export default function ClientPortalView({
 
         {/* 3. MAIN PROGRESS & DIGITAL LOGBOOK CONTENT */}
         <main id="seccion-galeria-activa" className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-8 py-10 sm:py-14 space-y-14">
-          {/* PART 1: BITÁCORA DIGITAL DE SUPERVISIÓN TÉCNICA (CON TODAS LAS FOTOS, REENMARCADAS Y DOCUMENTOS OFICIALES) */}
-          {safeLogbook.length > 0 && (
-            <section id="bitacora-digital" className="space-y-5 text-left">
-              <DigitalLogbookTimeline
-                entries={safeLogbook}
-                bitacoraFotograficaUrl={safeProject.bitacoraFotograficaUrl}
-                bitacoraDigitalUrl={safeProject.bitacoraDigitalUrl}
-                masterDriveFolderUrl={safeProject.masterDriveFolderUrl}
-                selectedDate={activeDate}
-                onSelectDate={handleSelectPeriod}
-                onJumpTo360={() => {
-                  const el = document.getElementById("visor-360");
-                  if (el) el.scrollIntoView({ behavior: "smooth" });
-                }}
-              />
-            </section>
-          )}
-
-          {/* PART 2: VISOR INTERACTIVO DE FOTOS & RECORRIDOS 360° */}
+          {/* PART 1: VISOR INTERACTIVO DE FOTOS & RECORRIDOS 360° (SITUADO ARRIBA DE LAS BITÁCORAS) */}
           <section id="visor-360" className="space-y-5 text-left">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-arena-calida/20 pb-4">
               <div>
@@ -495,6 +477,24 @@ export default function ClientPortalView({
               onUpdateTour={handleUpdateTour}
             />
           </section>
+
+          {/* PART 2: BITÁCORA DIGITAL DE SUPERVISIÓN TÉCNICA (SOLO LA ÚLTIMA REGISTRADA CON SELECTOR LIMPIO) */}
+          {safeLogbook.length > 0 && (
+            <section id="bitacora-digital" className="space-y-5 text-left">
+              <DigitalLogbookTimeline
+                entries={safeLogbook}
+                bitacoraFotograficaUrl={safeProject.bitacoraFotograficaUrl}
+                bitacoraDigitalUrl={safeProject.bitacoraDigitalUrl}
+                masterDriveFolderUrl={safeProject.masterDriveFolderUrl}
+                selectedDate={activeDate}
+                onSelectDate={handleSelectPeriod}
+                onJumpTo360={() => {
+                  const el = document.getElementById("visor-360");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                }}
+              />
+            </section>
+          )}
         </main>
 
         {/* 5. FOOTER PROTOCOL */}
