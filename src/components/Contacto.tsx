@@ -1,5 +1,5 @@
-import { useState, FormEvent, useEffect } from "react";
-import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle, Clock, ExternalLink, X } from "lucide-react";
+import { useState, FormEvent, useEffect, useId } from "react";
+import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle, Clock, ExternalLink, X, AlertTriangle, RefreshCw } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { useSiteContent } from "../context/ContentContext";
 import Logo from "./Logo";
@@ -20,17 +20,60 @@ export default function Contacto() {
   const { content } = useSiteContent();
   const isEs = language === "es";
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [msg, setMsg] = useState("");
+  // Form Field States (aligned with reference form)
+  const [nombre, setNombre] = useState("");
+  const [telefono, setTelefono] = useState("");
+  const [correo, setCorreo] = useState("");
+  const [zona, setZona] = useState("");
+  const [terreno, setTerreno] = useState<string>(""); // "true" | "false" | ""
+  const [tipoProyecto, setTipoProyecto] = useState("");
+  const [inversion, setInversion] = useState("");
+  const [mensaje, setMensaje] = useState("");
+  const [fuente, setFuente] = useState("Sitio web");
   const [honeypot, setHoneypot] = useState("");
+
+  // UI Flow States
   const [submitted, setSubmitted] = useState(false);
+  const [fallback, setFallback] = useState(false);
   const [isSending, setIsSending] = useState(false);
-  const [errors, setErrors] = useState<{ name?: string; email?: string; phone?: string; msg?: string }>({});
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [toast, setToast] = useState<ToastNotification | null>(null);
 
-  // Auto-dismiss toast after 6 seconds
+  const nombreId = useId();
+  const telefonoId = useId();
+  const correoId = useId();
+  const zonaId = useId();
+  const tipoProyectoId = useId();
+  const inversionId = useId();
+  const mensajeId = useId();
+
+  // 1. Capture Campaign Source from URL (?fuente= or ?utm_source=)
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const raw = (params.get("fuente") || params.get("utm_source") || "").toLowerCase().trim();
+      const map: Record<string, string> = {
+        meta: "Meta",
+        facebook: "Facebook",
+        fb: "Facebook",
+        instagram: "Meta",
+        google: "Sitio web",
+        referido: "Referido",
+        chatgpt: "Chat GPT",
+        colaborador: "Colaborador",
+      };
+      if (raw && map[raw]) {
+        setFuente(map[raw]);
+      } else if (raw) {
+        setFuente(raw);
+      }
+    } catch {
+      // safe fallback
+    }
+  }, []);
+
+  // 2. Auto-dismiss Toast
   useEffect(() => {
     if (!toast) return;
     const timer = setTimeout(() => {
@@ -39,35 +82,97 @@ export default function Contacto() {
     return () => clearTimeout(timer);
   }, [toast]);
 
-  const validateForm = () => {
-    const errs: { name?: string; email?: string; phone?: string; msg?: string } = {};
-    const trimmedName = name.trim();
-    const trimmedEmail = email.trim();
-    const trimmedPhone = phone.trim();
-    const trimmedMsg = msg.trim();
+  // Options Definitions
+  const ZONAS = [
+    { value: "Puerto Morelos", label: t("contacto.zonePuertoMorelos") || "Puerto Morelos" },
+    { value: "Playa del Carmen", label: t("contacto.zonePDC") || "Playa del Carmen" },
+    { value: "Puerto Aventuras", label: t("contacto.zonePuertoAventuras") || "Puerto Aventuras" },
+    { value: "Akumal", label: t("contacto.zoneAkumal") || "Akumal" },
+    { value: "Tulum", label: t("contacto.zoneTulum") || "Tulum" },
+    { value: "Otra", label: t("contacto.zoneOther") || "Otra zona" },
+  ];
 
-    if (!trimmedName || trimmedName.length < 2) {
-      errs.name = isEs ? "Por favor ingrese su nombre completo." : "Please enter your full name.";
+  const TIPOS_PROYECTO = [
+    { value: "Residencial", label: t("contacto.projectTypeResidencial") || "Residencial" },
+    { value: "Hospitality / Boutique", label: t("contacto.projectTypeHospitality") || "Hospitality / Boutique" },
+    { value: "Remodelación", label: t("contacto.projectTypeRemodelacion") || "Remodelación" },
+    { value: "Desarrollo (multi-unidad)", label: t("contacto.projectTypeDesarrollo") || "Desarrollo (multi-unidad)" },
+    { value: "Otro", label: t("contacto.projectTypeOther") || "Otro" },
+  ];
+
+  const RANGOS_INVERSION = [
+    { value: "<2M", label: t("contacto.investmentUnder2M") || "Menos de $2M MXN" },
+    { value: "2-4M", label: t("contacto.investment2To4M") || "$2M – $4M MXN" },
+    { value: "4-6M", label: t("contacto.investment4To6M") || "$4M – $6M MXN" },
+    { value: "6-10M", label: t("contacto.investment6To10M") || "$6M – $10M MXN" },
+    { value: ">10M", label: t("contacto.investmentOver10M") || "Más de $10M MXN" },
+    { value: "no_seguro", label: t("contacto.investmentUnsure") || "Aún no lo tengo claro" },
+  ];
+
+  // Helper for WhatsApp message text
+  const whatsappNumber = (content?.contact?.whatsapp || "5219842108420").replace(/[^\d]/g, "");
+
+  const buildWhatsAppText = () => {
+    const invLabel = RANGOS_INVERSION.find(r => r.value === inversion)?.label || inversion;
+    const terrLabel = terreno === "true" 
+      ? (t("contacto.hasLandYes") || "Sí") 
+      : (t("contacto.hasLandNo") || "Aún no");
+    
+    let text = isEs
+      ? `Hola, quiero información sobre mi proyecto:\nNombre: ${nombre}\nTeléfono: ${telefono}\nZona: ${zona}\nTerreno identificado: ${terrLabel}\nTipo de proyecto: ${tipoProyecto}\nRango de inversión: ${invLabel}`
+      : `Hello, I would like information regarding my project:\nName: ${nombre}\nPhone: ${telefono}\nZone: ${zona}\nIdentified plot: ${terrLabel}\nProject type: ${tipoProyecto}\nInvestment range: ${invLabel}`;
+
+    if (mensaje.trim()) {
+      text += `\n${isEs ? "Notas" : "Notes"}: ${mensaje.trim()}`;
+    }
+    return text;
+  };
+
+  const getWhatsAppUrl = () => {
+    return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(buildWhatsAppText())}`;
+  };
+
+  // Validation
+  const validateForm = () => {
+    const errs: Record<string, string> = {};
+    const trimmedNombre = nombre.trim();
+    const trimmedTelefono = telefono.trim();
+    const trimmedCorreo = correo.trim();
+
+    if (!trimmedNombre || trimmedNombre.length < 2) {
+      errs.nombre = isEs ? "Escribe tu nombre." : "Please enter your name.";
+    }
+
+    if (!trimmedTelefono || !/^[\d\s()+\-]{8,}$/.test(trimmedTelefono)) {
+      errs.telefono = isEs ? "Escribe un teléfono válido." : "Please enter a valid phone number.";
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!trimmedEmail || !emailRegex.test(trimmedEmail)) {
-      errs.email = isEs ? "Por favor ingrese un correo electrónico válido." : "Please enter a valid email address.";
+    if (!trimmedCorreo || !emailRegex.test(trimmedCorreo)) {
+      errs.correo = isEs ? "Escribe un correo válido." : "Please enter a valid email address.";
     }
 
-    const phoneDigits = trimmedPhone.replace(/\D/g, "");
-    if (!trimmedPhone || phoneDigits.length < 7) {
-      errs.phone = isEs ? "Por favor ingrese un número telefónico válido (mínimo 7 dígitos)." : "Please enter a valid phone number (min 7 digits).";
+    if (!zona) {
+      errs.zona = isEs ? "Selecciona una zona." : "Please select a zone.";
     }
 
-    if (!trimmedMsg || trimmedMsg.length < 5) {
-      errs.msg = isEs ? "Por favor incluya una breve descripción de su proyecto." : "Please provide a brief description of your project.";
+    if (!terreno) {
+      errs.terreno = isEs ? "Selecciona una opción." : "Please select an option.";
+    }
+
+    if (!tipoProyecto) {
+      errs.tipoProyecto = isEs ? "Selecciona un tipo de proyecto." : "Please select a project type.";
+    }
+
+    if (!inversion) {
+      errs.inversion = isEs ? "Selecciona un rango." : "Please select an investment range.";
     }
 
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
 
+  // Submit Handler
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (isSending) return;
@@ -75,34 +180,59 @@ export default function Contacto() {
     if (!validateForm()) {
       setToast({
         type: "error",
-        title: isEs ? "Datos Incompletos" : "Incomplete Form",
-        message: isEs ? "Por favor verifique los campos marcados en rojo antes de enviar." : "Please check the highlighted fields before submitting."
+        title: isEs ? "Campos Incompletos" : "Incomplete Fields",
+        message: isEs 
+          ? "Por favor completa los campos requeridos para poder darte una respuesta útil." 
+          : "Please fill in the required fields so we can give you a helpful response."
       });
       return;
     }
 
     setIsSending(true);
     setErrors({});
+    setFallback(false);
 
     // Split Name for CRM Contact Fields
-    const nameParts = name.trim().split(" ");
-    const firstName = nameParts[0] || name.trim();
+    const nameParts = nombre.trim().split(" ");
+    const firstName = nameParts[0] || nombre.trim();
     const lastName = nameParts.slice(1).join(" ") || "";
+    const invLabel = RANGOS_INVERSION.find(r => r.value === inversion)?.label || inversion;
+    const terrenoText = terreno === "true" ? "Sí" : "Aún no";
 
     const payload = {
-      name: name.trim(),
+      // Reference & Standard names
+      nombre: nombre.trim(),
+      name: nombre.trim(),
       firstName,
       lastName,
-      email: email.trim(),
-      phone: phone.trim(),
-      projectType: "Proyecto Residencial / Boutique",
-      message: msg.trim(),
-      source: "Website UNO Arquitectos",
+      telefono: telefono.trim(),
+      phone: telefono.trim(),
+      correo: correo.trim(),
+      email: correo.trim(),
+      zona,
+      zone: zona,
+      location: zona,
+      terreno,
+      has_land: terreno,
+      hasLand: terreno === "true",
+      terreno_identificado: terrenoText,
+      tipo_proyecto: tipoProyecto,
+      tipoProyecto,
+      project_type: tipoProyecto,
+      projectType: tipoProyecto,
+      inversion,
+      budget: invLabel,
+      budget_range: invLabel,
+      mensaje: mensaje.trim(),
+      message: mensaje.trim(),
+      notes: mensaje.trim(),
+      fuente,
+      source: fuente,
       language,
       form_website_hp: honeypot.trim(),
       timestamp: new Date().toISOString(),
       pageUrl: typeof window !== "undefined" ? window.location.href : "https://unoarquitectos.com/#contacto",
-      tags: ["Website Lead", "Fase IV", `Lang-${language.toUpperCase()}`]
+      tags: ["Website Lead", "Diagnostico Web", "Fase IV", `Lang-${language.toUpperCase()}`]
     };
 
     try {
@@ -118,19 +248,19 @@ export default function Contacto() {
         return await res.json();
       });
 
-      // 2. Direct Frontend GHL Webhook Dispatch (if configured)
+      // 2. Direct Frontend GHL Webhook Dispatch (non-blocking if configured)
       const ghlPromise = fetch(GHL_WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
       }).catch((err) => {
-        console.warn("Direct GHL Webhook non-blocking status:", err);
+        console.warn("Direct GHL Webhook dispatch status:", err);
       });
 
-      // Wait for primary backend response
+      // Await primary backend response
       const [backendResult] = await Promise.allSettled([localApiPromise, ghlPromise]);
       if (backendResult.status === "rejected") {
-        console.warn("Backend API notice:", backendResult.reason);
+        throw backendResult.reason;
       }
 
       // 3. Trigger Analytics Conversion Events
@@ -139,44 +269,55 @@ export default function Contacto() {
         if (win.gtag) {
           win.gtag("event", "generate_lead", {
             event_category: "contact",
-            event_label: "Formulario GoHighLevel",
+            event_label: "Formulario Diagnóstico GHL",
             value: 1
           });
         }
         if (win.fbq) {
           win.fbq("track", "Lead", {
-            content_name: "Formulario GoHighLevel",
+            content_name: "Formulario Diagnóstico GHL",
             status: "success"
           });
         }
       }
 
-      // 4. Show Sleek Brand Toast Feedback
+      // 4. Success UI Feedback
       setToast({
         type: "success",
-        title: isEs ? "¡Mensaje Enviado con Éxito!" : "Message Successfully Sent!",
+        title: isEs ? "¡Diagnóstico Solicitado!" : "Diagnostic Requested!",
         message: isEs 
-          ? "Un director técnico de UNO Arquitectos revisará los detalles y le contactará a la brevedad."
-          : "A technical lead at UNO Arquitectos will review your project and get in touch shortly."
+          ? "Recibimos tu información con éxito. Te contactaremos muy pronto para agendar tu diagnóstico."
+          : "We received your project details. We will reach out shortly to schedule your diagnostic."
       });
 
       setSubmitted(true);
-      setName("");
-      setEmail("");
-      setPhone("");
-      setMsg("");
     } catch (err) {
-      console.error("Error connecting to GoHighLevel Webhook:", err);
+      console.error("Submission failed, presenting WhatsApp fallback:", err);
+      setFallback(true);
       setToast({
         type: "error",
-        title: isEs ? "Error al Enviar" : "Submission Error",
+        title: isEs ? "Falla de Envío" : "Submission Error",
         message: isEs 
-          ? "No se pudo conectar con el servidor. Por favor contáctenos directamente por WhatsApp o teléfono."
-          : "Could not connect to server. Please reach out directly via WhatsApp or phone."
+          ? "No pudimos conectar con el servidor. Puedes continuar directamente por WhatsApp con tus datos precargados."
+          : "Could not reach server. You can continue directly on WhatsApp with your pre-filled details."
       });
     } finally {
       setIsSending(false);
     }
+  };
+
+  const handleReset = () => {
+    setSubmitted(false);
+    setFallback(false);
+    setNombre("");
+    setTelefono("");
+    setCorreo("");
+    setZona("");
+    setTerreno("");
+    setTipoProyecto("");
+    setInversion("");
+    setMensaje("");
+    setErrors({});
   };
 
   return (
@@ -211,7 +352,7 @@ export default function Contacto() {
             <button 
               onClick={() => setToast(null)} 
               className="text-gris-texto hover:text-teal-uno transition-colors p-1 cursor-pointer"
-              aria-label="Cerrar notificación"
+              aria-label={isEs ? "Cerrar notificación" : "Close notification"}
             >
               <X className="w-4 h-4" />
             </button>
@@ -316,47 +457,89 @@ export default function Contacto() {
             </div>
           </div>
 
-          {/* CONTACT FORM */}
-          <div className="lg:col-span-7 bg-surface-container-low/80 border border-arena-calida/30 p-5 sm:p-8 md:p-12 lg:p-14 rounded-2xl sm:rounded-3xl relative text-left shadow-ethereal overflow-hidden">
+          {/* CONTACT CARD CONTAINER */}
+          <div className="lg:col-span-7 bg-surface-container-low/80 border border-arena-calida/30 p-5 sm:p-8 md:p-10 lg:p-12 rounded-2xl sm:rounded-3xl relative text-left shadow-ethereal overflow-hidden">
             {/* Watermark Logo */}
             <div className="absolute -right-6 -top-6 opacity-[0.03] pointer-events-none select-none">
               <Logo showText={false} iconSize={180} />
             </div>
 
+            {/* 1. SUCCESS STATE */}
             {submitted ? (
-              <div className="py-10 sm:py-12 text-center flex flex-col items-center animate-fadeIn">
+              <div className="py-8 sm:py-12 text-center flex flex-col items-center animate-fadeIn">
                 <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-teal-uno/10 text-teal-uno flex items-center justify-center mb-5 sm:mb-6 border border-teal-uno/30">
                   <CheckCircle2 className="w-7 h-7 sm:w-8 sm:h-8" />
                 </div>
-                <h3 className="font-headline-md text-xl sm:text-2xl font-semibold text-teal-uno mb-2 uppercase">{t("contacto.successTitle")}</h3>
-                <p className="font-body-md text-gris-texto text-xs sm:text-sm max-w-sm mx-auto leading-relaxed">
-                  {t("contacto.successDesc")}
+                <h3 className="font-headline-md text-xl sm:text-2xl font-semibold text-teal-uno mb-2 uppercase">
+                  {isEs ? `¡Listo, ${nombre.split(" ")[0]}!` : `All set, ${nombre.split(" ")[0]}!`}
+                </h3>
+                <p className="font-body-md text-gris-texto text-xs sm:text-sm max-w-md mx-auto leading-relaxed mb-6">
+                  {t("contacto.successDesc") || "Recibimos tu información. Te contactaremos muy pronto para agendar tu diagnóstico."}
                 </p>
-                <div className="mt-6 sm:mt-8 flex flex-wrap justify-center gap-4">
+                <div className="flex flex-col sm:flex-row justify-center gap-3 w-full sm:w-auto">
                   <a
-                    href="https://wa.me/5219842108420?text=Hola%20UNO%20Arquitectos%2C%20acabo%20de%20enviar%20el%20formulario%20y%20me%20gustar%C3%ADa%20agendar%20una%20reuni%C3%B3n%20t%C3%A9cnica."
+                    href={getWhatsAppUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-teal-uno text-white font-label-caps text-xs uppercase tracking-wider hover:bg-arena-calida transition-colors font-semibold"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#25D366] hover:bg-[#1EBE5D] text-white font-label-caps text-xs uppercase tracking-wider transition-all font-semibold shadow-md"
                   >
-                    {isEs ? "Abrir WhatsApp Directo" : "Open WhatsApp Directly"}
+                    {t("contacto.btnWhatsappDirect") || "Abrir WhatsApp Directo"}
                   </a>
                   <button
-                    onClick={() => setSubmitted(false)}
-                    className="font-label-caps text-xs uppercase tracking-widest text-gris-texto hover:text-teal-uno transition-colors cursor-pointer py-2.5 px-4"
+                    onClick={handleReset}
+                    className="font-label-caps text-xs uppercase tracking-widest text-gris-texto hover:text-teal-uno transition-colors cursor-pointer py-3 px-4 text-center"
                   >
-                    {t("contacto.successAnother")}
+                    {t("contacto.successAnother") || "Enviar otra consulta"}
+                  </button>
+                </div>
+              </div>
+            ) : fallback ? (
+              /* 2. FALLBACK WHATSAPP STATE (Network failure fallback) */
+              <div className="py-8 sm:py-12 text-center flex flex-col items-center animate-fadeIn">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-amber-500/10 text-amber-600 flex items-center justify-center mb-5 sm:mb-6 border border-amber-500/30">
+                  <AlertTriangle className="w-7 h-7 sm:w-8 sm:h-8" />
+                </div>
+                <h3 className="font-headline-md text-xl sm:text-2xl font-semibold text-teal-uno mb-2 uppercase">
+                  {t("contacto.fallbackTitle") || "No pudimos enviar el formulario"}
+                </h3>
+                <p className="font-body-md text-gris-texto text-xs sm:text-sm max-w-md mx-auto leading-relaxed mb-6">
+                  {t("contacto.fallbackDesc") || "Sin problema — escríbenos directo por WhatsApp y te atendemos de inmediato."}
+                </p>
+                <div className="flex flex-col sm:flex-row justify-center gap-3 w-full sm:w-auto">
+                  <a
+                    href={getWhatsAppUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#25D366] hover:bg-[#1EBE5D] text-white font-label-caps text-xs uppercase tracking-wider transition-all font-semibold shadow-md"
+                  >
+                    {t("contacto.fallbackBtn") || "Continuar por WhatsApp"}
+                  </a>
+                  <button
+                    onClick={() => setFallback(false)}
+                    className="inline-flex items-center justify-center gap-1.5 font-label-caps text-xs uppercase tracking-widest text-gris-texto hover:text-teal-uno transition-colors cursor-pointer py-3 px-4 text-center"
+                  >
+                    <RefreshCw className="w-3.5 h-3.5" />
+                    {t("contacto.fallbackRetry") || "Intentar de nuevo"}
                   </button>
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} noValidate className="space-y-4 sm:space-y-6 relative z-10">
-                <h3 className="font-headline-md text-lg sm:text-xl font-semibold text-teal-uno mb-1 sm:mb-2 uppercase">{t("contacto.formHeading")}</h3>
-                <p className="font-body-md text-xs text-gris-texto mb-4 sm:mb-6">{t("contacto.formSubheading")}</p>
+              /* 3. ACTIVE DIAGNOSTIC FORM (7 Visible Fields + Notes + UTM Source) */
+              <form onSubmit={handleSubmit} noValidate className="space-y-4 sm:space-y-5 relative z-10">
+                
+                {/* Form Heading & Subheading */}
+                <div>
+                  <h3 className="font-headline-md text-lg sm:text-xl font-semibold text-teal-uno mb-1 uppercase">
+                    {t("contacto.formHeading") || "Cuéntanos sobre tu proyecto"}
+                  </h3>
+                  <p className="font-body-md text-xs sm:text-sm text-gris-texto opacity-90">
+                    {t("contacto.formSubheading") || "2 minutos para que podamos darte una respuesta útil — no una genérica."}
+                  </p>
+                </div>
 
-                {/* INVISIBLE HONEYPOT BOT TRAP (WCAG & Accessibility compliant: hidden from real users and screen readers, attracts spam bots) */}
+                {/* INVISIBLE HONEYPOT BOT TRAP */}
                 <div className="absolute -left-[9999px] top-auto w-px h-px overflow-hidden opacity-0 pointer-events-none" aria-hidden="true" tabIndex={-1}>
-                  <label htmlFor="form_website_hp">Empresa / Sitio web (No llenar este campo)</label>
+                  <label htmlFor="form_website_hp">Empresa / Sitio web (No llenar)</label>
                   <input
                     id="form_website_hp"
                     type="text"
@@ -368,118 +551,272 @@ export default function Contacto() {
                   />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                  <div>
-                    <label className="block font-label-caps text-[11px] sm:text-xs uppercase tracking-wider text-teal-uno mb-1.5 sm:mb-2 font-semibold" htmlFor="con-name">
-                      {t("contacto.fullName")} <span className="text-red-500" aria-hidden="true">*</span>
-                    </label>
-                    <input
-                      id="con-name"
-                      type="text"
-                      required
-                      aria-required="true"
-                      aria-invalid={errors.name ? "true" : "false"}
-                      aria-describedby={errors.name ? "con-name-err" : undefined}
-                      autoComplete="name"
-                      placeholder={t("contacto.fullNamePlaceholder")}
-                      value={name}
-                      onChange={(e) => {
-                        setName(e.target.value);
-                        if (errors.name) setErrors({ ...errors, name: undefined });
-                      }}
-                      className={`w-full bg-white border rounded-xl py-3 px-3.5 font-body-md text-sm text-gris-texto transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2 ${
-                        errors.name ? "border-red-500 focus:border-red-600" : "border-arena-calida/30 focus:border-teal-uno"
-                      }`}
-                    />
-                    {errors.name && <p id="con-name-err" className="text-red-500 text-[11px] mt-1" role="alert">{errors.name}</p>}
-                  </div>
+                {/* HIDDEN UTM CAMPAIGN SOURCE */}
+                <input type="hidden" name="fuente" value={fuente} />
 
+                {/* Campo 1: Nombre Completo */}
+                <div>
+                  <label htmlFor={nombreId} className="block font-label-caps text-[11px] sm:text-xs uppercase tracking-wider text-teal-uno mb-1.5 font-semibold">
+                    {t("contacto.fullName") || "Nombre completo"} <span className="text-red-500" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    id={nombreId}
+                    type="text"
+                    required
+                    aria-required="true"
+                    aria-invalid={errors.nombre ? "true" : "false"}
+                    aria-describedby={errors.nombre ? `${nombreId}-err` : undefined}
+                    autoComplete="name"
+                    placeholder={t("contacto.fullNamePlaceholder") || "Tu nombre y apellido"}
+                    value={nombre}
+                    onChange={(e) => {
+                      setNombre(e.target.value);
+                      if (errors.nombre) setErrors({ ...errors, nombre: undefined });
+                    }}
+                    className={`w-full bg-white border rounded-xl py-3 px-3.5 font-body-md text-sm text-gris-texto transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2 ${
+                      errors.nombre ? "border-red-500 focus:border-red-600" : "border-arena-calida/30 focus:border-teal-uno"
+                    }`}
+                  />
+                  {errors.nombre && <p id={`${nombreId}-err`} className="text-red-500 text-[11px] mt-1 font-medium" role="alert">{errors.nombre}</p>}
+                </div>
+
+                {/* Fila 2: Teléfono / WhatsApp & Correo Electrónico */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block font-label-caps text-[11px] sm:text-xs uppercase tracking-wider text-teal-uno mb-1.5 sm:mb-2 font-semibold" htmlFor="con-tel">
-                      {t("contacto.phone")} <span className="text-red-500" aria-hidden="true">*</span>
+                    <label htmlFor={telefonoId} className="block font-label-caps text-[11px] sm:text-xs uppercase tracking-wider text-teal-uno mb-1.5 font-semibold">
+                      {t("contacto.phone") || "Teléfono / WhatsApp"} <span className="text-red-500" aria-hidden="true">*</span>
                     </label>
                     <input
-                      id="con-tel"
+                      id={telefonoId}
                       type="tel"
                       required
                       aria-required="true"
-                      aria-invalid={errors.phone ? "true" : "false"}
-                      aria-describedby={errors.phone ? "con-tel-err" : undefined}
+                      aria-invalid={errors.telefono ? "true" : "false"}
+                      aria-describedby={errors.telefono ? `${telefonoId}-err` : undefined}
                       autoComplete="tel"
-                      placeholder={t("contacto.phonePlaceholder") || "+52 1 984 210 8420"}
-                      value={phone}
+                      placeholder={t("contacto.phonePlaceholder") || "+52 ..."}
+                      value={telefono}
                       onChange={(e) => {
-                        setPhone(e.target.value);
-                        if (errors.phone) setErrors({ ...errors, phone: undefined });
+                        setTelefono(e.target.value);
+                        if (errors.telefono) setErrors({ ...errors, telefono: undefined });
                       }}
                       className={`w-full bg-white border rounded-xl py-3 px-3.5 font-body-md text-sm text-gris-texto transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2 ${
-                        errors.phone ? "border-red-500 focus:border-red-600" : "border-arena-calida/30 focus:border-teal-uno"
+                        errors.telefono ? "border-red-500 focus:border-red-600" : "border-arena-calida/30 focus:border-teal-uno"
                       }`}
                     />
-                    {errors.phone && <p id="con-tel-err" className="text-red-500 text-[11px] mt-1" role="alert">{errors.phone}</p>}
+                    {errors.telefono && <p id={`${telefonoId}-err`} className="text-red-500 text-[11px] mt-1 font-medium" role="alert">{errors.telefono}</p>}
+                  </div>
+
+                  <div>
+                    <label htmlFor={correoId} className="block font-label-caps text-[11px] sm:text-xs uppercase tracking-wider text-teal-uno mb-1.5 font-semibold">
+                      {t("contacto.email") || "Correo electrónico"} <span className="text-red-500" aria-hidden="true">*</span>
+                    </label>
+                    <input
+                      id={correoId}
+                      type="email"
+                      required
+                      aria-required="true"
+                      aria-invalid={errors.correo ? "true" : "false"}
+                      aria-describedby={errors.correo ? `${correoId}-err` : undefined}
+                      autoComplete="email"
+                      placeholder={t("contacto.emailPlaceholder") || "tu@correo.com"}
+                      value={correo}
+                      onChange={(e) => {
+                        setCorreo(e.target.value);
+                        if (errors.correo) setErrors({ ...errors, correo: undefined });
+                      }}
+                      className={`w-full bg-white border rounded-xl py-3 px-3.5 font-body-md text-sm text-gris-texto transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2 ${
+                        errors.correo ? "border-red-500 focus:border-red-600" : "border-arena-calida/30 focus:border-teal-uno"
+                      }`}
+                    />
+                    {errors.correo && <p id={`${correoId}-err`} className="text-red-500 text-[11px] mt-1 font-medium" role="alert">{errors.correo}</p>}
                   </div>
                 </div>
 
-                <div>
-                  <label className="block font-label-caps text-[11px] sm:text-xs uppercase tracking-wider text-teal-uno mb-1.5 sm:mb-2 font-semibold" htmlFor="con-email">
-                    {t("contacto.email")} <span className="text-red-500" aria-hidden="true">*</span>
-                  </label>
-                  <input
-                    id="con-email"
-                    type="email"
-                    required
-                    aria-required="true"
-                    aria-invalid={errors.email ? "true" : "false"}
-                    aria-describedby={errors.email ? "con-email-err" : undefined}
-                    autoComplete="email"
-                    placeholder={t("contacto.emailPlaceholder")}
-                    value={email}
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                      if (errors.email) setErrors({ ...errors, email: undefined });
-                    }}
-                    className={`w-full bg-white border rounded-xl py-3 px-3.5 font-body-md text-sm text-gris-texto transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2 ${
-                      errors.email ? "border-red-500 focus:border-red-600" : "border-arena-calida/30 focus:border-teal-uno"
-                    }`}
-                  />
-                  {errors.email && <p id="con-email-err" className="text-red-500 text-[11px] mt-1" role="alert">{errors.email}</p>}
+                {/* Fila 3: Zona de interés & Terreno identificado (Pill buttons) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor={zonaId} className="block font-label-caps text-[11px] sm:text-xs uppercase tracking-wider text-teal-uno mb-1.5 font-semibold">
+                      {t("contacto.zone") || "Zona de interés del terreno"} <span className="text-red-500" aria-hidden="true">*</span>
+                    </label>
+                    <select
+                      id={zonaId}
+                      required
+                      aria-required="true"
+                      aria-invalid={errors.zona ? "true" : "false"}
+                      aria-describedby={errors.zona ? `${zonaId}-err` : undefined}
+                      value={zona}
+                      onChange={(e) => {
+                        setZona(e.target.value);
+                        if (errors.zona) setErrors({ ...errors, zona: undefined });
+                      }}
+                      className={`w-full bg-white border rounded-xl py-3 px-3.5 font-body-md text-sm text-gris-texto transition-all appearance-none cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2 ${
+                        errors.zona ? "border-red-500 focus:border-red-600" : "border-arena-calida/30 focus:border-teal-uno"
+                      }`}
+                      style={{
+                        backgroundImage: `url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23009E9B%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E")`,
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "right 0.85rem center",
+                        backgroundSize: "1rem"
+                      }}
+                    >
+                      <option value="" disabled>{t("contacto.zonePlaceholder") || "Selecciona una zona"}</option>
+                      {ZONAS.map((z) => (
+                        <option key={z.value} value={z.value}>{z.label}</option>
+                      ))}
+                    </select>
+                    {errors.zona && <p id={`${zonaId}-err`} className="text-red-500 text-[11px] mt-1 font-medium" role="alert">{errors.zona}</p>}
+                  </div>
+
+                  <div>
+                    <span id="terreno-label" className="block font-label-caps text-[11px] sm:text-xs uppercase tracking-wider text-teal-uno mb-1.5 font-semibold">
+                      {t("contacto.hasLand") || "¿Ya cuentas con terreno identificado o adquirido?"} <span className="text-red-500" aria-hidden="true">*</span>
+                    </span>
+                    <div className="flex gap-2.5" role="radiogroup" aria-labelledby="terreno-label">
+                      <button
+                        type="button"
+                        role="radio"
+                        aria-checked={terreno === "true"}
+                        onClick={() => {
+                          setTerreno("true");
+                          if (errors.terreno) setErrors({ ...errors, terreno: undefined });
+                        }}
+                        className={`flex-1 py-2.5 sm:py-3 px-3 rounded-xl border text-xs sm:text-sm font-medium transition-all text-center cursor-pointer select-none ${
+                          terreno === "true"
+                            ? "border-teal-uno bg-teal-uno/15 text-teal-uno font-semibold ring-1 ring-teal-uno"
+                            : "border-arena-calida/30 bg-white text-gris-texto hover:border-teal-uno/50"
+                        }`}
+                      >
+                        {t("contacto.hasLandYes") || "Sí"}
+                      </button>
+                      <button
+                        type="button"
+                        role="radio"
+                        aria-checked={terreno === "false"}
+                        onClick={() => {
+                          setTerreno("false");
+                          if (errors.terreno) setErrors({ ...errors, terreno: undefined });
+                        }}
+                        className={`flex-1 py-2.5 sm:py-3 px-3 rounded-xl border text-xs sm:text-sm font-medium transition-all text-center cursor-pointer select-none ${
+                          terreno === "false"
+                            ? "border-teal-uno bg-teal-uno/15 text-teal-uno font-semibold ring-1 ring-teal-uno"
+                            : "border-arena-calida/30 bg-white text-gris-texto hover:border-teal-uno/50"
+                        }`}
+                      >
+                        {t("contacto.hasLandNo") || "Aún no"}
+                      </button>
+                    </div>
+                    {errors.terreno && <p className="text-red-500 text-[11px] mt-1 font-medium" role="alert">{errors.terreno}</p>}
+                  </div>
                 </div>
 
+                {/* Fila 4: Tipo de Proyecto & Rango de Inversión */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor={tipoProyectoId} className="block font-label-caps text-[11px] sm:text-xs uppercase tracking-wider text-teal-uno mb-1.5 font-semibold">
+                      {t("contacto.projectType") || "Tipo de proyecto"} <span className="text-red-500" aria-hidden="true">*</span>
+                    </label>
+                    <select
+                      id={tipoProyectoId}
+                      required
+                      aria-required="true"
+                      aria-invalid={errors.tipoProyecto ? "true" : "false"}
+                      aria-describedby={errors.tipoProyecto ? `${tipoProyectoId}-err` : undefined}
+                      value={tipoProyecto}
+                      onChange={(e) => {
+                        setTipoProyecto(e.target.value);
+                        if (errors.tipoProyecto) setErrors({ ...errors, tipoProyecto: undefined });
+                      }}
+                      className={`w-full bg-white border rounded-xl py-3 px-3.5 font-body-md text-sm text-gris-texto transition-all appearance-none cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2 ${
+                        errors.tipoProyecto ? "border-red-500 focus:border-red-600" : "border-arena-calida/30 focus:border-teal-uno"
+                      }`}
+                      style={{
+                        backgroundImage: `url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23009E9B%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E")`,
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "right 0.85rem center",
+                        backgroundSize: "1rem"
+                      }}
+                    >
+                      <option value="" disabled>{t("contacto.projectTypePlaceholder") || "Selecciona una opción"}</option>
+                      {TIPOS_PROYECTO.map((tp) => (
+                        <option key={tp.value} value={tp.value}>{tp.label}</option>
+                      ))}
+                    </select>
+                    {errors.tipoProyecto && <p id={`${tipoProyectoId}-err`} className="text-red-500 text-[11px] mt-1 font-medium" role="alert">{errors.tipoProyecto}</p>}
+                  </div>
+
+                  <div>
+                    <label htmlFor={inversionId} className="block font-label-caps text-[11px] sm:text-xs uppercase tracking-wider text-teal-uno mb-1.5 font-semibold">
+                      {t("contacto.investment") || "Rango de inversión aproximado"} <span className="text-red-500" aria-hidden="true">*</span>
+                    </label>
+                    <select
+                      id={inversionId}
+                      required
+                      aria-required="true"
+                      aria-invalid={errors.inversion ? "true" : "false"}
+                      aria-describedby={errors.inversion ? `${inversionId}-err` : undefined}
+                      value={inversion}
+                      onChange={(e) => {
+                        setInversion(e.target.value);
+                        if (errors.inversion) setErrors({ ...errors, inversion: undefined });
+                      }}
+                      className={`w-full bg-white border rounded-xl py-3 px-3.5 font-body-md text-sm text-gris-texto transition-all appearance-none cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2 ${
+                        errors.inversion ? "border-red-500 focus:border-red-600" : "border-arena-calida/30 focus:border-teal-uno"
+                      }`}
+                      style={{
+                        backgroundImage: `url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23009E9B%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E")`,
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "right 0.85rem center",
+                        backgroundSize: "1rem"
+                      }}
+                    >
+                      <option value="" disabled>{t("contacto.investmentPlaceholder") || "Selecciona un rango"}</option>
+                      {RANGOS_INVERSION.map((ri) => (
+                        <option key={ri.value} value={ri.value}>{ri.label}</option>
+                      ))}
+                    </select>
+                    {errors.inversion && <p id={`${inversionId}-err`} className="text-red-500 text-[11px] mt-1 font-medium" role="alert">{errors.inversion}</p>}
+                  </div>
+                </div>
+
+                {/* Campo 5: Mensaje Opcional */}
                 <div>
-                  <label className="block font-label-caps text-[11px] sm:text-xs uppercase tracking-wider text-teal-uno mb-1.5 sm:mb-2 font-semibold" htmlFor="con-msg">
-                    {t("contacto.additionalMsg")} <span className="text-red-500" aria-hidden="true">*</span>
+                  <label htmlFor={mensajeId} className="block font-label-caps text-[11px] sm:text-xs uppercase tracking-wider text-teal-uno mb-1.5 font-semibold">
+                    {t("contacto.additionalMsg") || "Cuéntanos algo más"} <span className="font-normal text-gris-texto/70 tracking-normal normal-case">{t("contacto.additionalMsgOpt") || "(opcional)"}</span>
                   </label>
                   <textarea
-                    id="con-msg"
-                    rows={4}
-                    required
-                    aria-required="true"
-                    aria-invalid={errors.msg ? "true" : "false"}
-                    aria-describedby={errors.msg ? "con-msg-err" : undefined}
-                    placeholder={t("contacto.additionalMsgPlaceholder")}
-                    value={msg}
-                    onChange={(e) => {
-                      setMsg(e.target.value);
-                      if (errors.msg) setErrors({ ...errors, msg: undefined });
-                    }}
-                    className={`w-full bg-white border rounded-xl p-3.5 font-body-md text-sm text-gris-texto transition-all resize-none focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2 ${
-                      errors.msg ? "border-red-500 focus:border-red-600" : "border-arena-calida/30 focus:border-teal-uno"
-                    }`}
+                    id={mensajeId}
+                    rows={3}
+                    placeholder={t("contacto.additionalMsgPlaceholder") || "Lo que quieras compartir sobre el proyecto..."}
+                    value={mensaje}
+                    onChange={(e) => setMensaje(e.target.value)}
+                    className="w-full bg-white border border-arena-calida/30 rounded-xl p-3.5 font-body-md text-sm text-gris-texto transition-all resize-y min-h-[75px] focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2 focus:border-teal-uno"
                   ></textarea>
-                  {errors.msg && <p id="con-msg-err" className="text-red-500 text-[11px] mt-1" role="alert">{errors.msg}</p>}
                 </div>
 
+                {/* Botón de Envío */}
                 <button
                   type="submit"
                   disabled={isSending}
-                  aria-label={isSending ? "Enviando mensaje" : "Enviar consulta de proyecto"}
-                  className={`w-full bg-teal-uno hover:bg-arena-calida text-white py-3.5 sm:py-4 font-label-caps text-xs sm:text-label-caps uppercase tracking-wider transition-all flex items-center justify-center gap-2 rounded-full cursor-pointer shadow-ethereal font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2 ${isSending ? "opacity-70 cursor-not-allowed" : ""}`}
+                  aria-label={isSending ? "Enviando solicitud..." : "Enviar y agendar diagnóstico"}
+                  className={`w-full bg-teal-uno hover:bg-arena-calida text-white py-3.5 sm:py-4 font-label-caps text-xs sm:text-label-caps uppercase tracking-wider transition-all flex items-center justify-center gap-2 rounded-full cursor-pointer shadow-ethereal font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-uno focus-visible:ring-offset-2 ${
+                    isSending ? "opacity-70 cursor-not-allowed" : ""
+                  }`}
                 >
                   <Send className="w-4 h-4 text-white" aria-hidden="true" />
-                  {isSending ? (isEs ? "Conectando con GoHighLevel..." : "Submitting to GoHighLevel...") : t("contacto.btnSubmit")}
+                  {isSending 
+                    ? (t("contacto.btnSubmitting") || "Enviando y agendando...") 
+                    : (t("contacto.btnSubmit") || "Enviar y agendar diagnóstico")}
                 </button>
+
+                {/* Nota de Privacidad */}
+                <p className="font-body-md text-[11px] sm:text-xs text-gris-texto/80 text-center mt-2 leading-relaxed">
+                  {t("contacto.privacyNote") || "Tus datos se usan únicamente para contactarte sobre tu proyecto."}
+                </p>
+
               </form>
             )}
+
           </div>
 
         </div>

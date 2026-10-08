@@ -280,7 +280,19 @@ export default function CloudPanoViewer({
             )}
           </div>
 
-          <div className="flex items-center gap-2 flex-shrink-0 self-start md:self-auto">
+          <div className="flex items-center gap-2 flex-shrink-0 self-start md:self-auto flex-wrap">
+            {activeTour.embedCode && (
+              <a
+                href={activeTour.embedCode}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3.5 py-1.5 bg-white/90 hover:bg-teal-uno hover:text-white text-gris-texto border border-arena-calida/40 rounded-full text-xs font-label-caps uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-xs cursor-pointer font-medium"
+                title="Abrir recorrido virtual interactivo en CloudPano"
+              >
+                <Compass className="w-3.5 h-3.5 text-teal-uno" />
+                <span>Tour CloudPano</span>
+              </a>
+            )}
             {activeTour.folderUrl && (
               <a
                 href={activeTour.folderUrl}

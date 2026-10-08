@@ -571,7 +571,7 @@ export default function Interactive360Canvas({
             Cargando Tour Virtual 360° Inmersivo...
           </span>
           <span className="text-[10px] text-gris-texto/80 mt-1 font-mono">
-            {dateTitle} • {activeScene?.roomName || activeScene?.title}
+            {dateTitle} • Punto {activeSceneIndex + 1} de {safeScenes.length}
           </span>
         </div>
       )}
@@ -579,26 +579,21 @@ export default function Interactive360Canvas({
       {/* TOP OVERLAY BAR (HUD) */}
       <div className="absolute top-3 left-3 right-3 sm:top-4 sm:left-4 sm:right-4 z-20 flex items-center justify-between gap-2 pointer-events-none">
         {/* Left: Active Scene & Zone Switcher Trigger */}
-        <div className="bg-background/95 backdrop-blur-md px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-2xl border border-arena-calida/40 shadow-xl pointer-events-auto flex items-center gap-2.5 sm:gap-3">
+        <div className="bg-background/95 backdrop-blur-md px-3.5 py-2 sm:px-4 sm:py-2 rounded-2xl border border-arena-calida/40 shadow-xl pointer-events-auto flex items-center gap-2.5 sm:gap-3">
           <span className="w-2.5 h-2.5 rounded-full bg-teal-uno animate-pulse flex-shrink-0" />
-          <div className="min-w-0">
-            <div className="flex items-center gap-1.5 sm:gap-2">
-              <span className="text-[9px] sm:text-[10px] font-label-caps uppercase text-arena-calida font-bold tracking-wider truncate">
-                {dateTitle}
-              </span>
-              <button
-                type="button"
-                onClick={() => setShowRoomDrawer(!showRoomDrawer)}
-                className="text-[8px] sm:text-[9px] font-mono px-2 py-0.5 bg-teal-uno/15 text-teal-uno hover:bg-teal-uno hover:text-white rounded-full border border-teal-uno/30 font-bold flex-shrink-0 transition-colors cursor-pointer flex items-center gap-1"
-                title="Ver lista de zonas de la residencia"
-              >
-                <span>Punto {activeSceneIndex + 1}/{safeScenes.length}</span>
-                <Layers className="w-2.5 h-2.5" />
-              </button>
-            </div>
-            <h4 className="font-headline-md text-xs sm:text-sm font-bold text-teal-uno uppercase truncate max-w-[130px] xs:max-w-[190px] sm:max-w-xs md:max-w-md">
-              {activeScene?.roomName ? `${activeScene.roomName} • ${activeScene.title}` : activeScene?.title}
-            </h4>
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] sm:text-xs font-label-caps uppercase text-arena-calida font-bold tracking-wider">
+              {dateTitle}
+            </span>
+            <button
+              type="button"
+              onClick={() => setShowRoomDrawer(!showRoomDrawer)}
+              className="text-[9px] sm:text-[10px] font-mono px-2.5 py-0.5 bg-teal-uno/15 text-teal-uno hover:bg-teal-uno hover:text-white rounded-full border border-teal-uno/30 font-bold flex-shrink-0 transition-colors cursor-pointer flex items-center gap-1"
+              title="Ver selector de puntos 360°"
+            >
+              <span>Punto {activeSceneIndex + 1} de {safeScenes.length}</span>
+              <Layers className="w-3 h-3" />
+            </button>
           </div>
         </div>
 
@@ -677,7 +672,7 @@ export default function Interactive360Canvas({
           <div className="flex items-center justify-between pb-2 border-b border-arena-calida/20 px-2">
             <span className="text-[10px] font-label-caps uppercase text-arena-calida font-bold tracking-wider flex items-center gap-1.5">
               <MapPin className="w-3 h-3 text-teal-uno" />
-              Zonas de la Residencia ({safeScenes.length})
+              Puntos del Recorrido 360° ({safeScenes.length})
             </span>
             <button
               onClick={() => setShowRoomDrawer(false)}
@@ -709,7 +704,7 @@ export default function Interactive360Canvas({
                     }`}>
                       {idx + 1}
                     </span>
-                    <span className="truncate">{sc.roomName || sc.title}</span>
+                    <span className="truncate font-mono">Punto #{idx + 1}</span>
                   </div>
                   {isCurr && <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0" />}
                 </button>
@@ -772,7 +767,7 @@ export default function Interactive360Canvas({
                       {scene.thumbnailUrl || scene.equirectangularUrl ? (
                         <img
                           src={scene.thumbnailUrl || scene.equirectangularUrl}
-                          alt={scene.title}
+                          alt={`Punto 360 #${idx + 1}`}
                           loading="lazy"
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
@@ -783,7 +778,7 @@ export default function Interactive360Canvas({
                       )}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                       <span className="absolute bottom-1 left-1.5 text-[8px] sm:text-[9px] font-mono font-bold text-white leading-none drop-shadow-md">
-                        #{idx + 1} {scene.roomName?.split(" ")[0]}
+                        #{idx + 1}
                       </span>
                     </div>
                   </button>

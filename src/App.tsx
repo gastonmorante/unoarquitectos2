@@ -84,6 +84,9 @@ function mergeProjectsWithDefaults(savedList: ClientProject[] = []): ClientProje
         masterDriveFolderUrl: def.masterDriveFolderUrl || custom.masterDriveFolderUrl,
         cloudpanoTours: (def.cloudpanoTours?.length || 0) >= (custom.cloudpanoTours?.length || 0) ? def.cloudpanoTours : (custom.cloudpanoTours || def.cloudpanoTours),
         photoReports: (def.photoReports?.length || 0) >= (custom.photoReports?.length || 0) ? def.photoReports : (custom.photoReports || def.photoReports),
+        milestones: (def.milestones?.length || 0) >= (custom.milestones?.length || 0) ? def.milestones : (custom.milestones || def.milestones),
+        globalProgress: Math.max(def.globalProgress || 0, custom.globalProgress || 0),
+        currentPhaseName: def.currentPhaseName || custom.currentPhaseName,
       };
     }).concat(
       savedList.filter((p) => p && p.id && !defaultClientProjects.some((def) => def.id === p.id))

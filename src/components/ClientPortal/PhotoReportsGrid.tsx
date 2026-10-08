@@ -222,7 +222,7 @@ export default function PhotoReportsGrid({
                   <source srcSet={getWebpUrl(photo.imageUrl)} type="image/webp" />
                   <img
                     src={photo.imageUrl}
-                    alt={photo.title}
+                    alt={`Fotografía ${index + 1}`}
                     loading="lazy"
                     decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -256,7 +256,7 @@ export default function PhotoReportsGrid({
               <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
                 <div className="space-y-1.5">
                   <h4 className="font-headline-md text-sm sm:text-base font-semibold text-teal-uno uppercase line-clamp-1 group-hover:text-arena-calida transition-colors">
-                    {photo.title}
+                    Fotografía #{index + 1}
                   </h4>
                   <p className="font-body-md text-xs text-gris-texto line-clamp-2 leading-relaxed">
                     {photo.technicalNote}
@@ -355,7 +355,7 @@ export default function PhotoReportsGrid({
                   <source srcSet={getWebpUrl(activePhoto.imageUrl)} type="image/webp" />
                   <img
                     src={activePhoto.imageUrl}
-                    alt={activePhoto.title}
+                    alt={`Fotografía ${(lightboxIndex || 0) + 1}`}
                     style={{ transform: `scale(${zoomLevel})` }}
                     className="max-w-full max-h-[75vh] object-contain transition-transform duration-200 rounded-lg shadow-2xl"
                   />
@@ -380,7 +380,7 @@ export default function PhotoReportsGrid({
             <div className="bg-black/60 backdrop-blur-md border border-white/10 rounded-2xl p-4 max-w-4xl mx-auto w-full text-left space-y-1.5 z-10">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <h4 className="font-headline-md text-base sm:text-lg uppercase text-arena-calida font-semibold">
-                  {activePhoto.title}
+                  Fotografía {(lightboxIndex || 0) + 1} de {filteredPhotos.length}
                 </h4>
                 <div className="flex items-center gap-3 text-xs text-white/70 font-mono">
                   <span>{activePhoto.location}</span>

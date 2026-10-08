@@ -210,7 +210,7 @@ export default function BitacoraCardGalleryCarousel({
           <img
             key={imageSrc || currentPhoto.id}
             src={imageSrc || currentPhoto.url}
-            alt={currentPhoto.caption || `Foto ${currentIndex + 1}`}
+            alt={`Fotografía ${currentIndex + 1}`}
             onLoad={() => setIsLoading(false)}
             onError={handleImageError}
             onClick={() => setIsFullscreen(true)}
@@ -240,11 +240,8 @@ export default function BitacoraCardGalleryCarousel({
           )}
         </div>
 
-        {/* BOTTOM OVERLAY: CAPTION */}
-        <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-stone-950/90 via-stone-950/50 to-transparent p-3 pt-6 flex items-end justify-between gap-2 pointer-events-none z-20">
-          <p className="text-white/95 text-[11px] sm:text-xs font-sans font-medium line-clamp-1">
-            {currentPhoto.caption || `Registro fotográfico en sitio • ${weekDate}`}
-          </p>
+        {/* BOTTOM OVERLAY */}
+        <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-stone-950/90 via-stone-950/50 to-transparent p-3 pt-6 flex items-end justify-end gap-2 pointer-events-none z-20">
           <button
             type="button"
             onClick={(e) => {
@@ -408,7 +405,7 @@ export default function BitacoraCardGalleryCarousel({
             <img
               key={`lightbox-${imageSrc || currentPhoto.id}`}
               src={imageSrc || currentPhoto.url}
-              alt={currentPhoto.caption || `Foto ${currentIndex + 1}`}
+              alt={`Fotografía ${currentIndex + 1}`}
               onError={handleImageError}
               decoding="async"
               className="max-w-full max-h-[75vh] object-contain rounded-xl shadow-2xl transition-transform duration-200 select-none"
@@ -437,16 +434,16 @@ export default function BitacoraCardGalleryCarousel({
             )}
           </div>
 
-          {/* BOTTOM CAPTION & THUMBNAILS IN LIGHTBOX */}
+          {/* BOTTOM BAR & THUMBNAILS IN LIGHTBOX */}
           <div 
             className="border-t border-white/10 pt-3 space-y-3"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-white/90">
-              <p className="text-xs sm:text-sm font-sans font-medium text-center sm:text-left">
-                {currentPhoto.caption || `Registro fotográfico en sitio • ${weekDate}`}
-              </p>
-              <span className="text-[11px] font-mono text-white/50 text-center sm:text-right">
+            <div className="flex items-center justify-between gap-2 text-white/90">
+              <span className="text-xs font-mono text-white/80">
+                Fotografía {currentIndex + 1} de {totalPhotos}
+              </span>
+              <span className="text-[11px] font-mono text-white/50 text-right hidden sm:inline">
                 Usa las flechas del teclado (← / →) o desliza para navegar
               </span>
             </div>

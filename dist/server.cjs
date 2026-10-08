@@ -388,41 +388,105 @@ app.get("/api/admin/leads", (_req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
-app.post("/api/contact", rateLimiter(10, 6e4), async (req, res) => {
-  const { name, email, phone, projectType, message, budget } = req.body;
-  if (!name || !email || !message) {
-    return res.status(400).json({ error: "Faltan campos obligatorios." });
+app.post("/api/contact", rateLimiter(15, 6e4), async (req, res) => {
+  const {
+    nombre,
+    name,
+    correo,
+    email,
+    telefono,
+    phone,
+    zona,
+    zone,
+    location,
+    terreno,
+    has_land,
+    hasLand,
+    tipo_proyecto,
+    tipoProyecto,
+    project_type,
+    projectType,
+    inversion,
+    budget,
+    budget_range,
+    mensaje,
+    message,
+    fuente,
+    source,
+    form_website_hp
+  } = req.body;
+  if (form_website_hp) {
+    return res.json({ success: true, message: "OK (Bot filtrado silenciosamente)" });
   }
-  if (!process.env.EMAIL_USER || !process.env.EMAIL_RECEIVER) {
-    console.log("Simulaci\xF3n de env\xEDo de correo exitosa (Credenciales ausentes):");
-    console.log({ name, email, phone, projectType, message, budget });
-    return res.json({ success: true, message: "Mensaje recibido correctamente (Simulado)." });
+  const finalName = (nombre || name || "").trim();
+  const finalEmail = (correo || email || "").trim();
+  const finalPhone = (telefono || phone || "").trim();
+  const finalZona = (zona || zone || location || "").trim();
+  const finalTerrenoRaw = terreno !== void 0 ? terreno : has_land !== void 0 ? has_land : hasLand;
+  const finalTerreno = finalTerrenoRaw === "true" || finalTerrenoRaw === "S\xED" || finalTerrenoRaw === true ? "S\xED" : "A\xFAn no";
+  const finalTipoProyecto = (tipo_proyecto || tipoProyecto || project_type || projectType || "").trim();
+  const finalInversion = (inversion || budget || budget_range || "").trim();
+  const finalMessage = (mensaje || message || "").trim();
+  const finalFuente = (fuente || source || "Sitio web").trim();
+  if (!finalName || !finalEmail || !finalPhone || !finalZona || !finalTipoProyecto || !finalInversion) {
+    return res.status(400).json({ error: "Faltan campos obligatorios para el diagn\xF3stico." });
   }
-  const mailOptions = {
-    from: process.env.EMAIL_USER,
-    to: process.env.EMAIL_RECEIVER,
-    subject: `Nueva consulta de proyecto residencial: ${name}`,
-    html: `
-      <div style="font-family: Arial, sans-serif; padding: 20px; color: #111; max-width: 600px; border: 1px solid #eaeaea;">
-        <h2 style="border-bottom: 2px solid #00A3A3; padding-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;">Nueva Solicitud de Consulta T\xE9cnica</h2>
-        <p><strong>Nombre:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Tel\xE9fono:</strong> ${phone || "No especificado"}</p>
-        <p><strong>Tipo de Proyecto:</strong> ${projectType || "No especificado"}</p>
-        <p><strong>Presupuesto Estimado:</strong> ${budget || "No especificado"}</p>
-        <div style="margin-top: 20px; padding: 15px; background: #f9f9f9; border-left: 4px solid #00A3A3;">
-          <p style="margin: 0; font-style: italic;">"${message}"</p>
-        </div>
-      </div>
-    `
+  const leadRecord = {
+    id: `LEAD-${Date.now()}`,
+    timestamp: (/* @__PURE__ */ new Date()).toISOString(),
+    name: finalName,
+    email: finalEmail,
+    phone: finalPhone,
+    zona: finalZona,
+    terreno: finalTerreno,
+    tipoProyecto: finalTipoProyecto,
+    inversion: finalInversion,
+    message: finalMessage,
+    fuente: finalFuente,
+    source: finalFuente,
+    tags: ["Website Lead", "Diagnostico Web", "Fase IV"]
   };
-  try {
-    await transporter.sendMail(mailOptions);
-    return res.json({ success: true, message: "Mensaje de contacto enviado con \xE9xito." });
-  } catch (error) {
-    console.error("Error al enviar email:", error);
-    return res.status(500).json({ error: "Error interno al enviar el mensaje por email." });
+  saveStoredLead(leadRecord);
+  const crmWebhook = process.env.CRM_WEBHOOK_URL || process.env.GHL_WEBHOOK_URL;
+  if (crmWebhook) {
+    try {
+      await fetch(crmWebhook, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(leadRecord)
+      });
+    } catch (err) {
+      console.warn("CRM Forward notice:", err.message);
+    }
   }
+  if (process.env.EMAIL_USER && process.env.EMAIL_RECEIVER) {
+    try {
+      await transporter.sendMail({
+        from: process.env.EMAIL_USER,
+        to: process.env.EMAIL_RECEIVER,
+        subject: `\u2B50 [Nuevo Lead Web] ${finalName} - ${finalTipoProyecto} (${finalZona})`,
+        html: `
+          <div style="font-family: Arial, sans-serif; padding: 20px; color: #111; max-width: 600px; border: 1px solid #eaeaea;">
+            <h2 style="border-bottom: 2px solid #009E9B; padding-bottom: 10px; text-transform: uppercase;">Nueva Solicitud de Diagn\xF3stico</h2>
+            <p><strong>Nombre:</strong> ${finalName}</p>
+            <p><strong>Email:</strong> ${finalEmail}</p>
+            <p><strong>Tel\xE9fono:</strong> ${finalPhone}</p>
+            <p><strong>Zona de Inter\xE9s:</strong> ${finalZona}</p>
+            <p><strong>\xBFCuenta con Terreno?:</strong> ${finalTerreno}</p>
+            <p><strong>Tipo de Proyecto:</strong> ${finalTipoProyecto}</p>
+            <p><strong>Rango de Inversi\xF3n:</strong> ${finalInversion}</p>
+            <p><strong>Fuente:</strong> ${finalFuente}</p>
+            <div style="margin-top: 15px; padding: 12px; background: #f9f9f9; border-left: 4px solid #009E9B;">
+              <p style="margin: 0;"><strong>Notas:</strong> ${finalMessage || "(Sin notas adicionales)"}</p>
+            </div>
+          </div>
+        `
+      });
+    } catch (error) {
+      console.error("Error al enviar email en server.ts:", error);
+    }
+  }
+  return res.json({ success: true, message: "Diagn\xF3stico recibido y registrado exitosamente." });
 });
 app.get("/api/content", (_req, res) => {
   try {
