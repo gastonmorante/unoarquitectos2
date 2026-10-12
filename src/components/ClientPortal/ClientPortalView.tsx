@@ -80,8 +80,8 @@ export default function ClientPortalView({
   }, [safeProject]);
 
   const activeTour = tours.find((t) => t.id === selectedTourId) || tours[0] || {
-    id: "tour-arrecifes-03oct2026",
-    date: "03 Octubre 2026",
+    id: "tour-arrecifes-10oct2026",
+    date: "10 Octubre 2026",
     title: safeProject.propertyName,
     phaseName: safeProject.currentPhaseName,
     progress: safeProject.globalProgress,
@@ -89,8 +89,8 @@ export default function ClientPortalView({
     scenes: []
   };
 
-  const activeDate = activeTour?.date || "03 Octubre 2026";
-  const activeProgress = activeTour?.progress || safeProject.globalProgress || 78;
+  const activeDate = activeTour?.date || "10 Octubre 2026";
+  const activeProgress = activeTour?.progress || safeProject.globalProgress || 80;
   const activePhase = activeTour?.phaseName || safeProject.currentPhaseName || "Fase 4: Acabados";
 
   const handleSelectTour = (tourId: string) => {

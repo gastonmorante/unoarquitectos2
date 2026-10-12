@@ -11,7 +11,7 @@ export const defaultClientProjects: ClientProject[] = [
     totalArea: "Obra Civil & Acabados Residenciales",
     startDate: "01 Abril 2026",
     estimatedDelivery: "20 Diciembre 2026",
-    globalProgress: 78,
+    globalProgress: 80,
     currentPhaseName: "Albañilería, Aplanados & Acabados Finales",
     heroImage: "/hero-luxury-villa.webp",
     director: {
@@ -28,9 +28,155 @@ export const defaultClientProjects: ClientProject[] = [
     masterDriveFolderUrl: "https://drive.google.com/drive/folders/1XpiqLhnrD-Slw6bzDvSbcGDjQB5jAEaA?usp=sharing",
     cloudpanoTours: [
       {
+        id: "tour-arrecifes-10oct2026",
+        date: "10 Octubre 2026",
+        title: "Avance 80% - Albañilería, Aplanados Finos & Acabados Finales (Más Reciente)",
+        phaseName: "Albañilería, Aplanados & Acabados Finales",
+        progress: 80,
+        embedCode: "",
+        folderUrl: "https://drive.google.com/drive/folders/1DT6O21sFbp0VUnf3bMhlmgZyHLFLEJv_?usp=sharing",
+        notes: "Levantamiento 360° oficial (10/10/2026). Registro del avance en acabados, aplanados finos de muros interiores y exteriores, aplicación de masilla en plafones, habilitado de vanos y preparaciones para cancelería y carpintería.",
+        thumbnail: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_01.jpg",
+        scenes: [
+          {
+            id: "scene-1010-01",
+            title: "Punto #01 • Acceso Principal & Vestíbulo de Obra",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_01.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_01.jpg",
+            roomName: "Vestíbulo Principal"
+          },
+          {
+            id: "scene-1010-02",
+            title: "Punto #02 • Estancia Principal & Doble Altura",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_02.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_02.jpg",
+            roomName: "Estancia Principal"
+          },
+          {
+            id: "scene-1010-03",
+            title: "Punto #03 • Área de Comedor & Conexión Exterior",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_03.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_03.jpg",
+            roomName: "Comedor"
+          },
+          {
+            id: "scene-1010-04",
+            title: "Punto #04 • Cocina & Preparaciones de Instalaciones",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_04.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_04.jpg",
+            roomName: "Cocina"
+          },
+          {
+            id: "scene-1010-05",
+            title: "Punto #05 • Terraza Exterior & Alberca",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_05.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_05.jpg",
+            roomName: "Terraza & Alberca"
+          },
+          {
+            id: "scene-1010-06",
+            title: "Punto #06 • Asoleadero & Muros Exteriores",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_06.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_06.jpg",
+            roomName: "Asoleadero"
+          },
+          {
+            id: "scene-1010-07",
+            title: "Punto #07 • Núcleo de Escalera de Concreto",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_07.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_07.jpg",
+            roomName: "Escaleras Nivel 1"
+          },
+          {
+            id: "scene-1010-08",
+            title: "Punto #08 • Pasillo de Distribución Planta Alta",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_08.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_08.jpg",
+            roomName: "Pasillo Nivel 2"
+          },
+          {
+            id: "scene-1010-09",
+            title: "Punto #09 • Master Suite Principal & Vista Panorámica",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_09.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_09.jpg",
+            roomName: "Master Suite Nivel 2"
+          },
+          {
+            id: "scene-1010-10",
+            title: "Punto #10 • Baño Master Suite",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_10.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_10.jpg",
+            roomName: "Baño Master"
+          },
+          {
+            id: "scene-1010-11",
+            title: "Punto #11 • Área de Vestidor Master",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_11.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_11.jpg",
+            roomName: "Vestidor Master"
+          },
+          {
+            id: "scene-1010-12",
+            title: "Punto #12 • Recámara Secundaria 1",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_12.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_12.jpg",
+            roomName: "Recámara 1"
+          },
+          {
+            id: "scene-1010-13",
+            title: "Punto #13 • Baño Recámara 1",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_13.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_13.jpg",
+            roomName: "Baño Recámara 1"
+          },
+          {
+            id: "scene-1010-14",
+            title: "Punto #14 • Recámara Secundaria 2",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_14.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_14.jpg",
+            roomName: "Recámara 2"
+          },
+          {
+            id: "scene-1010-15",
+            title: "Punto #15 • Baño Recámara 2 & Instalaciones",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_15.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_15.jpg",
+            roomName: "Baño Recámara 2"
+          },
+          {
+            id: "scene-1010-16",
+            title: "Punto #16 • Terraza Planta Alta",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_16.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_16.jpg",
+            roomName: "Terraza Nivel 2"
+          },
+          {
+            id: "scene-1010-17",
+            title: "Punto #17 • Acceso a Azotea",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_17.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_17.jpg",
+            roomName: "Acceso Azotea"
+          },
+          {
+            id: "scene-1010-18",
+            title: "Punto #18 • Azotea / Rooftop",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_18.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_18.jpg",
+            roomName: "Azotea & Mirador"
+          },
+          {
+            id: "scene-1010-19",
+            title: "Punto #19 • Fachada Principal & Entorno",
+            equirectangularUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_19.jpg",
+            thumbnailUrl: "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_19.jpg",
+            roomName: "Fachada Principal"
+          }
+        ]
+      },
+      {
         id: "tour-arrecifes-03oct2026",
         date: "03 Octubre 2026",
-        title: "Avance 78% - Albañilería, Aplanados Finos & Acabados Finales (Más Reciente)",
+        title: "Avance 78% - Albañilería, Aplanados Finos & Acabados Finales",
         phaseName: "Albañilería, Aplanados & Acabados Finales",
         progress: 78,
         embedCode: "https://app.cloudpano.com/tours/KexxxLPA0",
