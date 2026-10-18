@@ -3967,6 +3967,64 @@ export const defaultClientProjects: ClientProject[] = [
 ],
       },
       {
+      "id": "log-arrecifes-s33-20260814",
+      "entryNumber": "Folio #16 (S33)",
+      "date": "14 Agosto 2026",
+      "month": "Agosto 2026",
+      "phaseTitle": "Fase 2: Estructura, Cubiertas & Vaso de Alberca",
+      "progress": 70,
+      "status": "completed",
+      "executiveSummary": "Durante la semana 33 (10-14 agosto del 2026). Durante la semana se realizaron trabajos de armado estructural de la alberca, avanzando con la colocación y habilitado del acero de refuerzo conforme a las especificaciones del proyecto. Asimismo, se ejecutaron trabajos de aplanado en la base del tinaco, verificando niveles y acabados. De manera paralela, se realizaron trabajos de masillado fino en la azotea y pretiles, preparando las superficies para las etapas posteriores de acabado.",
+      "technicalDictum": "Dictamen de Supervisión S33: Trabajos ejecutados bajo supervisión residente de UNO Arquitectos. Verificación de habilitado de acero en alberca, niveles en base de tinaco y masillado fino en pretiles.",
+      "labTestsAndQuality": [
+            "Supervisión y control técnico semanal (S33)",
+            "Verificación de armado de acero de refuerzo en alberca conforme a cálculo",
+            "Control de niveles y plomos en aplanado de base para tinaco",
+            "Inspección de adherencia y textura en masillado fino de azotea"
+      ],
+      "keyMilestones": [
+            "Durante la semana 33 (10-14 de agosto de 2026)",
+            "Armado estructural de la alberca y habilitado de acero de refuerzo",
+            "Aplanado y nivelación de la base de tinaco",
+            "Masillado fino en azotea y pretiles perimetrales"
+      ],
+      "personnelOnSite": "Cuadrilla técnica de albañilería y fierreros",
+      "inspectedBy": "Arq. Angel Cereceda & Residente de Obra UNO Arquitectos",
+      "driveFolderUrl": "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link",
+      "photographicLogUrl": "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link",
+      "pdfFileName": "20260814  Bitácora de Obra Arrecifes S33 - Arrecifes.pdf",
+      "pdfDriveUrl": "https://drive.google.com/file/d/1eNlW06AOdUK2oJsIxoU1xl8tn9MOFlU5/view?usp=sharing"
+},
+      {
+      "id": "log-arrecifes-s34-20260821",
+      "entryNumber": "Folio #17 (S34)",
+      "date": "21 Agosto 2026",
+      "month": "Agosto 2026",
+      "phaseTitle": "Fase 2: Acabados, Aplanados & Aislamiento Hidráulico",
+      "progress": 71,
+      "status": "completed",
+      "executiveSummary": "Durante la semana 34 (17-21 agosto del 2026). Durante la semana se realizaron trabajos de aplanado con mortero en interiores y exteriores de la edificación, dando continuidad a los acabados de las superficies. Asimismo, se ejecutaron trabajos de boquillado y afinado en ventanas y puertas, mejorando la terminación de los vanos. De igual manera, se concluyeron los trabajos de masilla en la azotea, dejando las superficies preparadas para la siguiente etapa. Finalmente, se dio inicio a los trabajos de impermeabilización de la azotea, preparando y aplicando el sistema correspondiente conforme a las especificaciones del proyecto.",
+      "technicalDictum": "Dictamen de Supervisión S34: Trabajos ejecutados bajo supervisión residente de UNO Arquitectos. Verificación de plomos en vanos, calidad del mortero en aplanados y aplicación de sistema impermeable en azotea.",
+      "labTestsAndQuality": [
+            "Supervisión y control técnico semanal (S34)",
+            "Inspección de boquillas y escuadras en vanos de cancelería",
+            "Prueba de adherencia de mortero en muros exteriores",
+            "Verificación de pendientes y preparación para impermeabilización"
+      ],
+      "keyMilestones": [
+            "Durante la semana 34 (17-21 de agosto de 2026)",
+            "Aplanado con mortero en áreas interiores y exteriores",
+            "Boquillado y perfilado de vanos para cancelería y puertas",
+            "Conclusión de masilla en azotea e inicio de impermeabilización"
+      ],
+      "personnelOnSite": "Cuadrilla técnica de albañilería y acabados",
+      "inspectedBy": "Arq. Angel Cereceda & Residente de Obra UNO Arquitectos",
+      "driveFolderUrl": "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link",
+      "photographicLogUrl": "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link",
+      "pdfFileName": "20260821 Bitácora de Obra Arrecifes S34 - Arrecifes.pdf",
+      "pdfDriveUrl": "https://drive.google.com/file/d/1kC79ADeiocsCrge2SrpDnGY6VCO3rgHL/view?usp=sharing"
+},
+      {
         id: "log-arrecifes-s35-20260828",
         entryNumber: "Folio #17 (S35)",
         date: "28 Agosto 2026",
@@ -4373,7 +4431,6 @@ export const defaultClientProjects: ClientProject[] = [
           id: "tour-arrecifes-05sep2026",
           date: "05 Septiembre 2026",
           progress: 72,
-          isLatest: true,
           title: "AVANCE 72% - ALBAÑILERÍA, APLANADOS & CIMBRADO DE ALBERCA",
           notes: "Levantamiento 360° correspondiente a la semana 36 de obra. Supervisión de aplanados en muros de diferentes áreas, aplicación de masilla en plafones, cimbrado de alberca y elementos de albañilería.",
           scenes360Count: 19,
@@ -4810,9 +4867,541 @@ export const defaultClientProjects: ClientProject[] = [
             "order": 120
           }
         ]
-      }
+      },
+      {
+      "id": "log-arrecifes-s37-20260911",
+      "entryNumber": "Folio #20 (S37)",
+      "date": "11 Septiembre 2026",
+      "month": "Septiembre 2026",
+      "phaseTitle": "Fase 3: Acabados en Planta Baja, Aplanados Finos & Boquilleo",
+      "progress": 74,
+      "status": "completed",
+      "executiveSummary": "Durante la semana 37 (07-11 de septiembre de 2026). Durante la semana se dio continuidad a los trabajos de acabados en planta baja, realizando aplanados con mortero en las áreas pendientes y trabajos de boquilleo en vanos de puertas y ventanas. Asimismo, se continuó con la aplicación de masilla en diferentes superficies de la edificación, preparando los elementos para las siguientes etapas de acabado. De manera complementaria, se realizaron trabajos de limpieza y orden general en las áreas de trabajo, manteniendo las zonas de circulación y frentes de trabajo en condiciones adecuadas para continuar con las actividades de obra.",
+      "technicalDictum": "Dictamen de Supervisión S37: Trabajos ejecutados bajo supervisión residente de UNO Arquitectos. Verificación de plomos en boquilleo de vanos y textura superficial de masillas.",
+      "labTestsAndQuality": [
+            "Supervisión y control técnico semanal (S37)",
+            "Verificación de niveles y alineación en aplanados de planta baja",
+            "Control de plomeo y escuadras en boquillas de puertas y ventanas",
+            "Revisión de limpieza y seguridad en zonas de trabajo"
+      ],
+      "keyMilestones": [
+            "Durante la semana 37 (07-11 de septiembre de 2026)",
+            "Aplanados con mortero en áreas pendientes de planta baja",
+            "Boquilleo y detallado en vanos de cancelería y puertas",
+            "Aplicación de masilla preparatoria para pintura y recubrimientos"
+      ],
+      "personnelOnSite": "Cuadrilla técnica de albañilería y acabados",
+      "inspectedBy": "Arq. Angel Cereceda & Residente de Obra UNO Arquitectos",
+      "driveFolderUrl": "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link",
+      "photographicLogUrl": "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link",
+      "pdfFileName": "20260911  Bitácora de Obra Arrecifes S37 - Arrecifes.pdf",
+      "pdfDriveUrl": "https://drive.google.com/file/d/1wVw3Ghr3GBxGPpR9OTXsIr7lhOQzrFJ4/view?usp=sharing"
+},
+      {
+      "id": "log-arrecifes-s38-20260918",
+      "entryNumber": "Folio #21 (S38)",
+      "date": "18 Septiembre 2026",
+      "month": "Septiembre 2026",
+      "phaseTitle": "Fase 3: Aplanados Exteriores, Barda Perimetral & Vaso de Alberca",
+      "progress": 76,
+      "status": "completed",
+      "tourInfo": {
+            "id": "tour-arrecifes-19sep2026",
+            "date": "19 Septiembre 2026",
+            "progress": 76,
+            "title": "AVANCE 76% - ALBAÑILERÍA, APLANADOS & INSTALACIONES",
+            "notes": "Levantamiento 360° correspondiente a la semana 38 de obra. Supervisión de aplanados en barda perimetral, masilla en muros interiores y colado de alberca.",
+            "scenes360Count": 23,
+            "folderUrl": "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link"
+      },
+      "executiveSummary": "Durante la semana 38 (14-18 de septiembre de 2026). Durante la semana se ejecutaron trabajos de aplanado con mortero en los muros exteriores de la barda perimetral y en diferentes áreas interiores de la vivienda, dando continuidad a los trabajos de albañilería. Asimismo, se realizaron trabajos de aplicación de masilla en muros interiores, como parte de la preparación de las superficies para los acabados posteriores. De manera paralela, se continuó con los trabajos de cimbrado y colado de elementos de la alberca, dando seguimiento a su proceso constructivo.",
+      "technicalDictum": "Dictamen de Supervisión S38: Trabajos ejecutados bajo supervisión residente de UNO Arquitectos. Verificación de plomos en muros perimetrales, cimbrado de alberca y control de cuadrilla en sitio.",
+      "labTestsAndQuality": [
+            "Supervisión y control técnico semanal (S38)",
+            "Inspección de aplanados en muros exteriores de barda perimetral",
+            "Verificación de textura y adherencia de masilla interior",
+            "Control de cimbrado y niveles para colado de alberca"
+      ],
+      "keyMilestones": [
+            "Durante la semana 38 (14-18 de septiembre de 2026)",
+            "Aplanados con mortero en barda perimetral y muros interiores",
+            "Aplicación de masilla en muros interiores para acabados finos",
+            "Cimbrado y colado de elementos del vaso de la alberca"
+      ],
+      "personnelOnSite": "Cuadrilla técnica de albañilería y acabados",
+      "inspectedBy": "Arq. Angel Cereceda & Residente de Obra UNO Arquitectos",
+      "driveFolderUrl": "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link",
+      "photographicLogUrl": "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link",
+      "pdfFileName": "20260918  Bitácora de Obra Arrecifes S38 - Arrecifes.pdf",
+      "pdfDriveUrl": "https://drive.google.com/file/d/1meSEbdrpOkw7rqQylfp_zx5c1j-ewbk_/view?usp=sharing"
+},
+      {
+      "id": "log-arrecifes-s39-20260925",
+      "entryNumber": "Folio #22 (S39)",
+      "date": "25 Septiembre 2026",
+      "month": "Septiembre 2026",
+      "phaseTitle": "Fase 3: Elementos de Albañilería PB, Aplanados & Masilla en Plafones",
+      "progress": 77,
+      "status": "completed",
+      "executiveSummary": "Durante la semana 39 (21-25 de septiembre de 2026). Durante la semana se llevaron a cabo trabajos de habilitado, cimbrado y colado de elementos de albañilería en planta baja, dando continuidad a la ejecución de los elementos constructivos de la vivienda. Asimismo, se avanzó con los trabajos de aplanado con mortero en las áreas exteriores de planta baja, atendiendo las superficies pendientes. De manera complementaria, se realizaron trabajos de aplicación de masilla en plafones, preparando las superficies para las siguientes etapas de acabado.",
+      "technicalDictum": "Dictamen de Supervisión S39: Trabajos ejecutados bajo supervisión residente de UNO Arquitectos. Verificación de elementos de concreto en planta baja, aplanados exteriores y plomo de plafones.",
+      "labTestsAndQuality": [
+            "Supervisión y control técnico semanal (S39)",
+            "Verificación de armados y colados de albañilería en planta baja",
+            "Control de aplomado y espesor de mortero en muros exteriores",
+            "Inspección de nivelación y afinado en masilla sobre plafones"
+      ],
+      "keyMilestones": [
+            "Durante la semana 39 (21-25 de septiembre de 2026)",
+            "Habilitado, cimbrado y colado de elementos de albañilería en PB",
+            "Aplanado exterior con mortero en muros pendientes",
+            "Masillado fino en plafones de planta baja y alta"
+      ],
+      "personnelOnSite": "Cuadrilla técnica de albañilería y acabados",
+      "inspectedBy": "Arq. Angel Cereceda & Residente de Obra UNO Arquitectos",
+      "driveFolderUrl": "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link",
+      "photographicLogUrl": "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link",
+      "pdfFileName": "20260925  Bitácora de Obra Arrecifes S39 - Arrecifes.pdf",
+      "pdfDriveUrl": "https://drive.google.com/file/d/1Iby9sDC_sofQavw-p-JY1iILTti3Z-8J/view?usp=sharing"
+},
+      {
+      "id": "log-arrecifes-s40-20261002",
+      "entryNumber": "Folio #23 (S40)",
+      "date": "02 Octubre 2026",
+      "month": "Octubre 2026",
+      "phaseTitle": "Fase 3: Masilla en Muros, Maestras, Firme Nivelador & Colado de Castillos",
+      "progress": 78,
+      "status": "completed",
+      "tourInfo": {
+            "id": "tour-arrecifes-03oct2026",
+            "date": "03 Octubre 2026",
+            "progress": 78,
+            "title": "AVANCE 78% - ALBAÑILERÍA, APLANADOS FINOS & ACABADOS FINALES",
+            "notes": "Levantamiento 360° correspondiente a la semana 40 de obra. Registro del avance en acabados, aplanados finos de muros interiores y exteriores, firme nivelador y preparaciones para cancelería.",
+            "scenes360Count": 20,
+            "folderUrl": "https://drive.google.com/drive/folders/1CrC1zOuoDZBLmCbWK2aTHHf-qiMp4Hah?usp=drive_link"
+      },
+      "executiveSummary": "Durante la semana 40 (28 de septiembre – 02 de octubre de 2026). Durante la semana se continuó con los trabajos de acabados en diferentes áreas de la edificación, realizando aplicación de masilla en muros interiores y exteriores, así como trabajos de aplanado en planta baja. De manera paralela, se llevaron a cabo trabajos de habilitado, cimbrado y colado de dados y castillos, dando continuidad a los elementos de concreto de la obra. Asimismo, se realizaron trabajos de elaboración de maestras y colado de firme nivelador, preparando las superficies para la colocación de los acabados correspondientes. Finalmente, se continuó con la aplicación de masilla en las áreas programadas, dando seguimiento a los trabajos de acabado y preparación de superficies.",
+      "technicalDictum": "Dictamen de Supervisión S40: Trabajos ejecutados bajo supervisión residente de UNO Arquitectos. Verificación de maestras, firme nivelador y colado de castillos.",
+      "labTestsAndQuality": [
+            "Supervisión y control técnico semanal (S40)",
+            "Inspección de niveles y planimetría en firme nivelador con maestras",
+            "Verificación de armados y colados de dados y castillos",
+            "Control de adherencia y acabado en masilla de muros interiores y exteriores"
+      ],
+      "keyMilestones": [
+            "Durante la semana 40 (28 de septiembre – 02 de octubre de 2026)",
+            "Masillado continuo en muros interiores y exteriores",
+            "Habilitado, cimbrado y colado de dados y castillos",
+            "Elaboración de maestras y colado de firme nivelador para acabados de piso"
+      ],
+      "personnelOnSite": "Cuadrilla técnica de albañilería y acabados",
+      "inspectedBy": "Arq. Angel Cereceda & Residente de Obra UNO Arquitectos",
+      "driveFolderUrl": "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link",
+      "photographicLogUrl": "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link",
+      "pdfFileName": "20261002  Bitácora de Obra Arrecifes S40 - Arrecifes.pdf",
+      "pdfDriveUrl": "https://drive.google.com/file/d/15eAnw_YvwW9iu8y6ibzVJpW69us9ecOl/view?usp=sharing",
+      "scenes360Count": 20,
+      "photosCount": 20,
+      "photos": [
+            {
+                  "id": "photo-s40-01",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_01.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_01.jpg",
+                  "caption": "Registro Fotográfico #01 • Vestíbulo Principal & Acceso",
+                  "date": "02 Octubre 2026",
+                  "order": 1
+            },
+            {
+                  "id": "photo-s40-02",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_02.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_02.jpg",
+                  "caption": "Registro Fotográfico #02 • Estancia Principal & Muros Finos",
+                  "date": "02 Octubre 2026",
+                  "order": 2
+            },
+            {
+                  "id": "photo-s40-03",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_03.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_03.jpg",
+                  "caption": "Registro Fotográfico #03 • Comedor & Conexión Exterior",
+                  "date": "02 Octubre 2026",
+                  "order": 3
+            },
+            {
+                  "id": "photo-s40-04",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_04.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_04.jpg",
+                  "caption": "Registro Fotográfico #04 • Cocina & Preparaciones de Mesetas",
+                  "date": "02 Octubre 2026",
+                  "order": 4
+            },
+            {
+                  "id": "photo-s40-05",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_05.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_05.jpg",
+                  "caption": "Registro Fotográfico #05 • Terraza Exterior & Vaso de Alberca",
+                  "date": "02 Octubre 2026",
+                  "order": 5
+            },
+            {
+                  "id": "photo-s40-06",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_06.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_06.jpg",
+                  "caption": "Registro Fotográfico #06 • Asoleadero & Muros Perimetrales",
+                  "date": "02 Octubre 2026",
+                  "order": 6
+            },
+            {
+                  "id": "photo-s40-07",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_07.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_07.jpg",
+                  "caption": "Registro Fotográfico #07 • Escaleras de Concreto & Encofrado",
+                  "date": "02 Octubre 2026",
+                  "order": 7
+            },
+            {
+                  "id": "photo-s40-08",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_08.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_08.jpg",
+                  "caption": "Registro Fotográfico #08 • Pasillo Distribuidor Nivel 2",
+                  "date": "02 Octubre 2026",
+                  "order": 8
+            },
+            {
+                  "id": "photo-s40-09",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_09.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_09.jpg",
+                  "caption": "Registro Fotográfico #09 • Master Suite & Vistas Panorámicas",
+                  "date": "02 Octubre 2026",
+                  "order": 9
+            },
+            {
+                  "id": "photo-s40-10",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_10.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_10.jpg",
+                  "caption": "Registro Fotográfico #10 • Baño Master Suite & Recubrimientos",
+                  "date": "02 Octubre 2026",
+                  "order": 10
+            },
+            {
+                  "id": "photo-s40-11",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_11.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_11.jpg",
+                  "caption": "Registro Fotográfico #11 • Recámara 2 & Preparaciones Eléctricas",
+                  "date": "02 Octubre 2026",
+                  "order": 11
+            },
+            {
+                  "id": "photo-s40-12",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_12.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_12.jpg",
+                  "caption": "Registro Fotográfico #12 • Baño Recámara 2 & Salidas Hidrosanitarias",
+                  "date": "02 Octubre 2026",
+                  "order": 12
+            },
+            {
+                  "id": "photo-s40-13",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_13.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_13.jpg",
+                  "caption": "Registro Fotográfico #13 • Recámara 3 & Aplanados Interiores",
+                  "date": "02 Octubre 2026",
+                  "order": 13
+            },
+            {
+                  "id": "photo-s40-14",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_14.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_14.jpg",
+                  "caption": "Registro Fotográfico #14 • Baño Recámara 3 & Acabados",
+                  "date": "02 Octubre 2026",
+                  "order": 14
+            },
+            {
+                  "id": "photo-s40-15",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_15.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_15.jpg",
+                  "caption": "Registro Fotográfico #15 • Sala de TV / Family Room Nivel 2",
+                  "date": "02 Octubre 2026",
+                  "order": 15
+            },
+            {
+                  "id": "photo-s40-16",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_16.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_16.jpg",
+                  "caption": "Registro Fotográfico #16 • Terraza Nivel 2 & Barandales",
+                  "date": "02 Octubre 2026",
+                  "order": 16
+            },
+            {
+                  "id": "photo-s40-17",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_17.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_17.jpg",
+                  "caption": "Registro Fotográfico #17 • Acceso a Azotea & Núcleo Vertical",
+                  "date": "02 Octubre 2026",
+                  "order": 17
+            },
+            {
+                  "id": "photo-s40-18",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_18.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_18.jpg",
+                  "caption": "Registro Fotográfico #18 • Azotea & Cubierta Impermeabilizada",
+                  "date": "02 Octubre 2026",
+                  "order": 18
+            },
+            {
+                  "id": "photo-s40-19",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_19.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_19.jpg",
+                  "caption": "Registro Fotográfico #19 • Fachada Principal & Entorno",
+                  "date": "02 Octubre 2026",
+                  "order": 19
+            },
+            {
+                  "id": "photo-s40-20",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_20.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-03/scene_031026_20.jpg",
+                  "caption": "Registro Fotográfico #20 • Área de Supervisión #20",
+                  "date": "02 Octubre 2026",
+                  "order": 20
+            }
+      ]
+},
+      {
+      "id": "log-arrecifes-s41-20261009",
+      "entryNumber": "Folio #24 (S41)",
+      "date": "09 Octubre 2026",
+      "month": "Octubre 2026",
+      "phaseTitle": "Fase 3: Fachada Principal, Boquillas, Fondeo de Pintura & Recubrimiento Cerámico PA",
+      "progress": 80,
+      "status": "completed",
+      "tourInfo": {
+            "id": "tour-arrecifes-10oct2026",
+            "date": "10 Octubre 2026",
+            "progress": 80,
+            "isLatest": true,
+            "title": "AVANCE 80% - ACABADOS FINOS, CERÁMICOS & DETALLES ARQUITECTÓNICOS",
+            "notes": "Levantamiento 360° oficial (10/10/2026). Registro integral del avance en acabados, fachadas, recubrimiento cerámico en planta alta, fondeo de pintura y preparación de mesetas.",
+            "scenes360Count": 19,
+            "folderUrl": "https://drive.google.com/drive/folders/1DT6O21sFbp0VUnf3bMhlmgZyHLFLEJv_?usp=sharing"
+      },
+      "executiveSummary": "Durante la semana 41 (05-09 de octubre de 2026). Durante la semana se continuó con los trabajos de acabado en planta baja, realizando aplicación de masilla y detalles en las superficies interiores de la vivienda. Asimismo, se ejecutaron trabajos de aplanado con mortero en la fachada principal y en las boquillas a lo largo del perímetro de la barda, dando continuidad a los acabados exteriores de la edificación. De manera paralela, se llevaron a cabo trabajos de pintura de fondeo y colocación de recubrimiento cerámico en planta alta, avanzando con la preparación y terminación de las áreas correspondientes.",
+      "technicalDictum": "Dictamen de Supervisión S41: Trabajos ejecutados bajo supervisión residente de UNO Arquitectos. Verificación de alineación de azulejos cerámicos, escuadras en boquillas de barda y cobertura de pintura de fondeo.",
+      "labTestsAndQuality": [
+            "Supervisión y control técnico semanal (S41)",
+            "Inspección de aplanado en fachada principal y plomeo de boquillas perimetrales",
+            "Verificación de adherencia y nivelación en recubrimiento cerámico en planta alta",
+            "Control de aplicación uniforme de sellador y pintura de fondeo"
+      ],
+      "keyMilestones": [
+            "Durante la semana 41 (05-09 de octubre de 2026)",
+            "Aplanado con mortero en fachada principal y boquillas de barda",
+            "Colocación de recubrimiento cerámico en planta alta",
+            "Fondeo de pintura en muros interiores y preparación de superficies"
+      ],
+      "personnelOnSite": "Cuadrilla técnica de albañilería, acabados y recubrimientos",
+      "inspectedBy": "Arq. Angel Cereceda & Residente de Obra UNO Arquitectos",
+      "driveFolderUrl": "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link",
+      "photographicLogUrl": "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link",
+      "pdfFileName": "20261009  Bitácora de Obra Arrecifes S41 - Arrecifes.pdf",
+      "pdfDriveUrl": "https://drive.google.com/file/d/1xwbhNUwf7LMGL5i0nlVJ6xtSJkA68vBX/view?usp=sharing"
+},
+      {
+      "id": "log-arrecifes-s42-20261016",
+      "entryNumber": "Folio #25 (S42)",
+      "date": "16 Octubre 2026",
+      "month": "Octubre 2026",
+      "phaseTitle": "Fase 3: Masilla en Mesetas, Pisos y Zoclos, Firme Nivelador PB & Fondeo de Pintura",
+      "progress": 82,
+      "status": "completed",
+      "tourInfo": {
+            "id": "tour-arrecifes-10oct2026",
+            "date": "10 Octubre 2026",
+            "progress": 80,
+            "title": "AVANCE 80% - ACABADOS FINOS, CERÁMICOS & DETALLES ARQUITECTÓNICOS",
+            "notes": "Levantamiento 360° más reciente registrado. Visualización inmersiva vinculada al estado actual de acabados y recubrimientos.",
+            "scenes360Count": 19,
+            "folderUrl": "https://drive.google.com/drive/folders/1DT6O21sFbp0VUnf3bMhlmgZyHLFLEJv_?usp=sharing"
+      },
+      "executiveSummary": "Durante la semana 42 (12-16 de octubre del 2026). Durante la semana se realizaron trabajos de aplicación de masilla en mesetas, así como el colado de pollos bajo mesetas, dando continuidad a los trabajos de albañilería. Asimismo, se llevó a cabo la colocación de pisos y zoclos en las áreas correspondientes de la edificación. De igual manera, se concluyeron los trabajos de afinado en muros de planta baja, boquillas, se realizó la elaboración de registros sanitarios, y finalmente se realizó un firme nivelador, para la colocación del cerámico en planta baja. Finalmente, se ejecutaron trabajos de fondeo de pintura en planta baja, alcanzando un avance aproximado del 30% en esta actividad.",
+      "technicalDictum": "Dictamen de Supervisión S42: Trabajos ejecutados bajo supervisión residente de UNO Arquitectos. Verificación de plomos en afinados, niveles en firme nivelador, alineación de pisos y zoclos, y control de cuadrilla en sitio.",
+      "labTestsAndQuality": [
+            "Supervisión y control técnico semanal (S42)",
+            "Verificación de niveles y planimetría en firme nivelador para pisos cerámicos en planta baja",
+            "Inspección de plomeo y acabado fino en masilla sobre mesetas y boquillas",
+            "Control de adherencia y alineación de pisos y zoclos",
+            "Inspección y prueba de flujo en registros sanitarios concluidos"
+      ],
+      "keyMilestones": [
+            "Durante la semana 42 (12-16 de octubre de 2026)",
+            "Aplicación de masilla en mesetas y colado de pollos de soporte",
+            "Colocación de pisos cerámicos y zoclos en áreas designadas",
+            "Conclusión de afinado en muros de PB, boquillas y registros sanitarios",
+            "Colado de firme nivelador en planta baja para instalación de recubrimientos",
+            "Ejecución de fondeo de pintura en planta baja (30% de avance)"
+      ],
+      "personnelOnSite": "Cuadrilla técnica de albañilería, acabados, plomería y recubrimientos",
+      "inspectedBy": "Arq. Angel Cereceda & Residente de Obra UNO Arquitectos",
+      "driveFolderUrl": "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link",
+      "photographicLogUrl": "https://drive.google.com/drive/folders/16-J1VbxLv0BVIdsjNbsZmG2rjsWsVnby?usp=drive_link",
+      "pdfFileName": "20261016  Bitácora de Obra Arrecifes S42 - Arrecifes.pdf",
+      "pdfDriveUrl": "https://drive.google.com/file/d/1mUVRnkjx4bW3ugzsxKNAnp63ePnxabza/view?usp=sharing",
+      "scenes360Count": 19,
+      "photosCount": 19,
+      "photos": [
+            {
+                  "id": "photo-s42-01",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_01.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_01.jpg",
+                  "caption": "Registro Fotográfico #01 • Vestíbulo Principal & Acceso",
+                  "date": "16 Octubre 2026",
+                  "order": 1
+            },
+            {
+                  "id": "photo-s42-02",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_02.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_02.jpg",
+                  "caption": "Registro Fotográfico #02 • Estancia Principal & Muros Finos",
+                  "date": "16 Octubre 2026",
+                  "order": 2
+            },
+            {
+                  "id": "photo-s42-03",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_03.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_03.jpg",
+                  "caption": "Registro Fotográfico #03 • Comedor & Conexión Exterior",
+                  "date": "16 Octubre 2026",
+                  "order": 3
+            },
+            {
+                  "id": "photo-s42-04",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_04.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_04.jpg",
+                  "caption": "Registro Fotográfico #04 • Cocina & Preparaciones de Mesetas",
+                  "date": "16 Octubre 2026",
+                  "order": 4
+            },
+            {
+                  "id": "photo-s42-05",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_05.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_05.jpg",
+                  "caption": "Registro Fotográfico #05 • Terraza Exterior & Vaso de Alberca",
+                  "date": "16 Octubre 2026",
+                  "order": 5
+            },
+            {
+                  "id": "photo-s42-06",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_06.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_06.jpg",
+                  "caption": "Registro Fotográfico #06 • Asoleadero & Muros Perimetrales",
+                  "date": "16 Octubre 2026",
+                  "order": 6
+            },
+            {
+                  "id": "photo-s42-07",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_07.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_07.jpg",
+                  "caption": "Registro Fotográfico #07 • Escaleras de Concreto & Encofrado",
+                  "date": "16 Octubre 2026",
+                  "order": 7
+            },
+            {
+                  "id": "photo-s42-08",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_08.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_08.jpg",
+                  "caption": "Registro Fotográfico #08 • Pasillo Distribuidor Nivel 2",
+                  "date": "16 Octubre 2026",
+                  "order": 8
+            },
+            {
+                  "id": "photo-s42-09",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_09.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_09.jpg",
+                  "caption": "Registro Fotográfico #09 • Master Suite & Vistas Panorámicas",
+                  "date": "16 Octubre 2026",
+                  "order": 9
+            },
+            {
+                  "id": "photo-s42-10",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_10.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_10.jpg",
+                  "caption": "Registro Fotográfico #10 • Baño Master Suite & Recubrimientos",
+                  "date": "16 Octubre 2026",
+                  "order": 10
+            },
+            {
+                  "id": "photo-s42-11",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_11.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_11.jpg",
+                  "caption": "Registro Fotográfico #11 • Recámara 2 & Preparaciones Eléctricas",
+                  "date": "16 Octubre 2026",
+                  "order": 11
+            },
+            {
+                  "id": "photo-s42-12",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_12.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_12.jpg",
+                  "caption": "Registro Fotográfico #12 • Baño Recámara 2 & Salidas Hidrosanitarias",
+                  "date": "16 Octubre 2026",
+                  "order": 12
+            },
+            {
+                  "id": "photo-s42-13",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_13.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_13.jpg",
+                  "caption": "Registro Fotográfico #13 • Recámara 3 & Aplanados Interiores",
+                  "date": "16 Octubre 2026",
+                  "order": 13
+            },
+            {
+                  "id": "photo-s42-14",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_14.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_14.jpg",
+                  "caption": "Registro Fotográfico #14 • Baño Recámara 3 & Acabados",
+                  "date": "16 Octubre 2026",
+                  "order": 14
+            },
+            {
+                  "id": "photo-s42-15",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_15.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_15.jpg",
+                  "caption": "Registro Fotográfico #15 • Sala de TV / Family Room Nivel 2",
+                  "date": "16 Octubre 2026",
+                  "order": 15
+            },
+            {
+                  "id": "photo-s42-16",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_16.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_16.jpg",
+                  "caption": "Registro Fotográfico #16 • Terraza Nivel 2 & Barandales",
+                  "date": "16 Octubre 2026",
+                  "order": 16
+            },
+            {
+                  "id": "photo-s42-17",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_17.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_17.jpg",
+                  "caption": "Registro Fotográfico #17 • Acceso a Azotea & Núcleo Vertical",
+                  "date": "16 Octubre 2026",
+                  "order": 17
+            },
+            {
+                  "id": "photo-s42-18",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_18.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_18.jpg",
+                  "caption": "Registro Fotográfico #18 • Azotea & Cubierta Impermeabilizada",
+                  "date": "16 Octubre 2026",
+                  "order": 18
+            },
+            {
+                  "id": "photo-s42-19",
+                  "url": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_19.jpg",
+                  "thumbUrl": "/client-portal/arrecifes/360-equirect/2026-10-10/scene_101026_19.jpg",
+                  "caption": "Registro Fotográfico #19 • Fachada Principal & Entorno",
+                  "date": "16 Octubre 2026",
+                  "order": 19
+            }
+      ]
+}
     ]
   }
 ];
-
-

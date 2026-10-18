@@ -28,6 +28,19 @@ if (fs.existsSync(apiSrcDir)) {
   });
 }
 
+// Copy public/data directory if exists
+const dataSrcDir = path.join('public', 'data');
+const dataDestDir = path.join('dist', 'data');
+if (fs.existsSync(dataSrcDir)) {
+  if (!fs.existsSync(dataDestDir)) {
+    fs.mkdirSync(dataDestDir, { recursive: true });
+  }
+  fs.readdirSync(dataSrcDir).forEach(file => {
+    fs.copyFileSync(path.join(dataSrcDir, file), path.join(dataDestDir, file));
+    console.log(`Copied data/${file} -> dist/data/${file}`);
+  });
+}
+
 // 2. Preload stylesheet in dist/index.html
 const indexPath = path.join('dist', 'index.html');
 if (fs.existsSync(indexPath)) {

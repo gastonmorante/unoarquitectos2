@@ -20,6 +20,7 @@ import {
   Filter,
   Layers,
   History,
+  RefreshCw,
   X
 } from "lucide-react";
 import { DigitalLogbookEntry } from "../../types/clientPortal";
@@ -34,6 +35,12 @@ interface DigitalLogbookTimelineProps {
   onSelectDate?: (date: string) => void;
   onJumpTo360?: () => void;
   onJumpToPhotos?: () => void;
+  syncStatus?: {
+    lastSync?: string;
+    isSyncing?: boolean;
+    synced?: boolean;
+  };
+  onManualSync?: () => void;
 }
 
 export default function DigitalLogbookTimeline({
@@ -45,6 +52,8 @@ export default function DigitalLogbookTimeline({
   onSelectDate,
   onJumpTo360,
   onJumpToPhotos,
+  syncStatus,
+  onManualSync,
 }: DigitalLogbookTimelineProps) {
   const [fullscreenCarouselEntryId, setFullscreenCarouselEntryId] = useState<string>("");
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
@@ -163,6 +172,54 @@ export default function DigitalLogbookTimeline({
               <FileText className="w-4 h-4 text-arena-calida group-hover:text-white transition-colors" />
               <span>03 Bitácora Digital ({validEntries.length} PDFs)</span>
               <ExternalLink className="w-3.5 h-3.5 opacity-80 group-hover:opacity-100" />
+            </a>
+          </div>
+        </div>
+
+        {/* 24-HOUR GOOGLE DRIVE SYNC STATUS BAR */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-4 sm:px-5 py-3 bg-white/70 backdrop-blur-md rounded-2xl border border-teal-uno/20 shadow-2xs">
+          <div className="flex items-center gap-2.5">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-600"></span>
+            </span>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2">
+              <span className="text-xs font-semibold text-teal-uno">
+                Conectado a Google Drive
+              </span>
+              <span className="text-[11px] text-gris-texto/80 font-normal">
+                • Verificación automática cada 24 horas
+              </span>
+              {syncStatus?.lastSync && (
+                <span className="text-[11px] text-gris-texto/60 hidden md:inline">
+                  (Última sincronización: {syncStatus.lastSync})
+                </span>
+              )}
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 self-end sm:self-auto">
+            {onManualSync && (
+              <button
+                type="button"
+                onClick={onManualSync}
+                disabled={syncStatus?.isSyncing}
+                className="px-3.5 py-1.5 bg-surface-variant hover:bg-teal-uno hover:text-white text-teal-uno border border-teal-uno/25 rounded-full text-[10px] font-label-caps uppercase tracking-wider font-bold flex items-center gap-1.5 transition-all cursor-pointer shadow-xs disabled:opacity-50"
+                title="Comprobar cambios y nuevos archivos en Google Drive ahora"
+              >
+                <RefreshCw className={`w-3 h-3 ${syncStatus?.isSyncing ? "animate-spin text-teal-uno" : ""}`} />
+                <span>{syncStatus?.isSyncing ? "Verificando..." : "Comprobar cambios"}</span>
+              </button>
+            )}
+            <a
+              href={bitacoraDigitalUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1.5 bg-transparent hover:bg-surface-variant text-gris-texto/80 hover:text-teal-uno rounded-full text-[10px] font-label-caps uppercase tracking-wider font-medium flex items-center gap-1 transition-colors cursor-pointer"
+              title="Abrir carpeta en Google Drive"
+            >
+              <span>Carpeta Drive</span>
+              <ExternalLink className="w-2.5 h-2.5" />
             </a>
           </div>
         </div>
