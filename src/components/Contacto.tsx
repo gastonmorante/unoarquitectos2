@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Mail, Phone, MapPin, Clock, ExternalLink, ShieldCheck } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Mail, Phone, MapPin, Clock, ExternalLink, ShieldCheck, AlertCircle } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { useSiteContent } from "../context/ContentContext";
 import Logo from "./Logo";
@@ -9,6 +9,14 @@ export default function Contacto() {
   const { content } = useSiteContent();
   const isEs = language === "es";
   const [iframeLoaded, setIframeLoaded] = useState(false);
+  const [showFallbackBanner, setShowFallbackBanner] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowFallbackBanner(true);
+    }, 6000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const whatsappNumber = (content?.contact?.whatsapp || "5219842108420").replace(/[^\d]/g, "");
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
@@ -186,14 +194,51 @@ export default function Contacto() {
               
               {/* Subtle Loading Placeholder while Monday iFrame loads */}
               {!iframeLoaded && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/90 backdrop-blur-xs z-10 p-6 text-center">
-                  <div className="w-9 h-9 border-3 border-teal-uno/25 border-t-teal-uno rounded-full animate-spin mb-3" />
-                  <p className="font-label-caps text-xs uppercase tracking-wider text-teal-uno font-semibold">
-                    {isEs ? "Cargando formulario oficial..." : "Loading official form..."}
-                  </p>
-                  <p className="font-body-md text-[11px] text-gris-texto/70 mt-1 max-w-xs">
-                    {isEs ? "Sincronizando con Monday.com de UNO Arquitectos" : "Syncing with UNO Arquitectos Monday.com"}
-                  </p>
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/95 backdrop-blur-xs z-10 p-6 text-center">
+                  {!showFallbackBanner ? (
+                    <>
+                      <div className="w-9 h-9 border-3 border-teal-uno/25 border-t-teal-uno rounded-full animate-spin mb-3" />
+                      <p className="font-label-caps text-xs uppercase tracking-wider text-teal-uno font-semibold">
+                        {isEs ? "Cargando formulario oficial..." : "Loading official form..."}
+                      </p>
+                      <p className="font-body-md text-[11px] text-gris-texto/70 mt-1 max-w-xs">
+                        {isEs ? "Sincronizando con Monday.com de UNO Arquitectos" : "Syncing with UNO Arquitectos Monday.com"}
+                      </p>
+                    </>
+                  ) : (
+                    <div className="max-w-md mx-auto p-4 flex flex-col items-center animate-fadeIn">
+                      <div className="w-12 h-12 rounded-full bg-amber-500/10 text-amber-600 flex items-center justify-center mb-4">
+                        <AlertCircle className="w-6 h-6" />
+                      </div>
+                      <h4 className="font-headline-md text-base font-semibold text-teal-uno uppercase mb-2">
+                        {isEs ? "¿Tu navegador bloquea el formulario?" : "Is your browser blocking the form?"}
+                      </h4>
+                      <p className="font-body-md text-xs text-gris-texto leading-relaxed mb-5">
+                        {isEs 
+                          ? "Algunos navegadores o extensiones restringen marcos incrustados. Puedes abrirlo directamente en Monday.com o escribirnos por WhatsApp."
+                          : "Some browsers restrict embedded frames. You can open it directly in Monday.com or chat with us on WhatsApp."}
+                      </p>
+                      <div className="flex flex-col sm:flex-row gap-2.5 w-full justify-center">
+                        <a
+                          href={mondayDirectUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-teal-uno hover:bg-arena-calida text-white font-label-caps text-xs uppercase tracking-wider font-semibold transition-all shadow-xs"
+                        >
+                          <span>{isEs ? "Abrir en Monday.com" : "Open in Monday.com"}</span>
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </a>
+                        <a
+                          href={whatsappUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#25D366] hover:bg-[#1EBE5D] text-white font-label-caps text-xs uppercase tracking-wider font-semibold transition-all shadow-xs"
+                        >
+                          <span>WhatsApp</span>
+                        </a>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -203,8 +248,8 @@ export default function Contacto() {
                   iframeLoaded ? "opacity-100" : "opacity-0"
                 }`}
                 title="Formulario Oficial de Diagnóstico - UNO Arquitectos | Monday.com"
+                allow="clipboard-write; fullscreen"
                 onLoad={() => setIframeLoaded(true)}
-                loading="lazy"
               />
             </div>
 
