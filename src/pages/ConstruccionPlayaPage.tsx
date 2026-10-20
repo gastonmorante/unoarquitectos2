@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+﻿import { useEffect } from "react";
 import { Building2, ShieldCheck, Clock, FileCheck, Layers, ArrowRight, Eye, Smartphone, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import DiagnosticLeadForm from "../components/DiagnosticLeadForm";
@@ -32,7 +32,7 @@ export default function ConstruccionPlayaPage() {
       "alternateName": "UNO Arquitectos Mx",
       "url": "https://unoarquitectos.com/construccion-llave-en-mano-playa-del-carmen",
       "logo": "https://unoarquitectos.com/hero-luxury-villa.webp",
-      "image": "https://unoarquitectos.com/projects/residencial/alux-7cielos-ocean-pool.jpg",
+      "image": "https://unoarquitectos.com/projects/residencial/alux-7cielos-ocean-pool.webp",
       "description": pageDesc,
       "address": {
         "@type": "PostalAddress",
@@ -105,7 +105,7 @@ export default function ConstruccionPlayaPage() {
       desc: isEs
         ? "Obra llave en mano ejecutada en 12 meses: alberca infinity continua en Chukum, cancelería marina anti-huracán y carpintería artesanal en madera de Tzalam."
         : "Turnkey oceanfront villa delivered in 12 months: seamless Chukum infinity pool, marine-grade hurricane glazing, and certified Tzalam hardwood millwork.",
-      image: "/projects/residencial/alux-7cielos-ocean-pool.jpg",
+      image: "/projects/residencial/alux-7cielos-ocean-pool.webp",
       alt: "construccion llave en mano en playa del carmen - residencia 7 cielos frente al mar"
     },
     {
@@ -125,7 +125,7 @@ export default function ConstruccionPlayaPage() {
       desc: isEs
         ? "Diseño y adecuación comercial express con acabados antibacterianos, duela de roble claro, cancelería embutida y entrega con licencia de funcionamiento."
         : "Turnkey retail & cafe buildout delivered with full municipal licensing, custom light oak millwork, and high-performance workflow layout.",
-      image: "/projects/lavazza/lavazza-facade.jpg",
+      image: "/projects/lavazza/lavazza-facade.webp",
       alt: "construccion comercial llave en mano en playa del carmen - local lavazza"
     }
   ];
@@ -190,7 +190,7 @@ export default function ConstruccionPlayaPage() {
           <div className="lg:col-span-5 relative">
             <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl aspect-[4/3] border border-arena-calida/30">
               <img
-                src="/projects/residencial/alux-7cielos-ocean-pool.jpg"
+                src="/projects/residencial/alux-7cielos-ocean-pool.webp"
                 alt="construccion llave en mano en playa del carmen - alberca chukum y diseno contemporaneo frente al mar"
                 className="w-full h-full object-cover"
                 loading="eager"
@@ -307,3 +307,4 @@ export default function ConstruccionPlayaPage() {
     </div>
   );
 }
+

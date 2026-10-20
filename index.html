@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -351,8 +351,52 @@
     </style>
   </head>
   <body class="bg-[#FDFCF9] text-[#4A4A4A] texture-overlay">
-    <!-- REACT ROOT MOUNTING POINT -->
-    <div id="root"></div>
+        <!-- REACT ROOT MOUNTING POINT (Pre-rendered Critical Hero for Instant LCP < 1s) -->
+    <div id="root">
+      <header id="inicio" class="relative w-full min-h-[92vh] md:min-h-[720px] flex items-center justify-center overflow-hidden bg-[#FDFCF9] py-20 px-4 sm:px-6 md:px-margin-desktop">
+        <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+          <div class="absolute -top-1/4 -left-1/4 w-[150%] h-[150%] bg-[radial-gradient(circle_at_50%_50%,rgba(200,184,154,0.22)_0%,rgba(0,158,155,0.08)_40%,transparent_70%)] animate-[pulse_12s_ease-in-out_infinite_alternate]"></div>
+        </div>
+        <div class="absolute inset-0 z-[1] opacity-60 mix-blend-overlay pointer-events-none">
+          <picture>
+            <source media="(max-width: 768px)" srcset="/hero-luxury-villa-mobile.webp" type="image/webp" width="640" height="427" />
+            <source media="(min-width: 769px)" srcset="/hero-luxury-villa.webp" type="image/webp" width="1280" height="853" />
+            <img
+              alt="Arquitectura Contemporánea Tropical - Villa de Lujo en Riviera Maya por UNO Arquitectos"
+              class="w-full h-full object-cover object-center transform origin-center will-change-transform"
+              src="/hero-luxury-villa-mobile.webp"
+              width="640"
+              height="427"
+              fetchpriority="high"
+              decoding="async"
+            />
+          </picture>
+        </div>
+        <div class="absolute inset-0 z-[1] pointer-events-none" style="background: linear-gradient(rgba(200, 184, 154, 0.2) 0%, rgba(200, 184, 154, 0.4) 100%);"></div>
+        <div class="relative z-10 text-center w-full max-w-4xl mx-auto mt-12 sm:mt-16 md:mt-24 p-6 sm:p-10 md:p-16 lg:p-20 bg-white/55 backdrop-blur-md rounded-3xl border border-white/50 shadow-ethereal overflow-hidden">
+          <div class="relative z-10">
+            <span class="font-label-caps text-[11px] sm:text-xs md:text-label-caps text-[#C8B89A] uppercase tracking-[0.2em] sm:tracking-[0.25em] block mb-3 sm:mb-4 font-semibold">
+              Arquitectura que pertenece. Espacios que perduran.
+            </span>
+            <h1 class="font-headline-xl text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-[#009E9B] mb-4 sm:mb-6 tracking-tight font-semibold" style="text-shadow: rgba(0, 0, 0, 0.05) 0px 2px 4px;">
+              UNO ARQUITECTOS
+            </h1>
+            <p class="font-body-md sm:font-body-lg text-sm sm:text-base md:text-body-lg text-[#4A4A4A] mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed">
+              Servicios integrales de diseño y construcción llave en mano en Riviera Maya desde 2017.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3.5 sm:gap-4 justify-center items-center w-full max-w-md mx-auto sm:max-w-none">
+              <a href="#contacto" class="w-full sm:w-auto inline-flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4 bg-[#009E9B] text-white font-label-caps text-xs uppercase hover:bg-[#C8B89A] transition-all duration-500 rounded-full font-semibold">
+                Iniciar Diálogo
+              </a>
+              <a href="#proyectos" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 sm:px-10 py-3.5 sm:py-4 border border-[#009E9B] text-[#009E9B] font-label-caps text-xs uppercase hover:bg-[#009E9B] hover:text-white transition-all duration-500 rounded-full font-semibold">
+                Sentir los Espacios &darr;
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
+

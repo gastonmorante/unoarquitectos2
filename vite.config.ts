@@ -30,6 +30,9 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
+          if (id.includes('defaultClientProjects')) {
+            return 'client-projects-data';
+          }
           if (id.includes('node_modules/three')) {
             return 'three-bundle';
           }

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+﻿import React, { useEffect } from "react";
 import { Trees, ShieldCheck, Zap, Droplets, Compass, ArrowRight, CheckCircle2, MapPin, Building2, Layers } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import Contacto from "../components/Contacto";
@@ -33,7 +33,7 @@ export default function TulumPage() {
       desc: isEs 
         ? "Bóvedas catenarias monumentales esculpidas en ferrocemento y Chukum natural, pasarelas elevadas en madera dura de Zapote sobre suelo kárstico y celosías en fibras vegetales de henequén."
         : "Monumental catenary ferrocement vaults finished in natural Chukum, elevated Zapote timber boardwalks, and handcrafted henequen rope screens filtering coastal breeze.",
-      image: "/projects/hospitalidad/hospitalidad-santuario-arcos.jpg",
+      image: "/projects/hospitalidad/hospitalidad-santuario-arcos.webp",
       tag: "Hospitality"
     },
     {
@@ -42,7 +42,7 @@ export default function TulumPage() {
       desc: isEs 
         ? "Micro-red solar fotovoltaica con banco de baterías de litio LFP, muros monolíticos de tierra compactada (tapial), captación pluvial de 60,000L con esterilización UV-C y huella de carbono neutra."
         : "Isolated 18 kWp solar micro-grid with LFP lithium storage, 40 cm monolithic rammed earth walls, 60,000L rainwater harvesting with UV-C purification, and zero noise footprint.",
-      image: "/projects/offgrid/offgrid-villa-cenote.jpg",
+      image: "/projects/offgrid/offgrid-villa-cenote.webp",
       tag: "Off-Grid"
     },
     {
@@ -51,7 +51,7 @@ export default function TulumPage() {
       desc: isEs 
         ? "Albercas infinity continuas en Chukum, carpintería monumental en Parota y Tzalam sólida, cancelería de cristal templado anti-huracán y salones de concepto abierto con vistas a la selva."
         : "Seamless natural Chukum plunge pools, solid certified Parota and Tzalam millwork, hurricane-resistant panoramic glazing, and open-concept indoor-outdoor spaces.",
-      image: "/projects/residencial/alux-7cielos-ocean-pool.jpg",
+      image: "/projects/residencial/alux-7cielos-ocean-pool.webp",
       tag: "Residencial"
     }
   ];
@@ -139,7 +139,7 @@ export default function TulumPage() {
           <div className="lg:col-span-5 relative">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3] border border-arena-calida/30">
               <img
-                src="/projects/offgrid/offgrid-villa-cenote.jpg"
+                src="/projects/offgrid/offgrid-villa-cenote.webp"
                 alt="Arquitectura Boutique en Tulum - UNO Arquitectos"
                 className="w-full h-full object-cover"
                 loading="eager"
@@ -246,3 +246,4 @@ export default function TulumPage() {
     </div>
   );
 }
+

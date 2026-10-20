@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+﻿import { useEffect } from "react";
 import { Sun, Droplets, Trees, Sparkles, ArrowRight, ShieldCheck, Home, CheckCircle2, Wind } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import DiagnosticLeadForm from "../components/DiagnosticLeadForm";
@@ -32,7 +32,7 @@ export default function DisenoCasasTulumPage() {
       "alternateName": "UNO Arquitectos Mx",
       "url": "https://unoarquitectos.com/diseno-casas-tulum",
       "logo": "https://unoarquitectos.com/hero-luxury-villa.webp",
-      "image": "https://unoarquitectos.com/projects/offgrid/offgrid-villa-cenote.jpg",
+      "image": "https://unoarquitectos.com/projects/offgrid/offgrid-villa-cenote.webp",
       "description": pageDesc,
       "address": {
         "@type": "PostalAddress",
@@ -114,7 +114,7 @@ export default function DisenoCasasTulumPage() {
       desc: isEs 
         ? "Residencia unifamiliar autosuficiente de 720 m² en lote selvático virgen. Energía solar independiente, captación pluvial de 60,000L y confort térmico pasivo absoluto."
         : "720 sqm autonomous single-family estate on virgin jungle land. Zero-grid solar array, 60,000L rainwater storage, and uncompromising architectural elegance.",
-      image: "/projects/offgrid/offgrid-villa-cenote.jpg",
+      image: "/projects/offgrid/offgrid-villa-cenote.webp",
       alt: "diseno arquitectonico para casas en tulum - santuario kaan arquitectura bioclimatica"
     },
     {
@@ -124,7 +124,7 @@ export default function DisenoCasasTulumPage() {
       desc: isEs 
         ? "Conjunto de villas residenciales privadas con muros de concreto lavado y Chukum, terrazas voladas y albercas privadas rodeadas de vegetación nativa preservada."
         : "Enclave of private luxury villas with Chukum and washed concrete facades, cantilevered decks, and private plunge pools embraced by virgin flora.",
-      image: "/projects/residencial/alux-7cielos-ocean-pool.jpg",
+      image: "/projects/residencial/alux-7cielos-ocean-pool.webp",
       alt: "diseno arquitectonico para casas en tulum - villas alux alberca chukum"
     }
   ];
@@ -306,3 +306,4 @@ export default function DisenoCasasTulumPage() {
     </div>
   );
 }
+

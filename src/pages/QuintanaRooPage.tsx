@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+﻿import React, { useEffect } from "react";
 import { ShieldCheck, Ruler, Clock, Building2, ArrowRight, CheckCircle2, MapPin, Award, Gem } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import Contacto from "../components/Contacto";
@@ -32,7 +32,7 @@ export default function QuintanaRooPage() {
       desc: isEs 
         ? "Acabados continuos en Chukum natural pulido, carpinterías monumentales en madera de Tzalam certificada, alberca infinity y cancelerías de grado marino anti-huracán."
         : "Seamless natural polished Chukum plaster, monumental Tzalam hardwood millwork, infinity ocean-view pool, and marine-grade hurricane glazing.",
-      image: "/projects/residencial/alux-7cielos-ocean-pool.jpg",
+      image: "/projects/residencial/alux-7cielos-ocean-pool.webp",
       location: "Playa del Carmen"
     },
     {
@@ -41,7 +41,7 @@ export default function QuintanaRooPage() {
       desc: isEs 
         ? "Diseño y ejecución integral combinando estética europea contemporánea, duelas en roble claro, cubierta sólida antibacteriana y estación barista optimizada."
         : "Turnkey design and build merging contemporary European aesthetics, fluted light oak wood, antibacterial solid surfacing, and high-efficiency barista workflow.",
-      image: "/projects/lavazza/lavazza-facade.jpg",
+      image: "/projects/lavazza/lavazza-facade.webp",
       location: "Plaza Comercial"
     },
     {
@@ -50,7 +50,7 @@ export default function QuintanaRooPage() {
       desc: isEs 
         ? "Bóvedas bioclimáticas de ferrocemento y Chukum, pasarelas elevadas en madera de Zapote para preservar el suelo kárstico y arquitectura sensorial."
         : "Bioclimatic ferrocement and Chukum vaults, elevated Zapote boardwalks preserving fragile karst ecology, and sensory architectural design.",
-      image: "/projects/hospitalidad/hospitalidad-santuario-arcos.jpg",
+      image: "/projects/hospitalidad/hospitalidad-santuario-arcos.webp",
       location: "Tulum"
     }
   ];
@@ -243,3 +243,4 @@ export default function QuintanaRooPage() {
     </div>
   );
 }
+

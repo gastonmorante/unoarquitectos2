@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import { ArrowRight, BookOpen, Clock, Tag, User, Search } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { blogPosts } from "../data/blogPosts";
@@ -217,3 +217,4 @@ export default function BlogListPage() {
     </div>
   );
 }
+

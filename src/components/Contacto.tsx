@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Mail, Phone, MapPin, Clock, ExternalLink, ShieldCheck, AlertCircle } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { useSiteContent } from "../context/ContentContext";
@@ -10,13 +10,35 @@ export default function Contacto() {
   const isEs = language === "es";
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const [showFallbackBanner, setShowFallbackBanner] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [shouldLoadIframe, setShouldLoadIframe] = useState(false);
 
   useEffect(() => {
+    if (shouldLoadIframe) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0] && entries[0].isIntersecting) {
+          setShouldLoadIframe(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "400px" }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [shouldLoadIframe]);
+
+  useEffect(() => {
+    if (!shouldLoadIframe) return;
     const timer = setTimeout(() => {
       setShowFallbackBanner(true);
-    }, 6000);
+    }, 8000);
     return () => clearTimeout(timer);
-  }, []);
+  }, [shouldLoadIframe]);
 
   const whatsappNumber = (content?.contact?.whatsapp || "5219842108420").replace(/[^\d]/g, "");
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
@@ -190,10 +212,13 @@ export default function Contacto() {
             </div>
 
             {/* iFrame Container */}
-            <div className="relative w-full rounded-2xl overflow-hidden bg-white shadow-xs border border-arena-calida/20 min-h-[920px] sm:min-h-[1060px]">
+            <div 
+              ref={containerRef}
+              className="relative w-full rounded-2xl overflow-hidden bg-white shadow-xs border border-arena-calida/20 min-h-[920px] sm:min-h-[1060px]"
+            >
               
-              {/* Subtle Loading Placeholder while Monday iFrame loads */}
-              {!iframeLoaded && (
+              {/* Subtle Loading Placeholder while Monday iFrame loads or waits for viewport */}
+              {(!iframeLoaded || !shouldLoadIframe) && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/95 backdrop-blur-xs z-10 p-6 text-center">
                   {!showFallbackBanner ? (
                     <>
@@ -204,6 +229,15 @@ export default function Contacto() {
                       <p className="font-body-md text-[11px] text-gris-texto/70 mt-1 max-w-xs">
                         {isEs ? "Sincronizando con Monday.com de UNO Arquitectos" : "Syncing with UNO Arquitectos Monday.com"}
                       </p>
+                      {!shouldLoadIframe && (
+                        <button
+                          type="button"
+                          onClick={() => setShouldLoadIframe(true)}
+                          className="mt-4 px-4 py-2 rounded-full border border-teal-uno/40 text-teal-uno text-xs font-label-caps uppercase hover:bg-teal-uno hover:text-white transition-all cursor-pointer"
+                        >
+                          {isEs ? "Cargar Formulario Ahora" : "Load Form Now"}
+                        </button>
+                      )}
                     </>
                   ) : (
                     <div className="max-w-md mx-auto p-4 flex flex-col items-center animate-fadeIn">
@@ -242,15 +276,18 @@ export default function Contacto() {
                 </div>
               )}
 
-              <iframe
-                src={mondayEmbedUrl}
-                className={`w-full min-h-[920px] sm:min-h-[1060px] border-0 transition-opacity duration-300 ${
-                  iframeLoaded ? "opacity-100" : "opacity-0"
-                }`}
-                title="Formulario Oficial de Diagnóstico - UNO Arquitectos | Monday.com"
-                allow="clipboard-write; fullscreen"
-                onLoad={() => setIframeLoaded(true)}
-              />
+              {shouldLoadIframe && (
+                <iframe
+                  src={mondayEmbedUrl}
+                  loading="lazy"
+                  className={`w-full min-h-[920px] sm:min-h-[1060px] border-0 transition-opacity duration-300 ${
+                    iframeLoaded ? "opacity-100" : "opacity-0"
+                  }`}
+                  title="Formulario Oficial de Diagnóstico - UNO Arquitectos | Monday.com"
+                  allow="clipboard-write; fullscreen"
+                  onLoad={() => setIframeLoaded(true)}
+                />
+              )}
             </div>
 
             {/* Footer Reassurance & Direct WhatsApp Fallback */}

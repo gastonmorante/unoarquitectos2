@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+﻿import { useEffect } from "react";
 import { Trees, ShieldCheck, Zap, Droplets, ArrowRight, Award, Compass, Layers, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import DiagnosticLeadForm from "../components/DiagnosticLeadForm";
@@ -33,7 +33,7 @@ export default function EstudioArquitecturaTulumPage() {
       "alternateName": "UNO Arquitectos Mx",
       "url": "https://unoarquitectos.com/estudio-arquitectura-tulum",
       "logo": "https://unoarquitectos.com/hero-luxury-villa.webp",
-      "image": "https://unoarquitectos.com/projects/hospitalidad/hospitalidad-santuario-arcos.jpg",
+      "image": "https://unoarquitectos.com/projects/hospitalidad/hospitalidad-santuario-arcos.webp",
       "description": pageDesc,
       "founder": {
         "@type": "Person",
@@ -111,7 +111,7 @@ export default function EstudioArquitecturaTulumPage() {
       desc: isEs 
         ? "Bóvedas catenarias monumentales de ferrocemento recubiertas en Chukum natural, pasarelas elevadas de Zapote sobre suelo kárstico y celosías sensoriales."
         : "Monumental ferrocement catenary vaults finished with native Chukum, elevated Zapote hardwood boardwalks preserving karst geology, and sensory screens.",
-      image: "/projects/hospitalidad/hospitalidad-santuario-arcos.jpg",
+      image: "/projects/hospitalidad/hospitalidad-santuario-arcos.webp",
       alt: "estudio de arquitectura en Tulum - Papaya Playa Project hotel boutique sustentable"
     },
     {
@@ -121,7 +121,7 @@ export default function EstudioArquitecturaTulumPage() {
       desc: isEs 
         ? "Arquitectura autónoma con micro-red solar fotovoltaica, captación pluvial de 60,000L con esterilización UV-C y muros monolíticos de gran inercia térmica."
         : "100% autonomous off-grid residential retreat with solar PV micro-grid, 60,000L rainwater harvesting with UV-C purification, and high-inertia walls.",
-      image: "/projects/offgrid/offgrid-villa-cenote.jpg",
+      image: "/projects/offgrid/offgrid-villa-cenote.webp",
       alt: "estudio de arquitectura en Tulum - Santuario Kaan villa ecologica autosuficiente"
     },
     {
@@ -131,7 +131,7 @@ export default function EstudioArquitecturaTulumPage() {
       desc: isEs 
         ? "Albercas infinity continuas en estuco ancestral de Chukum, carpinterías monumentales en Tzalam y cancelerías de cristal laminado anti-huracán."
         : "Seamless Chukum plunge pools reflecting turquoise cenote hues, solid certified Tzalam woodwork, and hurricane-resistant structural glazing.",
-      image: "/projects/residencial/alux-7cielos-ocean-pool.jpg",
+      image: "/projects/residencial/alux-7cielos-ocean-pool.webp",
       alt: "estudio de arquitectura en Tulum - Villa Chukum residencia de lujo contemporanea"
     }
   ];
@@ -196,7 +196,7 @@ export default function EstudioArquitecturaTulumPage() {
           <div className="lg:col-span-5 relative">
             <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl aspect-[4/3] border border-arena-calida/30">
               <img
-                src="/projects/hospitalidad/hospitalidad-santuario-arcos.jpg"
+                src="/projects/hospitalidad/hospitalidad-santuario-arcos.webp"
                 alt="estudio de arquitectura en Tulum - diseno contemporaneo tropical con bovedas de chukum"
                 className="w-full h-full object-cover"
                 loading="eager"
@@ -315,3 +315,4 @@ export default function EstudioArquitecturaTulumPage() {
     </div>
   );
 }
+

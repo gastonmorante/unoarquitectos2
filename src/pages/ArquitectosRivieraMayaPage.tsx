@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+﻿import { useEffect } from "react";
 import { Compass, ShieldCheck, Award, Building2, Layers, ArrowRight, MapPin, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import DiagnosticLeadForm from "../components/DiagnosticLeadForm";
@@ -33,7 +33,7 @@ export default function ArquitectosRivieraMayaPage() {
       "alternateName": "UNO Arquitectos Mx",
       "url": "https://unoarquitectos.com/arquitectos-riviera-maya",
       "logo": "https://unoarquitectos.com/hero-luxury-villa.webp",
-      "image": "https://unoarquitectos.com/projects/residencial/alux-7cielos-ocean-pool.jpg",
+      "image": "https://unoarquitectos.com/projects/residencial/alux-7cielos-ocean-pool.webp",
       "description": pageDesc,
       "address": {
         "@type": "PostalAddress",
@@ -118,7 +118,7 @@ export default function ArquitectosRivieraMayaPage() {
       desc: isEs 
         ? "Residencia unifamiliar con estuco artesanal de Chukum, maderas nobles de Tzalam y climatización pasiva para amortiguar el calor tropical."
         : "Coastal estate featuring handcrafted Mayan Chukum plaster, solid Tzalam hardwoods, and passive bioclimatic cooling.",
-      image: "/projects/residencial/alux-7cielos-ocean-pool.jpg",
+      image: "/projects/residencial/alux-7cielos-ocean-pool.webp",
       alt: "arquitectos en riviera maya - residencia 7 cielos playa del carmen"
     },
     {
@@ -128,7 +128,7 @@ export default function ArquitectosRivieraMayaPage() {
       desc: isEs 
         ? "Desarrollo boutique icónico con bóvedas continuas de ferrocemento y Chukum, pasarelas de Zapote y respeto absoluto a la vegetación virgen."
         : "Iconic hospitality landmark with ferrocement catenary vaults, elevated Zapote walkways, and zero-compromise environmental sensitivity.",
-      image: "/projects/hospitalidad/hospitalidad-santuario-arcos.jpg",
+      image: "/projects/hospitalidad/hospitalidad-santuario-arcos.webp",
       alt: "arquitectos en riviera maya - papaya playa project tulum"
     }
   ];
@@ -313,3 +313,4 @@ export default function ArquitectosRivieraMayaPage() {
     </div>
   );
 }
+

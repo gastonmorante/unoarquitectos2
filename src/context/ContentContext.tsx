@@ -48,30 +48,20 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
     return false;
   });
 
-  // Load from remote server API or static JSON file on mount
+  // Load from remote static JSON file on mount (zero-latency, 100% cacheable)
   useEffect(() => {
     const fetchContent = async () => {
       try {
-        const res = await fetch("/api/content");
+        const res = await fetch("/data/site-content.json");
         if (res.ok) {
           const data = await res.json();
           if (data && data.categories) {
             setContent(data);
             localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
           }
-        } else {
-          // Fallback to static JSON file
-          const staticRes = await fetch("/data/site-content.json");
-          if (staticRes.ok) {
-            const staticData = await staticRes.json();
-            if (staticData && staticData.categories) {
-              setContent(staticData);
-              localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(staticData));
-            }
-          }
         }
       } catch (err) {
-        console.warn("Could not fetch remote content, using local store:", err);
+        console.warn("Could not fetch site content, using local store:", err);
       } finally {
         setIsLoading(false);
       }
