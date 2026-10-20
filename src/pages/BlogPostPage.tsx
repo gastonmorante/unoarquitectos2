@@ -76,6 +76,38 @@ export default function BlogPostPage({ slug }: BlogPostPageProps) {
     window.dispatchEvent(new PopStateEvent("popstate"));
   };
 
+  const renderRichText = (text: string) => {
+    const regex = /\[([^\]]+)\]\(([^)]+)\)/g;
+    const parts: (string | React.ReactNode)[] = [];
+    let lastIndex = 0;
+    let match: RegExpExecArray | null;
+
+    while ((match = regex.exec(text)) !== null) {
+      if (match.index > lastIndex) {
+        parts.push(text.substring(lastIndex, match.index));
+      }
+      const label = match[1];
+      const url = match[2];
+      parts.push(
+        <a
+          key={`${match.index}-${url}`}
+          href={url}
+          onClick={(e) => navigateToUrl(e, url)}
+          className="text-teal-uno hover:underline font-semibold transition-colors"
+        >
+          {label}
+        </a>
+      );
+      lastIndex = regex.lastIndex;
+    }
+
+    if (lastIndex < text.length) {
+      parts.push(text.substring(lastIndex));
+    }
+
+    return parts.length > 0 ? parts : text;
+  };
+
   return (
     <article className="min-h-screen w-full bg-background text-gris-texto font-sans texture-overlay overflow-x-hidden pt-20 md:pt-24">
       {/* BREADCRUMB */}
@@ -158,7 +190,7 @@ export default function BlogPostPage({ slug }: BlogPostPageProps) {
       {/* ARTICLE BODY CONTENT */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 text-left pb-16">
         <p className="font-body-md text-sm sm:text-base text-gris-texto leading-relaxed mb-10 font-normal">
-          {postContent.intro}
+          {renderRichText(postContent.intro)}
         </p>
 
         <div className="space-y-12">
@@ -169,7 +201,7 @@ export default function BlogPostPage({ slug }: BlogPostPageProps) {
               </h2>
               {section.body.map((para, pIdx) => (
                 <p key={pIdx} className="font-body-md text-sm sm:text-base text-gris-texto leading-relaxed">
-                  {para}
+                  {renderRichText(para)}
                 </p>
               ))}
               {section.quote && (
@@ -189,7 +221,7 @@ export default function BlogPostPage({ slug }: BlogPostPageProps) {
             {isEs ? "Conclusión & Criterio Constructivo" : "Conclusion & Architectural Criteria"}
           </h3>
           <p className="font-body-md text-sm sm:text-base text-gris-texto leading-relaxed">
-            {postContent.conclusion}
+            {renderRichText(postContent.conclusion)}
           </p>
         </div>
 

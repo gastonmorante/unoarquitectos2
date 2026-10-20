@@ -131,11 +131,11 @@ ErrorDocument 404 /404.html
   # ----------------------------------------------------------------------------
   # Explicit localized entrypoint routing
   RewriteRule ^(en|fr|it)/?$ $1/index.html [L,QSA]
-  RewriteRule ^(en|fr|it)/(arquitectos-en-tulum|arquitectos-en-quintana-roo|blog)/?$ $1/$2/index.html [L,QSA]
+  RewriteRule ^(en|fr|it)/(estudio-arquitectura-tulum|construccion-llave-en-mano-playa-del-carmen|diseno-casas-tulum|arquitectos-riviera-maya|arquitectos-en-tulum|arquitectos-en-quintana-roo|blog)/?$ $1/$2/index.html [L,QSA]
   RewriteRule ^(en|fr|it)/blog/([a-zA-Z0-9_-]+)/?$ $1/blog/index.html [L,QSA]
 
   # Spanish subpages routing
-  RewriteRule ^(arquitectos-en-tulum|arquitectos-en-quintana-roo|blog)/?$ $1/index.html [L,QSA]
+  RewriteRule ^(estudio-arquitectura-tulum|construccion-llave-en-mano-playa-del-carmen|diseno-casas-tulum|arquitectos-riviera-maya|arquitectos-en-tulum|arquitectos-en-quintana-roo|blog)/?$ $1/index.html [L,QSA]
   RewriteRule ^blog/([a-zA-Z0-9_-]+)/?$ blog/index.html [L,QSA]
 
   # Client Portal & Admin SPA routes

@@ -39,7 +39,7 @@ export const blogPosts: BlogPost[] = [
             heading: "1. La Geología Kárstica y los Riesgos de Cavidades Ocultas",
             body: [
               "La roca caliza de la Riviera Maya sufre una disolución química constante por la acción del agua de lluvia ácida y los flujos subterráneos. Esto genera oquedades, cavernas y cenotes que pueden estar ocultos a solo unos pocos metros bajo la superficie.",
-              "Construir con cimentaciones superficiales estándar (zapatas aisladas o losas corridas sin estudio previo) representa un riesgo crítico de asentamientos diferenciales e incluso colapsos catastróficos."
+              "Construir con cimentaciones superficiales estándar (zapatas aisladas o losas corridas sin estudio previo) representa un riesgo crítico de asentamientos diferenciales e incluso colapsos catastróficos. Por ello, como [estudio de arquitectura en Tulum](/estudio-arquitectura-tulum) especializado en selva virgen, consideramos el levantamiento geológico como la piedra angular de cualquier obra."
             ],
             quote: "Un proyecto exitoso en Tulum no lucha contra la geología kárstica; se ancla en ella con precisión milimétrica."
           },
@@ -58,7 +58,7 @@ export const blogPosts: BlogPost[] = [
             ]
           }
         ],
-        conclusion: "En UNO Arquitectos integramos el cálculo estructural geotécnico desde la etapa conceptual, asegurando que su residencia o desarrollo boutique cuente con total certidumbre constructiva, seguro decenal y respeto al ecosistema maya."
+        conclusion: "En UNO Arquitectos integramos el cálculo estructural geotécnico desde la etapa conceptual de [diseño arquitectónico para casas en Tulum](/diseno-casas-tulum), asegurando que su residencia o desarrollo boutique cuente con total certidumbre constructiva, seguro decenal y respeto al ecosistema maya."
       },
       en: {
         intro: "The subsoil of the Yucatan Peninsula and Tulum specifically consists of porous limestone traversed by the world's largest underground river and cenote systems. Building in this environment requires advanced geotechnical expertise to guarantee structural longevity and protect natural waterways.",
@@ -198,7 +198,7 @@ export const blogPosts: BlogPost[] = [
             ]
           }
         ],
-        conclusion: "En UNO Arquitectos combinamos la técnica artesanal de maestros chukumeros locales con la precisión constructiva contemporánea, garantizando acabados impecables y duraderos en cada residencia."
+        conclusion: "En UNO Arquitectos combinamos la técnica artesanal de maestros chukumeros locales con la precisión contemporánea en cada [diseño arquitectónico para casas en Tulum](/diseno-casas-tulum). Nuestro [estudio de arquitectura en Tulum](/estudio-arquitectura-tulum) lidera la arquitectura bioclimática en la Riviera Maya."
       },
       en: {
         intro: "Chukum is one of the most remarkable material legacies of Mayan architecture. Produced by boiling the bark of the endemic Havardia albicans tree and mixing it with limestone dust and slaked lime, it creates a tactile mineral surface with exceptional passive cooling qualities.",
@@ -305,7 +305,7 @@ export const blogPosts: BlogPost[] = [
             heading: "1. La Ventaja del Modelo de Responsabilidad Única",
             body: [
               "Cuando un inversionista contrata a un arquitecto por separado del constructor y de los ingenieros, cualquier discrepancia en planos o costos genera conflictos cruzados y sobrecostos.",
-              "En el modelo Llave en Mano (Design-Build), UNO Arquitectos asume la responsabilidad integral: desde la conceptualización arquitectónica y el cálculo estructural, hasta la tramitación de licencias municipales y la entrega final amueblada y lista para operar."
+              "En el modelo Llave en Mano (Design-Build), UNO Arquitectos asume la responsabilidad integral: desde la conceptualización arquitectónica y el cálculo estructural, hasta la tramitación de licencias municipales y la entrega final amueblada. Conoce más sobre nuestro servicio especializado de [construcción llave en mano en Playa del Carmen](/construccion-llave-en-mano-playa-del-carmen)."
             ],
             quote: "Un solo interlocutor, un presupuesto transparente y un cronograma contractual garantizado."
           },
@@ -323,7 +323,7 @@ export const blogPosts: BlogPost[] = [
             ]
           }
         ],
-        conclusion: "Con más de 20 años de trayectoria y más de 70 proyectos entregados en Quintana Roo, UNO Arquitectos es su socio estratégico para materializar proyectos residenciales y boutique de alto rendimiento."
+        conclusion: "Con más de 20 años de trayectoria y más de 70 proyectos entregados en Quintana Roo, nuestra [firma de arquitectos en Riviera Maya](/arquitectos-riviera-maya) es su socio estratégico para materializar residencias boutique y proyectos inmobiliarios de alto rendimiento con certidumbre total."
       },
       en: {
         intro: "Investing in the Riviera Maya real estate market yields exceptional ROI and capital appreciation. However, managing construction from abroad without single-source accountability frequently leads to cost overruns and permitting delays. UNO Arquitectos' turnkey model delivers total financial and execution certainty.",

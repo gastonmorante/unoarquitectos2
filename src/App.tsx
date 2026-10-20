@@ -20,6 +20,10 @@ const ClientPortalModal = lazy(() => import('./components/ClientPortal/ClientPor
 const Portfolio = lazy(() => import('./components/Portfolio'));
 const TulumPage = lazy(() => import('./pages/TulumPage'));
 const QuintanaRooPage = lazy(() => import('./pages/QuintanaRooPage'));
+const EstudioArquitecturaTulumPage = lazy(() => import('./pages/EstudioArquitecturaTulumPage'));
+const ConstruccionPlayaPage = lazy(() => import('./pages/ConstruccionPlayaPage'));
+const DisenoCasasTulumPage = lazy(() => import('./pages/DisenoCasasTulumPage'));
+const ArquitectosRivieraMayaPage = lazy(() => import('./pages/ArquitectosRivieraMayaPage'));
 const BlogListPage = lazy(() => import('./pages/BlogListPage'));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 const AdminDashboard = lazy(() => import('./admin/AdminDashboard'));
@@ -30,6 +34,10 @@ const AIConsultant = lazy(() => import('./components/AIConsultant'));
 export type RouteState = 
   | { name: "home" }
   | { name: "tulum" }
+  | { name: "estudio-arquitectura-tulum" }
+  | { name: "construccion-llave-en-mano-playa-del-carmen" }
+  | { name: "diseno-casas-tulum" }
+  | { name: "arquitectos-riviera-maya" }
   | { name: "quintana-roo" }
   | { name: "blog" }
   | { name: "blog-post"; slug: string }
@@ -49,11 +57,25 @@ function parseRoute(): RouteState {
   if (purePath === "/admin" || hash === "#admin" || search.includes("admin=true")) {
     return { name: "admin" };
   }
+  // Dedicated High-Intent Commercial SEO Routes
+  if (purePath === "/estudio-arquitectura-tulum" || purePath === "/estudio-arquitectura-tulum/") {
+    return { name: "estudio-arquitectura-tulum" };
+  }
+  if (purePath === "/construccion-llave-en-mano-playa-del-carmen" || purePath === "/construccion-llave-en-mano-playa-del-carmen/") {
+    return { name: "construccion-llave-en-mano-playa-del-carmen" };
+  }
+  if (purePath === "/diseno-casas-tulum" || purePath === "/diseno-casas-tulum/") {
+    return { name: "diseno-casas-tulum" };
+  }
+  if (purePath === "/arquitectos-riviera-maya" || purePath === "/arquitectos-riviera-maya/") {
+    return { name: "arquitectos-riviera-maya" };
+  }
+  // Regional Legacy Aliases
   if (purePath === "/arquitectos-en-tulum" || purePath === "/arquitectos-en-tulum/") {
-    return { name: "tulum" };
+    return { name: "estudio-arquitectura-tulum" };
   }
   if (purePath === "/arquitectos-en-quintana-roo" || purePath === "/arquitectos-en-quintana-roo/") {
-    return { name: "quintana-roo" };
+    return { name: "arquitectos-riviera-maya" };
   }
   if (purePath === "/blog" || purePath === "/blog/") {
     return { name: "blog" };
@@ -308,15 +330,27 @@ function MainApp() {
 
       {/* DYNAMIC PAGE COMPONENT ROUTING */}
       <main id="main-content" className="w-full overflow-x-hidden">
-        {route.name === "tulum" && (
-          <Suspense fallback={<div className="min-h-screen pt-32 text-center font-label-caps text-xs text-teal-uno">Cargando Tulum...</div>}>
-            <TulumPage />
+        {(route.name === "estudio-arquitectura-tulum" || route.name === "tulum") && (
+          <Suspense fallback={<div className="min-h-screen pt-32 text-center font-label-caps text-xs text-teal-uno">Cargando Estudio de Arquitectura en Tulum...</div>}>
+            <EstudioArquitecturaTulumPage />
           </Suspense>
         )}
 
-        {route.name === "quintana-roo" && (
-          <Suspense fallback={<div className="min-h-screen pt-32 text-center font-label-caps text-xs text-teal-uno">Cargando Quintana Roo...</div>}>
-            <QuintanaRooPage />
+        {route.name === "construccion-llave-en-mano-playa-del-carmen" && (
+          <Suspense fallback={<div className="min-h-screen pt-32 text-center font-label-caps text-xs text-teal-uno">Cargando Construcción Llave en Mano en Playa del Carmen...</div>}>
+            <ConstruccionPlayaPage />
+          </Suspense>
+        )}
+
+        {route.name === "diseno-casas-tulum" && (
+          <Suspense fallback={<div className="min-h-screen pt-32 text-center font-label-caps text-xs text-teal-uno">Cargando Diseño de Casas en Tulum...</div>}>
+            <DisenoCasasTulumPage />
+          </Suspense>
+        )}
+
+        {(route.name === "arquitectos-riviera-maya" || route.name === "quintana-roo") && (
+          <Suspense fallback={<div className="min-h-screen pt-32 text-center font-label-caps text-xs text-teal-uno">Cargando Arquitectos en Riviera Maya...</div>}>
+            <ArquitectosRivieraMayaPage />
           </Suspense>
         )}
 
@@ -383,36 +417,54 @@ function MainApp() {
           </div>
           
           {/* COL 1: SECTIONS & PAGES */}
-          <div className="md:col-span-3 md:col-start-6 mb-6 sm:mb-8 md:mb-0">
+          <div className="md:col-span-4 md:col-start-5 mb-6 sm:mb-8 md:mb-0">
             <h3 className="font-label-caps text-xs sm:text-label-caps text-arena-calida mb-3 sm:mb-4 uppercase tracking-widest font-semibold">
-              Destinos & Páginas
+              {isEs ? "Destinos & Especialidades" : "Destinations & Specialties"}
             </h3>
             <ul className="space-y-1 font-label-caps text-xs sm:text-label-caps">
               <li>
                 <a 
-                  className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-1.5 flex items-center gap-1.5" 
-                  href={formatUrl("/arquitectos-en-tulum")}
-                  onClick={(e) => navigateTo(e, "/arquitectos-en-tulum")}
+                  className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-1 flex items-center gap-1.5" 
+                  href={formatUrl("/estudio-arquitectura-tulum")}
+                  onClick={(e) => navigateTo(e, "/estudio-arquitectura-tulum")}
                 >
-                  <MapPin className="w-3 h-3 text-teal-uno" /> Arquitectos en Tulum
+                  <MapPin className="w-3 h-3 text-teal-uno flex-shrink-0" /> {isEs ? "Estudio de Arquitectura en Tulum" : "Architecture Studio in Tulum"}
                 </a>
               </li>
               <li>
                 <a 
-                  className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-1.5 flex items-center gap-1.5" 
-                  href={formatUrl("/arquitectos-en-quintana-roo")}
-                  onClick={(e) => navigateTo(e, "/arquitectos-en-quintana-roo")}
+                  className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-1 flex items-center gap-1.5" 
+                  href={formatUrl("/construccion-llave-en-mano-playa-del-carmen")}
+                  onClick={(e) => navigateTo(e, "/construccion-llave-en-mano-playa-del-carmen")}
                 >
-                  <MapPin className="w-3 h-3 text-arena-calida" /> Arquitectos en Q. Roo
+                  <MapPin className="w-3 h-3 text-arena-calida flex-shrink-0" /> {isEs ? "Construcción Llave en Mano Playa del Carmen" : "Turnkey Construction Playa del Carmen"}
                 </a>
               </li>
               <li>
                 <a 
-                  className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-1.5 flex items-center gap-1.5" 
+                  className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-1 flex items-center gap-1.5" 
+                  href={formatUrl("/diseno-casas-tulum")}
+                  onClick={(e) => navigateTo(e, "/diseno-casas-tulum")}
+                >
+                  <MapPin className="w-3 h-3 text-teal-uno flex-shrink-0" /> {isEs ? "Diseño de Casas en Tulum" : "House Design in Tulum"}
+                </a>
+              </li>
+              <li>
+                <a 
+                  className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-1 flex items-center gap-1.5" 
+                  href={formatUrl("/arquitectos-riviera-maya")}
+                  onClick={(e) => navigateTo(e, "/arquitectos-riviera-maya")}
+                >
+                  <MapPin className="w-3 h-3 text-arena-calida flex-shrink-0" /> {isEs ? "Arquitectos en Riviera Maya" : "Architects in Riviera Maya"}
+                </a>
+              </li>
+              <li>
+                <a 
+                  className="text-gris-texto hover:text-teal-uno transition-colors duration-300 uppercase block py-1 flex items-center gap-1.5" 
                   href={formatUrl("/blog")}
                   onClick={(e) => navigateTo(e, "/blog")}
                 >
-                  <BookOpen className="w-3 h-3 text-teal-uno" /> Blog & Journal
+                  <BookOpen className="w-3 h-3 text-teal-uno flex-shrink-0" /> {isEs ? "Blog & Journal de Arquitectura" : "Architecture Journal & Blog"}
                 </a>
               </li>
               <li>
@@ -424,10 +476,10 @@ function MainApp() {
                       window.dispatchEvent(new PopStateEvent("popstate"));
                     }
                   }} 
-                  className="text-[#c2a275] hover:text-white transition-colors duration-300 uppercase cursor-pointer text-left inline-flex items-center gap-1.5 py-1.5"
+                  className="text-[#c2a275] hover:text-white transition-colors duration-300 uppercase cursor-pointer text-left inline-flex items-center gap-1.5 py-1"
                   title="Seguimiento de Obra y Recorridos 360°"
                 >
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#c2a275]" /> Área Clientes 360°
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#c2a275] flex-shrink-0" /> {isEs ? "Área Clientes 360°" : "Client Portal 360°"}
                 </button>
               </li>
             </ul>
@@ -503,12 +555,12 @@ function MainApp() {
         <a
           href={`https://wa.me/5219842108420?text=${encodeURIComponent(
             language === "es"
-              ? "Hola UNO Arquitectos, me interesa recibir información y asesoría técnica para un proyecto de arquitectura y construcción en la Riviera Maya."
+              ? "Hola UNO Arquitectos, me gustaría cotizar un proyecto de [diseño / construcción llave en mano] en la Riviera Maya."
               : language === "it"
-              ? "Buongiorno UNO Arquitectos, desidero ricevere informazioni e consulenza tecnica per un progetto nella Riviera Maya."
+              ? "Buongiorno UNO Arquitectos, desidero richiedere un preventivo per un progetto di [progettazione / costruzione chiavi in mano] nella Riviera Maya."
               : language === "fr"
-              ? "Bonjour UNO Arquitectos, je souhaite recevoir des informations et des conseils techniques pour un projet dans la Riviera Maya."
-              : "Hello UNO Arquitectos, I am interested in receiving information and technical advice for an architecture and construction project in the Riviera Maya."
+              ? "Bonjour UNO Arquitectos, je souhaite obtenir un devis pour un projet de [conception / construction clés en main] dans la Riviera Maya."
+              : "Hello UNO Arquitectos, I would like to quote a [design / turnkey construction] project in the Riviera Maya."
           )}`}
           target="_blank"
           rel="noopener noreferrer"
